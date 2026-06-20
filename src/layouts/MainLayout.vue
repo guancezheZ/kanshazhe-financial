@@ -147,6 +147,11 @@
           <el-icon><Lock /></el-icon><template #title>激活管理</template>
         </el-menu-item>
 
+        <!-- 🚀 检查更新 -->
+        <el-menu-item v-if="isTauri" @click="checkUpdate">
+          <el-icon><Download /></el-icon><template #title>检查更新</template>
+        </el-menu-item>
+
         <!-- 📚 配套资料 -->
         <el-sub-menu v-if="isTauri" index="docs-group">
           <template #title>
@@ -320,7 +325,7 @@ import {
   Fold, HomeFilled, Reading, List, EditPen, Search,
   Document, DataAnalysis, Money, Setting, ArrowDown,
   UserFilled, SwitchButton, DataBoard, Coin, CopyDocument, SetUp,
-  Moon, Sunny, Monitor, Plus, Bell, Notebook, ChatLineRound, Lock, Close, Check,
+  Moon, Sunny, Monitor, Plus, Bell, Notebook, ChatLineRound, Lock, Close, Check, Download,
 } from '@element-plus/icons-vue'
 import { useStore } from '@/stores/store.js'
 import { calcLevel } from '@/data/xp-system.js'
@@ -342,6 +347,19 @@ async function openDoc(filename) {
     await invoke('open_doc', { filename })
   } catch (e) {
     console.error('打开文档失败:', e)
+  }
+}
+
+async function checkUpdate() {
+  if (!isTauri.value) {
+    window.open('https://github.com/guancezheZ/kanshazhe-financial/releases', '_blank')
+    return
+  }
+  try {
+    const { invoke } = await import('@tauri-apps/api/core')
+    await invoke('open_url', { url: 'https://github.com/guancezheZ/kanshazhe-financial/releases' })
+  } catch (e) {
+    window.open('https://github.com/guancezheZ/kanshazhe-financial/releases', '_blank')
   }
 }
 

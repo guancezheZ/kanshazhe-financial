@@ -43,6 +43,16 @@ export default {
     }
 
     const url = new URL(request.url)
+    const path = url.pathname.replace(/\/+$/, '') || '/'
+
+    // 🌐 下载 / 更新页面
+    if (path === '/download') {
+      return Response.redirect('https://github.com/guancezheZ/kanshazhe-financial/releases/download/v0.1.0/%E8%A7%82%E6%B5%8B%E8%80%85%E8%B4%A2%E5%8A%A1%E6%A8%A1%E6%8B%9F%E7%B3%BB%E7%BB%9F_0.1.0_x64-setup.exe', 302)
+    }
+    if (path === '/update') {
+      return Response.redirect('https://github.com/guancezheZ/kanshazhe-financial/releases', 302)
+    }
+
     const action = url.searchParams.get('action') || 'verify'
 
     try {

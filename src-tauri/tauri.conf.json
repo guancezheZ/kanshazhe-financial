@@ -36,11 +36,11 @@
       "icons/icon.icns",
       "icons/icon.ico"
     ],
-    "resources": [
-      "../docs/系统使用说明书.html",
-      "../docs/教学知识点介绍.html",
-      "../観測者财务宣传.html"
-    ],
+    "resources": {
+      "../docs/系统使用说明书.html": "系统使用说明书.html",
+      "../docs/教学知识点介绍.html": "教学知识点介绍.html",
+      "../観測者财务宣传.html": "観測者财务宣传.html"
+    },
     "windows": {
       "nsis": {
         "languages": ["SimpChinese", "English"],
