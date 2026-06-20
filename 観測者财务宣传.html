@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>観測者企业财务模拟系统 — 教学用财务软件</title>
+<style>
+:root {
+  --primary: #1a3a5c;
+  --primary-light: #2a5a8c;
+  --accent: #409eff;
+  --accent-light: #66b1ff;
+  --bg: #0f0f1a;
+  --card: #1a1a2e;
+  --text: #e0e0f0;
+  --text-light: #909098;
+  --border: #2a2a40;
+  --success: #67c23a;
+  --warning: #e6a23c;
+  --danger: #f56c6c;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+/* ── Hero ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #0f0f1a 0%, #1a2744 40%, #0f0f1a 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 50%, rgba(64,158,255,0.08) 0%, transparent 50%),
+              radial-gradient(circle at 70% 50%, rgba(102,177,255,0.05) 0%, transparent 50%);
+  animation: heroGlow 8s ease-in-out infinite alternate;
+}
+
+@keyframes heroGlow {
+  from { transform: translate(0, 0); }
+  to { transform: translate(-5%, -5%); }
+}
+
+.hero-badge {
+  display: inline-block;
+  background: rgba(64,158,255,0.15);
+  color: var(--accent-light);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  border: 1px solid rgba(64,158,255,0.2);
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 {
+  font-size: clamp(36px, 6vw, 64px);
+  font-weight: 800;
+  background: linear-gradient(135deg, #fff 0%, #66b1ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+  letter-spacing: 2px;
+}
+
+.hero h1 .jp { font-size: 0.6em; font-weight: 400; opacity: 0.7; }
+
+.hero .subtitle {
+  font-size: clamp(16px, 2vw, 22px);
+  color: var(--text-light);
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px 0 36px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-stat {
+  text-align: center;
+  padding: 16px 24px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  min-width: 120px;
+}
+
+.hero-stat .num {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--accent-light);
+}
+
+.hero-stat .label {
+  font-size: 12px;
+  color: var(--text-light);
+  margin-top: 2px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.btn {
+  padding: 12px 32px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all .3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), var(--primary-light));
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 20px rgba(64,158,255,0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 30px rgba(64,158,255,0.4);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.btn-outline:hover {
+  border-color: var(--accent);
+  color: var(--accent-light);
+  transform: translateY(-2px);
+}
+
+.scroll-down {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--text-light);
+  font-size: 13px;
+  animation: bounce 2s infinite;
+  cursor: pointer;
+  z-index: 1;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+
+/* ── Section ── */
+section { padding: 80px 20px; max-width: 1100px; margin: 0 auto; }
+
+.section-title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #fff;
+}
+
+.section-desc {
+  text-align: center;
+  color: var(--text-light);
+  font-size: 16px;
+  margin-bottom: 48px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── Features ── */
+.features { background: linear-gradient(180deg, var(--bg) 0%, #111122 100%); }
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.feature-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px;
+  transition: all .3s;
+}
+
+.feature-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(64,158,255,0.1);
+}
+
+.feature-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.feature-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.feature-card p {
+  font-size: 14px;
+  color: var(--text-light);
+  line-height: 1.7;
+}
+
+/* ── Industries ── */
+.industry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.industry-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+  transition: all .3s;
+}
+
+.industry-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.industry-card .icon { font-size: 40px; margin-bottom: 12px; }
+.industry-card h4 { font-size: 16px; font-weight: 600; color: #fff; margin-bottom: 6px; }
+.industry-card p { font-size: 13px; color: var(--text-light); }
+.industry-card .count { font-size: 28px; font-weight: 700; color: var(--accent-light); margin-top: 10px; }
+
+/* ── Modules ── */
+.modules { background: linear-gradient(180deg, #111122 0%, var(--bg) 100%); }
+
+.module-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 14px;
+}
+
+.module-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all .2s;
+  font-size: 14px;
+}
+
+.module-item:hover {
+  border-color: var(--accent);
+  background: rgba(64,158,255,0.05);
+}
+
+.module-item .icon { font-size: 20px; flex-shrink: 0; }
+.module-item .tag {
+  margin-left: auto;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: rgba(64,158,255,0.1);
+  color: var(--accent-light);
+  white-space: nowrap;
+}
+
+/* ── Teaching System ── */
+.teaching-highlight {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.teaching-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px;
+  text-align: center;
+}
+
+.teaching-card .big-icon { font-size: 48px; margin-bottom: 12px; }
+.teaching-card h4 { font-size: 18px; font-weight: 600; color: #fff; margin-bottom: 6px; }
+.teaching-card p { font-size: 14px; color: var(--text-light); }
+
+/* ── Tech Stack ── */
+.tech-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.tech-tag {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 14px;
+  transition: all .2s;
+}
+
+.tech-tag:hover {
+  border-color: var(--accent);
+  color: var(--accent-light);
+}
+
+/* ── Footer ── */
+footer {
+  text-align: center;
+  padding: 40px 20px;
+  border-top: 1px solid var(--border);
+  color: var(--text-light);
+  font-size: 13px;
+}
+
+footer a { color: var(--accent-light); text-decoration: none; }
+
+/* ── Screenshot ── */
+.screenshot-showcase {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.screenshot-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+}
+
+.screenshot-item .placeholder {
+  background: linear-gradient(135deg, #1a2744, #0f0f1a);
+  border-radius: 6px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  margin-bottom: 8px;
+  border: 1px solid var(--border);
+}
+
+.screenshot-item .label {
+  font-size: 13px;
+  color: var(--text-light);
+}
+
+/* ── Responsive ── */
+@media(max-width: 600px) {
+  section { padding: 50px 14px; }
+  .hero-stats { gap: 12px; }
+  .hero-stat { min-width: 80px; padding: 12px 16px; }
+  .hero-stat .num { font-size: 24px; }
+  .module-list { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════ Hero ════════════ -->
+<section class="hero">
+  <div class="hero-badge">🎯 教学专用 · 非商用</div>
+  <h1>観測者<br><span class="jp">— KANZHE —</span></h1>
+  <p class="subtitle">企业财务模拟系统 · 零基础到实战</p>
+
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="num">2,122</div>
+      <div class="label">教学任务</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">4</div>
+      <div class="label">模拟行业</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">455</div>
+      <div class="label">自动化测试</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">60+</div>
+      <div class="label">标准科目</div>
+    </div>
+  </div>
+
+  <div class="hero-actions">
+    <a href="#features" class="btn btn-primary">🚀 了解系统</a>
+    <a href="#modules" class="btn btn-outline">📋 功能模块</a>
+  </div>
+
+  <div class="scroll-down">↓ 向下浏览</div>
+</section>
+
+<!-- ════════════ Features ════════════ -->
+<section class="features" id="features">
+  <h2 class="section-title">为什么选择観測者？</h2>
+  <p class="section-desc">专为财务教学打造的沉浸式模拟系统，从理论到实操一步到位</p>
+
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="feature-icon" style="background:rgba(64,158,255,0.15)">📚</div>
+      <h3>渐进式教学</h3>
+      <p>三种教学模式：Step-by-Step 分步引导、练习填空作答、考试独立考核。支持知识点标签筛选和跨月导航。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:rgba(103,194,58,0.15)">📄</div>
+      <h3>高保真电子凭证</h3>
+      <p>增值税发票、银行回单、收据、文档四类纸纹渲染 + 圆形公章，还原真实财务场景。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:rgba(230,162,60,0.15)">📊</div>
+      <h3>完整会计报表</h3>
+      <p>资产负债表、利润表、现金流量表、试算平衡表、科目余额表，教学数据自动过账流入报表。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:rgba(245,108,108,0.15)">🔐</div>
+      <h3>安全体系</h3>
+      <p>激活码在线验证 + AES-256-GCM 加密存储 + 硬件指纹绑定，保障数据安全。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:rgba(64,158,255,0.15)">🖥️</div>
+      <h3>桌面 + Web 双端</h3>
+      <p>基于 Tauri v2 打包桌面应用，支持 Windows。也可浏览器直接使用，灵活部署。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:rgba(103,194,58,0.15)">🏆</div>
+      <h3>成就与成长体系</h3>
+      <p>13级声望称号（见习生→财务传说）+ 16项成就 + XP 经验值，让学习像游戏一样有动力。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ Industries ════════════ -->
+<section id="industries">
+  <h2 class="section-title">四大模拟行业</h2>
+  <p class="section-desc">覆盖核心财务场景，每行业独立账套，一年的完整业务周期</p>
+
+  <div class="industry-grid">
+    <div class="industry-card">
+      <div class="icon">🏭</div>
+      <h4>制造业</h4>
+      <p>材料采购 → 生产领用 → 成本核算 → 产成品入库。全链条成本核算（在产品和产成品）</p>
+      <div class="count">586 项</div>
+    </div>
+    <div class="industry-card">
+      <div class="icon">🏪</div>
+      <h4>商业企业</h4>
+      <p>进货 → 仓储 → 销售 → 结转成本。进销存全流程管理，加权平均 / 先进先出</p>
+      <div class="count">531 项</div>
+    </div>
+    <div class="industry-card">
+      <div class="icon">💼</div>
+      <h4>服务业</h4>
+      <p>项目制核算、外包管理、人工成本归集。管理咨询 / 软件开发类典型服务业财务</p>
+      <div class="count">504 项</div>
+    </div>
+    <div class="industry-card">
+      <div class="icon">🏗️</div>
+      <h4>建筑业</h4>
+      <p>跨年工程项目核算、完工百分比法确认收入、分包管理。特有"工程施工 + 工程结算"科目</p>
+      <div class="count">501 项</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ Modules ════════════ -->
+<section class="modules" id="modules">
+  <h2 class="section-title">功能全景</h2>
+  <p class="section-desc">39个视图模块，覆盖企业财务全流程</p>
+
+  <div class="module-list">
+    <div class="module-item"><span class="icon">📝</span> 凭证录入 <span class="tag">核心</span></div>
+    <div class="module-item"><span class="icon">🔍</span> 凭证查询 <span class="tag">核心</span></div>
+    <div class="module-item"><span class="icon">📋</span> 科目表 <span class="tag">基础</span></div>
+    <div class="module-item"><span class="icon">💰</span> 科目余额表 <span class="tag">报表</span></div>
+    <div class="module-item"><span class="icon">⚖️</span> 试算平衡表 <span class="tag">报表</span></div>
+    <div class="module-item"><span class="icon">📕</span> 账簿查询 <span class="tag">报表</span></div>
+    <div class="module-item"><span class="icon">🏛️</span> 资产负债表 <span class="tag">报表</span></div>
+    <div class="module-item"><span class="icon">📈</span> 利润表 <span class="tag">报表</span></div>
+    <div class="module-item"><span class="icon">💧</span> 现金流量表 <span class="tag">报表</span></div>
+    <div class="module-item"><span class="icon">📐</span> 辅助核算 <span class="tag">进阶</span></div>
+    <div class="module-item"><span class="icon">🏦</span> 出纳管理 <span class="tag">出纳</span></div>
+    <div class="module-item"><span class="icon">🤝</span> 应收应付 <span class="tag">往来</span></div>
+    <div class="module-item"><span class="icon">🏗️</span> 固定资产 <span class="tag">资产</span></div>
+    <div class="module-item"><span class="icon">👷</span> 工资管理 <span class="tag">人事</span></div>
+    <div class="module-item"><span class="icon">💱</span> 外币核算 <span class="tag">进阶</span></div>
+    <div class="module-item"><span class="icon">📊</span> 自定义报表 <span class="tag">分析</span></div>
+    <div class="module-item"><span class="icon">🔄</span> 期末结转 <span class="tag">期末</span></div>
+    <div class="module-item"><span class="icon">🏛️</span> 模拟纳税申报 <span class="tag">税务</span></div>
+    <div class="module-item"><span class="icon">📌</span> 凭证模板 <span class="tag">效率</span></div>
+    <div class="module-item"><span class="icon">📅</span> 会计期间 <span class="tag">管理</span></div>
+    <div class="module-item"><span class="icon">📜</span> 审计轨迹 <span class="tag">安全</span></div>
+    <div class="module-item"><span class="icon">👤</span> 账套管理 <span class="tag">管理</span></div>
+    <div class="module-item"><span class="icon">🏆</span> 成就系统 <span class="tag">激励</span></div>
+    <div class="module-item"><span class="icon">🗺️</span> 业务流程全景图 <span class="tag">教学</span></div>
+  </div>
+</section>
+
+<!-- ════════════ Teaching ════════════ -->
+<section id="teaching">
+  <h2 class="section-title">沉浸式教学体验</h2>
+  <p class="section-desc">三种学习模式 + 智能反馈，告别枯燥的理论学习</p>
+
+  <div class="teaching-highlight">
+    <div class="teaching-card">
+      <div class="big-icon">🧭</div>
+      <h4>分步引导模式</h4>
+      <p>Step-by-Step 三步推理：理解业务 → 逐笔分析分录（含思考提示+答案揭示）→ 检查确认。新手零门槛上手。</p>
+    </div>
+    <div class="teaching-card">
+      <div class="big-icon">✏️</div>
+      <h4>练习模式</h4>
+      <p>填空作答 + 智能比对。答对自动过账，数据流入报表。答错显示会计逻辑讲解。附"我要提示"按钮逐级提示。</p>
+    </div>
+    <div class="teaching-card">
+      <div class="big-icon">📝</div>
+      <h4>考试模式</h4>
+      <p>独立作答，无提示无干扰。提交后自动评分，检测真实掌握程度。可反复练习直到满分。</p>
+    </div>
+    <div class="teaching-card">
+      <div class="big-icon">🖼️</div>
+      <h4>高保真凭证附件</h4>
+      <p>每项任务配有真实的增值税发票、银行回单、收据等电子凭证。缩略图网格 + 灯箱大图预览。</p>
+    </div>
+    <div class="teaching-card">
+      <div class="big-icon">🎮</div>
+      <h4>游戏化激励</h4>
+      <p>13级声望称号 + 16项成就 + XP任务分。完成任务积累经验，解锁称号，学习像打游戏一样上瘾。</p>
+    </div>
+    <div class="teaching-card">
+      <div class="big-icon">🎯</div>
+      <h4>标签筛选 + 进度追踪</h4>
+      <p>10类知识点标签（出纳/采购/销售/费用/工资社保/税费等），逐标签筛选学习。全局进度 + 月进度一目了然。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ Tech Stack ════════════ -->
+<section id="tech">
+  <h2 class="section-title">技术栈</h2>
+  <p class="section-desc">现代技术架构，稳定可靠</p>
+
+  <div class="tech-grid">
+    <span class="tech-tag">⚡ Vue 3</span>
+    <span class="tech-tag">🎨 Element Plus</span>
+    <span class="tech-tag">📦 Vite</span>
+    <span class="tech-tag">🦀 Tauri v2</span>
+    <span class="tech-tag">📊 ECharts</span>
+    <span class="tech-tag">🔐 AES-256-GCM</span>
+    <span class="tech-tag">☁️ Cloudflare Workers</span>
+    <span class="tech-tag">📈 Vitest</span>
+    <span class="tech-tag">🎭 Playwright</span>
+    <span class="tech-tag">⚙️ Rust</span>
+  </div>
+</section>
+
+<!-- ════════════ Screenshots ════════════ -->
+<section id="screenshots">
+  <h2 class="section-title">界面预览</h2>
+  <p class="section-desc">暗色主题 · 专业财务界面设计</p>
+
+  <div class="screenshot-showcase">
+    <div class="screenshot-item">
+      <div class="placeholder">📊</div>
+      <div class="label">仪表盘</div>
+    </div>
+    <div class="screenshot-item">
+      <div class="placeholder">📝</div>
+      <div class="label">凭证录入</div>
+    </div>
+    <div class="screenshot-item">
+      <div class="placeholder">📋</div>
+      <div class="label">科目表</div>
+    </div>
+    <div class="screenshot-item">
+      <div class="placeholder">⚖️</div>
+      <div class="label">试算平衡表</div>
+    </div>
+    <div class="screenshot-item">
+      <div class="placeholder">📈</div>
+      <div class="label">利润表</div>
+    </div>
+    <div class="screenshot-item">
+      <div class="placeholder">🏛️</div>
+      <div class="label">资产负债表</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ CTA ════════════ -->
+<section style="text-align:center; padding:60px 20px;">
+  <h2 class="section-title" style="margin-bottom:16px;">开始你的财务学习之旅</h2>
+  <p style="color:var(--text-light);margin-bottom:24px;font-size:16px;">
+    観測者 — 看得见的财务学习
+  </p>
+  <div class="hero-actions" style="justify-content:center;">
+    <a href="https://github.com/guancezheZ/kanshazhe-financial" target="_blank" class="btn btn-primary">📦 GitHub 仓库</a>
+    <a href="https://jiaqinw.xyz" target="_blank" class="btn btn-outline">🌐 访问官网</a>
+  </div>
+</section>
+
+<!-- ════════════ Footer ════════════ -->
+<footer>
+  <p>观测者企业财务模拟系统 — 教学用 · 非商用</p>
+  <p style="margin-top:6px;">基于 <a href="#">MIT License</a> 开源 · Made with ❤️</p>
+  <p style="margin-top:6px;font-size:12px;color:#666;">&copy; 2026 观测者 · All rights reserved</p>
+</footer>
+
+</body>
+</html>
