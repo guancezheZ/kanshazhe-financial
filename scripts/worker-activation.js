@@ -52,9 +52,9 @@ export default {
     if (path === '/update') {
       return Response.redirect('https://github.com/guancezheZ/kanshazhe-financial/releases', 302)
     }
-    // ⬇️ 官网直链下载（自动获取最新版安装包）
+    // ⬇️ 官网下载入口（跳转到下载页）
     if (path === '/dl') {
-      return handleDirectDownload(env)
+      return Response.redirect('https://jiaqinw.xyz/download', 302)
     }
     // 🔄 版本检查 API（App自动更新用）
     if (path === '/version') {
@@ -301,35 +301,10 @@ async function handleVersionCheck(env) {
 async function handleDownload(env) {
   const release = await fetchLatestRelease()
   const version = release?.version || 'v0.1.0'
-  const downloadUrl = release?.downloadUrl || 'https://github.com/guancezheZ/kanshazhe-financial/releases'
+  const downloadUrl = release?.downloadUrl || ''
   return new Response(getDownloadPage(version, downloadUrl), {
     headers: { 'Content-Type': 'text/html; charset=utf-8', 'Access-Control-Allow-Origin': '*' },
   })
-}
-
-// ─── 官网直链下载（跳转最新版asset） ───
-async function handleDirectDownload(env) {
-  const release = await fetchLatestRelease()
-  if (release?.downloadUrl) {
-    // 通过 CF 代理下载，加速国内访问
-    const proxyRes = await fetch(release.downloadUrl, {
-      headers: { 'User-Agent': 'kanshazhe-cf-proxy' },
-      signal: AbortSignal.timeout(60000),
-    })
-    if (proxyRes.ok) {
-      return new Response(proxyRes.body, {
-        status: 200,
-        headers: {
-          'Content-Type': 'application/octet-stream',
-          'Content-Disposition': `attachment; filename="${encodeURIComponent(release.assetName)}"`,
-          'Cache-Control': 'public, max-age=3600',
-          'Access-Control-Allow-Origin': '*',
-        },
-      })
-    }
-  }
-  // 代理失败→直接跳转GitHub下载
-  return Response.redirect(release?.downloadUrl || 'https://github.com/guancezheZ/kanshazhe-financial/releases', 302)
 }
 
 // ─── KV 工具 ───
@@ -474,6 +449,7 @@ h1{font-size:22px;font-weight:700;margin-bottom:6px;background:linear-gradient(1
 .dl-btn .info .hint{font-size:12px;color:rgba(255,255,255,0.4)}
 .dl-btn.github-btn{background:rgba(36,41,46,0.9);border-color:#363b42}.dl-btn.github-btn:hover{background:#24292e}
 .dl-btn.site-btn{background:rgba(64,158,255,0.1);border-color:rgba(64,158,255,0.25)}.dl-btn.site-btn:hover{background:rgba(64,158,255,0.2)}
+.dl-btn.lanzou-btn{background:rgba(7,193,96,0.1);border-color:rgba(7,193,96,0.25)}.dl-btn.lanzou-btn:hover{background:rgba(7,193,96,0.2)}
 .footer{font-size:12px;color:#505060;margin-top:24px;text-align:center}
 .version{border:1px solid #2a2a40;border-radius:20px;padding:4px 14px;font-size:12px;color:#606070;display:inline-block;margin-bottom:20px}
 </style>
@@ -484,19 +460,19 @@ h1{font-size:22px;font-weight:700;margin-bottom:6px;background:linear-gradient(1
   <p class="sub">${version} · 教学用财务软件</p>
   <div class="version">选择下载方式</div>
 
-  <a class="dl-btn site-btn" href="/dl" target="_blank">
-    <div class="icon" style="background:rgba(64,158,255,0.2)">🌐</div>
-    <div class="info">
-      <div class="name">官网下载</div>
-      <div class="hint">CDN加速 · 国内直连推荐</div>
-    </div>
-  </a>
-
-  <a class="dl-btn github-btn" href="${downloadUrl}" target="_blank">
+  <a class="dl-btn github-btn" href="${downloadUrl || 'https://github.com/guancezheZ/kanshazhe-financial/releases'}" target="_blank">
     <div class="icon" style="background:#363b42">🐙</div>
     <div class="info">
       <div class="name">GitHub 下载</div>
-      <div class="hint">备选通道 · 需VPN</div>
+      <div class="hint">最新版安装包 · 国际用户推荐</div>
+    </div>
+  </a>
+
+  <a class="dl-btn lanzou-btn" href="https://wwapf.lanzouw.com/iztaD3sfr8qd" target="_blank">
+    <div class="icon" style="background:rgba(7,193,96,0.2)">☁️</div>
+    <div class="info">
+      <div class="name">蓝奏云下载</div>
+      <div class="hint">国内高速 · 无需VPN · 提取码：fyr3</div>
     </div>
   </a>
 
