@@ -10,7 +10,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 **系统名称**：観測者企业财务模拟系统（教学用）
 **包管理**：npm | **package.json 为 `"type": "module"`**（ESM 项目，脚本需 .cjs 后缀）
 
-**测试框架**：Vitest + @vue/test-utils（**455 项测试**，6 个文件）+ Playwright e2e（56 项）
+**测试框架**：Vitest + @vue/test-utils（**456 项测试**，6 个文件）+ Playwright e2e（56 项）
 
 | 测试文件 | 数量 | 覆盖 |
 |:---------|:----:|:-----|
@@ -27,7 +27,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **核心铁律**：
 - ⭐ **质量 > 速度** — 财务计算错误可能违法
-- ⭐ **测试驱动** — 每次改完代码必须 `npm run test`（455项全通过确认）
+- ⭐ **测试驱动** — 每次改完代码必须 `npm run test`（456项全通过确认）
 - ⭐ **G1**：每个回复末尾加"喵~"
 - ⭐ **G2**：每次会话先输出**当前验证码**（见`经验总结.md`末尾）
 - ⭐ **G3**：改东西必须全面扫清所有相关文件
@@ -72,7 +72,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | `node scripts/key-manager.cjs revoke <令牌> <码>` | 吊销指定激活码（从列表彻底删除） |
 | `node scripts/key-manager.cjs clean <令牌>` | 清理之前已吊销的所有旧密钥 |
 | `node scripts/compute-hashes.cjs` | 计算数据模块 SHA-256 哈希 |
-| `node scripts/annotate-cashflow.mjs [月]` | 批量标注教学数据现金流量分类（缺省=全部） |
+| `node scripts/annotate-cashflow.mjs [行业] [月]` | 批量标注现金流量分类（行业: manufacturing/commercial/service/construction/all，月: 01-12/all，缺省=全部全部） |
 | `node scripts/check-html-js.mjs` | 检查生成HTML的JS语法错误 |
 | `node scripts/take-screenshots.mjs` | Playwright 截图系统界面（需先 `npm run dev`） |
 | `node scripts/screenshot-intro.mjs` | 分段截图商品介绍页（手机宽度640px） |
@@ -317,6 +317,7 @@ src-tauri/
 21. **现金流量数据修改后需重算哈希** — 改了教学数据的 entries 后必须 `node scripts/compute-hashes.cjs`，更新 `src/utils/integrity.js` 对应模块的哈希值
 22. **月份文件可能含同行多条分录** — `entries: [{...}, {...}, {...}]` 内联格式在商业/服务业/建筑业文件中常见。逐行扫描 `subjectCode` 只能找到第一个，必须用 `matchAll`。`scripts/annotate-cashflow.mjs` 已处理此情况
 23. **多行分录的 `}` 在不同行** — 有些月份文件的分录跨多行（`subjectCode` 在一行，`explanation` 在下一行，`}` 在第三行）。脚本/搜索时注意处理跨行场景，不能用单行正则简单处理
+24. **标注脚本 duplicate key bug** — `annotate-cashflow.mjs` 的 `buildAnnotationMap` 使用 `code|dr|cr|summary` 作为 key。会计+出纳任务中同 summary 的分录会生成相同 key，第一个匹配后 `delete` 导致第二条丢失。已修复为计数模式（`count` 递减，归零才删）。改标注脚本时注意不要回退此逻辑
 
 ---
 
@@ -327,8 +328,8 @@ src-tauri/
 ### 每会话启动步骤
 
 1. 读 `经验总结.md` 获取当前验证码（当前 **JD-066**）
-2. `npm run test` 确认 **455** 项通过
-3. 读交接单 `memory/session-handoff-june-2026-v9.md` 确定下一步
+2. `npm run test` 确认 **456** 项通过
+3. 读交接单 `memory/session-handoff-june-2026-v11.md` 确定下一步
 4. 检查 `MEMORY.md` 获取记忆索引
 5. 有改代码 → `npx kill-port 3000 3001 3002` → 干净端口测试
 6. 如需打包 → `export PATH="$HOME/.cargo/bin:$PATH" && npx tauri build`
