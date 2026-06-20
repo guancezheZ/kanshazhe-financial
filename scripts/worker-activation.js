@@ -245,9 +245,9 @@ async function handleAdmin(url, env, request) {
     case 'revoke': {
       const code = (url.searchParams.get('code') || '').toUpperCase()
       if (!db[code]) return json({ error: '密钥不存在' })
-      db[code].revoked = true
+      delete db[code]        // 直接删掉，不出现在列表里
       await saveDB(env, db)
-      return json({ success: true, message: '已吊销' })
+      return json({ success: true, message: '已吊销并从列表清除' })
     }
 
     case 'import': {

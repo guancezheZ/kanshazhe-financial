@@ -304,12 +304,11 @@ function main() {
         res.on('end', () => {
           const result = JSON.parse(body)
           if (result.success) {
-            // 同步更新本地数据库
+            // 从本地数据库删除该密钥
             const db = loadDB()
-            const entry = db.keys.find(k => k.code === code)
-            if (entry) { entry.status = 'revoked'; entry.revokedAt = new Date().toISOString() }
-            saveDB(db)
-            console.log(`  ✅ 已吊销 ${code}`)
+            const idx = db.keys.findIndex(k => k.code === code)
+            if (idx !== -1) { db.keys.splice(idx, 1); saveDB(db) }
+            console.log(`  ✅ ${code} 已吊销并从列表清除`)
           } else {
             console.log('  ❌ 吊销失败:', JSON.stringify(result))
           }
