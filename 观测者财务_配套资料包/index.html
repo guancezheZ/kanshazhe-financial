@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>观测者财务模拟系统 — 配套资料包</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: linear-gradient(135deg, #0f0f1a, #1a2744);
+  color: #e0e0f0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+}
+.container { max-width: 700px; width: 100%; }
+
+.header {
+  text-align: center;
+  padding: 40px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 30px;
+}
+.header h1 {
+  font-size: 32px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #fff, #66b1ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 2px;
+}
+.header .sub {
+  color: rgba(255,255,255,0.5);
+  font-size: 14px;
+  margin-top: 6px;
+}
+.header .badge {
+  display: inline-block;
+  background: rgba(64,158,255,0.15);
+  color: #66b1ff;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  margin-top: 12px;
+  border: 1px solid rgba(64,158,255,0.2);
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.6);
+  margin: 24px 0 12px;
+  padding-left: 4px;
+}
+
+.file-grid { display: flex; flex-direction: column; gap: 10px; }
+
+.file-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+  color: #e0e0f0;
+  transition: all .3s;
+  cursor: pointer;
+}
+.file-card:hover {
+  background: rgba(64,158,255,0.08);
+  border-color: rgba(64,158,255,0.3);
+  transform: translateX(4px);
+}
+.file-card .icon {
+  width: 48px; height: 48px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+.file-card .info { flex: 1; }
+.file-card .info .name {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.file-card .info .desc {
+  font-size: 13px;
+  color: rgba(255,255,255,0.4);
+}
+.file-card .arrow {
+  color: rgba(255,255,255,0.2);
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.install-section {
+  background: linear-gradient(135deg, rgba(64,158,255,0.1), rgba(26,39,68,0.5));
+  border: 1px solid rgba(64,158,255,0.2);
+  border-radius: 16px;
+  padding: 28px;
+  margin: 24px 0;
+  text-align: center;
+}
+.install-section h3 {
+  font-size: 18px;
+  color: #fff;
+  margin-bottom: 6px;
+}
+.install-section p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 14px;
+}
+.install-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #409eff, #2a5a8c);
+  color: #fff;
+  padding: 12px 32px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  transition: all .3s;
+  box-shadow: 0 4px 20px rgba(64,158,255,0.3);
+}
+.install-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 30px rgba(64,158,255,0.4);
+}
+.install-btn .small {
+  display: block;
+  font-size: 11px;
+  font-weight: 400;
+  opacity: 0.7;
+  margin-top: 2px;
+}
+
+.activation-box {
+  background: rgba(255,255,255,0.03);
+  border: 1px dashed rgba(255,255,255,0.15);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 0;
+  text-align: center;
+}
+.activation-box .code {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: #ffd700;
+  margin: 8px 0;
+}
+.activation-box .hint {
+  font-size: 13px;
+  color: rgba(255,255,255,0.4);
+}
+
+footer {
+  text-align: center;
+  padding: 30px 0;
+  color: rgba(255,255,255,0.2);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <div class="badge">📦 观测者财务模拟系统 v0.1.0</div>
+    <h1>配套资料包</h1>
+    <div class="sub">安装程序 + 使用说明书 + 知识点教学书 + 宣传材料</div>
+  </div>
+
+  <!-- ════════ 安装程序 ════════ -->
+  <div class="section-title">📥 安装程序</div>
+  <div class="install-section">
+    <h3>🖥️ 观测者财务模拟系统</h3>
+    <p>适用于 Windows 10/11 · 一键安装 · 离线可用</p>
+    <a href="#" class="install-btn" onclick="alert('安装包请找卖家获取下载链接');return false;">
+      📦 下载安装包
+      <span class="small">观测者财务模拟系统_0.1.0_x64-setup.exe</span>
+    </a>
+  </div>
+
+  <!-- ════════ 使用文档 ════════ -->
+  <div class="section-title">📚 使用文档</div>
+  <div class="file-grid">
+    <a class="file-card" href="系统使用说明书.html" target="_blank">
+      <div class="icon" style="background:rgba(64,158,255,0.15);">📖</div>
+      <div class="info">
+        <div class="name">系统使用说明书</div>
+        <div class="desc">11章47节 · 含全部功能操作指南 · 带截图</div>
+      </div>
+      <div class="arrow">→</div>
+    </a>
+    <a class="file-card" href="教学知识点介绍.html" target="_blank">
+      <div class="icon" style="background:rgba(103,194,58,0.15);">📘</div>
+      <div class="info">
+        <div class="name">教学知识点详解</div>
+        <div class="desc">会计12章40节 + 出纳8章21节 · 系统教学书</div>
+      </div>
+      <div class="arrow">→</div>
+    </a>
+  </div>
+
+  <!-- ════════ 宣传材料 ════════ -->
+  <div class="section-title">📣 宣传材料</div>
+  <div class="file-grid">
+    <a class="file-card" href="观测者财务宣传.html" target="_blank">
+      <div class="icon" style="background:rgba(230,162,60,0.15);">🏠</div>
+      <div class="info">
+        <div class="name">观测者财务宣传页</div>
+        <div class="desc">系统介绍 · 功能全景 · 适用场景</div>
+      </div>
+      <div class="arrow">→</div>
+    </a>
+    <a class="file-card" href="观测者财务_商品介绍_闲鱼拼多多.html" target="_blank">
+      <div class="icon" style="background:rgba(245,108,108,0.15);">🏪</div>
+      <div class="info">
+        <div class="name">商品介绍（闲鱼/拼多多用）</div>
+        <div class="desc">含定价 · 功能清单 · 常见问题</div>
+      </div>
+      <div class="arrow">→</div>
+    </a>
+  </div>
+
+  <!-- ════════ 激活码 ════════ -->
+  <div class="activation-box">
+    <div>🔑 您的激活码</div>
+    <div class="code">XXXX-XXXX-XXXX-XXXX</div>
+    <div class="hint">请在安装后打开软件，在激活页面输入此码<br>一机一码 · 永久有效</div>
+  </div>
+
+  <div style="font-size:13px;color:rgba(255,255,255,0.3);text-align:center;padding:20px;">
+    <p>💡 使用提示：所有 HTML 文档双击即可在浏览器中打开阅读</p>
+    <p style="margin-top:4px;">支持搜索、暗色模式切换、书签收藏</p>
+  </div>
+
+  <footer>
+    <p>观测者企业财务模拟系统 · 教学用 · 非商用</p>
+    <p style="margin-top:4px;">&copy; 2026 观测者 · All rights reserved</p>
+  </footer>
+
+</div>
+</body>
+</html>

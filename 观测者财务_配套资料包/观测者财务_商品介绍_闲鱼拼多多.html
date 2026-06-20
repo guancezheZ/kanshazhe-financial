@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>观测者财务模拟系统 — 商品详情</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: #f5f5f5;
+  color: #333;
+  line-height: 1.8;
+  padding: 20px;
+}
+.container { max-width: 800px; margin: 0 auto; }
+
+/* ── 商品头图 ── */
+.product-header {
+  background: linear-gradient(135deg, #1a3a5c, #2a5a8c);
+  color: #fff;
+  border-radius: 16px;
+  padding: 40px 30px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.product-header h1 { font-size: 28px; margin-bottom: 6px; letter-spacing: 2px; }
+.product-header .sub { font-size: 16px; opacity: 0.85; margin-bottom: 16px; }
+.product-header .price {
+  display: inline-block;
+  background: #ff6a00;
+  color: #fff;
+  padding: 8px 28px;
+  border-radius: 30px;
+  font-size: 24px;
+  font-weight: 700;
+}
+.product-header .price small { font-size: 14px; font-weight: 400; }
+
+/* ── 标签栏 ── */
+.tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.tag {
+  background: #ecf5ff;
+  color: #337ecc;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+.tag.orange { background: #fdf6ec; color: #e6a23c; }
+.tag.green { background: #f0f9eb; color: #67c23a; }
+.tag.red { background: #fef0f0; color: #f56c6c; }
+
+/* ── 卡片 ── */
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+.card h2 {
+  font-size: 18px;
+  color: #1a3a5c;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #ecf5ff;
+}
+.card h2 .icon { margin-right: 6px; }
+.card p, .card li { font-size: 14px; color: #555; margin-bottom: 6px; }
+.card ul, .card ol { padding-left: 20px; }
+.card li { margin-bottom: 4px; }
+.card .highlight { color: #409eff; font-weight: 600; }
+
+/* ── 规格表 ── */
+.spec-table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 8px; }
+.spec-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #f0f0f0;
+}
+.spec-table td:first-child {
+  font-weight: 600;
+  color: #333;
+  width: 100px;
+}
+.spec-table td:last-child { color: #666; }
+
+/* ── 行业对比 ── */
+.industry-compare {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+.industry-item {
+  background: #f8f9fb;
+  border-radius: 8px;
+  padding: 14px;
+  text-align: center;
+}
+.industry-item .icon { font-size: 28px; }
+.industry-item .name { font-size: 14px; font-weight: 600; color: #333; margin: 4px 0; }
+.industry-item .count { font-size: 20px; font-weight: 700; color: #409eff; }
+
+/* ── 购买须知 ── */
+.notice-box {
+  background: #fdf6ec;
+  border: 1px solid #faecd8;
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin: 8px 0;
+  font-size: 13px;
+  color: #7a6a3a;
+}
+.notice-box strong { color: #e6a23c; }
+
+/* ── 按钮 ── */
+.btn-link {
+  display: inline-block;
+  background: #409eff;
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  margin: 4px;
+}
+.btn-link:hover { background: #337ecc; }
+
+/* ── 响应式 ── */
+@media(max-width:600px) {
+  .product-header { padding: 28px 18px; }
+  .product-header h1 { font-size: 22px; }
+  .industry-compare { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- ════════ 头图 ════════ -->
+  <div class="product-header">
+    <h1>📘 観測者企业财务模拟系统</h1>
+    <div class="sub">从零基础到独立做账 · 会计+出纳双岗位实训</div>
+    <div class="price">¥98 <small>一次性全包</small></div>
+    <div style="margin-top:12px;font-size:13px;opacity:0.8;">🎯 安装包 + 配套资料 全打包</div>
+  </div>
+
+  <!-- ════════ 标签 ════════ -->
+  <div class="tags">
+    <span class="tag">🔥 热门推荐</span>
+    <span class="tag green">✅ 2122项教学任务</span>
+    <span class="tag orange">💻 支持Windows</span>
+    <span class="tag green">📚 零基础可学</span>
+    <span class="tag red">🎯 会计实操</span>
+    <span class="tag">🏪 出纳实训</span>
+  </div>
+
+  <!-- ════════ 定价方案 ════════ -->
+  <div class="card">
+    <h2><span class="icon">💰</span> 一价全包 · 简单省心</h2>
+    <p style="font-size:13px;color:#999;margin-bottom:12px;">不搞复杂套餐，一次性买断，永久使用</p>
+    <div style="background:linear-gradient(135deg,#1a3a5c,#2a5a8c);border-radius:16px;padding:30px;text-align:center;color:#fff;">
+      <div style="font-size:14px;opacity:0.8;margin-bottom:4px;">全款一口价</div>
+      <div style="font-size:48px;font-weight:800;letter-spacing:2px;">¥98</div>
+      <div style="font-size:14px;opacity:0.7;margin-top:4px;">永久有效 · 无隐形消费</div>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:16px;">
+        <span style="background:rgba(255,255,255,0.15);padding:4px 12px;border-radius:6px;">✅ 桌面安装包</span>
+        <span style="background:rgba(255,255,255,0.15);padding:4px 12px;border-radius:6px;">✅ 永久激活码</span>
+        <span style="background:rgba(255,255,255,0.15);padding:4px 12px;border-radius:6px;">✅ 使用说明书</span>
+        <span style="background:rgba(255,255,255,0.15);padding:4px 12px;border-radius:6px;">✅ 知识点教学书</span>
+        <span style="background:rgba(255,255,255,0.15);padding:4px 12px;border-radius:6px;">✅ 远程协助安装</span>
+        <span style="background:rgba(255,255,255,0.15);padding:4px 12px;border-radius:6px;">✅ 后续更新免费</span>
+      </div>
+    </div>
+    <div class="notice-box" style="margin-top:12px;background:#f0f9eb;border-color:#d6edc8;color:#4a7a3a;">
+      <strong>💡 为什么这么定？</strong>同类财务教学软件 ¥29~¥68只有几十个任务，观测者有 <strong>2122项 + 4大行业 + 三种教学模式</strong>，功能量是竞品的 10~50 倍。¥98一次性买断，性价比远超同行。
+    </div>
+  </div>
+  <div class="card">
+    <h2><span class="icon">⭐</span> 核心亮点</h2>
+    <ul>
+      <li><strong>✅ 真实业务模拟</strong> — 制造业 / 商业 / 服务业 / 建筑业，四大行业完整一年账务</li>
+      <li><strong>✅ 2122道教学任务</strong> — 从提取备用金到期末结转，覆盖企业财务全流程</li>
+      <li><strong>✅ 三种学习模式</strong> — 分步引导（手把手教）→ 练习（填空作答）→ 考试（独立考核）</li>
+      <li><strong>✅ 高保真凭证</strong> — 发票、银行回单、收据，和真实工作一模一样</li>
+      <li><strong>✅ 答对自动过账</strong> — 分录做对直接生成报表，直观看到"数字是怎么来的"</li>
+      <li><strong>✅ 游戏化激励</strong> — XP经验值 + 13级称号 + 16项成就，学习像打游戏</li>
+      <li><strong>✅ 桌面应用</strong> — Tauri打包，Windows安装包，不依赖网络也能用</li>
+    </ul>
+  </div>
+
+  <!-- ════════ 适用人群 ════════ -->
+  <div class="card">
+    <h2><span class="icon">👥</span> 适用人群</h2>
+    <ul>
+      <li>🎓 <strong>会计专业学生</strong> — 课本学完不知道怎么实操？这里全都有</li>
+      <li>🔄 <strong>转行学会计</strong> — 零基础友好，Step-by-Step 手把手带你入门</li>
+      <li>📋 <strong>在职出纳/会计</strong> — 想系统提升，补齐制造业/建筑业等特殊行业知识</li>
+      <li>🏫 <strong>培训机构</strong> — 可作为会计实操课程的教学工具</li>
+    </ul>
+  </div>
+
+  <!-- ════════ 四大行业 ════════ -->
+  <div class="card">
+    <h2><span class="icon">🏭</span> 四大模拟行业</h2>
+    <div class="industry-compare">
+      <div class="industry-item">
+        <div class="icon">🏭</div>
+        <div class="name">制造业</div>
+        <div class="count">586项</div>
+        <div style="font-size:12px;color:#999;">材料采购→成本核算→产成品</div>
+      </div>
+      <div class="industry-item">
+        <div class="icon">🏪</div>
+        <div class="name">商业企业</div>
+        <div class="count">531项</div>
+        <div style="font-size:12px;color:#999;">采购→仓储→销售→结转成本</div>
+      </div>
+      <div class="industry-item">
+        <div class="icon">💼</div>
+        <div class="name">服务业</div>
+        <div class="count">504项</div>
+        <div style="font-size:12px;color:#999;">项目制核算、人工成本归集</div>
+      </div>
+      <div class="industry-item">
+        <div class="icon">🏗️</div>
+        <div class="name">建筑业</div>
+        <div class="count">501项</div>
+        <div style="font-size:12px;color:#999;">跨年工程、完工百分比法</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ 功能模块 ════════ -->
+  <div class="card">
+    <h2><span class="icon">📋</span> 功能清单</h2>
+    <table class="spec-table">
+      <tr><td>📝 凭证管理</td><td>凭证录入/查询/审核/过账/模板</td></tr>
+      <tr><td>📊 账簿报表</td><td>科目表/余额表/试算平衡/三大报表</td></tr>
+      <tr><td>🏦 出纳管理</td><td>现金日记账/银行日记账/对账</td></tr>
+      <tr><td>🤝 应收应付</td><td>客户/供应商档案管理</td></tr>
+      <tr><td>🏗️ 固定资产</td><td>资产卡片/折旧(直线/双倍余额/年数总和)</td></tr>
+      <tr><td>👷 工资管理</td><td>工资项目设置/个税代扣</td></tr>
+      <tr><td>💱 外币核算</td><td>8种币种/一键汇率</td></tr>
+      <tr><td>📐 辅助核算</td><td>部门/员工/客户/供应商/项目</td></tr>
+      <tr><td>🏛️ 模拟报税</td><td>增值税/企业所得税申报</td></tr>
+      <tr><td>🔄 期末结转</td><td>自动结转损益/结账反结账</td></tr>
+      <tr><td>🏆 成就系统</td><td>13级称号/16项成就/XP经验</td></tr>
+      <tr><td>📜 审计轨迹</td><td>全操作日志自动记录</td></tr>
+    </table>
+  </div>
+
+  <!-- ════════ 商品规格 ════════ -->
+  <div class="card">
+    <h2><span class="icon">📦</span> 商品规格</h2>
+    <table class="spec-table">
+      <tr><td>系统版本</td><td>v0.1.0</td></tr>
+      <tr><td>支持平台</td><td>Windows 10/11（桌面版）+ 浏览器</td></tr>
+      <tr><td>技术栈</td><td>Vue3 + Element Plus + Tauri v2</td></tr>
+      <tr><td>交付形式</td><td>安装包 / 源代码 / 远程部署</td></tr>
+      <tr><td>激活方式</td><td>一机一码（永久有效）</td></tr>
+      <tr><td>售后服务</td><td>远程协助安装 + 使用指导</td></tr>
+    </table>
+  </div>
+
+  <!-- ════════ 购买须知 ════════ -->
+  <div class="card">
+    <h2><span class="icon">📌</span> 购买须知</h2>
+    <div class="notice-box">
+      <strong>⚠️ 教学软件说明：</strong>本系统为财务教学模拟软件，非企业实际使用的财务系统。数据均为模拟数据，不涉及真实财务信息。
+    </div>
+    <div class="notice-box" style="background:#f0f9eb;border-color:#d6edc8;color:#4a7a3a;">
+      <strong>✅ 关于激活码：</strong>每个激活码可绑定一台电脑，永久有效。如需更换电脑请联系补发（免费）。
+    </div>
+    <div class="notice-box" style="background:#ecf5ff;border-color:#d6e4ff;color:#3a6a9a;">
+      <strong>💡 小白放心：</strong>提供详细的安装指南 + 使用教程。即使完全不懂电脑也能用。
+    </div>
+    <div class="notice-box" style="background:#fef0f0;border-color:#fadece;color:#8a3a3a;">
+      <strong>❌ 不包含：</strong>不含源码二次开发 / 企业定制功能。如需批量采购或定制请联系。
+    </div>
+  </div>
+
+  <!-- ════════ 常见问题 ════════ -->
+  <div class="card">
+    <h2><span class="icon">❓</span> 常见问题</h2>
+    <ul>
+      <li><strong>Q：零基础能学吗？</strong><br>A：可以。系统内置 Step-by-Step 分步引导模式，从"什么是借贷"开始带你做分录。</li>
+      <li><strong>Q：和考证教材对应吗？</strong><br>A：对应。《企业会计准则》为依据，覆盖初级/中级会计实务核心内容。</li>
+      <li><strong>Q：激活码有什么限制？</strong><br>A：一机一码永久有效。重装系统或换电脑请联系免费迁移。</li>
+      <li><strong>Q：和学堂在线的课程有什么不同？</strong><br>A：这是实际操作软件，不是视频课。你亲手做分录、看报表，做完就有真实账套。</li>
+      <li><strong>Q：需要联网吗？</strong><br>A：首次激活需联网，之后可以离线使用。</li>
+    </ul>
+  </div>
+
+  <!-- ════════ 联系方式 ════════ -->
+  <div style="text-align:center;padding:20px 0 40px;color:#999;font-size:14px;">
+    <p>💬 购买咨询 / 技术支持 请直接私信</p>
+    <p>📦 点击链接查看详情：<a href="https://github.com/guancezheZ/kanshazhe-financial" target="_blank" style="color:#409eff;">GitHub 仓库</a></p>
+    <p style="margin-top:12px;font-size:12px;">观测者企业财务模拟系统 · 教学用 · 非商用</p>
+  </div>
+
+</div>
+</body>
+</html>

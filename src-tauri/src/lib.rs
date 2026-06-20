@@ -1,9 +1,19 @@
 mod activation;
+use tauri::Manager;
+
+/// 在默认浏览器中打开配套资料文件
+#[tauri::command]
+fn open_doc(filename: String, app: tauri::AppHandle) -> Result<String, String> {
+    let resource_dir = app.path().resource_dir().map_err(|e| e.to_string())?;
+    let file_path = resource_dir.join(&filename);
+    let path_str = file_path.to_string_lossy().to_string();
+    open::that(&path_str).map_err(|e| format!("打开失败: {}", e))?;
+    Ok(path_str)
+}
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
-        .plugin(tauri_plugin_shell::init())
         .setup(|app| {
             if cfg!(debug_assertions) {
                 app.handle().plugin(
@@ -22,6 +32,7 @@ pub fn run() {
             activation::deactivate,
             activation::encrypt_data,
             activation::decrypt_data,
+            open_doc,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

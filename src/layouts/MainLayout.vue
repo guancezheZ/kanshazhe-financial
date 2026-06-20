@@ -338,10 +338,8 @@ const isTauri = computed(() => typeof window !== 'undefined' && window.__TAURI__
 async function openDoc(filename) {
   if (!isTauri.value) return
   try {
-    const { open } = await import('@tauri-apps/plugin-shell')
-    const { resourceDir } = await import('@tauri-apps/api/path')
-    const dir = await resourceDir()
-    await open(dir + filename)
+    const { invoke } = await import('@tauri-apps/api/core')
+    await invoke('open_doc', { filename })
   } catch (e) {
     console.error('打开文档失败:', e)
   }
