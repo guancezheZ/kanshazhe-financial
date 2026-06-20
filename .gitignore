@@ -28,3 +28,40 @@ AI通用关键词模板.md
 经验总结.md
 docs/教学知识点介绍.html
 docs/Snipaste_*.png
+
+# 🧑‍💻 AI 开发配置（本地使用，不上传）
+CLAUDE.md
+
+# 🏪 商品介绍/营销材料（不上传 GitHub）
+商品介绍截图/
+商品截图_b64.json
+观测者财务_系统介绍.html
+観測者财务宣传.html
+观测者财务_操作指南与出售流程.md
+观测者财务_配套资料包/
+
+# 🛠 本地开发快捷方式
+start.bat
+stop.bat
+
+# 🔑 Tauri 公钥（已内置在配置中）
+updater-key.pem.pub
+
+# ☁️ Cloudflare Worker 配置
+wrangler.toml
+
+# 📦 脚本产物/截图
+scripts/商品截图/
+scripts/流程截图/
+scripts/边缘截图/
+
+# 🎞 GIF 动画中间帧
+docs/gifs/_frames_*/
+
+# 📋 测试产物
+test-reports/
+scripts/流程截图/
+scripts/边缘截图/
+
+# 🗑 备份文件
+*.bak
