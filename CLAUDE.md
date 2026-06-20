@@ -356,7 +356,7 @@ src-tauri/
 5. 有改代码 → `npx kill-port 3000 3001 3002` → 干净端口测试
 6. 如需打包 → `export PATH="$HOME/.cargo/bin:$PATH" && npx tauri build`
 7. 📚 教学知识点见独立 HTML 文件：`docs/教学知识点介绍.html`
-8. 🛒 商品介绍页（闲鱼/拼多多用）：`观测者财务_商品介绍_闲鱼拼多多.html`
+8. 🛒 系统介绍页：`观测者财务_系统介绍.html`
    - 截图在 `商品介绍截图/` 目录（Playwright 640px宽度分段生成）
    - 系统界面截图在 `scripts/商品截图/` 目录
 

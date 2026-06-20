@@ -3,7 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const htmlPath = path.join(__dirname, '..', '观测者财务_商品介绍_闲鱼拼多多.html');
+const htmlPath = path.join(__dirname, '..', '观测者财务_系统介绍.html');
 const imgDir = path.join(__dirname, '商品截图');
 
 let html = fs.readFileSync(htmlPath, 'utf-8');

@@ -11,7 +11,7 @@ import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
 
-const HTML_PATH = resolve(ROOT, '观测者财务_商品介绍_闲鱼拼多多.html');
+const HTML_PATH = resolve(ROOT, '观测者财务_系统介绍.html');
 const B64_PATH = resolve(ROOT, '商品截图_b64.json');
 
 if (!existsSync(B64_PATH)) {
