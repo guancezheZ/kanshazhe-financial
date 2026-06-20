@@ -1,0 +1,7 @@
+name = "kanshazhe-activation"
+main = "scripts/worker-activation.js"
+compatibility_date = "2026-06-19"
+
+kv_namespaces = [
+  { binding = "ACTIVATION_DB", id = "activation-db" }
+]

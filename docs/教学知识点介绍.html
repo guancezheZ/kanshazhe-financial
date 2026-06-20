@@ -1,0 +1,2611 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>教学知识点详解（会计+出纳·系统教学书） — 观测者企业财务模拟系统</title>
+<style>
+  :root{--primary:#1a3a5c;--primary-light:#2a5a8c;--accent:#409eff;--bg:#f5f7fa;--card:#fff;--text:#303133;--text-light:#909399;--border:#e8e8e8;--success:#67c23a;--warning:#e6a23c}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--text);background:var(--bg);line-height:1.9;font-size:15px}
+  #sidebar{position:fixed;top:0;left:0;width:300px;height:100vh;background:var(--primary);color:#fff;overflow-y:auto;z-index:100;transition:transform .3s}
+  #sidebar::-webkit-scrollbar{width:4px}
+  #sidebar::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.3);border-radius:2px}
+  .sidebar-header{padding:20px 18px 14px;border-bottom:1px solid rgba(255,255,255,0.1)}
+  .sidebar-header h1{font-size:16px;font-weight:600;letter-spacing:1px}
+  .sidebar-header .sub{font-size:11px;color:rgba(255,255,255,0.6);margin-top:4px}
+  .sidebar-theme{margin-top:8px;font-size:12px;color:rgba(255,255,255,0.5);cursor:pointer;padding:4px 8px;border-radius:4px;display:inline-block;transition:all .2s;user-select:none}
+  .sidebar-theme:hover{color:#fff;background:rgba(255,255,255,0.1)}
+  .board-tabs{display:flex;border-bottom:1px solid rgba(255,255,255,0.15)}
+  .board-tab{flex:1;text-align:center;padding:12px 4px;font-size:14px;cursor:pointer;transition:all .2s;border-bottom:3px solid transparent;color:rgba(255,255,255,0.6);text-decoration:none;display:block}
+  .board-tab:hover{color:#fff;background:rgba(255,255,255,0.05)}
+  .board-tab.active{color:#fff;font-weight:700;border-bottom-color:var(--accent);background:rgba(255,255,255,0.08)}
+  #toc{padding:12px 0}
+  #toc a,.toc-item{display:block;padding:6px 18px;color:rgba(255,255,255,0.75);text-decoration:none;font-size:13px;transition:all .15s;border-left:3px solid transparent;cursor:pointer}
+  #toc a:hover,.toc-item:hover{color:#fff;background:rgba(255,255,255,0.08)}
+  #toc a.active,.toc-item.active{color:#fff;background:rgba(255,255,255,0.1);border-left-color:var(--accent)}
+  .toc-section{padding-left:32px;font-size:13px;padding-top:7px;padding-bottom:7px}
+  .toc-chapter{font-weight:700;padding:12px 18px 5px;color:rgba(255,255,255,0.8);font-size:13.5px;letter-spacing:0.5px;border-top:1px solid rgba(255,255,255,0.06);margin-top:5px}
+  .toc-chapter:first-child{border-top:none;margin-top:0}
+
+  #content{margin-left:300px;max-width:960px}
+  .content-inner{padding:40px 48px 80px}
+  #menu-toggle{display:none;position:fixed;top:12px;left:12px;z-index:200;width:40px;height:40px;border:none;background:var(--primary);color:#fff;border-radius:4px;font-size:20px;cursor:pointer}
+  #sidebar-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);z-index:99}
+
+  h1.page-title{font-size:28px;font-weight:700;color:var(--primary);margin-bottom:4px}
+  .page-meta{color:var(--text-light);font-size:13px;margin-bottom:32px;padding-bottom:16px;border-bottom:2px solid var(--border)}
+  h2{font-size:24px;color:var(--primary);margin:40px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+  h3{font-size:18px;color:var(--primary-light);margin:28px 0 12px}
+  h4{font-size:16px;color:var(--text);margin:24px 0 10px}
+  p{margin:0 0 10px;line-height:1.8}
+  ul,ol{margin:0 0 10px 20px}
+  li{margin-bottom:4px;line-height:1.7}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}
+  th,td{border:1px solid var(--border);padding:8px 12px;text-align:left}
+  th{background:#ecf5ff;font-weight:600;color:var(--primary-light)}
+  tr:nth-child(even){background:#fafafa}
+  .concept-box{background:#f0f5ff;border:1px solid #d6e4ff;border-radius:8px;padding:16px 20px;margin:12px 0;font-size:14px}
+  .concept-box .concept-title{font-weight:600;color:var(--primary-light);margin-bottom:6px;font-size:15px}
+  .keypoint-box{background:linear-gradient(135deg,#fef9e7,#fef3cd);border:1px solid #f5d76e;border-radius:6px;padding:10px 14px;margin:10px 0}
+  .keypoint-box strong{color:#8b6e00}
+  .keypoint-box ul{margin:4px 0 0 16px}
+  .keypoint-box li{font-size:13px;color:#5a4a00;margin-bottom:2px}
+  .industry-box{background:linear-gradient(135deg,#e8f8f5,#d5f5e3);border:1px solid #82e0aa;border-radius:6px;padding:10px 14px;margin:10px 0;font-size:13px}
+  .industry-box strong{color:#1a6e3a}
+  .industry-tag{display:inline-block;background:#1a6e3a;color:#fff;padding:0 6px;border-radius:3px;font-size:11px;font-weight:600;margin-right:4px}
+  .example-box{background:linear-gradient(135deg,#f0f7ff,#e6f0ff);border:1px solid #b3d9ff;border-radius:6px;padding:10px 14px;margin:8px 0;font-size:13px;line-height:1.7}
+  .example-box strong{color:#2c6aa0}
+  blockquote{border-left:3px solid var(--accent);padding-left:12px;margin:6px 0;color:var(--text-light)}
+  .section-sep{margin:30px 0;border:none;border-top:1px dashed var(--border)}
+
+  .board-hide{display:none}
+  @media(max-width:900px){
+    #sidebar{transform:translateX(-100%);width:280px}
+    #sidebar.open{transform:translateX(0)}
+    #sidebar-overlay.open{display:block}
+    #content{margin-left:0}
+    .content-inner{padding:16px 14px 60px}
+    #menu-toggle{display:block}
+    .top-bar{display:flex}
+    h1.page-title{font-size:20px}
+    h2{font-size:18px}
+  }
+  @media print{#sidebar{display:none}#content{margin-left:0}}
+  .top-bar{background:var(--primary);color:#fff;padding:12px 24px;display:none;align-items:center;gap:12px;font-size:15px;font-weight:600}
+  .roadmap-box{background:linear-gradient(135deg,#fff9e6,#fff3cc);border:2px solid #f0d060;border-radius:12px;padding:20px 24px;margin:20px 0;font-size:14px}
+  .roadmap-box h4{color:#8b6e00;margin-top:0;font-size:16px}
+  .roadmap-step{display:flex;align-items:flex-start;gap:12px;margin:10px 0;padding:8px 12px;background:rgba(255,255,255,0.7);border-radius:6px}
+  .roadmap-num{background:#8b6e00;color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0}
+  .ch-intro{background:var(--primary);color:#fff;border-radius:10px;padding:18px 22px;margin:12px 0 20px}
+  .ch-intro strong{color:#ffd700;font-size:16px}
+  .ch-intro p{color:rgba(255,255,255,0.85);margin:4px 0 0}
+  .teach-link{display:inline-block;background:var(--accent);color:#fff;padding:2px 10px;border-radius:4px;font-size:12px;text-decoration:none;margin:2px 0}
+  .teach-link:hover{background:#2a7ed4}
+  .cover-section{text-align:center;padding:40px 20px 20px;background:linear-gradient(135deg,#f0f5ff,#e6f0ff);border-radius:16px;margin-bottom:32px}
+  .cover-section h1{font-size:32px;color:var(--primary);margin:0 0 8px}
+  .cover-section .sub{font-size:16px;color:var(--text-light);margin-bottom:20px}
+  .cover-stats{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin:16px 0}
+  .cover-stat{text-align:center;padding:12px 20px;background:var(--card);border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.06);min-width:100px}
+  .cover-stat .num{font-size:28px;font-weight:700;color:var(--primary)}
+  .cover-stat .label{font-size:12px;color:var(--text-light)}
+  .quick-links{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:16px 0}
+  .quick-link{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 16px;text-decoration:none;color:var(--text);font-size:13px;transition:all .2s}
+  .quick-link:hover{border-color:var(--accent);box-shadow:0 2px 8px rgba(64,158,255,0.15);transform:translateY(-1px)}
+  .tag-pill{display:inline-block;background:#ecf5ff;color:#337ecc;padding:1px 8px;border-radius:10px;font-size:11px;margin:1px}
+  .ch-section-group{display:block}
+
+  /* ── 搜索框 ── */
+  .search-bar{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;margin:0 0 16px;display:flex;align-items:center;gap:10px}
+  .search-bar .search-icon{font-size:18px;color:var(--text-light)}
+  .search-bar input{flex:1;border:none;outline:none;font-size:15px;color:var(--text);background:transparent;padding:4px 0}
+  .search-bar input::placeholder{color:#bbb}
+  .search-bar .search-clear{cursor:pointer;color:var(--text-light);font-size:14px;padding:2px 6px;display:none}
+  .search-bar .search-clear:hover{color:var(--text)}
+  .search-count{font-size:13px;color:var(--text-light);margin:-8px 0 12px;padding:0 4px}
+  .search-count strong{color:var(--primary)}
+  .section-hidden{display:none !important}
+  .search-highlight{background:#fff3b0;padding:1px 2px;border-radius:2px}
+  .no-result{text-align:center;padding:40px 20px;color:var(--text-light);font-size:16px;display:none}
+  .no-result .big-icon{font-size:48px;margin-bottom:12px}
+
+  /* ── 侧边栏 ── */
+  .toc-section{padding-left:30px !important;font-size:13.5px !important;padding-top:7px !important;padding-bottom:7px !important}
+  .toc-chapter{font-size:15px !important;padding:11px 18px 6px !important}
+
+  /* ── 暗色模式 ── */
+  [data-theme="dark"]{--primary:#1a2744;--primary-light:#4a7db5;--accent:#5b8ec9;--bg:#0f0f1a;--card:#1a1a2e;--text:#d0d0e0;--text-light:#808098;--border:#2a2a40}
+  [data-theme="dark"] body{background:var(--bg)}
+  [data-theme="dark"] .concept-box{background:#1a2540;border-color:#2a3a5c}
+  [data-theme="dark"] .keypoint-box{background:linear-gradient(135deg,#2a2510,#1a1a0e);border-color:#5a4a10}
+  [data-theme="dark"] .keypoint-box li{color:#b0a050}
+  [data-theme="dark"] .keypoint-box strong{color:#d4b020}
+  [data-theme="dark"] .industry-box{background:linear-gradient(135deg,#0a2a1a,#0a1a10);border-color:#1a4a2a}
+  [data-theme="dark"] .industry-box strong{color:#52c48a}
+  [data-theme="dark"] .example-box{background:linear-gradient(135deg,#0a1a3a,#0a102a);border-color:#1a3a6a}
+  [data-theme="dark"] .example-box strong{color:#5b9ec9}
+  [data-theme="dark"] .cover-section{background:linear-gradient(135deg,#1a2540,#0f1a2e)}
+  [data-theme="dark"] .roadmap-box{background:linear-gradient(135deg,#2a2510,#1a1a0e);border-color:#5a4a10}
+  [data-theme="dark"] .roadmap-box h4{color:#d4b020}
+  [data-theme="dark"] .roadmap-step{background:rgba(255,255,255,0.05)}
+  [data-theme="dark"] .quick-link{background:var(--card);border-color:var(--border);color:var(--text)}
+  [data-theme="dark"] .cover-stat{background:var(--card)}
+  [data-theme="dark"] th{background:#1a2540;color:var(--text)}
+  [data-theme="dark"] tr:nth-child(even){background:#151520}
+  [data-theme="dark"] blockquote{color:#808098}
+  [data-theme="dark"] .ch-intro{background:#1a2744}
+  [data-theme="dark"] .search-bar{background:var(--card);border-color:var(--border)}
+  [data-theme="dark"] .search-bar input{color:var(--text)}
+  [data-theme="dark"] .search-bar input::placeholder{color:#555555}
+  [data-theme="dark"] .search-highlight{background:#5a4a10;color:#e0d0a0}
+  [data-theme="dark"] .sidebar-header{border-bottom-color:rgba(255,255,255,0.05)}
+  [data-theme="dark"] #sidebar{background:var(--primary)}
+  [data-theme="dark"] .teach-link{background:#3a6a9a}
+  [data-theme="dark"] .tag-pill{background:#2a3a5c;color:#8ab4f8}
+
+  /* ── 阅读进度条 ── */
+  .reading-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--primary-light));z-index:9999;transition:width .1s ease;width:0%;border-radius:0 2px 2px 0}
+
+  /* ── 书签 ── */
+  .bookmark-btn{cursor:pointer;font-size:14px;user-select:none;opacity:0.25;transition:all .2s;margin-left:6px;display:inline-block;vertical-align:middle;line-height:1}
+  .bookmark-btn:hover{opacity:0.8;transform:scale(1.2)}
+  .bookmark-btn.active{opacity:1;color:#f5a623}
+  .bookmark-filter-wrap{display:inline-flex;align-items:center;gap:4px;margin-left:16px;font-size:13px;cursor:pointer;color:var(--text-light);transition:color .2s;user-select:none}
+  .bookmark-filter-wrap:hover{color:var(--text)}
+  .bookmark-filter-wrap.active{color:#f5a623;font-weight:600}
+  .bookmark-filter-wrap .count-badge{background:var(--accent);color:#fff;font-size:11px;padding:0 6px;border-radius:8px;display:none}
+  .bookmark-filter-wrap.active .count-badge{display:inline}
+
+  /* ── 顶部操作栏 ── */
+  .top-actions{display:flex;align-items:center;gap:4px;margin-bottom:10px;flex-wrap:wrap}
+  .theme-toggle{display:inline-flex;align-items:center;gap:4px;font-size:13px;cursor:pointer;color:var(--text-light);transition:color .2s;user-select:none;padding:4px 8px;border-radius:4px}
+  .theme-toggle:hover{color:var(--text);background:rgba(128,128,128,0.1)}
+  .top-bar .theme-toggle{color:rgba(255,255,255,0.7)}
+  .top-bar .theme-toggle:hover{color:#fff;background:rgba(255,255,255,0.1)}
+
+  /* ── 章节速查索引 ── */
+  .chapter-index{background:var(--card);border:1px solid var(--border);border-radius:8px;margin:0 0 12px;overflow:hidden}
+  .index-header{padding:10px 14px;cursor:pointer;font-size:14px;font-weight:600;color:var(--text);display:flex;align-items:center;gap:6px;user-select:none;transition:background .15s}
+  .index-header:hover{background:rgba(0,0,0,0.03)}
+  [data-theme="dark"] .index-header:hover{background:rgba(255,255,255,0.03)}
+  .index-toggle{font-size:11px;color:var(--text-light);transition:transform .2s}
+  .index-toggle.open{transform:rotate(90deg)}
+  .index-body{padding:6px 14px 14px;column-count:2;column-gap:20px}
+  .index-board-title{font-size:14px;font-weight:700;color:var(--primary);margin:4px 0 8px;padding-bottom:4px;border-bottom:1px solid var(--border)}
+  .index-item{display:block;padding:4px 6px;font-size:13px;color:var(--text);text-decoration:none;border-radius:3px;transition:background .15s;margin:1px 0;break-inside:avoid}
+  .index-item:hover{background:rgba(64,158,255,0.08);color:var(--accent)}
+  .index-sec{float:right;font-size:11px;color:var(--text-light);background:var(--bg);padding:0 5px;border-radius:3px}
+  @media(max-width:600px){.index-body{column-count:1}}
+</style>
+</head>
+<body>
+<div class="reading-progress" id="readingProgress"></div>
+<button id="menu-toggle" onclick="toggleSidebar()">☰</button>
+<div id="sidebar-overlay" onclick="toggleSidebar()"></div>
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <h1>📚 教学知识点详解</h1>
+      <span class="sidebar-theme" id="sidebarThemeToggle" onclick="toggleTheme()" title="切换暗色/亮色模式">🌙</span>
+    </div>
+    <div class="sub">观测者企业财务模拟系统 · 系统教学书</div>
+  </div>
+  <div class="board-tabs" id="boardTabs"></div>
+  <nav id="toc"></nav>
+</aside>
+<div class="top-bar">
+  <span style="cursor:pointer" onclick="toggleSidebar()">☰</span>
+  <span class="icon">📚</span>
+  <span>教学知识点详解（会计+出纳）</span>
+</div>
+<div id="content">
+<div class="content-inner" id="main-content">
+
+<!-- ====== 封面区 ====== -->
+<div class="cover-section">
+  <h1>📚 教学知识点详解</h1>
+  <p class="sub">观测者企业财务模拟系统 — 系统教学书（零基础版）</p>
+  <div class="cover-stats">
+    <div class="cover-stat"><div class="num">20</div><div class="label">知识章节</div></div>
+    <div class="cover-stat"><div class="num">63</div><div class="label">知识点</div></div>
+    <div class="cover-stat"><div class="num">4</div><div class="label">行业覆盖</div></div>
+    <div class="cover-stat"><div class="num">2</div><div class="label">岗位路线</div></div>
+  </div>
+  <div class="quick-links">
+    <a class="quick-link" href="#board-accounting">📒 会计板块</a>
+    <a class="quick-link" href="#board-cashier">💰 出纳板块</a>
+    <a class="quick-link" href="#roadmap">🗺️ 学习路线</a>
+  </div>
+</div>
+
+<!-- ====== 学习路线图 ====== -->
+<div class="roadmap-box" id="roadmap">
+  <h4>🗺️ 学习路线图——从零开始怎么学？</h4>
+  <p style="color:#5a4a00;font-size:13px;margin-bottom:12px">以下路线适合完全没有财务基础的初学者，按照"先懂原理→会做分录→会管钱→会看报表"的顺序推进。</p>
+  <div class="roadmap-step">
+    <div class="roadmap-num">1</div>
+    <div><strong>📒 会计基础（第一章）</strong><br>先搞懂会计是什么、六个要素、借贷记账法。<span class="tag-pill">零基础起点</span></div>
+  </div>
+  <div class="roadmap-step">
+    <div class="roadmap-num">2</div>
+    <div><strong>💵 资产与负债（第二~三章）</strong><br>学好货币资金、应收应付、存货、固定资产——这些都是最常用的科目。<span class="tag-pill">核心实务</span></div>
+  </div>
+  <div class="roadmap-step">
+    <div class="roadmap-num">3</div>
+    <div><strong>💰 出纳实务（出纳板块）</strong><br>管好现金、银行账户、票据——出纳是财务工作的第一步。<span class="tag-pill">实操入门</span></div>
+  </div>
+  <div class="roadmap-step">
+    <div class="roadmap-num">4</div>
+    <div><strong>🔗 在系统里做练习</strong><br>打开观测者系统→进入教学中心→选择行业和角色→做教学任务，把理论变成实操。</div>
+  </div>
+</div>
+
+<!-- ====== 章节速查索引 ====== -->
+<div class="chapter-index" id="chapterIndex">
+  <div class="index-header" onclick="toggleIndex()">
+    <span class="index-toggle" id="indexToggle">▶</span>
+    <span>📋 章节速查索引</span>
+    <span style="font-size:12px;color:var(--text-light);margin-left:8px">共 20 章 65 节 · 点击展开</span>
+  </div>
+  <div class="index-body" id="indexBody" style="display:none">
+    <div class="index-col">
+      <div class="index-board-title">📒 会计板块</div>
+      <a class="index-item" href="#sec-what-is-accounting">第一章 会计基础 <span class="index-sec">8节</span></a>
+      <a class="index-item" href="#sec-cash-in-hand">第二章 货币资金 <span class="index-sec">4节</span></a>
+      <a class="index-item" href="#sec-accounts-receivable">第三章 应收及预付款项 <span class="index-sec">5节</span></a>
+      <a class="index-item" href="#sec-inventory-intro">第四章 存货 <span class="index-sec">3节</span></a>
+      <a class="index-item" href="#sec-fixed-assets-intro">第五章 固定资产 <span class="index-sec">3节</span></a>
+      <a class="index-item" href="#sec-intangible-assets">第六章 无形资产及其他资产 <span class="index-sec">2节</span></a>
+      <a class="index-item" href="#sec-current-liabilities">第七章 流动负债 <span class="index-sec">3节</span></a>
+      <a class="index-item" href="#sec-revenue-intro">第八章 收入 <span class="index-sec">2节</span></a>
+      <a class="index-item" href="#sec-expenses-intro">第九章 费用 <span class="index-sec">2节</span></a>
+      <a class="index-item" href="#sec-profit-structure">第十章 利润及利润分配 <span class="index-sec">3节</span></a>
+      <a class="index-item" href="#sec-balance-sheet">第十一章 财务报表 <span class="index-sec">3节</span></a>
+      <a class="index-item" href="#sec-mf-costing">第十二章 四大行业成本核算 <span class="index-sec">4节</span></a>
+    </div>
+    <div class="index-col">
+      <div class="index-board-title">💰 出纳板块</div>
+      <a class="index-item" href="#sec-what-is-cashier">第一章 出纳基础 <span class="index-sec">3节</span></a>
+      <a class="index-item" href="#sec-cash-mgmt-rules">第二章 现金管理 <span class="index-sec">5节</span></a>
+      <a class="index-item" href="#sec-bank-account-mgmt">第三章 银行存款管理 <span class="index-sec">4节</span></a>
+      <a class="index-item" href="#sec-check-mgmt">第四章 票据管理 <span class="index-sec">3节</span></a>
+      <a class="index-item" href="#sec-transfer-settlement">第五章 资金结算 <span class="index-sec">2节</span></a>
+      <a class="index-item" href="#sec-payroll-calc">第六章 工资发放 <span class="index-sec">3节</span></a>
+      <a class="index-item" href="#sec-tax-declaration">第七章 税务申报与缴纳 <span class="index-sec">3节</span></a>
+      <a class="index-item" href="#sec-common-errors">第八章 出纳差错与防范 <span class="index-sec">2节</span></a>
+    </div>
+    <div style="clear:both"></div>
+  </div>
+</div>
+
+<!-- ====== 顶部操作栏 ====== -->
+<div class="top-actions">
+  <span class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="切换暗色/亮色模式">🌙 暗色</span>
+  <span class="bookmark-filter-wrap" id="bookmarkFilter" onclick="toggleBookmarkFilter()">
+    ⭐ <span>只看书签</span>
+    <span class="count-badge" id="bookmarkCount">0</span>
+  </span>
+</div>
+
+<!-- ====== 搜索栏 ====== -->
+<div class="search-bar">
+  <span class="search-icon">🔍</span>
+  <input type="text" id="searchInput" placeholder="搜索知识点…（输入关键词如"折旧"、"坏账"、"支票"）" oninput="doSearch(this.value)">
+  <span class="search-clear" id="searchClear" onclick="clearSearch()">✕</span>
+</div>
+<div class="search-count" id="searchCount"></div>
+<div class="no-result" id="noResult">
+  <div class="big-icon">🔍</div>
+  <div>没有找到匹配的知识点</div>
+  <div style="font-size:13px;margin-top:8px">试试换个关键词，或者搜索更宽泛的术语</div>
+</div>
+
+<h1 class="page-title" style="display:none">📚 教学知识点详解（零基础版）</h1>
+<div class="page-meta" style="display:none">面向零基础实习生 · 会计+出纳两大板块 · 涵盖制造业/商业/服务业/建筑业 · 从零开始系统学习</div>
+<h2 id="board-accounting" style="font-size:18px;margin:32px 0 12px;padding-bottom:4px">📒 会计板块</h2>
+<div class="ch-section-group" id="ch-group-accounting-basics">
+<h4 id="sec-what-is-accounting">1.1 什么是会计？会计是干什么的？</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p>会计就是"用数字记录一家公司的生意"。就像你用记账软件记个人开支一样，公司也要把每一笔钱花在哪、赚了多少，清清楚楚地记下来。</p>
+<p><strong>为什么要学会计？</strong></p>
+<ul><li>老板要知道公司赚了还是亏了 → 需要会计出利润表</li><li>税务局要知道公司该交多少税 → 需要会计报税</li><li>银行要不要借钱给公司 → 先看会计做的报表</li><li>你自己 → 会会计是财务岗位的基本功</li></ul>
+<p><strong>会计两大职能：</strong></p>
+<ul><li>🎯 核算职能（基础）—— 把经济业务变成数字记下来</li><li>🔍 监督职能（升华）—— 检查这些业务合不合规、合不合理</li></ul>
+<p><strong>一个例子帮你理解：</strong></p>
+<blockquote>小明开了一家奶茶店，今天卖了200元奶茶（收入），买了100元牛奶（成本），交了50元电费（费用）。会计的工作就是把这些记下来，然后告诉小明：今天赚了50元。</blockquote>
+<p><strong>现实中的会计工作流程：</strong></p>
+<p>原始凭证（发票/收据）→ 记账凭证（分录）→ 账簿 → 报表</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>会计就是用数字记录和反映公司的经营活动</li>
+<li>两大职能：核算（记录）+ 监督（检查）</li>
+<li>工作链条：原始凭证 → 凭证 → 账簿 → 报表</li>
+<li>会计不是数学，不需要高深计算，重在理解和规范</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+你开了家公司，买了一台电脑3000元——会计要把这3000元记在哪里？记作"固定资产"，不是"费用"，因为电脑能用好几年。这就是会计的专业判断。</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 制造业涉及材料采购、生产领用、成品入库，会计需跟踪"材料→在产品→产成品"全链条。<br>
+<span class="industry-tag">商业企业</span> 没有生产过程，核心是"买进来卖出去"，重点在商品采购成本、库存管理和销售收入。<br>
+<span class="industry-tag">服务业</span> 没有实物产品，核心是记录"人工成本"和"项目收入"，如咨询公司按项目核算。<br>
+<span class="industry-tag">建筑业</span> 一个工程往往跨年，要用"完工百分比法"确认收入，不能等完全完工才记。<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-accounting-assumptions">1.2 会计基本假设——做账的"游戏规则"</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p>做会计不能想怎么做就怎么做，有四个基本假设是所有会计工作的前提。</p>
+<p><strong>假设一：会计主体 🏢</strong> → 把公司当成一个独立的人来看待。公司的钱 ≠ 老板个人的钱。老板从公司拿钱→"分红"或"借款"，不能算作公司费用。</p>
+<blockquote>公司账户转了10万给老板买私人汽车 → 这是"其他应收款"，不是公司费用</blockquote>
+<p><strong>假设二：持续经营 🔄</strong> → 假设公司会一直开下去，不会明天就倒闭。因为这个假设，固定资产才能分期折旧。</p>
+<p><strong>假设三：会计分期 📅</strong> → 把公司连续不断的经营活动切开来看。一年一切→年度报表；一季一切→季度报表；一月一切→月度报表。</p>
+<p><strong>假设四：货币计量 💰</strong> → 所有东西都用钱来衡量。电脑按3000元记账。品牌值多少钱？→ 不记！无法可靠计量。</p>
+<p><strong>为什么你要记住这四条？</strong> 因为后面学的所有会计方法——折旧、权责发生制、报表编制——都建立在这四个假设之上。</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>会计主体：公司的账和老板个人的账要分开</li>
+<li>持续经营：假设公司一直经营（才能折旧）</li>
+<li>会计分期：把经营切成一段段时间</li>
+<li>货币计量：只记录能用钱衡量的东西</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+你帮朋友公司做账，朋友从公司拿了5000元请家人吃饭——这是费用吗？不是！根据"会计主体"原则，这是股东的个人开支，要记作"其他应收款"或视同分红。</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 持续经营假设很重要：一条生产线投千万，不持续就不能分期折旧。<br>
+<span class="industry-tag">商业企业</span> 会计分期很关键：每月进货和销售要匹配，不能把今年进货成本算到明年收入里。<br>
+<span class="industry-tag">服务业</span> 会计主体要注意：很多个体户容易把个人钱和公司钱混在一起。<br>
+<span class="industry-tag">建筑业</span> 会计分期运用最复杂：工程跨几年，需按"完工进度"分阶段确认。<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-accounting-quality">1.3 会计信息质量要求——什么样的账是"好账"？</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p>公司做出来的账和报表，要满足这8个质量要求才算合格：</p>
+<ol><li><strong>可靠性 🛡️</strong>（最重要）—— 记账必须真实，不能造假。有发票才能记费用。</li><li><strong>相关性 📌</strong>—— 会计信息要对做决策有用。</li><li><strong>可理解性 📖</strong>—— 报表要让看的人能看懂，不用生僻术语。</li><li><strong>可比性 ⚖️</strong>—— 今年和去年折旧方法要一致，各公司之间也能比较。</li><li><strong>实质重于形式 🎭</strong>—— 看业务本质而非表面。表面"卖设备"实为"抵押借钱"→按借款记账。</li><li><strong>重要性 🔍</strong>—— 花100万买设备要仔细记，买10元文具直接记费用。</li><li><strong>谨慎性 ⚠️</strong>—— 不高估收入不低估损失。预计收不回的钱→提前计提坏账准备。</li><li><strong>及时性 ⏰</strong>—— 发生了就要及时记，不能拖。</li></ol>
+<p><strong>新人最容易犯的错：</strong> 弄混"谨慎性"和"可靠性"——谨慎性不等于随意少记收入，而是在有选择时选更保守的。</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>可靠性最重要：账必须真实，不能造假</li>
+<li>可比性：会计方法一旦选定不要频繁变更</li>
+<li>实质重于形式：看业务本质不是看合同名称</li>
+<li>谨慎性：不高估资产收益，不低估负债费用</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+公司收到预收款100万，合同约定明年交货。账上应记什么？→"预收账款"（负债），不是收入。这就是"实质重于形式"的典型例子。</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> "重要性"原则：螺丝钉不需要单独作为固定资产，但机器必须作为固定资产。<br>
+<span class="industry-tag">商业企业</span> "谨慎性"：商品跌价了要及时计提跌价准备，不能抱着以后能卖出去的想法。<br>
+<span class="industry-tag">服务业</span> "实质重于形式"：签了服务合同但实际已提供服务，应确认收入。<br>
+<span class="industry-tag">建筑业</span> "可靠性"要求最高：工程收入和成本都要有甲方签字的进度确认单为依据。<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-six-elements">1.4 会计六要素——会计世界的"六个篮子"</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p>公司的所有业务，最终都可以归到这六个要素里。</p>
+<p><strong>三大静态要素（看家底）——资产负债表的内容：</strong></p>
+<ul><li><strong>① 资产 🏗️</strong> — 公司拥有或控制的、能带来钱的东西（现金、存货、设备、应收款等）→ 公司的家当</li>
+<li><strong>② 负债 💳</strong> — 公司欠别人的钱（借款、应付账款、应交税费等）→ 公司的债</li>
+<li><strong>③ 所有者权益 🤝</strong> — 真正属于老板的部分（实收资本、未分配利润）公式：资产-负债=所有者权益</li></ul>
+<p><strong>三大动态要素（看经营）——利润表的内容：</strong></p>
+<ul><li><strong>④ 收入 📈</strong> — 卖东西/提供服务赚到的钱</li>
+<li><strong>⑤ 费用 📉</strong> — 为了赚钱花的钱（成本、管理费、销售费等）</li>
+<li><strong>⑥ 利润 💰</strong> — 收入-费用=利润</li></ul>
+<p><strong>🔄 关系：</strong> 老板投100万（权益↑）→ 买设备（资产↑）→ 卖产品赚50万（收入↑）→ 花30万成本（费用↑）→ 赚20万（利润↑）→ 权益↑</p>
+<p><strong>核心逻辑：</strong> 资产=负债+所有者权益（永恒等式）| 收入-费用=利润</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>六要素：资产、负债、所有者权益、收入、费用、利润</li>
+<li>资产=负债+所有者权益（会计基本等式，永远平衡）</li>
+<li>收入-费用=利润</li>
+<li>第一笔分录就要用这个等式，一定要背下来</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+买奶茶花了10元（费用↑），喝到奶茶（不构成资产）→左边减10资产，右边减10权益。用公司钱买设备：资产（设备）↑，资产（现金）↓→两边不变。等式永远平衡。</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> "存货"资产最复杂：原材料→在产品→产成品，三个阶段形态不同。<br>
+<span class="industry-tag">商业企业</span> 最大资产是"库存商品"，最大费用是"主营业务成本"。<br>
+<span class="industry-tag">服务业</span> 最大资产是"应收账款"（服务做了钱未收），最大费用是"人工成本"。<br>
+<span class="industry-tag">建筑业</span> 特有资产："工程施工""工程结算""合同资产"——建筑行业特有的科目。<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-accounting-equation">1.5 会计等式——万变不离其宗的"铁律"</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p><strong>⭐ 核心公式：资产 = 负债 + 所有者权益</strong></p>
+<p>这个公式永远成立。你做任何一笔分录，都不能破坏这个等式的平衡。</p>
+<p><strong>用生活例子理解：</strong></p>
+<blockquote>你想买100万的房子（资产）→ 你出30万首付（权益）+ 找银行借70万（负债）→ 100万=70万+30万 ✅</blockquote>
+<p><strong>四种变化规律：</strong></p>
+<ul><li><strong>两边同增</strong>：借钱买设备 → 银行存款↓但设备↑（总额不变），实质是借款↑（负债）+设备↑（资产）</li>
+<li><strong>两边同减</strong>：还钱给银行 → 银行存款↓（资产）+短期借款↓（负债）</li>
+<li><strong>左边一增一减</strong>：现金买电脑 → 现金↓+固定资产↑（资产总额不变）</li>
+<li><strong>右边一增一减</strong>：借款转股本 → 短期借款↓（负债）+实收资本↑（权益），右边总额不变</li></ul>
+<p><strong>💡 做分录秘诀：</strong> 问三问：1.影响了哪些科目？2.属于哪一类？3.等式平衡吗？答完三问，分录就出来了。</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>资产=负债+所有者权益——永远平衡</li>
+<li>任何经济业务都有"双重影响"——这就是复式记账</li>
+<li>等式变化只有四种类型</li>
+<li>做分录前先想等式会不会不平衡</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+公司赚了100万利润：收入↑100万→权益↑100万。左边资产↑100万（存银行），右边权益↑100万。平衡！如果算出来不平衡，一定是分录做错了。</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 大量采购材料→资产端原材料↑，负债端应付账款↑或资产端银行存款↓<br>
+<span class="industry-tag">商业企业</span> 进货：库存商品↑（资产），银行存款↓（资产）或应付账款↑（负债）<br>
+<span class="industry-tag">服务业</span> 提供服务后未收款：应收账款↑（资产），收入↑→权益↑。等式平衡。<br>
+<span class="industry-tag">建筑业</span> 确认工程进度：合同资产↑（资产），收入↑→权益↑。等式平衡。<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-debit-credit">1.6 借贷记账法——"借"和"贷"到底是什么意思？</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p>🧐 <strong>"借"和"贷"只是符号！</strong> "借"=左边，"贷"=右边。不是"借别人的钱"和"贷给别人"的意思。</p>
+<table><tr><th>要素</th><th>增加记</th><th>减少记</th></tr>
+<tr><td>资产 🏗️</td><td><strong>借</strong></td><td>贷</td></tr>
+<tr><td>负债 💳</td><td>贷</td><td><strong>借</strong></td></tr>
+<tr><td>所有者权益 🤝</td><td>贷</td><td><strong>借</strong></td></tr>
+<tr><td>收入 📈</td><td>贷</td><td><strong>借</strong></td></tr>
+<tr><td>费用 📉</td><td><strong>借</strong></td><td>贷</td></tr></table>
+<p><strong>💡 口诀：</strong> 资产费用=借增贷减（像借钱出去——钱没了记借）| 负债权益收入=贷增借减（像收贷回来——钱来了记贷）</p>
+<p><strong>例子一：公司收到客户还欠款5000元</strong><br>银行存款↑5000（资产增记借），应收账款↓5000（资产减记贷）→借：银行存款5000 / 贷：应收账款5000</p>
+<p><strong>例子二：公司借钱10万</strong><br>银行存款↑10万（资产增记借），短期借款↑10万（负债增记贷）→借：银行存款100000 / 贷：短期借款100000</p>
+<p><strong>📌 有借必有贷，借贷必相等</strong>——做分录的铁律。每笔分录借方总额必须等于贷方总额。</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>"借"和"贷"只是"左边"和"右边"的符号</li>
+<li>资产、费用增加记借，减少记贷</li>
+<li>负债、权益、收入增加记贷，减少记借</li>
+<li>有借必有贷，借贷必相等（铁律！）</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>现金支付水电费500元：</strong><br>费用↑500（管理费），资产↓500（现金）<br>借：管理费用500 / 贷：库存现金500 ✅<br><br><strong>收到货款1万元存银行：</strong><br>借：银行存款10000 / 贷：应收账款10000 ✅</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 常用借贷：采购（借原材料/贷银行）、生产（借生产成本/贷原材料）、销售（借银行/贷收入+借成本/贷库存）<br>
+<span class="industry-tag">商业企业</span> 进货（借库存商品/贷银行）、销售（借银行/贷收入+借成本/贷库存商品）<br>
+<span class="industry-tag">服务业</span> 工资（借劳务成本或管理费/贷应付职工薪酬）、确认收入（借应收/贷收入）<br>
+<span class="industry-tag">建筑业</span> 工程成本（借工程施工/贷原材料等）、确认收入（借应收/贷收入+借成本/贷工程施工）<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-accounts-intro">1.7 会计科目与账户——给六要素"分格子"</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p>六要素是六个大篮子，但公司需要更细的分类。"资产"下有现金、银行存款、应收款、存货、固定资产等——这些就是<strong>会计科目</strong>。</p>
+<table><tr><th>类别</th><th>举例</th><th>编码</th></tr>
+<tr><td>资产类</td><td>1001库存现金、1002银行存款</td><td>1开头</td></tr>
+<tr><td>负债类</td><td>2001短期借款、2202应付账款</td><td>2开头</td></tr>
+<tr><td>所有者权益类</td><td>4001实收资本、4104未分配利润</td><td>4开头</td></tr>
+<tr><td>成本类</td><td>5001生产成本、5101制造费用</td><td>5开头</td></tr>
+<tr><td>损益类</td><td>6001主营业务收入、6401主营业务成本</td><td>6开头</td></tr></table>
+<p><strong>二级科目（明细科目）：</strong> 1002银行存款 → 100201工商银行、100202建设银行</p>
+<p><strong>💡 容易混淆的几组科目：</strong></p>
+<ul><li>库存现金(1001)=保险柜里的现金 | 银行存款(1002)=银行账户里的钱 | 其他货币资金(1012)=微信/支付宝</li>
+<li>应收账款(1122)=卖了货还没收到钱 | 预付账款(1123)=先付钱货没到</li>
+<li>应付账款(2202)=收到货了还没付钱 | 预收账款(2203)=先收钱还没发货</li></ul></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>会计科目是六要素的细化分类，每笔业务归到具体科目</li>
+<li>编码规则：1资产 2负债 4权益 5成本 6损益</li>
+<li>二级科目6位编码：一级4位+子目2位</li>
+<li>我们系统使用全编码</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+工商银行付5000元给供应商：贷：100201银行存款-工商银行5000。借方的科目取决于买什么——买材料→原材料，买设备→固定资产。</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 特有成本科目：5001生产成本（直接材料/直接人工/制造费用明细）、5101制造费用<br>
+<span class="industry-tag">商业企业</span> 最常用科目：1405库存商品、6001主营业务收入、6401主营业务成本<br>
+<span class="industry-tag">服务业</span> 常用科目：5001劳务成本（归集人工）、6001主营业务收入（服务收入）<br>
+<span class="industry-tag">建筑业</span> 特有科目：5401工程施工（归集工程成本）、5402工程结算、合同资产/合同负债<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-accounting-methods">1.8 会计核算方法——做账的"七步法"</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p>将经济业务变成财务报表，需要七个步骤：</p>
+<ol><li><strong>设置账户 📋</strong> —— 为每个科目开一个户头</li>
+<li><strong>复式记账 ✍️</strong> —— 每笔业务至少记两笔（一借一贷）</li>
+<li><strong>填制和审核凭证 🧾</strong> —— 每笔业务都要有原始凭证（发票），据此编记账凭证</li>
+<li><strong>登记账簿 📚</strong> —— 把凭证上的分录归类登记到账簿里</li>
+<li><strong>成本核算 📐</strong> —— 算清楚每个产品/项目花了多少成本</li>
+<li><strong>财产清查 🔎</strong> —— 定期盘点，账实核对</li>
+<li><strong>编制报表 📊</strong> —— 把账簿汇总成报表（资产负债表、利润表、现金流量表）</li></ol>
+<p><strong>🌰 一个例子走完七步：</strong> 现金买材料1000元。①设置"原材料""库存现金"账户→②借原材料1000/贷库存现金1000→③附发票和入库单→④记入原材料明细账和现金日记账→⑤材料以后用到产品上→成本核算→⑥月底盘点确认材料在仓库→⑦期末体现到资产负债表"存货"项目</p>
+<p>💡 新人从第二步（做分录）开始学，慢慢往前推往后延。</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>七步循环：设置账户→复式记账→凭证→账簿→成本核算→财产清查→报表</li>
+<li>复式记账是核心：每笔业务至少一借一贷</li>
+<li>凭证是起点，报表是终点</li>
+<li>新人从做分录入手</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+现金发工资：借应付职工薪酬/贷库存现金。要附工资单（凭证）→记日记账（账簿）→月底算人工费进成本（成本核算）→核对人数（财产清查）→报表应付职工薪酬减少。</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 成本核算最复杂：要算清每个产品消耗了多少材料、多少工时、多少制造费用。<br>
+<span class="industry-tag">商业企业</span> 成本核算较简单：就是进货成本，关键是用"先进先出"还是"加权平均"。<br>
+<span class="industry-tag">服务业</span> 成本核算核心是"项目制"：把每个项目的人工成本、差旅费等归集到一起。<br>
+<span class="industry-tag">建筑业</span> 成本核算按"工程项目"核算：每个工程都是独立成本核算对象。<br>
+</div>
+<hr class="section-sep">
+</div>
+<div class="ch-section-group" id="ch-group-cash-funds">
+<h4 id="sec-cash-in-hand">2.1 库存现金——公司保险柜里的钱</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p><strong>库存现金</strong>就是公司放在保险柜里的纸质现金（纸钞和硬币），不是银行账户里的钱。</p>
+<p><strong>现金使用范围：</strong> 员工工资、差旅费、向个人采购农副产品、小额零星支出（≤1000元）。大额（>1000元）要用银行转账。</p>
+<table><tr><th>业务</th><th>分录</th></tr>
+<tr><td>从银行取备用金</td><td>借：库存现金 / 贷：银行存款</td></tr>
+<tr><td>用现金付办公费</td><td>借：管理费用 / 贷：库存现金</td></tr>
+<tr><td>收到现金货款</td><td>借：库存现金 / 贷：主营业务收入</td></tr>
+<tr><td>现金存回银行</td><td>借：银行存款 / 贷：库存现金</td></tr></table>
+<p><strong>💰 现金日记账：</strong> 每天都要记，日清月结。每天算余额和保险柜现金核对。不能"白条抵库"（写张条子当钱）。</p>
+<p><strong>⚠️ 内控：</strong> 出纳管钱、会计管账——互相监督。定期盘点，差异要查明原因。</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>库存现金≠银行存款，是保险柜里的纸币硬币</li>
+<li>不能大额用现金（超1000元要转账）</li>
+<li>日清月结：每天盘点、每天记账</li>
+<li>出纳管钱会计管账——钱账分离是铁律</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>出纳从工行提取2000元备用金：</strong><br>借：库存现金2000 / 贷：银行存款-工行2000→现金日记账记收入2000，银行日记账记支出2000<br><br><strong>出纳用现金支付快递费50元：</strong><br>借：管理费用-办公费50 / 贷：库存现金50→保险柜现金少50</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 现金使用量大（工人工资、零星采购），但大额采购必须转账。<br>
+<span class="industry-tag">商业企业</span> 现金收付频繁（零售收款），但大额货款必须走银行。<br>
+<span class="industry-tag">服务业</span> 小额支出多（打车费、办公用品等），现金使用频率高。<br>
+<span class="industry-tag">建筑业</span> 农民工工资近年要求"实名制+银行卡"发放，现金发工资减少。<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-bank-deposits">2.2 银行存款——公司存在银行里的钱</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p>银行存款是公司最核心的货币资金，大部分业务通过银行转账完成。</p>
+<table><tr><th>账户类型</th><th>用途</th><th>特点</th></tr>
+<tr><td>基本户 🏦</td><td>日常收支、发工资</td><td>只能开1个，可取现</td></tr>
+<tr><td>一般户 🏧</td><td>专项业务收款</td><td>不可取现，可开多个</td></tr>
+<tr><td>专户 🔒</td><td>专项资金</td><td>专款专用受监管</td></tr>
+<tr><td>临时户 📋</td><td>临时项目</td><td>有效期最长2年</td></tr></table>
+<p><strong>常见银行业务分录：</strong></p>
+<ul><li>收到客户转账：借：银行存款 / 贷：应收账款（或收入）</li><li>支付供应商：借：应付账款（或原材料）/ 贷：银行存款</li><li>支付水电费：借：管理费用 / 贷：银行存款</li><li>缴纳税款：借：应交税费 / 贷：银行存款</li><li>银行手续费：借：财务费用 / 贷：银行存款</li></ul></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>银行存款是最大最频繁使用的货币资金</li>
+<li>基本户每家只有一个可取现</li>
+<li>银行日记账按账户分开记，日清月结</li>
+<li>每月底要银行对账（余额调节表）</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>客户甲公司工行转账付前欠货款50000元：</strong><br>借：银行存款-工行50000 / 贷：应收账款-甲公司50000</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 银行流水量大（材料采购付款、销售收款、工资发放），出纳要特别注意对账。<br>
+<span class="industry-tag">商业企业</span> 收付频繁，建议按客户/供应商分开管理。<br>
+<span class="industry-tag">服务业</span> 收入零散（不同客户项目款），注意及时认领来账。<br>
+<span class="industry-tag">建筑业</span> 按项目设专户常见，每个工程资金单独管理。<br>
+</div>
+<hr class="section-sep">
+</div>
+<div class="ch-section-group" id="ch-group-receivables">
+<h4 id="sec-accounts-receivable">3.1 应收账款——货卖了，钱还没收到</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p>应收账款是"货已发、款未收"形成的资产。把货卖出去但钱还没到，这笔钱就是应收账款。</p>
+<p><strong>确认条件：</strong> ①已交货或完成服务 ②客户承诺付款 ③金额可靠计量</p>
+<p><strong>记账：</strong></p>
+<p>卖货时：借：应收账款-XX公司 / 贷：主营业务收入 + 贷：应交税费-应交增值税（销项税额）</p>
+<p>收到钱时：借：银行存款 / 贷：应收账款-XX公司</p>
+<p><strong>💡 容易混淆的对比：</strong></p>
+<ul><li>应收账款=公司应收客户的钱（资产）| 应付账款=公司应付供应商的钱（负债）</li>
+<li>预收账款=公司提前收了客户的钱（负债，因为还没交货）</li></ul>
+<p>每个客户单独设明细，定期对账，超期未收要催收。</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>应收账款是"货已发、款未收"形成的资产</li>
+<li>确认收入的同时确认应收账款</li>
+<li>应收≠应付：应收是资产（别人欠你），应付是负债（你欠别人）</li>
+<li>每个客户单独设明细，定期对账催收</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>销售给甲公司价税合计113000元（不含税10万，增值税13000），款未收：</strong><br>借：应收账款-甲公司113000 / 贷：主营业务收入100000 / 贷：应交税费-增值税（销项）13000<br><br><strong>一个月后甲公司转账付清：</strong><br>借：银行存款113000 / 贷：应收账款-甲公司113000</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 客户往往规模大、账期长（30-90天），要关注客户信用状况。<br>
+<span class="industry-tag">商业企业</span> 应收账款相对较少（很多现款现货），但有超市等渠道客户账期。<br>
+<span class="industry-tag">服务业</span> 应收账款是常见资产——服务做了但客户还没付款。<br>
+<span class="industry-tag">建筑业</span> 不使用"应收账款"科目，而是用"合同资产"和"应收票据"核算工程款。<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-notes-receivable">3.2 应收票据——别人给的"欠条"，但比欠条更规范</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p>应收票据是客户给的正式"欠条"——商业汇票。它比应收账款更正式、更有法律效力。</p>
+<p><strong>两种类型：</strong></p>
+<ul><li>🏦 银行承兑汇票（最可靠）：银行承诺到期付款，风险很低</li>
+<li>📄 商业承兑汇票：看企业信誉，到期由企业自己付款</li></ul>
+<p><strong>三种处理方式：</strong></p>
+<ul><li>持有到期：到期去银行兑现→借：银行存款 / 贷：应收票据</li>
+<li>背书转让：转给供应商付货款→借：应付账款 / 贷：应收票据</li>
+<li>贴现：提前找银行换钱（付利息）→借：银行存款+财务费用 / 贷：应收票据</li></ul></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>商业汇票分银行承兑（银行担保）和商业承兑（企业担保）</li>
+<li>可持有到期、背书转让、提前贴现三种处理</li>
+<li>贴现产生利息费用</li>
+<li>比应收账款更有保障</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>收到客户6个月期银行承兑汇票113000元：</strong><br>借：应收票据113000 / 贷：主营业务收入100000 / 贷：应交税费-增值税（销项）13000<br><br><strong>3个月后贴现，贴现利息2000元：</strong><br>借：银行存款111000+借：财务费用2000 / 贷：应收票据113000</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 票据使用最频繁——大客户常用银行承兑汇票结算，要建好票据台账。<br>
+<span class="industry-tag">商业企业</span> 商业承兑汇票较多（经销商之间），要注意评估对方信誉。<br>
+<span class="industry-tag">服务业</span> 票据使用较少，更多是直接转账。<br>
+<span class="industry-tag">建筑业</span> 大量使用商业汇票和银行汇票，尤其是工程款结算。<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-prepayments">3.3 预付账款——先付钱，货还没到</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p>预付账款是"先付钱、后收物"形成的资产。比如付订金、预付房租等。</p>
+<p><strong>注意：</strong>预付账款属于<strong>资产</strong>，不是费用！付出去的钱不等于已经花掉了——要等收到货物时才能转成费用。</p>
+<p>付款时：借：预付账款-XX供应商 / 贷：银行存款</p>
+<p>收到货时：借：原材料+借：应交税费-增值税（进项）/ 贷：预付账款-XX供应商</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>预付账款是"先付钱后收物"形成的资产</li>
+<li>不是费用！收到东西时才转费用</li>
+<li>按供应商分开管理，定期跟进</li>
+<li>和应付账款/预收账款不要搞混</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>预付材料定金50000元：</strong><br>借：预付账款-甲公司50000 / 贷：银行存款50000<br><br><strong>收到材料发票113000元（含税），补付差额：</strong><br>借：原材料100000+借：应交税费-增值税（进项）13000 / 贷：预付账款-甲公司50000 / 贷：银行存款63000</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 预付账款常见——定制原材料、大型设备往往要预付定金。<br>
+<span class="industry-tag">商业企业</span> 主要是预付进货定金或预付房租。<br>
+<span class="industry-tag">服务业</span> 主要是预付房租、预付软件服务费等。<br>
+<span class="industry-tag">建筑业</span> 预付账款最多：预付给分包商的工程款、预付材料款，金额大周期长。<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-other-receivables">3.4 其他应收款——除了应收/预付之外的各种"应收"</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p>其他应收款是个"收纳箱"——不属于应收账款、应收票据、预付账款的其他应收都放这里。</p>
+<p><strong>常见内容：</strong> 员工预借差旅费、备用金、押金（租办公室/设备）、赔偿款/罚款、应收租金</p>
+<p><strong>员工借差旅费：</strong> 借：其他应收款-张三 / 贷：库存现金</p>
+<p><strong>回来报销：</strong> 借：管理费用-差旅费+借：库存现金（退回余款）/ 贷：其他应收款-张三</p>
+<p><strong>💡 管理要点：</strong> 每笔单独设明细。"前账不清，后账不借"——年底要清理长期挂账。</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>其他应收款是"杂项"资产——押金、员工借款、赔款等</li>
+<li>员工借差旅费→其他应收款，回来报销后冲销</li>
+<li>按人和业务单独设明细，定期清理</li>
+<li>"前账不清后账不借"原则</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>张三借差旅费2000元：</strong><br>借：其他应收款-张三2000 / 贷：库存现金2000<br><br><strong>回来报销1800元，退200元：</strong><br>借：管理费用-差旅费1800+借：库存现金200 / 贷：其他应收款-张三2000</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 员工借款频繁（采购员、外勤多），要建立备用金管理制度。<br>
+<span class="industry-tag">商业企业</span> 其他应收款相对较少，主要是押金和零星借款。<br>
+<span class="industry-tag">服务业</span> 较多——咨询项目员工经常出差、垫付费用。<br>
+<span class="industry-tag">建筑业</span> 项目人员多，备用金借款量大，需按项目和人员双重管理。<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-bad-debt">3.5 坏账准备——提前"预防"收不回来的钱</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p>客户可能不付钱→应收账款收不回来→这就是"坏账"。根据谨慎性原则，要提前估计可能收不回来的部分——这就是<strong>坏账准备</strong>。</p>
+<p><strong>账龄分析法：</strong> 欠1年内→5% | 1-2年→20% | 2-3年→50% | 3年以上→100%</p>
+<p><strong>分录：</strong></p>
+<ul><li>计提：借：信用减值损失 / 贷：坏账准备</li>
+<li>实际发生：借：坏账准备 / 贷：应收账款-XX公司</li>
+<li>又收回来了：借：应收账款-XX公司 / 贷：坏账准备 + 借：银行存款 / 贷：应收账款-XX公司</li></ul>
+<p>"坏账准备"是资产的<strong>抵减科目</strong>——让应收账款价值变低。应收账款100万-坏账准备5万=净值95万，这才是预计能收到的真实金额。</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>坏账准备是提前预计可能收不回来的钱——体现谨慎性</li>
+<li>坏账准备是应收账款的抵减科目</li>
+<li>计提：借信用减值损失/贷坏账准备</li>
+<li>实际发生：借坏账准备/贷应收账款</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>应收账款余额100万，估计5%收不回来：</strong><br>借：信用减值损失50000 / 贷：坏账准备50000→报表上应收账款显示为95万<br><br><strong>客户甲公司5000元确认收不回来：</strong><br>借：坏账准备5000 / 贷：应收账款-甲公司5000</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 大客户多、账期长，坏账风险较大，要定期做账龄分析。<br>
+<span class="industry-tag">商业企业</span> 坏账相对较少（零售现款现货），但批发客户也要关注。<br>
+<span class="industry-tag">服务业</span> "做完收不到钱"的情况不少，坏账准备要充分计提。<br>
+<span class="industry-tag">建筑业</span> 坏账风险最高——工程款拖欠是常见问题，金额大时间长。<br>
+</div>
+<hr class="section-sep">
+</div>
+<div class="ch-section-group" id="ch-group-inventory">
+<h4 id="sec-inventory-intro">4.1 存货概述——什么是存货？</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p><strong>存货</strong>是公司持有用于出售、正在生产、或用于生产消耗的各类资产。它是资产负债表中重要的流动资产。</p>
+<p><strong>存货的分类：</strong></p>
+<ul><li>🏭 <strong>原材料</strong>——买回来准备用于生产的材料（钢材、布料、芯片等）</li>
+<li>⚙️ <strong>在产品</strong>——正在生产但还没完工的产品</li>
+<li>📦 <strong>库存商品</strong>——已经完工、可以出售的产品</li>
+<li>📋 <strong>周转材料</strong>——包装物、低值易耗品（工具、工作服等）</li></ul>
+<p><strong>存货的确认条件：</strong> ①与该存货有关的经济利益很可能流入企业 ②成本能够可靠计量</p>
+<p><strong>💡 新人理解：</strong> 公司仓库里的东西，只要还没卖出去，都算存货。卖了之后就从存货转到"主营业务成本"。</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>存货是用于出售/生产/消耗的资产</li>
+<li>分类：原材料、在产品、库存商品、周转材料</li>
+<li>存货在资产负债表属于流动资产</li>
+<li>卖了之后存货转为主营业务成本</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+制造业公司买了100吨钢材→记入"原材料"。车间领用50吨生产→从原材料转到"生产成本"。产品完工入库→从"生产成本"转到"库存商品"。卖出产品→从"库存商品"转到"主营业务成本"。</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 存货最复杂：原材料→生产成本→库存商品，三步流转，每一步都要核算。<br>
+<span class="industry-tag">商业企业</span> 存货主要是"库存商品"（进货直接卖，没有生产过程），核算相对简单。<br>
+<span class="industry-tag">服务业</span> 服务业存货很少，主要是办公用品等周转材料。<br>
+<span class="industry-tag">建筑业</span> 存货包括工程物资（钢筋水泥等）、周转材料（脚手架模板等）。<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-inventory-costing">4.2 存货计价方法——进货价格不一样，怎么算成本？</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p>同一种材料分批次采购，价格可能不同。卖出或领用时，该用哪个价格算成本？这就是存货计价方法要解决的问题。</p>
+<p><strong>三种常用方法：</strong></p>
+<p><strong>① 先进先出法（FIFO）</strong></p>
+<ul><li>假设"先买进来的先卖出去"</li>
+<li>先采购的低价存货先出库→成本偏低→利润偏高</li>
+<li>适合：价格波动较大的商品</li></ul>
+<p><strong>② 加权平均法</strong></p>
+<ul><li>月底算一次平均单价：（期初金额+本月采购金额）/（期初数量+本月采购数量）</li>
+<li>单价平滑，不会大起大落</li>
+<li>适合：价格稳定的商品</li></ul>
+<p><strong>③ 个别计价法</strong></p>
+<ul><li>每一件存货单独算成本（贵重的、独一无二的）</li>
+<li>适合：珠宝、房产、大型设备</li></ul>
+<p><strong>💡 对企业的影响：</strong> 选择不同的计价方法，会影响利润和所得税。方法一旦选定，一般不能随便变更（可比性原则）。</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>存货计价方法解决"进价不同，出库用哪个价"的问题</li>
+<li>先进先出法（FIFO）：先买先卖</li>
+<li>加权平均法：月底算均价</li>
+<li>方法选定后不能随意变更</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>先进先出法举例：</strong><br>1月进货：100个@10元=1000元<br>2月进货：100个@12元=1200元<br>3月卖出：150个→前100个按10元，后50个按12元→成本=100×10+50×12=1600元</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 常用加权平均法或先进先出法，因为原材料批次多、价格波动。<br>
+<span class="industry-tag">商业企业</span> 根据商品特点选择：生鲜食品常用先进先出（先进货先卖掉），日用品常用加权平均。<br>
+<span class="industry-tag">服务业</span> 存货较少，计价方法影响不大。<br>
+<span class="industry-tag">建筑业</span> 工程物资用量大，常用加权平均法。<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-inventory-count">4.3 存货清查——仓库里的东西和账上对不对？</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p>公司要定期盘点存货，确认实际数量和账面数量是否一致。</p>
+<p><strong>盘盈（实际>账面）：</strong><br>借：原材料/库存商品 / 贷：待处理财产损溢<br>查明原因后：借：待处理财产损溢 / 贷：管理费用（冲减）</p>
+<p><strong>盘亏（实际<账面）：</strong><br>借：待处理财产损溢 / 贷：原材料/库存商品<br>查明原因后：属于管理不善→借：管理费用；属于被盗→借：营业外支出；责任人赔→借：其他应收款</p>
+<p><strong>存货跌价准备：</strong> 如果存货的市场价跌了（比如去年进的衣服今年过时了），要计提跌价准备。<br>借：资产减值损失 / 贷：存货跌价准备</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>定期盘点存货，确认账实相符</li>
+<li>盘盈→冲减管理费用</li>
+<li>盘亏→区分原因处理（管理不善/被盗/责任人）</li>
+<li>存货跌价→计提跌价准备</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+盘点发现原材料少了2000元，经查是保管不善：<br>借：待处理财产损溢2000 / 贷：原材料2000<br>查明后：借：管理费用2000 / 贷：待处理财产损溢2000</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 存货品种多、数量大，盘点工作量大，建议采用循环盘点（分批轮流盘点）。<br>
+<span class="industry-tag">商业企业</span> 库存商品盘点相对简单，按货架区划分盘点。<br>
+<span class="industry-tag">服务业</span> 存货很少，盘点工作量小。<br>
+<span class="industry-tag">建筑业</span> 工程物资盘点要按项目分别进行，大宗材料（钢筋水泥）要过磅称重。<br>
+</div>
+<hr class="section-sep">
+</div>
+<div class="ch-section-group" id="ch-group-fixed-assets">
+<h4 id="sec-fixed-assets-intro">5.1 固定资产概述——什么是固定资产？</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p><strong>固定资产</strong>是公司用于生产经营、使用期限超过一年的有形资产。比如厂房、机器设备、运输工具、办公家具等。</p>
+<p><strong>固定资产的特征：</strong></p>
+<ul><li>⏱️ 使用期限超过一个会计年度（>1年）</li>
+<li>🎯 用于生产经营（不是用来卖的）</li>
+<li>💰 价值较高（具体标准各公司自定，一般>2000元）</li>
+<li>🔧 在使用过程中保持原有实物形态（不会像原材料那样被消耗掉）</li></ul>
+<p><strong>固定资产 vs 存货：</strong></p>
+<ul><li>设备→固定资产（用来生产产品的）| 产品→存货（生产出来准备卖的）</li>
+<li>电脑→固定资产（自己用的）| 电脑→存货（电脑公司准备卖的）</li></ul>
+<p><strong>固定资产的账务处理链条：</strong> 购入→计提折旧→后续支出（维修/改良）→处置（卖出/报废）</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>固定资产是使用超1年的有形资产（设备、房子、车等）</li>
+<li>用于生产经营，不是用来卖的</li>
+<li>和存货区别：用途决定分类</li>
+<li>管理链条：购入→折旧→后续支出→处置</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+公司花30万买了一台机器：借：固定资产300000 / 贷：银行存款300000。这台机器能用10年→每年折旧3万，计入制造费用（产品成本的一部分）。</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 固定资产最多：生产线设备、厂房、运输车辆，折旧费用是产品成本的重要组成部分。<br>
+<span class="industry-tag">商业企业</span> 固定资产主要是店面、货架、收银系统、仓库设备。<br>
+<span class="industry-tag">服务业</span> 固定资产主要是办公设备、电脑、车辆，相对较少。<br>
+<span class="industry-tag">建筑业</span> 固定资产包括施工机械（挖掘机、塔吊等）、运输车辆、临时办公设施。<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-depreciation">5.2 固定资产折旧——设备会老，价值会减</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p><strong>折旧</strong>就是固定资产随着使用而逐渐减少的价值。买一台机器花30万，它用10年，每年"消耗"3万的价值。</p>
+<p><strong>四种折旧方法：</strong></p>
+<p><strong>① 年限平均法（直线法）——最简单、最常用</strong></p>
+<p>年折旧额 =（原价 - 预计净残值）÷ 预计使用年限</p>
+<p>例：机器30万，残值1.5万，用10年→每年折旧=(30-1.5)/10=2.85万</p>
+<p><strong>② 工作量法</strong></p>
+<p>按实际工作量（行驶公里、工作小时等）计算折旧</p>
+<p>适合：运输车辆、大型设备</p>
+<p><strong>③ 双倍余额递减法（加速折旧）</strong></p>
+<p>前期折旧多、后期折旧少。年折旧率=2÷使用年限</p>
+<p>适合：技术更新快的设备（电脑等）</p>
+<p><strong>④ 年数总和法（加速折旧）</strong></p>
+<p>也是前期多后期少，但计算方法不同。</p>
+<p><strong>折旧的分录：</strong></p>
+<p>借：制造费用（生产设备折旧） / 管理费用（办公设备折旧） / 销售费用（销售设备折旧）<br>贷：累计折旧（固定资产的抵减科目）</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>折旧是固定资产在使用中减少的价值</li>
+<li>直线法最简单：年折旧=(原价-残值)/年限</li>
+<li>加速折旧前期多后期少（适合技术更新快的设备）</li>
+<li>累计折旧是固定资产的抵减科目</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>直线法：</strong>设备原价50万，残值2.5万，用10年→年折旧=(50-2.5)/10=4.75万<br>每月：借：制造费用3958 / 贷：累计折旧3958<br><br><strong>双倍余额法（第1年）：</strong> 年折旧率=2/10=20%，第1年折旧=50×20%=10万（远多于直线法的4.75万）</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 多用直线法和工作量法（按机器工时计算折旧），选择合适的折旧方法影响产品成本。<br>
+<span class="industry-tag">商业企业</span> 常用直线法，固定资产类型相对单一。<br>
+<span class="industry-tag">服务业</span> 常用直线法，主要是办公设备和车辆折旧。<br>
+<span class="industry-tag">建筑业</span> 施工机械常用工作量法（按实际工作小时），因为设备使用强度不均衡。<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-fixed-assets-disposal">5.3 固定资产处置——卖出、报废、毁损</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p>固定资产不再用了，要卖出去、报废或者丢了——这就是固定资产处置。</p>
+<p><strong>处理步骤：</strong></p>
+<p>① 将固定资产转入清理：<br>借：固定资产清理（净值） + 借：累计折旧（已提折旧） / 贷：固定资产（原价）</p>
+<p>② 发生清理费用：<br>借：固定资产清理 / 贷：银行存款（或库存现金）</p>
+<p>③ 收到变卖收入：<br>借：银行存款 / 贷：固定资产清理</p>
+<p>④ 结转清理净损益：<br>赚了→借：固定资产清理 / 贷：资产处置损益<br>亏了→借：资产处置损益 / 贷：固定资产清理</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>固定资产处置要经过"固定资产清理"科目过渡</li>
+<li>四步：转净值→付费用→收收入→结转损益</li>
+<li>净收益记"资产处置损益"（或"营业外收入"）</li>
+<li>净损失也记"资产处置损益"</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>设备原价10万，已提折旧8万，卖了3万：</strong><br>①转清理：借固定资产清理2万+借累计折旧8万 / 贷固定资产10万<br>②收款：借银行存款3万 / 贷固定资产清理3万<br>③结转：借固定资产清理1万 / 贷资产处置损益1万（赚了1万）</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 设备更新换代频繁，处置业务常见，注意区分"资产处置损益"和"营业外收入"。<br>
+<span class="industry-tag">商业企业</span> 主要是店面装修、货架等处置。<br>
+<span class="industry-tag">服务业</span> 处置业务较少，主要是办公设备更新。<br>
+<span class="industry-tag">建筑业</span> 施工机械处置要特别核算，因为大型机械价值高、折旧年限长。<br>
+</div>
+<hr class="section-sep">
+</div>
+<div class="ch-section-group" id="ch-group-intangible-assets">
+<h4 id="sec-current-liabilities">7.1 流动负债概述——什么是流动负债？</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p><strong>流动负债</strong>是公司需要在一年内（或一个营业周期内）偿还的债务。</p>
+<p><strong>常见的流动负债：</strong></p>
+<ul><li>🏦 <strong>短期借款</strong>——向银行借的、一年内到期的借款</li>
+<li>📄 <strong>应付票据</strong>——公司开出去的商业汇票（承诺将来付钱）</li>
+<li>📋 <strong>应付账款</strong>——买了材料/商品，还没付给供应商的钱</li>
+<li>💰 <strong>应付职工薪酬</strong>——欠员工的工资、奖金、社保等</li>
+<li>🏛️ <strong>应交税费</strong>——欠税务局的各种税款</li>
+<li>📝 <strong>预收账款</strong>——先收了客户的钱，还没发货</li>
+<li>🤝 <strong>其他应付款</strong>——押金、暂收款等其他杂项负债</li></ul>
+<p><strong>负债的分类：</strong> 流动负债（一年内到期）vs 非流动负债（一年以上到期）</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>流动负债是一年内要还的债</li>
+<li>常见种类：借款、应付、薪酬、税费、预收</li>
+<li>流动负债是分析公司偿债能力的重要指标</li>
+<li>流动比率=流动资产/流动负债，一般>2比较安全</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+公司从银行借了50万，6个月后还：<br>借：银行存款500000 / 贷：短期借款500000<br>6个月后还：借：短期借款500000+借：财务费用（利息）/ 贷：银行存款</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 流动负债中应付账款和应付票据占比大（材料采购多），短期借款也常见。<br>
+<span class="industry-tag">商业企业</span> 应付账款最多（进货欠供应商的钱），周转快是商业企业的特点。<br>
+<span class="industry-tag">服务业</span> 流动负债主要是应付职工薪酬（人工成本占比高），应付账款较少。<br>
+<span class="industry-tag">建筑业</span> 应付账款（欠分包商/材料商）和预收账款（提前收的工程款）金额都很大。<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-payroll">7.2 应付职工薪酬——公司欠员工的"工资袋"</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p>应付职工薪酬包括：工资、奖金、津贴、社保（公司部分）、公积金（公司部分）、福利费、教育经费、工会经费等。</p>
+<p><strong>工资的完整分录（四步走）：</strong></p>
+<p><strong>① 月底计提工资：</strong><br>借：管理费用/生产成本/制造费用/销售费用等<br>贷：应付职工薪酬-工资</p>
+<p><strong>② 发放工资（代扣个税和社保个人部分）：</strong><br>借：应付职工薪酬-工资<br>贷：银行存款（实发金额）<br>贷：其他应付款-社保（个人部分）<br>贷：应交税费-应交个人所得税</p>
+<p><strong>③ 缴纳社保（公司+个人部分）：</strong><br>借：应付职工薪酬-社保（公司部分）<br>借：其他应付款-社保（个人部分）<br>贷：银行存款</p>
+<p><strong>④ 缴纳个税：</strong><br>借：应交税费-应交个人所得税<br>贷：银行存款</p>
+<p><strong>💡 新人注意：</strong> 公司交的社保是公司费用，从员工工资扣的社保是"代收代付"，一进一出不影响公司损益。</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>应付职工薪酬包括工资、社保（公司部分）、奖金等</li>
+<li>四步：计提→发放→缴社保→缴个税</li>
+<li>公司交社保=费用，代扣员工社保=代收代付</li>
+<li>工资借方进不同科目：生产工人→生产成本，管理人员→管理费用</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>月底计提工资10万：</strong><br>借：生产成本(工人工资)6万+管理费用(管理人员)2万+销售费用(销售人员)2万 / 贷：应付职工薪酬10万<br><br><strong>发放：员工实收8.5万，扣社保0.8万，扣个税0.7万：</strong><br>借：应付职工薪酬10万 / 贷：银行存款8.5万+贷：其他应付款-社保0.8万+贷：应交税费-个税0.7万</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 生产工人工资要计入"生产成本"，一线管理人员工资计入"制造费用"。工资是成本的重要组成部分。<br>
+<span class="industry-tag">商业企业</span> 销售人员工资比重大，计入"销售费用"。<br>
+<span class="industry-tag">服务业</span> 人工成本是最大的支出！咨询公司90%的成本是员工工资。<br>
+<span class="industry-tag">建筑业</span> 建筑工人工资计入"工程施工-人工费"，按项目归集。<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-tax-payable">7.3 应交税费——公司要交哪些税？</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p>公司经营涉及多种税费，常见的包括：</p>
+<p><strong>① 增值税 🏛️</strong>（最常见）</p>
+<ul><li>一般纳税人：销项税额-进项税额=应交增值税</li>
+<li>小规模纳税人：销售额×征收率（3%或5%）</li>
+<li>分录：借：银行存款 / 贷：主营业务收入+贷：应交税费-应交增值税（销项税额）</li></ul>
+<p><strong>② 企业所得税</strong></p>
+<ul><li>税率：25%（一般企业）| 高新技术企业15% | 小型微利企业优惠税率</li>
+<li>应纳税所得额=收入-成本-费用-损失（不是简单的"收入×25%"）</li>
+<li>每季度预缴，年度汇算清缴</li></ul>
+<p><strong>③ 其他税费</strong></p>
+<ul><li>城市维护建设税：增值税额×7%（城市）</li>
+<li>教育费附加：增值税额×3%</li>
+<li>地方教育附加：增值税额×2%</li>
+<li>印花税：合同金额×税率</li></ul></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>增值税：销项-进项=应交（一般纳税人）</li>
+<li>企业所得税：利润×25%，每季预缴年底汇算</li>
+<li>城建税/教育费附加=增值税额×税率</li>
+<li>印花税：各种合同按金额贴花</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>销售产品价税合计113万（不含税100万，增值税13万）：</strong><br>借：银行存款113万 / 贷：主营业务收入100万 / 贷：应交税费-应交增值税（销项）13万<br><br><strong>月底计算应交城建税（7%）：</strong><br>借：税金及附加9100 / 贷：应交税费-应交城建税9100（=13万×7%）</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 增值税进项抵扣多（采购原材料有进项票），税负相对均衡。<br>
+<span class="industry-tag">商业企业</span> 增值税税负较低——进货有进项、销货有销项，差额不大。<br>
+<span class="industry-tag">服务业</span> 营改增后服务业交增值税，但进项较少（主要成本是人工，没有进项票），税负相对较高。<br>
+<span class="industry-tag">建筑业</span> 建筑业增值税税率9%，涉及简易计税和一般计税两种方式，跨年工程税务处理更复杂。<br>
+</div>
+<hr class="section-sep">
+</div>
+<div class="ch-section-group" id="ch-group-current-liabilities">
+<h4 id="sec-intangible-assets">6.1 无形资产——没有实物形态的"资产"</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p><strong>无形资产</strong>是公司拥有或控制的、没有实物形态的可辨认非货币性资产。比如专利权、商标权、著作权、软件使用权等。</p>
+<p><strong>无形资产的特征：</strong></p>
+<ul><li>👻 没有实物形态（看不见摸不着，但有价值）</li>
+<li>🔍 可辨认（能单独识别，区别于商誉）</li>
+<li>⏱️ 使用期限超过一年</li>
+<li>💰 能带来经济利益</li></ul>
+<p><strong>无形资产的核算：</strong></p>
+<p><strong>购入：</strong> 借：无形资产 / 贷：银行存款</p>
+<p><strong>摊销（类似折旧）：</strong> 借：管理费用 / 贷：累计摊销</p>
+<ul><li>直线法摊销：年摊销额=原价÷预计使用年限</li>
+<li>没有规定年限的（如永久商标权）→不摊销，每年做减值测试</li></ul>
+<p><strong>出售：</strong> 借：银行存款+借：累计摊销 / 贷：无形资产+贷：资产处置损益（差额）</p>
+<p><strong>💡 无形资产 vs 固定资产：</strong> 固定资产有实物（设备/房子），无形资产没有实物（专利/软件），但都要分期摊销消耗的价值。</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>无形资产没有实物形态但有价值（专利、商标、软件）</li>
+<li>按月摊销（类似折旧），直线法为主</li>
+<li>无规定年限的不摊销但每年做减值</li>
+<li>出售无形资产差额记资产处置损益</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>公司花12万买了一套财务软件，使用5年：</strong><br>购入：借：无形资产120000 / 贷：银行存款120000<br>每月摊销：120000÷5÷12=2000元→借：管理费用2000 / 贷：累计摊销2000</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 专利技术是重要无形资产，研发成功的专利要资本化。<br>
+<span class="industry-tag">商业企业</span> 无形资产较少，主要是软件使用权和商标权。<br>
+<span class="industry-tag">服务业</span> 软件系统和品牌价值可能是重要无形资产。<br>
+<span class="industry-tag">建筑业</span> 资质证书（施工资质等）也是无形资产的重要形式。<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-long-deferred">6.2 长期待摊费用——提前付了、分几年摊的费用</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p><strong>长期待摊费用</strong>是公司已经支付了，但受益期超过一年的费用。比如租办公室装修花了30万，这笔装修能用5年，不能一次全记入当年费用。</p>
+<p><strong>常见内容：</strong></p>
+<ul><li>🏢 经营租入固定资产的改良支出（装修费）</li><li>🌳 租入固定资产的大修理支出</li><li>📋 其他摊销期限超过一年的费用</li></ul>
+<p><strong>核算：</strong></p>
+<p>发生时：借：长期待摊费用 / 贷：银行存款</p>
+<p>分期摊销：借：管理费用 / 贷：长期待摊费用</p>
+<p><strong>💡 和固定资产的区别：</strong> 固定资产是"买设备自己用"，长期待摊费用是"租来的房子搞装修"——所有权不是公司的，但装修的钱要分期摊。</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>长期待摊费用是提前付了、分几年摊的费用</li>
+<li>常见：装修费、大修理支出</li>
+<li>按月摊销，不能一次进费用</li>
+<li>和固定资产的区别：没有所有权</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>办公室装修花了30万，租期5年：</strong><br>付装修款：借：长期待摊费用300000 / 贷：银行存款300000<br>每月摊销：300000÷5÷12=5000→借：管理费用5000 / 贷：长期待摊费用5000</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 厂房和生产线改造支出可能形成长期待摊费用。<br>
+<span class="industry-tag">商业企业</span> 店面装修是常见的长期待摊费用（租的店面装修）。<br>
+<span class="industry-tag">服务业</span> 办公场地装修、软件实施费可能形成长期待摊费用。<br>
+<span class="industry-tag">建筑业</span> 项目部临时设施的搭建费用按项目工期摊销。<br>
+</div>
+<hr class="section-sep">
+</div>
+<div class="ch-section-group" id="ch-group-revenue">
+<h4 id="sec-revenue-intro">8.1 收入概述——公司怎么赚钱？</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p><strong>收入</strong>是公司在日常经营活动中形成的、会导致所有者权益增加的经济利益流入。简单说：公司卖东西或提供服务收到的钱。</p>
+<p><strong>收入的分类：</strong></p>
+<ul><li>📊 <strong>主营业务收入</strong>——公司干主业赚的钱（制造公司卖产品、商业公司卖商品、咨询公司收咨询费）</li>
+<li>📋 <strong>其他业务收入</strong>——公司干副业赚的钱（卖原材料、出租设备、出租房屋）</li></ul>
+<p><strong>收入确认的五个条件（新会计准则）：</strong></p>
+<ol><li>✅ 识别与客户签订的合同</li>
+<li>✅ 识别合同中的单项履约义务</li>
+<li>✅ 确定交易价格</li>
+<li>✅ 将交易价格分摊至各单项履约义务</li>
+<li>✅ 在履行义务时确认收入</li></ol>
+<p><strong>💡 简单理解：</strong> 货发出去了（或服务提供了），钱确定能收到，就确认收入。不能提前确认（货还没发），也不能延后确认（货发了故意不记账）。</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>收入是公司日常经营赚的钱</li>
+<li>分主营业务收入（主业）和其他业务收入（副业）</li>
+<li>收入确认的关键：货发了/服务提供了，钱能收到</li>
+<li>不能提前或延后确认收入</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>制造公司卖产品：</strong><br>借：银行存款113000 / 贷：主营业务收入100000 / 贷：应交税费-增值税（销项）13000<br><br><strong>出租闲置设备：</strong><br>借：银行存款5000 / 贷：其他业务收入5000</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 主营业务收入=产品销售收入。要注意区分销售商品和提供劳务的收入。<br>
+<span class="industry-tag">商业企业</span> 主营业务收入=商品销售收入。零售一般收款即确认，批发可能涉及账期。<br>
+<span class="industry-tag">服务业</span> 主营业务收入=服务收入。关键是判断服务是否已完成（完工百分比法）。<br>
+<span class="industry-tag">建筑业</span> 收入确认最复杂！用"完工百分比法"按工程进度确认收入，不是等到完工才确认。<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-revenue-recognition">8.2 收入确认的特殊情况</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p>有些业务收入确认比较特殊，新手容易出错：</p>
+<p><strong>① 销售退回</strong> — 客户买了又退货</p>
+<ul><li>卖出时正常确认收入</li>
+<li>退货时：冲减收入和成本</li>
+<li>借：主营业务收入 / 贷：银行存款（或应收账款）</li>
+<li>同时：借：库存商品 / 贷：主营业务成本</li></ul>
+<p><strong>② 销售折让</strong> — 客户发现质量问题，公司降价</p>
+<ul><li>和退货类似，但货不退回</li>
+<li>借：主营业务收入 / 贷：应收账款（或银行存款）</li></ul>
+<p><strong>③ 现金折扣</strong> — 客户提前付款给的优惠（如"2/10，n/30"=10天内付款打98折）</p>
+<ul><li>折扣金额记入"财务费用"</li>
+<li>借：银行存款（实际收到的）+借：财务费用（折扣额） / 贷：应收账款（全额）</li></ul>
+<p><strong>④ 商业折扣</strong> — 量大从优（直接打折卖）</p>
+<ul><li>按折后价确认收入，不单独处理折扣</li></ul></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>销售退回：冲减收入和成本</li>
+<li>销售折让：冲减收入，货不退回</li>
+<li>现金折扣：少收的钱记财务费用</li>
+<li>商业折扣：按折后价入账</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>客户10天内付款，享受2%现金折扣（应收113000，实收110740）：</strong><br>借：银行存款110740+借：财务费用2260 / 贷：应收账款113000</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 现金折扣和销售折让在制造业常见（大客户有账期和折扣）。<br>
+<span class="industry-tag">商业企业</span> 商业折扣更常见（促销打折），按折后价开票入账。<br>
+<span class="industry-tag">服务业</span> 服务类收入一般没有退货问题，但可能有服务终止退款。<br>
+<span class="industry-tag">建筑业</span> 工程变更和索赔可能影响收入金额，需要及时调整。<br>
+</div>
+<hr class="section-sep">
+</div>
+<div class="ch-section-group" id="ch-group-expenses">
+<h4 id="sec-expenses-intro">9.1 费用概述——公司花钱都花在哪了？</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p><strong>费用</strong>是公司在日常经营活动中发生的、会导致所有者权益减少的经济利益流出。就是公司为了赚钱而花的钱。</p>
+<p><strong>费用的分类：</strong></p>
+<ul><li><strong>主营业务成本</strong>——卖产品的成本（制造公司的生产成本、商业公司的进货成本）</li>
+<li><strong>其他业务成本</strong>——副业花的钱（出租设备的折旧等）</li>
+<li><strong>税金及附加</strong>——城建税、教育费附加、印花税等</li>
+<li><strong>销售费用</strong>——卖东西花的钱（广告费、销售员工资、运输费）</li>
+<li><strong>管理费用</strong>——管理公司花的钱（行政人员工资、房租、办公费、差旅费）</li>
+<li><strong>财务费用</strong>——和钱有关的费用（利息支出、银行手续费、汇兑损益）</li>
+<li><strong>信用减值损失</strong>——坏账准备</li>
+<li><strong>资产减值损失</strong>——存货跌价、固定资产减值等</li></ul>
+<p><strong>💡 区分技巧：</strong></p>
+<ul><li>和"生产产品"直接相关→进"生产成本"（不在费用里，是存货）</li>
+<li>和"卖东西"有关→进"销售费用"</li>
+<li>和"管理公司"有关→进"管理费用"</li>
+<li>和"借钱/存钱"有关→进"财务费用"</li></ul></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>费用是公司为了赚钱花的钱</li>
+<li>分成本类（主营业务成本）和期间费用（销售/管理/财务）</li>
+<li>销售费用=卖东西花的钱</li>
+<li>管理费用=管公司花的钱</li>
+<li>财务费用=跟钱有关的费用</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>支付广告费10万：</strong> 借：销售费用100000 / 贷：银行存款100000<br><strong>行政人员工资5万：</strong> 借：管理费用50000 / 贷：应付职工薪酬50000<br><strong>银行手续费200：</strong> 借：财务费用200 / 贷：银行存款200</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 管理费用和制造费用要分清楚：车间管理人员工资→制造费用（进产品成本），公司总部行政工资→管理费用。<br>
+<span class="industry-tag">商业企业</span> 销售费用占比大（门店租金、销售人员工资、广告促销费）。<br>
+<span class="industry-tag">服务业</span> 管理费用是主要费用（行政人员工资、办公场地租金）。<br>
+<span class="industry-tag">建筑业</span> 销售费用较少，管理费用和财务费用（项目贷款利息）是主要期间费用。<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-cost-expense-distinction">9.2 成本 vs 费用——一字之差，天壤之别</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p>很多新人分不清"成本"和"费用"，但实际上它们完全不同。</p>
+<table><tr><th></th><th>成本</th><th>费用</th></tr>
+<tr><td>是什么</td><td>生产产品花的钱</td><td>管理公司花的钱</td></tr>
+<tr><td>去哪儿了</td><td>进了"存货"（变成资产）</td><td>直接扣减当期利润</td></tr>
+<tr><td>举例</td><td>生产工人的工资→生产成本<br>车间水电费→制造费用<br>原材料→生产成本</td><td>老板的工资→管理费用<br>广告费→销售费用<br>银行利息→财务费用</td></tr>
+<tr><td>什么时候影响利润</td><td>产品卖出时（转为主营业务成本）</td><td>发生的当月</td></tr></table>
+<p><strong>💡 理解关键：</strong></p>
+<p>成本是"为了制造产品"花的钱 → 先变成存货（资产）→ 等产品卖了 → 才转成"主营业务成本"（费用）</p>
+<p>费用是"为了管理/销售/融资"花的钱 → 花了的当月就直接扣利润</p>
+<p>所以：<strong>成本不一定当月影响利润，费用一定当月影响利润</strong></p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>成本进存货（先变成资产），费用直接扣利润</li>
+<li>成本在产品卖时才转费用（主营业务成本）</li>
+<li>费用在发生的当月就影响利润</li>
+<li>区分方法：和生产直接相关→成本；和管理相关→费用</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>车间领用原材料10万生产产品：</strong><br>借：生产成本100000 / 贷：原材料100000→这是成本，当月不影响利润<br><br><strong>支付总部办公室房租2万：</strong><br>借：管理费用20000 / 贷：银行存款20000→这是费用，当月直接减少利润</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 成本核算是核心！要准确区分生产成本和期间费用。<br>
+<span class="industry-tag">商业企业</span> 进货成本→库存商品（资产），卖了转主营业务成本。没有生产成本。<br>
+<span class="industry-tag">服务业</span> 人工成本→劳务成本（相当于生产成本），服务完成确认收入时转成本。<br>
+<span class="industry-tag">建筑业</span> 工程成本→工程施工（相当于生产成本），按完工进度转主营业务成本。<br>
+</div>
+<hr class="section-sep">
+</div>
+<div class="ch-section-group" id="ch-group-profit">
+<h4 id="sec-profit-structure">10.1 利润构成——利润是怎么算出来的？</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p>利润不是简单"收入-支出"这么简单，而是分层次计算：</p>
+<p><strong>第一步：营业利润</strong></p>
+<p>营业收入 - 营业成本 - 税金及附加 - 销售费用 - 管理费用 - 财务费用 - 信用减值损失 - 资产减值损失 + 公允价值变动收益 + 投资收益 = <strong>营业利润</strong></p>
+<p><strong>第二步：利润总额</strong></p>
+<p>营业利润 + 营业外收入 - 营业外支出 = <strong>利润总额</strong></p>
+<p><strong>第三步：净利润</strong></p>
+<p>利润总额 - 所得税费用 = <strong>净利润</strong> ⭐（这就是最终公司赚的钱）</p>
+<p><strong>营业外收入/支出：</strong></p>
+<ul><li>营业外收入：和公司主业无关的"意外之财"（罚款收入、捐赠利得、盘盈利得）</li>
+<li>营业外支出：和公司主业无关的"意外损失"（罚款支出、捐赠支出、非常损失）</li></ul>
+<p><strong>💡 对新人：</strong> 最重要的是记住"净利润=收入-成本-费用-税"，这就是公司真正赚到手的钱。</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>利润分三步：营业利润→利润总额→净利润</li>
+<li>营业利润是主业赚的钱</li>
+<li>净利润=收入-成本-费用-所得税</li>
+<li>营业外收支是和主业无关的意外损益</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>公司本月：</strong><br>收入100万-成本60万-销售费5万-管理费10万-财务费1万=营业利润24万<br>+营业外收入2万-营业外支出1万=利润总额25万<br>-所得税6.25万（25%）=净利润18.75万</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 利润受原材料价格影响大，毛利率（收入-成本）是关键指标。<br>
+<span class="industry-tag">商业企业</span> 利润受进货成本和销售价格影响，周转率是关键。<br>
+<span class="industry-tag">服务业</span> 利润受人工成本影响大，项目定价是关键。<br>
+<span class="industry-tag">建筑业</span> 利润受工程预算控制影响大，成本超支是常见风险。<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-profit-distribution">10.2 利润分配——赚了钱怎么分？</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p>公司赚了钱（净利润），不能全分了，要按照规定顺序分配：</p>
+<p><strong>利润分配的顺序（法律规定）：</strong></p>
+<ol><li>📌 <strong>弥补以前年度亏损</strong>——如果以前亏了，先补亏</li>
+<li>📌 <strong>提取法定盈余公积</strong>——按净利润的10%提取（累计达到注册资本50%时可不再提取）</li>
+<li>📌 <strong>提取任意盈余公积</strong>——股东会决定要不要提、提多少</li>
+<li>📌 <strong>向投资者分配利润</strong>——剩下的可以分给股东（分红）</li></ol>
+<p><strong>分录怎么做？</strong></p>
+<p><strong>年底结转净利润：</strong><br>借：主营业务收入等（所有收入类科目）<br>贷：本年利润</p>
+<p>借：本年利润<br>贷：主营业务成本等（所有费用类科目）</p>
+<p><strong>利润分配：</strong><br>借：利润分配-提取法定盈余公积<br>借：利润分配-提取任意盈余公积<br>借：利润分配-应付现金股利<br>贷：盈余公积-法定盈余公积<br>贷：盈余公积-任意盈余公积<br>贷：应付股利</p>
+<p><strong>结转利润分配明细：</strong><br>借：利润分配-未分配利润<br>贷：利润分配-提取法定盈余公积<br>贷：利润分配-提取任意盈余公积<br>贷：利润分配-应付现金股利</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>利润分配顺序：补亏→提法定公积→提任意公积→分红</li>
+<li>法定盈余公积=净利润×10%</li>
+<li>盈余公积是留在公司的钱，不能随便分掉</li>
+<li>未分配利润是可以留着以后分配的钱</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>公司净利润100万，分配：</strong><br>①提法定公积金：100×10%=10万<br>②股东会决定：提任意公积金5万，分红50万<br>③剩下35万→未分配利润（留到下年）</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 利润分配相对稳健，会保留较多未分配利润用于扩大生产。<br>
+<span class="industry-tag">商业企业</span> 利润分配比较灵活，视资金周转情况决定分红比例。<br>
+<span class="industry-tag">服务业</span> 利润分配受合伙人协议影响大（合伙制企业按约定分配）。<br>
+<span class="industry-tag">建筑业</span> 利润受工程回款影响大，即使账面有利润也可能因现金流紧张而少分红。<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-period-end-transfer">10.3 期末结转——为什么月底要把损益类科目结平？</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p>每个月月底，会计要做一件重要的事——<strong>结转损益</strong>。</p>
+<p><strong>为什么需要结转？</strong></p>
+<p>收入类和费用类科目是"阶段性"的——它们只记录本月的发生额。月底要把这些科目结转为0，把差额（利润或亏损）转到"本年利润"科目。</p>
+<p><strong>结转分录：</strong></p>
+<p><strong>① 结转收入：</strong><br>借：主营业务收入 / 借：其他业务收入 / 借：营业外收入<br>贷：本年利润</p>
+<p><strong>② 结转费用：</strong><br>借：本年利润<br>贷：主营业务成本 / 贷：其他业务成本 / 贷：税金及附加<br>贷：销售费用 / 贷：管理费用 / 贷：财务费用<br>贷：营业外支出</p>
+<p><strong>结转后的结果：</strong></p>
+<ul><li>收入类科目余额=0 ✅</li>
+<li>费用类科目余额=0 ✅</li>
+<li>本年利润贷方有余额=赚了（利润）；借方有余额=亏了（亏损）</li></ul>
+<p><strong>💡 在我们的系统里：</strong> 教学模式下答对分录后会自动过账，期末结转也自动完成。但你要理解背后的原理——这是会计核算的核心环节。</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>期末结转是把损益类科目余额转到"本年利润"</li>
+<li>收入转本年利润贷方，费用转本年利润借方</li>
+<li>结转后损益类科目余额为0（开始新一个月）</li>
+<li>本年利润贷方余额=盈利，借方余额=亏损</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>本月收入100万，费用80万：</strong><br>借：主营业务收入100万 / 贷：本年利润100万<br>借：本年利润80万 / 贷：主营业务成本60万+管理费用15万+销售费用5万<br>→本年利润余额=贷方20万（本月盈利20万）</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 月末结转涉及制造费用的分配（车间费用要按合理标准分摊到各产品）。<br>
+<span class="industry-tag">商业企业</span> 结转相对简单，收入和成本匹配是关键。<br>
+<span class="industry-tag">服务业</span> 注意项目收入和项目成本的匹配结转。<br>
+<span class="industry-tag">建筑业</span> 工程收入按完工百分比确认，成本也要按相同进度结转，不能提前或延后。<br>
+</div>
+<hr class="section-sep">
+</div>
+<div class="ch-section-group" id="ch-group-financial-statements">
+<h4 id="sec-balance-sheet">11.1 资产负债表——公司的"家底"</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p>资产负债表是公司在某个时点的"财务照片"——它告诉你这一刻公司有什么（资产）、欠什么（负债）、老板有多少（权益）。</p>
+<p><strong>格式：</strong> 左边=资产，右边=负债+所有者权益</p>
+<table><tr><th>资产（钱去哪了）</th><th>金额</th><th>负债+权益（钱从哪来）</th><th>金额</th></tr>
+<tr><td>流动资产（一年内可变现）</td><td></td><td>流动负债（一年内要还）</td><td></td></tr>
+<tr><td>　货币资金</td><td>100万</td><td>　短期借款</td><td>50万</td></tr>
+<tr><td>　应收账款</td><td>80万</td><td>　应付账款</td><td>60万</td></tr>
+<tr><td>　存货</td><td>120万</td><td>　应交税费</td><td>10万</td></tr>
+<tr><td>非流动资产（超一年）</td><td></td><td>非流动负债</td><td></td></tr>
+<tr><td>　固定资产</td><td>200万</td><td>　长期借款</td><td>100万</td></tr>
+<tr><td>　无形资产</td><td>30万</td><td>所有者权益</td><td></td></tr>
+<tr><td></td><td></td><td>　实收资本</td><td>200万</td></tr>
+<tr><td></td><td></td><td>　未分配利润</td><td>110万</td></tr>
+<tr><td><strong>资产总计</strong></td><td><strong>530万</strong></td><td><strong>负债+权益总计</strong></td><td><strong>530万</strong></td></tr></table>
+<p><strong>怎么看资产负债表？</strong></p>
+<ul><li>资产总计 = 负债合计 + 所有者权益合计（必须相等！）</li>
+<li>流动资产 > 流动负债 → 短期偿债能力好</li>
+<li>负债占比太高 → 公司风险大（杠杆高）</li>
+<li>未分配利润多 → 公司历史盈利好</li></ul></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>资产负债表是时点报表（某一天的快照）</li>
+<li>左边资产=右边负债+权益（永恒等式）</li>
+<li>流动资产>流动负债=短期偿债能力好</li>
+<li>所有者权益越多，公司越"值钱"</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>快速判断公司健康状况：</strong><br>①流动比率=流动资产÷流动负债→一般>2比较安全<br>②资产负债率=总负债÷总资产→<50%比较安全<br>③如果公司总资产530万，负债220万，所有者权益310万→资产负债率=220/530=41.5%→比较健康</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 固定资产占比大（设备厂房），资产负债率通常40%-60%。<br>
+<span class="industry-tag">商业企业</span> 存货和应收账款占比大，流动比率是重要指标。<br>
+<span class="industry-tag">服务业</span> 固定资产少，主要是流动资产和无形资产，资产负债率往往较低。<br>
+<span class="industry-tag">建筑业</span> 应收账款和存货（工程施工）占比极大，流动比率经常<1（行业特点）。<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-income-statement">11.2 利润表——公司赚了多少？</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p>利润表反映公司<strong>一段时间内</strong>的经营成果——赚了还是亏了。</p>
+<table><tr><th>项目</th><th>金额</th><th>说明</th></tr>
+<tr><td>一、营业收入</td><td>1,000万</td><td>卖产品/服务的总收入</td></tr>
+<tr><td>减：营业成本</td><td>600万</td><td>产品的生产成本/进货成本</td></tr>
+<tr><td>税金及附加</td><td>10万</td><td>城建税等</td></tr>
+<tr><td>销售费用</td><td>80万</td><td>广告、销售员工资等</td></tr>
+<tr><td>管理费用</td><td>120万</td><td>行政工资、房租、办公费等</td></tr>
+<tr><td>财务费用</td><td>20万</td><td>利息、手续费等</td></tr>
+<tr><td>加：投资收益</td><td>10万</td><td>投资赚的钱</td></tr>
+<tr><td>二、营业利润</td><td>180万</td><td>主业赚的钱</td></tr>
+<tr><td>加：营业外收入</td><td>5万</td><td>意外之财</td></tr>
+<tr><td>减：营业外支出</td><td>3万</td><td>意外损失</td></tr>
+<tr><td>三、利润总额</td><td>182万</td><td>税前利润</td></tr>
+<tr><td>减：所得税费用</td><td>45.5万</td><td>25%</td></tr>
+<tr><td><strong>四、净利润</strong></td><td><strong>136.5万</strong></td><td>最终赚的钱</td></tr></table>
+<p><strong>💡 怎么看利润表？</strong></p>
+<ul><li>营业收入在增长吗？→ 公司在发展</li>
+<li>毛利率=(收入-成本)/收入 → 产品赚钱能力（>30%算不错）</li>
+<li>净利润率=净利润/收入 → 公司整体盈利能力（>10%算好）</li>
+<li>费用增长超过收入增长→ 公司在"虚胖"</li></ul></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>利润表是期间报表（一段时间内的经营成果）</li>
+<li>净利润=收入-成本-费用-税</li>
+<li>毛利率=(收入-成本)/收入，反映产品赚钱能力</li>
+<li>净利润率=净利润/收入，反映公司整体盈利能力</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>毛利率分析：</strong><br>甲产品：收入100万，成本60万→毛利率40%<br>乙产品：收入80万，成本60万→毛利率25%<br>→甲产品更赚钱，应该多生产甲产品<br><br><strong>费用率分析：</strong><br>销售费用率=80/1000=8%（每赚100元花8元销售费）</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 毛利率是关键指标，受原材料价格和人工成本影响大。<br>
+<span class="industry-tag">商业企业</span> 毛利率通常较低（10%-30%），靠周转率赚钱。<br>
+<span class="industry-tag">服务业</span> 毛利率通常较高（50%以上），因为主要成本是人工。<br>
+<span class="industry-tag">建筑业</span> 毛利率受工程预算控制影响，一般在10%-20%之间。<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-cash-flow">11.3 现金流量表——公司的"现金流"</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p>利润是"赚了多少"，现金流是"收到了多少钱"。两件事不一样！</p>
+<p>举个例：公司卖了100万货，但客户要明年才付款→利润表上有100万收入，但现金没收到。</p>
+<p><strong>现金流量表分三部分：</strong></p>
+<table><tr><th>活动类型</th><th>内容</th><th>举例</th></tr>
+<tr><td>🏭 经营活动</td><td>卖产品/买材料/发工资</td><td>销售收款、采购付款、交税</td></tr>
+<tr><td>🏗️ 投资活动</td><td>买设备/买股权</td><td>购建固定资产、投资支付</td></tr>
+<tr><td>🏦 筹资活动</td><td>借钱/还钱/分红</td><td>银行贷款、还款、分配股利</td></tr></table>
+<p><strong>💡 最重要的指标：经营性现金流</strong></p>
+<ul><li>经营性现金流 > 0 → 公司靠主业能"造血" ✅</li>
+<li>经营性现金流 < 0 → 公司靠借钱或卖资产维持 ⚠️</li>
+<li>利润好看，现金流不好 → 可能应收账款太多（客户欠钱不还）</li>
+<li>利润不好看，现金流好 → 可能在收以前的欠款</li></ul></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>现金流量表反映公司的"真金白银"</li>
+<li>分经营/投资/筹资三类活动</li>
+<li>经营性现金流>0=公司能自己造血</li>
+<li>利润≠现金流，两者都要看</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>利润 vs 现金流对比：</strong><br>场景A：利润100万，经营现金流80万→健康<br>场景B：利润100万，经营现金流-50万→⚠️钱没收回来<br>场景C：利润-20万，经营现金流50万→在收以前的应收账款</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 经营性现金流受原材料采购和销售回款影响大，波动较明显。<br>
+<span class="industry-tag">商业企业</span> 现金流周转快，经营性现金流通常比较稳定。<br>
+<span class="industry-tag">服务业</span> 现金流较好（服务收款快，没有大量存货占用资金）。<br>
+<span class="industry-tag">建筑业</span> 现金流是最头疼的问题！工程款拖欠严重，利润好看但现金流经常为负。<br>
+</div>
+<hr class="section-sep">
+</div>
+<div class="ch-section-group" id="ch-group-industry-costing">
+<h4 id="sec-mf-costing">12.1 制造业成本核算——从原材料到产成品</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p>制造业的成本核算是所有行业中最复杂的。核心是跟踪"原材料→在产品→产成品"的转化过程。</p>
+<p><strong>成本三要素：</strong></p>
+<ul><li>📦 <strong>直接材料</strong>——直接用于产品的材料（做桌子用的木材）</li>
+<li>👷 <strong>直接人工</strong>——直接生产产品的工人工资</li>
+<li>⚙️ <strong>制造费用</strong>——车间发生的间接费用（车间水电费、车间管理人员工资、设备折旧）</li></ul>
+<p><strong>成本流转分录：</strong></p>
+<p>① <strong>领用材料：</strong> 借：生产成本-直接材料 / 贷：原材料</p>
+<p>② <strong>分配人工：</strong> 借：生产成本-直接人工 / 贷：应付职工薪酬</p>
+<p>③ <strong>分配制造费用：</strong> 借：生产成本-制造费用 / 贷：制造费用</p>
+<p>④ <strong>产品完工入库：</strong> 借：库存商品 / 贷：生产成本</p>
+<p>⑤ <strong>卖出产品：</strong> 借：主营业务成本 / 贷：库存商品</p>
+<p><strong>💡 约当产量法（关键概念）：</strong></p>
+<p>月底有部分产品没完工（在产品），怎么分成本？<br>→ 把在产品按完工程度折算成"约当产量"<br>例：100个在产品，完工程度50%→约当50个<br>总成本÷（完工数量+约当数量）×完工数量=完工产品成本</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>制造业成本三要素：直接材料+直接人工+制造费用</li>
+<li>成本流转：原材料→生产成本→库存商品→主营业务成本</li>
+<li>约当产量法用在产品按完工程度折算</li>
+<li>制造费用要按合理标准分配到各产品</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>约当产量法计算：</strong><br>本月总成本10万，完工80件，在产品20件（完工程度50%=约当10件）<br>单位成本=10万÷(80+10)=1,111元<br>完工产品成本=80×1,111=88,880元<br>在产品成本=10×1,111=11,120元</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 这是制造业自身的内容，适用于各类制造企业。<br>
+<span class="industry-tag">商业企业</span> 没有生产成本，只需核算商品采购成本和库存。<br>
+<span class="industry-tag">服务业</span> 不适用。<br>
+<span class="industry-tag">建筑业</span> 不适用。建筑业成本核算见下节。<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-comm-costing">12.2 商业企业成本核算——买进卖出，赚差价</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p>商业企业没有生产过程，核心是"买进卖出"——从供应商进货，卖给客户。</p>
+<p><strong>成本核算重点：</strong></p>
+<p><strong>① 商品采购成本</strong> = 进货价 + 运杂费 + 合理损耗 - 商业折扣</p>
+<p>借：库存商品 / 借：应交税费-增值税（进项）/ 贷：银行存款/应付账款</p>
+<p><strong>② 商品销售成本</strong>（卖出时计算）</p>
+<p>方法一：<strong>先进先出法</strong>——先买的库存先卖<br>方法二：<strong>加权平均法</strong>——算平均单价</p>
+<p><strong>③ 毛利率法（简化核算）</strong></p>
+<p>销售成本 = 销售收入 × (1 - 毛利率)</p>
+<p>适合：零售企业（品种多、单价小）</p>
+<p><strong>商业企业和制造业的区别：</strong></p>
+<ul><li>制造业：原材料→生产过程→产成品（三步）</li>
+<li>商业企业：商品采购→商品销售（两步，没有生产过程）</li>
+<li>制造业用"生产成本"科目，商业企业直接用"库存商品"</li></ul></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>商业企业没有生产过程，买进卖出赚差价</li>
+<li>采购成本=进价+运杂费-折扣</li>
+<li>销售成本用先进先出或加权平均法计算</li>
+<li>毛利率法可简化核算</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>进货100台电脑，单价3000元，运费5000元：</strong><br>借：库存商品305,000（3000×100+5000）/ 借：应交税费-增值税（进项）39,000 / 贷：银行存款344,000<br><br><strong>卖出60台，加权平均单价3050元：</strong><br>借：主营业务成本183,000 / 贷：库存商品183,000</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 有生产过程，成本核算复杂。<br>
+<span class="industry-tag">商业企业</span> 这是商业企业自身的内容。<br>
+<span class="industry-tag">服务业</span> 没有商品采购和销售，不适用。<br>
+<span class="industry-tag">建筑业</span> 有工程施工过程，成本核算不同。<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-svc-costing">12.3 服务业成本核算——人工是最大的成本</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p>服务业不生产实物产品，而是提供服务（咨询、设计、软件开发、维修等）。</p>
+<p><strong>服务业成本的特点：</strong></p>
+<ul><li>👷 人工成本占比最大（可能占总成本的70%-90%）</li>
+<li>📦 没有原材料和库存商品</li>
+<li>📋 按"项目"或"合同"核算成本</li>
+<li>💡 间接费用较少</li></ul>
+<p><strong>成本核算流程：</strong></p>
+<p><strong>归集项目人工成本：</strong></p>
+<p>借：劳务成本-XX项目（或合同履约成本）<br>贷：应付职工薪酬</p>
+<p><strong>项目完成确认收入时：</strong></p>
+<p>借：主营业务成本<br>贷：劳务成本-XX项目</p>
+<p><strong>项目直接费用（差旅费、材料费等）：</strong></p>
+<p>借：劳务成本-XX项目<br>贷：银行存款/库存现金</p>
+<p><strong>💡 项目管理要点：</strong></p>
+<ul><li>每个项目单独核算成本</li>
+<li>员工填报工时→按工时分配人工成本到项目</li>
+<li>差旅费等直接费用直接记入对应项目</li></ul></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>服务业最大成本是人工（70%-90%）</li>
+<li>按项目核算成本</li>
+<li>用"劳务成本"（或合同履约成本）归集项目成本</li>
+<li>项目完工时结转至主营业务成本</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>咨询公司A项目本月：</strong><br>①员工工资5万（按工时分配到A项目）→借：劳务成本-A项目50,000 / 贷：应付职工薪酬50,000<br>②差旅费1万→借：劳务成本-A项目10,000 / 贷：银行存款10,000<br>③A项目完工确认收入→借：主营业务成本60,000 / 贷：劳务成本-A项目60,000</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 不适用。<br>
+<span class="industry-tag">商业企业</span> 不适用。<br>
+<span class="industry-tag">服务业</span> 这是服务业自身的内容。<br>
+<span class="industry-tag">建筑业</span> 有工程施工过程，不同于服务业。<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-const-costing">12.4 建筑业成本核算——按工程、按进度</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p>建筑业成本核算最特殊的行业——每个工程都是一个独立的"产品"，工程周期长、金额大。</p>
+<p><strong>成本构成：</strong></p>
+<ul><li>🏗️ <strong>直接材料</strong>——钢筋、水泥、沙石等</li>
+<li>👷 <strong>直接人工</strong>——建筑工人工资</li>
+<li>🔧 <strong>机械使用费</strong>——挖掘机、塔吊等机械费用</li>
+<li>📦 <strong>分包成本</strong>——分包给其他公司的工程部分</li>
+<li>📋 <strong>间接费用</strong>——项目部管理费用、临时设施费用</li></ul>
+<p><strong>核心科目：</strong></p>
+<ul><li>5401 <strong>工程施工</strong>——归集工程成本（相当于制造业的"生产成本"）</li>
+<li>5402 <strong>工程结算</strong>——甲方确认的工程进度款</li>
+<li>合同履约成本 / 合同资产——新会计准则下的科目</li></ul>
+<p><strong>成本核算流程：</strong></p>
+<p>① <strong>发生工程成本：</strong> 借：工程施工-合同成本 / 贷：原材料/应付职工薪酬/银行存款</p>
+<p>② <strong>甲方确认进度：</strong> 借：应收账款 / 贷：工程结算</p>
+<p>③ <strong>确认收入（完工百分比法）：</strong> 借：主营业务成本 + 借：工程施工-合同毛利 / 贷：主营业务收入</p>
+<p>④ <strong>工程竣工结算：</strong> 借：工程结算 / 贷：工程施工-合同成本 + 工程施工-合同毛利</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>建筑业按工程项目核算成本</li>
+<li>用"工程施工"科目归集成本（类似生产成本）</li>
+<li>按完工百分比法确认收入，而不是等完工</li>
+<li>工程款拖欠是建筑业的常见问题</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>本月工程进度：预计总成本500万，已完成60%：</strong><br>确认收入=合同总收入×60%-以前已确认<br>结转成本=实际发生成本<br>借：主营业务成本（实际成本）+ 工程施工-合同毛利（差额）/ 贷：主营业务收入（按进度计算的收入）</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 不适用。<br>
+<span class="industry-tag">商业企业</span> 不适用。<br>
+<span class="industry-tag">服务业</span> 不适用。<br>
+<span class="industry-tag">建筑业</span> 这是建筑业自身的内容。<br>
+</div>
+<hr class="section-sep">
+</div>
+<h2 id="board-cashier" style="font-size:18px;margin:32px 0 12px;padding-bottom:4px">💰 出纳板块</h2>
+<div class="ch-section-group" id="ch-group-cashier-basics">
+<h4 id="sec-what-is-cashier">1.1 什么是出纳？出纳是财务的"守门员"</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p>出纳就是公司里<strong>管钱</strong>的人——管现金、管银行、管票据。会计是"管账"的，出纳是"管钱"的。</p>
+<p><strong>核心工作：</strong> 💵管现金（保险柜收支）| 🏦管银行（转账、对账）| 📄管票据（支票、汇票）| 📝管日记账 | 💰发工资</p>
+<table><tr><th></th><th>出纳</th><th>会计</th></tr>
+<tr><td>管什么</td><td>管钱（现金+银行）</td><td>管账（记账+报表）</td></tr>
+<tr><td>日常工作</td><td>收付款、跑银行</td><td>做凭证、编报表</td></tr>
+<tr><td>核心技能</td><td>细心、有条理</td><td>专业知识、分析能力</td></tr>
+<tr><td>关系</td><td>出纳做收付→会计记账</td><td>会计复核出纳的收支</td></tr></table>
+<p><strong>📌 钱账分离（铁律）：</strong> 出纳不能兼任会计工作。一个人既管钱又管账→可以轻松挪用公款。</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>出纳是"管钱"的——现金、银行、票据</li>
+<li>出纳和会计必须分设（钱账分离）</li>
+<li>出纳做收付款→会计据此记账</li>
+<li>细心、有条理是出纳最重要的素质</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+采购付款流程：采购申请→主管审批→会计审核→出纳付款（核对收款人信息）。出纳是最后一关。</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 出纳工作量大——采购付款频繁、工资发放人数多、银行流水大。<br>
+<span class="industry-tag">商业企业</span> 出纳收付频繁（每天进货付款和销售收款），注意日清月结。<br>
+<span class="industry-tag">服务业</span> 相对轻松——主要是项目款收付和日常费用支付。<br>
+<span class="industry-tag">建筑业</span> 最考验细心——每个工程单独管理资金，不能混用。<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-cashier-workflow">1.2 出纳一天的工作流程——从上班到下班</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p><strong>☀️ 早上：</strong> 查网银余额→看出账通知→处理待办单据</p>
+<p><strong>📋 上午：</strong> 收付款处理——审批→核对收款人→转账→打印回单→记日记账</p>
+<p><strong>📥 下午：</strong> 确认到账→去银行→开发票→整理凭证→记现金日记账</p>
+<p><strong>📊 日结：</strong> 盘点保险柜现金（和日记账核对）→网银余额核对→发现问题当日处理</p>
+<p><strong>🗓️ 月底重点：</strong> 📑银行对账（做余额调节表）| 💵现金盘点（会计监督）| 🧾凭证整理装订</p>
+<p><strong>💡 五个习惯：</strong> 日清月结 | 先审后付 | 核对三遍（账号/户名/金额）| 不留白条 | 及时记账</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>早上查余额→白天收支→下午日结</li>
+<li>日清月结是出纳的核心要求</li>
+<li>月底要银行对账、现金盘点、整理凭证</li>
+<li>先审后付——没有批准不能付款</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>每日现金盘点表：</strong><br>账面：5,000元 | 实盘：5,000元 | 差异：0 → 账实相符 ✅<br><br>差异处理：账面多2元→先记"待处理财产损溢"，查明原因后补付少付的报销款或记营业外收入。</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 月底最忙：银行对账+核对大量采购发票和付款记录。<br>
+<span class="industry-tag">商业企业</span> 每天收付笔数多，建议中午和下午各做一次日结。<br>
+<span class="industry-tag">服务业</span> 相对简单，月底主要是项目回款的核对。<br>
+<span class="industry-tag">建筑业</span> 按工程项目分别管理资金流水，月底对账工作量最大。<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-cashier-skills">1.3 出纳必备技能——点钞、验钞、网银操作</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p><strong>① 点钞 💵：</strong> 单指单张→多指多张→扎把（100张为一把）→盖章</p>
+<p><strong>② 验钞 🔍：</strong> 一摸（凹凸感）→二看（水印/安全线）→三听（清脆声）→四测（验钞机）</p>
+<p><strong>③ 网银操作 💻：</strong> 录入→复核→授权（三级权限）。U盾用完马上拔掉。</p>
+<p><strong>④ 票据填写 ✍️：</strong> 日期用大写（壹贰叁肆伍陆柒捌玖拾），金额不能涂改。</p>
+<p><strong>⑤ Excel 📊：</strong> 筛选、VLOOKUP（对账神器）、数据透视表</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>点钞验钞是基本功</li>
+<li>网银操作：录入→复核→授权三级权限</li>
+<li>支票填写：大写金额不能涂改</li>
+<li>Excel对账用VLOOKUP——必学函数</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>支票日期大写：</strong> 2026年1月15日→贰零贰陆年零壹月壹拾伍日<br><strong>大写金额：</strong> 113,000.50元→人民币壹拾壹万叁仟元零伍角整</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> Excel要熟练——每月大量采购付款需分类汇总。<br>
+<span class="industry-tag">商业企业</span> 每天收款笔数多，学会用Excel快速对账。<br>
+<span class="industry-tag">服务业</span> 业务量适中，可趁空余时间多学财务知识。<br>
+<span class="industry-tag">建筑业</span> 要会按项目管理资金——Excel多表汇总能力很重要。<br>
+</div>
+<hr class="section-sep">
+</div>
+<div class="ch-section-group" id="ch-group-cashier-cash-mgmt">
+<h4 id="sec-cash-mgmt-rules">2.1 现金管理制度——哪些能用现金，哪些不能用</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p><strong>可以用现金的范围：</strong> 员工工资/津贴、个人劳务报酬、差旅费、向个人收购农副产品、小额零星支出（≤1000元）</p>
+<p><strong>不能（不建议）用现金：</strong> 大额采购（>1000元要转账）、单位对单位款项、缴纳税费</p>
+<p><strong>库存现金限额：</strong> 银行核定3-5天日常零星开支，超限额要及时存银行</p>
+<p><strong>❌ 出纳红线：</strong></p>
+<ul><li>🚫 <strong>坐支：</strong> 不能从收到的现金里直接拿钱支付（要先存银行再取）</li>
+<li>🚫 <strong>白条抵库：</strong> 不能写借条放保险柜当钱</li>
+<li>🚫 <strong>私设小金库：</strong> 不记账的额外现金</li>
+<li>🚫 <strong>挪用公款：</strong> 不能把公司钱借给个人或私用</li></ul></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>现金使用范围有限制，>1000元要转账</li>
+<li>库存现金不能超银行核定限额</li>
+<li>不能坐支现金</li>
+<li>出纳红线：不坐支、不白条、不小金库、不挪用</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>错误：</strong>收了5000元现金货款，直接拿这5000元付采购款→这就是"坐支"，违规！<br><br><strong>正确：</strong>①收现金→②当天存银行→③采购时银行转账或开支票</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 现金使用量大（工人工资、零星采购），建议建备用金制度。<br>
+<span class="industry-tag">商业企业</span> 现金收入多（零售），每天及时存银行，留少量找零现金即可。<br>
+<span class="industry-tag">服务业</span> 现金使用较少，主要是小额报销和备用金。<br>
+<span class="industry-tag">建筑业</span> 农民工工资已要求走银行卡，不能发大额现金。<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-cash-transactions">2.2 现金收支业务——出纳每天的基本功</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p><strong>现金收款流程：</strong> 确认金额→验钞→开发票/收据→登记现金日记账→入保险柜</p>
+<p><strong>现金付款流程：</strong> 核对审批→核对单据→付款→收款人签字→登记现金日记账</p>
+<p><strong>每天日结：</strong> 日记账余额 vs 保险柜实盘现金，有差异当天查清。</p>
+<table><tr><th>业务</th><th>借</th><th>贷</th></tr>
+<tr><td>提取备用金</td><td>库存现金</td><td>银行存款</td></tr>
+<tr><td>现金付报销款</td><td>管理/销售费用</td><td>库存现金</td></tr>
+<tr><td>收到现金货款</td><td>库存现金</td><td>主营业务收入</td></tr>
+<tr><td>现金存银行</td><td>银行存款</td><td>库存现金</td></tr></table></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>收款：验钞→开收据→记日记账→入保险柜</li>
+<li>付款：先审批→付款→签字→记日记账</li>
+<li>每天日结：账面余额vs保险柜现金</li>
+<li>有差异当天查清，不能拖</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>员工小王报销差旅费1500元：</strong><br>①核对有主管签字的报销单→②核对发票金额→③付1500元→④小王签"已收款"→⑤记现金日记账→⑥保险柜少1500元</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 现金收付量大（零星采购、工人预支），建立严格审批流程。<br>
+<span class="industry-tag">商业企业</span> 现金收款多，每笔都要开发票或收据，防止私吞。<br>
+<span class="industry-tag">服务业</span> 现金业务较少，主要是员工报销和备用金。<br>
+<span class="industry-tag">建筑业</span> 大额现金支付容易引起税务关注，要特别小心。<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-cash-journal">2.3 现金日记账——把现金的"流水账"记清楚</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p>现金日记账是出纳最重要的账簿。每笔现金收支都要登记。</p>
+<table><tr><th>月</th><th>日</th><th>凭证号</th><th>摘要</th><th>借方(收入)</th><th>贷方(支出)</th><th>余额</th></tr>
+<tr><td>01</td><td>01</td><td>银1</td><td>提取备用金</td><td>5000</td><td></td><td>5000</td></tr>
+<tr><td>01</td><td>01</td><td>现1</td><td>付差旅费</td><td></td><td>2000</td><td>3000</td></tr></table>
+<p><strong>登记规则：</strong> 逐笔登记、顺序登记、日清月结、摘要清楚、凭证号对应</p>
+<p>月底：本月合计（全月借贷方总和）+ 本年累计 + 结转下月</p>
+<p>出纳日记账余额月底要和会计总账余额核对。</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>现金日记账"逐笔登记、日清月结"</li>
+<li>摘要要写清楚（干什么、给谁、为什么）</li>
+<li>月底和会计总账余额核对</li>
+<li>凭证号、日期、金额都不能错</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>正确记录：</strong><br>01|15|现-015|张三报销办公用品|管理费用||500|4500<br>01|15|现-016|收到零星销售款|主营业务收入|800||5300<br>→余额5300，保险柜实际5300 ✅</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 笔数多，建议用Excel辅助登记，月底打印。<br>
+<span class="industry-tag">商业企业</span> 现金收款多，建议每半天做一次小计。<br>
+<span class="industry-tag">服务业</span> 业务少，可以把日记账记详细。<br>
+<span class="industry-tag">建筑业</span> 多项目部的要单独登记各项目备用金。<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-cash-count">2.4 现金盘点——保险柜里钱对不对得上？</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p><strong>盘点频率：</strong> 每天出纳日结盘点 | 每月会计监督共同盘点 | 不定期抽查</p>
+<p><strong>盘点流程：</strong> 算日记账余额→打开保险柜分类清点→填盘点表→账实核对</p>
+<p><strong>盘盈（多了）：</strong> 借库存现金 / 贷待处理财产损溢 → 查明后冲费用或记营业外收入</p>
+<p><strong>盘亏（少了）：</strong> 借待处理财产损溢 / 贷库存现金 → 责任人赔或记管理费用</p>
+<p><strong>💡 注意：</strong> 保险柜里的白条不算现金 | 盘点最好有他人在场 | 差异及时记录处理</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>每天盘点现金，每月会计监督下盘一次</li>
+<li>盘盈（多了）→查明原因后处理</li>
+<li>盘亏（少了）→要赔偿或记损失</li>
+<li>保险柜里的借条不算现金</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>盘点发现账面5000元，实际5020元（多20元）：</strong><br>①先记：借库存现金20/贷待处理财产损溢20<br>②查明是少付了报销款→补付：借待处理财产损溢20/贷库存现金20</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 现金流动大，每天下班前准时盘点。<br>
+<span class="industry-tag">商业企业</span> 各门店都要设备用金并定期盘点。<br>
+<span class="industry-tag">服务业</span> 现金较少也不能掉以轻心。<br>
+<span class="industry-tag">建筑业</span> 各项目部备用金单独盘点，不能混淆。<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-petty-cash">2.5 备用金管理——给员工准备的"零花钱"</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p>备用金是预支给员工或部门的小额周转资金。如采购员零星采购、办公室买文具等。</p>
+<p><strong>两种管理方式：</strong></p>
+<ul><li><strong>定额备用金：</strong> 固定一笔钱→花完拿发票报销补足→手上始终有这笔钱</li>
+<li><strong>非定额备用金：</strong> 借一笔→回来报销→下次再借</li></ul>
+<p><strong>核算（定额制）：</strong></p>
+<p>拨付时：借其他应收款-备用金-XX部门 / 贷库存现金</p>
+<p>报销补足：借管理费用/原材料 / 贷库存现金</p>
+<p><strong>💡 管理要点：</strong> "前账不清后账不借" | 年底全面清理</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>备用金是预支给员工周转的零花钱</li>
+<li>定额备用金：固定一笔钱，花完凭票报销补足</li>
+<li>前账不清后账不借</li>
+<li>年底要清理回收</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>采购部定额备5000元：</strong><br>①拨付：借其他应收款-采购部5000/贷库存现金5000<br>②支出3000元买材料（拿发票报销）：借原材料3000/贷库存现金3000<br>③采购部手上仍5000元（原2000+补3000）</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 备用金需求大（采购员、外勤多），建议定额备用金制度。<br>
+<span class="industry-tag">商业企业</span> 门店柜台找零备用金要每天清点。<br>
+<span class="industry-tag">服务业</span> 项目人员备用金按项目分别管理。<br>
+<span class="industry-tag">建筑业</span> 项目部备用金金额大，每个项目单独设定额，严格审批。<br>
+</div>
+<hr class="section-sep">
+</div>
+<div class="ch-section-group" id="ch-group-cashier-bank-mgmt">
+<h4 id="sec-bank-account-mgmt">3.1 银行账户管理——公司有哪些银行账户？</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<table><tr><th>类型</th><th>特点</th></tr>
+<tr><td>基本户 🏦</td><td>只能开1个，可取现、转账、发工资</td></tr>
+<tr><td>一般户 🏧</td><td>可开多个，只能转账不能取现</td></tr>
+<tr><td>专户 🔒</td><td>专款专用，受银行监管（工程款专户等）</td></tr>
+<tr><td>临时户 📋</td><td>临时项目用，有效期最长2年</td></tr></table>
+<p><strong>开户需：</strong> 营业执照+法人身份证+公章/财务章/法人章+公司章程</p>
+<p><strong>出纳要知道：</strong> 每个账户的账号/开户行全称/行号/用途，U盾和密码分开保管。</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>基本户只有一个（可取现），一般户可开多个（不能取现）</li>
+<li>每个账户有特定用途不混用</li>
+<li>开户要营业执照+身份证+三章</li>
+<li>U盾和密码分开保管</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>账户管理表：</strong><br>基本户：工行XX支行 3200XXXXXXXXX → 日常收支<br>一般户：建行XX支行 4300XXXXXXXXX → 项目收款</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 基本户+多个一般户（不同业务线），出纳要记清每个账户用途。<br>
+<span class="industry-tag">商业企业</span> 基本户即可，可能需要一般户用于电商平台收款。<br>
+<span class="industry-tag">服务业</span> 账户结构简单，基本户即可。<br>
+<span class="industry-tag">建筑业</span> 账户最多！每个大项目往往开专户，出纳要管好多个账户。<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-bank-transactions">3.2 银行存款收支——公司"钱进钱出"的主动脉</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p><strong>收款流程：</strong> 确认到账→通知会计/业务员→开票（如需）→保存回单</p>
+<p><strong>付款流程（网银）：</strong> ①录入收款人→②复核确认→③授权审批（三级）</p>
+<p><strong>⚠️ 出纳最不能出错的地方：</strong></p>
+<ul><li>收款人户名必须和发票/合同一致</li>
+<li>账号错了钱就打给别人了——核对三遍！</li>
+<li>大额付款要提前预约</li>
+<li>付款后及时通知收款方</li></ul></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>收款确认到账后及时通知相关人</li>
+<li>网银：录入→复核→授权（三级审批）</li>
+<li>支票填写不能涂改，大写金额要规范</li>
+<li>付款前核对收款人信息三遍</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>三级审批实操：</strong><br>①出纳录入：收款人"甲公司"、账号"6222XXXX"、金额50000<br>②会计复核：逐项核对合同发票后确认<br>③主管授权：大额付款（超5万）再次确认→钱才转出！</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 付款频率高金额大，大额付款设专人在线复核。<br>
+<span class="industry-tag">商业企业</span> 每天进货付款，和主要供应商建白名单收款账户。<br>
+<span class="industry-tag">服务业</span> 收付款相对少，但项目款金额不小，同样严格复核。<br>
+<span class="industry-tag">建筑业</span> 按工程进度付款，每笔金额都大（几十万到千万），复核制度必须严格执行。<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-bank-journal">3.3 银行日记账——银行存款的"流水账"</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p>和现金日记账类似，每个银行账户单独设一本。</p>
+<table><tr><th>月</th><th>日</th><th>凭证号</th><th>摘要</th><th>借方(收入)</th><th>贷方(支出)</th><th>余额</th></tr>
+<tr><td>01</td><td>05</td><td>银收1</td><td>甲公司付货款</td><td>50000</td><td></td><td>500000</td></tr>
+<tr><td>01</td><td>05</td><td>银付1</td><td>付乙公司采购款</td><td></td><td>30000</td><td>470000</td></tr></table>
+<p><strong>区别：</strong> 现金日记账按现金盘点核对；银行日记账按银行对账单核对（做余额调节表）</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>每个银行账户单独设一本日记账</li>
+<li>逐笔登记，根据银行回单记账</li>
+<li>每天算余额（日清月结）</li>
+<li>月底和银行对账单核对（做余额调节表）</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>工行日记账1月：</strong><br>期初400,000→收50,000→付30,000→……→期末450,000 ✅</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 银行流水量大，每个账户用Excel辅助登记。<br>
+<span class="industry-tag">商业企业</span> 笔数最多（进货付款+销售收款），养成随时登记习惯。<br>
+<span class="industry-tag">服务业</span> 流水相对少，认真登记即可。<br>
+<span class="industry-tag">建筑业</span> 账户数量多（基本户+各项目专户），每个账户单独记账。<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-bank-reconciliation">3.4 银行对账与余额调节表——出纳月底最重要的工作</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p><strong>为什么对账？</strong> 公司的日记账和银行对账单余额往往不一样——因为"未达账项"。</p>
+<p><strong>四类未达账项：</strong></p>
+<ol><li>企业已付、银行未付（公司开支票，对方没去兑现）</li><li>企业已收、银行未收（支票存银行，银行未入账）</li><li>银行已付、企业未付（银行扣手续费等）</li><li>银行已收、企业未收（银行收到汇款，公司不知道）</li></ol>
+<p><strong>余额调节表（调整后余额要相等）：</strong></p>
+<p>企业日记账余额+银行已收企业未收-银行已付企业未付=调整后余额</p>
+<p>银行对账单余额+企业已收银行未收-企业已付银行未付=调整后余额</p>
+<p>两边相等 ✅ → 账是对的</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>银行对账是每月最重要的工作</li>
+<li>不一致原因：未达账项（时间差）</li>
+<li>四类未达：企收银未收/企付银未付/银收企未收/银付企未付</li>
+<li>余额调节表调整后两边必须相等</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>1月底对账：</strong><br>日记账549,500 vs 银行449,000（差100,500）<br>查未达账项：①存客户支票8,000银行未入→加银行方②开支票7,500未兑现→减银行方③银行扣手续费500→减公司方→调整后相等 ✅</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 流水大，未达账项多，耐心逐笔勾对。<br>
+<span class="industry-tag">商业企业</span> 笔数最多，用Excel的VLOOKUP辅助对账。<br>
+<span class="industry-tag">服务业</span> 对账相对简单但认真对待。<br>
+<span class="industry-tag">建筑业</span> 每个项目专户单独对账，对账工作量最大。<br>
+</div>
+<hr class="section-sep">
+</div>
+<div class="ch-section-group" id="ch-group-cashier-bill-mgmt">
+<h4 id="sec-check-mgmt">4.1 支票管理——最常用的支付工具</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p>支票是出纳最常接触的票据之一。公司开的支票，收款人拿去银行就能取钱或转账。</p>
+<p><strong>支票的种类：</strong></p>
+<ul><li>💵 <strong>现金支票</strong>——只能取现金（提取备用金、发工资等）</li>
+<li>📄 <strong>转账支票</strong>——只能转账（支付货款、费用等）</li>
+<li>📋 <strong>普通支票</strong>——既可取现也可转账（部分地区使用）</li></ul>
+<p><strong>支票填写规范（非常重要！）：</strong></p>
+<ul><li>日期：必须用大写（贰零贰陆年零壹月壹拾伍日）</li>
+<li>金额：大写+小写（大写：壹拾壹万叁仟元整）</li>
+<li>收款人：全称，不能简写</li>
+<li>用途：据实填写（货款/工资/备用金等）</li>
+<li><strong>最重要：</strong> 支票填写后不能涂改！写错了要作废重开</li></ul>
+<p><strong>支票管理：</strong></p>
+<ul><li>建立支票领用登记簿：领用日期、支票号、领用人、用途、金额、核销日期</li>
+<li>作废支票要加盖"作废"章，妥善保管（不能扔）</li>
+<li>空白支票不能事先盖章！</li>
+<li>支票和印章要分开保管（出纳管支票，会计管章）</li></ul></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>现金支票取现，转账支票转账</li>
+<li>日期用大写，金额大小写都要写</li>
+<li>填写后不能涂改！写错作废重开</li>
+<li>建立支票登记簿，空白支票和印章分开保管</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>开支票提取备用金5000元：</strong><br>填写现金支票→用途"备用金"→加盖预留印鉴→去银行柜台取款→回来记：借库存现金5000/贷银行存款5000<br><br><strong>开支票付货款：</strong><br>填写转账支票→给供应商→供应商去银行入账→出纳拿回单记账</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 支票使用频繁（大额采购付款），出纳要建立完善的支票领用制度。<br>
+<span class="industry-tag">商业企业</span> 每天进货需要开支票，建议和供应商约定固定的付款时间。<br>
+<span class="industry-tag">服务业</span> 支票使用较少，主要是大额付款时使用。<br>
+<span class="industry-tag">建筑业</span> 工程款多用转账支票或汇票，现金支票较少使用。<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-bill-mgmt">4.2 汇票管理——比支票更"高级"的支付工具</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p>汇票分<strong>银行汇票</strong>和<strong>商业汇票</strong>两种，是比支票更有保障的结算方式。</p>
+<p><strong>银行汇票 🏦</strong></p>
+<ul><li>由银行签发，见票即付</li>
+<li>公司要去银行申请→交钱给银行→银行出票→拿去付款</li>
+<li>优点：安全可靠，卖方收到汇票就能确认钱已到</li></ul>
+<p><strong>商业汇票 📄</strong></p>
+<ul><li>由企业签发，约定一定期限后付款</li>
+<li>分：银行承兑汇票（银行担保）和商业承兑汇票（企业信用）</li>
+<li>期限：最长6个月</li>
+<li>可以：到期收款 / 背书转让（当钱用） / 提前贴现（找银行换现金，付利息）</li></ul>
+<p><strong>出纳管理汇票的工作：</strong></p>
+<ul><li>建立票据台账：票据种类、号码、金额、出票日、到期日、出票人/收款人</li>
+<li>到期前提示相关人（到期未兑付会影响公司信用）</li>
+<li>背书转让要在票据背面盖章，注明"转让给XX公司"</li>
+<li>贴现要准备好合同、发票等资料给银行</li></ul></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>银行汇票=银行出票，见票即付；商业汇票=企业出票，约期付款</li>
+<li>商业汇票可到期收款/背书转让/提前贴现</li>
+<li>建立票据台账管理</li>
+<li>到期前要提前处理，不要过期</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>收到银行承兑汇票50万（6个月到期）：</strong><br>借：应收票据500000 / 贷：应收账款-甲公司500000<br><br><strong>3个月后背书转让给供应商付货款：</strong><br>借：应付账款-供应商500000 / 贷：应收票据500000</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 大客户多用银行承兑汇票结算，出纳要做好票据台账，按期提示到期处理。<br>
+<span class="industry-tag">商业企业</span> 商业承兑汇票在商贸企业之间常见，注意评估对方信誉。<br>
+<span class="industry-tag">服务业</span> 汇票使用较少，主要是大项目收款时涉及。<br>
+<span class="industry-tag">建筑业</span> 工程款常用承兑汇票支付，出纳要管理好大量票据，注意到期日管理。<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-invoice-mgmt">4.3 发票管理——出纳的"发票经"</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p>发票是公司经营中最重要的原始凭证——税务局管得最严、处罚最重。</p>
+<p><strong>发票的种类：</strong></p>
+<ul><li>📄 增值税专用发票——可以抵扣进项税（一般纳税人使用）</li>
+<li>🧾 增值税普通发票——不能抵扣进项税</li>
+<li>🎫 电子发票——现在越来越普及，和纸质发票同等效力</li>
+<li>📋 定额发票——适用于餐饮、停车等小额消费</li></ul>
+<p><strong>出纳开发票的注意事项：</strong></p>
+<ul><li>抬头必须和付款方一致（不能写简称）</li>
+<li>内容据实开具（不能虚开、不能改变品名）</li>
+<li>金额不能错（尤其是大小写要一致）</li>
+<li>发票章盖清楚（盖在"发票专用章"位置）</li>
+<li>作废发票要全套保存（不能撕毁）</li></ul>
+<p><strong>🔥 开发票的红线（绝对不能碰）：</strong></p>
+<ul><li>❌ 虚开发票——没有真实交易开票（违法！）</li>
+<li>❌ 代开发票——帮别人开票（违法！）</li>
+<li>❌ 买卖发票——买发票抵税（违法！）</li>
+<li>❌ 开具与实际业务不符的发票（违法！）</li></ul></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>增值税专票可抵扣进项，普票不能</li>
+<li>发票抬头必须和付款方一致</li>
+<li>发票内容必须真实，不能虚开</li>
+<li>作废发票全套保存不能撕毁</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>正确的开票流程：</strong><br>①确认客户名称和税号→②确认开票内容和金额→③在税控系统开具→④打印→⑤加盖发票专用章→⑥交付客户→⑦在发票登记簿记录</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 涉及大量进项发票（采购材料），发票管理混乱会导致无法抵扣增值税。<br>
+<span class="industry-tag">商业企业</span> 购销两头都要开发票，出纳要保证进销匹配，避免税务局查账。<br>
+<span class="industry-tag">服务业</span> 服务类发票要注意备注栏填写（如咨询服务要写清楚服务内容）。<br>
+<span class="industry-tag">建筑业</span> 建筑服务发票必须在备注栏注明项目名称和地址，这是硬性要求！<br>
+</div>
+<hr class="section-sep">
+</div>
+<div class="ch-section-group" id="ch-group-cashier-fund-settlement">
+<h4 id="sec-transfer-settlement">5.1 转账结算——银行转账的各种方式</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p>银行转账是公司最主流的付款方式。出纳每天都要和各种转账打交道。</p>
+<p><strong>常见的转账方式：</strong></p>
+<p><strong>① 网银转账（最常用）</strong></p>
+<ul><li>登录企业网银→选择转账→录入收款信息→复核→授权</li>
+<li>单笔限额：一般5万-500万（各银行不同）</li>
+<li>到账时间：同行实时到账；跨行一般1-2小时，大额可能次日</li></ul>
+<p><strong>② 柜台转账</strong></p>
+<ul><li>填转账支票或电汇单→去银行柜台→银行处理</li>
+<li>适合：大额转账、对公对公汇款</li></ul>
+<p><strong>③ 批量代发</strong></p>
+<ul><li>用于发工资：上传工资明细→银行批量处理→员工到账</li>
+<li>需要提前和银行签订代发协议</li></ul>
+<p><strong>④ 银企直连</strong></p>
+<ul><li>公司ERP系统和银行系统直接连接，自动同步</li>
+<li>适合大型企业，出纳不用登录网银</li></ul></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>网银转账最常用：录入→复核→授权三级</li>
+<li>同行实时到账，跨行1-2小时</li>
+<li>发工资用批量代发功能</li>
+<li>大额付款要提前预约银行</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>网银转账流程（四眼原则）：</strong><br>①出纳A录入：收款人甲公司、账号6222****、金额50万<br>②出纳B复核：逐项核对合同、发票信息<br>③财务主管授权：确认预算和审批单<br>④完成转账→打印电子回单→记账</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 转账频率高金额大，建议和银行协商提高网银限额，减少柜台跑腿。<br>
+<span class="industry-tag">商业企业</span> 每天大量转账，建议使用Excel模板批量处理付款。<br>
+<span class="industry-tag">服务业</span> 转账笔数不多但每笔金额较大，注意合规审核。<br>
+<span class="industry-tag">建筑业</span> 工程款转账要备注项目名称和款项性质，方便后续对账。<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-third-party-payment">5.2 第三方支付——微信/支付宝在企业中的应用</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p>越来越多的公司开始使用微信和支付宝进行收付款。在会计上，微信/支付宝里的钱属于<strong>"其他货币资金"</strong>，不是银行存款。</p>
+<p><strong>微信/支付宝收款的流程：</strong></p>
+<p>收款时：借：其他货币资金-微信/支付宝 / 贷：主营业务收入</p>
+<p>提现到银行时：借：银行存款 / 贷：其他货币资金-微信/支付宝</p>
+<p><strong>管理要点：</strong></p>
+<ul><li>微信/支付宝也要逐笔登记收支，不能只看总额</li>
+<li>每日提现：建议当天收到的钱当天提现到银行</li>
+<li>手续费：提现时银行会收手续费（一般是0.1%），记入财务费用</li>
+<li>对账：每月要和微信/支付宝商户后台的账单核对</li></ul>
+<p><strong>⚠️ 注意：</strong></p>
+<ul><li>公司微信/支付宝必须用公司营业执照开通，不能使用个人账户收公司款项</li>
+<li>个人微信收公司款=公私混同，违反会计主体原则，也容易被税务局查</li></ul></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>微信/支付宝属于"其他货币资金"，不是银行存款</li>
+<li>要逐笔登记收支，不能只看总额</li>
+<li>建议每日提现到银行账户</li>
+<li>公司要用对公账户开通，不能使用个人账户</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>客户微信扫码支付1000元：</strong><br>借：其他货币资金-微信1000 / 贷：主营业务收入1000<br><br><strong>微信提现到工行（手续费1元）：</strong><br>借：银行存款999+借：财务费用1 / 贷：其他货币资金-微信1000</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 微信/支付宝使用较少（主要是B2B大额交易，走银行转账）。<br>
+<span class="industry-tag">商业企业</span> 零售收款大量使用微信/支付宝，每天提现是出纳的日常工作。<br>
+<span class="industry-tag">服务业</span> 咨询费、服务费通过微信/支付宝收款越来越常见。<br>
+<span class="industry-tag">建筑业</span> 微信/支付宝不适合工程款大额收付，主要用于日常小额支出。<br>
+</div>
+<hr class="section-sep">
+</div>
+<div class="ch-section-group" id="ch-group-cashier-payroll">
+<h4 id="sec-payroll-calc">6.1 工资计算与发放——出纳的"大日子"</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p>发工资是出纳最核心也最需要细心的工作之一。错了可不行——员工会直接来找你。</p>
+<p><strong>工资发放全流程：</strong></p>
+<p>① 收集考勤数据 → ② 计算应发工资 → ③ 计算代扣款项（社保/公积金/个税）→ ④ 计算实发金额 → ⑤ 报批 → ⑥ 发放</p>
+<p><strong>应发工资的构成：</strong> 基本工资 + 岗位工资 + 绩效奖金 + 加班费 + 津贴补贴 = 应发工资</p>
+<p><strong>代扣款项：</strong> 社保个人部分（养老8%+医疗2%+失业0.5%≈10.5%）| 住房公积金个人部分（5%-12%）| 个人所得税（超5000部分累进税率）</p>
+<p><strong>实发工资 = 应发工资 - 社保个人 - 公积金个人 - 个税</strong></p>
+<p><strong>发放方式：</strong> 🏦 银行代发（最主流！上传明细→银行批量转账）| 💵 现金发放（越来越少用）</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>发工资流程：考勤→计算→审批→发放</li>
+<li>实发=应发-社保个人-公积金个人-个税</li>
+<li>银行代发最主流</li>
+<li>工资表要经过审批才能发放</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>张三1月工资：</strong><br>应发10000-社保1050-公积金1000-个税88.5=实发7861.5<br>银行代发：整理明细→上传网银→银行处理→打印回单→记账</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 工人多，计件工资与计时工资结合，核算量大。<br>
+<span class="industry-tag">商业企业</span> 人数相对较少，工资结构简单。<br>
+<span class="industry-tag">服务业</span> 人工成本占比最大，是最大的支出。<br>
+<span class="industry-tag">建筑业</span> 农民工工资要"实名制"，通过专用账户直接发到个人卡。<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-payroll-tax">6.2 个税与社保——出纳要懂的"扣款"知识</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p>个税起征点每月5000元。应纳税所得额=应发-5000-社保-公积金-专项附加扣除。</p>
+<table><tr><th>应纳税所得额</th><th>税率</th><th>速算扣除数</th></tr>
+<tr><td>不超过3,000元</td><td>3%</td><td>0</td></tr>
+<tr><td>3,000~12,000元</td><td>10%</td><td>210</td></tr>
+<tr><td>12,000~25,000元</td><td>20%</td><td>1,410</td></tr>
+<tr><td>25,000~35,000元</td><td>25%</td><td>2,660</td></tr>
+<tr><td>35,000~55,000元</td><td>30%</td><td>4,410</td></tr>
+<tr><td>55,000~80,000元</td><td>35%</td><td>7,160</td></tr>
+<tr><td>超过80,000元</td><td>45%</td><td>15,160</td></tr></table>
+<p><strong>社保比例：</strong> 公司≈工资的30%（养老16%+医疗8%+失业0.5%+工伤0.5%+生育0.5%+公积金5-12%），个人≈10.5%（养老8%+医疗2%+失业0.5%）</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>个税起征点5000元，超额累进税率</li>
+<li>应纳税所得额=应发-5000-社保-公积金-专项附加</li>
+<li>社保公司交大头（~30%），个人交小头（~10.5%）</li>
+<li>出纳要按时申报缴纳个税和社保</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>个税：</strong>应发10000-社保1050-公积金1000-5000=2950，2950×3%-0=88.5元<br><strong>社保：</strong>公司交≈2550，个人交≈1050</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 工人多、工资水平不一，建议用工资软件自动计算。<br>
+<span class="industry-tag">商业企业</span> 工资结构简单，计算相对容易。<br>
+<span class="industry-tag">服务业</span> 高薪员工多，个税计算要准确（高税率段更敏感）。<br>
+<span class="industry-tag">建筑业</span> 农民工个税处理特殊，区分"工资薪金"和"劳务报酬"。<br>
+</div>
+<hr class="section-sep">
+</div>
+<h4 id="sec-year-end-bonus">6.3 年终奖计算与发放——年底的"重头戏"</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p><strong>年终奖（全年一次性奖金）</strong>是员工最关心的年底福利，出纳必须算对、发对。</p>
+<p><strong>年终奖计税方式（可选择）：</strong></p>
+<p><strong>方式一：单独计税（2027年前仍可选）</strong><br>
+① 年终奖÷12 → 按月换算后的综合所得税率表找税率<br>
+② 应纳税额 = 年终奖 × 税率 - 速算扣除数<br>
+<strong>例：</strong>年终奖36000元→36000÷12=3000→税率3%→税=36000×3%=1080元</p>
+<p><strong>方式二：并入综合所得</strong><br>
+年终奖+全年工资合并计算个税，适合工资较低（未达起征点）的员工。</p>
+<p><strong>年终奖发放注意事项：</strong><br>
+• 金额要避开"税率跳档区"（如36001元比36000元多交约2310元税）<br>
+• 发放时要预留足够的税款（公司代扣代缴）<br>
+• 离职员工年终奖按实际工作月份折算<br>
+• 银行代发需备注"年终奖"以便员工和财务核对</p>
+<p><strong>年终奖的账务处理：</strong><br>
+计提：借：管理费用-年终奖 / 贷：应付职工薪酬-年终奖<br>
+发放：借：应付职工薪酬-年终奖 / 贷：银行存款 + 应交税费-应交个人所得税</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>年终奖可单独计税或并入综合所得，选税少的</li>
+<li>注意"临界点"——多1元可能多交上千税</li>
+<li>发放时公司代扣代缴个税</li>
+<li>账务：计提→发放→缴税三步</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>案例：</strong>李四年终奖40000元<br>÷12=3333→税率10%速算扣除210→税=40000×10%-210=3790元<br>实发=40000-3790=36210元<br>如果发36000→税1080→实发34920<br>多4000元奖金到手反而少！所以出纳要帮公司检查年终奖金额是否在"最优区间"。</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 年终奖常与绩效挂钩，一线工人和办公室人员计算方法可能不同。<br>
+<span class="industry-tag">商业企业</span> 销售人员的年终奖常与业绩挂钩，金额波动大。<br>
+<span class="industry-tag">服务业</span> 年终奖通常为1-3个月工资，项目分红和年终奖分开计算。<br>
+<span class="industry-tag">建筑业</span> 农民工一般不拿年终奖，管理人员按项目利润分红。<br>
+</div>
+<hr class="section-sep">
+</div>
+<div class="ch-section-group" id="ch-group-cashier-tax">
+<h4 id="sec-tax-declaration">7.1 出纳要负责的税务工作</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p>出纳涉及的税务工作：开发票、计算申报税款、按时缴纳税款、保管税务资料。</p>
+<table><tr><th>税种</th><th>频率</th><th>截止日</th></tr>
+<tr><td>增值税</td><td>按月/按季</td><td>每月15日</td></tr>
+<tr><td>企业所得税</td><td>按季预缴</td><td>季后15日</td></tr>
+<tr><td>个人所得税</td><td>按月</td><td>每月15日</td></tr>
+<tr><td>城建税/教育费附加</td><td>按月</td><td>随增值税</td></tr></table>
+<p>每月1-15日是税务申报期，所有税种都要在这期间完成申报缴款。逾期有滞纳金（每天万分之五）！</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>出纳税务工作：开票、申报、缴款、保管</li>
+<li>增值税、个税每月15日前申报</li>
+<li>企业所得税每季度预缴一次</li>
+<li>逾期每天万分之五滞纳金</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>月初1-15日安排：</strong><br>①1-5日整理发票算增值税→②5-10日申报增值税等→③10-15日申报缴个税→④15日前完成所有缴款</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 增值税进销项复杂，月底认证进项发票是重要工作。<br>
+<span class="industry-tag">商业企业</span> 增值税相对简单，进销匹配即可。<br>
+<span class="industry-tag">服务业</span> 差额征税等特殊情况要特别注意。<br>
+<span class="industry-tag">建筑业</span> 简易计税和一般计税之分，跨年工程更复杂。<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-tax-payment">7.2 税款缴纳——出纳的"交钱"环节</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p><strong>三方协议扣款（最常用）：</strong> 公司-税务局-银行签协议，申报后在网银确认扣款。</p>
+<p><strong>缴款分录：</strong> 借：应交税费-应交增值税等 / 贷：银行存款</p>
+<p><strong>⚠️ 注意：</strong> 缴款后打印完税凭证存档 | 逾期每天万分之五滞纳金 | 缴税前确认账户余额足够</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>三方协议扣款最常用</li>
+<li>缴税后打印完税凭证存档</li>
+<li>逾期有滞纳金</li>
+<li>缴税前确认账户余额</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+缴增值税10万+城建税7000+个税2万：借应交税费-增值税100000+应交税费-城建税7000+应交税费-个税20000 / 贷银行存款127000</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 税款金额大，提前安排资金。<br>
+<span class="industry-tag">商业企业</span> 税款较稳定，按计划预留资金。<br>
+<span class="industry-tag">服务业</span> 税款波动大，预留充足资金。<br>
+<span class="industry-tag">建筑业</span> 按工程进度分期缴纳，匹配回款。<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-invoice-verify">7.3 发票认证与进项管理——出纳的"发票经"</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p><strong>发票认证（又称"勾选认证"）</strong>是一般纳税人每月必须完成的税务工作——把收到的增值税专用发票在税务系统中确认，才能抵扣进项税额。</p>
+<p><strong>认证流程（全流程线上化）：</strong></p>
+<p>① 收到供应商开的增值税专用发票（发票联+抵扣联）<br>
+② 登录"增值税发票综合服务平台"（或电子税务局）<br>
+③ 在"抵扣勾选"菜单中勾选需要认证的发票<br>
+④ 确认统计 → 申请统计 → 签名确认<br>
+⑤ 系统生成"当期抵扣进项税额汇总表"</p>
+<p><strong>⚠️ 出纳必知的时间节点：</strong><br>
+• 认证截止日：**次月申报期截止前**（通常每月15日）<br>
+• 发票开具后 **360天内** 必须认证（逾期不可抵扣）<br>
+• 认证后当月必须申报抵扣（不可跨月）</p>
+<p><strong>不能认证抵扣的情况：</strong><br>
+• 发票信息有误（税号、金额不符）→ 退回重开<br>
+• 用于集体福利/个人消费的进项 → 不可抵扣<br>
+• 简易计税项目对应的进项 → 不可抵扣</p>
+<p><strong>出纳发票管理实操要点：</strong><br>
+• 收到发票立即检查：发票专用章清晰、税号正确、金额无误<br>
+• 抵扣联单独保管（按认证月份归档）<br>
+• 建立"发票登记台账"——记录发票号、金额、收到日、认证日、认证结果<br>
+• 月底前确认所有进项发票已认证，避免遗漏造成多交税</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>增值税专票必须认证后才能抵扣进项</li>
+<li>认证截止日=申报截止日（每月15日）</li>
+<li>开票后360天内必须认证</li>
+<li>建立发票台账防止遗漏</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+<strong>制造业公司6月业务：</strong><br>① 买入钢材取得专票100万（税额13万）→ 6月认证<br>② 卖出产品开具销项专票200万（税额26万）<br>③ 应缴增值税 = 26万 - 13万 = 13万<br>如果出纳忘了认证13万的进项票 → 公司要交26万增值税（多交13万！）</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 进项发票最多（原材料多），月底认证工作量最大，建议每周认证一次。<br>
+<span class="industry-tag">商业企业</span> 进销匹配，收到的进项发票和开具的销项发票基本对应。<br>
+<span class="industry-tag">服务业</span> 进项较少（主要是办公费、设备采购），但仍需及时认证。<br>
+<span class="industry-tag">建筑业</span> 材料发票来自不同供应商，金额大、票多，建议设专人管理发票认证。<br>
+</div>
+<hr class="section-sep">
+</div>
+<div class="ch-section-group" id="ch-group-cashier-error-prevention">
+<h4 id="sec-common-errors">8.1 出纳常见差错——哪些地方最容易出错？</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p><strong>① 金额错误（最常见！）</strong> 多付少付、大小写不一致、加总算错</p>
+<p><strong>② 收款方错误</strong> 账号输错、户名写错、开户行选错</p>
+<p><strong>③ 票据错误</strong> 支票日期大写不规范、盖章不清晰、发票内容开错</p>
+<p><strong>④ 记账错误</strong> 借贷方向记反、科目选错、漏记重记</p>
+<p><strong>💡 防错口诀：</strong> 先审后付，核对三遍；日清月结，绝不拖延；有事就问，不懂别猜。</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>最常见：金额看错、账号输错、大小写不一致</li>
+<li>付款前核对三遍</li>
+<li>日清月结能及时发现错误</li>
+<li>不懂一定要问！</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+真实案例：出纳输错账号一位，50万打到陌生人账户。虽然可追回，但过程漫长。→所以每次转账逐位核对账号！</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 付款多金额大，双人复核制度。<br>
+<span class="industry-tag">商业企业</span> 每天大量收款，收银和出纳严格对账。<br>
+<span class="industry-tag">服务业</span> 每笔金额可能较大，严格复核。<br>
+<span class="industry-tag">建筑业</span> 一笔工程款几百万，输错一位就是大事故。<br>
+</div>
+<hr class="section-sep">
+<h4 id="sec-error-correction">8.2 差错更正——出错了怎么补救？</h4>
+<div class="concept-box"><div class="concept-title">📖 详细讲解</div>
+<p><strong>① 转错账户：</strong> 立即联系银行冻结→联系收款方退回→金额大报警→时间越短追回可能越大</p>
+<p><strong>② 发票开错：</strong> 当月作废重开 | 跨月开红字冲销后重开（发票不能撕毁要全套保存）</p>
+<p><strong>③ 日记账记错：</strong> 用"划线更正法"——错误数字划红线，上面写正确数字，盖私章。不能用涂改液！</p>
+<p><strong>💡 最重要：</strong> 错了就是错了，及时汇报、及时补救是唯一正确的做法。隐瞒错误只会让问题越来越大。</p></div>
+<div class="keypoint-box"><strong>⭐ 核心要点：</strong>
+<ul>
+<li>转错账户→立即联系银行+报警</li>
+<li>发票开错→当月作废跨月红冲</li>
+<li>记账错误→划线更正法（不能涂改）</li>
+<li>及时汇报不要隐瞒</li>
+</ul>
+</div>
+<div class="example-box"><strong>🌰 举个例子</strong><br>
+划线更正法：日记账借方50000写错应为5000→在50000上划红线→上面写5000→盖出纳私章→摘要写"更正本月合计金额"</div>
+<div class="industry-box"><strong>🏭 四大行业特殊说明：</strong><br>
+<span class="industry-tag">制造业</span> 每笔付款后立即核对流水。<br>
+<span class="industry-tag">商业企业</span> 中午和下午各对一次账。<br>
+<span class="industry-tag">服务业</span> 有充分时间核对每一笔。<br>
+<span class="industry-tag">建筑业</span> 大额付款实行"双人复核"制度。<br>
+</div>
+<hr class="section-sep">
+</div>
+
+<hr style="margin:48px 0 16px;border:none;border-top:1px solid var(--border)">
+<p style="text-align:center;color:var(--text-light);font-size:13px">
+  文档版本 v3.0 · 2026 年 6 月 · 观测者企业财务模拟系统<br>
+  共 20 章 63 节 · 面向零基础实习生 · 喵~
+</p>
+</div></div>
+
+<script>
+(function(){
+  // ── 构建侧边栏 ──
+  var boardIds = ["accounting","cashier"];
+  var boardData = {"accounting":{"icon":"📒","title":"会计板块","subtitle":"从零开始学会计——完整会计循环","chapters":[{"icon":"📐","title":"第一章 会计基础","sections":[{"id":"what-is-accounting","title":"1.1 什么是会计？会计是干什么的？"},{"id":"accounting-assumptions","title":"1.2 会计基本假设——做账的\"游戏规则\""},{"id":"accounting-quality","title":"1.3 会计信息质量要求——什么样的账是\"好账\"？"},{"id":"six-elements","title":"1.4 会计六要素——会计世界的\"六个篮子\""},{"id":"accounting-equation","title":"1.5 会计等式——万变不离其宗的\"铁律\""},{"id":"debit-credit","title":"1.6 借贷记账法——\"借\"和\"贷\"到底是什么意思？"},{"id":"accounts-intro","title":"1.7 会计科目与账户——给六要素\"分格子\""},{"id":"accounting-methods","title":"1.8 会计核算方法——做账的\"七步法\""}],"id":"accounting-basics"},{"icon":"💵","title":"第二章 货币资金","sections":[{"id":"cash-in-hand","title":"2.1 库存现金——公司保险柜里的钱"},{"id":"bank-deposits","title":"2.2 银行存款——公司存在银行里的钱"}],"id":"cash-funds"},{"icon":"📋","title":"第三章 应收及预付款项","sections":[{"id":"accounts-receivable","title":"3.1 应收账款——货卖了，钱还没收到"},{"id":"notes-receivable","title":"3.2 应收票据——别人给的\"欠条\"，但比欠条更规范"},{"id":"prepayments","title":"3.3 预付账款——先付钱，货还没到"},{"id":"other-receivables","title":"3.4 其他应收款——除了应收/预付之外的各种\"应收\""},{"id":"bad-debt","title":"3.5 坏账准备——提前\"预防\"收不回来的钱"}],"id":"receivables"},{"icon":"📦","title":"第四章 存货","sections":[{"id":"inventory-intro","title":"4.1 存货概述——什么是存货？"},{"id":"inventory-costing","title":"4.2 存货计价方法——进货价格不一样，怎么算成本？"},{"id":"inventory-count","title":"4.3 存货清查——仓库里的东西和账上对不对？"}],"id":"inventory"},{"icon":"🏗️","title":"第五章 固定资产","sections":[{"id":"fixed-assets-intro","title":"5.1 固定资产概述——什么是固定资产？"},{"id":"depreciation","title":"5.2 固定资产折旧——设备会老，价值会减"},{"id":"fixed-assets-disposal","title":"5.3 固定资产处置——卖出、报废、毁损"}],"id":"fixed-assets"},{"icon":"💳","title":"第七章 流动负债","sections":[{"id":"current-liabilities","title":"7.1 流动负债概述——什么是流动负债？"},{"id":"payroll","title":"7.2 应付职工薪酬——公司欠员工的\"工资袋\""},{"id":"tax-payable","title":"7.3 应交税费——公司要交哪些税？"}],"id":"intangible-assets"},{"icon":"🧠","title":"第六章 无形资产及其他资产","sections":[{"id":"intangible-assets","title":"6.1 无形资产——没有实物形态的\"资产\""},{"id":"long-deferred","title":"6.2 长期待摊费用——提前付了、分几年摊的费用"}],"id":"current-liabilities"},{"icon":"📈","title":"第八章 收入","sections":[{"id":"revenue-intro","title":"8.1 收入概述——公司怎么赚钱？"},{"id":"revenue-recognition","title":"8.2 收入确认的特殊情况"}],"id":"revenue"},{"icon":"📉","title":"第九章 费用","sections":[{"id":"expenses-intro","title":"9.1 费用概述——公司花钱都花在哪了？"},{"id":"cost-expense-distinction","title":"9.2 成本 vs 费用——一字之差，天壤之别"}],"id":"expenses"},{"icon":"💰","title":"第十章 利润及利润分配","sections":[{"id":"profit-structure","title":"10.1 利润构成——利润是怎么算出来的？"},{"id":"profit-distribution","title":"10.2 利润分配——赚了钱怎么分？"},{"id":"period-end-transfer","title":"10.3 期末结转——为什么月底要把损益类科目结平？"}],"id":"profit"},{"icon":"📊","title":"第十一章 财务报表","sections":[{"id":"balance-sheet","title":"11.1 资产负债表——公司的\"家底\""},{"id":"income-statement","title":"11.2 利润表——公司赚了多少？"},{"id":"cash-flow","title":"11.3 现金流量表——公司的\"现金流\""}],"id":"financial-statements"},{"icon":"🏭","title":"第十二章 四大行业成本核算","sections":[{"id":"mf-costing","title":"12.1 制造业成本核算——从原材料到产成品"},{"id":"comm-costing","title":"12.2 商业企业成本核算——买进卖出，赚差价"},{"id":"svc-costing","title":"12.3 服务业成本核算——人工是最大的成本"},{"id":"const-costing","title":"12.4 建筑业成本核算——按工程、按进度"}],"id":"industry-costing"}]},"cashier":{"icon":"💰","title":"出纳板块","subtitle":"从零开始学出纳——管好公司的\"钱袋子\"","chapters":[{"icon":"🔰","title":"第一章 出纳基础","sections":[{"id":"what-is-cashier","title":"1.1 什么是出纳？出纳是财务的\"守门员\""},{"id":"cashier-workflow","title":"1.2 出纳一天的工作流程——从上班到下班"},{"id":"cashier-skills","title":"1.3 出纳必备技能——点钞、验钞、网银操作"}],"id":"cashier-basics"},{"icon":"💵","title":"第二章 现金管理","sections":[{"id":"cash-mgmt-rules","title":"2.1 现金管理制度——哪些能用现金，哪些不能用"},{"id":"cash-transactions","title":"2.2 现金收支业务——出纳每天的基本功"},{"id":"cash-journal","title":"2.3 现金日记账——把现金的\"流水账\"记清楚"},{"id":"cash-count","title":"2.4 现金盘点——保险柜里钱对不对得上？"},{"id":"petty-cash","title":"2.5 备用金管理——给员工准备的\"零花钱\""}],"id":"cashier-cash-mgmt"},{"icon":"🏦","title":"第三章 银行存款管理","sections":[{"id":"bank-account-mgmt","title":"3.1 银行账户管理——公司有哪些银行账户？"},{"id":"bank-transactions","title":"3.2 银行存款收支——公司\"钱进钱出\"的主动脉"},{"id":"bank-journal","title":"3.3 银行日记账——银行存款的\"流水账\""},{"id":"bank-reconciliation","title":"3.4 银行对账与余额调节表——出纳月底最重要的工作"}],"id":"cashier-bank-mgmt"},{"icon":"📜","title":"第四章 票据管理","sections":[{"id":"check-mgmt","title":"4.1 支票管理——最常用的支付工具"},{"id":"bill-mgmt","title":"4.2 汇票管理——比支票更\"高级\"的支付工具"},{"id":"invoice-mgmt","title":"4.3 发票管理——出纳的\"发票经\""}],"id":"cashier-bill-mgmt"},{"icon":"💳","title":"第五章 资金结算","sections":[{"id":"transfer-settlement","title":"5.1 转账结算——银行转账的各种方式"},{"id":"third-party-payment","title":"5.2 第三方支付——微信/支付宝在企业中的应用"}],"id":"cashier-fund-settlement"},{"icon":"👷","title":"第六章 工资发放","sections":[{"id":"payroll-calc","title":"6.1 工资计算与发放——出纳的\"大日子\""},{"id":"payroll-tax","title":"6.2 个税与社保——出纳要懂的\"扣款\"知识"},{"id":"year-end-bonus","title":"6.3 年终奖计算与发放——年底的\"重头戏\""}],"id":"cashier-payroll"},{"icon":"🏛️","title":"第七章 税务申报与缴纳","sections":[{"id":"tax-declaration","title":"7.1 出纳要负责的税务工作"},{"id":"tax-payment","title":"7.2 税款缴纳——出纳的\"交钱\"环节"},{"id":"invoice-verify","title":"7.3 发票认证与进项管理——出纳的\"发票经\""}],"id":"cashier-tax"},{"icon":"⚠️","title":"第八章 出纳差错与防范","sections":[{"id":"common-errors","title":"8.1 出纳常见差错——哪些地方最容易出错？"},{"id":"error-correction","title":"8.2 差错更正——出错了怎么补救？"}],"id":"cashier-error-prevention"}]}};
+  var tabsEl = document.getElementById('boardTabs');
+  var tocEl = document.getElementById('toc');
+  var currentBoard = localStorage.getItem('knowledge_active_board') || 'accounting';
+
+  function renderTOC(boardId) {
+    var data = boardData[boardId];
+    if (!data) return;
+    var allOpen = localStorage.getItem('knowledge_all_open') === 'true';
+    var html = '';
+    html += '<div style="color:rgba(255,255,255,0.9);padding:10px 18px 6px;font-size:15px;font-weight:700;border-bottom:1px solid rgba(255,255,255,0.1)">' + data.icon + ' ' + data.title + '</div>';
+    data.chapters.forEach(function(ch) {
+      var chId = ch.id;
+      var isOpen = allOpen || localStorage.getItem('ch_open_' + chId) !== 'false';
+      var toggleIcon = isOpen ? '▾' : '▸';
+      html += '<div class="toc-chapter" data-ch="' + chId + '" style="cursor:pointer;font-weight:700;padding:10px 18px 5px;font-size:14px;color:rgba(255,255,255,0.8);border-top:1px solid rgba(255,255,255,0.06);margin-top:4px"><span style="float:right">' + toggleIcon + '</span> ' + ch.icon + ' ' + ch.title + '</div>';
+      ch.sections.forEach(function(sec) {
+        html += '<a class="toc-section" href="#sec-' + sec.id + '" style="display:' + (isOpen ? 'block' : 'none') + '">' + sec.title + '</a>';
+      });
+    });
+    // 全部展开/折叠按钮
+    html += '<div style="padding:12px 18px;border-top:1px solid rgba(255,255,255,0.08);margin-top:6px;text-align:center">';
+    html += '<span class="toc-toggle-all" style="cursor:pointer;color:rgba(255,255,255,0.5);font-size:11px">' + (allOpen ? '📖 逐章查看' : '📖 全部展开') + '</span>';
+    html += '</div>';
+    tocEl.innerHTML = html;
+    // 侧边栏点击事件委托
+    tocEl.onclick = function(e) {
+      var target = e.target.closest('.toc-chapter');
+      if (target) {
+        var chId = target.getAttribute('data-ch');
+        if (chId) window.toggleChapterInPage(chId);
+        return;
+      }
+      if (e.target.classList.contains('toc-toggle-all')) {
+        window.toggleAllChapters();
+      }
+    };
+  }
+
+  function renderTabs() {
+    var html = '';
+    boardIds.forEach(function(id) {
+      var d = boardData[id];
+      var active = id === currentBoard ? ' active' : '';
+      html += '<a class="board-tab' + active + '" href="#board-' + id + '" data-board="' + id + '">' + d.icon + ' ' + d.title + '</a>';
+    });
+    tabsEl.innerHTML = html;
+
+    // 绑定点击事件
+    tabsEl.querySelectorAll('.board-tab').forEach(function(tab) {
+      tab.addEventListener('click', function(e) {
+        e.preventDefault();
+        var id = this.getAttribute('data-board');
+        switchBoard(id);
+      });
+    });
+  }
+
+  function switchBoard(id) {
+    if (id === currentBoard) return;
+    currentBoard = id;
+    localStorage.setItem('knowledge_active_board', id);
+    renderTabs();
+    renderTOC(id);
+    // 滚动到对应板块
+    var target = document.getElementById('board-' + id);
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  renderTabs();
+  renderTOC(currentBoard);
+  window.renderTOC = renderTOC; // 暴露给全局onclick
+
+  // 章节折叠函数
+  window.toggleChapterInPage = function(chId) {
+    var group = document.getElementById('ch-group-' + chId);
+    if (!group) return;
+    var isOpen = group.style.display !== 'none';
+    group.style.display = isOpen ? 'none' : 'block';
+    localStorage.setItem('ch_open_' + chId, isOpen ? 'false' : 'true');
+    if (window.renderTOC) renderTOC(currentBoard);
+  };
+
+  window.toggleAllChapters = function() {
+    var allOpen = localStorage.getItem('knowledge_all_open') === 'true';
+    allOpen = !allOpen;
+    localStorage.setItem('knowledge_all_open', allOpen ? 'true' : 'false');
+    document.querySelectorAll('.ch-section-group').forEach(function(g) {
+      g.style.display = allOpen ? 'block' : 'none';
+    });
+    if (window.renderTOC) renderTOC(currentBoard);
+  };
+
+  // ── 滚动时高亮 ──
+  var headings = document.querySelectorAll('#main-content h2, #main-content h3, #main-content h4');
+  var items = [];
+  function refreshItems() {
+    items = [];
+    headings.forEach(function(h) {
+      var a = document.querySelector('#toc a[href="#' + h.id + '"]');
+      if (a) items.push({ el: a, id: h.id });
+    });
+  }
+  refreshItems();
+
+  var currentId = '';
+  window.addEventListener('scroll', function() {
+    var found = '';
+    headings.forEach(function(h) {
+      var rect = h.getBoundingClientRect();
+      if (rect.top <= 130) found = h.id;
+    });
+    if (found && found !== currentId) {
+      currentId = found;
+      items.forEach(function(item) {
+        item.el.classList.toggle('active', item.id === found);
+      });
+    }
+  });
+})();
+
+// ── 搜索功能 ──
+var _savedSections = null;
+
+function getSections() {
+  if (_savedSections) return _savedSections;
+  var secs = [];
+  var h4s = document.querySelectorAll('#main-content h4');
+  h4s.forEach(function(h4) {
+    var els = [h4];
+    var el = h4.nextElementSibling;
+    while (el && el.tagName !== 'H4' && el.tagName !== 'H2' && !el.classList.contains('ch-section-group')) {
+      els.push(el);
+      el = el.nextElementSibling;
+    }
+    secs.push(els);
+  });
+  _savedSections = secs;
+  return secs;
+}
+
+function clearHighlight() {
+  document.querySelectorAll('.search-highlight').forEach(function(m) {
+    var p = m.parentNode;
+    p.replaceChild(document.createTextNode(m.textContent), m);
+    p.normalize();
+  });
+}
+
+function highlightText(el, query) {
+  if (!el || !el.childNodes) return;
+  var regex = new RegExp('(' + query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+  var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null, false);
+  var toReplace = [];
+  var node;
+  while ((node = walker.nextNode())) {
+    if (node.textContent.toLowerCase().includes(query)) {
+      toReplace.push(node);
+    }
+  }
+  toReplace.forEach(function(node) {
+    var frag = document.createDocumentFragment();
+    var text = node.textContent;
+    var lastIdx = 0;
+    var match;
+    regex.lastIndex = 0;
+    while ((match = regex.exec(text)) !== null) {
+      if (match.index > lastIdx) {
+        frag.appendChild(document.createTextNode(text.slice(lastIdx, match.index)));
+      }
+      var mark = document.createElement('mark');
+      mark.className = 'search-highlight';
+      mark.textContent = match[0];
+      frag.appendChild(mark);
+      lastIdx = regex.lastIndex;
+    }
+    if (lastIdx < text.length) {
+      frag.appendChild(document.createTextNode(text.slice(lastIdx)));
+    }
+    node.parentNode.replaceChild(frag, node);
+  });
+}
+
+window.doSearch = function(value) {
+  var query = value.trim().toLowerCase();
+  clearHighlight();
+  // 清除搜索状态
+  document.querySelectorAll('[data-search-hidden]').forEach(function(el) { el.style.display = ''; el.removeAttribute('data-search-hidden'); });
+
+  var sc = document.getElementById('searchCount');
+  var nr = document.getElementById('noResult');
+  var sClear = document.getElementById('searchClear');
+
+  if (!query) {
+    sc.textContent = '';
+    nr.style.display = 'none';
+    sClear.style.display = 'none';
+    return;
+  }
+  sClear.style.display = 'inline';
+
+  var sections = getSections();
+  var matchCount = 0;
+
+  sections.forEach(function(sec) {
+    var sectionText = '';
+    sec.forEach(function(el) { sectionText += el.textContent.toLowerCase() + ' '; });
+
+    if (sectionText.includes(query)) {
+      matchCount++;
+      sec.forEach(function(el) { el.style.display = ''; });
+      sec.forEach(function(el) { highlightText(el, query); });
+    } else {
+      sec.forEach(function(el) { el.style.display = 'none'; el.setAttribute('data-search-hidden', '1'); });
+    }
+  });
+
+  sc.innerHTML = '找到 <strong>' + matchCount + '</strong> 个相关知识点' + (matchCount > 0 ? '（已高亮显示）' : '');
+  nr.style.display = matchCount === 0 ? 'block' : 'none';
+};
+
+window.clearSearch = function() {
+  document.getElementById('searchInput').value = '';
+  window.doSearch('');
+  document.getElementById('searchInput').focus();
+};
+
+// ── 章节速查索引 ──
+function toggleIndex() {
+  var body = document.getElementById('indexBody');
+  var toggle = document.getElementById('indexToggle');
+  var isOpen = body.style.display !== 'none';
+  body.style.display = isOpen ? 'none' : 'block';
+  toggle.classList.toggle('open', !isOpen);
+}
+// 默认展开索引（首次访问）
+(function() {
+  if (!localStorage.getItem('knowledge_index_shown')) {
+    document.getElementById('indexBody').style.display = 'block';
+    document.getElementById('indexToggle').classList.add('open');
+    localStorage.setItem('knowledge_index_shown', '1');
+  }
+})();
+
+// ── 暗色模式 ──
+function setThemeUI(isDark) {
+  var t1 = document.getElementById('themeToggle');
+  var t2 = document.getElementById('sidebarThemeToggle');
+  if (t1) t1.textContent = isDark ? '☀️ 亮色' : '\u{1F319} 暗色';
+  if (t2) t2.textContent = isDark ? '☀️ 亮色模式' : '\u{1F319} 暗色模式';
+}
+function toggleTheme() {
+  var html = document.documentElement;
+  var isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? '' : 'dark');
+  localStorage.setItem('knowledge_dark_theme', isDark ? '0' : '1');
+  setThemeUI(!isDark);
+}
+(function() {
+  if (localStorage.getItem('knowledge_dark_theme') === '1') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    setThemeUI(true);
+  }
+})();
+
+// ── 阅读进度条 ──
+window.addEventListener('scroll', function() {
+  var scrollTop = window.scrollY || document.documentElement.scrollTop;
+  var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  if (docHeight > 0) {
+    var progress = Math.min(scrollTop / docHeight * 100, 100);
+    document.getElementById('readingProgress').style.width = progress + '%';
+  }
+});
+
+// ── 书签 ──
+function getBookmarks() {
+  try { return JSON.parse(localStorage.getItem('knowledge_bookmarks') || '[]'); } catch(e) { return []; }
+}
+function saveBookmarks(arr) {
+  localStorage.setItem('knowledge_bookmarks', JSON.stringify(arr));
+}
+function updateBookmarkUI() {
+  var bms = getBookmarks();
+  document.querySelectorAll('.bookmark-btn').forEach(function(btn) {
+    var id = btn.getAttribute('data-sec-id');
+    btn.classList.toggle('active', bms.indexOf(id) !== -1);
+  });
+  document.getElementById('bookmarkCount').textContent = bms.length;
+  var fw = document.getElementById('bookmarkFilter');
+  fw.classList.toggle('active', localStorage.getItem('knowledge_bm_filter') === '1');
+  if (localStorage.getItem('knowledge_bm_filter') === '1') applyBookmarkFilter();
+}
+function applyBookmarkFilter() {
+  var bms = getBookmarks();
+  var isFilter = localStorage.getItem('knowledge_bm_filter') === '1';
+  if (!isFilter) { showAllSections(); document.getElementById('bookmarkFilter').classList.remove('active'); return; }
+  document.getElementById('bookmarkFilter').classList.add('active');
+  var h4s = document.querySelectorAll('#main-content h4');
+  h4s.forEach(function(h4) {
+    var id = h4.id;
+    var els = [h4];
+    var el = h4.nextElementSibling;
+    while (el && el.tagName !== 'H4' && el.tagName !== 'H2' && !el.classList.contains('ch-section-group')) {
+      els.push(el);
+      el = el.nextElementSibling;
+    }
+    if (bms.indexOf(id) !== -1) {
+      els.forEach(function(e) { e.style.display = ''; });
+    } else {
+      els.forEach(function(e) { e.style.display = 'none'; });
+    }
+  });
+}
+function showAllSections() {
+  document.querySelectorAll('#main-content h4').forEach(function(h4) {
+    var els = [h4];
+    var el = h4.nextElementSibling;
+    while (el && el.tagName !== 'H4' && el.tagName !== 'H2' && !el.classList.contains('ch-section-group')) {
+      els.push(el);
+      el = el.nextElementSibling;
+    }
+    els.forEach(function(e) { e.style.display = ''; });
+  });
+}
+function toggleBookmarkFilter() {
+  var isFilter = localStorage.getItem('knowledge_bm_filter') === '1';
+  localStorage.setItem('knowledge_bm_filter', isFilter ? '0' : '1');
+  if (isFilter) { showAllSections(); document.getElementById('bookmarkFilter').classList.remove('active'); }
+  else { applyBookmarkFilter(); }
+  // Clear search when filtering
+  document.getElementById('searchInput').value = '';
+  window.doSearch('');
+}
+function toggleBookmark(h4Id, btn) {
+  var bms = getBookmarks();
+  var idx = bms.indexOf(h4Id);
+  if (idx === -1) { bms.push(h4Id); } else { bms.splice(idx, 1); }
+  saveBookmarks(bms);
+  btn.classList.toggle('active', idx === -1);
+  document.getElementById('bookmarkCount').textContent = bms.length;
+}
+// 为每个 h4 添加书签按钮
+(function() {
+  document.querySelectorAll('#main-content h4').forEach(function(h4) {
+    if (h4.id && h4.id.startsWith('sec-')) {
+      var btn = document.createElement('span');
+      btn.className = 'bookmark-btn';
+      btn.textContent = '⭐';
+      btn.setAttribute('data-sec-id', h4.id);
+      btn.title = '点击添加书签';
+      btn.onclick = function(e) { e.stopPropagation(); toggleBookmark(h4.id, btn); };
+      h4.insertBefore(btn, h4.firstChild);
+    }
+  });
+  updateBookmarkUI();
+})();
+
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('sidebar-overlay').classList.toggle('open');
+}
+</script>
+</body>
+</html>
