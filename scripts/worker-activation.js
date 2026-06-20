@@ -20,6 +20,10 @@ function getMasterKey(env) {
   return env?.MASTER_KEY || '6125-9D04-84E5-007F'
 }
 
+// 🌐 蓝奏云下载链接（国内用户通道，发新版时更新这里）
+const LANZOU_URL = 'https://wwapf.lanzouw.com/iztaD3sfr8qd'
+const LANZOU_PWD = 'fyr3'
+
 // 🌐 单设备配置：同一激活码绑定 1 台设备（固定指纹，平台版专用）
 const MAX_DEVICES = 1
 
@@ -468,11 +472,11 @@ h1{font-size:22px;font-weight:700;margin-bottom:6px;background:linear-gradient(1
     </div>
   </a>
 
-  <a class="dl-btn lanzou-btn" href="https://wwapf.lanzouw.com/iztaD3sfr8qd" target="_blank">
+  <a class="dl-btn lanzou-btn" href="${LANZOU_URL}" target="_blank">
     <div class="icon" style="background:rgba(7,193,96,0.2)">☁️</div>
     <div class="info">
       <div class="name">蓝奏云下载</div>
-      <div class="hint">国内高速 · 无需VPN · 提取码：fyr3</div>
+      <div class="hint">国内高速 · 无需VPN · 提取码：${LANZOU_PWD}</div>
     </div>
   </a>
 

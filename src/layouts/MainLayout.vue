@@ -403,7 +403,7 @@ async function checkLatestVersion() {
       latestVersion.value = data.version
       if (data.version && data.version !== APP_VERSION) {
         ElMessageBox.alert(
-          `发现新版本 ${data.version}（当前 ${APP_VERSION}）<br>点击"去下载"获取最新版`,
+          `发现新版本 ${data.version}（当前 ${APP_VERSION}）<br>下载新版覆盖安装即可，<b>激活码不会丢失</b>`,
           '📦 有新版本',
           { confirmButtonText: '去下载', cancelButtonText: '稍后', dangerouslyUseHTMLString: true, type: 'info' }
         ).then(() => {
