@@ -56,6 +56,10 @@ export default {
     if (path === '/dl') {
       return handleDirectDownload(env)
     }
+    // 🔄 版本检查 API（App自动更新用）
+    if (path === '/version') {
+      return handleVersionCheck(env)
+    }
 
     const action = url.searchParams.get('action') || 'verify'
 
@@ -261,6 +265,41 @@ async function handleAdmin(url, env, request) {
     default:
       return json({ commands: ['stats', 'revoke', 'import'] })
   }
+}
+
+// ─── 版本检查 API ───
+async function handleVersionCheck(env) {
+  let releaseInfo = null
+  try {
+    const cached = await env.ACTIVATION_DB?.get('latest_release', 'json')
+    if (cached && cached.url) releaseInfo = cached
+  } catch {}
+  if (!releaseInfo) {
+    try {
+      const res = await fetch('https://api.github.com/repos/guancezheZ/kanshazhe-financial/releases/latest', {
+        headers: { 'User-Agent': 'kanshazhe-worker', 'Accept': 'application/vnd.github.v3+json' },
+        signal: AbortSignal.timeout(5000),
+      })
+      if (res.ok) {
+        const data = await res.json()
+        const asset = data.assets?.find(a => a.name?.endsWith('.exe'))
+        if (asset) {
+          releaseInfo = { version: data.tag_name, url: asset.browser_download_url, name: asset.name, updatedAt: data.published_at }
+          try { await env.ACTIVATION_DB?.put('latest_release', JSON.stringify(releaseInfo), { expirationTtl: 3600 }) } catch {}
+        }
+      }
+    } catch {}
+  }
+  if (!releaseInfo) {
+    return json({ version: 'v0.1.0', downloadUrl: 'https://jiaqinw.xyz/dl', updateUrl: 'https://jiaqinw.xyz/update' })
+  }
+  return json({
+    version: releaseInfo.version,
+    downloadUrl: 'https://jiaqinw.xyz/dl',
+    updateUrl: 'https://jiaqinw.xyz/update',
+    assetName: releaseInfo.name,
+    updatedAt: releaseInfo.updatedAt,
+  })
 }
 
 // ─── 下载页面（自动获取最新版本） ───

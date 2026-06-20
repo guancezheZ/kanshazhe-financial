@@ -351,15 +351,39 @@ async function openDoc(filename) {
 }
 
 async function checkUpdate() {
-  if (!isTauri.value) {
-    window.open('https://github.com/guancezheZ/kanshazhe-financial/releases', '_blank')
-    return
-  }
+  // 先联网检查最新版
   try {
-    const { invoke } = await import('@tauri-apps/api/core')
-    await invoke('open_url', { url: 'https://github.com/guancezheZ/kanshazhe-financial/releases' })
-  } catch (e) {
-    window.open('https://github.com/guancezheZ/kanshazhe-financial/releases', '_blank')
+    const res = await fetch('https://jiaqinw.xyz/version', { signal: AbortSignal.timeout(5000) })
+    if (res.ok) {
+      const data = await res.json()
+      latestVersion.value = data.version
+      if (data.version && data.version !== APP_VERSION) {
+        // 有新版本 → 弹窗提示下载
+        ElMessageBox.alert(
+          `当前版本 ${APP_VERSION} → 最新 ${data.version}<br>点击"去下载"获取新版`,
+          '📦 发现新版本',
+          { confirmButtonText: '去下载', cancelButtonText: '取消', dangerouslyUseHTMLString: true, type: 'info' }
+        ).then(() => {
+          if (isTauri.value) {
+            import('@tauri-apps/api/core').then(({ invoke }) => invoke('open_url', { url: 'https://jiaqinw.xyz/dl' }))
+          } else {
+            window.open('https://jiaqinw.xyz/dl', '_blank')
+          }
+        }).catch(() => {})
+        return
+      }
+    }
+  } catch { /* 网络不通则调浏览器 */ }
+
+  // 无新版本或检查失败 → 打开更新页
+  const url = 'https://jiaqinw.xyz/update'
+  if (isTauri.value) {
+    try {
+      const { invoke } = await import('@tauri-apps/api/core')
+      await invoke('open_url', { url })
+    } catch { window.open(url, '_blank') }
+  } else {
+    window.open(url, '_blank')
   }
 }
 
@@ -367,6 +391,32 @@ async function checkUpdate() {
 const store = useStore()
 const router = useRouter()
 const route = useRoute()
+
+// 🔄 自动版本检查
+const latestVersion = ref(null)
+const APP_VERSION = 'v0.1.0'
+async function checkLatestVersion() {
+  try {
+    const res = await fetch('https://jiaqinw.xyz/version', { signal: AbortSignal.timeout(5000) })
+    if (res.ok) {
+      const data = await res.json()
+      latestVersion.value = data.version
+      if (data.version && data.version !== APP_VERSION) {
+        ElMessageBox.alert(
+          `发现新版本 ${data.version}（当前 ${APP_VERSION}）<br>点击"去下载"获取最新版`,
+          '📦 有新版本',
+          { confirmButtonText: '去下载', cancelButtonText: '稍后', dangerouslyUseHTMLString: true, type: 'info' }
+        ).then(() => {
+          if (isTauri.value) {
+            import('@tauri-apps/api/core').then(({ invoke }) => invoke('open_url', { url: 'https://jiaqinw.xyz/dl' }))
+          } else {
+            window.open('https://jiaqinw.xyz/dl', '_blank')
+          }
+        }).catch(() => {})
+      }
+    }
+  } catch { /* 网络不通不打扰用户 */ }
+}
 
 const isCollapsed = ref(false)
 const sidebarWidth = computed(() => (isCollapsed.value ? '64px' : '220px'))
@@ -566,6 +616,9 @@ onMounted(() => {
   }).catch(() => {
     // 静默失败，不影响用户操作
   })
+
+  // 🔄 自动检测最新版本
+  setTimeout(() => checkLatestVersion(), 3000) // 延迟3秒，不影响首页加载
 })
 
 onUnmounted(() => {
