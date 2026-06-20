@@ -27,7 +27,7 @@ const tasks = [
       { subjectCode: '222101', debit: 28000, credit: 0, summary: '缴纳6月增值税', explanation: '应交增值税借方减少28,000元，反映增值税纳税义务已履行清偿。' },
       { subjectCode: '222103', debit: 1960, credit: 0, summary: '缴纳城建税（28,000×7%）', explanation: '城建税以实际缴纳增值税为计税依据。城市7%、县城5%、其他地区1%。本例按市区7%计算。' },
       { subjectCode: '222104', debit: 1400, credit: 0, summary: '缴纳教育费附加（28,000×5%）', explanation: '教育费附加3%（840元）+地方教育附加2%（560元）合计1,400元。借记应交税费减少负债。' },
-      { subjectCode: '100201', debit: 0, credit: 31360, summary: '缴纳上月税费', explanation: '工商银行存款减少31,360元，用于缴纳税款。资金流出企业。' },
+      { subjectCode: '100201', debit: 0, credit: 31360, summary: '缴纳上月税费', explanation: '工商银行存款减少31,360元，用于缴纳税款。资金流出企业。' , cashFlowItem: 'cf-op4', cashFlowExplanation: '缴纳税费支出（配对科目222101），属于"支付的各项税费"——经营活动现金流出。'},
     ],
     documents: [
       { type: 'bank', label: '电子缴税凭证', date: '2026-07-01', totalAmount: 31360, payer: '鼎立建筑工程有限公司', payeeName: '国家金库', content: '缴纳6月增值税及附加', refNo: 'JS202607010001' },
@@ -43,7 +43,7 @@ const tasks = [
     tip: '社保费由单位承担和个人承担两部分组成，出纳需按月准时缴纳。借记"应付职工薪酬-社保"，贷记"银行存款"。缴费后可到社保局网站打印缴费凭证。',
     entries: [
       { subjectCode: '221102', debit: 42000, credit: 0, summary: '缴纳6月社保费', explanation: '应付职工薪酬-社保减少42,000元，清偿对社保机构的缴费义务。' },
-      { subjectCode: '100201', debit: 0, credit: 42000, summary: '社保缴费转账', explanation: '工商银行存款减少42,000元，用于缴纳社保费。' },
+      { subjectCode: '100201', debit: 0, credit: 42000, summary: '社保缴费转账', explanation: '工商银行存款减少42,000元，用于缴纳社保费。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221102），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'},
     ],
     documents: [
       { type: 'bank', label: '社保缴费回单', date: '2026-07-01', totalAmount: 42000, payer: '鼎立建筑工程有限公司', payeeName: '社会保险事业管理中心', content: '2026年6月社保费', refNo: 'SB202607010001' },
@@ -59,7 +59,7 @@ const tasks = [
     tip: '实际发放工资时借记"应付职工薪酬-工资"，贷记"银行存款"。上月已计提的应付职工薪酬清偿后余额归零。出纳需核对代发清单无误后提交银行办理。',
     entries: [
       { subjectCode: '221101', debit: 135000, credit: 0, summary: '发放6月工资', explanation: '应付职工薪酬-工资减少135,000元，清偿对职工的工资负债。' },
-      { subjectCode: '100201', debit: 0, credit: 135000, summary: '银行代发工资', explanation: '工商银行存款减少135,000元，通过银行代发系统发放至员工个人账户。' },
+      { subjectCode: '100201', debit: 0, credit: 135000, summary: '银行代发工资', explanation: '工商银行存款减少135,000元，通过银行代发系统发放至员工个人账户。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221101），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'},
     ],
     documents: [
       { type: 'bank', label: '代发工资回单', date: '2026-07-02', totalAmount: 135000, payer: '鼎立建筑工程有限公司', payeeName: '公司全体员工', content: '6月工资发放', refNo: 'GZ202607020001' },
@@ -79,7 +79,7 @@ const tasks = [
     tip: '跨年度的保险费先通过"预付账款"归集，再按月摊销计入工程成本。工程保险是建筑业风险管理的重要手段，保费属于合同履约成本-其他直接费用。',
     entries: [
       { subjectCode: '1123', debit: 120000, credit: 0, summary: '预付全年工程保险费', explanation: '预付账款增加120,000元。一次性支付全年保费，先作为预付款项，后续按月摊销计入工程成本。' },
-      { subjectCode: '100201', debit: 0, credit: 120000, summary: '支付全年保险保费', explanation: '工商银行存款减少120,000元，一次性支付全年保险费用。' },
+      { subjectCode: '100201', debit: 0, credit: 120000, summary: '支付全年保险保费', explanation: '工商银行存款减少120,000元，一次性支付全年保险费用。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目1123），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'receipt', label: '保险发票', date: '2026-07-03', totalAmount: 120000, docTitle: '建筑工程一切险保险费发票', items: [{ name: '建筑工程一切险保费', qty: 1, price: 90000, amount: 90000 }, { name: '第三方责任险保费', qty: 1, price: 30000, amount: 30000 }], stampText: '中国人民财产保险股份有限公司 发票专用章' },
@@ -95,7 +95,7 @@ const tasks = [
     tip: '预付物资采购款先通过"预付账款"核算，待物资验收入库或领用时再转入工程成本。借记"预付账款"，贷记"银行存款"。',
     entries: [
       { subjectCode: '1123', debit: 50000, credit: 0, summary: '预付雨季防护物资款', explanation: '预付账款增加50,000元。防护物资尚未全部到货，先作为预付款项。待物资领用时再计入合同履约成本。' },
-      { subjectCode: '100201', debit: 0, credit: 50000, summary: '支付防护物资预付款', explanation: '工商银行存款减少50,000元，预付防雨布、排水泵等雨季防护物资采购款。' },
+      { subjectCode: '100201', debit: 0, credit: 50000, summary: '支付防护物资预付款', explanation: '工商银行存款减少50,000元，预付防雨布、排水泵等雨季防护物资采购款。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目1123），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'bank', label: '转账回单', date: '2026-07-04', totalAmount: 50000, payer: '鼎立建筑工程有限公司', payeeName: '华东建材贸易有限公司', content: '预付雨季防护物资采购款', refNo: 'YF202607040001' },
@@ -127,7 +127,7 @@ const tasks = [
     tip: '劳保用品直接用于工程现场施工人员，计入"合同履约成本-其他直接费用"。借记"合同履约成本"，贷记"库存现金"。劳保用品是为保障施工安全进行的必要支出。',
     entries: [
       { subjectCode: '540105', debit: 3000, credit: 0, summary: '现金采购防雨劳保用品', explanation: '其他直接费用增加3,000元。雨衣、雨靴等劳保用品直接用于施工现场，属于工程成本中的其他直接费用。' },
-      { subjectCode: '1001', debit: 0, credit: 3000, summary: '支付防雨劳保用品', explanation: '库存现金减少3,000元，用于采购防雨劳保用品并发放至施工班组。' },
+      { subjectCode: '1001', debit: 0, credit: 3000, summary: '支付防雨劳保用品', explanation: '库存现金减少3,000元，用于采购防雨劳保用品并发放至施工班组。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目540105），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'receipt', label: '采购收据', date: '2026-07-06', totalAmount: 3000, docTitle: '劳保用品采购清单', items: [{ name: '雨衣（20件）', qty: 20, price: 80, amount: 1600 }, { name: '雨靴（20双）', qty: 20, price: 70, amount: 1400 }], stampText: '五金劳保商店 收款章' },
@@ -147,7 +147,7 @@ const tasks = [
     tip: '施工机械的检测费属于"合同履约成本-机械使用费"。建筑业施工机械的检测、维修等费用均计入机械使用费，是工程成本的组成部分。',
     entries: [
       { subjectCode: '540104', debit: 8000, credit: 0, summary: '塔吊故障检测费', explanation: '机械使用费增加8,000元。塔吊故障检测费是维持施工机械正常运转的必要支出，计入合同履约成本-机械使用费。' },
-      { subjectCode: '100201', debit: 0, credit: 8000, summary: '支付检测费', explanation: '工商银行存款减少8,000元，用于支付特种设备检测服务费。' },
+      { subjectCode: '100201', debit: 0, credit: 8000, summary: '支付检测费', explanation: '工商银行存款减少8,000元，用于支付特种设备检测服务费。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目540104），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'bank', label: '转账回单', date: '2026-07-07', totalAmount: 8000, payer: '鼎立建筑工程有限公司', payeeName: '安达特种设备检测有限公司', content: '塔吊故障检测服务费', refNo: 'JC202607070001' },
@@ -180,7 +180,7 @@ const tasks = [
     tip: '雨季停工损失属于"合同履约成本-其他直接费用"。暴雨等不可抗力导致的停工损失应计入工程成本，这是建筑业雨季施工的特殊成本项目。',
     entries: [
       { subjectCode: '540105', debit: 7500, credit: 0, summary: '暴雨停工损失（抽水费+清理费）', explanation: '其他直接费用增加7,500元。暴雨导致的临时停工损失是雨季施工不可避免的额外成本，计入合同履约成本-其他直接费用。' },
-      { subjectCode: '1001', debit: 0, credit: 7500, summary: '现金支付停工费用', explanation: '库存现金减少7,500元。支付抽水设备租赁及临时用工费用。' },
+      { subjectCode: '1001', debit: 0, credit: 7500, summary: '现金支付停工费用', explanation: '库存现金减少7,500元。支付抽水设备租赁及临时用工费用。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目540105），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'receipt', label: '临时用工工资表', date: '2026-07-09', totalAmount: 4500, docTitle: '雨季临时清理用工工资表', items: [{ name: '临时用工（15人×2天×150元）', qty: 30, price: 150, amount: 4500 }], stampText: '项目部章' },
@@ -197,7 +197,7 @@ const tasks = [
     tip: '施工排水是雨季施工的常规措施，排水设备租赁费计入"合同履约成本-机械使用费"。雨季施工增加费（含排水、防雨、保温等）在建筑业成本核算中有单独归集科目。',
     entries: [
       { subjectCode: '540104', debit: 16000, credit: 0, summary: '大功率排水泵本月租赁费', explanation: '机械使用费增加16,000元。排水泵租赁费属于机械使用费中的租赁费用，是为保证雨季正常施工的必要支出。' },
-      { subjectCode: '100201', debit: 0, credit: 16000, summary: '支付排水泵租赁费', explanation: '工商银行存款减少16,000元，支付排水设备租赁费用。' },
+      { subjectCode: '100201', debit: 0, credit: 16000, summary: '支付排水泵租赁费', explanation: '工商银行存款减少16,000元，支付排水设备租赁费用。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目540104），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'bank', label: '转账回单', date: '2026-07-10', totalAmount: 16000, payer: '鼎立建筑工程有限公司', payeeName: '永固机械设备租赁有限公司', content: '排水泵7月租赁费', refNo: 'ZL202607100001' },
@@ -234,7 +234,7 @@ const tasks = [
     tip: '支付供应商欠款时，借记"应付账款"，贷记"银行存款"。出纳需核对采购合同、入库单和发票，确保付款金额准确无误。大额付款须双人复核。',
     entries: [
       { subjectCode: '220202', debit: 90400, credit: 0, summary: '支付丁公司材料款', explanation: '应付账款-丁公司减少90,400元，清偿对供应商的采购负债。' },
-      { subjectCode: '100201', debit: 0, credit: 90400, summary: '转账支付材料款', explanation: '工商银行存款减少90,400元，用于支付采购欠款。' },
+      { subjectCode: '100201', debit: 0, credit: 90400, summary: '转账支付材料款', explanation: '工商银行存款减少90,400元，用于支付采购欠款。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目220202），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'bank', label: '付款回单', date: '2026-07-12', totalAmount: 90400, payer: '鼎立建筑工程有限公司', payeeName: '丁公司', content: '支付材料采购款', refNo: 'FK202607120001' },
@@ -328,7 +328,7 @@ const tasks = [
     tip: '银行手续费属于"财务费用"，银行直接从账户扣收。出纳需逐笔核对银行扣款金额和明细。',
     entries: [
       { subjectCode: '6603', debit: 180, credit: 0, summary: '银行账户管理费及转账手续费', explanation: '财务费用增加180元。银行账户管理费和转账手续费属于融资和结算费用，计入财务费用。' },
-      { subjectCode: '100201', debit: 0, credit: 180, summary: '银行直接扣收', explanation: '工商银行存款减少180元，银行直接扣收手续费。' },
+      { subjectCode: '100201', debit: 0, credit: 180, summary: '银行直接扣收', explanation: '工商银行存款减少180元，银行直接扣收手续费。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'bank', label: '银行扣款通知', date: '2026-07-15', totalAmount: 180, payer: '鼎立建筑工程有限公司', payeeName: '中国工商银行', content: '7月账户管理费及手续费', refNo: 'YH202607150001' },
@@ -344,7 +344,7 @@ const tasks = [
     tip: '发放工资时借记"应付职工薪酬-工资"，贷记"银行存款"。上月计提的工资负债在发放后清偿。',
     entries: [
       { subjectCode: '221101', debit: 153000, credit: 0, summary: '发放7月工资', explanation: '应付职工薪酬-工资减少153,000元，清偿7月计提的职工薪酬负债。' },
-      { subjectCode: '100201', debit: 0, credit: 153000, summary: '银行代发工资', explanation: '工商银行存款减少153,000元，通过银行代发系统发放工资。' },
+      { subjectCode: '100201', debit: 0, credit: 153000, summary: '银行代发工资', explanation: '工商银行存款减少153,000元，通过银行代发系统发放工资。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221101），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'},
     ],
     documents: [
       { type: 'bank', label: '代发工资回单', date: '2026-07-17', totalAmount: 153000, payer: '鼎立建筑工程有限公司', payeeName: '公司全体员工', content: '2026年7月工资', refNo: 'GZ202607170001' },
@@ -364,7 +364,7 @@ const tasks = [
     tip: '搭设防雨棚属于雨季施工增加费中的防护措施费用，计入"合同履约成本-其他直接费用"。',
     entries: [
       { subjectCode: '540105', debit: 13000, credit: 0, summary: '搭设防雨棚（材料+人工）', explanation: '其他直接费用增加13,000元。防雨棚搭设是雨季施工的必要防护措施，计入合同履约成本-其他直接费用。' },
-      { subjectCode: '100201', debit: 0, credit: 13000, summary: '转账支付防雨棚费用', explanation: '工商银行存款减少13,000元，用于支付防雨棚搭设费用。' },
+      { subjectCode: '100201', debit: 0, credit: 13000, summary: '转账支付防雨棚费用', explanation: '工商银行存款减少13,000元，用于支付防雨棚搭设费用。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目540105），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'receipt', label: '材料采购收据', date: '2026-07-18', totalAmount: 8000, docTitle: '防雨棚材料采购清单', items: [{ name: '彩钢瓦', qty: 100, unit: '平米', price: 50, amount: 5000 }, { name: '钢管脚手架', qty: 50, unit: '根', price: 40, amount: 2000 }, { name: '铁丝及扣件', qty: 1, unit: '批', price: 1000, amount: 1000 }], stampText: '建材店收款章' },
@@ -380,7 +380,7 @@ const tasks = [
     tip: '与工程直接相关的差旅费计入"合同履约成本-其他直接费用"。为确定设备维修方案发生的差旅费，属于工程项目支出的组成部分。',
     entries: [
       { subjectCode: '540105', debit: 4600, credit: 0, summary: '考察塔吊大修方案差旅费', explanation: '其他直接费用增加4,600元。为确定塔吊大修方案而发生的差旅费，与工程项目直接相关。' },
-      { subjectCode: '1001', debit: 0, credit: 4600, summary: '现金报销差旅费', explanation: '库存现金减少4,600元，用于支付考察差旅费报销款。' },
+      { subjectCode: '1001', debit: 0, credit: 4600, summary: '现金报销差旅费', explanation: '库存现金减少4,600元，用于支付考察差旅费报销款。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目540105），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'receipt', label: '差旅费报销单', date: '2026-07-19', totalAmount: 4600, docTitle: '差旅费报销单', items: [{ name: '往返高铁票（2人）', qty: 4, price: 500, amount: 2000 }, { name: '住宿费（2间×2晚）', qty: 4, price: 400, amount: 1600 }, { name: '出差餐补（2人×2天）', qty: 4, price: 250, amount: 1000 }], stampText: '财务审核专用章' },
@@ -396,7 +396,7 @@ const tasks = [
     tip: '支付分包工程款时借记"应付账款"，贷记"银行存款"。出纳需核实分包工程进度确认单、发票和合同约定付款条件后方可付款。',
     entries: [
       { subjectCode: '220201', debit: 218000, credit: 0, summary: '支付大地基础分包工程款', explanation: '应付账款减少218,000元。支付分包工程结算款，清偿对分包单位的债务。' },
-      { subjectCode: '100201', debit: 0, credit: 218000, summary: '转账支付分包款', explanation: '工商银行存款减少218,000元，用于支付分包工程结算款。' },
+      { subjectCode: '100201', debit: 0, credit: 218000, summary: '转账支付分包款', explanation: '工商银行存款减少218,000元，用于支付分包工程结算款。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目220201），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'bank', label: '付款回单', date: '2026-07-20', totalAmount: 218000, payer: '鼎立建筑工程有限公司', payeeName: '大地基础工程有限公司', content: '支付7月分包工程进度款', refNo: 'FK202607200001' },
@@ -477,7 +477,7 @@ const tasks = [
     entries: [
       { subjectCode: '660201', debit: 5000, credit: 0, summary: '公司办公费', explanation: '管理费用增加5,000元。行政管理部门办公用品及耗材费用。' },
       { subjectCode: '540106', debit: 4500, credit: 0, summary: '项目部水电费', explanation: '间接费用增加4,500元。施工现场水电费属于间接费用。' },
-      { subjectCode: '100201', debit: 0, credit: 9500, summary: '转账支付办公水电费', explanation: '工商银行存款减少9,500元。' },
+      { subjectCode: '100201', debit: 0, credit: 9500, summary: '转账支付办公水电费', explanation: '工商银行存款减少9,500元。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目660201），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'receipt', label: '办公费发票', date: '2026-07-23', totalAmount: 5000, docTitle: '办公用品采购发票', items: [{ name: '打印纸、墨盒等办公耗材', qty: 1, price: 5000, amount: 5000 }], stampText: '办公用品公司发票专用章' },
@@ -494,7 +494,7 @@ const tasks = [
     tip: '支付设备大修费时，借记"其他应付款"，贷记"银行存款"。出纳需确认维修竣工验收单已签署后再付款。',
     entries: [
       { subjectCode: '2241', debit: 65000, credit: 0, summary: '支付塔吊大修欠款', explanation: '其他应付款减少65,000元。清偿此前计提的应付塔吊大修费用。' },
-      { subjectCode: '100201', debit: 0, credit: 65000, summary: '转账支付大修费', explanation: '工商银行存款减少65,000元，用于支付塔吊大修费用。' },
+      { subjectCode: '100201', debit: 0, credit: 65000, summary: '转账支付大修费', explanation: '工商银行存款减少65,000元，用于支付塔吊大修费用。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目2241），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'bank', label: '付款回单', date: '2026-07-24', totalAmount: 65000, payer: '鼎立建筑工程有限公司', payeeName: '中联重科售后服务有限公司', content: '塔吊大修费用', refNo: 'FK202607240001' },

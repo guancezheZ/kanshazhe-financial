@@ -1922,6 +1922,32 @@ describe('商业企业教程数据', () => {
       expect(tagCount[tag]).toBeGreaterThanOrEqual(1)
     }
   })
+
+
+  it('all months cash entries have cashFlowItem (non internal transfer)', () => {
+    const CASH_PREFIXES = ['1001', '1002', '1012']
+    const VALID_CF = ['cf-op','cf-op2','cf-op3','cf-op4','cf-op5','cf-op6','cf-inv','cf-inv2','cf-inv3','cf-inv4','cf-fin','cf-fin2','cf-fin3','cf-fin4']
+    const months = ['01','02','03','04','05','06','07','08','09','10','11','12']
+    for (const m of months) {
+      const tasks = getScenarioTutorials('commercial', m)
+      for (const t of tasks) {
+        const entries = t.entries || []
+        if (entries.length === 0) continue
+        for (const e of entries) {
+          const isCash = CASH_PREFIXES.some(p => (e.subjectCode||'').startsWith(p))
+          if (!isCash) continue
+          const paired = entries.some(x => x !== e && CASH_PREFIXES.some(p => (x.subjectCode||'').startsWith(p)))
+          if (paired) continue
+          if (e.cashFlowItem) {
+            expect(VALID_CF).toContain(e.cashFlowItem)
+            expect(e.cashFlowExplanation).toBeTruthy()
+          } else {
+            expect(e.cashFlowItem).toBeTruthy()
+          }
+        }
+      }
+    }
+  })
 })
 
 // ═══════════════════════════════════════════

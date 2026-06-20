@@ -31,7 +31,7 @@ const nov = [
     tip: '请根据业务场景理解并完成本业务的分录录入。',
     entries: [
       { subjectCode: '222101', summary: '缴纳10月增值税', debit: 20800, credit: 0, explanation: '10月底计提了应交增值税20,800元，本月缴纳，负债减少。' },
-      { subjectCode: '100201', summary: '缴纳税款', debit: 0, credit: 20800, explanation: '银行存款减少20,800元。' },
+      { subjectCode: '100201', summary: '缴纳税款', debit: 0, credit: 20800, explanation: '银行存款减少20,800元。' , cashFlowItem: 'cf-op4', cashFlowExplanation: '缴纳税费支出（配对科目222101），属于"支付的各项税费"——经营活动现金流出。'},
     ],
     documents: [
       { type: 'receipt', label: '税收缴款书', docTitle: '税收缴款书', date: '2026-11-02', totalAmount: 20800, payer: '本公司', stampText: '国家税务总局\n征收章', items: [{ name: '增值税（10月）', qty: 1, price: 20800, amount: 20800 }] },
@@ -46,7 +46,7 @@ const nov = [
     tip: '请根据业务场景理解并完成本业务的分录录入。',
     entries: [
       { subjectCode: '222103', summary: '缴纳10月城建税', debit: 1456, credit: 0, explanation: '10月底计提1,456元，本月缴纳。' },
-      { subjectCode: '100201', summary: '缴纳税款', debit: 0, credit: 1456, explanation: '银行存款减少1,456元。' },
+      { subjectCode: '100201', summary: '缴纳税款', debit: 0, credit: 1456, explanation: '银行存款减少1,456元。' , cashFlowItem: 'cf-op4', cashFlowExplanation: '缴纳税费支出（配对科目222103），属于"支付的各项税费"——经营活动现金流出。'},
     ],
     documents: [
       { type: 'receipt', label: '税收缴款书', docTitle: '城建税缴款书', date: '2026-11-02', totalAmount: 1456, payer: '本公司', stampText: '国家税务总局\n征收章', items: [{ name: '城建税（10月）', qty: 1, price: 1456, amount: 1456 }] },
@@ -61,7 +61,7 @@ const nov = [
     tip: '请根据业务场景理解并完成本业务的分录录入。',
     entries: [
       { subjectCode: '222104', summary: '缴纳10月教育费附加', debit: 624, credit: 0, explanation: '10月底计提624元，本月缴纳。' },
-      { subjectCode: '100201', summary: '缴纳税款', debit: 0, credit: 624, explanation: '银行存款减少624元。' },
+      { subjectCode: '100201', summary: '缴纳税款', debit: 0, credit: 624, explanation: '银行存款减少624元。' , cashFlowItem: 'cf-op4', cashFlowExplanation: '缴纳税费支出（配对科目222104），属于"支付的各项税费"——经营活动现金流出。'},
     ],
     documents: [
       { type: 'receipt', label: '缴款凭证', docTitle: '教育费附加缴款凭证', date: '2026-11-02', totalAmount: 624, payer: '本公司', stampText: '国家税务总局\n征收章', items: [{ name: '教育费附加（10月）', qty: 1, price: 624, amount: 624 }] },
@@ -77,7 +77,7 @@ const nov = [
     entries: [
       { subjectCode: '221102', summary: '缴纳10月社保', debit: 21000, credit: 0, explanation: '冲减社保负债。' },
       { subjectCode: '221103', summary: '缴纳10月公积金', debit: 10200, credit: 0, explanation: '冲减公积金负债。' },
-      { subjectCode: '100201', summary: '缴纳社保公积金', debit: 0, credit: 31200, explanation: '银行存款减少31,200元。' },
+      { subjectCode: '100201', summary: '缴纳社保公积金', debit: 0, credit: 31200, explanation: '银行存款减少31,200元。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221102），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'},
     ],
     documents: [
       { type: 'receipt', label: '社保缴费单', docTitle: '社保缴费单', date: '2026-11-03', totalAmount: 21000, payer: '本公司', stampText: 'XX市社保局\n社保征缴章', items: [{ name: '养老+医疗+失业+工伤+生育', qty: 1, price: 21000, amount: 21000 }] },
@@ -92,7 +92,7 @@ const nov = [
     tip: '请根据业务场景理解并完成本业务的分录录入。',
     entries: [
       { subjectCode: '221101', summary: '发放10月工资（应发）', debit: 73000, credit: 0, explanation: '冲减应付工资全额。' },
-      { subjectCode: '100201', summary: '实发工资', debit: 0, credit: 63200, explanation: '银行存款减少63,200元。' },
+      { subjectCode: '100201', summary: '实发工资', debit: 0, credit: 63200, explanation: '银行存款减少63,200元。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221101），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'},
       { subjectCode: '2241', summary: '代扣社保', debit: 0, credit: 4200, explanation: '其他应付款-社保增加4,200元。' },
       { subjectCode: '2241', summary: '代扣公积金', debit: 0, credit: 3600, explanation: '其他应付款-公积金增加3,600元。' },
       { subjectCode: '2221', summary: '代扣个税', debit: 0, credit: 2000, explanation: '应交税费-个税增加2,000元。' },
@@ -111,7 +111,7 @@ const nov = [
     entries: [
       { subjectCode: '2221', summary: '缴纳个税', debit: 2000, credit: 0, explanation: '冲减应交个税。' },
       { subjectCode: '2241', summary: '缴纳代扣社保公积金', debit: 7800, credit: 0, explanation: '冲减其他应付款。' },
-      { subjectCode: '100201', summary: '缴纳税费', debit: 0, credit: 9800, explanation: '银行存款减少9,800元。' },
+      { subjectCode: '100201', summary: '缴纳税费', debit: 0, credit: 9800, explanation: '银行存款减少9,800元。' , cashFlowItem: 'cf-op4', cashFlowExplanation: '缴纳税费支出（配对科目2221），属于"支付的各项税费"——经营活动现金流出。'},
     ],
     documents: [
       { type: 'bank', label: '银行回单', date: '2026-11-04', totalAmount: 9800, payer: '本公司', payeeName: 'XX市税务局', content: '缴纳代扣税费', refNo: 'HD202611040007' },
@@ -131,7 +131,7 @@ const nov = [
     tip: '请根据业务场景理解并完成本业务的分录录入。',
     entries: [
       { subjectCode: '6602', summary: '支付水电费', debit: 5200, credit: 0, explanation: '管理费用增加5,200元。' },
-      { subjectCode: '100201', summary: '支付水电费', debit: 0, credit: 5200, explanation: '银行存款减少5,200元。' },
+      { subjectCode: '100201', summary: '支付水电费', debit: 0, credit: 5200, explanation: '银行存款减少5,200元。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6602），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'receipt', label: '电费单', docTitle: '电费缴费凭证', date: '2026-11-06', totalAmount: 4000, payer: '本公司', stampText: '国家电网\n电费收讫章', items: [{ name: '电费', qty: 4000, price: 1, amount: 4000 }] },
@@ -146,7 +146,7 @@ const nov = [
     tip: '请根据业务场景理解并完成本业务的分录录入。',
     entries: [
       { subjectCode: '660201', summary: '购买办公用品', debit: 600, credit: 0, explanation: '管理费用-办公费增加600元。' },
-      { subjectCode: '100201', summary: '支付办公用品', debit: 0, credit: 600, explanation: '银行存款减少600元。' },
+      { subjectCode: '100201', summary: '支付办公用品', debit: 0, credit: 600, explanation: '银行存款减少600元。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目660201），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'receipt', label: '收据', docTitle: '收据', date: '2026-11-06', totalAmount: 600, payer: '本公司', stampText: '发票专用章', items: [{ name: '文具用品', qty: 1, price: 600, amount: 600 }] },
@@ -179,7 +179,7 @@ const nov = [
     tip: '请根据业务场景理解并完成本业务的分录录入。',
     entries: [
       { subjectCode: '660202', summary: '报销差旅费', debit: 2000, credit: 0, explanation: '管理费用-差旅费增加2,000元。行政人员市内出差费用。' },
-      { subjectCode: '100201', summary: '报销差旅费', debit: 0, credit: 2000, explanation: '银行存款减少2,000元。' },
+      { subjectCode: '100201', summary: '报销差旅费', debit: 0, credit: 2000, explanation: '银行存款减少2,000元。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目660202），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'receipt', label: '报销单', docTitle: '差旅费报销单', date: '2026-11-07', totalAmount: 2000, payer: '本公司', stampText: '财务\n审核专用章', items: [{ name: '市内交通+餐补', qty: 1, price: 2000, amount: 2000 }] },
@@ -200,7 +200,7 @@ const nov = [
       { subjectCode: '530101', summary: 'NPD-01研究支出-设备折旧', debit: 3000, credit: 0,
         explanation: '研发支出-费用化支出增加3,000元。研发专用设备折旧。' },
       { subjectCode: '100201', summary: '支付研发费用', debit: 0, credit: 23000,
-        explanation: '银行存款减少23,000元。材料采购和人工费用等支出。' },
+        explanation: '银行存款减少23,000元。材料采购和人工费用等支出。' , cashFlowItem: 'cf-inv', cashFlowExplanation: '购建固定资产/无形资产支出（配对科目530101），属于投资活动现金流出——资本性支出，区别于日常经营支出。'},
     ],
     documents: [
       { type: 'text', label: '研发项目立项书', docTitle: '新产品研发项目NPD-01立项申请（摘要）', stampText: '本公司\n技术研发部章',
@@ -229,7 +229,7 @@ const nov = [
       { subjectCode: '530102', summary: 'NPD-01开发支出-外部服务', debit: 8000, credit: 0,
         explanation: '研发支出-资本化支出增加8,000元。外部技术服务费。' },
       { subjectCode: '100201', summary: '支付研发费用', debit: 0, credit: 43000,
-        explanation: '银行存款减少43,000元。资本化支出不影响当期利润。' },
+        explanation: '银行存款减少43,000元。资本化支出不影响当期利润。' , cashFlowItem: 'cf-inv', cashFlowExplanation: '购建固定资产/无形资产支出（配对科目530102），属于投资活动现金流出——资本性支出，区别于日常经营支出。'},
     ],
     documents: [
       { type: 'text', label: '研发阶段评审', docTitle: 'NPD-01项目阶段评审报告', stampText: '技术研发部\n项目评审专用章',
@@ -251,7 +251,7 @@ const nov = [
     tip: '请根据业务场景理解并完成本业务的分录录入。',
     entries: [
       { subjectCode: '6603', summary: '银行手续费', debit: 180, credit: 0, explanation: '财务费用增加180元。' },
-      { subjectCode: '100201', summary: '手续费', debit: 0, credit: 180, explanation: '银行存款减少180元。' },
+      { subjectCode: '100201', summary: '手续费', debit: 0, credit: 180, explanation: '银行存款减少180元。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'bank', label: '银行回单', date: '2026-11-12', totalAmount: 180, payer: '本公司', payeeName: '中国工商银行', content: '账户管理费', refNo: 'HD202611120008' },
@@ -270,7 +270,7 @@ const nov = [
     description: '收到M科技公司本月办公楼租金8,000元。',
     tip: '请根据业务场景理解并完成本业务的分录录入。',
     entries: [
-      { subjectCode: '100201', summary: '租金收入', debit: 8000, credit: 0, explanation: '银行存款增加8,000元。' },
+      { subjectCode: '100201', summary: '租金收入', debit: 8000, credit: 0, explanation: '银行存款增加8,000元。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金（配对科目6051），属于经营活动现金流入——主营业务产生的现金收入。'},
       { subjectCode: '6051', summary: '租金收入', debit: 0, credit: 8000, explanation: '其他业务收入增加8,000元。' },
     ],
     documents: [
@@ -358,7 +358,7 @@ const nov = [
     description: '向己公司销售A产品150件，价款120,000元，增值税15,600元（13%），合计135,600元，款已存入银行。',
     tip: '请根据业务场景理解并完成本业务的分录录入。',
     entries: [
-      { subjectCode: '100201', summary: '销售A产品', debit: 135600, credit: 0, explanation: '银行存款增加135,600元。' },
+      { subjectCode: '100201', summary: '销售A产品', debit: 135600, credit: 0, explanation: '银行存款增加135,600元。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金（配对科目6001），属于经营活动现金流入——主营业务产生的现金收入。'},
       { subjectCode: '6001', summary: '销售收入', debit: 0, credit: 120000, explanation: '主营业务收入增加120,000元。' },
       { subjectCode: '222101', summary: '销项税额', debit: 0, credit: 15600, explanation: '销项税额增加15,600元。' },
     ],
@@ -378,7 +378,7 @@ const nov = [
     entries: [
       { subjectCode: '1403', summary: '采购K材料', debit: 30000, credit: 0, explanation: '原材料增加30,000元。' },
       { subjectCode: '222101', summary: '进项税额', debit: 3900, credit: 0, explanation: '进项税额增加3,900元。' },
-      { subjectCode: '100201', summary: '支付材料款', debit: 0, credit: 33900, explanation: '银行存款减少33,900元。' },
+      { subjectCode: '100201', summary: '支付材料款', debit: 0, credit: 33900, explanation: '银行存款减少33,900元。' , cashFlowItem: 'cf-op2', cashFlowExplanation: '采购存货/商品支出（配对科目1403），属于"购买商品、接受劳务支付的现金"——经营活动现金流出。'},
     ],
     documents: [
       { type: 'invoice', label: '增值税发票', region: '广东', invoiceType: '专用', invoiceNo: '4400322222', date: '2026年11月20日', buyer: '本公司', seller: '丙公司', stampText: '发票专用章',
@@ -394,7 +394,7 @@ const nov = [
     tip: '请根据业务场景理解并完成本业务的分录录入。',
     entries: [
       { subjectCode: '660101', summary: '推广费', debit: 8000, credit: 0, explanation: '销售费用-广告费增加8,000元。' },
-      { subjectCode: '100201', summary: '支付推广费', debit: 0, credit: 8000, explanation: '银行存款减少8,000元。' },
+      { subjectCode: '100201', summary: '支付推广费', debit: 0, credit: 8000, explanation: '银行存款减少8,000元。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目660101），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'invoice', label: '服务发票', region: '北京', invoiceType: '专用', invoiceNo: '1100987654', date: '2026年11月21日', buyer: '本公司', seller: '百度在线', stampText: '发票专用章',
@@ -593,12 +593,12 @@ const nov = [
     documents: [{ type: 'text', label: '回单清单', docTitle: '回单清（11月）', stampText: '财务章', content: `本月第1周` }] },
   { date: '2026-11-05', title: '银行代扣社保', tags: ["出纳","工资社保"], difficulty: 2, role: 'cashier',
     description: '11月社保（单位21,000+个人7,000=28,000元）已代扣。', tip: '核对金额。',
-    entries: [{ subjectCode: '221102', summary: '社保单位', debit: 21000, credit: 0, explanation: '社保减少。' }, { subjectCode: '224101', summary: '社保个人', debit: 7000, credit: 0, explanation: '其他应付款减少。' }, { subjectCode: '100201', summary: '社保费', debit: 0, credit: 28000, explanation: '银行减少。' }],
+    entries: [{ subjectCode: '221102', summary: '社保单位', debit: 21000, credit: 0, explanation: '社保减少。' }, { subjectCode: '224101', summary: '社保个人', debit: 7000, credit: 0, explanation: '其他应付款减少。' }, { subjectCode: '100201', summary: '社保费', debit: 0, credit: 28000, explanation: '银行减少。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221102），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'}],
     documents: [{ type: 'bank', label: '社保回单', date: '2026-11-05', totalAmount: 28000, payer: '本公司', payeeName: 'XX社保局', content: '11月社保', refNo: 'HD202611050005' }] },
   { date: '2026-11-06', title: '银行转账支付网络费', tags: ["出纳","费用"], difficulty: 1, role: 'cashier',
     description: '支付11月网络费2,600元。',
     tip: '日常操作。',
-    entries: [{ subjectCode: '6602', summary: '网络费', debit: 2600, credit: 0, explanation: '管理费增加。' }, { subjectCode: '100201', summary: '网络费', debit: 0, credit: 2600, explanation: '银行减少。' }],
+    entries: [{ subjectCode: '6602', summary: '网络费', debit: 2600, credit: 0, explanation: '管理费增加。' }, { subjectCode: '100201', summary: '网络费', debit: 0, credit: 2600, explanation: '银行减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6602），属于"支付其他与经营活动有关的现金"。'}],
     documents: [{ type: 'bank', label: '回单', date: '2026-11-06', totalAmount: 2600, payer: '本公司', payeeName: '中国电信', content: '11月网络费', refNo: 'HD202611060008' }] },
   { date: '2026-11-08', title: '开立信用证保证金 ⭐', tags: ["出纳","采购"], difficulty: 2, role: 'cashier',
     description: '因进口原材料需要，向工商银行申请开立信用证，金额US$8,000。按30%存入保证金US$2,400（按汇率6.90折合RMB 16,560）。信用证有效期90天。',
@@ -611,17 +611,17 @@ const nov = [
   { date: '2026-11-10', title: '银行代扣公积金', tags: ["出纳","工资社保"], difficulty: 2, role: 'cashier',
     description: '11月公积金（单位10,200+个人3,400=13,600元）已代扣。',
     tip: '日常操作。',
-    entries: [{ subjectCode: '221103', summary: '公积单位', debit: 10200, credit: 0, explanation: '公积金减少。' }, { subjectCode: '224102', summary: '公积个人', debit: 3400, credit: 0, explanation: '其他应付款减少。' }, { subjectCode: '100201', summary: '公积金', debit: 0, credit: 13600, explanation: '银行减少。' }],
+    entries: [{ subjectCode: '221103', summary: '公积单位', debit: 10200, credit: 0, explanation: '公积金减少。' }, { subjectCode: '224102', summary: '公积个人', debit: 3400, credit: 0, explanation: '其他应付款减少。' }, { subjectCode: '100201', summary: '公积金', debit: 0, credit: 13600, explanation: '银行减少。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221103），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'}],
     documents: [{ type: 'bank', label: '公积回单', date: '2026-11-10', totalAmount: 13600, payer: '本公司', payeeName: 'XX公积金中心', content: '11月公积金', refNo: 'HD202611100012' }] },
   { date: '2026-11-12', title: '银行转账支付快递费', tags: ["出纳","费用"], difficulty: 1, role: 'cashier',
     description: '支付11月快递费600元。',
     tip: '日常操作。',
-    entries: [{ subjectCode: '6602', summary: '快递费', debit: 600, credit: 0, explanation: '管理费增加。' }, { subjectCode: '100201', summary: '快递费', debit: 0, credit: 600, explanation: '银行减少。' }],
+    entries: [{ subjectCode: '6602', summary: '快递费', debit: 600, credit: 0, explanation: '管理费增加。' }, { subjectCode: '100201', summary: '快递费', debit: 0, credit: 600, explanation: '银行减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6602），属于"支付其他与经营活动有关的现金"。'}],
     documents: [{ type: 'bank', label: '回单', date: '2026-11-12', totalAmount: 600, payer: '本公司', payeeName: '顺丰', content: '11月快递', refNo: 'HD202611120015' }] },
   { date: '2026-11-18', title: '购买支票本', tags: ["出纳"], difficulty: 1, role: 'cashier',
     description: '购买支票本45元。',
     tip: '日常操作。',
-    entries: [{ subjectCode: '6603', summary: '支票本', debit: 45, credit: 0, explanation: '费用增加。' }, { subjectCode: '100201', summary: '支票本', debit: 0, credit: 45, explanation: '银行减少。' }],
+    entries: [{ subjectCode: '6603', summary: '支票本', debit: 45, credit: 0, explanation: '费用增加。' }, { subjectCode: '100201', summary: '支票本', debit: 0, credit: 45, explanation: '银行减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
     documents: [{ type: 'bank', label: '回单', date: '2026-11-18', totalAmount: 45, payer: '本公司', payeeName: '工行', content: '支票本', refNo: 'HD202611180018' }] },
   { date: '2026-11-22', title: '出纳资金日报', tags: ["出纳"], difficulty: 1, role: 'cashier',
     description: '编制11月22日资金日报。', tip: '坚持资金日报。', entries: [],
@@ -629,22 +629,22 @@ const nov = [
   { date: '2026-11-23', title: '银行账户管理费', tags: ["出纳","费用"], difficulty: 1, role: 'cashier',
     description: '11月管理费100元。累计1,100元。',
     tip: '日常操作。',
-    entries: [{ subjectCode: '6603', summary: '管理费', debit: 100, credit: 0, explanation: '费用增加。' }, { subjectCode: '100201', summary: '管理费', debit: 0, credit: 100, explanation: '银行减少。' }],
+    entries: [{ subjectCode: '6603', summary: '管理费', debit: 100, credit: 0, explanation: '费用增加。' }, { subjectCode: '100201', summary: '管理费', debit: 0, credit: 100, explanation: '银行减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
     documents: [{ type: 'bank', label: '回单', date: '2026-11-23', totalAmount: 100, payer: '本公司', payeeName: '工行', content: '11月管理费', refNo: 'HD202611230022' }] },
   { date: '2026-11-25', title: '银行手续费确认', tags: ["出纳","费用"], difficulty: 1, role: 'cashier',
     description: '11月手续费180元。',
     tip: '日常操作。',
-    entries: [{ subjectCode: '6603', summary: '手续费', debit: 180, credit: 0, explanation: '费用增加。' }, { subjectCode: '100201', summary: '手续费', debit: 0, credit: 180, explanation: '银行减少。' }],
+    entries: [{ subjectCode: '6603', summary: '手续费', debit: 180, credit: 0, explanation: '费用增加。' }, { subjectCode: '100201', summary: '手续费', debit: 0, credit: 180, explanation: '银行减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
     documents: [{ type: 'bank', label: '回单', date: '2026-11-25', totalAmount: 180, payer: '本公司', payeeName: '工行', content: '11月手续费', refNo: 'HD202611250025' }] },
   { date: '2026-11-26', title: '银行转账支付清洁费', tags: ["出纳","费用"], difficulty: 1, role: 'cashier',
     description: '支付11月清洁费1,800元。',
     tip: '日常操作。',
-    entries: [{ subjectCode: '6602', summary: '清洁费', debit: 1800, credit: 0, explanation: '管理费增加。' }, { subjectCode: '100201', summary: '清洁费', debit: 0, credit: 1800, explanation: '银行减少。' }],
+    entries: [{ subjectCode: '6602', summary: '清洁费', debit: 1800, credit: 0, explanation: '管理费增加。' }, { subjectCode: '100201', summary: '清洁费', debit: 0, credit: 1800, explanation: '银行减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6602），属于"支付其他与经营活动有关的现金"。'}],
     documents: [{ type: 'bank', label: '回单', date: '2026-11-26', totalAmount: 1800, payer: '本公司', payeeName: 'XX物业', content: '11月清洁费', refNo: 'HD202611260028' }] },
   { date: '2026-11-27', title: '银行转账支付印刷费', tags: ["出纳","费用"], difficulty: 1, role: 'cashier',
     description: '支付11月印刷费1,000元。',
     tip: '日常操作。',
-    entries: [{ subjectCode: '6602', summary: '印刷费', debit: 1000, credit: 0, explanation: '管理费增加。' }, { subjectCode: '100201', summary: '印刷费', debit: 0, credit: 1000, explanation: '银行减少。' }],
+    entries: [{ subjectCode: '6602', summary: '印刷费', debit: 1000, credit: 0, explanation: '管理费增加。' }, { subjectCode: '100201', summary: '印刷费', debit: 0, credit: 1000, explanation: '银行减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6602），属于"支付其他与经营活动有关的现金"。'}],
     documents: [{ type: 'bank', label: '回单', date: '2026-11-27', totalAmount: 1000, payer: '本公司', payeeName: 'XX彩印', content: '11月印刷费', refNo: 'HD202611270030' }] },
   { date: '2026-11-28', title: '信用证单据审核', tags: ["出纳","采购"], difficulty: 1, role: 'cashier',
     description: '收到境外供应商通过银行交来的信用证项下单据（发票、提单、装箱单等），出纳协助核对单据与信用证条款是否一致。',

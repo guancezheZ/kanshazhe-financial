@@ -33,7 +33,7 @@ const tasks = [
     tip: '短期借款到期时需偿还本金。分录：借：短期借款，贷：银行存款。注意偿还本金与支付利息是两笔不同的业务，利息一般单独计提和支付。',
     entries: [
       { subjectCode: '2001', summary: '偿还短期借款本金', debit: 300000, credit: 0, explanation: '短期借款减少记借方。3月1日借入的300,000元短期借款今日到期偿还，负债减少。该借款期限3个月，年利率4.35%。依据《企业会计准则第17号——借款费用》。' },
-      { subjectCode: '100201', summary: '偿还短期借款本金', debit: 0, credit: 300000, explanation: '银行存款减少记贷方。以工商银行存款偿还到期借款本金，资金划出，资产减少。' },
+      { subjectCode: '100201', summary: '偿还短期借款本金', debit: 0, credit: 300000, explanation: '银行存款减少记贷方。以工商银行存款偿还到期借款本金，资金划出，资产减少。' , cashFlowItem: 'cf-fin2', cashFlowExplanation: '偿还债务本金（配对科目2001），属于筹资活动现金流出。'},
     ],
     documents: [
       { type: 'bank', label: '还款回单', date: '2026-06-01', totalAmount: 300000, payer: '本公司', payeeName: '工商银行', content: '归还短期借款本金（合同No.DK20260301）', refNo: 'HD202606010001' },
@@ -64,7 +64,7 @@ const tasks = [
     tip: '支付已预提的短期借款利息：借：其他应付款（或应付利息），贷：银行存款。注意：这里是冲销之前已计提的利息负债，不再重复计入财务费用。',
     entries: [
       { subjectCode: '2241', summary: '支付到期借款利息', debit: 3262.5, credit: 0, explanation: '其他应付款减少记借方。冲销此前逐月计提的借款利息负债。3个月累计利息=300,000×4.35%÷12×3=3,262.50元（3月/4月/5月各计提1,087.50元）。' },
-      { subjectCode: '100201', summary: '支付到期借款利息', debit: 0, credit: 3262.5, explanation: '银行存款减少记贷方。以工商银行存款支付已计提的借款利息，资金划出。资产减少。' },
+      { subjectCode: '100201', summary: '支付到期借款利息', debit: 0, credit: 3262.5, explanation: '银行存款减少记贷方。以工商银行存款支付已计提的借款利息，资金划出。资产减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目2241），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'bank', label: '利息支付回单', date: '2026-06-02', totalAmount: 3262.5, payer: '本公司', payeeName: '工商银行', content: '支付短期借款利息（合同No.DK20260301）', refNo: 'HD202606020001' },
@@ -79,7 +79,7 @@ const tasks = [
     description: '收到工商银行第二季度银行存款利息2,800元，已划入公司账户。',
     tip: '银行存款利息收入应冲减财务费用。分录：借：银行存款，贷：财务费用（利息收入在贷方表示冲减费用）。注意利息收入不是营业收入，不计入主营业务收入。',
     entries: [
-      { subjectCode: '100201', summary: '收到第二季度存款利息', debit: 2800, credit: 0, explanation: '银行存款增加记借方。工商银行划入第二季度存款利息2,800元，资金到账，资产增加。' },
+      { subjectCode: '100201', summary: '收到第二季度存款利息', debit: 2800, credit: 0, explanation: '银行存款增加记借方。工商银行划入第二季度存款利息2,800元，资金到账，资产增加。' , cashFlowItem: 'cf-op5', cashFlowExplanation: '其他经营活动现金流入（配对科目6603），属于"收到其他与经营活动有关的现金"。'},
       { subjectCode: '6603', summary: '收到第二季度存款利息', debit: 0, credit: 2800, explanation: '财务费用减少记贷方。银行存款利息收入冲减财务费用，体现为费用的减少而非直接收入。依据《企业会计准则——应用指南》，利息收入在财务费用贷方核算。' },
     ],
     documents: [
@@ -110,7 +110,7 @@ const tasks = [
     description: '前期收到的乙公司银行承兑汇票（金额30,000元，3个月期）今日到期，款项已存入工商银行账户。',
     tip: '银行承兑汇票到期时，持票人向银行提示付款，款项直接划入公司账户。分录：借：银行存款，贷：应收票据。注意检查汇票到期日，及时办理托收手续，避免逾期。',
     entries: [
-      { subjectCode: '100201', summary: '银行承兑汇票到期收款', debit: 30000, credit: 0, explanation: '银行存款增加记借方。乙公司银行承兑汇票到期，银行兑付票款30,000元，资金到账，资产增加。' },
+      { subjectCode: '100201', summary: '银行承兑汇票到期收款', debit: 30000, credit: 0, explanation: '银行存款增加记借方。乙公司银行承兑汇票到期，银行兑付票款30,000元，资金到账，资产增加。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金（配对科目1121），属于经营活动现金流入——主营业务产生的现金收入。'},
       { subjectCode: '1121', summary: '银行承兑汇票到期收款', debit: 0, credit: 30000, explanation: '应收票据减少记贷方。持有的银行承兑汇票已到期兑付，债权结清。该汇票于2026年3月5日收到，期限3个月，到期日为2026年6月5日。' },
     ],
     documents: [
@@ -148,7 +148,7 @@ const tasks = [
     entries: [
       { subjectCode: '1405', summary: '现购A类商品入库', debit: 50000, credit: 0, explanation: '库存商品增加记借方。A类商品采购入库，存货资产增加。商品采购不含税价50,000元计入库存商品成本。' },
       { subjectCode: '222101', summary: '现购商品进项税额', debit: 6500, credit: 0, explanation: '应交税费-应交增值税（进项税额）增加记借方。取得增值税专用发票，进项税额6,500元可以抵扣销项税。依据《增值税暂行条例》第八条：纳税人购进货物或者接受应税劳务支付或者负担的增值税额，为进项税额。' },
-      { subjectCode: '100201', summary: '支付采购货款', debit: 0, credit: 56500, explanation: '银行存款减少记贷方。以工商银行存款支付采购货款及税款，资金划出，资产减少。' },
+      { subjectCode: '100201', summary: '支付采购货款', debit: 0, credit: 56500, explanation: '银行存款减少记贷方。以工商银行存款支付采购货款及税款，资金划出，资产减少。' , cashFlowItem: 'cf-op2', cashFlowExplanation: '采购存货/商品支出（配对科目1405），属于"购买商品、接受劳务支付的现金"——经营活动现金流出。'},
     ],
     documents: [
       { type: 'invoice', label: '增值税专用发票（进项）', region: '上海', invoiceNo: '3100678901', date: '2026-06-09', buyer: '本公司', seller: '华强供应链有限公司',
@@ -186,7 +186,7 @@ const tasks = [
     tip: '及时偿还供应商货款有助于维护良好商业信用。分录：借：应付账款，贷：银行存款。支付前应与供应商核对往来余额，确保金额准确。付款后及时登记银行日记账。',
     entries: [
       { subjectCode: '220202', summary: '偿还丁公司前欠货款', debit: 45200, credit: 0, explanation: '应付账款减少记借方。偿还前欠丁公司的采购货款，债务结清。及时付款有助于维护供应商关系，保持良好的商业信用记录。' },
-      { subjectCode: '100201', summary: '偿还丁公司前欠货款', debit: 0, credit: 45200, explanation: '银行存款减少记贷方。以工商银行存款偿还供应商货款45,200元，资金划出，资产减少。' },
+      { subjectCode: '100201', summary: '偿还丁公司前欠货款', debit: 0, credit: 45200, explanation: '银行存款减少记贷方。以工商银行存款偿还供应商货款45,200元，资金划出，资产减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目220202），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'bank', label: '转账回单', date: '2026-06-11', totalAmount: 45200, payer: '本公司', payeeName: '丁公司', content: '支付前欠货款（发票No.3300789015）', refNo: 'HD202606110001' },
@@ -200,7 +200,7 @@ const tasks = [
     description: '销售A类商品一批，不含税价120,000元，增值税15,600元，价税合计135,600元，已收存工商银行。',
     tip: '现销是资金回笼最快的销售方式。分录：借：银行存款，贷：主营业务收入/应交税费-销项。增值税销项税额根据不含税收入的13%计算。收入确认需满足《企业会计准则第14号》的五条件。',
     entries: [
-      { subjectCode: '100201', summary: '现销商品收款', debit: 135600, credit: 0, explanation: '银行存款增加记借方。现销商品收到款项135,600元，资金当日到账，资产增加。' },
+      { subjectCode: '100201', summary: '现销商品收款', debit: 135600, credit: 0, explanation: '银行存款增加记借方。现销商品收到款项135,600元，资金当日到账，资产增加。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金（配对科目6001），属于经营活动现金流入——主营业务产生的现金收入。'},
       { subjectCode: '6001', summary: '现销确认主营业务收入', debit: 0, credit: 120000, explanation: '主营业务收入增加记贷方。商品已发出并收到货款，商品所有权上的主要风险和报酬已转移给购货方，收入确认条件满足。依据《企业会计准则第14号——收入》第四条。' },
       { subjectCode: '222101', summary: '现销增值税销项税额', debit: 0, credit: 15600, explanation: '应交税费-应交增值税（销项税额）增加记贷方。现销商品产生纳税义务，销项税额=120,000×13%=15,600元。' },
     ],
@@ -254,7 +254,7 @@ const tasks = [
     description: '收到乙公司汇来的前欠货款40,680元，已存入工商银行账户。',
     tip: '收到前欠货款是资金回笼的重要方式。分录：借：银行存款，贷：应收账款-乙公司。注意核对该笔回款对应的发票和业务，确保往来账准确。收回欠款不确认收入（收入在赊销时已确认）。',
     entries: [
-      { subjectCode: '100201', summary: '收到乙公司前欠货款', debit: 40680, credit: 0, explanation: '银行存款增加记借方。乙公司偿还前欠货款40,680元，资金回笼，资产增加。' },
+      { subjectCode: '100201', summary: '收到乙公司前欠货款', debit: 40680, credit: 0, explanation: '银行存款增加记借方。乙公司偿还前欠货款40,680元，资金回笼，资产增加。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金（配对科目112202），属于经营活动现金流入——主营业务产生的现金收入。'},
       { subjectCode: '112202', summary: '收到乙公司前欠货款', debit: 0, credit: 40680, explanation: '应收账款-乙公司减少记贷方。乙公司前欠货款已收回，债权结清。注意收回欠款不确认收入，收入在赊销时已确认。' },
     ],
     documents: [
@@ -277,7 +277,7 @@ const tasks = [
       { subjectCode: '6601', summary: '计提销售人员6月工资', debit: 20000, credit: 0, explanation: '销售费用增加记借方。销售人员工资20,000元计入销售费用。不同部门人员的工资按受益对象计入不同费用科目。' },
       { subjectCode: '221101', summary: '计提本月工资形成负债', debit: 0, credit: 50000, explanation: '应付职工薪酬-工资增加记贷方。计提本月工资形成对员工的负债50,000元，发放时冲减。' },
       { subjectCode: '221101', summary: '发放本月工资冲减负债', debit: 50000, credit: 0, explanation: '应付职工薪酬-工资减少记借方。实际发放工资，冲减计提时确认的负债。' },
-      { subjectCode: '100201', summary: '发放6月工资', debit: 0, credit: 50000, explanation: '银行存款减少记贷方。通过工商银行代发工资50,000元，资金划出，资产减少。' },
+      { subjectCode: '100201', summary: '发放6月工资', debit: 0, credit: 50000, explanation: '银行存款减少记贷方。通过工商银行代发工资50,000元，资金划出，资产减少。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目660203），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'},
     ],
     documents: [
       { type: 'text', label: '工资表', docTitle: '2026年6月工资汇总表', content: '管理人员：5人 × 6,000元 = 30,000元\n销售人员：4人 × 5,000元 = 20,000元\n合计：50,000元\n实发金额：50,000元（无社保公积金个人扣除，单位部分另行缴纳）', stampText: '行政人事部章' },
@@ -293,7 +293,7 @@ const tasks = [
     tip: '社会保险单位部分是企业的法定义务。缴纳时冲减应付职工薪酬-社保（之前已计提）。分录：借：应付职工薪酬-社保，贷：银行存款。社保缴纳比例各地可能不同，此处以上海市现行政策为例。',
     entries: [
       { subjectCode: '221102', summary: '缴纳社保单位部分', debit: 13600, credit: 0, explanation: '应付职工薪酬-社保减少记借方。缴纳社会保险单位承担部分，冲减已计提的社保负债。本项按工资总额50,000元计算：养老8,000元（16%）+医疗4,750元（9.5%）+失业250元（0.5%）+工伤100元（0.2%）+生育500元（1%）=13,600元。依据《社会保险法》第十二条。' },
-      { subjectCode: '100201', summary: '缴纳社保单位部分', debit: 0, credit: 13600, explanation: '银行存款减少记贷方。通过工商银行转账缴纳社会保险费，资金划出。' },
+      { subjectCode: '100201', summary: '缴纳社保单位部分', debit: 0, credit: 13600, explanation: '银行存款减少记贷方。通过工商银行转账缴纳社会保险费，资金划出。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221102），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'},
     ],
     documents: [
       { type: 'bank', label: '社保缴费回单', date: '2026-06-16', totalAmount: 13600, payer: '本公司', payeeName: '上海市社会保险事业管理中心', content: '2026年6月社会保险费（单位部分）', refNo: 'HD202606160001' },
@@ -309,7 +309,7 @@ const tasks = [
     tip: '住房公积金单位部分是企业的法定义务。缴纳时冲减应付职工薪酬-公积金（之前已计提）。分录：借：应付职工薪酬-公积金，贷：银行存款。公积金缴存比例一般为5%-12%，此处取7%。依据《住房公积金管理条例》。',
     entries: [
       { subjectCode: '221103', summary: '缴纳公积金单位部分', debit: 3500, credit: 0, explanation: '应付职工薪酬-公积金减少记借方。缴纳住房公积金单位承担部分，冲减已计提的公积金负债。单位缴存额=50,000×7%=3,500元。依据《住房公积金管理条例》第十八条：职工和单位住房公积金的缴存比例均不得低于职工上一年度月平均工资的5%。' },
-      { subjectCode: '100201', summary: '缴纳公积金单位部分', debit: 0, credit: 3500, explanation: '银行存款减少记贷方。通过工商银行转账缴纳住房公积金，资金划出。' },
+      { subjectCode: '100201', summary: '缴纳公积金单位部分', debit: 0, credit: 3500, explanation: '银行存款减少记贷方。通过工商银行转账缴纳住房公积金，资金划出。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221103），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'},
     ],
     documents: [
       { type: 'bank', label: '公积金缴费回单', date: '2026-06-17', totalAmount: 3500, payer: '本公司', payeeName: '上海市公积金管理中心', content: '2026年6月住房公积金（单位部分）', refNo: 'HD202606170001' },
@@ -325,7 +325,7 @@ const tasks = [
     tip: '银行账户管理费属于财务费用。分录：借：财务费用，贷：银行存款。银行费用一般不需要发票，以银行回单作为原始凭证。每月定期检查账户扣款情况。',
     entries: [
       { subjectCode: '6603', summary: '支付银行账户管理费', debit: 600, credit: 0, explanation: '财务费用增加记借方。银行账户管理费及网银服务费属于银行服务性收费，计入财务费用。' },
-      { subjectCode: '100201', summary: '支付银行账户管理费', debit: 0, credit: 600, explanation: '银行存款减少记贷方。工商银行自动扣划账户管理费及网银服务费600元，资产减少。' },
+      { subjectCode: '100201', summary: '支付银行账户管理费', debit: 0, credit: 600, explanation: '银行存款减少记贷方。工商银行自动扣划账户管理费及网银服务费600元，资产减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'bank', label: '银行扣费回单', date: '2026-06-18', totalAmount: 600, payer: '本公司', payeeName: '工商银行', content: '2026年6月账户管理费及网银服务费', refNo: 'HD202606180001' },
@@ -375,7 +375,7 @@ const tasks = [
     tip: '一般纳税人按月申报增值税，次月缴纳上月税款。分录：借：应交税费-应交增值税（已交税金），贷：银行存款。注意区分"计提"和"缴纳"——计提是确认负债，缴纳是清偿负债。',
     entries: [
       { subjectCode: '222101', summary: '缴纳上月应交增值税', debit: 8000, credit: 0, explanation: '应交税费-应交增值税减少记借方。实际缴纳上月应交增值税8,000元，负债减少。一般纳税人通常于次月15日前完成上月增值税申报和缴纳。' },
-      { subjectCode: '100201', summary: '缴纳上月应交增值税', debit: 0, credit: 8000, explanation: '银行存款减少记贷方。通过工商银行缴纳增值税款，资金划出。' },
+      { subjectCode: '100201', summary: '缴纳上月应交增值税', debit: 0, credit: 8000, explanation: '银行存款减少记贷方。通过工商银行缴纳增值税款，资金划出。' , cashFlowItem: 'cf-op4', cashFlowExplanation: '缴纳税费支出（配对科目222101），属于"支付的各项税费"——经营活动现金流出。'},
     ],
     documents: [
       { type: 'bank', label: '缴税回单', date: '2026-06-24', totalAmount: 8000, payer: '本公司', payeeName: '国家金库上海分库', content: '缴纳2026年5月增值税', refNo: 'HD202606240001' },
@@ -391,7 +391,7 @@ const tasks = [
     tip: '水电费属于企业管理费用中的日常运营支出。分录：借：管理费用，贷：银行存款。注意区分办公室用水电（管理费用）和仓库用水电（可能计入销售费用），此处均为办公所用。',
     entries: [
       { subjectCode: '6602', summary: '支付6月办公水电费', debit: 3000, credit: 0, explanation: '管理费用增加记借方。办公用水电费属于企业日常管理运营支出，计入管理费用。' },
-      { subjectCode: '100201', summary: '支付6月办公水电费', debit: 0, credit: 3000, explanation: '银行存款减少记贷方。以工商银行存款支付水电费，资产减少。' },
+      { subjectCode: '100201', summary: '支付6月办公水电费', debit: 0, credit: 3000, explanation: '银行存款减少记贷方。以工商银行存款支付水电费，资产减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6602），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'receipt', label: '电费发票', docTitle: '上海市电力公司缴费单（2026年6月）', date: '2026-06-25', totalAmount: 2000,
@@ -409,7 +409,7 @@ const tasks = [
     tip: '广告费属于"销售费用"，是企业为拓展市场发生的支出。分录：借：销售费用-广告费，贷：银行存款。广告推广费应取得合规发票作为税前扣除凭证。',
     entries: [
       { subjectCode: '660101', summary: '支付6月广告推广费', debit: 5000, credit: 0, explanation: '销售费用-广告费增加记借方。6月网络广告推广支出5,000元计入销售费用，属于企业为拓展市场发生的期间费用。' },
-      { subjectCode: '100201', summary: '支付6月广告推广费', debit: 0, credit: 5000, explanation: '银行存款减少记贷方。以工商银行存款支付广告推广费，资金划出。' },
+      { subjectCode: '100201', summary: '支付6月广告推广费', debit: 0, credit: 5000, explanation: '银行存款减少记贷方。以工商银行存款支付广告推广费，资金划出。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目660101），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'receipt', label: '广告费发票', docTitle: '增值税普通发票', date: '2026-06-26', totalAmount: 5000, stampText: 'XX网络科技有限公司 发票专用章',
@@ -425,7 +425,7 @@ const tasks = [
     tip: '差旅费根据所属部门计入费用：销售人员出差计入"销售费用"。分录：借：销售费用，贷：库存现金。报销时需审核发票的真实性、合理性及是否符合公司报销制度。',
     entries: [
       { subjectCode: '6601', summary: '报销销售人员差旅费', debit: 2800, credit: 0, explanation: '销售费用增加记借方。销售人员6月出差差旅费2,800元，其中交通费1,600元、住宿费1,200元，属于销售环节支出，计入销售费用。' },
-      { subjectCode: '1001', summary: '报销销售人员差旅费', debit: 0, credit: 2800, explanation: '库存现金减少记贷方。以现金支付员工差旅报销款2,800元，资产减少。' },
+      { subjectCode: '1001', summary: '报销销售人员差旅费', debit: 0, credit: 2800, explanation: '库存现金减少记贷方。以现金支付员工差旅报销款2,800元，资产减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6601），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'receipt', label: '差旅费报销单', docTitle: '差旅费报销单', date: '2026-06-27', totalAmount: 2800, stampText: '财务审核专用章',
@@ -507,7 +507,7 @@ const tasks = [
     description: '公司向工商银行申请的短期流动资金贷款200,000元今日到账，期限6个月，年利率4.35%，到期一次性还本付息。出纳确认款项已划入公司工行账户。',
     tip: '出纳收到银行到账通知后，需及时确认借款到账情况并登记银行日记账。分录：借：银行存款，贷：短期借款。注意核对到账金额与借款合同是否一致，保留银行回单作为原始凭证。',
     entries: [
-      { subjectCode: '100201', summary: '短期借款到账确认', debit: 200000, credit: 0, explanation: '银行存款增加记借方。工商银行贷款200,000元到账，资产增加。出纳需核对到账金额与借款合同一致。' },
+      { subjectCode: '100201', summary: '短期借款到账确认', debit: 200000, credit: 0, explanation: '银行存款增加记借方。工商银行贷款200,000元到账，资产增加。出纳需核对到账金额与借款合同一致。' , cashFlowItem: 'cf-fin', cashFlowExplanation: '借款收到的现金（配对科目2001），属于筹资活动现金流入——企业通过负债融资获得资金。'},
       { subjectCode: '2001', summary: '短期借款到账确认', debit: 0, credit: 200000, explanation: '短期借款增加记贷方。新增短期借款形成对银行的负债200,000元。该借款期限6个月，年利率4.35%，到期一次性还本付息。' },
     ],
     documents: [
@@ -558,7 +558,7 @@ const tasks = [
     tip: '员工预借差旅费属于备用金性质，不是费用报销。分录：借：其他应收款-李四，贷：库存现金。出差回来后凭发票报销，多退少补。出纳需保管好借款单作为原始凭证。',
     entries: [
       { subjectCode: '1221', summary: '李四预借差旅费', debit: 2000, credit: 0, explanation: '其他应收款增加记借方。员工预借差旅费形成对员工的债权，出差归来后凭票据报销冲账。出纳需在借款单上注明借款日期、金额、预计报账时间。' },
-      { subjectCode: '1001', summary: '李四预借差旅费', debit: 0, credit: 2000, explanation: '库存现金减少记贷方。以现金支付员工差旅费借支2,000元，资产减少。支付时需核对借款单审批手续是否完备。' },
+      { subjectCode: '1001', summary: '李四预借差旅费', debit: 0, credit: 2000, explanation: '库存现金减少记贷方。以现金支付员工差旅费借支2,000元，资产减少。支付时需核对借款单审批手续是否完备。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目1221），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'receipt', label: '借款单', docTitle: '员工借款单', date: '2026-06-06', totalAmount: 2000, stampText: '财务审核专用章', items: [{ name: '差旅费预借款（李四赴广州出差）', qty: 1, price: 2000, amount: 2000 }] },
@@ -574,7 +574,7 @@ const tasks = [
     tip: '购买支票的工本费和手续费属于财务费用。分录：借：财务费用，贷：银行存款。支票购买后需在支票领用登记簿上记录，出纳需妥善保管空白支票和支付密码器。',
     entries: [
       { subjectCode: '6603', summary: '购买支票及结算凭证', debit: 45, credit: 0, explanation: '财务费用增加记借方。购买转账支票本及结算凭证的手续费和工本费，属于银行相关费用，计入财务费用。' },
-      { subjectCode: '100201', summary: '购买支票及结算凭证', debit: 0, credit: 45, explanation: '银行存款减少记贷方。银行直接扣划支票工本费及手续费，资产减少。出纳需在支票领用登记簿上记录起止号码，妥善保管空白支票。' },
+      { subjectCode: '100201', summary: '购买支票及结算凭证', debit: 0, credit: 45, explanation: '银行存款减少记贷方。银行直接扣划支票工本费及手续费，资产减少。出纳需在支票领用登记簿上记录起止号码，妥善保管空白支票。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'bank', label: '银行收费回单', date: '2026-06-07', totalAmount: 45, payer: '本公司', payeeName: '工商银行', content: '购买转账支票1本（25张）工本费+手续费', refNo: 'HD202606070001' },
@@ -607,7 +607,7 @@ const tasks = [
     tip: '预付货款是采购业务中常见的付款方式。分录：借：预付账款，贷：银行存款。出纳需根据采购合同和付款审批单办理转账，确保收款方信息准确，付款后及时通知采购部门和供应商。',
     entries: [
       { subjectCode: '1123', summary: '预付丙公司采购款', debit: 15000, credit: 0, explanation: '预付账款增加记借方。根据采购合同向丙公司预付商品采购款15,000元，形成对供应商的预付债权。待商品验收入库后，冲减预付账款。' },
-      { subjectCode: '100201', summary: '预付丙公司采购款', debit: 0, credit: 15000, explanation: '银行存款减少记贷方。以工商银行转账支付预付采购款，资金划出，资产减少。出纳需核对付款审批单、采购合同和供应商账户信息的准确性。' },
+      { subjectCode: '100201', summary: '预付丙公司采购款', debit: 0, credit: 15000, explanation: '银行存款减少记贷方。以工商银行转账支付预付采购款，资金划出，资产减少。出纳需核对付款审批单、采购合同和供应商账户信息的准确性。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目1123），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'bank', label: '转账回单', date: '2026-06-10', totalAmount: 15000, payer: '本公司', payeeName: '丙公司', content: '预付采购款（合同No.CG20260610）', refNo: 'HD202606100002' },
@@ -624,7 +624,7 @@ const tasks = [
     tip: '银行的转账汇款手续费属于财务费用。分录：借：财务费用，贷：银行存款。出纳每月需核对银行扣收的各项手续费，确保金额准确，必要时向银行索取收费明细。',
     entries: [
       { subjectCode: '6603', summary: '银行扣收汇款手续费', debit: 28, credit: 0, explanation: '财务费用增加记借方。银行转账汇款手续费28元，属于银行服务收费，计入财务费用。' },
-      { subjectCode: '100201', summary: '银行扣收汇款手续费', debit: 0, credit: 28, explanation: '银行存款减少记贷方。工商银行自动扣划转账汇款手续费28元，资产减少。出纳需定期检查银行扣费明细。' },
+      { subjectCode: '100201', summary: '银行扣收汇款手续费', debit: 0, credit: 28, explanation: '银行存款减少记贷方。工商银行自动扣划转账汇款手续费28元，资产减少。出纳需定期检查银行扣费明细。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'bank', label: '银行扣费回单', date: '2026-06-12', totalAmount: 28, payer: '本公司', payeeName: '工商银行', content: '2026年6月转账汇款手续费', refNo: 'HD202606120002' },
@@ -639,7 +639,7 @@ const tasks = [
     description: '收到乙公司通过电汇方式偿还的前欠货款18,000元，款项已存入建设银行账户。',
     tip: '收到客户还款时出纳需及时确认到账并登记银行日记账。分录：借：银行存款-建行，贷：应收账款-乙公司。注意核对汇款方名称与客户名称是否一致，金额与应收余额是否匹配。',
     entries: [
-      { subjectCode: '100202', summary: '收到乙公司电汇货款', debit: 18000, credit: 0, explanation: '银行存款-建设银行增加记借方。乙公司电汇偿还前欠货款18,000元到建行账户，银行资产增加。建设银行账户（科目100202）用于收付结算。' },
+      { subjectCode: '100202', summary: '收到乙公司电汇货款', debit: 18000, credit: 0, explanation: '银行存款-建设银行增加记借方。乙公司电汇偿还前欠货款18,000元到建行账户，银行资产增加。建设银行账户（科目100202）用于收付结算。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金（配对科目112202），属于经营活动现金流入——主营业务产生的现金收入。'},
       { subjectCode: '112202', summary: '收到乙公司电汇货款', debit: 0, credit: 18000, explanation: '应收账款-乙公司减少记贷方。乙公司以电汇方式偿还前欠货款，应收账款债权减少。出纳需核对汇款附言或通知销售部门确认款项对应哪笔业务。' },
     ],
     documents: [
@@ -655,7 +655,7 @@ const tasks = [
     description: '前期收到的银行承兑汇票一张（金额35,000元，3个月期）今日到期，向银行提示付款后款项已划入工行账户。',
     tip: '银行承兑汇票到期托收是出纳的重要工作。分录：借：银行存款，贷：应收票据。出纳需在汇票到期前及时办理托收手续，填写托收凭证并加盖预留印鉴，跟踪款项到账情况，避免逾期。',
     entries: [
-      { subjectCode: '100201', summary: '银行承兑汇票到期托收', debit: 35000, credit: 0, explanation: '银行存款增加记借方。银行承兑汇票到期，工商银行兑付票款35,000元，资金到账，资产增加。' },
+      { subjectCode: '100201', summary: '银行承兑汇票到期托收', debit: 35000, credit: 0, explanation: '银行存款增加记借方。银行承兑汇票到期，工商银行兑付票款35,000元，资金到账，资产增加。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金（配对科目1121），属于经营活动现金流入——主营业务产生的现金收入。'},
       { subjectCode: '1121', summary: '银行承兑汇票到期托收', debit: 0, credit: 35000, explanation: '应收票据减少记贷方。持有的银行承兑汇票已到期并托收到账，债权结清。出纳需在应收票据备查簿上注明"已托收"及托收日期。' },
     ],
     documents: [
@@ -673,7 +673,7 @@ const tasks = [
     tip: '备用金实行定额管理，报销时补足至定额。分录：借：管理费用，贷：银行存款。注意：这里凭发票直接报销费用，与之前借支时挂其他应收款的处理方式不同。',
     entries: [
       { subjectCode: '6602', summary: '行政部报销办公用品', debit: 1500, credit: 0, explanation: '管理费用增加记借方。行政部购买办公用品1,500元，凭合规发票报销。办公用品属于企业日常管理支出，计入管理费用。' },
-      { subjectCode: '100201', summary: '补足备用金定额', debit: 0, credit: 1500, explanation: '银行存款减少记贷方。从工商银行提取现金补足备用金定额，资金划出，资产减少。备用金采用定额管理方式，报销时补足至固定金额。' },
+      { subjectCode: '100201', summary: '补足备用金定额', debit: 0, credit: 1500, explanation: '银行存款减少记贷方。从工商银行提取现金补足备用金定额，资金划出，资产减少。备用金采用定额管理方式，报销时补足至固定金额。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6602），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'receipt', label: '办公用品发票', docTitle: '增值税普通发票', date: '2026-06-16', totalAmount: 1500, stampText: 'XX办公用品有限公司 发票专用章', items: [{ name: 'A4打印纸', qty: 5, price: 120, amount: 600 }, { name: '墨盒', qty: 2, price: 300, amount: 600 }, { name: '文件夹', qty: 15, price: 20, amount: 300 }] },
@@ -707,7 +707,7 @@ const tasks = [
     tip: '现金盘点发现短缺时，先挂"其他应收款"待查。分录：借：其他应收款-现金短缺，贷：库存现金。查明原因后根据审批结果处理，无法查明的一般计入管理费用。注意现金盘点需有监盘人在场。',
     entries: [
       { subjectCode: '1221', summary: '现金短缺待查明原因', debit: 80, credit: 0, explanation: '其他应收款增加记借方。库存现金盘点发现短缺80元，原因待查，先挂其他应收款科目。出纳需填写现金盘点报告，由监盘人签字确认。' },
-      { subjectCode: '1001', summary: '现金短缺待查明原因', debit: 0, credit: 80, explanation: '库存现金减少记贷方。现金实际库存比账面少80元，资产减少。经财务主管审批，短缺无法查明原因，后续转入管理费用。' },
+      { subjectCode: '1001', summary: '现金短缺待查明原因', debit: 0, credit: 80, explanation: '库存现金减少记贷方。现金实际库存比账面少80元，资产减少。经财务主管审批，短缺无法查明原因，后续转入管理费用。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目1221），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'text', label: '现金盘点表', docTitle: '库存现金盘点报告表', content: '盘点日期：2026年6月20日\n盘点结果：实际库存比账面短缺80.00元\n原因说明：待查\n盘点人：王出纳\n监盘人：李会计\n处理意见：报经财务主管审批', signature: '王出纳 / 李会计' },
@@ -739,7 +739,7 @@ const tasks = [
     tip: '银行承兑汇票手续费是银行为企业承兑汇票收取的服务费，一般按票面金额的一定比例收取。分录：借：财务费用，贷：银行存款。出纳需核对扣费金额与银行收费通知是否一致。',
     entries: [
       { subjectCode: '6603', summary: '支付银行承兑汇票手续费', debit: 180, credit: 0, explanation: '财务费用增加记借方。银行承兑汇票手续费180元，属于银行服务性收费，计入财务费用。' },
-      { subjectCode: '100201', summary: '支付银行承兑汇票手续费', debit: 0, credit: 180, explanation: '银行存款减少记贷方。工商银行自动扣划银行承兑汇票手续费180元，资产减少。出纳需核对扣费明细。' },
+      { subjectCode: '100201', summary: '支付银行承兑汇票手续费', debit: 0, credit: 180, explanation: '银行存款减少记贷方。工商银行自动扣划银行承兑汇票手续费180元，资产减少。出纳需核对扣费明细。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'bank', label: '银行扣费回单', date: '2026-06-26', totalAmount: 180, payer: '本公司', payeeName: '工商银行', content: '银行承兑汇票手续费（票面金额90,000×0.2%）', refNo: 'HD202606260001' },
@@ -754,7 +754,7 @@ const tasks = [
     description: '收到甲公司汇入工商银行的货款45,200元，偿还前欠部分货款。',
     tip: '收到客户回款时出纳需确认到账并及时登记。分录：借：银行存款，贷：应收账款。注意核对汇款方是否为甲公司，金额是否对应具体发票，如有疑问及时与销售部门确认。',
     entries: [
-      { subjectCode: '100201', summary: '收到甲公司前欠货款', debit: 45200, credit: 0, explanation: '银行存款增加记借方。甲公司通过工商银行汇款偿还前欠货款45,200元，资金到账，资产增加。' },
+      { subjectCode: '100201', summary: '收到甲公司前欠货款', debit: 45200, credit: 0, explanation: '银行存款增加记借方。甲公司通过工商银行汇款偿还前欠货款45,200元，资金到账，资产增加。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金（配对科目112201），属于经营活动现金流入——主营业务产生的现金收入。'},
       { subjectCode: '112201', summary: '收到甲公司前欠货款', debit: 0, credit: 45200, explanation: '应收账款-甲公司减少记贷方。甲公司还款后，应收账款债权减少。出纳需在应收账款明细账中登记该笔回款，与销售部门核对是否为对应发票的回款。' },
     ],
     documents: [

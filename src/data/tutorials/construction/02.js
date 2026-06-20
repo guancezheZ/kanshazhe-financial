@@ -46,7 +46,7 @@ const tasks = [
     tip: '企业代扣的员工个税必须在次月15日前向税务机关申报缴纳。分录：借：应交税费-应交所得税，贷：银行存款。注意这个科目是"应交所得税"（个税也在此核算），不是"应交增值税"。',
     entries: [
       { subjectCode: '222102', debit: 3000, credit: 0, summary: '缴纳1月代扣个税', explanation: '应交所得税（含代扣个税）减少记借方。1月发工资时代扣的个人所得税3,000元，现在向税务机关缴纳，负债清偿。' },
-      { subjectCode: '100201', debit: 0, credit: 3000, summary: '缴纳1月代扣个税', explanation: '银行存款减少记贷方。通过银行转账缴纳税款，资产减少。需保留电子缴税凭证。' },
+      { subjectCode: '100201', debit: 0, credit: 3000, summary: '缴纳1月代扣个税', explanation: '银行存款减少记贷方。通过银行转账缴纳税款，资产减少。需保留电子缴税凭证。' , cashFlowItem: 'cf-op4', cashFlowExplanation: '缴纳税费支出（配对科目222102），属于"支付的各项税费"——经营活动现金流出。'},
     ],
     documents: [
       { type: 'receipt', label: '电子缴税凭证', docTitle: '中华人民共和国税收缴款书', date: '2026-02-02', totalAmount: 3000,
@@ -63,7 +63,7 @@ const tasks = [
     tip: '社保费包含单位部分（计入成本/费用）和个人部分（从工资中代扣）。缴纳时借：应付职工薪酬-社保（全额），贷：银行存款。注意单位部分和个人部分都在同一个科目核算。',
     entries: [
       { subjectCode: '221102', debit: 48000, credit: 0, summary: '缴纳1月社保费（单位+个人）', explanation: '应付职工薪酬-社保减少记借方。社保费包括单位40,000元和个人代扣8,000元，合计48,000元，一次性缴纳后负债清空。' },
-      { subjectCode: '100201', debit: 0, credit: 48000, summary: '缴纳1月社保费', explanation: '银行存款减少记贷方。通过银行转账缴纳社保费，资产减少。需保留社保缴费回单。' },
+      { subjectCode: '100201', debit: 0, credit: 48000, summary: '缴纳1月社保费', explanation: '银行存款减少记贷方。通过银行转账缴纳社保费，资产减少。需保留社保缴费回单。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221102），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'},
     ],
     documents: [
       { type: 'receipt', label: '社保缴费单', docTitle: '社会保险费缴费通知单', date: '2026-02-03', totalAmount: 48000,
@@ -80,7 +80,7 @@ const tasks = [
     tip: '住房公积金与社保同理，单位部分和个人部分都在"应付职工薪酬-公积金"核算。借：应付职工薪酬-公积金，贷：银行存款。公积金缴存比例一般为5%~12%，本例按12%计算。',
     entries: [
       { subjectCode: '221103', debit: 24000, credit: 0, summary: '缴纳1月公积金（单位+个人）', explanation: '应付职工薪酬-公积金减少记借方。单位16,000元+个人8,000元=24,000元，一次性缴纳。' },
-      { subjectCode: '100201', debit: 0, credit: 24000, summary: '缴纳1月公积金', explanation: '银行存款减少记贷方。通过银行转账缴纳公积金，资产减少。' },
+      { subjectCode: '100201', debit: 0, credit: 24000, summary: '缴纳1月公积金', explanation: '银行存款减少记贷方。通过银行转账缴纳公积金，资产减少。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221103），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'},
     ],
     documents: [
       { type: 'receipt', label: '公积金汇缴书', docTitle: '住房公积金汇缴书', date: '2026-02-04', totalAmount: 24000,
@@ -131,7 +131,7 @@ const tasks = [
     tip: '出纳根据审批齐全的付款申请单办理网银转账。注意双人复核制度：出纳制单，会计主管复核。付款后打印电子回单并登记银行存款日记账。',
     entries: [
       { subjectCode: '220201', debit: 226000, credit: 0, summary: '支付丙公司材料款', explanation: '应付账款减少记借方。支付供应商货款后负债减少，履行了付款义务。' },
-      { subjectCode: '100201', debit: 0, credit: 226000, summary: '支付材料采购款', explanation: '银行存款减少记贷方。网银转账支付材料款，资产减少。出纳需保留电子回单。' },
+      { subjectCode: '100201', debit: 0, credit: 226000, summary: '支付材料采购款', explanation: '银行存款减少记贷方。网银转账支付材料款，资产减少。出纳需保留电子回单。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目220201），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'bank', label: '网银转账回单', date: '2026-02-07', totalAmount: 226000, payer: '鼎立建筑工程有限公司', payeeName: '丙公司', content: '支付材料采购款（钢筋水泥）', refNo: 'ZF202602070001' },
@@ -169,7 +169,7 @@ const tasks = [
     tip: '多笔材料采购需分别付款并核对发票、入库单、付款申请单三者一致。出纳付款后要及时登记日记账。',
     entries: [
       { subjectCode: '220202', debit: 90400, credit: 0, summary: '支付丁公司材料款', explanation: '应付账款-丁公司减少90,400元，清偿对丁公司的债务。' },
-      { subjectCode: '100201', debit: 0, credit: 90400, summary: '支付砂石料款', explanation: '银行存款减少90,400元。通过网银转账支付，资金划出。' },
+      { subjectCode: '100201', debit: 0, credit: 90400, summary: '支付砂石料款', explanation: '银行存款减少90,400元。通过网银转账支付，资金划出。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目220202），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'bank', label: '网银转账回单', date: '2026-02-09', totalAmount: 90400, payer: '鼎立建筑工程有限公司', payeeName: '丁公司', content: '支付材料采购款（砂石料/砖块）', refNo: 'ZF202602090001' },
@@ -186,7 +186,7 @@ const tasks = [
     entries: [
       { subjectCode: '540103', debit: 200000, credit: 0, summary: '确认分包工程进度成本', explanation: '分包成本增加200,000元。大地基础公司完成的基础工程分包工作量，按合同约定确认为分包成本。' },
       { subjectCode: '222101', debit: 18000, credit: 0, summary: '增值税进项税额（20万×9%）', explanation: '取得分包方开具的增值税专用发票，进项税额18,000元可抵扣。建筑业分包9%税率。' },
-      { subjectCode: '100201', debit: 0, credit: 218000, summary: '支付分包工程进度款', explanation: '银行存款减少218,000元。支付分包工程春节前的进度款，资金划出。' },
+      { subjectCode: '100201', debit: 0, credit: 218000, summary: '支付分包工程进度款', explanation: '银行存款减少218,000元。支付分包工程春节前的进度款，资金划出。' , cashFlowItem: 'cf-op4', cashFlowExplanation: '缴纳税费支出（配对科目540103），属于"支付的各项税费"——经营活动现金流出。'},
     ],
     documents: [
       { type: 'bank', label: '银行转账回单', date: '2026-02-10', totalAmount: 218000, payer: '鼎立建筑工程有限公司', payeeName: '大地基础工程有限公司', content: '分包工程春节前进度款', refNo: 'ZF202602100001' },
@@ -239,7 +239,7 @@ const tasks = [
     tip: '加班费以现金发放时，出纳需逐一核验领款人身份，确保签字与身份证一致。大额现金支付需注意安全，建议两人同行。分录：借：应付职工薪酬-工资，贷：库存现金。',
     entries: [
       { subjectCode: '221101', debit: 30000, credit: 0, summary: '发放春节加班工资', explanation: '应付职工薪酬-工资减少30,000元。发放加班工资后，对职工的负债减少。' },
-      { subjectCode: '1001', debit: 0, credit: 30000, summary: '发放春节加班工资', explanation: '库存现金减少30,000元。以现金形式发放加班补贴，保险柜现金减少。' },
+      { subjectCode: '1001', debit: 0, credit: 30000, summary: '发放春节加班工资', explanation: '库存现金减少30,000元。以现金形式发放加班补贴，保险柜现金减少。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221101），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'},
     ],
     documents: [
       { type: 'text', label: '加班工资发放表', docTitle: '春节加班工资发放签收表', signature: '刘出纳  赵会计',
@@ -257,7 +257,7 @@ const tasks = [
     entries: [
       { subjectCode: '540105', debit: 15000, credit: 0, summary: '采购安全防护用品', explanation: '其他直接费用增加15,000元。安全防护用品直接用于工程现场施工安全，属于合同履约成本的直接费用。' },
       { subjectCode: '222101', debit: 1950, credit: 0, summary: '增值税进项税额（15,000×13%）', explanation: '进项税额1,950元可抵扣。安全防护用品取得增值税专用发票。' },
-      { subjectCode: '100201', debit: 0, credit: 16950, summary: '支付安全防护用品款', explanation: '银行存款减少16,950元。通过银行转账支付安全用品采购款。' },
+      { subjectCode: '100201', debit: 0, credit: 16950, summary: '支付安全防护用品款', explanation: '银行存款减少16,950元。通过银行转账支付安全用品采购款。' , cashFlowItem: 'cf-op4', cashFlowExplanation: '缴纳税费支出（配对科目540105），属于"支付的各项税费"——经营活动现金流出。'},
     ],
     documents: [
       { type: 'invoice', label: '增值税专用发票', date: '2026-02-14', region: '江苏省', invoiceNo: '3200260214', buyer: '鼎立建筑工程有限公司', seller: '丁公司',
@@ -295,7 +295,7 @@ const tasks = [
     tip: '设备租赁费是工程施工的重要成本。出纳付款时需核对租赁合同中的费用标准、租期等信息。',
     entries: [
       { subjectCode: '220201', debit: 40000, credit: 0, summary: '支付塔吊租赁费', explanation: '应付账款-丙公司减少40,000元。清偿前日计提的塔吊租赁负债。' },
-      { subjectCode: '100201', debit: 0, credit: 40000, summary: '支付塔吊租赁费', explanation: '银行存款减少40,000元。网银转账支付塔吊租赁费。' },
+      { subjectCode: '100201', debit: 0, credit: 40000, summary: '支付塔吊租赁费', explanation: '银行存款减少40,000元。网银转账支付塔吊租赁费。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目220201），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'bank', label: '网银转账回单', date: '2026-02-16', totalAmount: 40000, payer: '鼎立建筑工程有限公司', payeeName: '丙公司', content: '塔吊租赁费', refNo: 'ZF202602160001' },
@@ -311,7 +311,7 @@ const tasks = [
     tip: '机械维修费计入"合同履约成本-机械使用费"。春节后复工前的设备检修是保障施工安全的重要措施。',
     entries: [
       { subjectCode: '540104', debit: 8000, credit: 0, summary: '施工机械检修保养费', explanation: '机械使用费增加8,000元。塔吊、挖掘机等施工机械的检修保养费属于机械使用费。' },
-      { subjectCode: '100201', debit: 0, credit: 8000, summary: '支付机械维修费', explanation: '银行存款减少8,000元。支付春节后复工前的设备检修费用。' },
+      { subjectCode: '100201', debit: 0, credit: 8000, summary: '支付机械维修费', explanation: '银行存款减少8,000元。支付春节后复工前的设备检修费用。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目540104），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'invoice', label: '增值税普通发票', date: '2026-02-17', region: '江苏省', invoiceNo: '3200260217', buyer: '鼎立建筑工程有限公司', seller: 'XX工程机械维修有限公司',
@@ -328,7 +328,7 @@ const tasks = [
     tip: '复工安全培训及防疫费用属于"合同履约成本-其他直接费用"，是工程施工直接相关的支出。借：合同履约成本-其他直接费用，贷：银行存款。',
     entries: [
       { subjectCode: '540105', debit: 5000, credit: 0, summary: '复工安全培训及防疫费', explanation: '其他直接费用增加5,000元。春节后复工的安全教育和防疫消杀是工程直接相关支出。' },
-      { subjectCode: '100201', debit: 0, credit: 5000, summary: '支付复工安全培训费', explanation: '银行存款减少5,000元。支付安全培训机构费用和防疫物资采购。' },
+      { subjectCode: '100201', debit: 0, credit: 5000, summary: '支付复工安全培训费', explanation: '银行存款减少5,000元。支付安全培训机构费用和防疫物资采购。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目540105），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'receipt', label: '培训费发票', docTitle: '安全培训服务费发票', date: '2026-02-18', totalAmount: 5000,
@@ -399,7 +399,7 @@ const tasks = [
     tip: '工程管理人员差旅费计入"合同履约成本-其他直接费用"。出纳审核报销单据的合规性、发票真实性后办理转账。',
     entries: [
       { subjectCode: '540105', debit: 4500, credit: 0, summary: '报销复工差旅费', explanation: '其他直接费用增加4,500元。项目经理复工往返工地的差旅费，与工程施工直接相关。' },
-      { subjectCode: '100201', debit: 0, credit: 4500, summary: '支付差旅费报销款', explanation: '银行存款减少4,500元。转账支付报销款至员工个人账户。' },
+      { subjectCode: '100201', debit: 0, credit: 4500, summary: '支付差旅费报销款', explanation: '银行存款减少4,500元。转账支付报销款至员工个人账户。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目540105），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'receipt', label: '差旅费报销单', docTitle: '差旅费报销审批单', date: '2026-02-22', totalAmount: 4500,
@@ -455,7 +455,7 @@ const tasks = [
     entries: [
       { subjectCode: '660201', debit: 5500, credit: 0, summary: '公司办公费用', explanation: '管理费用增加5,500元。行政管理部门2月份办公用品及耗材费用。' },
       { subjectCode: '540106', debit: 3800, credit: 0, summary: '工程现场水电费', explanation: '间接费用增加3,800元。工程现场施工用水电费，计入合同履约成本-间接费用。' },
-      { subjectCode: '100201', debit: 0, credit: 9300, summary: '支付办公费及水电费', explanation: '银行存款减少9,300元。通过银行转账支付各项费用。' },
+      { subjectCode: '100201', debit: 0, credit: 9300, summary: '支付办公费及水电费', explanation: '银行存款减少9,300元。通过银行转账支付各项费用。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目660201），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'receipt', label: '缴费凭证', date: '2026-02-25', totalAmount: 9300,
@@ -472,7 +472,7 @@ const tasks = [
     tip: '银行手续费计入"财务费用"。出纳需逐月核对银行扣款明细，确保金额准确。分录：借：财务费用，贷：银行存款。',
     entries: [
       { subjectCode: '6603', debit: 550, credit: 0, summary: '2月银行手续费及账户管理费', explanation: '财务费用增加550元。银行手续费和账户管理费是融资成本类费用，计入当期损益。' },
-      { subjectCode: '100201', debit: 0, credit: 550, summary: '银行扣款确认', explanation: '银行存款减少550元。银行自动扣收手续费，出纳需核对扣款明细。' },
+      { subjectCode: '100201', debit: 0, credit: 550, summary: '银行扣款确认', explanation: '银行存款减少550元。银行自动扣收手续费，出纳需核对扣款明细。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'receipt', label: '银行扣费通知', docTitle: '中国工商银行业务收费回单', date: '2026-02-26', totalAmount: 550,
@@ -507,7 +507,7 @@ const tasks = [
     description: '确认恒达地产支付的2月份工程进度款817,500元已到账，出纳登记银行存款日记账。',
     tip: '大额工程款到账后，出纳应立即通知会计入账，并核对银行回单金额与进度款申请单是否一致。',
     entries: [
-      { subjectCode: '100201', debit: 817500, credit: 0, summary: '收到恒达地产工程进度款', explanation: '银行存款增加817,500元。甲方支付的2月份工程进度款到账，资金增加。' },
+      { subjectCode: '100201', debit: 817500, credit: 0, summary: '收到恒达地产工程进度款', explanation: '银行存款增加817,500元。甲方支付的2月份工程进度款到账，资金增加。' , cashFlowItem: 'cf-op5', cashFlowExplanation: '其他经营活动现金流入（配对科目2205），属于"收到其他与经营活动有关的现金"。'},
       { subjectCode: '2205', debit: 0, credit: 817500, summary: '合同负债-恒达地产（到账）', explanation: '合同负债增加817,500元。此处与会计的进度产值申报对应，简化处理后直接增加合同负债。' },
     ],
     documents: [
@@ -711,7 +711,7 @@ const tasks = [
     tip: '日常办公费计入管理费用。',
     entries: [
       { subjectCode: '660201', debit: 2500, credit: 0, summary: '办公用品费', explanation: '办公用品费计入管理费用。' },
-      { subjectCode: '100201', debit: 0, credit: 2500, summary: '支付办公费', explanation: '银行存款减少2,500元。' },
+      { subjectCode: '100201', debit: 0, credit: 2500, summary: '支付办公费', explanation: '银行存款减少2,500元。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目660201），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [{ type: 'receipt', label: '办公用品发票', items: [{ label: '办公用品', amount: 2500 }], totalAmount: 2500, stampText: '收款单位财务章' }],
   },
@@ -738,7 +738,7 @@ const tasks = [
     tip: '银行手续费计入财务费用。',
     entries: [
       { subjectCode: '6603', debit: 680, credit: 0, summary: '银行手续费', explanation: '银行手续费计入财务费用。' },
-      { subjectCode: '100201', debit: 0, credit: 680, summary: '银行扣款', explanation: '银行存款减少680元。' },
+      { subjectCode: '100201', debit: 0, credit: 680, summary: '银行扣款', explanation: '银行存款减少680元。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [{ type: 'bank', label: '银行扣款通知', totalAmount: 680, content: '银行手续费' }],
   },

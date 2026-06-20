@@ -35,7 +35,7 @@ const aug = [
       { subjectCode: '222101', summary: '缴纳7月增值税', debit: 32500, credit: 0,
         explanation: '7月底计提了应交增值税32,500元（贷方余额），现在实际缴纳，负债减少记借方。' },
       { subjectCode: '100201', summary: '缴纳7月增值税', debit: 0, credit: 32500,
-        explanation: '银行存款减少32,500元。每月初集中缴税是企业固定的资金流出节奏。' },
+        explanation: '银行存款减少32,500元。每月初集中缴税是企业固定的资金流出节奏。' , cashFlowItem: 'cf-op4', cashFlowExplanation: '缴纳税费支出（配对科目222101），属于"支付的各项税费"——经营活动现金流出。'},
     ],
     documents: [
       { type: 'receipt', label: '税收缴款书', docTitle: '中华人民共和国税收缴款书', date: '2026-08-03', totalAmount: 32500, payer: '本公司', stampText: '国家税务总局\n征收章',
@@ -54,7 +54,7 @@ const aug = [
       { subjectCode: '222103', summary: '缴纳7月城建税', debit: 2275, credit: 0,
         explanation: '7月底计提了城建税2,275元（贷方），8月初缴纳，负债减少记借方。城建税税率市区7%。' },
       { subjectCode: '100201', summary: '缴纳7月城建税', debit: 0, credit: 2275,
-        explanation: '银行存款减少2,275元。城建税与增值税同步缴纳。' },
+        explanation: '银行存款减少2,275元。城建税与增值税同步缴纳。' , cashFlowItem: 'cf-op4', cashFlowExplanation: '缴纳税费支出（配对科目222103），属于"支付的各项税费"——经营活动现金流出。'},
     ],
     documents: [
       { type: 'receipt', label: '税收缴款书', docTitle: '城市维护建设税缴款书', date: '2026-08-03', totalAmount: 2275, payer: '本公司', stampText: '国家税务总局\n征收章',
@@ -73,7 +73,7 @@ const aug = [
       { subjectCode: '222104', summary: '缴纳7月教育费附加', debit: 975, credit: 0,
         explanation: '教育费附加975元是上月计提的负债，本月缴纳后负债减少。' },
       { subjectCode: '100201', summary: '缴纳7月教育费附加', debit: 0, credit: 975,
-        explanation: '银行存款减少975元。三笔税金合计35,750元。' },
+        explanation: '银行存款减少975元。三笔税金合计35,750元。' , cashFlowItem: 'cf-op4', cashFlowExplanation: '缴纳税费支出（配对科目222104），属于"支付的各项税费"——经营活动现金流出。'},
     ],
     documents: [
       { type: 'receipt', label: '缴款凭证', docTitle: '教育费附加缴款凭证', date: '2026-08-03', totalAmount: 975, payer: '本公司', stampText: '国家税务总局\n征收章',
@@ -92,7 +92,7 @@ const aug = [
       { subjectCode: '221101', summary: '发放7月工资', debit: 72000, credit: 0,
         explanation: '应付职工薪酬-工资减少72,000元。7月25日计提了72,000元工资，现在实际发放，负债减少记借方。' },
       { subjectCode: '100201', summary: '实发工资', debit: 0, credit: 59200,
-        explanation: '实发59,200元=应发72,000-社保7,200-公积金3,600-个税2,000。代扣合计12,800元，占比17.8%。' },
+        explanation: '实发59,200元=应发72,000-社保7,200-公积金3,600-个税2,000。代扣合计12,800元，占比17.8%。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221101），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'},
       { subjectCode: '224101', summary: '代扣社保个人部分', debit: 0, credit: 7200,
         explanation: '其他应付款-社保增加7,200元。代扣的社保个人部分暂挂，下月缴纳时冲减。' },
       { subjectCode: '224102', summary: '代扣公积金个人部分', debit: 0, credit: 3600,
@@ -126,7 +126,7 @@ const aug = [
       { subjectCode: '224102', summary: '缴纳代扣公积金', debit: 3600, credit: 0,
         explanation: '其他应付款-公积金减少3,600元。个人公积金缴清后该科目余额归零。' },
       { subjectCode: '100201', summary: '缴纳代扣社保公积金', debit: 0, credit: 10800,
-        explanation: '银行存款减少10,800元。个人部分企业只是经手代缴，不产生费用。' },
+        explanation: '银行存款减少10,800元。个人部分企业只是经手代缴，不产生费用。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目224101），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'receipt', label: '社保缴费单', docTitle: '社会保险费个人部分缴费凭证', date: '2026-08-05', totalAmount: 7200, payer: '本公司', stampText: 'XX市社保\n征缴章',
@@ -146,7 +146,7 @@ const aug = [
       { subjectCode: '222102', summary: '缴纳7月代扣个税', debit: 2000, credit: 0,
         explanation: '应交税费-应交个人所得税减少2,000元。发工资时代扣了这笔钱，现在实际缴纳，负债减少记借方。' },
       { subjectCode: '100201', summary: '缴纳7月个税', debit: 0, credit: 2000,
-        explanation: '银行存款减少2,000元。个税是代扣代缴，不产生企业费用。' },
+        explanation: '银行存款减少2,000元。个税是代扣代缴，不产生企业费用。' , cashFlowItem: 'cf-op4', cashFlowExplanation: '缴纳税费支出（配对科目222102），属于"支付的各项税费"——经营活动现金流出。'},
     ],
     documents: [
       { type: 'receipt', label: '缴税凭证', docTitle: '中华人民共和国税收缴款书', date: '2026-08-05', totalAmount: 2000, payer: '本公司', stampText: '国家税务总局\n征收章',
@@ -210,7 +210,7 @@ const aug = [
       { subjectCode: '222101', summary: '进项税额（13%）', debit: 4550, credit: 0,
         explanation: '进项税额4,550元（35,000×13%），取得增值税专用发票后可抵扣销项税。' },
       { subjectCode: '100201', summary: '支付采购款', debit: 0, credit: 39550,
-        explanation: '银行存款减少39,550元=35,000+4,550。价税分离是增值税核算的核心特征。' },
+        explanation: '银行存款减少39,550元=35,000+4,550。价税分离是增值税核算的核心特征。' , cashFlowItem: 'cf-op2', cashFlowExplanation: '采购存货/商品支出（配对科目1403），属于"购买商品、接受劳务支付的现金"——经营活动现金流出。'},
     ],
     documents: [
       { type: 'invoice', label: '增值税专用发票', region: '广东', invoiceType: '专用', copy: '发票联', invoiceNo: '4400801111', date: '2026年08月11日', buyer: '本公司', buyerTaxId: '91440101MA3XXXXXXXX', seller: '子材料有限公司', sellerTaxId: '91440101MA0MMMMMMMM', stampText: '子公司\n发票专用章',
@@ -227,7 +227,7 @@ const aug = [
     tip: '现销业务——B产品销售额持续增长，从7月的200,000元增长至220,000元。改扩建完成后的产能提升开始体现。分录三要素一致：银行存款增加（借），收入确认（贷），增值税（贷）。',
     entries: [
       { subjectCode: '100201', summary: '销售B产品收款', debit: 248600, credit: 0,
-        explanation: '银行存款增加248,600元（含税价）。B产品销售220,000元，创下单月新高。改扩建完成使设备产能得到提升。' },
+        explanation: '银行存款增加248,600元（含税价）。B产品销售220,000元，创下单月新高。改扩建完成使设备产能得到提升。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金（配对科目6001），属于经营活动现金流入——主营业务产生的现金收入。'},
       { subjectCode: '6001', summary: '销售B产品收入', debit: 0, credit: 220000,
         explanation: '主营业务收入220,000元。不含税价款确认收入，B产品176件×1,250元/件=220,000元。' },
       { subjectCode: '222101', summary: '销项税额（13%）', debit: 0, credit: 28600,
@@ -280,7 +280,7 @@ const aug = [
     tip: '收款业务——冲减应收账款。7月10日赊销给辛公司90,400元，按合同约定期限回款。辛公司信誉良好。',
     entries: [
       { subjectCode: '100201', summary: '收到辛公司货款', debit: 90400, credit: 0,
-        explanation: '银行存款增加90,400元。辛公司按约付款，款项全部收回。及时核销应收账款。' },
+        explanation: '银行存款增加90,400元。辛公司按约付款，款项全部收回。及时核销应收账款。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金（配对科目112205），属于经营活动现金流入——主营业务产生的现金收入。'},
       { subjectCode: '112205', summary: '收到辛公司货款', debit: 0, credit: 90400,
         explanation: '应收账款-辛公司减少90,400元。7月赊销形成的债权现在收回。' },
     ],
@@ -299,7 +299,7 @@ const aug = [
       { subjectCode: '2212', summary: '实际维修支出-冲减预计负债', debit: 1500, credit: 0,
         explanation: '为什么借"预计负债"1,500元？5月计提的预计负债5,000元尚未用完。实际发生产品维修支出时，冲减预计负债。预计负债余额=5,000-3,000(6月)-1,500(本月)=500元。差额500元在年末进行调整。' },
       { subjectCode: '100201', summary: '支付维修费', debit: 0, credit: 1500,
-        explanation: '银行存款减少1,500元。实际维修费低于预计数，说明产品质量较好。注意：这里不产生新的费用——费用已在5月计提时确认。如果实际支出超过计提额，需要补提差额。' },
+        explanation: '银行存款减少1,500元。实际维修费低于预计数，说明产品质量较好。注意：这里不产生新的费用——费用已在5月计提时确认。如果实际支出超过计提额，需要补提差额。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目2212），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'receipt', label: '维修单据', docTitle: '产品售后维修单', date: '2026-08-14', totalAmount: 1500, payer: '本公司', stampText: '售后服务中心\n专用章',
@@ -336,7 +336,7 @@ const aug = [
       { subjectCode: '220203', summary: '支付子材料公司货款', debit: 39550, credit: 0,
         explanation: '应付账款-子材料公司减少39,550元。8月11日向子材料公司采购H材料形成了这笔负债，现在付款清偿。' },
       { subjectCode: '100201', summary: '支付货款', debit: 0, credit: 39550,
-        explanation: '银行存款减少39,550元。及时支付供应商货款有助于建立长期合作关系。' },
+        explanation: '银行存款减少39,550元。及时支付供应商货款有助于建立长期合作关系。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目220203），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'bank', label: '银行回单', date: '2026-08-17', totalAmount: 39550, payer: '本公司', payeeName: '子材料有限公司', content: '支付H材料采购款', refNo: 'HD202608170009' },
@@ -353,7 +353,7 @@ const aug = [
       { subjectCode: '660202', summary: '报销差旅费', debit: 3000, credit: 0,
         explanation: '管理费用-差旅费增加3,000元。员工出差费用是企业管理活动的必要支出。' },
       { subjectCode: '100201', summary: '报销差旅费', debit: 0, credit: 3000,
-        explanation: '银行存款减少3,000元。出差费用实报实销。' },
+        explanation: '银行存款减少3,000元。出差费用实报实销。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目660202），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'receipt', label: '差旅报销单', docTitle: '差旅费报销单', date: '2026-08-18', totalAmount: 3000, stampText: '财务审核\n已核销',
@@ -376,7 +376,7 @@ const aug = [
       { subjectCode: '6602', summary: '支付水电费', debit: 5200, credit: 0,
         explanation: '管理费用增加5,200元（电费4,000+水费1,200）。夏季水电费保持高位。' },
       { subjectCode: '100201', summary: '支付水电费', debit: 0, credit: 5200,
-        explanation: '银行存款减少5,200元。水电费是企业每月固定支出之一。' },
+        explanation: '银行存款减少5,200元。水电费是企业每月固定支出之一。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6602），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'receipt', label: '电费单', docTitle: '电费缴费凭证', date: '2026-08-18', totalAmount: 4000, payer: '本公司', stampText: '国家电网\n收讫章',
@@ -396,7 +396,7 @@ const aug = [
       { subjectCode: '660201', summary: '购买办公用品', debit: 700, credit: 0,
         explanation: '管理费用-办公费增加700元。办公消耗品直接费用化。' },
       { subjectCode: '100201', summary: '购买办公用品', debit: 0, credit: 700,
-        explanation: '银行存款减少700元。金额小按含税价直接费用化。' },
+        explanation: '银行存款减少700元。金额小按含税价直接费用化。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目660201），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'receipt', label: '收据', docTitle: '收  据', date: '2026-08-19', totalAmount: 700, payer: '本公司', stampText: '办公用品店\n发票专用章',
@@ -414,7 +414,7 @@ const aug = [
       { subjectCode: '660101', summary: '支付网络推广费', debit: 9000, credit: 0,
         explanation: '销售费用-广告费增加9,000元。夏季推广持续投入。' },
       { subjectCode: '100201', summary: '支付网络推广费', debit: 0, credit: 9000,
-        explanation: '银行存款减少9,000元。推广费是企业维持市场曝光度的必要开支。' },
+        explanation: '银行存款减少9,000元。推广费是企业维持市场曝光度的必要开支。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目660101），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'invoice', label: '服务发票', region: '北京', invoiceType: '专用', copy: '发票联', invoiceNo: '1100888555', date: '2026年08月20日', buyer: '本公司', buyerTaxId: '91440101MA3XXXXXXXX', seller: '字节跳动科技有限公司', sellerTaxId: '91110000MA6YYYYYYY', stampText: '字节跳动\n发票专用章',
@@ -595,7 +595,7 @@ Q3累计利息：543.75×2=1,087.50元
       { subjectCode: '221102', summary: '缴纳8月社保单位部分', debit: 21000, credit: 0,
         explanation: '应付职工薪酬-社保减少21,000元。单位部分在月末计提时已计入费用，现在实际缴纳只是清偿负债。' },
       { subjectCode: '100201', summary: '缴纳8月社保', debit: 0, credit: 21000,
-        explanation: '银行存款减少21,000元。社保费各险种合计约为工资总额的28%。' },
+        explanation: '银行存款减少21,000元。社保费各险种合计约为工资总额的28%。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221102），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'},
     ],
     documents: [
       { type: 'receipt', label: '社保缴费单', docTitle: '社会保险费缴费通知单', date: '2026-08-28', totalAmount: 21000, payer: '本公司', stampText: 'XX市社保\n征缴章',
@@ -619,7 +619,7 @@ Q3累计利息：543.75×2=1,087.50元
       { subjectCode: '221103', summary: '缴纳8月公积金单位部分', debit: 10200, credit: 0,
         explanation: '应付职工薪酬-公积金减少10,200元。之前计提的公积金负债现在实际缴纳。' },
       { subjectCode: '100201', summary: '缴纳8月公积金', debit: 0, credit: 10200,
-        explanation: '银行存款减少10,200元。公积金单位缴存比例约为工资的14%。' },
+        explanation: '银行存款减少10,200元。公积金单位缴存比例约为工资的14%。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221103），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'},
     ],
     documents: [
       { type: 'receipt', label: '公积金汇缴书', docTitle: '住房公积金汇缴书', date: '2026-08-28', totalAmount: 10200, payer: '本公司', stampText: 'XX市公积金\n管理中心\n业务专用章',
@@ -829,7 +829,7 @@ Q3累计利息：543.75×2=1,087.50元
     entries: [
       { subjectCode: '221102', summary: '社保单位', debit: 21000, credit: 0, explanation: '应付职工薪酬-社保减少。' },
       { subjectCode: '224101', summary: '社保个人', debit: 7000, credit: 0, explanation: '其他应付款-社保减少。' },
-      { subjectCode: '100201', summary: '缴纳社保', debit: 0, credit: 28000, explanation: '银行存款减少。' },
+      { subjectCode: '100201', summary: '缴纳社保', debit: 0, credit: 28000, explanation: '银行存款减少。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221102），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'},
     ],
     documents: [{ type: 'bank', label: '社保扣款回单', date: '2026-08-06', totalAmount: 28000, payer: '本公司', payeeName: 'XX市社保局', content: '8月社保费', refNo: 'HD202608060005' }],
   },
@@ -840,7 +840,7 @@ Q3累计利息：543.75×2=1,087.50元
     tip: '支付月度固定费用，保留发票。',
     entries: [
       { subjectCode: '6602', summary: '网络费', debit: 2600, credit: 0, explanation: '管理费用增加。' },
-      { subjectCode: '100201', summary: '网络费', debit: 0, credit: 2600, explanation: '银行存款减少。' },
+      { subjectCode: '100201', summary: '网络费', debit: 0, credit: 2600, explanation: '银行存款减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6602），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [{ type: 'bank', label: '转账回单', date: '2026-08-07', totalAmount: 2600, payer: '本公司', payeeName: '中国电信', content: '8月网络费', refNo: 'HD202608070008' }],
   },
@@ -850,7 +850,7 @@ Q3累计利息：543.75×2=1,087.50元
     description: '持有一张未到期的银行承兑汇票（面额100,000元，剩余期限2个月），前往工商银行办理贴现。银行贴现率4.8%，贴现息=100,000×4.8%÷12×2=800元，实际到账99,200元。',
     tip: '票据贴现是出纳需要掌握的重要融资方式。贴现息=票面金额×贴现率÷12×剩余月数。出纳需填写贴现凭证，银行审核后扣除贴现息将余额转入账户。贴现后如汇票到期不能兑付，银行有权向企业追索。',
     entries: [
-      { subjectCode: '100201', summary: '票据贴现到账', debit: 99200, credit: 0, explanation: '银行存款增加99,200元。贴现票款扣除贴现息后到账。' },
+      { subjectCode: '100201', summary: '票据贴现到账', debit: 99200, credit: 0, explanation: '银行存款增加99,200元。贴现票款扣除贴现息后到账。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金（配对科目1121），属于经营活动现金流入——主营业务产生的现金收入。'},
       { subjectCode: '6603', summary: '贴现息支出', debit: 800, credit: 0, explanation: '财务费用-贴现息增加800元。贴现息=100,000×4.8%÷12×2=800元，计入融资成本。' },
       { subjectCode: '1121', summary: '转销贴现票据', debit: 0, credit: 100000, explanation: '应收票据减少100,000元。已贴现票据转销，票据权利转移给银行。' },
     ],
@@ -878,7 +878,7 @@ Q3累计利息：543.75×2=1,087.50元
     entries: [
       { subjectCode: '221103', summary: '公积金单位', debit: 10200, credit: 0, explanation: '应付职工薪酬-公积金减少。' },
       { subjectCode: '224102', summary: '公积金个人', debit: 3400, credit: 0, explanation: '其他应付款-公积金减少。' },
-      { subjectCode: '100201', summary: '缴纳公积金', debit: 0, credit: 13600, explanation: '银行存款减少。' },
+      { subjectCode: '100201', summary: '缴纳公积金', debit: 0, credit: 13600, explanation: '银行存款减少。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221103），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'},
     ],
     documents: [{ type: 'bank', label: '公积金扣款回单', date: '2026-08-12', totalAmount: 13600, payer: '本公司', payeeName: 'XX市公积金中心', content: '8月公积金', refNo: 'HD202608120015' }],
   },
@@ -889,7 +889,7 @@ Q3累计利息：543.75×2=1,087.50元
     tip: '保留快递发票，核对金额。',
     entries: [
       { subjectCode: '6602', summary: '快递费', debit: 600, credit: 0, explanation: '管理费用增加。' },
-      { subjectCode: '100201', summary: '快递费', debit: 0, credit: 600, explanation: '银行存款减少。' },
+      { subjectCode: '100201', summary: '快递费', debit: 0, credit: 600, explanation: '银行存款减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6602），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [{ type: 'bank', label: '转账回单', date: '2026-08-14', totalAmount: 600, payer: '本公司', payeeName: '顺丰速运', content: '8月快递费', refNo: 'HD202608140018' }],
   },
@@ -900,7 +900,7 @@ Q3累计利息：543.75×2=1,087.50元
     tip: '购买后及时登记支票登记簿。',
     entries: [
       { subjectCode: '6603', summary: '支票本', debit: 45, credit: 0, explanation: '财务费用增加。' },
-      { subjectCode: '100201', summary: '支票本', debit: 0, credit: 45, explanation: '银行存款减少。' },
+      { subjectCode: '100201', summary: '支票本', debit: 0, credit: 45, explanation: '银行存款减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [{ type: 'bank', label: '收费回单', date: '2026-08-19', totalAmount: 45, payer: '本公司', payeeName: '中国工商银行', content: '购买支票本', refNo: 'HD202608190020' }],
   },
@@ -919,7 +919,7 @@ Q3累计利息：543.75×2=1,087.50元
     tip: '核对发票与合同金额。',
     entries: [
       { subjectCode: '6602', summary: '清洁费', debit: 1800, credit: 0, explanation: '管理费用增加。' },
-      { subjectCode: '100201', summary: '清洁费', debit: 0, credit: 1800, explanation: '银行存款减少。' },
+      { subjectCode: '100201', summary: '清洁费', debit: 0, credit: 1800, explanation: '银行存款减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6602），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [{ type: 'bank', label: '转账回单', date: '2026-08-23', totalAmount: 1800, payer: '本公司', payeeName: 'XX物业', content: '8月清洁费', refNo: 'HD202608230022' }],
   },
@@ -930,7 +930,7 @@ Q3累计利息：543.75×2=1,087.50元
     tip: '每月固定扣款，核对金额即可。',
     entries: [
       { subjectCode: '6603', summary: '管理费', debit: 100, credit: 0, explanation: '财务费用增加。' },
-      { subjectCode: '100201', summary: '管理费', debit: 0, credit: 100, explanation: '银行存款减少。' },
+      { subjectCode: '100201', summary: '管理费', debit: 0, credit: 100, explanation: '银行存款减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [{ type: 'bank', label: '扣款回单', date: '2026-08-25', totalAmount: 100, payer: '本公司', payeeName: '中国工商银行', content: '8月管理费', refNo: 'HD202608250025' }],
   },
@@ -941,7 +941,7 @@ Q3累计利息：543.75×2=1,087.50元
     tip: '核对当月转账笔数估算手续费。',
     entries: [
       { subjectCode: '6603', summary: '手续费', debit: 200, credit: 0, explanation: '财务费用增加。' },
-      { subjectCode: '100201', summary: '手续费', debit: 0, credit: 200, explanation: '银行存款减少。' },
+      { subjectCode: '100201', summary: '手续费', debit: 0, credit: 200, explanation: '银行存款减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [{ type: 'bank', label: '手续费回单', date: '2026-08-26', totalAmount: 200, payer: '本公司', payeeName: '中国工商银行', content: '8月手续费', refNo: 'HD202608260028' }],
   },
@@ -952,7 +952,7 @@ Q3累计利息：543.75×2=1,087.50元
     tip: '培训费计入管理费用，核对合同。',
     entries: [
       { subjectCode: '6602', summary: '培训费', debit: 2800, credit: 0, explanation: '管理费用增加。' },
-      { subjectCode: '100201', summary: '培训费', debit: 0, credit: 2800, explanation: '银行存款减少。' },
+      { subjectCode: '100201', summary: '培训费', debit: 0, credit: 2800, explanation: '银行存款减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6602），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [{ type: 'bank', label: '转账回单', date: '2026-08-28', totalAmount: 2800, payer: '本公司', payeeName: 'XX培训机构', content: '8月培训费', refNo: 'HD202608280030' }],
   },
@@ -973,7 +973,7 @@ Q3累计利息：543.75×2=1,087.50元
     tip: '核对印刷品验收单与发票。',
     entries: [
       { subjectCode: '6602', summary: '印刷费', debit: 1500, credit: 0, explanation: '管理费用增加。' },
-      { subjectCode: '100201', summary: '印刷费', debit: 0, credit: 1500, explanation: '银行存款减少。' },
+      { subjectCode: '100201', summary: '印刷费', debit: 0, credit: 1500, explanation: '银行存款减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6602），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [{ type: 'bank', label: '转账回单', date: '2026-08-30', totalAmount: 1500, payer: '本公司', payeeName: 'XX彩印厂', content: '8月印刷费', refNo: 'HD202608300032' }],
   },
@@ -988,7 +988,7 @@ Q3累计利息：543.75×2=1,087.50元
     description: '向乙公司销售A产品80,000元（税率13%）并提供安装服务10,000元（税率9%），合计90,000元（不含税），增值税合计11,300元（80,000×13%+10,000×9%），款项已存入工商银行。',
     tip: '混合销售中兼营不同税率的业务，应分别核算销售额并按各自税率计算增值税。未分别核算的从高适用税率。分录：借：银行存款，贷：主营业务收入（货物）、其他业务收入（服务）、应交税费（分别核算）。',
     entries: [
-      { subjectCode: '100201', summary: '混合销售收款（货物+安装）', debit: 101300, credit: 0, explanation: '银行存款增加记借方。含税总额=货款90,000+增值税11,300=101,300元。' },
+      { subjectCode: '100201', summary: '混合销售收款（货物+安装）', debit: 101300, credit: 0, explanation: '银行存款增加记借方。含税总额=货款90,000+增值税11,300=101,300元。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金（配对科目6001），属于经营活动现金流入——主营业务产生的现金收入。'},
       { subjectCode: '6001', summary: 'A产品销售收入', debit: 0, credit: 80000, explanation: '主营业务收入增加记贷方。货物销售80,000元按13%税率。' },
       { subjectCode: '6051', summary: '安装服务收入', debit: 0, credit: 10000, explanation: '其他业务收入增加记贷方。安装服务10,000元按9%税率。注意：兼营不同税率的业务应分别核算，否则从高适用13%税率。' },
       { subjectCode: '222101', summary: '销项税额（货物+服务）', debit: 0, credit: 11300, explanation: '销项税额增加记贷方。货物销售80,000×13%=10,400元，安装服务10,000×9%=900元，合计11,300元。' },
@@ -1010,7 +1010,7 @@ Q3累计利息：543.75×2=1,087.50元
     description: '向新客户销售A产品200件，单价500元/件（不含税），总价款100,000元，增值税13,000元，款项已存入银行。合同约定不满意可30天内退货，根据历史经验预估退货率5%。',
     tip: '附有销售退回条款的销售，在客户取得商品控制权时，按预期有权收取的对价确认收入（即扣除预估退货部分），预估退货部分确认为"预计负债"。分录：借：银行存款（全额），贷：主营业务收入（扣除退货部分）、预计负债（退货部分）、应交税费（全额销项税）。',
     entries: [
-      { subjectCode: '100201', summary: '附退回条款销售收款', debit: 113000, credit: 0, explanation: '银行存款增加记借方。收到全额货款113,000元（含税），款项已存入银行。' },
+      { subjectCode: '100201', summary: '附退回条款销售收款', debit: 113000, credit: 0, explanation: '银行存款增加记借方。收到全额货款113,000元（含税），款项已存入银行。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金（配对科目6001），属于经营活动现金流入——主营业务产生的现金收入。'},
       { subjectCode: '6001', summary: '销售收入（扣除预估退货）', debit: 0, credit: 95000, explanation: '主营业务收入增加记贷方。扣除5%预估退货后确认收入=100,000-100,000×5%=95,000元。' },
       { subjectCode: '2801', summary: '预估退货义务', debit: 0, credit: 5000, explanation: '预计负债增加记贷方。预估退货部分5,000元暂不计入收入，作为预计负债核算。根据《企业会计准则第14号——收入》，附退回条款的销售应合理估计退货率。' },
       { subjectCode: '222101', summary: '全额销项税额', debit: 0, credit: 13000, explanation: '销项税额增加记贷方。增值税按全额13,000元计算，不因预估退货而减少（退货实际发生时再冲减）。' },

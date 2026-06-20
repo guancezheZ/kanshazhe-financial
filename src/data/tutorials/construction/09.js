@@ -34,7 +34,7 @@ const tasks = [
     tip: '每月15日前缴纳上月增值税。借：应交税费-应交增值税（借方冲减），贷：银行存款。注意：增值税是价外税，不影响利润表。',
     entries: [
       { subjectCode: '222101', debit: 35000, credit: 0, summary: '缴纳8月增值税', explanation: '应交增值税减少35,000元。8月计提的增值税负债在本月实际缴纳，负债减少记借方。' },
-      { subjectCode: '100201', debit: 0, credit: 35000, summary: '缴纳8月增值税', explanation: '银行存款减少35,000元。每月初缴纳上月税款是固定资金支出。' },
+      { subjectCode: '100201', debit: 0, credit: 35000, summary: '缴纳8月增值税', explanation: '银行存款减少35,000元。每月初缴纳上月税款是固定资金支出。' , cashFlowItem: 'cf-op4', cashFlowExplanation: '缴纳税费支出（配对科目222101），属于"支付的各项税费"——经营活动现金流出。'},
     ],
     documents: [
       { type: 'receipt', label: '税收缴款书', date: '2026-09-01', totalAmount: 35000, payer: '鼎立建筑工程有限公司', stampText: '国家税务总局\n征收章', items: [{ name: '增值税（2026年8月）', qty: 1, price: 35000, amount: 35000 }] },
@@ -52,7 +52,7 @@ const tasks = [
     entries: [
       { subjectCode: '222103', debit: 2450, credit: 0, summary: '缴纳8月城建税（35,000×7%）', explanation: '城建税税率7%，以应纳增值税35,000元为基数，应交城建税2,450元。上月已计提（贷方），本月缴纳冲减（借方）。' },
       { subjectCode: '222104', debit: 1750, credit: 0, summary: '缴纳8月教育费附加（35,000×5%）', explanation: '教育费附加3%（1,050元）+地方教育附加2%（700元）=1,750元。上月计提负债，本月缴纳清偿。' },
-      { subjectCode: '100201', debit: 0, credit: 4200, summary: '缴纳城建税及附加', explanation: '银行存款减少4,200元。城建税及附加与增值税同步缴纳。' },
+      { subjectCode: '100201', debit: 0, credit: 4200, summary: '缴纳城建税及附加', explanation: '银行存款减少4,200元。城建税及附加与增值税同步缴纳。' , cashFlowItem: 'cf-op4', cashFlowExplanation: '缴纳税费支出（配对科目222103），属于"支付的各项税费"——经营活动现金流出。'},
     ],
     documents: [
       { type: 'receipt', label: '税收缴款书', date: '2026-09-01', totalAmount: 4200, payer: '鼎立建筑工程有限公司', stampText: '国家税务总局\n征收章', items: [{ name: '城市维护建设税', qty: 1, price: 2450, amount: 2450 }, { name: '教育费附加', qty: 1, price: 1750, amount: 1750 }] },
@@ -69,7 +69,7 @@ const tasks = [
     tip: '社保单位部分计入"应付职工薪酬-社保"借方冲减原计提负债。员工个人部分已在发工资时扣除，实际缴纳时两笔分开处理。',
     entries: [
       { subjectCode: '221102', debit: 18500, credit: 0, summary: '缴纳8月社保（单位）', explanation: '应付职工薪酬-社保减少18,500元。冲减8月计提的单位社保负债。' },
-      { subjectCode: '100201', debit: 0, credit: 18500, summary: '缴纳8月社保', explanation: '银行存款减少18,500元。社保缴纳是每月固定支出。' },
+      { subjectCode: '100201', debit: 0, credit: 18500, summary: '缴纳8月社保', explanation: '银行存款减少18,500元。社保缴纳是每月固定支出。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221102），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'},
     ],
     documents: [
       { type: 'receipt', label: '社保缴费单', date: '2026-09-01', totalAmount: 18500, payer: '鼎立建筑工程有限公司', stampText: 'XX市社会保险\n基金管理局\n社保征缴章', items: [{ name: '养老保险（单位）', qty: 1, price: 11200, amount: 11200 }, { name: '医疗保险（单位）', qty: 1, price: 4200, amount: 4200 }, { name: '失业保险（单位）', qty: 1, price: 1200, amount: 1200 }, { name: '工伤保险（单位）', qty: 1, price: 1100, amount: 1100 }, { name: '生育保险（单位）', qty: 1, price: 800, amount: 800 }] },
@@ -86,7 +86,7 @@ const tasks = [
     tip: '公积金单位部分计入"应付职工薪酬-公积金"借方冲减原计提负债。与社保同期缴纳。',
     entries: [
       { subjectCode: '221103', debit: 8400, credit: 0, summary: '缴纳8月公积金（单位）', explanation: '应付职工薪酬-公积金减少8,400元。冲减上月计提的公积金负债。' },
-      { subjectCode: '100201', debit: 0, credit: 8400, summary: '缴纳8月公积金', explanation: '银行存款减少8,400元。公积金是每月固定支出。' },
+      { subjectCode: '100201', debit: 0, credit: 8400, summary: '缴纳8月公积金', explanation: '银行存款减少8,400元。公积金是每月固定支出。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221103），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'},
     ],
     documents: [
       { type: 'receipt', label: '公积金汇缴书', date: '2026-09-02', totalAmount: 8400, payer: '鼎立建筑工程有限公司', stampText: 'XX市住房\n公积金\n管理中心\n业务专用章', items: [{ name: '单位缴存', qty: 20, price: 420, amount: 8400 }] },
@@ -103,7 +103,7 @@ const tasks = [
     tip: '工资发放分录：借"应付职工薪酬-工资"（应发全额），贷"银行存款"（实发）、"其他应付款"（代扣社保/公积金）、"其他应付款"（代扣个税）。代扣款项属于"过渡性负债"，待实际缴纳时冲减。',
     entries: [
       { subjectCode: '221101', debit: 125000, credit: 0, summary: '发放8月工资（应发额）', explanation: '应付职工薪酬-工资减少125,000元。冲减8月计提的应付工资全额。' },
-      { subjectCode: '100201', debit: 0, credit: 110000, summary: '实发工资', explanation: '银行存款减少110,000元。实发=应发125,000-社保8,200-公积金4,800-个税2,000=110,000元。' },
+      { subjectCode: '100201', debit: 0, credit: 110000, summary: '实发工资', explanation: '银行存款减少110,000元。实发=应发125,000-社保8,200-公积金4,800-个税2,000=110,000元。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221101），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'},
       { subjectCode: '2241', debit: 0, credit: 8200, summary: '代扣社保（个人部分）', explanation: '其他应付款增加8,200元。代扣的社保个人部分暂挂其他应付款，待实际缴纳社保时冲减。' },
       { subjectCode: '2241', debit: 0, credit: 4800, summary: '代扣公积金（个人部分）', explanation: '其他应付款增加4,800元。代扣的公积金个人部分暂挂其他应付款。' },
       { subjectCode: '2241', debit: 0, credit: 2000, summary: '代扣个人所得税', explanation: '其他应付款增加2,000元。代扣的个税暂挂其他应付款，次月15日前向税务机关申报缴纳。' },
@@ -130,7 +130,7 @@ const tasks = [
     tip: '采购材料直接计入"合同履约成本-材料成本"。建筑业材料采购不经过原材料科目，直接计入工程成本。',
     entries: [
       { subjectCode: '540102', debit: 50000, credit: 0, summary: '收尾零星材料采购', explanation: '合同履约成本-材料成本增加50,000元。收尾施工用材料直接计入工程成本。' },
-      { subjectCode: '100201', debit: 0, credit: 50000, summary: '支付材料款', explanation: '银行存款减少50,000元。采购收尾零星材料。' },
+      { subjectCode: '100201', debit: 0, credit: 50000, summary: '支付材料款', explanation: '银行存款减少50,000元。采购收尾零星材料。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目540102），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'invoice', label: '增值税普通发票', date: '2026-09-03', region: '江苏省', invoiceNo: '3200260903', buyer: '鼎立建筑工程有限公司', seller: 'XX建材经营部', lineItems: [{ name: '收尾零星材料（油漆、五金件等）', qty: 1, unit: '批', price: 50000, amount: 50000 }], totalAmount: 50000 },
@@ -163,7 +163,7 @@ const tasks = [
     tip: '现场清运费属于工程其他直接费用，计入"合同履约成本-其他直接费用"。竣工验收前的现场清理是必要支出。',
     entries: [
       { subjectCode: '540105', debit: 5800, credit: 0, summary: '竣工现场保洁清运费', explanation: '合同履约成本-其他直接费用增加5,800元。竣工验收前的现场清理属于工程直接支出。' },
-      { subjectCode: '100201', debit: 0, credit: 5800, summary: '支付保洁清运费', explanation: '银行存款减少5,800元。' },
+      { subjectCode: '100201', debit: 0, credit: 5800, summary: '支付保洁清运费', explanation: '银行存款减少5,800元。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目540105），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'receipt', label: '收款收据', date: '2026-09-04', totalAmount: 5800, payer: '鼎立建筑工程有限公司', stampText: 'XX保洁服务有限公司\n财务专用章', items: [{ name: '竣工现场保洁（含垃圾清运）', qty: 1, price: 5800, amount: 5800 }] },
@@ -185,7 +185,7 @@ const tasks = [
     tip: '竣工检测费是工程达到竣工验收条件所必需的支出，计入"合同履约成本-其他直接费用"。检测合格是办理竣工验收备案的前提条件。',
     entries: [
       { subjectCode: '540105', debit: 18000, credit: 0, summary: '竣工验收检测费', explanation: '合同履约成本-其他直接费用增加18,000元。竣工验收检测是工程收尾的必要环节，检测合格后方可办理竣工验收手续。' },
-      { subjectCode: '100201', debit: 0, credit: 18000, summary: '支付检测费', explanation: '银行存款减少18,000元。支付给市建筑工程质量检测中心。' },
+      { subjectCode: '100201', debit: 0, credit: 18000, summary: '支付检测费', explanation: '银行存款减少18,000元。支付给市建筑工程质量检测中心。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目540105），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'invoice', label: '增值税普通发票', date: '2026-09-07', region: '江苏省', invoiceNo: '3200260907', buyer: '鼎立建筑工程有限公司', seller: 'XX市建筑工程质量检测中心', lineItems: [{ name: '办公楼工程竣工验收检测服务', qty: 1, unit: '项', price: 18000, amount: 18000 }], totalAmount: 18000 },
@@ -218,7 +218,7 @@ const tasks = [
     tip: '支付分包尾款时：借"应付账款"，贷"银行存款"。此处支付的是扣除预付账款后的尾款中的部分金额。',
     entries: [
       { subjectCode: '220201', debit: 240000, credit: 0, summary: '支付大地基础工程尾款', explanation: '应付账款-丙公司减少240,000元。分包工程尾款支付，清偿部分分包负债。' },
-      { subjectCode: '100201', debit: 0, credit: 240000, summary: '支付分包尾款', explanation: '银行存款减少240,000元。出纳办理转账支付。' },
+      { subjectCode: '100201', debit: 0, credit: 240000, summary: '支付分包尾款', explanation: '银行存款减少240,000元。出纳办理转账支付。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目220201），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'bank', label: '银行回单', date: '2026-09-09', totalAmount: 240000, payer: '鼎立建筑工程有限公司', payeeName: '大地基础工程有限公司', content: '支付分包工程尾款', refNo: 'ZF202609090003' },
@@ -250,7 +250,7 @@ const tasks = [
     tip: '竣工资料送审差旅费属于工程项目的其他直接费用，计入"合同履约成本-其他直接费用"。',
     entries: [
       { subjectCode: '540105', debit: 3500, credit: 0, summary: '竣工资料送审差旅费', explanation: '合同履约成本-其他直接费用增加3,500元。资料员送审竣工资料的差旅支出属于工程直接相关费用。' },
-      { subjectCode: '1001', debit: 0, credit: 3500, summary: '现金报销差旅费', explanation: '库存现金减少3,500元。出纳以备用金支付。' },
+      { subjectCode: '1001', debit: 0, credit: 3500, summary: '现金报销差旅费', explanation: '库存现金减少3,500元。出纳以备用金支付。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目540105），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'receipt', label: '差旅费报销单', date: '2026-09-11', totalAmount: 3500, payer: '鼎立建筑工程有限公司', stampText: '财务审核专用章', items: [{ name: '交通费（往返）', amount: 1200 }, { name: '住宿费（2晚）', amount: 1600 }, { name: '餐补（7天×100元）', amount: 700 }] },
@@ -265,7 +265,7 @@ const tasks = [
     description: '办公楼工程收尾后，将现场剩余废旧钢材及模板进行处理，取得变价收入5,000元，已存入工商银行。该批废旧物资原计入材料成本。',
     tip: '废旧物资处理收入冲减"合同履约成本-材料成本"。废旧物资出售冲减工程成本，反映材料实际消耗情况。',
     entries: [
-      { subjectCode: '100201', debit: 5000, credit: 0, summary: '废旧物资变卖收入', explanation: '银行存款增加5,000元。收尾阶段处理现场废旧钢材和模板。' },
+      { subjectCode: '100201', debit: 5000, credit: 0, summary: '废旧物资变卖收入', explanation: '银行存款增加5,000元。收尾阶段处理现场废旧钢材和模板。' , cashFlowItem: 'cf-op5', cashFlowExplanation: '其他经营活动现金流入（配对科目540102），属于"收到其他与经营活动有关的现金"。'},
       { subjectCode: '540102', debit: 0, credit: 5000, summary: '冲减材料成本', explanation: '合同履约成本-材料成本减少5,000元。废旧物资变价收入冲减原计入的材料成本。' },
     ],
     documents: [
@@ -305,7 +305,7 @@ const tasks = [
     description: '收到恒达地产支付的办公楼工程尾款500,000元。根据合同约定，工程竣工验收后甲方支付至合同总价的95%，剩余5%（250,000元）作为质量保证金。款项已存入工商银行账户。',
     tip: '收到工程尾款：借"银行存款"，贷"应收账款/合同结算"。注意：质量保证金暂时未收到，形成其他应收款。',
     entries: [
-      { subjectCode: '100201', debit: 500000, credit: 0, summary: '收到恒达地产尾款', explanation: '银行存款增加500,000元。甲方支付工程尾款，项目资金回笼。' },
+      { subjectCode: '100201', debit: 500000, credit: 0, summary: '收到恒达地产尾款', explanation: '银行存款增加500,000元。甲方支付工程尾款，项目资金回笼。' , cashFlowItem: 'cf-op5', cashFlowExplanation: '其他经营活动现金流入（配对科目2205），属于"收到其他与经营活动有关的现金"。'},
       { subjectCode: '2205', debit: 0, credit: 500000, summary: '冲减合同负债（尾款部分）', explanation: '合同负债减少500,000元。确认收到的尾款部分冲减预收负债。' },
     ],
     documents: [
@@ -322,7 +322,7 @@ const tasks = [
     tip: '机械租赁费属于"合同履约成本-机械使用费"。支付尾款：借"应付账款"或直接借"合同履约成本"，贷"银行存款"。',
     entries: [
       { subjectCode: '540104', debit: 15000, credit: 0, summary: '塔吊租赁费尾款', explanation: '合同履约成本-机械使用费增加15,000元。塔吊租赁尾款计入工程机械使用费。' },
-      { subjectCode: '100201', debit: 0, credit: 15000, summary: '支付塔吊租赁尾款', explanation: '银行存款减少15,000元。工程完工，塔吊退租。' },
+      { subjectCode: '100201', debit: 0, credit: 15000, summary: '支付塔吊租赁尾款', explanation: '银行存款减少15,000元。工程完工，塔吊退租。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目540104），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'receipt', label: '租赁费发票', date: '2026-09-16', totalAmount: 15000, payer: '鼎立建筑工程有限公司', stampText: 'XX建筑机械租赁公司\n发票专用章', items: [{ name: '塔吊租赁费（9月及尾款）', qty: 1, price: 15000, amount: 15000 }] },
@@ -339,7 +339,7 @@ const tasks = [
     tip: '资料归档费计入"合同履约成本-其他直接费用"。竣工资料是工程验收和日后维修的重要依据，归档是竣工验收必要环节。',
     entries: [
       { subjectCode: '540105', debit: 8000, credit: 0, summary: '竣工资料归档服务费', explanation: '合同履约成本-其他直接费用增加8,000元。工程竣工资料整理归档费用。' },
-      { subjectCode: '100201', debit: 0, credit: 8000, summary: '支付资料归档费', explanation: '银行存款减少8,000元。支付给专业档案服务公司。' },
+      { subjectCode: '100201', debit: 0, credit: 8000, summary: '支付资料归档费', explanation: '银行存款减少8,000元。支付给专业档案服务公司。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目540105），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'receipt', label: '服务费发票', date: '2026-09-16', totalAmount: 8000, payer: '鼎立建筑工程有限公司', stampText: 'XX档案管理服务有限公司\n发票专用章', items: [{ name: '工程竣工资料整理归档服务', qty: 1, price: 8000, amount: 8000 }] },
@@ -430,7 +430,7 @@ const tasks = [
     entries: [
       { subjectCode: '660201', debit: 5000, credit: 0, summary: '公司办公费及水电', explanation: '管理费用增加5,000元（办公费3,000+公司水电2,000）。行政管理支出。' },
       { subjectCode: '540106', debit: 3000, credit: 0, summary: '工程部水电费', explanation: '合同履约成本-间接费用增加3,000元。项目部发生的水电支出。' },
-      { subjectCode: '100201', debit: 0, credit: 8000, summary: '支付办公费水电费', explanation: '银行存款减少8,000元。' },
+      { subjectCode: '100201', debit: 0, credit: 8000, summary: '支付办公费水电费', explanation: '银行存款减少8,000元。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目660201），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'receipt', label: '缴费凭证', date: '2026-09-22', totalAmount: 8000, payer: '鼎立建筑工程有限公司', stampText: '收款单位财务专用章', items: [{ name: '办公用品采购', amount: 3000 }, { name: '电费', amount: 4000 }, { name: '水费', amount: 1000 }] },
@@ -447,7 +447,7 @@ const tasks = [
     tip: '竣工审计费计入"合同履约成本-其他直接费用"或"管理费用"。此处计入工程成本。',
     entries: [
       { subjectCode: '540105', debit: 12000, credit: 0, summary: '竣工结算审计费', explanation: '合同履约成本-其他直接费用增加12,000元。竣工结算是工程收尾的必要环节。' },
-      { subjectCode: '100201', debit: 0, credit: 12000, summary: '支付审计费', explanation: '银行存款减少12,000元。' },
+      { subjectCode: '100201', debit: 0, credit: 12000, summary: '支付审计费', explanation: '银行存款减少12,000元。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目540105），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'invoice', label: '增值税专用发票', date: '2026-09-23', region: '江苏省', invoiceNo: '3200260923', buyer: '鼎立建筑工程有限公司', seller: 'XX会计师事务所', lineItems: [{ name: '工程竣工结算审计服务', qty: 1, unit: '项', price: 12000, amount: 12000 }], totalAmount: 12000 },
@@ -463,7 +463,7 @@ const tasks = [
     description: '收到工商银行第三季度活期存款结息12,000元，已存入企业账户。',
     tip: '银行存款利息收入冲减"财务费用"（贷方蓝字），而非确认收入。分录：借"银行存款"，贷"财务费用"。',
     entries: [
-      { subjectCode: '100201', debit: 12000, credit: 0, summary: '银行季度结息', explanation: '银行存款增加12,000元。第三季度存款利息到账。' },
+      { subjectCode: '100201', debit: 12000, credit: 0, summary: '银行季度结息', explanation: '银行存款增加12,000元。第三季度存款利息到账。' , cashFlowItem: 'cf-op5', cashFlowExplanation: '其他经营活动现金流入（配对科目6603），属于"收到其他与经营活动有关的现金"。'},
       { subjectCode: '6603', debit: 0, credit: 12000, summary: '冲减财务费用', explanation: '财务费用减少12,000元（贷方）。存款利息冲减财务费用，不计入营业收入。' },
     ],
     documents: [
@@ -519,7 +519,7 @@ const tasks = [
     tip: '银行手续费计入"财务费用"。每月底核对银行回单，确认各项手续费的准确性。',
     entries: [
       { subjectCode: '6603', debit: 1200, credit: 0, summary: '银行手续费', explanation: '财务费用增加1,200元。包括账户管理费、转账手续费等。' },
-      { subjectCode: '100201', debit: 0, credit: 1200, summary: '银行手续费扣款', explanation: '银行存款减少1,200元。银行直接扣收。' },
+      { subjectCode: '100201', debit: 0, credit: 1200, summary: '银行手续费扣款', explanation: '银行存款减少1,200元。银行直接扣收。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'bank', label: '银行回单', date: '2026-09-28', totalAmount: 1200, payer: '鼎立建筑工程有限公司', payeeName: '中国工商银行', content: '9月银行手续费', refNo: 'HD202609280012' },
@@ -769,7 +769,7 @@ const tasks = [
     tip: '日常办公费计入管理费用。',
     entries: [
       { subjectCode: '660201', debit: 2500, credit: 0, summary: '办公用品费', explanation: '办公用品费计入管理费用。' },
-      { subjectCode: '100201', debit: 0, credit: 2500, summary: '支付办公费', explanation: '银行存款减少2,500元。' },
+      { subjectCode: '100201', debit: 0, credit: 2500, summary: '支付办公费', explanation: '银行存款减少2,500元。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目660201），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [{ type: 'receipt', label: '办公用品发票', items: [{ label: '办公用品', amount: 2500 }], totalAmount: 2500, stampText: '收款单位财务章' }],
   },
@@ -796,7 +796,7 @@ const tasks = [
     tip: '银行手续费计入财务费用。',
     entries: [
       { subjectCode: '6603', debit: 680, credit: 0, summary: '银行手续费', explanation: '银行手续费计入财务费用。' },
-      { subjectCode: '100201', debit: 0, credit: 680, summary: '银行扣款', explanation: '银行存款减少680元。' },
+      { subjectCode: '100201', debit: 0, credit: 680, summary: '银行扣款', explanation: '银行存款减少680元。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [{ type: 'bank', label: '银行扣款通知', totalAmount: 680, content: '银行手续费' }],
   },

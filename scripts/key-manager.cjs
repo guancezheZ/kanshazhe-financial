@@ -287,6 +287,57 @@ function main() {
       break
     }
 
+    case 'clean':
+    case 'purge-revoked': {
+      const tokenClean = arg || ''
+      if (!tokenClean) {
+        console.log('  ❌ 请提供管理员令牌')
+        console.log('  用法: node scripts/key-manager.cjs clean <令牌>')
+        break
+      }
+      console.log(`  🧹 正在清理之前吊销的旧密钥...`)
+      // 先从 Worker 获取所有密钥
+      const httpsClean = require('https')
+      const statsUrl = new URL(WORKER_URL + '?action=admin&cmd=stats&token=' + encodeURIComponent(tokenClean))
+      httpsClean.get(statsUrl, (res) => {
+        let body = ''
+        res.on('data', c => body += c)
+        res.on('end', () => {
+          const result = JSON.parse(body)
+          if (!result.records) { console.log('  ❌ 获取失败:', JSON.stringify(result)); return }
+          const revokedCodes = Object.entries(result.records)
+            .filter(([, info]) => info.revoked)
+            .map(([code]) => code)
+          if (revokedCodes.length === 0) {
+            console.log('  ✅ 没有需要清理的旧吊销密钥')
+            return
+          }
+          console.log(`  发现 ${revokedCodes.length} 个旧吊销密钥，正在删除...`)
+          let done = 0, failed = 0
+          function delNext(i) {
+            if (i >= revokedCodes.length) {
+              console.log(`\n  ✅ 清理完成！已删除 ${done} 个，失败 ${failed} 个`)
+              return
+            }
+            const c = revokedCodes[i]
+            const delUrl = new URL(WORKER_URL + '?action=admin&cmd=revoke&token=' + encodeURIComponent(tokenClean) + '&code=' + encodeURIComponent(c))
+            httpsClean.get(delUrl, (res2) => {
+              let b = ''
+              res2.on('data', d => b += d)
+              res2.on('end', () => {
+                const r = JSON.parse(b)
+                if (r.success) done++; else failed++
+                process.stdout.write(`\r  进度: ${done + failed}/${revokedCodes.length}`)
+                delNext(i + 1)
+              })
+            }).on('error', () => { failed++; delNext(i + 1) })
+          }
+          delNext(0)
+        })
+      }).on('error', e => console.log('  ❌ 请求失败:', e.message))
+      break
+    }
+
     case 'revoke': {
       const token = arg
       const code = process.argv[4]
@@ -305,9 +356,15 @@ function main() {
           const result = JSON.parse(body)
           if (result.success) {
             // 从本地数据库删除该密钥
+            // 从本地数据库删除该密钥
             const db = loadDB()
             const idx = db.keys.findIndex(k => k.code === code)
-            if (idx !== -1) { db.keys.splice(idx, 1); saveDB(db) }
+            if (idx !== -1) {
+              db.keys.splice(idx, 1)
+              // 同时清理本地旧 revoked 标记
+              db.keys = db.keys.filter(k => k.status !== 'revoked')
+              saveDB(db)
+            }
             console.log(`  ✅ ${code} 已吊销并从列表清除`)
           } else {
             console.log('  ❌ 吊销失败:', JSON.stringify(result))
@@ -467,7 +524,8 @@ function main() {
       console.log('    export [令牌]       查看密钥状态（有令牌时从 Worker 取实时数据）')
       console.log('    verify <激活码>    验证激活码是否有效')
       console.log('    upload <令牌>      上传密钥到 Cloudflare Worker')
-      console.log('    revoke <令牌> <码>  吊销指定激活码（设备将无法激活）')
+      console.log('    revoke <令牌> <码>  吊销指定激活码（从列表彻底删除）')
+      console.log('    clean <令牌>        清理之前已吊销的所有旧密钥')
       console.log('    sync <令牌>        从 Worker 同步激活状态到本地')
       console.log('    purge <令牌>       清理 Worker 上的测试/无效密钥')
       console.log('    batch <文件.csv>   从CSV批量导入生成\n')
@@ -476,6 +534,7 @@ function main() {
       console.log('    node scripts/key-manager.cjs export          查看本地状态')
       console.log('    node scripts/key-manager.cjs export <令牌>   查看云端实时状态')
       console.log('    node scripts/key-manager.cjs revoke <令牌> ABCD-1234  吊销指定密钥')
+      console.log('    node scripts/key-manager.cjs clean <令牌>  清理旧吊销密钥')
       console.log('    node scripts/key-manager.cjs sync <令牌>    同步状态到本地')
       console.log('    node scripts/key-manager.cjs purge <令牌>    清理垃圾数据')
       console.log('    node scripts/key-manager.cjs verify ABCD     验证密钥')

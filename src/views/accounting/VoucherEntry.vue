@@ -13,11 +13,11 @@
           保存并新增
         </el-button>
         <el-button @click="handleReset">重置</el-button>
-        <template v-if="tutorialTask && !isCompletedTask">
-          <el-button type="success" @click="checkAnswer" :disabled="checkAnswerLocked">检查答案</el-button>
+        <template v-if="tutorialTask">
+          <el-button v-if="!isCompletedTask" type="success" @click="checkAnswer" :disabled="checkAnswerLocked">检查答案</el-button>
           <el-button v-if="tutorialTask.entries?.length" @click="showAnswerDialog = true">👁️ 查看答案</el-button>
+          <el-button v-if="isCompletedTask" type="info" @click="router.push('/tutorial')">📋 返回教学中心</el-button>
         </template>
-        <el-button v-if="isCompletedTask" type="info" @click="router.push('/tutorial')">📋 返回教学中心</el-button>
       </div>
     </div>
 
@@ -79,39 +79,40 @@
       </div>
     </transition>
 
-    <!-- 案例模式：原始凭证附件预览 -->
+    <!-- 原始凭证附件预览（展开式，非灯箱，可边看附件边做题） -->
     <template v-if="tutorialTask && tutorialTask.documents && tutorialTask.documents.length > 0">
       <div class="case-documents">
-        <div class="documents-label">📎 原始凭证（{{ tutorialTask.documents.length }} 张）</div>
+        <div class="documents-label">
+          📎 原始凭证（{{ tutorialTask.documents.length }} 张）
+          <el-button v-if="previewDocIdx !== null" text size="small" type="info" @click="previewDocIdx = null" style="margin-left:8px">✕ 收起</el-button>
+        </div>
         <div class="documents-gallery">
           <div
             v-for="(doc, i) in tutorialTask.documents"
             :key="i"
             class="document-thumb"
-            @click="previewDocIdx = i"
+            :class="{ 'is-active': previewDocIdx === i }"
+            @click="previewDocIdx = previewDocIdx === i ? null : i"
           >
             <div class="thumb-icon">{{ doc.type === 'invoice' ? '📄' : doc.type === 'bank' ? '🏦' : doc.type === 'receipt' ? '🧾' : '📋' }}</div>
             <div class="thumb-title">{{ doc.title }}</div>
           </div>
         </div>
-      </div>
 
-      <!-- 灯箱预览 -->
-      <teleport to="body">
-        <transition name="el-fade-in-linear">
-          <div v-if="previewDocIdx !== null" class="lightbox-overlay" @click.self="previewDocIdx = null">
-            <div class="lightbox-content">
-              <button class="lightbox-close" @click="previewDocIdx = null">✕</button>
+        <!-- 展开式内联预览 -->
+        <transition name="el-zoom-in-top">
+          <div v-if="previewDocIdx !== null" class="inline-preview">
+            <div class="inline-preview-body">
               <VoucherDisplay :doc="tutorialTask.documents[previewDocIdx]" />
-              <div v-if="tutorialTask.documents.length > 1" class="lightbox-nav">
-                <el-button size="small" @click="previewDocIdx = Math.max(0, previewDocIdx - 1)" :disabled="previewDocIdx <= 0">◀ 上一张</el-button>
-                <span class="lightbox-counter">{{ previewDocIdx + 1 }} / {{ tutorialTask.documents.length }}</span>
-                <el-button size="small" @click="previewDocIdx = Math.min(tutorialTask.documents.length - 1, previewDocIdx + 1)" :disabled="previewDocIdx >= tutorialTask.documents.length - 1">下一张 ▶</el-button>
-              </div>
+            </div>
+            <div v-if="tutorialTask.documents.length > 1" class="inline-preview-nav">
+              <el-button size="small" @click="previewDocIdx = Math.max(0, previewDocIdx - 1)" :disabled="previewDocIdx <= 0">◀ 上一张</el-button>
+              <span class="preview-counter">{{ previewDocIdx + 1 }} / {{ tutorialTask.documents.length }}</span>
+              <el-button size="small" @click="previewDocIdx = Math.min(tutorialTask.documents.length - 1, previewDocIdx + 1)" :disabled="previewDocIdx >= tutorialTask.documents.length - 1">下一张 ▶</el-button>
             </div>
           </div>
         </transition>
-      </teleport>
+      </div>
     </template>
 
     <div class="voucher-card voucher-paper">
@@ -199,7 +200,7 @@
 
     <!-- 查看答案弹窗 -->
     <Teleport to="body">
-      <el-dialog v-model="showAnswerDialog" title="📖 正确答案与讲解" width="640" :close-on-click-modal="false">
+      <el-dialog v-model="showAnswerDialog" title="📖 正确答案与讲解" width="680" :close-on-click-modal="false">
         <div v-if="!tutorialTask?.entries?.length" style="text-align:center;padding:20px;color:#909399">无分录数据</div>
         <div v-for="(entry, i) in tutorialTask?.entries || []" :key="i" class="answer-entry" style="margin-bottom:10px">
           <div class="answer-header">
@@ -213,6 +214,11 @@
           </div>
           <div style="margin-top:6px;padding:6px 8px;background:#fff;border-left:3px solid #409eff;border-radius:3px;font-size:12px;color:#303133;line-height:1.6">
             💡 {{ entry.explanation }}
+          </div>
+          <div v-if="getAnswerCashFlow(entry)" style="margin-top:4px;padding:4px 8px;background:#f0fdf4;border-left:3px solid #67c23a;border-radius:3px;font-size:12px;color:#2d6a4f;line-height:1.5;display:flex;align-items:center;gap:6px">
+            <span>💰 现金流量：</span>
+            <span style="font-weight:500">{{ getAnswerCashFlow(entry).name }}</span>
+            <span style="color:#606266">— {{ getAnswerCashFlow(entry).explanation }}</span>
           </div>
         </div>
         <template #footer>
@@ -242,7 +248,7 @@ import VoucherEntryTable from '@/components/VoucherEntryTable.vue'
 import StepByStepGuide from '@/components/StepByStepGuide.vue'
 import VoucherDisplay from '@/components/VoucherDisplay.vue'
 import { useStore } from '@/stores/store.js'
-import { getCurrentPeriod, todayStr, formatAmount, validateVoucher, VOUCHER_STATUS, VOUCHER_STATUS_CN } from '@/utils/accounting.js'
+import { getCurrentPeriod, todayStr, formatAmount, validateVoucher, VOUCHER_STATUS, VOUCHER_STATUS_CN, determineCashFlowForEntry } from '@/utils/accounting.js'
 import { compareAnswers } from '@/data/tutorials/year1.js'
 
 const route = useRoute()
@@ -374,8 +380,8 @@ function initNewVoucher() {
 
 function getDefaultEntries() {
   return [
-    { id: 'e1', summary: '', subjectId: '', subjectCode: '', subjectName: '', debit: null, credit: null },
-    { id: 'e2', summary: '', subjectId: '', subjectCode: '', subjectName: '', debit: null, credit: null },
+    { id: 'e1', summary: '', subjectId: '', subjectCode: '', subjectName: '', debit: null, credit: null, cashFlowItem: '' },
+    { id: 'e2', summary: '', subjectId: '', subjectCode: '', subjectName: '', debit: null, credit: null, cashFlowItem: '' },
   ]
 }
 
@@ -412,6 +418,7 @@ async function handleSave() {
       subjectName: e.subjectName,
       debit: e.debit || 0,
       credit: e.credit || 0,
+      cashFlowItem: e.cashFlowItem || '',
     })),
   }
 
@@ -489,6 +496,7 @@ function loadVoucher(id) {
     subjectName: e.subjectName,
     debit: e.debit,
     credit: e.credit,
+    cashFlowItem: e.cashFlowItem || '',
     _editing: false,
   }))
 }
@@ -501,6 +509,35 @@ function formatAmt(val) {
 defineExpose({ loadVoucher, initNewVoucher })
 
 // 监听路由参数，编辑已有凭证
+// 根据现金流量ID获取显示名称
+function getCashFlowItemName(cfId) {
+  if (!cfId) return ''
+  const item = store.state.cashFlowItems.find(cf => cf.id === cfId)
+  return item ? item.name : cfId
+}
+
+// 根据现金流量ID获取分类（经营/投资/筹资）
+function getCashFlowCategory(cfId) {
+  if (!cfId) return ''
+  const item = store.state.cashFlowItems.find(cf => cf.id === cfId)
+  if (!item) return ''
+  const map = { operating: '经营活动', investing: '投资活动', financing: '筹资活动' }
+  return map[item.category] || ''
+}
+
+// 获取答案中分录的现金流量信息（手工标注优先，无则自动判断）
+function getAnswerCashFlow(entry) {
+  const allEntries = tutorialTask.value?.entries || []
+  if (entry.cashFlowItem) {
+    return { name: getCashFlowItemName(entry.cashFlowItem), explanation: entry.cashFlowExplanation || '（手工标注）' }
+  }
+  const auto = determineCashFlowForEntry(entry, allEntries)
+  if (auto.id) {
+    return { name: getCashFlowItemName(auto.id), explanation: auto.explanation }
+  }
+  return null
+}
+
 // 根据完整科目编码查找科目对象
 function findSubjectByFullCode(fullCode) {
   const subjects = store.state.subjects
@@ -546,6 +583,7 @@ function loadTutorialTask() {
                 subjectName: subject ? subject.name : '',
                 debit: e.debit || null,
                 credit: e.credit || null,
+                cashFlowItem: e.cashFlowItem || '',
               }
             })
           }
@@ -578,6 +616,7 @@ function loadTutorialTask() {
               subjectName: subject ? subject.name : '',
               debit: e.debit || null,
               credit: e.credit || null,
+              cashFlowItem: e.cashFlowItem || '',
             }
           })
         }
@@ -593,6 +632,7 @@ function loadTutorialTask() {
           subjectName: '',
           debit: null,
           credit: null,
+          cashFlowItem: '',
         }))
       }
     }
@@ -612,11 +652,26 @@ function checkAnswer() {
   }
 
   const userEntries = entries.value.map(function(e) {
-    return { subjectCode: e.subjectCode || '', subjectName: e.subjectName || '', debit: Number(e.debit) || 0, credit: Number(e.credit) || 0 }
+    return { subjectCode: e.subjectCode || '', subjectName: e.subjectName || '', debit: Number(e.debit) || 0, credit: Number(e.credit) || 0, cashFlowItem: e.cashFlowItem || '' }
   })
-  const correct = tutorialTask.value?.entries || []
-  if (correct.length === 0) { ElMessage.warning('该任务无需录入凭证'); return }
-  const result = compareAnswers(userEntries, correct)
+  // 预处理正确答案：手工现金流量标注优先，无则自动判断
+  const allEntries = tutorialTask.value?.entries || []
+  if (allEntries.length === 0) { ElMessage.warning('该任务无需录入凭证'); return }
+  const correct = allEntries.map(function(e) {
+    let cfItem = e.cashFlowItem
+    let cfExpl = e.cashFlowExplanation
+    if (!cfItem) {
+      const auto = determineCashFlowForEntry(e, allEntries)
+      if (auto.id) { cfItem = auto.id; cfExpl = auto.explanation }
+    }
+    return { ...e, cashFlowItem: cfItem || '', cashFlowExplanation: cfExpl || '' }
+  })
+  // 构建现金流量名称映射，用于比对时显示中文名称
+  const cashFlowMap = {}
+  for (const cf of store.state.cashFlowItems) {
+    cashFlowMap[cf.id] = cf.name
+  }
+  const result = compareAnswers(userEntries, correct, cashFlowMap)
   checkResult.value = result
   // Show results
   const errors = result.filter(function(r) { return r.type === 'error' })
@@ -668,8 +723,14 @@ function checkAnswer() {
     window.dispatchEvent(new CustomEvent('task-updated'))
 
     if ((guidedMode.value || practiceMode.value) && !alreadyDone) {
-      const entries = tutorialTask.value.entries.map(e => {
+      const allTaskEntries = tutorialTask.value.entries
+      const entries = allTaskEntries.map(e => {
         const subject = findSubjectByFullCode(e.subjectCode)
+        let cfItem = e.cashFlowItem
+        if (!cfItem) {
+          const auto = determineCashFlowForEntry(e, allTaskEntries)
+          if (auto.id) cfItem = auto.id
+        }
         return {
           summary: e.summary || '',
           subjectId: subject ? subject.id : '',
@@ -677,6 +738,7 @@ function checkAnswer() {
           subjectName: subject ? subject.name : '',
           debit: e.debit || 0,
           credit: e.credit || 0,
+          cashFlowItem: cfItem || '',
         }
       })
       const postResult = store.addTeachingVoucher({
@@ -808,6 +870,7 @@ function handleGuideComplete() {
         subjectName: subject ? subject.name : '',
         debit: e.debit || null,
         credit: e.credit || null,
+        cashFlowItem: e.cashFlowItem || '',
       }
     })
   }
@@ -832,6 +895,7 @@ function handleGuideSkip() {
         subjectName: subject ? subject.name : '',
         debit: e.debit || null,
         credit: e.credit || null,
+        cashFlowItem: e.cashFlowItem || '',
       }
     })
   }
@@ -1233,49 +1297,33 @@ watch(() => route.query, (query) => {
   word-break: break-all;
 }
 
-/* ─── 灯箱 ─── */
-.lightbox-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.75);
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-.lightbox-content {
-  position: relative;
-  max-width: 800px;
-  width: 100%;
-  max-height: 90vh;
-  overflow-y: auto;
+/* ─── 内联附件预览（展开式，非灯箱） ─── */
+.inline-preview {
+  margin-top: 12px;
+  border: 1px solid #e4e7ed;
+  border-radius: 8px;
   background: #fff;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 12px 48px rgba(0,0,0,0.3);
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
-.lightbox-close {
-  position: absolute;
-  top: 8px;
-  right: 12px;
-  background: none;
-  border: none;
-  font-size: 20px;
-  color: #909399;
-  cursor: pointer;
-  z-index: 10;
-  line-height: 1;
+.inline-preview-body {
+  padding: 16px;
+  max-height: 500px;
+  overflow-y: auto;
 }
-.lightbox-close:hover { color: #303133; }
-.lightbox-nav {
+.inline-preview-nav {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
-  margin-top: 14px;
-  padding-top: 12px;
+  padding: 10px 16px;
   border-top: 1px solid #e4e7ed;
+  background: #fafafa;
 }
-.lightbox-counter { font-size: 13px; color: #909399; }
+.preview-counter { font-size: 13px; color: #909399; }
+.document-thumb.is-active {
+  border-color: #409eff;
+  background: #ecf5ff;
+  box-shadow: 0 0 0 1px #409eff;
+}
 </style>

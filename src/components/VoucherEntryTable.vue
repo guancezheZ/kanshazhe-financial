@@ -161,6 +161,7 @@ function createEmptyRow() {
     subjectName: '',
     debit: null,
     credit: null,
+    cashFlowItem: '',
     _editing: true,
   }
 }
@@ -245,6 +246,7 @@ function emitUpdate() {
     subjectName: e.subjectName,
     debit: e.debit != null ? Number(e.debit) : 0,
     credit: e.credit != null ? Number(e.credit) : 0,
+    cashFlowItem: e.cashFlowItem || '',
   })))
 }
 </script>

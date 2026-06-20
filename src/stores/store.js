@@ -336,12 +336,23 @@ function createInitialState() {
     auditLogs: [],
     progressVersion: 0,  // 教进度版本号，完成任务时递增
     cashFlowItems: [
+      // 经营活动
       { id: "cf-op", code: "01", name: "销售商品、提供劳务收到的现金", category: "operating" },
       { id: "cf-op2", code: "02", name: "购买商品、接受劳务支付的现金", category: "operating" },
       { id: "cf-op3", code: "03", name: "支付给职工以及为职工支付的现金", category: "operating" },
       { id: "cf-op4", code: "04", name: "支付的各项税费", category: "operating" },
-      { id: "cf-inv", code: "05", name: "购建固定资产、无形资产支付的现金", category: "investing" },
-      { id: "cf-fin", code: "06", name: "借款收到的现金", category: "financing" },
+      { id: "cf-op5", code: "05", name: "收到其他与经营活动有关的现金", category: "operating" },
+      { id: "cf-op6", code: "06", name: "支付其他与经营活动有关的现金", category: "operating" },
+      // 投资活动
+      { id: "cf-inv", code: "07", name: "购建固定资产、无形资产支付的现金", category: "investing" },
+      { id: "cf-inv2", code: "08", name: "收回投资收到的现金", category: "investing" },
+      { id: "cf-inv3", code: "09", name: "处置固定资产、无形资产收回的现金净额", category: "investing" },
+      { id: "cf-inv4", code: "10", name: "取得投资收益收到的现金", category: "investing" },
+      // 筹资活动
+      { id: "cf-fin", code: "11", name: "借款收到的现金", category: "financing" },
+      { id: "cf-fin2", code: "12", name: "偿还债务支付的现金", category: "financing" },
+      { id: "cf-fin3", code: "13", name: "吸收投资收到的现金", category: "financing" },
+      { id: "cf-fin4", code: "14", name: "分配股利、利润或偿付利息支付的现金", category: "financing" },
     ],
   }
 }
@@ -565,6 +576,7 @@ export function useStore() {
         subjectName: e.subjectName || '',
         debit: round(Number(e.debit) || 0),
         credit: round(Number(e.credit) || 0),
+        cashFlowItem: e.cashFlowItem || '',
       })),
       status: VOUCHER_STATUS.DRAFT,
       createdBy: '管理员',
@@ -608,6 +620,7 @@ export function useStore() {
         subjectName: e.subjectName || '',
         debit: round(Number(e.debit) || 0),
         credit: round(Number(e.credit) || 0),
+        cashFlowItem: e.cashFlowItem || '',
       })),
       status: VOUCHER_STATUS.POSTED,
       createdBy: '管理员',
@@ -656,6 +669,7 @@ export function useStore() {
         subjectName: e.subjectName || '',
         debit: round(Number(e.debit) || 0),
         credit: round(Number(e.credit) || 0),
+        cashFlowItem: e.cashFlowItem || '',
       }))
     }
 

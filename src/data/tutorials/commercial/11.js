@@ -34,7 +34,7 @@ const tasks = [
     entries: [
       { subjectCode: '1405', summary: '采购A类商品入库', debit: 40000, credit: 0, explanation: '库存商品增加记借方。A类商品200件×200元=40,000元验收入库，存货资产增加。商业企业采购商品直接入库待售。' },
       { subjectCode: '222101', summary: '进项税额认证抵扣', debit: 5200, credit: 0, explanation: '应交税费-应交增值税（进项税额）增加记借方。取得的增值税专用发票经认证后，进项税额5,200元准予从销项税额中抵扣。依据《增值税暂行条例》第八条及《增值税发票认证管理办法》。' },
-      { subjectCode: '100201', summary: '支付采购货款', debit: 0, credit: 45200, explanation: '银行存款减少记贷方。以工商银行转账支付采购货款及税款，资金划出。' },
+      { subjectCode: '100201', summary: '支付采购货款', debit: 0, credit: 45200, explanation: '银行存款减少记贷方。以工商银行转账支付采购货款及税款，资金划出。' , cashFlowItem: 'cf-op2', cashFlowExplanation: '采购存货/商品支出（配对科目1405），属于"购买商品、接受劳务支付的现金"——经营活动现金流出。'},
     ],
     documents: [
       { type: 'invoice', label: '增值税专用发票', region: '江苏', invoiceNo: '3200789012', date: '2026-11-02', buyer: '本公司', seller: '丙公司',
@@ -54,7 +54,7 @@ const tasks = [
     entries: [
       { subjectCode: '1405', summary: '现购B类商品入库', debit: 75000, credit: 0, explanation: '库存商品增加记借方。B类商品500件×150元=75,000元验收入库，存货增加。' },
       { subjectCode: '222101', summary: '采购进项税额', debit: 9750, credit: 0, explanation: '应交税费-应交增值税（进项税额）增加记借方。进项税额9,750元可抵扣销项税。' },
-      { subjectCode: '100201', summary: '支付采购货款', debit: 0, credit: 84750, explanation: '银行存款减少记贷方。支付采购货款及税款，资金从工行账户划出。' },
+      { subjectCode: '100201', summary: '支付采购货款', debit: 0, credit: 84750, explanation: '银行存款减少记贷方。支付采购货款及税款，资金从工行账户划出。' , cashFlowItem: 'cf-op2', cashFlowExplanation: '采购存货/商品支出（配对科目1405），属于"购买商品、接受劳务支付的现金"——经营活动现金流出。'},
     ],
     documents: [
       { type: 'invoice', label: '增值税专用发票', region: '上海', invoiceNo: '3100234595', date: '2026-11-03', buyer: '本公司', seller: '华强供应链有限公司',
@@ -90,7 +90,7 @@ const tasks = [
     description: '销售A类商品250件给鑫源商贸有限公司，不含税单价400元，不含税金额100,000元，增值税13,000元，价税合计113,000元，已收存工商银行账户。',
     tip: '现销是一手交钱一手交货的销售方式。确认收入时：借：银行存款，贷：主营业务收入/应交税费-销项。注意收入确认需满足《企业会计准则第14号》规定的五条件。增值税销项税额=不含税收入×13%。',
     entries: [
-      { subjectCode: '100201', summary: '现销商品收款', debit: 113000, credit: 0, explanation: '银行存款增加记借方。销售商品收到款项113,000元，资金回笼。' },
+      { subjectCode: '100201', summary: '现销商品收款', debit: 113000, credit: 0, explanation: '银行存款增加记借方。销售商品收到款项113,000元，资金回笼。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金（配对科目6001），属于经营活动现金流入——主营业务产生的现金收入。'},
       { subjectCode: '6001', summary: '现销确认收入', debit: 0, credit: 100000, explanation: '主营业务收入增加记贷方。A类商品250件×400元=100,000元，销售收入确认。依据《企业会计准则第14号——收入》第四条。' },
       { subjectCode: '222101', summary: '现销增值税销项税额', debit: 0, credit: 13000, explanation: '应交税费-应交增值税（销项税额）增加记贷方。销售商品产生增值税纳税义务，销项税额=100,000×13%=13,000元。' },
     ],
@@ -178,7 +178,7 @@ const tasks = [
     tip: '缴纳增值税时：借：应交税费-应交增值税（已交税金），贷：银行存款。一般纳税人应在次月15日前完成上月增值税申报并缴纳税款（本例为教学简化，当月缴纳当月税款）。',
     entries: [
       { subjectCode: '222101', summary: '缴纳本月增值税', debit: 7410, credit: 0, explanation: '应交税费-应交增值税减少记借方。实际缴纳增值税，负债减少。' },
-      { subjectCode: '100201', summary: '缴纳本月增值税', debit: 0, credit: 7410, explanation: '银行存款减少记贷方。缴纳增值税款7,410元，资金减少。' },
+      { subjectCode: '100201', summary: '缴纳本月增值税', debit: 0, credit: 7410, explanation: '银行存款减少记贷方。缴纳增值税款7,410元，资金减少。' , cashFlowItem: 'cf-op4', cashFlowExplanation: '缴纳税费支出（配对科目222101），属于"支付的各项税费"——经营活动现金流出。'},
     ],
     documents: [
       { type: 'bank', label: '缴税回单', date: '2026-11-11', totalAmount: 7410, payer: '本公司', payeeName: '国家金库上海分库', content: '缴纳2026年11月增值税', refNo: 'HD202611110001' },
@@ -195,7 +195,7 @@ const tasks = [
     entries: [
       { subjectCode: '222103', summary: '缴纳城建税', debit: 518.7, credit: 0, explanation: '应交税费-应交城市维护建设税减少记借方。实际缴纳城建税518.70元，负债减少。' },
       { subjectCode: '222104', summary: '缴纳教育费附加', debit: 222.3, credit: 0, explanation: '应交税费-应交教育费附加减少记借方。实际缴纳教育费附加222.30元，负债减少。' },
-      { subjectCode: '100201', summary: '缴纳城建税及教育费附加', debit: 0, credit: 741, explanation: '银行存款减少记贷方。缴纳附加税费合计741元，资金划出。' },
+      { subjectCode: '100201', summary: '缴纳城建税及教育费附加', debit: 0, credit: 741, explanation: '银行存款减少记贷方。缴纳附加税费合计741元，资金划出。' , cashFlowItem: 'cf-op4', cashFlowExplanation: '缴纳税费支出（配对科目222103），属于"支付的各项税费"——经营活动现金流出。'},
     ],
     documents: [
       { type: 'bank', label: '缴税回单', date: '2026-11-12', totalAmount: 741, payer: '本公司', payeeName: '国家金库上海分库', content: '缴纳2026年11月城建税及教育费附加', refNo: 'HD202611120001' },
@@ -209,7 +209,7 @@ const tasks = [
     description: '收到甲公司汇来的前欠货款101,700元（11月6日赊销B商品款），已存入工商银行账户。',
     tip: '及时催收赊销货款是往来管理的重要工作。收到货款时：借：银行存款，贷：应收账款-甲公司。注意核销应收账款明细账，确保客户往来余额准确。',
     entries: [
-      { subjectCode: '100201', summary: '收到甲公司前欠货款', debit: 101700, credit: 0, explanation: '银行存款增加记借方。甲公司偿还赊销货款101,700元，资金回笼。' },
+      { subjectCode: '100201', summary: '收到甲公司前欠货款', debit: 101700, credit: 0, explanation: '银行存款增加记借方。甲公司偿还赊销货款101,700元，资金回笼。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金（配对科目112201），属于经营活动现金流入——主营业务产生的现金收入。'},
       { subjectCode: '112201', summary: '收到甲公司前欠货款', debit: 0, credit: 101700, explanation: '应收账款-甲公司减少记贷方。甲公司欠款已收回，债权结清。' },
     ],
     documents: [
@@ -225,7 +225,7 @@ const tasks = [
     tip: '广告费属于销售费用中的广告费明细科目。借：销售费用-广告费，贷：银行存款。广告费是企业为拓展市场、促进销售发生的必要支出，在计算企业所得税时可按规定比例税前扣除。',
     entries: [
       { subjectCode: '660101', summary: '支付广告费', debit: 8000, credit: 0, explanation: '销售费用-广告费增加记借方。11月网络平台广告推广支出，计入销售费用，为企业拓展市场发生的必要营销支出。' },
-      { subjectCode: '100201', summary: '支付广告费', debit: 0, credit: 8000, explanation: '银行存款减少记贷方。支付广告费用8,000元，资金减少。' },
+      { subjectCode: '100201', summary: '支付广告费', debit: 0, credit: 8000, explanation: '银行存款减少记贷方。支付广告费用8,000元，资金减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目660101），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'receipt', label: '广告费发票', docTitle: '增值税普通发票', date: '2026-11-14', totalAmount: 8000, stampText: 'XX网络科技有限公司 发票专用章',
@@ -280,7 +280,7 @@ const tasks = [
       { subjectCode: '2241', summary: '代扣社保个人部分', debit: 0, credit: 6300, explanation: '其他应付款增加记贷方。代扣的职工个人社保部分（养老8%+医疗2%+失业0.5%=10.5%），暂存其他应付款，待缴纳社保时冲减。' },
       { subjectCode: '2241', summary: '代扣公积金个人部分', debit: 0, credit: 4200, explanation: '其他应付款增加记贷方。代扣的职工个人住房公积金（7%），暂存其他应付款，待缴纳公积金时冲减。' },
       { subjectCode: '2241', summary: '代扣个人所得税', debit: 0, credit: 500, explanation: '其他应付款增加记贷方。代扣的职工个人所得税，暂存其他应付款，待申报缴纳时冲减。依据《个人所得税法》第九条。' },
-      { subjectCode: '100201', summary: '实发工资', debit: 0, credit: 49000, explanation: '银行存款减少记贷方。实发工资=60,000-6,300-4,200-500=49,000元。通过银行代发工资转入员工个人账户。' },
+      { subjectCode: '100201', summary: '实发工资', debit: 0, credit: 49000, explanation: '银行存款减少记贷方。实发工资=60,000-6,300-4,200-500=49,000元。通过银行代发工资转入员工个人账户。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221101），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'},
     ],
     documents: [
       { type: 'bank', label: '代发工资回单', date: '2026-11-18', totalAmount: 49000, payer: '本公司', payeeName: '员工代发户', content: '2026年11月工资（实发）', refNo: 'HD202611180001' },
@@ -298,7 +298,7 @@ const tasks = [
       { subjectCode: '6602', summary: '社保单位部分（管理）', debit: 8750, credit: 0, explanation: '管理费用增加记借方。管理人员社保单位部分=35,000×25%=8,750元。社保费是企业为员工支付的社会保险费用，计入对应部门费用。' },
       { subjectCode: '6601', summary: '社保单位部分（销售）', debit: 6250, credit: 0, explanation: '销售费用增加记借方。销售人员社保单位部分=25,000×25%=6,250元。' },
       { subjectCode: '2241', summary: '代扣社保个人部分冲减', debit: 6300, credit: 0, explanation: '其他应付款减少记借方。冲减之前代扣的职工个人社保部分6,300元。' },
-      { subjectCode: '100201', summary: '缴纳社保费', debit: 0, credit: 21300, explanation: '银行存款减少记贷方。缴纳社保费合计21,300元（单位15,000+个人6,300），资金划出。' },
+      { subjectCode: '100201', summary: '缴纳社保费', debit: 0, credit: 21300, explanation: '银行存款减少记贷方。缴纳社保费合计21,300元（单位15,000+个人6,300），资金划出。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6602），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'bank', label: '社保缴费回单', date: '2026-11-19', totalAmount: 21300, payer: '本公司', payeeName: '上海市社会保险事业管理中心', content: '2026年11月社会保险费', refNo: 'HD202611190001' },
@@ -316,7 +316,7 @@ const tasks = [
       { subjectCode: '6602', summary: '公积金单位部分（管理）', debit: 2450, credit: 0, explanation: '管理费用增加记借方。管理人员公积金单位部分=35,000×7%=2,450元。公积金是企业为员工缴存的长期住房储金，计入对应部门费用。' },
       { subjectCode: '6601', summary: '公积金单位部分（销售）', debit: 1750, credit: 0, explanation: '销售费用增加记借方。销售人员公积金单位部分=25,000×7%=1,750元。' },
       { subjectCode: '2241', summary: '代扣公积金个人部分冲减', debit: 4200, credit: 0, explanation: '其他应付款减少记借方。冲减之前代扣的职工个人公积金部分4,200元。' },
-      { subjectCode: '100201', summary: '缴纳公积金', debit: 0, credit: 8400, explanation: '银行存款减少记贷方。缴纳公积金合计8,400元（单位4,200+个人4,200），资金划出。' },
+      { subjectCode: '100201', summary: '缴纳公积金', debit: 0, credit: 8400, explanation: '银行存款减少记贷方。缴纳公积金合计8,400元（单位4,200+个人4,200），资金划出。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6602），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'bank', label: '公积金缴费回单', date: '2026-11-19', totalAmount: 8400, payer: '本公司', payeeName: '上海市公积金管理中心', content: '2026年11月住房公积金', refNo: 'HD202611190002' },
@@ -332,7 +332,7 @@ const tasks = [
     tip: '代扣代缴个人所得税是企业作为扣缴义务人的法定义务。企业发放工资时已从员工工资中代扣个税，需在次月15日前向税务机关申报缴纳。借：其他应付款（代扣个税），贷：银行存款。',
     entries: [
       { subjectCode: '2241', summary: '缴纳代扣个税', debit: 500, credit: 0, explanation: '其他应付款减少记借方。冲减之前代扣的职工个人所得税500元，实际缴纳后代扣义务解除。' },
-      { subjectCode: '100201', summary: '缴纳代扣个税', debit: 0, credit: 500, explanation: '银行存款减少记贷方。缴纳代扣个人所得税500元至税务机关，资金划出。依据《个人所得税法》第九条：扣缴义务人应在次月十五日内缴入国库。' },
+      { subjectCode: '100201', summary: '缴纳代扣个税', debit: 0, credit: 500, explanation: '银行存款减少记贷方。缴纳代扣个人所得税500元至税务机关，资金划出。依据《个人所得税法》第九条：扣缴义务人应在次月十五日内缴入国库。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目2241），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'bank', label: '个税缴款回单', date: '2026-11-20', totalAmount: 500, payer: '本公司', payeeName: '国家税务总局上海市税务局', content: '代扣代缴个人所得税（11月）', refNo: 'HD202611200001' },
@@ -369,7 +369,7 @@ const tasks = [
     entries: [
       { subjectCode: '1405', summary: '现购A类商品入库', debit: 20000, credit: 0, explanation: '库存商品增加记借方。A类商品100件×200元=20,000元入库，存货增加。' },
       { subjectCode: '222101', summary: '采购进项税额', debit: 2600, credit: 0, explanation: '应交税费-应交增值税（进项税额）增加记借方。进项税额2,600元可抵扣销项税。' },
-      { subjectCode: '100201', summary: '支付采购货款', debit: 0, credit: 22600, explanation: '银行存款减少记贷方。支付采购货款及税款22,600元，资金划出。' },
+      { subjectCode: '100201', summary: '支付采购货款', debit: 0, credit: 22600, explanation: '银行存款减少记贷方。支付采购货款及税款22,600元，资金划出。' , cashFlowItem: 'cf-op2', cashFlowExplanation: '采购存货/商品支出（配对科目1405），属于"购买商品、接受劳务支付的现金"——经营活动现金流出。'},
     ],
     documents: [
       { type: 'invoice', label: '增值税专用发票', region: '上海', invoiceNo: '3100234598', date: '2026-11-23', buyer: '本公司', seller: '华强供应链有限公司',
@@ -386,7 +386,7 @@ const tasks = [
     description: '销售A类商品50件，不含税单价400元，不含税金额20,000元，增值税2,600元，价税合计22,600元，已收存工商银行账户。',
     tip: '现销商品确认收入：借：银行存款，贷：主营业务收入/应交税费-销项。销项税额=不含税收入×13%。收入确认时点为商品发出并收取款项时。',
     entries: [
-      { subjectCode: '100201', summary: '现销商品收款', debit: 22600, credit: 0, explanation: '银行存款增加记借方。销售A类商品50件收到款项22,600元，资金回笼。' },
+      { subjectCode: '100201', summary: '现销商品收款', debit: 22600, credit: 0, explanation: '银行存款增加记借方。销售A类商品50件收到款项22,600元，资金回笼。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金（配对科目6001），属于经营活动现金流入——主营业务产生的现金收入。'},
       { subjectCode: '6001', summary: '现销确认收入', debit: 0, credit: 20000, explanation: '主营业务收入增加记贷方。A类商品50件×400元=20,000元，销售收入确认。' },
       { subjectCode: '222101', summary: '现销增值税销项税额', debit: 0, credit: 2600, explanation: '应交税费-应交增值税（销项税额）增加记贷方。销项税额=20,000×13%=2,600元。' },
     ],
@@ -421,7 +421,7 @@ const tasks = [
     tip: '企业所得税按季度预缴，每季度终了后15日内预缴。缴纳时冲减已计提的应交税费：借：应交税费-应交所得税，贷：银行存款。年度终了后进行汇算清缴，多退少补。',
     entries: [
       { subjectCode: '222102', summary: '缴纳季度企业所得税', debit: 3714.75, credit: 0, explanation: '应交税费-应交企业所得税减少记借方。实际缴纳企业所得税，负债减少。' },
-      { subjectCode: '100201', summary: '缴纳季度企业所得税', debit: 0, credit: 3714.75, explanation: '银行存款减少记贷方。缴纳季度预缴企业所得税3,714.75元，资金划出。依据《企业所得税法》第五十四条：企业应当自季度终了之日起十五日内预缴税款。' },
+      { subjectCode: '100201', summary: '缴纳季度企业所得税', debit: 0, credit: 3714.75, explanation: '银行存款减少记贷方。缴纳季度预缴企业所得税3,714.75元，资金划出。依据《企业所得税法》第五十四条：企业应当自季度终了之日起十五日内预缴税款。' , cashFlowItem: 'cf-op4', cashFlowExplanation: '缴纳税费支出（配对科目222102），属于"支付的各项税费"——经营活动现金流出。'},
     ],
     documents: [
       { type: 'bank', label: '缴税回单', date: '2026-11-26', totalAmount: 3714.75, payer: '本公司', payeeName: '国家税务总局上海市税务局', content: '缴纳2026年第四季度企业所得税（预缴）', refNo: 'HD202611260001' },
@@ -510,7 +510,7 @@ const tasks = [
     tip: '员工借支差旅费流程：①员工填写"借款单"（注明事由、金额、预计还款日期）→②部门经理审批→③财务主管审批→④出纳审核借款单审批手续是否完备→⑤支付现金并在借款单上加盖"现金付讫"章→⑥借款单留存→⑦出差回来后凭发票报销冲账。注意："前账不清，后账不借"原则。借：其他应收款，贷：库存现金。',
     entries: [
       { subjectCode: '1221', summary: '预借差旅费', debit: 2000, credit: 0, explanation: '其他应收款增加记借方。员工张明借支差旅费形成对公司的借款债权，出差后凭票报销冲账。' },
-      { subjectCode: '1001', summary: '预借差旅费', debit: 0, credit: 2000, explanation: '库存现金减少记贷方。出纳从备用金中支付借款2,000元，现金日记账登记"付"方。借款单原件留存备查。' },
+      { subjectCode: '1001', summary: '预借差旅费', debit: 0, credit: 2000, explanation: '库存现金减少记贷方。出纳从备用金中支付借款2,000元，现金日记账登记"付"方。借款单原件留存备查。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目1221），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'receipt', label: '借款单', docTitle: '借款单', date: '2026-11-03', totalAmount: 2000, stampText: '财务审批专用章',
@@ -546,7 +546,7 @@ const tasks = [
     tip: '银行转账手续费一般由银行自动从账户扣收，出纳需：①登录网银查看银行服务收费明细→②逐笔核对手续费是否合理→③向银行索取增值税电子普通发票（可抵扣进项税）→④登记银行日记账→⑤将手续费单据移交会计做账。银行手续费每月汇总一次，建议做银行对账时一并核对。借：财务费用，贷：银行存款。',
     entries: [
       { subjectCode: '6603', summary: '银行转账手续费', debit: 55, credit: 0, explanation: '财务费用增加记借方。转账汇款手续费属于银行服务性收费，计入财务费用。出纳需向银行索取手续费发票。' },
-      { subjectCode: '100201', summary: '银行转账手续费', debit: 0, credit: 55, explanation: '银行存款减少记贷方。银行自动扣收转账手续费55元，出纳登记银行日记账"付"方。' },
+      { subjectCode: '100201', summary: '银行转账手续费', debit: 0, credit: 55, explanation: '银行存款减少记贷方。银行自动扣收转账手续费55元，出纳登记银行日记账"付"方。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'bank', label: '银行扣款通知', date: '2026-11-06', totalAmount: 55, payer: '本公司（工商银行）', payeeName: '中国工商银行', content: '转账汇款手续费（11月）', refNo: 'HD202611060010' },
@@ -564,7 +564,7 @@ const tasks = [
     tip: '出差回来3日内必须报销：①员工填写"差旅费报销单"并附发票→②部门经理审核→③财务主管审批→④出纳计算退补金额：预借2,000-实报1,800=应退200元→⑤收回借款单原件，开具收据给员工→⑥登记现金日记账。报销金额小于预借款时需退现金，大于预借款时需补付现金。借：销售费用（实际报销额），借：库存现金（退回余额），贷：其他应收款（原借款额）。',
     entries: [
       { subjectCode: '6601', summary: '报销差旅费', debit: 1800, credit: 0, explanation: '销售费用增加记借方。张明出差上海实际发生差旅费1,800元（交通费1,100+住宿费700），属销售环节费用。' },
-      { subjectCode: '1001', summary: '收回剩余借支款', debit: 200, credit: 0, explanation: '库存现金增加记借方。报销后剩余借款200元退回出纳，现金增加。退回的现金放回保险柜备用金。' },
+      { subjectCode: '1001', summary: '收回剩余借支款', debit: 200, credit: 0, explanation: '库存现金增加记借方。报销后剩余借款200元退回出纳，现金增加。退回的现金放回保险柜备用金。' , cashFlowItem: 'cf-op5', cashFlowExplanation: '其他经营活动现金流入（配对科目1221），属于"收到其他与经营活动有关的现金"。'},
       { subjectCode: '1221', summary: '核销差旅费借款', debit: 0, credit: 2000, explanation: '其他应收款减少记贷方。原借款2,000元全部核销（1,800元费用+200元现金退回），员工借支结清。' },
     ],
     documents: [
@@ -584,7 +584,7 @@ const tasks = [
     tip: '支付供应商货款流程：①收到付款审批单（需部门经理+财务主管签字）→②核对发票、入库单、合同三单一致→③登录企业网银→④选择"转账汇款"→⑤录入收款方信息（户名丙公司、账号、开户行）→⑥输入金额20,340元→⑦制单提交→⑧换人复核→⑨打印电子回单→⑩登记银行日记账。大额支付建议使用双人复核制（制单与复核不同人）。借：应付账款，贷：银行存款。',
     entries: [
       { subjectCode: '220201', summary: '支付丙公司前欠货款', debit: 20340, credit: 0, explanation: '应付账款-丙公司减少记借方。偿还前欠丙公司购货款，债务减少。' },
-      { subjectCode: '100201', summary: '支付丙公司前欠货款', debit: 0, credit: 20340, explanation: '银行存款减少记贷方。通过网银支付丙公司货款20,340元，登记银行日记账"付"方。附网银转账回单及付款审批单。' },
+      { subjectCode: '100201', summary: '支付丙公司前欠货款', debit: 0, credit: 20340, explanation: '银行存款减少记贷方。通过网银支付丙公司货款20,340元，登记银行日记账"付"方。附网银转账回单及付款审批单。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目220201），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'bank', label: '付款回单', date: '2026-11-09', totalAmount: 20340, payer: '本公司（工商银行）', payeeName: '丙公司', content: '支付赊购货款（发票No.3200789013）', refNo: 'HD202611090010' },
@@ -601,7 +601,7 @@ const tasks = [
     tip: '出纳办理增值税缴纳流程：①登录电子税务局打印"税收缴款书"（或接收电子推送）→②登录企业网银→③选择"缴税"或"税款缴纳"功能→④输入缴款书号码、金额7,410元、预算科目→⑤核对收款方"国家金库上海分库"→⑥制单提交→⑦换人复核→⑧打印电子缴税回单→⑨登记银行日记账→⑩将缴税回单和缴款书移交会计。缴税截止日为次月15日，逾期每日加收万分之五滞纳金。借：应交税费-应交增值税，贷：银行存款。',
     entries: [
       { subjectCode: '222101', summary: '缴纳增值税', debit: 7410, credit: 0, explanation: '应交税费-应交增值税减少记借方。实际缴纳增值税7,410元后，应交税费负债减少。出纳需留存电子缴税回单。' },
-      { subjectCode: '100201', summary: '缴纳增值税', debit: 0, credit: 7410, explanation: '银行存款减少记贷方。出纳通过网银缴纳增值税7,410元，银行日记账登记"付"方。附电子缴税回单和税收缴款书。' },
+      { subjectCode: '100201', summary: '缴纳增值税', debit: 0, credit: 7410, explanation: '银行存款减少记贷方。出纳通过网银缴纳增值税7,410元，银行日记账登记"付"方。附电子缴税回单和税收缴款书。' , cashFlowItem: 'cf-op4', cashFlowExplanation: '缴纳税费支出（配对科目222101），属于"支付的各项税费"——经营活动现金流出。'},
     ],
     documents: [
       { type: 'bank', label: '缴税回单', date: '2026-11-11', totalAmount: 7410, payer: '本公司（工商银行）', payeeName: '国家金库上海分库', content: '2026年11月增值税', refNo: 'HD202611110010' },
@@ -620,7 +620,7 @@ const tasks = [
     entries: [
       { subjectCode: '222103', summary: '缴纳城建税', debit: 518.7, credit: 0, explanation: '应交税费-应交城市维护建设税减少记借方。实际缴纳城建税518.70元，应交税费负债减少。' },
       { subjectCode: '222104', summary: '缴纳教育费附加', debit: 222.3, credit: 0, explanation: '应交税费-应交教育费附加减少记借方。实际缴纳教育费附加222.30元，应交税费负债减少。' },
-      { subjectCode: '100201', summary: '缴纳附加税费', debit: 0, credit: 741, explanation: '银行存款减少记贷方。出纳通过网银缴纳附加税费合计741元，登记银行日记账"付"方。' },
+      { subjectCode: '100201', summary: '缴纳附加税费', debit: 0, credit: 741, explanation: '银行存款减少记贷方。出纳通过网银缴纳附加税费合计741元，登记银行日记账"付"方。' , cashFlowItem: 'cf-op4', cashFlowExplanation: '缴纳税费支出（配对科目222103），属于"支付的各项税费"——经营活动现金流出。'},
     ],
     documents: [
       { type: 'bank', label: '缴税回单', date: '2026-11-12', totalAmount: 741, payer: '本公司（工商银行）', payeeName: '国家金库上海分库', content: '2026年11月城建税及教育费附加', refNo: 'HD202611120010' },
@@ -638,7 +638,7 @@ const tasks = [
     tip: '购买支票操作：①填写"票据和结算凭证领用单"（加盖预留银行印鉴）→②银行审核后发售支票→③自动扣收工本费→④出纳在"支票登记簿"登记购买信息（支票号码起止、购买日期、份数）→⑤支票簿存入保险柜保管。支票和印鉴必须分开保管（出纳管支票，会计管印鉴），防止被盗用。借：财务费用，贷：银行存款。',
     entries: [
       { subjectCode: '6603', summary: '购买转账支票本', debit: 35, credit: 0, explanation: '财务费用增加记借方。银行支票工本费及手续费属于银行服务费用，计入财务费用。' },
-      { subjectCode: '100201', summary: '购买转账支票本', debit: 0, credit: 35, explanation: '银行存款减少记贷方。银行扣收支票工本费35元，出纳登记银行日记账"付"方，同时在支票登记簿登记新支票起止号码。' },
+      { subjectCode: '100201', summary: '购买转账支票本', debit: 0, credit: 35, explanation: '银行存款减少记贷方。银行扣收支票工本费35元，出纳登记银行日记账"付"方，同时在支票登记簿登记新支票起止号码。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'receipt', label: '银行收费凭证', docTitle: '中国工商银行收费凭证', date: '2026-11-14', totalAmount: 35, stampText: '中国工商银行 业务专用章',
@@ -709,7 +709,7 @@ const tasks = [
     tip: '个税代缴操作：①登录自然人电子税务局（扣缴端）获取应缴信息→②确认代扣个税金额500元→③登录企业网银→④选择"税款缴纳"-"个人所得税"→⑤输入缴款金额500元→⑥核对收款信息（国库）→⑦制单→⑧复核→⑨打印缴税回单→⑩登记银行日记账。企业作为扣缴义务人，代扣的个税属于"代扣代缴"，不增加企业费用。次月15日前缴纳，逾期将产生滞纳金。借：其他应付款-代扣个税，贷：银行存款。',
     entries: [
       { subjectCode: '2241', summary: '缴纳代扣个人所得税', debit: 500, credit: 0, explanation: '其他应付款减少记借方。冲减之前代扣的职工个人所得税500元，实际缴纳后代扣义务解除。' },
-      { subjectCode: '100201', summary: '缴纳代扣个人所得税', debit: 0, credit: 500, explanation: '银行存款减少记贷方。出纳通过网银缴纳代扣个税500元，登记银行日记账"付"方。附电子缴税回单。依据《个人所得税法》第九条。' },
+      { subjectCode: '100201', summary: '缴纳代扣个人所得税', debit: 0, credit: 500, explanation: '银行存款减少记贷方。出纳通过网银缴纳代扣个税500元，登记银行日记账"付"方。附电子缴税回单。依据《个人所得税法》第九条。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目2241），属于"支付其他与经营活动有关的现金"。'},
     ],
     documents: [
       { type: 'bank', label: '个税缴款回单', date: '2026-11-20', totalAmount: 500, payer: '本公司（工商银行）', payeeName: '国家税务总局上海市税务局', content: '代扣代缴个人所得税（11月工资）', refNo: 'HD202611200010' },
@@ -763,7 +763,7 @@ const tasks = [
     tip: '企业所得税预缴操作：①确认季度应预缴税额3,714.75元→②登录企业网银→③选择"税款缴纳"→④选择"企业所得税"预算科目→⑤输入金额3,714.75元→⑥核对收款信息→⑦制单→⑧复核→⑨打印缴税回单→⑩登记银行日记账。企业所得税按季度预缴（每季度终了后15日内），年度终了后5个月内汇算清缴。出纳需留意缴款截止日，避免逾期。借：应交税费-应交企业所得税，贷：银行存款。',
     entries: [
       { subjectCode: '222102', summary: '缴纳季度企业所得税', debit: 3714.75, credit: 0, explanation: '应交税费-应交企业所得税减少记借方。实际缴纳季度预缴企业所得税3,714.75元，应交税费负债减少。' },
-      { subjectCode: '100201', summary: '缴纳季度企业所得税', debit: 0, credit: 3714.75, explanation: '银行存款减少记贷方。出纳通过网银缴纳所得税3,714.75元，登记银行日记账"付"方。附电子缴税回单及申报表。' },
+      { subjectCode: '100201', summary: '缴纳季度企业所得税', debit: 0, credit: 3714.75, explanation: '银行存款减少记贷方。出纳通过网银缴纳所得税3,714.75元，登记银行日记账"付"方。附电子缴税回单及申报表。' , cashFlowItem: 'cf-op4', cashFlowExplanation: '缴纳税费支出（配对科目222102），属于"支付的各项税费"——经营活动现金流出。'},
     ],
     documents: [
       { type: 'bank', label: '缴税回单', date: '2026-11-26', totalAmount: 3714.75, payer: '本公司（工商银行）', payeeName: '国家税务总局上海市税务局', content: '2026年第四季度企业所得税（预缴）', refNo: 'HD202611260010' },

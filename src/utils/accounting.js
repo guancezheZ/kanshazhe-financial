@@ -549,6 +549,168 @@ export function calcCashFlow(subjects, periodBalances) {
   }
 }
 
+/**
+ * 现金科目编码前缀
+ */
+const CASH_ACCOUNT_PREFIXES = ['1001', '1002', '1012']
+
+/**
+ * 判断科目编码是否为现金类科目
+ */
+function isCashSubjectCode(code) {
+  return CASH_ACCOUNT_PREFIXES.some(p => (code || '').startsWith(p))
+}
+
+/**
+ * 自动判断分录的现金流量分类
+ *
+ * 根据分录的借贷方向和配对科目，按企业会计准则自动确定现金流量表项目。
+ * 覆盖 90%+ 常规业务，特殊业务可手动标注 cashFlowItem 覆盖。
+ *
+ * 优先级规则（现金流出时按借方配对科目优先级匹配）：
+ *   固定资产/无形资产 > 原材料/库存商品 > 应付职工薪酬 > 应交税费
+ *   > 短期/长期借款 > 应付股利/利息 > 期间费用 > 其他
+ *
+ * @param {object} entry - 分录 { subjectCode, debit, credit }
+ * @param {Array} allEntries - 完整分录数组（用于查找配对科目做上下文判断）
+ * @returns {{ id: string|null, explanation: string }}
+ *   id: 现金流量项目ID（null=无需分类如内部转账/非现金科目）
+ *   explanation: 分类原因讲解
+ */
+export function determineCashFlowForEntry(entry, allEntries) {
+  // 非现金科目不涉及现金流量
+  if (!isCashSubjectCode(entry.subjectCode)) return { id: null, explanation: '' }
+
+  const isInflow = Number(entry.debit) > 0
+  const isOutflow = Number(entry.credit) > 0
+  if (!isInflow && !isOutflow) return { id: null, explanation: '' }
+
+  // 找其他分录，判断是否为内部转账（借贷双方都是现金科目）
+  const otherEntries = (allEntries || []).filter(e => e.subjectCode !== entry.subjectCode)
+  const hasOtherCash = otherEntries.some(e => isCashSubjectCode(e.subjectCode) && (Number(e.debit) > 0 || Number(e.credit) > 0))
+  if (hasOtherCash) {
+    return { id: null, explanation: '现金科目间的内部转账不影响现金流量总额，不需分类。' }
+  }
+
+  // 配对分录：现金流入看贷方（揭示来源），现金流出看借方（揭示用途）
+  const pairedEntries = isInflow
+    ? otherEntries.filter(e => Number(e.credit) > 0)
+    : otherEntries.filter(e => Number(e.debit) > 0)
+
+  if (pairedEntries.length === 0) {
+    return isInflow
+      ? { id: 'cf-op5', explanation: '未匹配到具体业务类型，归入"收到其他与经营活动有关的现金"。' }
+      : { id: 'cf-op6', explanation: '未匹配到具体业务类型，归入"支付其他与经营活动有关的现金"。' }
+  }
+
+  const pairedCodes = pairedEntries.map(e => e.subjectCode || '')
+  const summarize = (msg) => `根据配对科目${pairedCodes[0]}判断，${msg}`
+
+  // ─── 现金流入判断 ───
+  if (isInflow) {
+    // 处置固定资产/无形资产
+    if (pairedCodes.some(c => c.startsWith('1601'))) {
+      return { id: 'cf-inv3', explanation: '处置固定资产收到的现金属于投资活动现金流入——出售长期资产所得，不同于日常经营收入。' }
+    }
+    // 主营业务收入/其他业务收入
+    if (pairedCodes.some(c => c.startsWith('6001') || c.startsWith('6051'))) {
+      return { id: 'cf-op', explanation: '销售商品/提供劳务收到的现金，属于经营活动现金流入——企业主营业务产生的现金收入。' }
+    }
+    // 应收账款/应收票据（收回前期欠款）
+    if (pairedCodes.some(c => c.startsWith('1122') || c.startsWith('1121') || c.startsWith('1123'))) {
+      return { id: 'cf-op', explanation: '收回前期应收款项属于"销售商品、提供劳务收到的现金"——虽非当期收入，仍是销售业务的现金回流。' }
+    }
+    // 预收账款
+    if (pairedCodes.some(c => c.startsWith('2203'))) {
+      return { id: 'cf-op', explanation: '预收客户款项属于"销售商品、提供劳务收到的现金"——虽未确认收入但已收到现金。' }
+    }
+    // 实收资本/股本/资本公积
+    if (pairedCodes.some(c => c.startsWith('4001') || c.startsWith('4002'))) {
+      return { id: 'cf-fin3', explanation: '股东投入资本属于"吸收投资收到的现金"——筹资活动，企业通过权益融资获得资金，不产生还本付息义务。' }
+    }
+    // 短期/长期借款
+    if (pairedCodes.some(c => c.startsWith('2001') || c.startsWith('2501'))) {
+      return { id: 'cf-fin', explanation: '银行借款属于"借款收到的现金"——筹资活动，企业通过负债融资获得资金，需按期还本付息。' }
+    }
+    // 应收股利
+    if (pairedCodes.some(c => c.startsWith('1131'))) {
+      return { id: 'cf-inv4', explanation: '收到被投资单位分派的股利/利润，属于"取得投资收益收到的现金"——投资活动现金流入。' }
+    }
+    // 财务费用（利息收入冲减费用）
+    if (pairedCodes.some(c => c.startsWith('6603'))) {
+      return { id: 'cf-op5', explanation: '银行存款利息收入属于"收到其他与经营活动有关的现金"——企业日常经营资金存放产生的收益。' }
+    }
+    // 营业外收入
+    if (pairedCodes.some(c => c.startsWith('6301'))) {
+      return { id: 'cf-op5', explanation: summarize('归入"收到其他与经营活动有关的现金"。') }
+    }
+    // 默认
+    return { id: 'cf-op5', explanation: summarize('归入"收到其他与经营活动有关的现金"。') }
+  }
+
+  // ─── 现金流出判断（按优先级） ───
+  // 固定资产/在建工程/无形资产/研发支出
+  if (pairedCodes.some(c => c.startsWith('1601') || c.startsWith('1604') || c.startsWith('1701') || c.startsWith('5301'))) {
+    return { id: 'cf-inv', explanation: '购建固定资产/无形资产属于投资活动现金流出——资本性支出为企业创造长期收益，不同于日常经营支出。' }
+  }
+  // 原材料/库存商品/在途物资/周转材料/发出商品
+  if (pairedCodes.some(c => c.startsWith('1403') || c.startsWith('1405') || c.startsWith('1402') || c.startsWith('1411') || c.startsWith('1406'))) {
+    return { id: 'cf-op2', explanation: '采购存货属于"购买商品、接受劳务支付的现金"——经营活动现金流出，是企业经营活动的核心现金支出。' }
+  }
+  // 应付职工薪酬
+  if (pairedCodes.some(c => c.startsWith('2211'))) {
+    return { id: 'cf-op3', explanation: '支付工资/社保/公积金属于"支付给职工以及为职工支付的现金"——经营活动现金流出。' }
+  }
+  // 应交税费
+  if (pairedCodes.some(c => c.startsWith('2221'))) {
+    // 检查是否只有进项税额（借方），且同时有费用/成本科目 → 按费用归类而非税费
+    // 因为进项税是采购/费用的附带部分，并非独立缴税行为
+    const taxPaired = pairedEntries.filter(e => e.subjectCode && e.subjectCode.startsWith('2221'))
+    const allTaxAreDebit = taxPaired.length > 0 && taxPaired.every(e => Number(e.debit) > 0 && Number(e.credit) === 0)
+    const hasExpenseAlongside = pairedCodes.some(c =>
+      c.startsWith('6602') || c.startsWith('6601') || c.startsWith('6603') ||
+      c.startsWith('5101') || c.startsWith('6403')
+    )
+    if (allTaxAreDebit && hasExpenseAlongside) {
+      return { id: 'cf-op6', explanation: '支付的款项包含增值税进项税额，但实际业务为费用支出，归入"支付其他与经营活动有关的现金"。' }
+    }
+    return { id: 'cf-op4', explanation: '缴纳税费属于"支付的各项税费"——经营活动现金流出。增值税、所得税、附加税等均在本科目核算。' }
+  }
+  // 短期/长期借款（偿还本金）
+  if (pairedCodes.some(c => c.startsWith('2001') || c.startsWith('2501'))) {
+    return { id: 'cf-fin2', explanation: '偿还借款本金属于"偿还债务支付的现金"——筹资活动现金流出。注意：利息支出不在此科目核算。' }
+  }
+  // 应付股利/应付利息
+  if (pairedCodes.some(c => c.startsWith('2232') || c.startsWith('2231'))) {
+    const isDividend = pairedCodes.some(c => c.startsWith('2232'))
+    return {
+      id: 'cf-fin4',
+      explanation: isDividend
+        ? '支付股东股利属于"分配股利、利润或偿付利息支付的现金"——筹资活动现金流出。'
+        : '偿付借款利息属于"分配股利、利润或偿付利息支付的现金"——筹资活动现金流出。'
+    }
+  }
+  // 管理费用/销售费用/财务费用/税金及附加/营业外支出/资产减值损失
+  if (pairedCodes.some(c =>
+    c.startsWith('6602') || c.startsWith('6601') || c.startsWith('6603') ||
+    c.startsWith('6403') || c.startsWith('6711') || c.startsWith('6701') ||
+    c.startsWith('6702') || c.startsWith('6111')
+  )) {
+    return { id: 'cf-op6', explanation: '期间费用支出属于"支付其他与经营活动有关的现金"——日常经营管理产生的现金流出。' }
+  }
+  // 制造费用
+  if (pairedCodes.some(c => c.startsWith('5101'))) {
+    return { id: 'cf-op6', explanation: '制造费用支出属于"支付其他与经营活动有关的现金"——间接生产费用支出。' }
+  }
+  // 其他应付款/其他应收款/长期待摊费用/待处理财产损溢
+  if (pairedCodes.some(c => c.startsWith('2241') || c.startsWith('1221') || c.startsWith('1801') || c.startsWith('1901'))) {
+    return { id: 'cf-op6', explanation: summarize('归入"支付其他与经营活动有关的现金"。') }
+  }
+  // 主营业务成本（结转销售成本时不影响现金流，但支付货款时用1403/1405）
+  // 默认
+  return { id: 'cf-op6', explanation: summarize('归入"支付其他与经营活动有关的现金"。') }
+}
+
 
 /**
  * 折旧计算方法

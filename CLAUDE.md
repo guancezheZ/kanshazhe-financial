@@ -10,7 +10,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 **系统名称**：観測者企业财务模拟系统（教学用）
 **包管理**：npm | **package.json 为 `"type": "module"`**（ESM 项目，脚本需 .cjs 后缀）
 
-**测试框架**：Vitest + @vue/test-utils（**455 项测试**，6 个文件）+ Playwright e2e（56项）
+**测试框架**：Vitest + @vue/test-utils（**455 项测试**，6 个文件）+ Playwright e2e（56 项）
 
 | 测试文件 | 数量 | 覆盖 |
 |:---------|:----:|:-----|
@@ -37,9 +37,20 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - ⭐ **G7**：记忆文件（`.claude/projects/.../memory/`）必须同步更新
 - ⭐ **G8**：改安全/激活相关代码后检查 `src/utils/activation.js` 和 `secure-storage.js` 兼容性
 - ⭐ **G9**：`onlineActivate()` 请求 Worker 必须带 `?action=activate` 查询参数
-- ⭐ **验证码当前为 JD-065**
+- ⭐ **G10**：教改现金分类数据后必须运行 `node scripts/compute-hashes.cjs` 更新 `src/utils/integrity.js` 哈希值
+- ⭐ **验证码当前为 JD-066**
 
 ---
+
+## GitHub MCP 替代方案
+
+当本地网络连不上 GitHub 时，使用内置 MCP 工具进行推送：
+- `mcp__github__push_files` — 一次推送多个文件（需认证时不可用）
+- `mcp__github__create_or_update_file` — 创建/更新单个文件
+- `mcp__github__search_repositories` — 搜索仓库（无需认证）
+- `mcp__github__get_file_contents` — 读取仓库文件
+
+**注意**：MCP 工具可能因认证或安全分级不可用，此时需用户通过 VPN 手动 `git push`。
 
 ## 开发环境
 
@@ -58,8 +69,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | `node scripts/key-manager.cjs gen <数量>` | 生成激活码 |
 | `node scripts/key-manager.cjs export [令牌]` | 查看密钥状态 |
 | `node scripts/key-manager.cjs upload <令牌>` | 上传密钥到 Worker |
+| `node scripts/key-manager.cjs revoke <令牌> <码>` | 吊销指定激活码（从列表彻底删除） |
+| `node scripts/key-manager.cjs clean <令牌>` | 清理之前已吊销的所有旧密钥 |
 | `node scripts/compute-hashes.cjs` | 计算数据模块 SHA-256 哈希 |
+| `node scripts/annotate-cashflow.mjs [月]` | 批量标注教学数据现金流量分类（缺省=全部） |
 | `node scripts/check-html-js.mjs` | 检查生成HTML的JS语法错误 |
+| `node scripts/take-screenshots.mjs` | Playwright 截图系统界面（需先 `npm run dev`） |
+| `node scripts/screenshot-intro.mjs` | 分段截图商品介绍页（手机宽度640px） |
 | — | 📚 教学知识点现使用独立 HTML（`docs/教学知识点介绍.html`）配套赠送 |
 
 **改代码后**：先 `npx kill-port 3000 3001 3002` 清旧进程，再用新端口测试。
@@ -120,6 +136,7 @@ src/data/
 | 凭证 | `addVoucher` / `addTeachingVoucher` / `updateVoucher` / `approveVoucher` / `signVoucher` / `postVoucher` |
 | 报表 | `getTrialBalance` / `getBalanceSheet` / `getIncomeStatement` / `getCashFlow` |
 | 教学 | `initTeachingAccount(制造业)` / `initCommercialAccount` / `initServiceAccount` / `initConstructionAccount` |
+| 现金流量 | `determineCashFlowForEntry(entry, allEntries)` — 自动判断分录现金流分类（配对科目优先级规则） |
 | XP/等级 | `completeTask` / `getLevelInfo` / `getAchievementStatus` / `addXP` |
 | 场景切换 | `switchScenarioState(scenarioId)` / `switchRole(role)` / `practiceMode` |
 | 案例 | `switchToCase(caseId)` / `exitCase()` / `persistCaseState(caseId)` |
@@ -173,6 +190,8 @@ src/data/
 - `deactivate()` 不清除绑定记录，防止同码多设备复用
 - Worker 修改后需部署到 Cloudflare（全量复制到编辑器）
 - KV 旧格式（`{ fp }`）和断格式（`{ fps: [] }`）兼容
+- 密钥管理 `revoke` 命令彻底删除密钥（非标记），不可恢复
+- 旧版已吊销的密钥可用 `clean` 命令批量清理
 
 ---
 
@@ -294,6 +313,10 @@ src-tauri/
 17. **角色菜单过滤器** — `store.js` 中 `getRoleMenuFilter()` 控制各角色侧边栏可见性。出纳角色使用白名单（显式列出允许的路径关键词），会计角色使用黑名单（`!p.includes('cashier')`，主管为 `null` = 全可见）。新增菜单项需同步更新该函数，否则部分角色看不到
 18. **HTML 章节折叠 ID 需匹配** — `docs/教学知识点介绍.html` 中每个 `.ch-section-group` 的 id 必须与 `boardData` JSON 中对应章节的 `id` 字段一致（格式 `ch-group-{chapterId}`），否则侧边栏折叠功能无效
 19. **独立 HTML 知识点文件** — `docs/教学知识点介绍.html` 已脱离系统独立维护，不再从 `knowledge-system.js` 生成。内含搜索/暗色模式/书签/进度条/章节索引等交互功能，编辑时需同步更新 JS 逻辑与 CSS
+20. **现金流量自动判断优先级** — `determineCashFlowForEntry()` 在 `src/utils/accounting.js`，匹配规则按优先级：固资/无形资产 > 原材料/库存商品 > 应付职工薪酬 > 应交税费 > 借款 > 应付股利/利息 > 期间费用 > 其他。手工标注的 `cashFlowItem` 优先于自动判断
+21. **现金流量数据修改后需重算哈希** — 改了教学数据的 entries 后必须 `node scripts/compute-hashes.cjs`，更新 `src/utils/integrity.js` 对应模块的哈希值
+22. **月份文件可能含同行多条分录** — `entries: [{...}, {...}, {...}]` 内联格式在商业/服务业/建筑业文件中常见。逐行扫描 `subjectCode` 只能找到第一个，必须用 `matchAll`。`scripts/annotate-cashflow.mjs` 已处理此情况
+23. **多行分录的 `}` 在不同行** — 有些月份文件的分录跨多行（`subjectCode` 在一行，`explanation` 在下一行，`}` 在第三行）。脚本/搜索时注意处理跨行场景，不能用单行正则简单处理
 
 ---
 
@@ -303,13 +326,16 @@ src-tauri/
 
 ### 每会话启动步骤
 
-1. 读 `经验总结.md` 获取当前验证码（当前 **JD-065**）
+1. 读 `经验总结.md` 获取当前验证码（当前 **JD-066**）
 2. `npm run test` 确认 **455** 项通过
-3. 读交接单 `session-handoff-june-2026-v7` 确定下一步
+3. 读交接单 `memory/session-handoff-june-2026-v9.md` 确定下一步
 4. 检查 `MEMORY.md` 获取记忆索引
 5. 有改代码 → `npx kill-port 3000 3001 3002` → 干净端口测试
 6. 如需打包 → `export PATH="$HOME/.cargo/bin:$PATH" && npx tauri build`
 7. 📚 教学知识点见独立 HTML 文件：`docs/教学知识点介绍.html`
+8. 🛒 商品介绍页（闲鱼/拼多多用）：`观测者财务_商品介绍_闲鱼拼多多.html`
+   - 截图在 `商品介绍截图/` 目录（Playwright 640px宽度分段生成）
+   - 系统界面截图在 `scripts/商品截图/` 目录
 
 ### 首次访问注意事项
 
