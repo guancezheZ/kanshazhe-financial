@@ -5,14 +5,20 @@
  * 使用前：
  *   1. 在 Cloudflare 创建一个 KV Namespace（命名：ACTIVATION_DB）
  *   2. 在 Worker 设置中绑定该 KV，变量名填 ACTIVATION_DB
- *   3. 用下方的 TOKEN 管理密钥（替换成你自己的密码）
+ *   3. 在 Worker 环境变量中设置 ADMIN_TOKEN（管理员密码）
+ *   4. 可选：设置 MASTER_KEY 环境变量覆盖默认主密钥
+ *
+ * ⚠️ 安全警告：不得在代码中硬编码密码！
+ *    管理员密码和主密钥都通过 Cloudflare 环境变量设置。
  */
 
-// 🔑 管理令牌（建议在 Cloudflare 面板设置 ADMIN_TOKEN 环境变量覆盖此值）
-const ADMIN_TOKEN = 'dugujunol123.'
+// 🔑 管理令牌（从 Cloudflare 环境变量读取，不得硬编码！）
+// 部署后在 CF 面板设置 ADMIN_TOKEN 环境变量
 
-// 主密钥（兼容现有客户端，可删除）
-const MASTER_KEY = '6125-9D04-84E5-007F'
+// 主密钥（优先从环境变量读取，兼容现有客户端）
+function getMasterKey(env) {
+  return env?.MASTER_KEY || '6125-9D04-84E5-007F'
+}
 
 // 🌐 单设备配置：同一激活码绑定 1 台设备（固定指纹，平台版专用）
 const MAX_DEVICES = 1
@@ -68,7 +74,7 @@ async function handleVerify(url, env, request) {
   }
 
   // 主密钥直接通过
-  if (code === MASTER_KEY) {
+  if (code === getMasterKey(env)) {
     return json({ valid: true, master: true })
   }
 
@@ -127,7 +133,7 @@ async function handleActivate(url, env, request) {
   }
 
   // 主密钥
-  if (code === MASTER_KEY) {
+  if (code === getMasterKey(env)) {
     return json({ success: true, message: '主密钥激活成功' })
   }
 
@@ -193,8 +199,12 @@ async function handleActivate(url, env, request) {
 
 // ─── 管理员操作 ───
 async function handleAdmin(url, env, request) {
+  const adminToken = env?.ADMIN_TOKEN || ''
+  if (!adminToken) {
+    return json({ error: '管理员令牌未配置，请在 CF 面板设置 ADMIN_TOKEN 环境变量' }, 500)
+  }
   const token = url.searchParams.get('token') || request.headers.get('Authorization') || ''
-  if (token !== ADMIN_TOKEN) {
+  if (token !== adminToken) {
     return json({ error: '未授权' }, 403)
   }
 
@@ -341,7 +351,6 @@ function isValidFormat(code) {
 
 function verifyCode(code) {
   if (!isValidFormat(code)) return false
-  if (code === MASTER_KEY) return true
   const norm = code.replace(/-/g, '').split('')
   let cs = 0
   for (let i = 0; i < 12; i++) cs ^= parseInt(norm[i], 16)

@@ -13,3 +13,17 @@ src-tauri/target/
 .idea/
 *.swp
 *.swo
+
+# 🔒 敏感文件——不应提交到 Git
+keys-database.json
+release/
+.claude/
+test-reports/
+
+# 📄 非系统核心文件
+AI通用关键词模板.md
+教学借鉴调研报告.md
+财务机器人经验总结.md
+经验总结.md
+docs/教学知识点介绍.html
+docs/Snipaste_*.png
