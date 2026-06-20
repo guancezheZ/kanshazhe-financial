@@ -287,8 +287,38 @@ function main() {
       break
     }
 
+    case 'revoke': {
+      const token = arg
+      const code = process.argv[4]
+      if (!token || !code) {
+        console.log('  ❌ 请提供管理员令牌和要吊销的激活码')
+        console.log('  用法: node scripts/key-manager.cjs revoke <令牌> <激活码>')
+        break
+      }
+      console.log(`  🚫 正在吊销 ${code}...`)
+      const httpsRevoke = require('https')
+      const revokeUrl = new URL(WORKER_URL + '?action=admin&cmd=revoke&token=' + encodeURIComponent(token) + '&code=' + encodeURIComponent(code))
+      httpsRevoke.get(revokeUrl, (res) => {
+        let body = ''
+        res.on('data', c => body += c)
+        res.on('end', () => {
+          const result = JSON.parse(body)
+          if (result.success) {
+            // 同步更新本地数据库
+            const db = loadDB()
+            const entry = db.keys.find(k => k.code === code)
+            if (entry) { entry.status = 'revoked'; entry.revokedAt = new Date().toISOString() }
+            saveDB(db)
+            console.log(`  ✅ 已吊销 ${code}`)
+          } else {
+            console.log('  ❌ 吊销失败:', JSON.stringify(result))
+          }
+        })
+      }).on('error', e => console.log('  ❌ 请求失败:', e.message))
+      break
+    }
+
     case 'sync': {
-      const token = arg || ''
       if (!token) {
         console.log('  ❌ 请提供管理员令牌')
         console.log('  用法: node scripts/key-manager.cjs sync <令牌>')
@@ -438,17 +468,19 @@ function main() {
       console.log('    export [令牌]       查看密钥状态（有令牌时从 Worker 取实时数据）')
       console.log('    verify <激活码>    验证激活码是否有效')
       console.log('    upload <令牌>      上传密钥到 Cloudflare Worker')
+      console.log('    revoke <令牌> <码>  吊销指定激活码（设备将无法激活）')
       console.log('    sync <令牌>        从 Worker 同步激活状态到本地')
       console.log('    purge <令牌>       清理 Worker 上的测试/无效密钥')
       console.log('    batch <文件.csv>   从CSV批量导入生成\n')
       console.log('  示例:')
-      console.log('    node scripts/key-manager.cjs gen 10       生成10个')
-      console.log('    node scripts/key-manager.cjs export       查看本地状态')
-      console.log('    node scripts/key-manager.cjs export <令牌>  查看云端实时状态')
-      console.log('    node scripts/key-manager.cjs sync <令牌>  同步状态到本地')
-      console.log('    node scripts/key-manager.cjs purge <令牌>  清理垃圾数据')
-      console.log('    node scripts/key-manager.cjs verify ABCD   验证密钥')
-      console.log('    node scripts/key-manager.cjs upload <令牌>  上传到云端\n')
+      console.log('    node scripts/key-manager.cjs gen 10          生成10个')
+      console.log('    node scripts/key-manager.cjs export          查看本地状态')
+      console.log('    node scripts/key-manager.cjs export <令牌>   查看云端实时状态')
+      console.log('    node scripts/key-manager.cjs revoke <令牌> ABCD-1234  吊销指定密钥')
+      console.log('    node scripts/key-manager.cjs sync <令牌>    同步状态到本地')
+      console.log('    node scripts/key-manager.cjs purge <令牌>    清理垃圾数据')
+      console.log('    node scripts/key-manager.cjs verify ABCD     验证密钥')
+      console.log('    node scripts/key-manager.cjs upload <令牌>   上传到云端\n')
   }
 }
 
