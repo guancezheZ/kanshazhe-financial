@@ -146,6 +146,23 @@
         <el-menu-item v-if="fm('/system/activation')" index="/system/activation">
           <el-icon><Lock /></el-icon><template #title>激活管理</template>
         </el-menu-item>
+
+        <!-- 📚 配套资料 -->
+        <el-sub-menu v-if="isTauri" index="docs-group">
+          <template #title>
+            <el-icon><Reading /></el-icon>
+            <span>配套资料</span>
+          </template>
+          <el-menu-item @click="openDoc('系统使用说明书.html')">
+            <el-icon><Reading /></el-icon><template #title>📖 使用说明书</template>
+          </el-menu-item>
+          <el-menu-item @click="openDoc('教学知识点介绍.html')">
+            <el-icon><Reading /></el-icon><template #title>📘 教学知识点</template>
+          </el-menu-item>
+          <el-menu-item @click="openDoc('観測者财务宣传.html')">
+            <el-icon><Reading /></el-icon><template #title>🏠 系统宣传页</template>
+          </el-menu-item>
+        </el-sub-menu>
       </el-menu>
       <!-- 正版授权徽章 -->
       <div class="license-badge" :class="{ collapsed: isCollapsed, unauthorized: !activated }" @click="handleLicenseClick">
@@ -303,7 +320,7 @@ import {
   Fold, HomeFilled, Reading, List, EditPen, Search,
   Document, DataAnalysis, Money, Setting, ArrowDown,
   UserFilled, SwitchButton, DataBoard, Coin, CopyDocument, SetUp,
-  Moon, Sunny, Monitor, Plus, Bell, Notebook, ChatLineRound, Lock, Close,
+  Moon, Sunny, Monitor, Plus, Bell, Notebook, ChatLineRound, Lock, Close, Check,
 } from '@element-plus/icons-vue'
 import { useStore } from '@/stores/store.js'
 import { calcLevel } from '@/data/xp-system.js'
@@ -314,6 +331,21 @@ import ActivationDialog from '@/components/ActivationDialog.vue'
 import IntegrityCheckDialog from '@/components/IntegrityCheckDialog.vue'
 import { isActivated, syncTauriActivation, initDeviceFingerprint, initActivationCache } from '@/utils/activation.js'
 import { checkIntegrity } from '@/utils/integrity.js'
+
+// ⭐ 配套资料（Tauri桌面端专用）
+const isTauri = computed(() => typeof window !== 'undefined' && window.__TAURI__ !== undefined)
+
+async function openDoc(filename) {
+  if (!isTauri.value) return
+  try {
+    const { open } = await import('@tauri-apps/plugin-shell')
+    const { resourceDir } = await import('@tauri-apps/api/path')
+    const dir = await resourceDir()
+    await open(dir + filename)
+  } catch (e) {
+    console.error('打开文档失败:', e)
+  }
+}
 
 
 const store = useStore()
