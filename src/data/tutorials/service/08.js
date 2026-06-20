@@ -800,40 +800,6 @@ const tasks = [
     "description": "通过银行转账/代扣支付100元。"
   },
   {
-    "date": "2026-08-28",
-    "title": "现金盘点",
-    "tags": [
-      "出纳"
-    ],
-    "difficulty": 1,
-    "role": "cashier",
-    "entries": [],
-    "documents": [
-      {
-        "type": "text",
-        "label": "记录"
-      }
-    ],
-    "description": "对库存现金进行月末盘点，确保账实相符。"
-  },
-  {
-    "date": "2026-08-29",
-    "title": "银行对账",
-    "tags": [
-      "出纳"
-    ],
-    "difficulty": 1,
-    "role": "cashier",
-    "entries": [],
-    "documents": [
-      {
-        "type": "text",
-        "label": "记录"
-      }
-    ],
-    "description": "将银行日记账与银行对账单进行核对，编制余额调节表。"
-  },
-  {
     "date": "2026-08-31",
     "title": "月末归档",
     "tags": [

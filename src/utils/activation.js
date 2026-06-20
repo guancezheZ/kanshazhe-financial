@@ -41,11 +41,16 @@ async function _getSecure() {
 // ─── Tauri 桥接 ───
 
 function isTauri() {
-  return typeof window !== 'undefined' && window.__TAURI__ !== undefined
+  // Tauri v2: window.__TAURI__ 可能不直接暴露，尝试导入 invoke 来判断
+  try {
+    return typeof window !== 'undefined' &&
+      (window.__TAURI__ !== undefined || document.querySelector('meta[name="tauri"]') !== null)
+  } catch {
+    return false
+  }
 }
 
 async function tauriInvoke(cmd, args = {}) {
-  if (!isTauri()) return null
   try {
     const { invoke } = await import('@tauri-apps/api/core')
     return await invoke(cmd, args)
@@ -213,11 +218,21 @@ export async function initActivationCache() {
       code: code || localStorage.getItem(STORAGE_KEY) || null,
       fp: fp || localStorage.getItem(FINGERPRINT_KEY) || null,
     }
+
+    // Tauri 模式下：如果内存缓存无数据，立即从 Rust 同步
+    if (!_activationCache.code) {
+      await syncTauriActivation()
+    }
   } catch {
     // 加密存储不可用时，使用现有明文
     _activationCache = {
       code: localStorage.getItem(STORAGE_KEY) || null,
       fp: localStorage.getItem(FINGERPRINT_KEY) || null,
+    }
+
+    // Tauri 模式下回退：立即从 Rust 同步
+    if (!_activationCache.code) {
+      await syncTauriActivation().catch(() => {})
     }
   }
 }
@@ -303,16 +318,35 @@ export async function activate(code) {
 export function isActivated() {
   // ⭐ 优先使用内存缓存（加密存储恢复后的结果）
   if (_activationCache) {
-    if (!_activationCache.code) return false
-    if (MASTER_KEYS.includes(_activationCache.code)) return true
-    if (!verifyCode(_activationCache.code)) return false
-    const fp = _activationCache.fp || getDeviceFingerprint()
-    if (isCodeBoundToOtherDevice(_activationCache.code, fp)) return false
-    return true
+    if (_activationCache.code) {
+      if (MASTER_KEYS.includes(_activationCache.code)) return true
+      if (!verifyCode(_activationCache.code)) return false
+      const fp = _activationCache.fp || getDeviceFingerprint()
+      if (isCodeBoundToOtherDevice(_activationCache.code, fp)) return false
+      return true
+    }
+    // 内存缓存无激活码，但 Tauri 模式下可能 Rust 端已激活
+    // 检查 syncTauriActivation 设置的同步标记
+    if (localStorage.getItem('__tauri_activated__') === 'true') {
+      const code = localStorage.getItem(STORAGE_KEY)
+      if (code) {
+        _activationCache.code = code
+        if (MASTER_KEYS.includes(code)) return true
+        if (!verifyCode(code)) return false
+        const fp = _activationCache.fp || getDeviceFingerprint()
+        if (isCodeBoundToOtherDevice(code, fp)) return false
+        return true
+      }
+    }
+    return false
   }
   // 回退：明文 localStorage（初始加载/缓存未就绪时）
   const stored = localStorage.getItem(STORAGE_KEY)
-  if (!stored) return false
+  if (!stored) {
+    // Tauri 模式下检查 Rust 同步标记
+    if (localStorage.getItem('__tauri_activated__') === 'true') return true
+    return false
+  }
   if (MASTER_KEYS.includes(stored)) return true
   if (!verifyCode(stored)) return false
   const fp = getDeviceFingerprint()
@@ -321,16 +355,21 @@ export function isActivated() {
 }
 
 export async function syncTauriActivation() {
-  if (!isTauri()) return
-  const activated = await tauriInvoke('is_activated')
-  localStorage.setItem('__tauri_activated__', activated ? 'true' : 'false')
-  if (activated) {
-    const code = await tauriInvoke('get_activation_code')
-    if (code) {
-      localStorage.setItem(STORAGE_KEY, code)
-      _getSecure().then(ss => ss.setItem(STORAGE_KEY, code)).catch(() => {})
-      if (_activationCache) _activationCache.code = code
-    }
+  // 不先检查 isTauri()：tauriInvoke 内部已用 try-catch，非 Tauri 环境返回 null
+  // 这样可以避免 isTauri 检测不准导致 Rust 端激活数据不同步
+  const [activated, code] = await Promise.all([
+    tauriInvoke('is_activated'),
+    tauriInvoke('get_activation_code'),
+  ])
+
+  // 更新同步标记（供 isActivated() 回退检查用）
+  const reallyActivated = activated === true || (code !== null && code !== undefined)
+  localStorage.setItem('__tauri_activated__', reallyActivated ? 'true' : 'false')
+
+  if (code) {
+    localStorage.setItem(STORAGE_KEY, code)
+    _getSecure().then(ss => ss.setItem(STORAGE_KEY, code)).catch(() => {})
+    if (_activationCache) _activationCache.code = code
   }
 }
 

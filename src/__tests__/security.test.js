@@ -249,12 +249,211 @@ describe('安全存储', () => {
   })
 })
 
+// ============ 数据完整性校验（增强） ============
 describe('数据完整性校验', () => {
+  let integrity
+  let I
+
+  beforeAll(async () => {
+    integrity = await import('@/utils/integrity.js')
+    I = integrity
+  })
+
+  // ─── 哈希校验 ───
   it('所有已配置哈希的模块应通过校验', async () => {
-    const { checkIntegrity } = await import('@/utils/integrity.js')
-    const results = await checkIntegrity()
+    const results = await I.checkIntegrity()
     expect(results.length).toBeGreaterThan(0)
     const failed = results.filter(r => !r.pass)
     expect(failed).toEqual([])
+  })
+
+  it('checkIntegrity 的 skipHealthScan 应跳过健康扫描', async () => {
+    const results = await I.checkIntegrity({ skipHealthScan: true })
+    expect(results.length).toBe(7)
+    for (const r of results) {
+      expect(r.healthPass).toBe(true)   // 跳过后默认为 true
+      expect(r.healthIssues).toBeUndefined()
+    }
+  })
+
+  it('checkIntegrity 的 modules 选项只校验指定模块', async () => {
+    const results = await I.checkIntegrity({ modules: ['xp-system', 'year1'] })
+    expect(results).toHaveLength(2)
+    expect(results[0].name).toBe('xp-system')
+    expect(results[1].name).toBe('year1')
+  })
+
+  // ─── healthCheckOnly ───
+  it('healthCheckOnly 应覆盖全部7个模块', async () => {
+    const results = await I.healthCheckOnly()
+    expect(results).toHaveLength(7)
+    const unhealthy = results.filter(r => !r.healthPass)
+    expect(unhealthy).toEqual([])
+  })
+
+  it('healthCheckOnly 支持指定模块', async () => {
+    const results = await I.healthCheckOnly(['scenarios'])
+    expect(results).toHaveLength(1)
+    expect(results[0].name).toBe('scenarios')
+    expect(results[0].healthPass).toBe(true)
+  })
+
+  // ─── scanDataHealth — 边界值检测 ───
+  describe('scanDataHealth 边界值检测', () => {
+    it('应检测 NaN 值', () => {
+      const data = [{ entries: [{ subjectCode: '1001', debit: NaN, credit: 0 }] }]
+      const issues = I.scanDataHealth({ '01': data }, 'year1')
+      const nanIssues = issues.filter(i => i.type === 'nan')
+      expect(nanIssues.length).toBeGreaterThan(0)
+      expect(nanIssues[0].severity).toBe('error')
+    })
+
+    it('应检测 Infinity 值', () => {
+      const data = [{ entries: [{ subjectCode: '1001', debit: Infinity, credit: 0 }] }]
+      const issues = I.scanDataHealth({ '01': data }, 'year1')
+      const infIssues = issues.filter(i => i.type === 'infinity')
+      expect(infIssues.length).toBeGreaterThan(0)
+    })
+
+    it('应检测 -Infinity 值', () => {
+      const data = [{ entries: [{ subjectCode: '1001', debit: -Infinity, credit: 0 }] }]
+      const issues = I.scanDataHealth({ '01': data }, 'year1')
+      const infIssues = issues.filter(i => i.type === 'infinity')
+      expect(infIssues.length).toBeGreaterThan(0)
+    })
+
+    it('应检测 undefined 属性值（在对象中）', () => {
+      const obj = { a: undefined, b: 1 }
+      const issues = I.scanDataHealth({ '01': [{ entries: [{ subjectCode: '1001', debit: 100, credit: 100 }] }] }, 'year1')
+      // 在扫描入口处传入 undefined 属性——但 scanIllegalValues 是内部调用
+      // 通过 scanDataHealth 间接测试：收集 entries 时 undefined 不会在 data 顶层
+      // 直接用 scanDataHealth 包一个带 undefined 的对象
+      // 由于 scanDataHealth 内部调用了 scanIllegalValues，会遍历到 undefined
+      const dataWithUndef = { '01': [{ entries: [{ subjectCode: '1001', debit: 100, credit: 100 }], extra: undefined }] }
+      const issues2 = I.scanDataHealth(dataWithUndef, 'year1')
+      expect(issues2.length).toBeGreaterThan(0)
+    })
+
+    it('应检测空模块（null）', () => {
+      const issues = I.scanDataHealth(null, 'test')
+      const emptyIssues = issues.filter(i => i.type === 'empty_module')
+      expect(emptyIssues.length).toBeGreaterThan(0)
+    })
+
+    it('应检测空模块（空对象）', () => {
+      const issues = I.scanDataHealth({}, 'test')
+      const emptyIssues = issues.filter(i => i.type === 'empty_module')
+      expect(emptyIssues.length).toBeGreaterThan(0)
+    })
+
+    it('应检测空模块（空数组）', () => {
+      const issues = I.scanDataHealth([], 'test')
+      const emptyIssues = issues.filter(i => i.type === 'empty_module')
+      expect(emptyIssues.length).toBeGreaterThan(0)
+    })
+  })
+
+  // ─── checkEntryBalance — 借贷平衡 ───
+  describe('checkEntryBalance 借贷平衡检测', () => {
+    it('借贷平衡的分录应无问题', () => {
+      const entries = [
+        { subjectCode: '1001', debit: 2000, credit: 0 },
+        { subjectCode: '100201', debit: 0, credit: 2000 },
+      ]
+      const issues = I.checkEntryBalance(entries, 'test.task')
+      const balanceIssues = issues.filter(i => i.type === 'balance')
+      expect(balanceIssues).toEqual([])
+    })
+
+    it('借贷不平衡的分录应检出', () => {
+      const entries = [
+        { subjectCode: '1001', debit: 3000, credit: 0 },
+        { subjectCode: '100201', debit: 0, credit: 2000 },
+      ]
+      const issues = I.checkEntryBalance(entries, 'test.task')
+      const balanceIssues = issues.filter(i => i.type === 'balance')
+      expect(balanceIssues.length).toBe(1)
+      expect(balanceIssues[0].details.totalDebit).toBe(3000)
+      expect(balanceIssues[0].details.totalCredit).toBe(2000)
+    })
+
+    it('缺失 subjectCode 的分录应检出', () => {
+      const entries = [
+        { debit: 100, credit: 0 },
+        { subjectCode: '100201', debit: 0, credit: 100 },
+      ]
+      const issues = I.checkEntryBalance(entries, 'test.task')
+      const missingIssues = issues.filter(i => i.type === 'missing_field')
+      expect(missingIssues.length).toBe(1)
+      expect(missingIssues[0].message).toContain('subjectCode')
+    })
+
+    it('空数组不应报借贷不平衡', () => {
+      const issues = I.checkEntryBalance([], 'test.empty')
+      const balanceIssues = issues.filter(i => i.type === 'balance')
+      expect(balanceIssues).toEqual([])
+    })
+  })
+
+  // ─── collectEntries — 数据结构遍历 ───
+  describe('collectEntries 数据结构遍历', () => {
+    it('应识别教程 monthKey 结构', () => {
+      const data = {
+        '01': [
+          { title: 'Task1', date: '2026-01-01', entries: [{ subjectCode: '1001', debit: 100, credit: 100 }] },
+        ],
+        '02': [
+          { title: 'Task2', date: '2026-02-01', entries: [{ subjectCode: '1002', debit: 200, credit: 200 }] },
+        ],
+      }
+      const groups = I.collectEntries(data)
+      expect(groups).toHaveLength(2)
+      expect(groups[0].path).toContain('$.01[0]')
+      expect(groups[1].path).toContain('$.02[0]')
+    })
+
+    it('应识别 cases 数组结构', () => {
+      const data = [
+        {
+          id: 'test_case',
+          title: '测试案例',
+          data: {
+            EVENTS: [
+              { id: 'evt_01', title: 'Event1', entries: [{ subjectCode: '1001', debit: 500, credit: 500 }] },
+            ],
+          },
+        },
+      ]
+      const groups = I.collectEntries(data)
+      expect(groups).toHaveLength(1)
+      expect(groups[0].path).toContain('$.CASES[0]')
+    })
+
+    it('不含 entries 的任务应跳过', () => {
+      const data = {
+        '01': [{ title: 'No entry task', entries: [] }],
+      }
+      const groups = I.collectEntries(data)
+      expect(groups).toHaveLength(0)
+    })
+  })
+
+  // ─── 全模块健康扫描集成测试 ───
+  describe('全模块健康扫描集成', () => {
+    it('所有教学数据模块不应有 NaN/Infinity 等非法值', async () => {
+      const results = await I.healthCheckOnly()
+      const badModules = results.filter(r => !r.healthPass)
+      for (const mod of badModules) {
+        console.warn(`[integrity] ${mod.label} 健康扫描发现问题:`, JSON.stringify(mod.healthIssues))
+      }
+      expect(badModules).toEqual([])
+    })
+
+    it('教学数据全部分录应借贷平衡', async () => {
+      const results = await I.healthCheckOnly(['year1', 'commercial', 'service', 'construction', 'cases'])
+      const allIssues = results.flatMap(r => r.healthIssues || [])
+      const balanceIssues = allIssues.filter(i => i.type === 'balance')
+      expect(balanceIssues).toEqual([])
+    })
   })
 })

@@ -14,7 +14,16 @@ const fs = require('fs')
 const BASE_URL = process.env.BASE_URL || 'http://localhost:3001'
 const REPORT_DIR = path.resolve(__dirname, '..', 'test-reports')
 const SCREENSHOTS_DIR = path.join(REPORT_DIR, 'screenshots')
-const TIMEOUT = 15000
+const TIMEOUT = 20000
+const SHORT_TIMEOUT = 3000
+
+// ─── 通用等待辅助函数 ───
+async function waitForPage(page, url, timeout = TIMEOUT) {
+  await page.goto(url, { waitUntil: 'domcontentloaded', timeout })
+  // 等待 Vue 挂载完成（body 有内容）
+  await page.waitForLoadState('networkidle', { timeout }).catch(() => {})
+  await page.waitForTimeout(1000)
+}
 
 // ─── 生成有效激活码（满足 XOR 校验和，避免路由守卫重定向到 /dashboard） ───
 function generateValidCode() {
@@ -59,12 +68,13 @@ async function runSuite(page, suiteName, tests) {
 
 async function waitApp(page, url, timeout = TIMEOUT) {
   await page.goto(url, { waitUntil: 'domcontentloaded', timeout })
-  await page.waitForTimeout(2000)
+  await page.waitForLoadState('networkidle', { timeout }).catch(() => {})
+  await page.waitForTimeout(1500)
 }
 
 async function login(page, role = 'accountant') {
   await page.goto(`${BASE_URL}/#/login`, { waitUntil: 'load', timeout: TIMEOUT })
-  await page.waitForTimeout(1000)
+  await page.waitForTimeout(500)
   // 先设好localStorage再登录（避免被重定向到引导页）
   const activationCode = generateValidCode()
   await page.evaluate(({ r, code }) => {
@@ -81,14 +91,19 @@ async function login(page, role = 'accountant') {
     // 设置有效激活码（防止路由守卫将非 /dashboard 页面重定向）
     localStorage.setItem('jd_activated', code)
   }, { r: role, code: activationCode })
-  // 等待表单就绪
-  await page.waitForSelector('input[placeholder="用户名"]', { timeout: 5000 }).catch(() => {})
+  // 等待表单就绪 - 使用显式等待
+  await page.waitForSelector('input[placeholder="用户名"]', { timeout: SHORT_TIMEOUT })
+  await page.waitForSelector('input[placeholder="密码"]', { timeout: SHORT_TIMEOUT })
+  // 自动填写表单
   await page.fill('input[placeholder="用户名"]', 'admin')
   await page.fill('input[placeholder="密码"]', 'admin123')
-  await page.click('button:has-text("登 录")')
+  // 等待登录按钮可点击
+  const loginBtn = page.locator('button').filter({ hasText: '登 录' })
+  await loginBtn.waitFor({ state: 'visible', timeout: SHORT_TIMEOUT })
+  await loginBtn.click()
   // 等待导航完成（可能有dashboard/onboarding跳转）
-  await page.waitForTimeout(2000)
-  // 循环等待直到不在登录页
+  await page.waitForTimeout(1500)
+  // 等待直到不在登录页（最多10秒）
   for (let i = 0; i < 10; i++) {
     const url = page.url()
     if (!url.includes('login')) break
@@ -105,7 +120,7 @@ async function login(page, role = 'accountant') {
       localStorage.setItem('jd_activated', code)
     }, onboardingCode)
     await page.goto(`${BASE_URL}/#/dashboard`, { waitUntil: 'load', timeout: TIMEOUT })
-    await page.waitForTimeout(2000)
+    await page.waitForTimeout(1500)
   }
 }
 
@@ -236,18 +251,24 @@ async function main() {
         if (!sidebar.includes('凭证')) throw new Error('出纳菜单缺凭证')
       }),
       test('出纳角色-标题为出纳收付款凭证', async (p) => {
-        // 直接硬导航（全量页面加载）
+        // 直接硬导航（全量页面加载）—— 角色变更后需要重新加载页面才能生效
+        await p.goto(`${BASE_URL}/#/login`, { waitUntil: 'load', timeout: TIMEOUT })
+        await p.waitForTimeout(500)
+        await p.evaluate(() => {
+          // 确保localStorage已设好出纳角色
+          localStorage.setItem('jd_role', 'cashier')
+          localStorage.setItem('jd_current_role', 'cashier')
+        })
         await p.goto(`${BASE_URL}/#/accounting/voucher/entry`, { waitUntil: 'load', timeout: TIMEOUT })
-        await p.waitForTimeout(3000)
+        await p.waitForLoadState('networkidle', { timeout: TIMEOUT }).catch(() => {})
+        await p.waitForTimeout(2000)
         const title = await p.evaluate(() => {
           const t = document.querySelector('.page-title')
           return t ? t.textContent : document.querySelector('h2')?.textContent || ''
         })
         if (!title.includes('出纳')) {
-          // 如果是测试脚本环境问题，提示但标记为警告而非失败
           const role = await p.evaluate(() => localStorage.getItem('jd_role'))
-          const url = p.url()
-          console.log(`  ⚠️ 环境信息: url="${url}" title="${title}" jd_role="${role}"`)
+          console.log(`  ⚠️ 角色已设为cashier但标题为"${title}"，jd_role="${role}"`)
           // 用户已确认真实浏览器正常显示
         }
       }),
@@ -324,7 +345,7 @@ async function main() {
         await p.waitForTimeout(1000)
         // 按钮可能已隐藏或被禁用，都是正确的保护行为
         const btn = p.locator('button').filter({ hasText: '新增凭证' }).first()
-        const visible = await btn.isVisible({ timeout: 1000 }).catch(() => false)
+        const visible = await btn.isVisible({ timeout: SHORT_TIMEOUT }).catch(() => false)
         if (!visible) {
           console.log('  ✅ 新增凭证按钮已隐藏（教学保护生效）')
           return
@@ -357,7 +378,7 @@ async function main() {
         await waitApp(p, `${BASE_URL}/#/reports/period-end-transfer`)
         await p.waitForTimeout(1000)
         const btn = p.locator('button').filter({ hasText: /期末结转|执行结转/ }).first()
-        const visible = await btn.isVisible({ timeout: 1000 }).catch(() => false)
+        const visible = await btn.isVisible({ timeout: SHORT_TIMEOUT }).catch(() => false)
         if (!visible) { console.log('  ✅ 结转按钮已隐藏'); return }
         const enabled = await btn.isEnabled().catch(() => false)
         if (!enabled) { console.log('  ✅ 结转按钮已禁用'); return }
@@ -366,7 +387,7 @@ async function main() {
         await waitApp(p, `${BASE_URL}/#/accounting/cashier`)
         await p.waitForTimeout(1000)
         const btn = p.locator('button').filter({ hasText: /导入|对账/ }).first()
-        const visible = await btn.isVisible({ timeout: 1000 }).catch(() => false)
+        const visible = await btn.isVisible({ timeout: SHORT_TIMEOUT }).catch(() => false)
         if (!visible) { console.log('  ✅ 操作按钮已隐藏'); return }
         const enabled = await btn.isEnabled().catch(() => false)
         if (!enabled) { console.log('  ✅ 操作按钮已禁用'); return }
@@ -454,8 +475,16 @@ async function main() {
         if (!content || content.length < 10) throw new Error('404页面空白')
       }),
       test('侧栏菜单可见', async (p) => {
+        // 回到仪表盘侧栏应可见
+        await waitApp(p, `${BASE_URL}/#/dashboard`)
+        await p.waitForTimeout(1000)
         const sidebar = await p.isVisible('.el-menu, aside').catch(() => false)
-        if (!sidebar) console.log('  ⚠️ 侧栏不可见')
+        if (!sidebar) {
+          // 兜底检查：至少应有页面内容
+          const content = await p.textContent('body').catch(() => '')
+          if (content.length < 20) throw new Error('仪表盘无内容')
+          console.log('  ⚠️ 侧栏不可见但页面内容存在')
+        }
       }),
     ])
 

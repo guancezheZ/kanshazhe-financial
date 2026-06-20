@@ -84,7 +84,7 @@ const router = useRouter()
 const formRef = ref(null)
 const loading = ref(false)
 const year = new Date().getFullYear()
-const version = __APP_VERSION__ || '0.1.0'
+const version = __APP_VERSION__ || '0.2.0'
 
 const form = reactive({
   username: '',

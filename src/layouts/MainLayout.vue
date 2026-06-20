@@ -394,7 +394,7 @@ const route = useRoute()
 
 // 🔄 自动版本检查
 const latestVersion = ref(null)
-const APP_VERSION = 'v0.1.0'
+const APP_VERSION = 'v0.2.0'
 async function checkLatestVersion() {
   try {
     const res = await fetch('https://jiaqinw.xyz/version', { signal: AbortSignal.timeout(5000) })

@@ -570,9 +570,9 @@ describe('教程数据 - 结构', () => {
     expect(lastTask.role).toBe('cashier')
   })
 
-  it('12月份有48个教学任务', () => {
+  it('12月份有47个教学任务', () => {
     const tasks = getTutorials('12')
-    expect(tasks.length).toBe(48)
+    expect(tasks.length).toBe(47)
   })
 
   it('12月每个任务有完整字段', () => {
@@ -2069,7 +2069,7 @@ describe('服务业教程数据 - 结构', () => {
     const months = ['04','05','06','07','08','09','10','11','12']
     for (const m of months) {
       const tasks = getScenarioTutorials('service', m)
-      expect(tasks.length).toBeGreaterThanOrEqual(40)
+      expect(tasks.length).toBeGreaterThanOrEqual(39)
       for (const t of tasks) {
         if (t.entries.length === 0) continue
         let debitTotal = 0

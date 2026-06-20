@@ -479,13 +479,35 @@ export function calcBalanceSheet(subjects, periodBalances) {
  * 净利润 = 利润总额 - 所得税费用
  */
 export function calcIncomeStatement(subjects, periodBalances) {
+  /**
+   * 获取损益类科目发生额（正数 = 收入/利得 或 费用/损失的绝对值）
+   *
+   * FIX: 原实现只找到第一个匹配科目（可能是父级非末级），
+   * 而期间余额只存在于末级科目，导致非末级损益科目（6601/6602）始终返回0。
+   *
+   * 修正方案：
+   * 1. 查找所有匹配前缀的末级科目（isLeaf = true）
+   * 2. 累加各子科目的发生额（currentCredit - currentDebit）
+   * 3. 取绝对值确保返回正数（费用类显示为正值，公式用减法）
+   */
   const getAmount = (codePrefix) => {
-    const subject = subjects.find(s => s.code.startsWith(codePrefix) && s.type === SUBJECT_TYPE.PROFIT_LOSS)
-    if (!subject) return 0
-    const pb = periodBalances.find(p => p.subjectId === subject.id)
-    if (!pb) return 0
-    // 损益类：贷方发生额 = 收入/利得，借方发生额 = 费用/损失
-    return round(Number(pb.currentCredit) - Number(pb.currentDebit))
+    const leafSubjects = subjects.filter(s =>
+      s.code.startsWith(codePrefix) &&
+      s.type === SUBJECT_TYPE.PROFIT_LOSS &&
+      s.isLeaf === true
+    )
+    if (leafSubjects.length === 0) return 0
+
+    let total = 0
+    for (const subj of leafSubjects) {
+      const pb = periodBalances.find(p => p.subjectId === subj.id)
+      if (!pb) continue
+      // 损益类：贷方发生额 = 收入/利得，借方发生额 = 费用/损失
+      total += Number(pb.currentCredit) - Number(pb.currentDebit)
+    }
+    // 取绝对值：收入类（正→正），费用类（负→正）
+    // 这样公式 revenue - cost - ... 中所有金额均为正数，符号由运算符决定
+    return round(Math.abs(total))
   }
 
   const revenue = getAmount('6001') + getAmount('6051')  // 营业收入
@@ -517,6 +539,8 @@ export function calcIncomeStatement(subjects, periodBalances) {
       { name: '减：所得税费用', amount: incomeTax, indent: true },
       { name: '四、净利润', amount: netProfit, indent: false, bold: true },
     ],
+    revenue, cost, taxSurcharge, sellingExp, adminExp, financeExp,
+    otherIncome, otherExp, incomeTax,
     operatingProfit,
     totalProfit,
     netProfit,

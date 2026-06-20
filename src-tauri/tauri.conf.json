@@ -1,7 +1,7 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
   "productName": "观测者财务模拟系统",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "identifier": "com.kanshazhe.financial",
   "build": {
     "frontendDist": "../dist",
@@ -29,6 +29,7 @@
   "bundle": {
     "active": true,
     "targets": ["nsis"],
+    "createUpdaterArtifacts": true,
     "icon": [
       "icons/32x32.png",
       "icons/128x128.png",
@@ -50,5 +51,10 @@
       }
     }
   },
-  "plugins": {}
+  "plugins": {
+    "updater": {
+      "endpoints": ["https://jiaqinw.xyz/updater"],
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEE5Nzc0QTIyOTQ1RDMyQTEKUldTaE1sMlVJa3AzcVViZ0NzU0JlZ1dXalpLL2JTSjB6SUJSeG9EM0tyRHlEN2xzMEdOTGRzQUgK"
+    }
+  }
 }

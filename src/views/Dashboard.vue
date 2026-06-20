@@ -246,6 +246,7 @@ import {
   Promotion, Notebook, TrendCharts, Coin, Wallet,
   DataAnalysis, DataLine, Bell, InfoFilled,
 } from '@element-plus/icons-vue'
+import { ElMessage } from 'element-plus'
 import { useStore } from '@/stores/store.js'
 import { getCurrentPeriod, formatAmount, VOUCHER_STATUS_CN, VOUCHER_STATUS } from '@/utils/accounting.js'
 import { calcLevel } from '@/data/xp-system.js'

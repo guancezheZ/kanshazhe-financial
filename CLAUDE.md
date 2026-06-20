@@ -10,24 +10,24 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 **系统名称**：観測者企业财务模拟系统（教学用）
 **包管理**：npm | **package.json 为 `"type": "module"`**（ESM 项目，脚本需 .cjs 后缀）
 
-**测试框架**：Vitest + @vue/test-utils（**456 项测试**，6 个文件）+ Playwright e2e（56 项）
+**测试框架**：Vitest + @vue/test-utils（**503 项测试**，6 个文件）+ Playwright e2e（56 项）
 
 | 测试文件 | 数量 | 覆盖 |
 |:---------|:----:|:-----|
 | `tutorial.test.js` | ~250 | 四大行业教学数据验证 |
 | `store.test.js` | ~100 | Store核心：科目/凭证/过账/场景 |
-| `accounting.test.js` | ~40 | 会计引擎：余额计算/试算平衡/公式 |
+| `accounting.test.js` | ~67 | 会计引擎：余额计算/试算平衡/公式/精度校验/期末结转 |
 | `cases.test.js` | ~30 | 案例数据加载/切换/报表 |
-| `security.test.js` | ~20 | 激活码/加密存储/完整性自检 |
+| `security.test.js` | ~46 | 激活码/加密存储/完整性自检（含20项边界值测试） |
 | `submit.test.js` | ~15 | 凭证提交流程 |
 
-**系统总计**：~2,122个教学任务（制造业586 + 商业企业531 + 服务业504 + 建筑业501）+ 9个案例库（341笔事件）
+**系统总计**：~2,107个教学任务（制造业585 + 商业企业531 + 服务业490 + 建筑业501）+ 9个案例库（341笔事件）
 
 **XP/等级/成就**：13级声望称号（见习生→财务传说）+ 16项成就
 
 **核心铁律**：
 - ⭐ **质量 > 速度** — 财务计算错误可能违法
-- ⭐ **测试驱动** — 每次改完代码必须 `npm run test`（456项全通过确认）
+- ⭐ **测试驱动** — 每次改完代码必须 `npm run test`（503项全通过确认）
 - ⭐ **G1**：每个回复末尾加"喵~"
 - ⭐ **G2**：每次会话先输出**当前验证码**（见`经验总结.md`末尾）
 - ⭐ **G3**：改东西必须全面扫清所有相关文件
@@ -71,6 +71,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | `node scripts/key-manager.cjs upload <令牌>` | 上传密钥到 Worker |
 | `node scripts/key-manager.cjs revoke <令牌> <码>` | 吊销指定激活码（从列表彻底删除） |
 | `node scripts/key-manager.cjs clean <令牌>` | 清理之前已吊销的所有旧密钥 |
+| `node scripts/deep-audit.mjs` | 深度数据审计（分录平衡/重复任务/数量异常/角色分布） |
 | `node scripts/compute-hashes.cjs` | 计算数据模块 SHA-256 哈希 |
 | `node scripts/annotate-cashflow.mjs [行业] [月]` | 批量标注现金流量分类（行业: manufacturing/commercial/service/construction/all，月: 01-12/all，缺省=全部全部） |
 | `node scripts/check-html-js.mjs` | 检查生成HTML的JS语法错误 |
@@ -141,6 +142,23 @@ src/data/
 | 场景切换 | `switchScenarioState(scenarioId)` / `switchRole(role)` / `practiceMode` |
 | 案例 | `switchToCase(caseId)` / `exitCase()` / `persistCaseState(caseId)` |
 
+### 完整性校验 API
+
+```js
+import { checkIntegrity, healthCheckOnly } from '@/utils/integrity.js'
+
+// 完整校验（哈希 + 健康扫描）
+await checkIntegrity()
+// 跳过健康扫描
+await checkIntegrity({ skipHealthScan: true })
+// 只校验指定模块
+await checkIntegrity({ modules: ['year1', 'service'] })
+// 仅健康扫描（不检查哈希）
+await healthCheckOnly()
+```
+
+**数据健康扫描检测项**：NaN、Infinity、undefined、BigInt、空模块、借贷不平衡（阈值0.02）、缺失必填字段（subjectCode/debit/credit）
+
 ### 凭证核心流程
 
 ```
@@ -176,7 +194,7 @@ src/data/
 |:-----|:-----|:------|
 | 激活码验证 | `src/utils/activation.js` | 16位XOR校验 + 在线/离线双模式 |
 | 加密存储 | `src/utils/secure-storage.js` | AES-GCM 加密 localStorage |
-| 完整性校验 | `src/utils/integrity.js` | 7数据模块 SHA-256 哈希比对 |
+| 完整性校验 | `src/utils/integrity.js` | SHA-256 哈希比对 + 数据健康扫描（NaN/Infinity/借贷平衡/缺失字段/空模块） |
 | Worker 验证 | `scripts/worker-activation.js` | Cloudflare Worker，含速率限制+IP封禁+单设备绑定 |
 
 **激活码**：`XXXX-XXXX-XXXX-XXXX`（16位大写hex，前12位 data + 13-15位 XOR校验和 + 第16位随机）
@@ -315,9 +333,13 @@ src-tauri/
 19. **独立 HTML 知识点文件** — `docs/教学知识点介绍.html` 已脱离系统独立维护，不再从 `knowledge-system.js` 生成。内含搜索/暗色模式/书签/进度条/章节索引等交互功能，编辑时需同步更新 JS 逻辑与 CSS
 20. **现金流量自动判断优先级** — `determineCashFlowForEntry()` 在 `src/utils/accounting.js`，匹配规则按优先级：固资/无形资产 > 原材料/库存商品 > 应付职工薪酬 > 应交税费 > 借款 > 应付股利/利息 > 期间费用 > 其他。手工标注的 `cashFlowItem` 优先于自动判断
 21. **现金流量数据修改后需重算哈希** — 改了教学数据的 entries 后必须 `node scripts/compute-hashes.cjs`，更新 `src/utils/integrity.js` 对应模块的哈希值
-22. **月份文件可能含同行多条分录** — `entries: [{...}, {...}, {...}]` 内联格式在商业/服务业/建筑业文件中常见。逐行扫描 `subjectCode` 只能找到第一个，必须用 `matchAll`。`scripts/annotate-cashflow.mjs` 已处理此情况
-23. **多行分录的 `}` 在不同行** — 有些月份文件的分录跨多行（`subjectCode` 在一行，`explanation` 在下一行，`}` 在第三行）。脚本/搜索时注意处理跨行场景，不能用单行正则简单处理
-24. **标注脚本 duplicate key bug** — `annotate-cashflow.mjs` 的 `buildAnnotationMap` 使用 `code|dr|cr|summary` 作为 key。会计+出纳任务中同 summary 的分录会生成相同 key，第一个匹配后 `delete` 导致第二条丢失。已修复为计数模式（`count` 递减，归零才删）。改标注脚本时注意不要回退此逻辑
+22. **会计引擎在 `src/utils/accounting.js`** — 核心函数 `determineCashFlowForEntry()` 和 `calculateBalances()` 在此；`getIncomeStatement()`/`getBalanceSheet()`/`getCashFlow()` 在 `src/stores/store.js` 中组装调用
+23. **月份文件可能含同行多条分录** — `entries: [{...}, {...}, {...}]` 内联格式在商业/服务业/建筑业文件中常见。逐行扫描 `subjectCode` 只能找到第一个，必须用 `matchAll`。`scripts/annotate-cashflow.mjs` 已处理此情况
+24. **多行分录的 `}` 在不同行** — 有些月份文件的分录跨多行（`subjectCode` 在一行，`explanation` 在下一行，`}` 在第三行）。脚本/搜索时注意处理跨行场景，不能用单行正则简单处理
+25. **标注脚本 duplicate key bug** — `annotate-cashflow.mjs` 的 `buildAnnotationMap` 使用 `code|dr|cr|summary` 作为 key。会计+出纳任务中同 summary 的分录会生成相同 key，第一个匹配后 `delete` 导致第二条丢失。已修复为计数模式（`count` 递减，归零才删）。改标注脚本时注意不要回退此逻辑
+26. **`calcIncomeStatement.getAmount()` 必须聚合子科目** — 期间余额只存在于末级科目（isLeaf=true），非末级科目（6601/6602）无 periodBalance。`getAmount` 需 filter `isLeaf === true` 的所有匹配科目累加，不能用 `find()` 取第一个
+27. **`calcIncomeStatement` 返回正值** — `getAmount` 取 `|currentCredit - currentDebit|`（Math.abs），费用类借方发生额返回正值。公式 `revenue - cost - ...` 中所有值为正，运算符决定加减方向
+28. **`calcIncomeStatement` 返回属性缺失** — 返回值需包含 `revenue`/`cost`/`sellingExp`/`adminExp`/`financeExp`/`otherIncome`/`otherExp`/`incomeTax`，否则 `TaxFiling.vue` 纳税申报页全部显示为0
 
 ---
 
@@ -328,8 +350,8 @@ src-tauri/
 ### 每会话启动步骤
 
 1. 读 `经验总结.md` 获取当前验证码（当前 **JD-066**）
-2. `npm run test` 确认 **456** 项通过
-3. 读交接单 `memory/session-handoff-june-2026-v11.md` 确定下一步
+2. `npm run test` 确认 **503** 项通过
+3. 读交接单 `memory/session-handoff-june-2026-v13.md` 确定下一步
 4. 检查 `MEMORY.md` 获取记忆索引
 5. 有改代码 → `npx kill-port 3000 3001 3002` → 干净端口测试
 6. 如需打包 → `export PATH="$HOME/.cargo/bin:$PATH" && npx tauri build`

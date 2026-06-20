@@ -64,6 +64,10 @@ export default {
     if (path === '/version') {
       return handleVersionCheck(env)
     }
+    // 📦 Tauri 自动更新 API（Updater Plugin）
+    if (path === '/updater') {
+      return handleUpdater(env)
+    }
 
     const action = url.searchParams.get('action') || 'verify'
 
@@ -282,9 +286,12 @@ async function fetchLatestRelease() {
     const data = await res.json()
     const asset = data.assets?.find(a => a.name?.endsWith('.exe'))
     if (!asset) return null
+    // 找对应的 .sig 文件
+    const sigAsset = data.assets?.find(a => a.name?.endsWith('.exe.sig'))
     return {
       version: data.tag_name,
       downloadUrl: asset.browser_download_url,
+      sigUrl: sigAsset?.browser_download_url || '',
       assetName: asset.name,
       updatedAt: data.published_at,
     }
@@ -295,7 +302,7 @@ async function fetchLatestRelease() {
 async function handleVersionCheck(env) {
   const release = await fetchLatestRelease()
   return json({
-    version: release?.version || 'v0.1.0',
+    version: release?.version || 'v0.2.0',
     downloadUrl: release?.downloadUrl || 'https://jiaqinw.xyz/download',
     updateUrl: 'https://jiaqinw.xyz/update',
   })
@@ -304,10 +311,42 @@ async function handleVersionCheck(env) {
 // ─── 下载页面 ───
 async function handleDownload(env) {
   const release = await fetchLatestRelease()
-  const version = release?.version || 'v0.1.0'
+  const version = release?.version || 'v0.2.0'
   const downloadUrl = release?.downloadUrl || ''
   return new Response(getDownloadPage(version, downloadUrl), {
     headers: { 'Content-Type': 'text/html; charset=utf-8', 'Access-Control-Allow-Origin': '*' },
+  })
+}
+
+// ─── Tauri 自动更新 API ───
+async function handleUpdater(env) {
+  const release = await fetchLatestRelease()
+  const version = release?.version?.replace(/^v/, '') || '0.2.0'
+  const downloadUrl = release?.downloadUrl || ''
+  let signature = ''
+
+  // 从 GitHub Release 读取 .sig 文件内容
+  if (release?.sigUrl) {
+    try {
+      const sigRes = await fetch(release.sigUrl)
+      if (sigRes.ok) signature = await sigRes.text()
+    } catch { /* 降级：用空签名，客户端会校验失败 */ }
+  }
+
+  // 构造 Tauri v2 updater JSON
+  // GitHub release 上需上传两个文件：
+  //   观测者财务模拟系统_${version}_x64-setup.exe
+  //   观测者财务模拟系统_${version}_x64-setup.exe.sig
+  return json({
+    version,
+    pub_date: release?.updatedAt || new Date().toISOString(),
+    notes: release?.notes || '',
+    platforms: {
+      'windows-x86_64': {
+        signature,
+        url: downloadUrl,
+      },
+    },
   })
 }
 

@@ -700,25 +700,6 @@ const tasks = [
     "description": "将本月凭证整理装订成册，归档保存。"
   },
   {
-    "date": "2026-06-07",
-    "title": "摊销6月办公室租金",
-    "tags": [
-      "费用管理"
-    ],
-    "difficulty": 1,
-    "entries": [
-      { subjectCode: '660201', summary: '管理费用', debit: 20000, credit: 0, explanation: '管理费用-办公费增加记借方。办公费用计入管理费。' },
-      { subjectCode: '4103', summary: '贷方金额', debit: 0, credit: 20000, explanation: '本年利润增加记贷方。结转收入至本年利润。' },
-    ],
-    "documents": [
-      {
-        "type": "text",
-        "label": "记录"
-      }
-    ],
-    "description": "摊销6月办公室租金，涉及金额20,000元。"
-  },
-  {
     "date": "2026-06-08",
     "title": "支付宝收款-项目尾款",
     "tags": [
@@ -900,40 +881,6 @@ const tasks = [
     ],
     "description": "通过银行转账缴纳各项税款合计10,600元。"
   },
-  {
-    "date": "2026-06-28",
-    "title": "现金盘点",
-    "tags": [
-      "出纳"
-    ],
-    "difficulty": 1,
-    "role": "cashier",
-    "entries": [],
-    "documents": [
-      {
-        "type": "text",
-        "label": "记录"
-      }
-    ],
-    "description": "对库存现金进行月末盘点，确保账实相符。"
-  },
-  {
-    "date": "2026-06-29",
-    "title": "银行对账",
-    "tags": [
-      "出纳"
-    ],
-    "difficulty": 1,
-    "role": "cashier",
-    "entries": [],
-    "documents": [
-      {
-        "type": "text",
-        "label": "记录"
-      }
-    ],
-    "description": "将银行日记账与银行对账单进行核对，编制余额调节表。"
-  }
 ];
 
 export default tasks;

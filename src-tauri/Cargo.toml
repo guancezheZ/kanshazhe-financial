@@ -1,6 +1,6 @@
 [package]
 name = "kanshazhe-financial"
-version = "0.1.0"
+version = "0.2.0"
 description = "观测者企业财务模拟系统 - 四行业教学版"
 authors = ["kanshazhe"]
 license = "MIT"
@@ -22,7 +22,8 @@ log = "0.4"
 tauri = { version = "2", features = [] }
 tauri-plugin-log = "2"
 open = "5"
-# tauri-plugin-updater = "2"  # 发布时启用
+# tauri-plugin-process = "2"  # 用于 update 后自动重启
+tauri-plugin-updater = "2"
 
 # 加密
 aes-gcm = "0.10"

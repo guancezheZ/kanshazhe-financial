@@ -126,8 +126,8 @@ const tasks = [
     ],
     "difficulty": 1,
     "entries": [
-        { subjectCode: '660206', summary: '摊销房租', debit: 20000, credit: 0, explanation: '管理费用-摊销费增加记借方。摊销办公室租金。' },
-      { subjectCode: '660206', summary: '房租摊销', debit: 0, credit: 20000, explanation: '预付账款减少记贷方。摊销预付房租。' },
+      { subjectCode: '660206', summary: '摊销本月办公室租金', debit: 20000, credit: 0, explanation: '管理费用-摊销费增加记借方。摊销办公室租金。' },
+      { subjectCode: '1123', summary: '摊销本月办公室租金', debit: 0, credit: 20000, explanation: '预付账款减少记贷方。当月摊销额冲减预付账款（原预付半年租金120,000元，第5次摊销）。' },
     ],
     "documents": [
       {
@@ -642,25 +642,6 @@ const tasks = [
       }
     ],
     "description": "将本月凭证整理装订成册，归档保存。"
-  },
-  {
-    "date": "2026-05-09",
-    "title": "摊销5月办公室租金",
-    "tags": [
-      "费用管理"
-    ],
-    "difficulty": 1,
-    "entries": [
-        { subjectCode: '660201', summary: '管理费用', debit: 20000, credit: 0, explanation: '管理费用-办公费增加记借方。办公费用计入管理费。' },
-      { subjectCode: '4103', summary: '贷方金额', debit: 0, credit: 20000, explanation: '本年利润增加记贷方。结转收入至本年利润。' },
-    ],
-    "documents": [
-      {
-        "type": "text",
-        "label": "记录"
-      }
-    ],
-    "description": "摊销5月办公室租金，涉及金额20,000元。"
   },
   {
     "date": "2026-05-12",

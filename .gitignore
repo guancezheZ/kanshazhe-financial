@@ -16,6 +16,7 @@ src-tauri/target/
 
 # 🔒 敏感文件——不应提交到 Git
 keys-database.json
+updater-key.pem          # Tauri 签名私钥——泄漏即作废！
 release/
 .claude/
 test-reports/
