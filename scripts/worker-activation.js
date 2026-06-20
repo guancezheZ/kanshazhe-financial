@@ -52,9 +52,9 @@ export default {
     if (path === '/update') {
       return Response.redirect('https://github.com/guancezheZ/kanshazhe-financial/releases', 302)
     }
-    // ⬇️ 官网直链下载（通过CF边缘网络代理GitHub文件，国内用户无需VPN）
+    // ⬇️ 官网直链下载（跳转到下载页选择通道）
     if (path === '/dl') {
-      return handleDirectDownload(env)
+      return Response.redirect('https://jiaqinw.xyz/download', 302)
     }
     // 🔄 版本检查 API（App自动更新用）
     if (path === '/version') {
@@ -267,130 +267,22 @@ async function handleAdmin(url, env, request) {
   }
 }
 
-// ─── 版本检查 API ───
+// ─── 版本检查 API（私有仓库→固定版本，发新版时手动改这里） ───
 async function handleVersionCheck(env) {
-  let releaseInfo = null
-  try {
-    const cached = await env.ACTIVATION_DB?.get('latest_release', 'json')
-    if (cached && cached.url) releaseInfo = cached
-  } catch {}
-  if (!releaseInfo) {
-    try {
-      const res = await fetch('https://api.github.com/repos/guancezheZ/kanshazhe-financial/releases/latest', {
-        headers: { 'User-Agent': 'kanshazhe-worker', 'Accept': 'application/vnd.github.v3+json' },
-        signal: AbortSignal.timeout(5000),
-      })
-      if (res.ok) {
-        const data = await res.json()
-        const asset = data.assets?.find(a => a.name?.endsWith('.exe'))
-        if (asset) {
-          releaseInfo = { version: data.tag_name, url: asset.browser_download_url, name: asset.name, updatedAt: data.published_at }
-          try { await env.ACTIVATION_DB?.put('latest_release', JSON.stringify(releaseInfo), { expirationTtl: 3600 }) } catch {}
-        }
-      }
-    } catch {}
-  }
-  if (!releaseInfo) {
-    return json({ version: 'v0.1.0', downloadUrl: 'https://jiaqinw.xyz/dl', updateUrl: 'https://jiaqinw.xyz/update' })
-  }
   return json({
-    version: releaseInfo.version,
-    downloadUrl: 'https://jiaqinw.xyz/dl',
+    version: 'v0.1.0',
+    downloadUrl: 'https://jiaqinw.xyz/download',
     updateUrl: 'https://jiaqinw.xyz/update',
-    assetName: releaseInfo.name,
-    updatedAt: releaseInfo.updatedAt,
   })
 }
 
-// ─── 下载页面（自动获取最新版本） ───
+// ─── 下载页面（简化版——私有仓库无法API获取） ───
 
 async function handleDownload(env) {
-  // 从 KV 缓存读取最新版本信息（缓存 1 小时，减少 GitHub API 调用）
-  let releaseInfo = null
-  try {
-    const cached = await env.ACTIVATION_DB?.get('latest_release', 'json')
-    if (cached && cached.url) releaseInfo = cached
-  } catch {}
-
-  if (!releaseInfo) {
-    try {
-      const res = await fetch('https://api.github.com/repos/guancezheZ/kanshazhe-financial/releases/latest', {
-        headers: { 'User-Agent': 'kanshazhe-worker', 'Accept': 'application/vnd.github.v3+json' },
-        signal: AbortSignal.timeout(5000),
-      })
-      if (res.ok) {
-        const data = await res.json()
-        const asset = data.assets?.find(a => a.name?.endsWith('.exe'))
-        if (asset) {
-          releaseInfo = { version: data.tag_name, url: asset.browser_download_url, name: asset.name, updatedAt: data.published_at }
-          // 缓存到 KV（1 小时过期）
-          try { await env.ACTIVATION_DB?.put('latest_release', JSON.stringify(releaseInfo), { expirationTtl: 3600 }) } catch {}
-        }
-      }
-    } catch {}
-  }
-
-  // 默认值（GitHub API 不可用时回退）
-  const version = releaseInfo?.version || 'v0.1.0'
-  const downloadUrl = releaseInfo?.url || 'https://github.com/guancezheZ/kanshazhe-financial/releases'
-  const assetName = releaseInfo?.name || '观测者财务模拟系统_0.1.0_x64-setup.exe'
-
-  return new Response(getDownloadPage(version, downloadUrl, assetName), {
+  const version = 'v0.1.0'
+  const downloadUrl = 'https://github.com/guancezheZ/kanshazhe-financial/releases'
+  return new Response(getDownloadPage(version, downloadUrl), {
     headers: { 'Content-Type': 'text/html; charset=utf-8', 'Access-Control-Allow-Origin': '*' },
-  })
-}
-
-// ─── 官网直链下载（通过CF代理，国内直连） ───
-async function handleDirectDownload(env) {
-  // 获取最新版下载地址
-  let releaseInfo = null
-  try {
-    const cached = await env.ACTIVATION_DB?.get('latest_release', 'json')
-    if (cached && cached.url) releaseInfo = cached
-  } catch {}
-  if (!releaseInfo) {
-    try {
-      const res = await fetch('https://api.github.com/repos/guancezheZ/kanshazhe-financial/releases/latest', {
-        headers: { 'User-Agent': 'kanshazhe-worker', 'Accept': 'application/vnd.github.v3+json' },
-        signal: AbortSignal.timeout(5000),
-      })
-      if (res.ok) {
-        const data = await res.json()
-        const asset = data.assets?.find(a => a.name?.endsWith('.exe'))
-        if (asset) {
-          releaseInfo = { version: data.tag_name, url: asset.browser_download_url, name: asset.name }
-          try { await env.ACTIVATION_DB?.put('latest_release', JSON.stringify(releaseInfo), { expirationTtl: 3600 }) } catch {}
-        }
-      }
-    } catch {}
-  }
-
-  const downloadUrl = releaseInfo?.url
-  const assetName = releaseInfo?.name || '观测者财务模拟系统_0.1.0_x64-setup.exe'
-
-  if (!downloadUrl) {
-    return new Response('暂无可用下载链接', { status: 503 })
-  }
-
-  // 通过 Cloudflare 边缘网络代理下载（加速国内访问）
-  const originResponse = await fetch(downloadUrl, {
-    headers: { 'User-Agent': 'kanshazhe-cf-proxy' },
-    signal: AbortSignal.timeout(60000),
-  })
-
-  if (!originResponse.ok) {
-    return Response.redirect(downloadUrl, 302)
-  }
-
-  // 流式返回文件（不占用Worker内存）
-  return new Response(originResponse.body, {
-    status: 200,
-    headers: {
-      'Content-Type': 'application/octet-stream',
-      'Content-Disposition': `attachment; filename="${encodeURIComponent(assetName)}"`,
-      'Cache-Control': 'public, max-age=3600',
-      'Access-Control-Allow-Origin': '*',
-    },
   })
 }
 
@@ -515,7 +407,7 @@ function json(data, status = 200) {
 }
 
 // ─── 下载页面（三通道） ───
-function getDownloadPage(version, downloadUrl, assetName) {
+function getDownloadPage(version, downloadUrl) {
   return `<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -528,15 +420,14 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 .card{background:#1a1a2e;border:1px solid #2a2a40;border-radius:16px;padding:40px 32px;max-width:500px;width:100%;text-align:center}
 h1{font-size:22px;font-weight:700;margin-bottom:6px;background:linear-gradient(135deg,#fff,#66b1ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .sub{color:#909098;font-size:14px;margin-bottom:24px;border-bottom:1px solid #2a2a40;padding-bottom:20px}
-.dl-btn{display:block;padding:14px 20px;border-radius:10px;text-decoration:none;font-size:15px;font-weight:600;margin-bottom:12px;transition:all .3s;border:1px solid transparent;text-align:left;display:flex;align-items:center;gap:12px}
+.dl-btn{display:block;padding:14px 20px;border-radius:10px;text-decoration:none;font-size:15px;font-weight:600;margin-bottom:12px;transition:all .3s;border:1px solid transparent;display:flex;align-items:center;gap:12px}
 .dl-btn:hover{transform:translateY(-2px)}
 .dl-btn .icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.dl-btn .info{flex:1}
+.dl-btn .info{flex:1;text-align:left}
 .dl-btn .info .name{font-size:15px;color:#fff}
 .dl-btn .info .hint{font-size:12px;color:rgba(255,255,255,0.4)}
-.github-btn{background:rgba(36,41,46,0.9);border-color:#363b42}.github-btn:hover{background:#24292e}
-.site-btn{background:rgba(64,158,255,0.1);border-color:rgba(64,158,255,0.25)}.site-btn:hover{background:rgba(64,158,255,0.2)}
-.baidu-btn{background:rgba(37,86,211,0.1);border-color:rgba(37,86,211,0.25)}.baidu-btn:hover{background:rgba(37,86,211,0.2)}
+.dl-btn.github-btn{background:rgba(36,41,46,0.9);border-color:#363b42}.dl-btn.github-btn:hover{background:#24292e}
+.dl-btn.baidu-btn{background:rgba(37,86,211,0.1);border-color:rgba(37,86,211,0.25)}.dl-btn.baidu-btn:hover{background:rgba(37,86,211,0.2)}
 .footer{font-size:12px;color:#505060;margin-top:24px;text-align:center}
 .version{border:1px solid #2a2a40;border-radius:20px;padding:4px 14px;font-size:12px;color:#606070;display:inline-block;margin-bottom:20px}
 </style>
@@ -545,29 +436,21 @@ h1{font-size:22px;font-weight:700;margin-bottom:6px;background:linear-gradient(1
 <div class="card">
   <h1>📦 观测者财务模拟系统</h1>
   <p class="sub">${version} · 教学用财务软件</p>
-  <div class="version">选择下载通道</div>
+  <div class="version">选择下载方式</div>
 
   <a class="dl-btn github-btn" href="${downloadUrl}" target="_blank">
     <div class="icon" style="background:#363b42">🐙</div>
     <div class="info">
       <div class="name">GitHub 下载</div>
-      <div class="hint">国际线路 · 适合有VPN用户</div>
+      <div class="hint">最新版安装包 · 需VPN</div>
     </div>
   </a>
 
-  <a class="dl-btn site-btn" href="/dl" target="_blank">
-    <div class="icon" style="background:rgba(64,158,255,0.2)">🌐</div>
-    <div class="info">
-      <div class="name">官网下载</div>
-      <div class="hint">CDN加速 · 国内用户推荐，无需VPN</div>
-    </div>
-  </a>
-
-  <a class="dl-btn baidu-btn" href="#" onclick="alert('请联系卖家获取百度网盘链接，或从其他通道下载。\\n微信/支付宝扫码后发送“下载链接”即可获取。');return false;">
+  <a class="dl-btn baidu-btn" href="#" onclick="alert('百度网盘链接请找卖家获取\\n微信/支付宝转账后发送“下载链接”即可');return false;">
     <div class="icon" style="background:rgba(37,86,211,0.2)">☁️</div>
     <div class="info">
       <div class="name">百度网盘</div>
-      <div class="hint">国内高速下载 · 需提取码</div>
+      <div class="hint">国内高速下载 · 无需VPN</div>
     </div>
   </a>
 
