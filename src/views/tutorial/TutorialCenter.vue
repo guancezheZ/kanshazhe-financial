@@ -101,7 +101,7 @@
               📅 {{ task.date }} · {{ task.description?.slice(0, 60) }}{{ task.description?.length > 60 ? '…' : '' }}
             </div>
             <div class="search-result-tags">
-              <el-tag v-for="tag in (task.tags || [])" :key="tag" size="small" type="info" effect="plain">{{ tag }}</el-tag>
+              <el-tag v-for="tag in visibleTags(task)" :key="tag" size="small" type="info" effect="plain">{{ tag }}</el-tag>
             </div>
           </div>
           <div class="search-result-action">
@@ -298,7 +298,7 @@
               <template #default="{ row }">
                 <div class="tag-cell">
                   <el-tag
-                    v-for="tag in (row.tags || [])"
+                    v-for="tag in visibleTags(row)"
                     :key="tag"
                     :type="activeTag === tag ? 'primary' : 'info'"
                     size="small"
@@ -483,6 +483,13 @@ function tagIcon(tag) { return TAG_ICONS[tag] || '🏷️' }
 
 // ─── 工具函数 ───
 
+// 按角色显示可见标签：非出纳角色不显示"出纳"标签
+function visibleTags(task) {
+  const tags = task.tags || []
+  if (currentRole.value === 'cashier') return tags
+  return tags.filter(t => t !== '出纳')
+}
+
 function roleLabel(roleId) {
   return { cashier: '出纳', accountant: '会计', supervisor: '主管' }[roleId] || roleId
 }
@@ -560,8 +567,11 @@ const difficultyStats = computed(() => {
 // ─── 知识点标签统计 ───
 
 const tagStats = computed(() => {
+  const role = currentRole.value
   const tags = getTags()
   return tags.map(({ tag }) => {
+    // 非出纳角色不显示"出纳"知识点（会计任务中的出纳标签是历史遗留）
+    if (tag === '出纳' && role !== 'cashier') return { tag, total: 0, done: 0, remaining: 0 }
     let total = 0, done = 0
     for (const m of getScenarioMonths()) {
       const monthTasks = getMonthTasks(m)
@@ -594,7 +604,9 @@ const filteredTasks = computed(() => {
 
 function loadTasks() {
   void tick.value
-  tasks.value = getMonthTasks(activeMonth.value)
+  const raw = getMonthTasks(activeMonth.value)
+  // 按日期排序，解决出纳任务追加在月末导致的日期混乱
+  tasks.value = [...raw].sort((a, b) => (a.date || '').localeCompare(b.date || ''))
 }
 
 function onTabChange() {

@@ -29,7 +29,7 @@ import {
 } from '@/data/xp-system.js'
 import {
   trialBalance as trialBalanceFn,
-  calcBalanceSheet, calcIncomeStatement, calcCashFlow,
+  calcBalanceSheet, calcIncomeStatement, calcCashFlow, calcFinancialRatios,
   SUBJECT_TYPE_CN,
 } from '@/utils/accounting.js'
 
@@ -937,6 +937,11 @@ export function useStore() {
     return calcCashFlow(state.subjects, balances)
   }
 
+  function getFinancialRatios(period) {
+    const balances = getPeriodBalances(period)
+    return calcFinancialRatios(state.subjects, balances)
+  }
+
   // ========================  Dashboard ========================
 
   function getDashboardStats(period) {
@@ -1251,8 +1256,23 @@ export function useStore() {
   function getRoleMenuFilter(roleId) {
     const role = roleId || getCurrentRole()
     if (role === 'supervisor') return null
-    if (role === 'cashier') return (p) => p.includes('system') || p.includes('cashier') || p.includes('cases') || p === '/dashboard' || p.includes('voucher') || p.includes('tutorial') || p.includes('subject') || p.includes('ledger') || p.includes('trial') || p.includes('arap') || p.includes('forex') || p.includes('payroll') || p.includes('cash-flow') || p.includes('balance-sheet') || p.includes('income') || p.includes('tax-filing') || p.includes('custom') || p.includes('period-end') || p.includes('auxiliary')
-    if (role === 'accountant') return (p) => !p.includes('cashier')
+    if (role === 'cashier') return (p) => {
+      // 出纳只能看到出纳管理、凭证查询(只读)、往来管理、教学、案例库、激活管理
+      if (p === '/dashboard') return true
+      if (p.includes('/accounting/cashier')) return true
+      if (p === '/accounting/voucher/query') return true
+      if (p.includes('/accounting/arap')) return true
+      if (p.includes('/tutorial')) return true
+      if (p.includes('/cases')) return true
+      if (p === '/system/activation') return true
+      if (p.includes('/docs')) return true
+      return false
+    }
+    if (role === 'accountant') return (p) => {
+      // 会计看不到出纳管理（日记账/对账是出纳专属）
+      if (p.includes('/accounting/cashier')) return false
+      return true
+    }
     return null
   }
 
@@ -1784,7 +1804,7 @@ export function useStore() {
     // 余额
     getPeriodBalances,
     // 报表
-    getTrialBalance, getBalanceSheet, getIncomeStatement, getCashFlow,
+    getTrialBalance, getBalanceSheet, getIncomeStatement, getCashFlow, getFinancialRatios,
     // Dashboard
     getDashboardStats, getMonthlyStats,
     // 辅助核算

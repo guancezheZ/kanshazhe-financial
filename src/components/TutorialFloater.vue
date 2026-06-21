@@ -51,12 +51,13 @@
       <span style="font-size:13px;cursor:help;color:#909399" title="自由练习：不记进度、不给XP、不过账、可重复做；适合复习和查漏补缺">ⓘ</span>
     </div>
 
-    <!-- 教学模式（引导/练习/考试） -->
+    <!-- 教学模式（引导/练习/考试/纠错） -->
     <div class="mode-switch">
       <el-radio-group v-model="tutorialMode" size="small">
         <el-radio-button value="guided">📖 分步引导</el-radio-button>
         <el-radio-button value="practice">✏️ 练习</el-radio-button>
         <el-radio-button value="exam">📝 考试</el-radio-button>
+        <el-radio-button value="error-find">🔍 纠错</el-radio-button>
       </el-radio-group>
     </div>
 
@@ -171,10 +172,24 @@
         <summary style="cursor:pointer;font-size:12px;color:#909399">💡 教学提示（可参考）</summary>
         <div class="tip-text">{{ task.tip }}</div>
       </details>
+
+      <!-- 纠错训练模式 -->
+      <div v-if="tutorialMode === 'error-find'" class="ec-section">
+        <ErrorCorrectionGame
+          v-if="task?.entries?.length"
+          :entries="task.entries"
+          :taskTitle="task?.description || task?.title || ''"
+          @complete="onErrorFindComplete"
+          @quit="onErrorFindQuit"
+        />
+        <div v-else style="text-align:center;padding:20px;color:#909399;font-size:12px">
+          该任务无可纠错的分录数据
+        </div>
+      </div>
     </div>
     </div>
 
-    <div class="floater-footer">
+    <div v-if="tutorialMode !== 'error-find'" class="floater-footer">
       <el-button v-if="!hasEntries" size="small" type="success" @click="markReadDone">✅ 确认已完成</el-button>
       <el-button v-else-if="task?.nextAction === 'tax-filing'" size="small" type="danger" @click="goToEntry">
         🧾 去报税
@@ -262,6 +277,7 @@ import { useStore } from '@/stores/store.js'
 import { ElMessageBox, ElMessage } from 'element-plus'
 import { formatAmount } from '@/utils/accounting.js'
 import VoucherDisplay from '@/components/VoucherDisplay.vue'
+import ErrorCorrectionGame from '@/components/ErrorCorrectionGame.vue'
 import { getScenarioConfig, getScenarioTutorials, getProgressKey, getScenarioTags, getDoneKeyPrefix, getTagStatsKey, getWrongAnswersKey, getStreakKey } from '@/data/scenarios.js'
 
 function filterByRole(tasks) {
@@ -293,7 +309,14 @@ const store = useStore()
 // 场景状态
 const floaterScenarioId = ref(localStorage.getItem('jd_scenario') || 'manufacturing')
 const floaterScenario = computed(() => getScenarioConfig(floaterScenarioId.value))
-const TAG_OPTIONS = computed(() => getScenarioTags(floaterScenarioId.value))
+const TAG_OPTIONS = computed(() => {
+  const tags = getScenarioTags(floaterScenarioId.value)
+  // 非出纳角色不显示"出纳"知识点（会计任务中的出纳标签是历史遗留）
+  if (store.getCurrentRole() !== 'cashier') {
+    return tags.filter(t => t !== '出纳')
+  }
+  return tags
+})
 function getFloaterMonths() {
   return floaterScenario.value?.months || []
 }
@@ -632,6 +655,17 @@ function showAnswer() {
     explanation: e.explanation || '',
   }))
   showAnswerVisible.value = true
+}
+
+function onErrorFindComplete() {
+  ElMessage.success('纠错训练完成！')
+}
+
+function onErrorFindQuit() {
+  // 退出纠错模式，切回之前的教学模式
+  tutorialMode.value = 'practice'
+  localStorage.setItem('tutorial_mode', 'practice')
+  ElMessage.info('已退出纠错模式')
 }
 
 function prevTask() {

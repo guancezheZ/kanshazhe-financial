@@ -1,5 +1,5 @@
 /**
- * 服务业 6月 — 年中结算 + 续租 + 半年度分析
+ * 服务业 06月
  */
 
 const tasks = [
@@ -12,10 +12,36 @@ const tasks = [
     ],
     "difficulty": 2,
     "entries": [
-      { subjectCode: '222101', summary: '增值税', debit: 18000, credit: 0, explanation: '应交增值税减少记借方。缴纳增值税冲销负债。' },
-      { subjectCode: '222103', summary: '城建税', debit: 1260, credit: 0, explanation: '应交城建税增加记借方。计提城建税。' },
-      { subjectCode: '222104', summary: '教育费附加', debit: 540, credit: 0, explanation: '应交教育费附加增加记借方。计提教育费附加。' },
-        { subjectCode: '100201', summary: '缴税', debit: 0, credit: 19800, explanation: '银行存款减少记贷方。缴纳税款支付。' , cashFlowItem: 'cf-op4', cashFlowExplanation: '缴纳税费支出（配对科目222101），属于"支付的各项税费"——经营活动现金流出。'},
+      {
+        "subjectCode": "222101",
+        "summary": "增值税",
+        "debit": 18000,
+        "credit": 0,
+        "explanation": "应交增值税减少记借方。缴纳增值税冲销负债。"
+      },
+      {
+        "subjectCode": "222103",
+        "summary": "城建税",
+        "debit": 1260,
+        "credit": 0,
+        "explanation": "应交城建税增加记借方。计提城建税。"
+      },
+      {
+        "subjectCode": "222104",
+        "summary": "教育费附加",
+        "debit": 540,
+        "credit": 0,
+        "explanation": "应交教育费附加增加记借方。计提教育费附加。"
+      },
+      {
+        "subjectCode": "100201",
+        "summary": "缴税",
+        "debit": 0,
+        "credit": 19800,
+        "explanation": "银行存款减少记贷方。缴纳税款支付。",
+        "cashFlowItem": "cf-op4",
+        "cashFlowExplanation": "缴纳税费支出（配对科目222101），属于\"支付的各项税费\"——经营活动现金流出。"
+      }
     ],
     "documents": [
       {
@@ -35,8 +61,22 @@ const tasks = [
     ],
     "difficulty": 1,
     "entries": [
-      { subjectCode: '221102', summary: '缴社保', debit: 30250, credit: 0, explanation: '应付职工薪酬-社保减少记借方。缴纳社保冲销负债。' },
-        { subjectCode: '100201', summary: '缴社保', debit: 0, credit: 30250, explanation: '银行存款减少记贷方。缴纳社保费支付。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221102），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'},
+      {
+        "subjectCode": "221102",
+        "summary": "缴社保",
+        "debit": 30250,
+        "credit": 0,
+        "explanation": "应付职工薪酬-社保减少记借方。缴纳社保冲销负债。"
+      },
+      {
+        "subjectCode": "100201",
+        "summary": "缴社保",
+        "debit": 0,
+        "credit": 30250,
+        "explanation": "银行存款减少记贷方。缴纳社保费支付。",
+        "cashFlowItem": "cf-op3",
+        "cashFlowExplanation": "支付职工薪酬相关支出（配对科目221102），属于\"支付给职工以及为职工支付的现金\"——经营活动现金流出。"
+      }
     ],
     "documents": [
       {
@@ -56,9 +96,29 @@ const tasks = [
     ],
     "difficulty": 3,
     "entries": [
-        { subjectCode: '221101', summary: '应发', debit: 121000, credit: 0, explanation: '应付职工薪酬增加记贷方。计提应发工资。' },
-      { subjectCode: '100201', summary: '实发', debit: 0, credit: 117370, explanation: '银行存款减少记贷方。实发工资转账支付。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目660203），属于"支付其他与经营活动有关的现金"。'},
-      { subjectCode: '222102', summary: '个税', debit: 0, credit: 3630, explanation: '应交个人所得税增加记贷方。代扣个税形成应交义务。' },
+      {
+        "subjectCode": "221101",
+        "summary": "应发",
+        "debit": 121000,
+        "credit": 0,
+        "explanation": "应付职工薪酬增加记贷方。计提应发工资。"
+      },
+      {
+        "subjectCode": "100201",
+        "summary": "实发",
+        "debit": 0,
+        "credit": 117370,
+        "explanation": "银行存款减少记贷方。实发工资转账支付。",
+        "cashFlowItem": "cf-op6",
+        "cashFlowExplanation": "其他经营活动现金支出（配对科目660203），属于\"支付其他与经营活动有关的现金\"。"
+      },
+      {
+        "subjectCode": "222102",
+        "summary": "个税",
+        "debit": 0,
+        "credit": 3630,
+        "explanation": "应交个人所得税增加记贷方。代扣个税形成应交义务。"
+      }
     ],
     "documents": [
       {
@@ -78,8 +138,22 @@ const tasks = [
     "difficulty": 2,
     "description": "续签下半年办公室租约，预付7-12月租金120,000元，银行转账。",
     "entries": [
-      { subjectCode: '1123', summary: '预付下半年房租', debit: 120000, credit: 0, explanation: '预付账款增加记借方。预付下半年房租形成债权。' },
-      { subjectCode: '100201', summary: '付款', debit: 0, credit: 120000, explanation: '银行存款减少记贷方。支付款项。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目1123），属于"支付其他与经营活动有关的现金"。'},
+      {
+        "subjectCode": "1123",
+        "summary": "预付下半年房租",
+        "debit": 120000,
+        "credit": 0,
+        "explanation": "预付账款增加记借方。预付下半年房租形成债权。"
+      },
+      {
+        "subjectCode": "100201",
+        "summary": "付款",
+        "debit": 0,
+        "credit": 120000,
+        "explanation": "银行存款减少记贷方。支付款项。",
+        "cashFlowItem": "cf-op6",
+        "cashFlowExplanation": "其他经营活动现金支出（配对科目1123），属于\"支付其他与经营活动有关的现金\"。"
+      }
     ],
     "documents": [
       {
@@ -105,9 +179,29 @@ const tasks = [
     "difficulty": 3,
     "description": "戊客户IT咨询项目全部完成，确认剩余收入200,000元，收到尾款212,000元（含税）。",
     "entries": [
-      { subjectCode: '100201', summary: '终验尾款', debit: 212000, credit: 0, explanation: '银行存款增加记借方。收到项目终验尾款。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金（配对科目6001），属于经营活动现金流入——主营业务产生的现金收入。'},
-      { subjectCode: '6001', summary: '确认收入', debit: 0, credit: 200000, explanation: '主营业务收入增加记贷方。项目完成确认收入。' },
-      { subjectCode: '222101', summary: '增值税', debit: 0, credit: 12000, explanation: '应交增值税增加记贷方。确认收入产生增值税纳税义务。' },
+      {
+        "subjectCode": "100201",
+        "summary": "终验尾款",
+        "debit": 212000,
+        "credit": 0,
+        "explanation": "银行存款增加记借方。收到项目终验尾款。",
+        "cashFlowItem": "cf-op",
+        "cashFlowExplanation": "销售商品/提供劳务收到的现金（配对科目6001），属于经营活动现金流入——主营业务产生的现金收入。"
+      },
+      {
+        "subjectCode": "6001",
+        "summary": "确认收入",
+        "debit": 0,
+        "credit": 200000,
+        "explanation": "主营业务收入增加记贷方。项目完成确认收入。"
+      },
+      {
+        "subjectCode": "222101",
+        "summary": "增值税",
+        "debit": 0,
+        "credit": 12000,
+        "explanation": "应交增值税增加记贷方。确认收入产生增值税纳税义务。"
+      }
     ],
     "documents": [
       {
@@ -127,10 +221,36 @@ const tasks = [
     "difficulty": 2,
     "description": "戊项目总成本约76,000元（人工+差旅），结转至主营业务成本。",
     "entries": [
-      { subjectCode: '6401', summary: '结转戊项目成本', debit: 76000, credit: 0, explanation: '主营业务成本增加记借方。项目完工结转成本。' },
-      { subjectCode: '520101', summary: '人工成本', debit: 0, credit: 50000, explanation: '合同履约成本减少记贷方。完工结转人工成本。' },
-        { subjectCode: '100201', summary: '差旅费', debit: 0, credit: 16000, explanation: '银行存款减少记贷方。支付差旅费。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6401），属于"支付其他与经营活动有关的现金"。'},
-      { subjectCode: '520104', summary: '其他直接费用', debit: 0, credit: 10000, explanation: '合同履约成本减少记贷方。完工结转其他成本。' },
+      {
+        "subjectCode": "6401",
+        "summary": "结转戊项目成本",
+        "debit": 76000,
+        "credit": 0,
+        "explanation": "主营业务成本增加记借方。项目完工结转成本。"
+      },
+      {
+        "subjectCode": "520101",
+        "summary": "人工成本",
+        "debit": 0,
+        "credit": 50000,
+        "explanation": "合同履约成本减少记贷方。完工结转人工成本。"
+      },
+      {
+        "subjectCode": "100201",
+        "summary": "差旅费",
+        "debit": 0,
+        "credit": 16000,
+        "explanation": "银行存款减少记贷方。支付差旅费。",
+        "cashFlowItem": "cf-op6",
+        "cashFlowExplanation": "其他经营活动现金支出（配对科目6401），属于\"支付其他与经营活动有关的现金\"。"
+      },
+      {
+        "subjectCode": "520104",
+        "summary": "其他直接费用",
+        "debit": 0,
+        "credit": 10000,
+        "explanation": "合同履约成本减少记贷方。完工结转其他成本。"
+      }
     ],
     "documents": [
       {
@@ -166,8 +286,20 @@ const tasks = [
     ],
     "difficulty": 2,
     "entries": [
-      { subjectCode: '520101', summary: '项目上半月', debit: 35000, credit: 0, explanation: '合同履约成本-人工增加记借方。项目人员上半月工资计提。' },
-      { subjectCode: '221101', summary: '应付薪酬', debit: 0, credit: 35000, explanation: '应付职工薪酬增加记贷方。计提工资负债增加。' },
+      {
+        "subjectCode": "520101",
+        "summary": "项目上半月",
+        "debit": 35000,
+        "credit": 0,
+        "explanation": "合同履约成本-人工增加记借方。项目人员上半月工资计提。"
+      },
+      {
+        "subjectCode": "221101",
+        "summary": "应付薪酬",
+        "debit": 0,
+        "credit": 35000,
+        "explanation": "应付职工薪酬增加记贷方。计提工资负债增加。"
+      }
     ],
     "documents": [
       {
@@ -187,8 +319,20 @@ const tasks = [
     ],
     "difficulty": 1,
     "entries": [
-      { subjectCode: '660203', summary: '管理上半月', debit: 22500, credit: 0, explanation: '管理费用-工资薪金增加记借方。管理人员上半月工资计提。' },
-      { subjectCode: '221101', summary: '应付薪酬', debit: 0, credit: 22500, explanation: '应付职工薪酬增加记贷方。计提工资负债增加。' },
+      {
+        "subjectCode": "660203",
+        "summary": "管理上半月",
+        "debit": 22500,
+        "credit": 0,
+        "explanation": "管理费用-工资薪金增加记借方。管理人员上半月工资计提。"
+      },
+      {
+        "subjectCode": "221101",
+        "summary": "应付薪酬",
+        "debit": 0,
+        "credit": 22500,
+        "explanation": "应付职工薪酬增加记贷方。计提工资负债增加。"
+      }
     ],
     "documents": [
       {
@@ -207,8 +351,22 @@ const tasks = [
     ],
     "difficulty": 1,
     "entries": [
-      { subjectCode: '660201', summary: '水电费', debit: 6100, credit: 0, explanation: '管理费用-办公费增加记借方。水电费计入管理费用。' },
-      { subjectCode: '100201', summary: '付款', debit: 0, credit: 6100, explanation: '银行存款减少记贷方。支付款项。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目660201），属于"支付其他与经营活动有关的现金"。'},
+      {
+        "subjectCode": "660201",
+        "summary": "水电费",
+        "debit": 6100,
+        "credit": 0,
+        "explanation": "管理费用-办公费增加记借方。水电费计入管理费用。"
+      },
+      {
+        "subjectCode": "100201",
+        "summary": "付款",
+        "debit": 0,
+        "credit": 6100,
+        "explanation": "银行存款减少记贷方。支付款项。",
+        "cashFlowItem": "cf-op6",
+        "cashFlowExplanation": "其他经营活动现金支出（配对科目660201），属于\"支付其他与经营活动有关的现金\"。"
+      }
     ],
     "documents": [
       {
@@ -228,8 +386,22 @@ const tasks = [
     "difficulty": 1,
     "description": "为补充流动资金，向建设银行借入短期借款200,000元，年利率4.0%。",
     "entries": [
-      { subjectCode: '100201', summary: '取得借款', debit: 200000, credit: 0, explanation: '银行存款增加记借方。取得借款资金到账。' , cashFlowItem: 'cf-fin', cashFlowExplanation: '借款收到的现金（配对科目2001），属于筹资活动现金流入——企业通过负债融资获得资金。'},
-      { subjectCode: '2001', summary: '短期借款', debit: 0, credit: 200000, explanation: '短期借款增加记贷方。取得借款承担还本付息义务。' },
+      {
+        "subjectCode": "100201",
+        "summary": "取得借款",
+        "debit": 200000,
+        "credit": 0,
+        "explanation": "银行存款增加记借方。取得借款资金到账。",
+        "cashFlowItem": "cf-fin",
+        "cashFlowExplanation": "借款收到的现金（配对科目2001），属于筹资活动现金流入——企业通过负债融资获得资金。"
+      },
+      {
+        "subjectCode": "2001",
+        "summary": "短期借款",
+        "debit": 0,
+        "credit": 200000,
+        "explanation": "短期借款增加记贷方。取得借款承担还本付息义务。"
+      }
     ],
     "documents": [
       {
@@ -248,8 +420,22 @@ const tasks = [
     "difficulty": 1,
     "description": "支付会计师事务所半年度审计费8,000元，银行转账。",
     "entries": [
-      { subjectCode: '660201', summary: '审计费', debit: 8000, credit: 0, explanation: '管理费用-办公费增加记借方。审计费用计入管理费。' },
-      { subjectCode: '100201', summary: '付款', debit: 0, credit: 8000, explanation: '银行存款减少记贷方。支付款项。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目660201），属于"支付其他与经营活动有关的现金"。'},
+      {
+        "subjectCode": "660201",
+        "summary": "审计费",
+        "debit": 8000,
+        "credit": 0,
+        "explanation": "管理费用-办公费增加记借方。审计费用计入管理费。"
+      },
+      {
+        "subjectCode": "100201",
+        "summary": "付款",
+        "debit": 0,
+        "credit": 8000,
+        "explanation": "银行存款减少记贷方。支付款项。",
+        "cashFlowItem": "cf-op6",
+        "cashFlowExplanation": "其他经营活动现金支出（配对科目660201），属于\"支付其他与经营活动有关的现金\"。"
+      }
     ],
     "documents": [
       {
@@ -268,8 +454,20 @@ const tasks = [
     ],
     "difficulty": 2,
     "entries": [
-      { subjectCode: '520101', summary: '项目下半月', debit: 35000, credit: 0, explanation: '合同履约成本-人工增加记借方。项目人员下半月工资计提。' },
-      { subjectCode: '221101', summary: '应付薪酬', debit: 0, credit: 35000, explanation: '应付职工薪酬增加记贷方。计提工资负债增加。' },
+      {
+        "subjectCode": "520101",
+        "summary": "项目下半月",
+        "debit": 35000,
+        "credit": 0,
+        "explanation": "合同履约成本-人工增加记借方。项目人员下半月工资计提。"
+      },
+      {
+        "subjectCode": "221101",
+        "summary": "应付薪酬",
+        "debit": 0,
+        "credit": 35000,
+        "explanation": "应付职工薪酬增加记贷方。计提工资负债增加。"
+      }
     ],
     "documents": [
       {
@@ -289,8 +487,20 @@ const tasks = [
     ],
     "difficulty": 1,
     "entries": [
-      { subjectCode: '660203', summary: '管理下半月', debit: 22500, credit: 0, explanation: '管理费用-工资薪金增加记借方。管理人员下半月工资计提。' },
-      { subjectCode: '221101', summary: '应付薪酬', debit: 0, credit: 22500, explanation: '应付职工薪酬增加记贷方。计提工资负债增加。' },
+      {
+        "subjectCode": "660203",
+        "summary": "管理下半月",
+        "debit": 22500,
+        "credit": 0,
+        "explanation": "管理费用-工资薪金增加记借方。管理人员下半月工资计提。"
+      },
+      {
+        "subjectCode": "221101",
+        "summary": "应付薪酬",
+        "debit": 0,
+        "credit": 22500,
+        "explanation": "应付职工薪酬增加记贷方。计提工资负债增加。"
+      }
     ],
     "documents": [
       {
@@ -310,9 +520,27 @@ const tasks = [
     ],
     "difficulty": 2,
     "entries": [
-      { subjectCode: '520101', summary: '项目社保', debit: 17500, credit: 0, explanation: '合同履约成本-人工增加记借方。项目人员社保计入项目成本。' },
-      { subjectCode: '660203', summary: '管理社保', debit: 11250, credit: 0, explanation: '管理费用-工资薪金增加记借方。管理人员单位社保计入管理费。' },
-      { subjectCode: '221102', summary: '社保费用', debit: 0, credit: 28750, explanation: '应付职工薪酬-社保增加记贷方。计提社保费用。' },
+      {
+        "subjectCode": "520101",
+        "summary": "项目社保",
+        "debit": 17500,
+        "credit": 0,
+        "explanation": "合同履约成本-人工增加记借方。项目人员社保计入项目成本。"
+      },
+      {
+        "subjectCode": "660203",
+        "summary": "管理社保",
+        "debit": 11250,
+        "credit": 0,
+        "explanation": "管理费用-工资薪金增加记借方。管理人员单位社保计入管理费。"
+      },
+      {
+        "subjectCode": "221102",
+        "summary": "社保费用",
+        "debit": 0,
+        "credit": 28750,
+        "explanation": "应付职工薪酬-社保增加记贷方。计提社保费用。"
+      }
     ],
     "documents": [
       {
@@ -331,8 +559,20 @@ const tasks = [
     ],
     "difficulty": 2,
     "entries": [
-      { subjectCode: '660205', summary: '折旧', debit: 4085, credit: 0, explanation: '管理费用-折旧费增加记借方。折旧费用计入管理费。' },
-      { subjectCode: '1602', summary: '累计折旧', debit: 0, credit: 4085, explanation: '累计折旧增加记贷方。计提固定资产折旧。' },
+      {
+        "subjectCode": "660205",
+        "summary": "折旧",
+        "debit": 4085,
+        "credit": 0,
+        "explanation": "管理费用-折旧费增加记借方。折旧费用计入管理费。"
+      },
+      {
+        "subjectCode": "1602",
+        "summary": "累计折旧",
+        "debit": 0,
+        "credit": 4085,
+        "explanation": "累计折旧增加记贷方。计提固定资产折旧。"
+      }
     ],
     "documents": [
       {
@@ -351,8 +591,20 @@ const tasks = [
     ],
     "difficulty": 1,
     "entries": [
-      { subjectCode: '660206', summary: '摊销', debit: 2555.55, credit: 0, explanation: '管理费用-摊销费增加记借方。摊销费用计入管理费用。' },
-      { subjectCode: '1702', summary: '累计摊销', debit: 0, credit: 2555.55, explanation: '累计摊销增加记贷方。计提无形资产摊销。' },
+      {
+        "subjectCode": "660206",
+        "summary": "摊销",
+        "debit": 2555.55,
+        "credit": 0,
+        "explanation": "管理费用-摊销费增加记借方。摊销费用计入管理费用。"
+      },
+      {
+        "subjectCode": "1702",
+        "summary": "累计摊销",
+        "debit": 0,
+        "credit": 2555.55,
+        "explanation": "累计摊销增加记贷方。计提无形资产摊销。"
+      }
     ],
     "documents": [
       {
@@ -373,8 +625,20 @@ const tasks = [
     "difficulty": 1,
     "description": "计提6月新借款利息。建设银行200,000×4.0%÷12=666.67元。",
     "entries": [
-      { subjectCode: '6603', summary: '借款利息', debit: 666.67, credit: 0, explanation: '财务费用增加记借方。借款利息计入财务费用。' },
-      { subjectCode: '2232', summary: '应付利息', debit: 0, credit: 666.67, explanation: '应付利息增加记贷方。计提借款利息费用。' },
+      {
+        "subjectCode": "6603",
+        "summary": "借款利息",
+        "debit": 666.67,
+        "credit": 0,
+        "explanation": "财务费用增加记借方。借款利息计入财务费用。"
+      },
+      {
+        "subjectCode": "2232",
+        "summary": "应付利息",
+        "debit": 0,
+        "credit": 666.67,
+        "explanation": "应付利息增加记贷方。计提借款利息费用。"
+      }
     ],
     "documents": [
       {
@@ -411,10 +675,34 @@ const tasks = [
     "difficulty": 2,
     "description": "销项：戊客户尾款12,000元。进项：审计费480元（8,000×6%）。应交=11,520元。附加税1,152元。",
     "entries": [
-      { subjectCode: '222103', summary: '城建税', debit: 806.4, credit: 0, explanation: '应交城建税增加记借方。计提城建税。' },
-      { subjectCode: '222104', summary: '教育费附加', debit: 345.6, credit: 0, explanation: '应交教育费附加增加记借方。计提教育费附加。' },
-        { subjectCode: '222103', summary: '城建税', debit: 0, credit: 806.4, explanation: '应交城建税增加记贷方。按增值税计提城建税。' },
-        { subjectCode: '222104', summary: '教育费附加', debit: 0, credit: 345.6, explanation: '应交教育费附加增加记贷方。按增值税计提教育费附加。' },
+      {
+        "subjectCode": "222103",
+        "summary": "城建税",
+        "debit": 806.4,
+        "credit": 0,
+        "explanation": "应交城建税增加记借方。计提城建税。"
+      },
+      {
+        "subjectCode": "222104",
+        "summary": "教育费附加",
+        "debit": 345.6,
+        "credit": 0,
+        "explanation": "应交教育费附加增加记借方。计提教育费附加。"
+      },
+      {
+        "subjectCode": "222103",
+        "summary": "城建税",
+        "debit": 0,
+        "credit": 806.4,
+        "explanation": "应交城建税增加记贷方。按增值税计提城建税。"
+      },
+      {
+        "subjectCode": "222104",
+        "summary": "教育费附加",
+        "debit": 0,
+        "credit": 345.6,
+        "explanation": "应交教育费附加增加记贷方。按增值税计提教育费附加。"
+      }
     ],
     "documents": [
       {
@@ -433,8 +721,20 @@ const tasks = [
     "difficulty": 3,
     "description": "上半年税后利润约365,000元，按10%计提法定盈余公积36,500元。",
     "entries": [
-      { subjectCode: '4104', summary: '提取盈余公积', debit: 36500, credit: 0, explanation: '利润分配减少记借方。提取盈余公积。' },
-      { subjectCode: '4104', summary: '未分配利润', debit: 0, credit: 36500, explanation: '利润分配增加记贷方。年末结转净利润。' },
+      {
+        "subjectCode": "4104",
+        "summary": "提取盈余公积",
+        "debit": 36500,
+        "credit": 0,
+        "explanation": "利润分配减少记借方。提取盈余公积。"
+      },
+      {
+        "subjectCode": "4104",
+        "summary": "未分配利润",
+        "debit": 0,
+        "credit": 36500,
+        "explanation": "利润分配增加记贷方。年末结转净利润。"
+      }
     ],
     "documents": [
       {
@@ -453,13 +753,55 @@ const tasks = [
     "difficulty": 3,
     "description": "收入200,000元。成本76,000+税金1,152+管理费用约108,000+财务费用666.67=185,818.67。净利润约14,181.33元。",
     "entries": [
-      { subjectCode: '6001', summary: '结转收入', debit: 200000, credit: 0, explanation: '主营业务收入减少记借方。期末结转至本年利润。' },
-      { subjectCode: '4103', summary: '收入转利润', debit: 0, credit: 200000, explanation: '本年利润增加记贷方。收入结转至本年利润。' },
-      { subjectCode: '4103', summary: '费用转利润', debit: 185818.67, credit: 0, explanation: '本年利润减少记借方。费用结转至本年利润。' },
-      { subjectCode: '6401', summary: '成本', debit: 0, credit: 76000, explanation: '主营业务成本减少记贷方。期末结转至本年利润。' },
-      { subjectCode: '6403', summary: '税金', debit: 0, credit: 1152, explanation: '税金及附加减少记贷方。期末结转至本年利润。' },
-      { subjectCode: '660201', summary: '管理费用', debit: 0, credit: 108000, explanation: '管理费用减少记贷方。期末结转至本年利润。' },
-      { subjectCode: '6603', summary: '财务费用', debit: 0, credit: 666.67, explanation: '财务费用减少记贷方。期末结转至本年利润。' },
+      {
+        "subjectCode": "6001",
+        "summary": "结转收入",
+        "debit": 200000,
+        "credit": 0,
+        "explanation": "主营业务收入减少记借方。期末结转至本年利润。"
+      },
+      {
+        "subjectCode": "4103",
+        "summary": "收入转利润",
+        "debit": 0,
+        "credit": 200000,
+        "explanation": "本年利润增加记贷方。收入结转至本年利润。"
+      },
+      {
+        "subjectCode": "4103",
+        "summary": "费用转利润",
+        "debit": 185818.67,
+        "credit": 0,
+        "explanation": "本年利润减少记借方。费用结转至本年利润。"
+      },
+      {
+        "subjectCode": "6401",
+        "summary": "成本",
+        "debit": 0,
+        "credit": 76000,
+        "explanation": "主营业务成本减少记贷方。期末结转至本年利润。"
+      },
+      {
+        "subjectCode": "6403",
+        "summary": "税金",
+        "debit": 0,
+        "credit": 1152,
+        "explanation": "税金及附加减少记贷方。期末结转至本年利润。"
+      },
+      {
+        "subjectCode": "660201",
+        "summary": "管理费用",
+        "debit": 0,
+        "credit": 108000,
+        "explanation": "管理费用减少记贷方。期末结转至本年利润。"
+      },
+      {
+        "subjectCode": "6603",
+        "summary": "财务费用",
+        "debit": 0,
+        "credit": 666.67,
+        "explanation": "财务费用减少记贷方。期末结转至本年利润。"
+      }
     ],
     "documents": [
       {
@@ -496,8 +838,20 @@ const tasks = [
     "difficulty": 1,
     "role": "cashier",
     "entries": [
-      { subjectCode: '222110', summary: '税', debit: 18000, credit: 0, explanation: '未交增值税减少记借方。缴纳税款冲销负债。' },
-      { subjectCode: '222110', summary: '税', debit: 0, credit: 18000, explanation: '未交增值税增加记贷方。计提应交增值税。' },
+      {
+        "subjectCode": "222110",
+        "summary": "税",
+        "debit": 18000,
+        "credit": 0,
+        "explanation": "未交增值税减少记借方。缴纳税款冲销负债。"
+      },
+      {
+        "subjectCode": "222110",
+        "summary": "税",
+        "debit": 0,
+        "credit": 18000,
+        "explanation": "未交增值税增加记贷方。计提应交增值税。"
+      }
     ],
     "documents": [
       {
@@ -518,8 +872,20 @@ const tasks = [
     "difficulty": 1,
     "role": "cashier",
     "entries": [
-      { subjectCode: '221102', summary: '社保', debit: 30250, credit: 0, explanation: '应付职工薪酬-社保减少记借方。缴纳社保冲销负债。' },
-      { subjectCode: '221102', summary: '社保', debit: 0, credit: 30250, explanation: '应付职工薪酬-社保增加记贷方。计提社保负债增加。' },
+      {
+        "subjectCode": "221102",
+        "summary": "社保",
+        "debit": 30250,
+        "credit": 0,
+        "explanation": "应付职工薪酬-社保减少记借方。缴纳社保冲销负债。"
+      },
+      {
+        "subjectCode": "221102",
+        "summary": "社保",
+        "debit": 0,
+        "credit": 30250,
+        "explanation": "应付职工薪酬-社保增加记贷方。计提社保负债增加。"
+      }
     ],
     "documents": [
       {
@@ -540,9 +906,29 @@ const tasks = [
     "difficulty": 2,
     "role": "cashier",
     "entries": [
-      { subjectCode: '660203', summary: '工资', debit: 121000, credit: 0, explanation: '管理费用-工资薪金增加记借方。管理人员工资计入管理费。' },
-      { subjectCode: '100201', summary: '实发', debit: 0, credit: 117370, explanation: '银行存款减少记贷方。实发工资转账支付。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目660203），属于"支付其他与经营活动有关的现金"。'},
-      { subjectCode: '222102', summary: '个税', debit: 0, credit: 3630, explanation: '应交个人所得税增加记贷方。代扣个税形成应交义务。' },
+      {
+        "subjectCode": "660203",
+        "summary": "工资",
+        "debit": 121000,
+        "credit": 0,
+        "explanation": "管理费用-工资薪金增加记借方。管理人员工资计入管理费。"
+      },
+      {
+        "subjectCode": "100201",
+        "summary": "实发",
+        "debit": 0,
+        "credit": 117370,
+        "explanation": "银行存款减少记贷方。实发工资转账支付。",
+        "cashFlowItem": "cf-op6",
+        "cashFlowExplanation": "其他经营活动现金支出（配对科目660203），属于\"支付其他与经营活动有关的现金\"。"
+      },
+      {
+        "subjectCode": "222102",
+        "summary": "个税",
+        "debit": 0,
+        "credit": 3630,
+        "explanation": "应交个人所得税增加记贷方。代扣个税形成应交义务。"
+      }
     ],
     "documents": [
       {
@@ -563,8 +949,22 @@ const tasks = [
     "difficulty": 1,
     "role": "cashier",
     "entries": [
-      { subjectCode: '1123', summary: '预付房租', debit: 120000, credit: 0, explanation: '预付账款增加记借方。预付房租形成债权。' },
-      { subjectCode: '100201', summary: '付款', debit: 0, credit: 120000, explanation: '银行存款减少记贷方。支付款项。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目1123），属于"支付其他与经营活动有关的现金"。'},
+      {
+        "subjectCode": "1123",
+        "summary": "预付房租",
+        "debit": 120000,
+        "credit": 0,
+        "explanation": "预付账款增加记借方。预付房租形成债权。"
+      },
+      {
+        "subjectCode": "100201",
+        "summary": "付款",
+        "debit": 0,
+        "credit": 120000,
+        "explanation": "银行存款减少记贷方。支付款项。",
+        "cashFlowItem": "cf-op6",
+        "cashFlowExplanation": "其他经营活动现金支出（配对科目1123），属于\"支付其他与经营活动有关的现金\"。"
+      }
     ],
     "documents": [
       {
@@ -579,14 +979,26 @@ const tasks = [
     "date": "2026-06-05",
     "title": "终验尾款到账",
     "tags": [
-      "出纳",
       "资金管理"
     ],
     "difficulty": 1,
-    "role": "cashier",
     "entries": [
-      { subjectCode: '100201', summary: '尾款', debit: 212000, credit: 0, explanation: '银行存款增加记借方。收到尾款入账。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金（配对科目6001），属于经营活动现金流入——主营业务产生的现金收入。'},
-      { subjectCode: '6001', summary: '收入', debit: 0, credit: 212000, explanation: '主营业务收入增加记贷方。项目收入确认入账。' },
+      {
+        "subjectCode": "100201",
+        "summary": "尾款",
+        "debit": 212000,
+        "credit": 0,
+        "explanation": "银行存款增加记借方。收到尾款入账。",
+        "cashFlowItem": "cf-op",
+        "cashFlowExplanation": "销售商品/提供劳务收到的现金（配对科目6001），属于经营活动现金流入——主营业务产生的现金收入。"
+      },
+      {
+        "subjectCode": "6001",
+        "summary": "收入",
+        "debit": 0,
+        "credit": 212000,
+        "explanation": "主营业务收入增加记贷方。项目收入确认入账。"
+      }
     ],
     "documents": [
       {
@@ -601,14 +1013,24 @@ const tasks = [
     "date": "2026-06-13",
     "title": "新借款到账",
     "tags": [
-      "出纳",
       "资金管理"
     ],
     "difficulty": 1,
-    "role": "cashier",
     "entries": [
-      { subjectCode: '2001', summary: '借款', debit: 200000, credit: 0, explanation: '短期借款减少记借方。偿还借款本金。' },
-      { subjectCode: '2001', summary: '借款', debit: 0, credit: 200000, explanation: '短期借款增加记贷方。取得短期借款。' },
+      {
+        "subjectCode": "2001",
+        "summary": "借款",
+        "debit": 200000,
+        "credit": 0,
+        "explanation": "短期借款减少记借方。偿还借款本金。"
+      },
+      {
+        "subjectCode": "2001",
+        "summary": "借款",
+        "debit": 0,
+        "credit": 200000,
+        "explanation": "短期借款增加记贷方。取得短期借款。"
+      }
     ],
     "documents": [
       {
@@ -624,14 +1046,26 @@ const tasks = [
     "date": "2026-06-14",
     "title": "审计费转账",
     "tags": [
-      "出纳",
       "费用管理"
     ],
     "difficulty": 1,
-    "role": "cashier",
     "entries": [
-      { subjectCode: '660201', summary: '审计费', debit: 8000, credit: 0, explanation: '管理费用-办公费增加记借方。审计费用计入管理费。' },
-      { subjectCode: '100201', summary: '付款', debit: 0, credit: 8000, explanation: '银行存款减少记贷方。支付款项。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目660201），属于"支付其他与经营活动有关的现金"。'},
+      {
+        "subjectCode": "660201",
+        "summary": "审计费",
+        "debit": 8000,
+        "credit": 0,
+        "explanation": "管理费用-办公费增加记借方。审计费用计入管理费。"
+      },
+      {
+        "subjectCode": "100201",
+        "summary": "付款",
+        "debit": 0,
+        "credit": 8000,
+        "explanation": "银行存款减少记贷方。支付款项。",
+        "cashFlowItem": "cf-op6",
+        "cashFlowExplanation": "其他经营活动现金支出（配对科目660201），属于\"支付其他与经营活动有关的现金\"。"
+      }
     ],
     "documents": [
       {
@@ -646,11 +1080,9 @@ const tasks = [
     "date": "2026-06-28",
     "title": "现金盘点",
     "tags": [
-      "出纳",
       "期末"
     ],
     "difficulty": 1,
-    "role": "cashier",
     "entries": [],
     "documents": [
       {
@@ -665,11 +1097,9 @@ const tasks = [
     "date": "2026-06-29",
     "title": "银行对账",
     "tags": [
-      "出纳",
       "期末"
     ],
     "difficulty": 1,
-    "role": "cashier",
     "entries": [],
     "documents": [
       {
@@ -684,11 +1114,9 @@ const tasks = [
     "date": "2026-06-30",
     "title": "半年度票据归档",
     "tags": [
-      "出纳",
       "期末"
     ],
     "difficulty": 1,
-    "role": "cashier",
     "entries": [],
     "documents": [
       {
@@ -706,11 +1134,30 @@ const tasks = [
       "资金管理"
     ],
     "difficulty": 1,
-    "role": "cashier",
     "entries": [
-      { subjectCode: '101205', summary: '支付宝收款', debit: 31800, credit: 0, explanation: '其他货币资金-支付宝增加记借方。支付宝收款入账。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金（配对科目6001），属于经营活动现金流入——主营业务产生的现金收入。'},
-      { subjectCode: '6001', summary: '确认收入', debit: 0, credit: 30000, explanation: '主营业务收入增加记贷方。项目完成确认收入。' },
-        { subjectCode: '222101', summary: '计提增值税', debit: 0, credit: 1800, explanation: '应交增值税增加记贷方。产生增值税纳税义务。' },
+      {
+        "subjectCode": "101205",
+        "summary": "支付宝收款",
+        "debit": 31800,
+        "credit": 0,
+        "explanation": "其他货币资金-支付宝增加记借方。支付宝收款入账。",
+        "cashFlowItem": "cf-op",
+        "cashFlowExplanation": "销售商品/提供劳务收到的现金（配对科目6001），属于经营活动现金流入——主营业务产生的现金收入。"
+      },
+      {
+        "subjectCode": "6001",
+        "summary": "确认收入",
+        "debit": 0,
+        "credit": 30000,
+        "explanation": "主营业务收入增加记贷方。项目完成确认收入。"
+      },
+      {
+        "subjectCode": "222101",
+        "summary": "计提增值税",
+        "debit": 0,
+        "credit": 1800,
+        "explanation": "应交增值税增加记贷方。产生增值税纳税义务。"
+      }
     ],
     "documents": [
       {
@@ -727,10 +1174,23 @@ const tasks = [
       "费用管理"
     ],
     "difficulty": 1,
-    "role": "cashier",
     "entries": [
-      { subjectCode: '660201', summary: '管理费用', debit: 2200, credit: 0, explanation: '管理费用-办公费增加记借方。办公费用计入管理费。' },
-      { subjectCode: '101204', summary: '微信付款', debit: 0, credit: 2200, explanation: '其他货币资金-微信减少记贷方。微信支付款项。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目660201），属于"支付其他与经营活动有关的现金"。'},
+      {
+        "subjectCode": "660201",
+        "summary": "管理费用",
+        "debit": 2200,
+        "credit": 0,
+        "explanation": "管理费用-办公费增加记借方。办公费用计入管理费。"
+      },
+      {
+        "subjectCode": "101204",
+        "summary": "微信付款",
+        "debit": 0,
+        "credit": 2200,
+        "explanation": "其他货币资金-微信减少记贷方。微信支付款项。",
+        "cashFlowItem": "cf-op6",
+        "cashFlowExplanation": "其他经营活动现金支出（配对科目660201），属于\"支付其他与经营活动有关的现金\"。"
+      }
     ],
     "documents": [
       {
@@ -747,10 +1207,23 @@ const tasks = [
       "费用管理"
     ],
     "difficulty": 1,
-    "role": "cashier",
     "entries": [
-      { subjectCode: '660201', summary: '管理费用', debit: 3800, credit: 0, explanation: '管理费用-办公费增加记借方。办公费用计入管理费。' },
-      { subjectCode: '100201', summary: '银行存款减少', debit: 0, credit: 3800, explanation: '银行存款减少记贷方。银行款项支出。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目660201），属于"支付其他与经营活动有关的现金"。'},
+      {
+        "subjectCode": "660201",
+        "summary": "管理费用",
+        "debit": 3800,
+        "credit": 0,
+        "explanation": "管理费用-办公费增加记借方。办公费用计入管理费。"
+      },
+      {
+        "subjectCode": "100201",
+        "summary": "银行存款减少",
+        "debit": 0,
+        "credit": 3800,
+        "explanation": "银行存款减少记贷方。银行款项支出。",
+        "cashFlowItem": "cf-op6",
+        "cashFlowExplanation": "其他经营活动现金支出（配对科目660201），属于\"支付其他与经营活动有关的现金\"。"
+      }
     ],
     "documents": [
       {
@@ -767,10 +1240,23 @@ const tasks = [
       "费用管理"
     ],
     "difficulty": 1,
-    "role": "cashier",
     "entries": [
-      { subjectCode: '660201', summary: '管理费用', debit: 3200, credit: 0, explanation: '管理费用-办公费增加记借方。办公费用计入管理费。' },
-      { subjectCode: '1001', summary: '现金减少', debit: 0, credit: 3200, explanation: '库存现金减少记贷方。现金支付款项。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目660201），属于"支付其他与经营活动有关的现金"。'},
+      {
+        "subjectCode": "660201",
+        "summary": "管理费用",
+        "debit": 3200,
+        "credit": 0,
+        "explanation": "管理费用-办公费增加记借方。办公费用计入管理费。"
+      },
+      {
+        "subjectCode": "1001",
+        "summary": "现金减少",
+        "debit": 0,
+        "credit": 3200,
+        "explanation": "库存现金减少记贷方。现金支付款项。",
+        "cashFlowItem": "cf-op6",
+        "cashFlowExplanation": "其他经营活动现金支出（配对科目660201），属于\"支付其他与经营活动有关的现金\"。"
+      }
     ],
     "documents": [
       {
@@ -787,10 +1273,21 @@ const tasks = [
       "资金管理"
     ],
     "difficulty": 1,
-    "role": "cashier",
     "entries": [
-      { subjectCode: '1001', summary: '现金增加', debit: 8000, credit: 0, explanation: '库存现金增加记借方。现金收款入账。' },
-      { subjectCode: '100201', summary: '银行存款减少', debit: 0, credit: 8000, explanation: '银行存款减少记贷方。银行款项支出。' },
+      {
+        "subjectCode": "1001",
+        "summary": "现金增加",
+        "debit": 8000,
+        "credit": 0,
+        "explanation": "库存现金增加记借方。现金收款入账。"
+      },
+      {
+        "subjectCode": "100201",
+        "summary": "银行存款减少",
+        "debit": 0,
+        "credit": 8000,
+        "explanation": "银行存款减少记贷方。银行款项支出。"
+      }
     ],
     "documents": [
       {
@@ -807,10 +1304,23 @@ const tasks = [
       "费用管理"
     ],
     "difficulty": 1,
-    "role": "cashier",
     "entries": [
-      { subjectCode: '6603', summary: '财务费用', debit: 180, credit: 0, explanation: '财务费用增加记借方。利息支出计入财务费用。' },
-      { subjectCode: '100201', summary: '银行存款减少', debit: 0, credit: 180, explanation: '银行存款减少记贷方。银行款项支出。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'},
+      {
+        "subjectCode": "6603",
+        "summary": "财务费用",
+        "debit": 180,
+        "credit": 0,
+        "explanation": "财务费用增加记借方。利息支出计入财务费用。"
+      },
+      {
+        "subjectCode": "100201",
+        "summary": "银行存款减少",
+        "debit": 0,
+        "credit": 180,
+        "explanation": "银行存款减少记贷方。银行款项支出。",
+        "cashFlowItem": "cf-op6",
+        "cashFlowExplanation": "其他经营活动现金支出（配对科目6603），属于\"支付其他与经营活动有关的现金\"。"
+      }
     ],
     "documents": [
       {
@@ -823,14 +1333,25 @@ const tasks = [
   {
     "date": "2026-06-17",
     "title": "购买转账支票",
-    "tags": [
-      "出纳"
-    ],
+    "tags": ["资金管理"],
     "difficulty": 1,
-    "role": "cashier",
     "entries": [
-      { subjectCode: '660201', summary: '管理费用', debit: 120, credit: 0, explanation: '管理费用-办公费增加记借方。办公费用计入管理费。' },
-      { subjectCode: '1001', summary: '现金减少', debit: 0, credit: 120, explanation: '库存现金减少记贷方。现金支付款项。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目660201），属于"支付其他与经营活动有关的现金"。'},
+      {
+        "subjectCode": "660201",
+        "summary": "管理费用",
+        "debit": 120,
+        "credit": 0,
+        "explanation": "管理费用-办公费增加记借方。办公费用计入管理费。"
+      },
+      {
+        "subjectCode": "1001",
+        "summary": "现金减少",
+        "debit": 0,
+        "credit": 120,
+        "explanation": "库存现金减少记贷方。现金支付款项。",
+        "cashFlowItem": "cf-op6",
+        "cashFlowExplanation": "其他经营活动现金支出（配对科目660201），属于\"支付其他与经营活动有关的现金\"。"
+      }
     ],
     "documents": [
       {
@@ -847,10 +1368,23 @@ const tasks = [
       "往来管理"
     ],
     "difficulty": 1,
-    "role": "cashier",
     "entries": [
-      { subjectCode: '100201', summary: '银行存款增加', debit: 50000, credit: 0, explanation: '银行存款增加记借方。款项存入银行。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金（配对科目1121），属于经营活动现金流入——主营业务产生的现金收入。'},
-      { subjectCode: '1121', summary: '应收票据减少', debit: 0, credit: 50000, explanation: '应收票据减少记贷方。应收票据到期或背书转让。' },
+      {
+        "subjectCode": "100201",
+        "summary": "银行存款增加",
+        "debit": 50000,
+        "credit": 0,
+        "explanation": "银行存款增加记借方。款项存入银行。",
+        "cashFlowItem": "cf-op",
+        "cashFlowExplanation": "销售商品/提供劳务收到的现金（配对科目1121），属于经营活动现金流入——主营业务产生的现金收入。"
+      },
+      {
+        "subjectCode": "1121",
+        "summary": "应收票据减少",
+        "debit": 0,
+        "credit": 50000,
+        "explanation": "应收票据减少记贷方。应收票据到期或背书转让。"
+      }
     ],
     "documents": [
       {
@@ -867,11 +1401,30 @@ const tasks = [
       "资金管理"
     ],
     "difficulty": 1,
-    "role": "cashier",
     "entries": [
-      { subjectCode: '101204', summary: '微信收款', debit: 10600, credit: 0, explanation: '其他货币资金-微信增加记借方。微信收款入账。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金（配对科目6001），属于经营活动现金流入——主营业务产生的现金收入。'},
-      { subjectCode: '6001', summary: '确认收入', debit: 0, credit: 10000, explanation: '主营业务收入增加记贷方。项目完成确认收入。' },
-        { subjectCode: '222101', summary: '计提增值税', debit: 0, credit: 600, explanation: '应交增值税增加记贷方。产生增值税纳税义务。' },
+      {
+        "subjectCode": "101204",
+        "summary": "微信收款",
+        "debit": 10600,
+        "credit": 0,
+        "explanation": "其他货币资金-微信增加记借方。微信收款入账。",
+        "cashFlowItem": "cf-op",
+        "cashFlowExplanation": "销售商品/提供劳务收到的现金（配对科目6001），属于经营活动现金流入——主营业务产生的现金收入。"
+      },
+      {
+        "subjectCode": "6001",
+        "summary": "确认收入",
+        "debit": 0,
+        "credit": 10000,
+        "explanation": "主营业务收入增加记贷方。项目完成确认收入。"
+      },
+      {
+        "subjectCode": "222101",
+        "summary": "计提增值税",
+        "debit": 0,
+        "credit": 600,
+        "explanation": "应交增值税增加记贷方。产生增值税纳税义务。"
+      }
     ],
     "documents": [
       {
@@ -880,7 +1433,7 @@ const tasks = [
       }
     ],
     "description": "通过银行转账缴纳各项税款合计10,600元。"
-  },
-];
+  }
+]
 
-export default tasks;
+export default tasks

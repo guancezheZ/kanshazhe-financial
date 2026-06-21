@@ -68,15 +68,23 @@
           </el-menu-item>
         </el-sub-menu>
 
-        <!-- 💰 出纳与往来 -->
+        <!-- 💰 出纳管理（仅出纳/主管可见） -->
         <el-sub-menu v-if="showCashierGroup" index="cashier-group">
           <template #title>
             <el-icon><Money /></el-icon>
-            <span>出纳与往来</span>
+            <span>出纳管理</span>
           </template>
           <el-menu-item v-if="fm('/accounting/cashier')" index="/accounting/cashier">
-            <el-icon><Money /></el-icon><template #title>出纳管理</template>
+            <el-icon><Money /></el-icon><template #title>日记账与对账</template>
           </el-menu-item>
+        </el-sub-menu>
+
+        <!-- 🤝 往来管理 -->
+        <el-sub-menu v-if="showARAPGroup" index="arap-group">
+          <template #title>
+            <el-icon><Coin /></el-icon>
+            <span>往来管理</span>
+          </template>
           <el-menu-item v-if="fm('/accounting/arap')" index="/accounting/arap">
             <el-icon><Coin /></el-icon><template #title>应收应付</template>
           </el-menu-item>
@@ -456,10 +464,11 @@ const roleAccentColor = computed(() => {
 const mf = computed(() => store.getRoleMenuFilter())
 function fm(path) { return mf.value ? mf.value(path) : true }
 
-// 子菜单可见性（5组）
+// 子菜单可见性（6组）
 const showVoucherGroup = computed(() => fm('/accounting/voucher/entry') || fm('/accounting/voucher/query') || fm('/accounting/voucher-templates'))
 const showLedgerGroup = computed(() => fm('/accounting/subjects') || fm('/accounting/subject-balance') || fm('/accounting/trial-balance') || fm('/accounting/ledger') || fm('/accounting/auxiliary'))
-const showCashierGroup = computed(() => fm('/accounting/cashier') || fm('/accounting/arap') || fm('/accounting/forex'))
+const showCashierGroup = computed(() => fm('/accounting/cashier'))
+const showARAPGroup = computed(() => fm('/accounting/arap') || fm('/accounting/forex'))
 const showAssetGroup = computed(() => fm('/accounting/fixed-assets') || fm('/accounting/payroll'))
 const showReportGroup = computed(() => fm('/reports/balance-sheet') || fm('/reports/income-statement') || fm('/reports/cash-flow') || fm('/reports/custom') || fm('/reports/tax-filing') || fm('/reports/period-end-transfer'))
 

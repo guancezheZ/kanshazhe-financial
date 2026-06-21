@@ -38,30 +38,23 @@ const tasks = [
       { subjectCode: '222101', debit: 35000, credit: 0, summary: '缴纳11月增值税', explanation: '应交税费-应交增值税减少记借方。实际缴纳上月增值税35,000元，清偿对税务机关的负债。' },
       { subjectCode: '222103', debit: 2450, credit: 0, summary: '缴纳11月城建税（35,000×7%）', explanation: '应交税费-应交城建税减少记借方。城市维护建设税以实际缴纳的增值税为计税依据，税率7%。' },
       { subjectCode: '222104', debit: 1050, credit: 0, summary: '缴纳11月教育费附加（35,000×3%）', explanation: '应交税费-应交教育费附加减少记借方。教育费附加费率3%，随增值税同时缴纳。' },
-      { subjectCode: '100201', debit: 0, credit: 38500, summary: '工行缴纳税款', explanation: '银行存款减少38,500元。通过工商银行缴纳上月各项税费，出纳需保存完税凭证。' , cashFlowItem: 'cf-op4', cashFlowExplanation: '缴纳税费支出（配对科目222101），属于"支付的各项税费"——经营活动现金流出。'},
-    ],
+      { subjectCode: '100201', debit: 0, credit: 38500, summary: '工行缴纳税款', explanation: '银行存款减少38,500元。通过工商银行缴纳上月各项税费，出纳需保存完税凭证。' , cashFlowItem: 'cf-op4', cashFlowExplanation: '缴纳税费支出（配对科目222101），属于"支付的各项税费"——经营活动现金流出。'}],
     documents: [
-      { type: 'bank', label: '电子缴税付款凭证', date: '2026-12-01', totalAmount: 38500, payer: '鼎立建筑工程有限公司', payeeName: '国家金库', content: '2026年11月增值税及附加税费', refNo: 'NS202612010001' },
-    ],
-  },
+      { type: 'bank', label: '电子缴税付款凭证', date: '2026-12-01', totalAmount: 38500, payer: '鼎立建筑工程有限公司', payeeName: '国家金库', content: '2026年11月增值税及附加税费', refNo: 'NS202612010001' }]},
   {
     date: '2026-12-01',
     title: '纳税转账（出纳）',
     tags: ['资金管理', '税费'],
     difficulty: 1,
-    role: 'cashier',
     description: '出纳通过网银缴纳11月增值税及附加税费38,500元。',
     tip: '出纳根据会计编制的税款缴纳凭证，通过网上银行办理缴税手续。需核对缴税金额与申报表是否一致，保存电子缴税回单。',
     entries: [
       { subjectCode: '222101', debit: 35000, credit: 0, summary: '缴纳11月增值税', explanation: '出纳完成增值税缴纳操作，清偿上月应交增值税。' },
       { subjectCode: '222103', debit: 2450, credit: 0, summary: '缴纳11月城建税', explanation: '出纳完成城建税缴纳，附城建税申报表回执。' },
       { subjectCode: '222104', debit: 1050, credit: 0, summary: '缴纳11月教育费附加', explanation: '出纳完成教育费附加缴纳，保存完税证明备查。' },
-      { subjectCode: '100201', debit: 0, credit: 38500, summary: '工行缴纳税款', explanation: '工商银行账户扣款38,500元，出纳登记银行存款日记账"付"方。' , cashFlowItem: 'cf-op4', cashFlowExplanation: '缴纳税费支出（配对科目222101），属于"支付的各项税费"——经营活动现金流出。'},
-    ],
+      { subjectCode: '100201', debit: 0, credit: 38500, summary: '工行缴纳税款', explanation: '工商银行账户扣款38,500元，出纳登记银行存款日记账"付"方。' , cashFlowItem: 'cf-op4', cashFlowExplanation: '缴纳税费支出（配对科目222101），属于"支付的各项税费"——经营活动现金流出。'}],
     documents: [
-      { type: 'bank', label: '网银缴税回单', date: '2026-12-01', totalAmount: 38500, payer: '鼎立建筑工程有限公司', payeeName: '国家金库', content: '缴纳税款', refNo: 'NS202612010002' },
-    ],
-  },
+      { type: 'bank', label: '网银缴税回单', date: '2026-12-01', totalAmount: 38500, payer: '鼎立建筑工程有限公司', payeeName: '国家金库', content: '缴纳税款', refNo: 'NS202612010002' }]},
   {
     date: '2026-12-02',
     title: '缴纳11月社会保险费',
@@ -71,28 +64,21 @@ const tasks = [
     tip: '社保费通常于次月缴纳。缴纳时：借：应付职工薪酬-社保，贷：银行存款。社保费包含养老、医疗、失业、工伤、生育五险。单位部分在计提时已计入相关成本费用，个人部分在发工资时已代扣。',
     entries: [
       { subjectCode: '221102', debit: 22000, credit: 0, summary: '缴纳11月社保费', explanation: '应付职工薪酬-社保减少记借方。缴纳社保费22,000元后，对社保机构的负债清偿。' },
-      { subjectCode: '100201', debit: 0, credit: 22000, summary: '工行缴纳社保', explanation: '银行存款减少22,000元。社保缴费需在每月规定期限内完成，逾期将产生滞纳金。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221102），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'},
-    ],
+      { subjectCode: '100201', debit: 0, credit: 22000, summary: '工行缴纳社保', explanation: '银行存款减少22,000元。社保缴费需在每月规定期限内完成，逾期将产生滞纳金。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221102），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'}],
     documents: [
-      { type: 'bank', label: '社保缴费回单', date: '2026-12-02', totalAmount: 22000, payer: '鼎立建筑工程有限公司', payeeName: '社会保险事业管理中心', content: '2026年11月社会保险费', refNo: 'SB202612020001' },
-    ],
-  },
+      { type: 'bank', label: '社保缴费回单', date: '2026-12-02', totalAmount: 22000, payer: '鼎立建筑工程有限公司', payeeName: '社会保险事业管理中心', content: '2026年11月社会保险费', refNo: 'SB202612020001' }]},
   {
     date: '2026-12-02',
     title: '社保缴纳（出纳）',
     tags: ['资金管理', '工资社保'],
     difficulty: 1,
-    role: 'cashier',
     description: '出纳通过网银缴纳11月社会保险费22,000元。',
     tip: '出纳每月按时办理社保缴费，避免逾期产生滞纳金。缴费后打印回单并登记银行日记账。',
     entries: [
       { subjectCode: '221102', debit: 22000, credit: 0, summary: '缴纳11月社保费', explanation: '出纳完成社保缴纳操作，清偿应付社保负债。' },
-      { subjectCode: '100201', debit: 0, credit: 22000, summary: '工行缴纳社保', explanation: '银行存款减少22,000元，出纳在银行日记账登记"付"方。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221102），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'},
-    ],
+      { subjectCode: '100201', debit: 0, credit: 22000, summary: '工行缴纳社保', explanation: '银行存款减少22,000元，出纳在银行日记账登记"付"方。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221102），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'}],
     documents: [
-      { type: 'bank', label: '社保缴费回单', date: '2026-12-02', totalAmount: 22000, payer: '鼎立建筑工程有限公司', payeeName: '社会保险事业管理中心', content: '社保缴费', refNo: 'SB202612020002' },
-    ],
-  },
+      { type: 'bank', label: '社保缴费回单', date: '2026-12-02', totalAmount: 22000, payer: '鼎立建筑工程有限公司', payeeName: '社会保险事业管理中心', content: '社保缴费', refNo: 'SB202612020002' }]},
   {
     date: '2026-12-03',
     title: '发放11月职工工资',
@@ -102,28 +88,21 @@ const tasks = [
     tip: '实际发放工资时：借：应付职工薪酬-工资，贷：银行存款。若涉及代扣社保/个税，需分别贷记应付职工薪酬-社保和应交税费-应交个人所得税。注意：计提工资和发放工资是两笔不同的业务。',
     entries: [
       { subjectCode: '221101', debit: 130000, credit: 0, summary: '发放11月工资', explanation: '应付职工薪酬-工资减少记借方。实际发放11月工资130,000元，清偿对职工的工资负债。' },
-      { subjectCode: '100201', debit: 0, credit: 130000, summary: '工行代发工资', explanation: '银行存款减少130,000元。出纳通过银行代发工资系统发放，需提供代发清单给银行。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221101），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'},
-    ],
+      { subjectCode: '100201', debit: 0, credit: 130000, summary: '工行代发工资', explanation: '银行存款减少130,000元。出纳通过银行代发工资系统发放，需提供代发清单给银行。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221101），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'}],
     documents: [
-      { type: 'bank', label: '代发工资回单', date: '2026-12-03', totalAmount: 130000, payer: '鼎立建筑工程有限公司', payeeName: '公司员工', content: '2026年11月工资发放', refNo: 'GZ202612030001' },
-    ],
-  },
+      { type: 'bank', label: '代发工资回单', date: '2026-12-03', totalAmount: 130000, payer: '鼎立建筑工程有限公司', payeeName: '公司员工', content: '2026年11月工资发放', refNo: 'GZ202612030001' }]},
   {
     date: '2026-12-03',
     title: '工资代发（出纳）',
     tags: ['资金管理', '工资社保'],
     difficulty: 1,
-    role: 'cashier',
     description: '出纳通过银行代发系统发放11月职工工资130,000元。',
     tip: '出纳发放工资操作流程：①接收人事部门工资表 ②审核金额及人员 ③通过网银代发工资功能上传代发文件 ④确认发放 ⑤打印代发回单并通知员工查收。',
     entries: [
       { subjectCode: '221101', debit: 130000, credit: 0, summary: '代发11月工资', explanation: '出纳操作银行代发工资130,000元，应付职工薪酬减少。' },
-      { subjectCode: '100201', debit: 0, credit: 130000, summary: '工行发放工资', explanation: '银行存款减少130,000元，出纳同步登记银行日记账。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221101），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'},
-    ],
+      { subjectCode: '100201', debit: 0, credit: 130000, summary: '工行发放工资', explanation: '银行存款减少130,000元，出纳同步登记银行日记账。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221101），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'}],
     documents: [
-      { type: 'bank', label: '银行代发回单', date: '2026-12-03', totalAmount: 130000, payer: '鼎立建筑工程有限公司', payeeName: '公司员工代发户', content: '11月工资代发', refNo: 'GZ202612030002' },
-    ],
-  },
+      { type: 'bank', label: '银行代发回单', date: '2026-12-03', totalAmount: 130000, payer: '鼎立建筑工程有限公司', payeeName: '公司员工代发户', content: '11月工资代发', refNo: 'GZ202612030002' }]},
   {
     date: '2026-12-04',
     title: '收到乙公司工程进度款',
@@ -133,12 +112,9 @@ const tasks = [
     tip: '收到客户还款时：借：银行存款，贷：应收账款。年底前催收工程款是建筑企业回笼资金的重要工作，直接影响年末现金流和财务报表质量。',
     entries: [
       { subjectCode: '100201', debit: 109000, credit: 0, summary: '收到乙公司前欠工程款', explanation: '银行存款增加109,000元。乙公司偿还前欠工程进度款，资金回笼有助于改善年末现金流。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金（配对科目112202），属于经营活动现金流入——主营业务产生的现金收入。'},
-      { subjectCode: '112202', debit: 0, credit: 109000, summary: '冲销应收账款-乙公司', explanation: '应收账款-乙公司减少记贷方。收到客户还款后债权减少，应收账款余额降低。年末积极催收可减少坏账风险。' },
-    ],
+      { subjectCode: '112202', debit: 0, credit: 109000, summary: '冲销应收账款-乙公司', explanation: '应收账款-乙公司减少记贷方。收到客户还款后债权减少，应收账款余额降低。年末积极催收可减少坏账风险。' }],
     documents: [
-      { type: 'bank', label: '收款回单', date: '2026-12-04', totalAmount: 109000, payer: '乙公司', payeeName: '鼎立建筑工程有限公司', content: '市政道路工程进度款', refNo: 'SK202612040001' },
-    ],
-  },
+      { type: 'bank', label: '收款回单', date: '2026-12-04', totalAmount: 109000, payer: '乙公司', payeeName: '鼎立建筑工程有限公司', content: '市政道路工程进度款', refNo: 'SK202612040001' }]},
 
   // ═══════════════════════════════════════════════════════════════════
   // 第二阶段：采购与成本归集（12/5 - 12/11）
@@ -153,31 +129,24 @@ const tasks = [
     entries: [
       { subjectCode: '540102', debit: 120000, credit: 0, summary: '购入工程钢材一批', explanation: '合同履约成本-材料成本增加记借方。采购钢材直接用于工程施工，价款120,000元计入工程成本。根据《企业会计准则第14号——收入》，合同履约成本包括直接材料成本。' },
       { subjectCode: '222101', debit: 15600, credit: 0, summary: '增值税进项税额（120,000×13%）', explanation: '应交税费-应交增值税（进项税额）增加记借方。取得增值税专用发票，税额15,600元可抵扣销项税额。依据《增值税暂行条例》第八条。' },
-      { subjectCode: '220201', debit: 0, credit: 135600, summary: '应付账款-丙公司（华强建材）', explanation: '应付账款-丙公司增加记贷方。材料款尚未支付，形成对供应商丙公司的债务。' },
-    ],
+      { subjectCode: '220201', debit: 0, credit: 135600, summary: '应付账款-丙公司（华强建材）', explanation: '应付账款-丙公司增加记贷方。材料款尚未支付，形成对供应商丙公司的债务。' }],
     documents: [
       { type: 'invoice', label: '增值税专用发票', date: '2026-12-05', region: '江苏省', invoiceNo: '3200261205', buyer: '鼎立建筑工程有限公司', seller: '华强建材有限公司',
         lineItems: [{ name: '螺纹钢', spec: 'HRB400 25mm', unit: '吨', qty: 20, price: 4800, amount: 96000 }, { name: '盘螺', spec: 'HRB400 8mm', unit: '吨', qty: 5, price: 4800, amount: 24000 }],
         totalAmount: 135600, taxRate: '13%', taxAmount: 15600 },
-      { type: 'text', label: '材料验收单', docTitle: '工程材料验收单', content: '采购钢材25吨已运抵工地，经质检合格入库。', signature: '材料员 刘工' },
-    ],
-  },
+      { type: 'text', label: '材料验收单', docTitle: '工程材料验收单', content: '采购钢材25吨已运抵工地，经质检合格入库。', signature: '材料员 刘工' }]},
   {
     date: '2026-12-05',
     title: '支付材料采购款（出纳）',
     tags: ['资金管理', '材料管理'],
     difficulty: 1,
-    role: 'cashier',
     description: '出纳通过网银支付华强建材公司钢材款135,600元。',
     tip: '出纳根据采购合同和付款审批单办理转账付款，核对收款账户信息无误后执行。付款后打印回单并登记银行日记账。',
     entries: [
       { subjectCode: '220201', debit: 135600, credit: 0, summary: '支付华强建材材料款', explanation: '应付账款-丙公司减少记借方。偿还采购钢材款，对供应商债务清偿。' },
-      { subjectCode: '100201', debit: 0, credit: 135600, summary: '工行支付材料款', explanation: '银行存款减少135,600元。出纳通过网银办理转账，需核对收款方账户信息。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目220201），属于"支付其他与经营活动有关的现金"。'},
-    ],
+      { subjectCode: '100201', debit: 0, credit: 135600, summary: '工行支付材料款', explanation: '银行存款减少135,600元。出纳通过网银办理转账，需核对收款方账户信息。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目220201），属于"支付其他与经营活动有关的现金"。'}],
     documents: [
-      { type: 'bank', label: '网银转账回单', date: '2026-12-05', totalAmount: 135600, payer: '鼎立建筑工程有限公司', payeeName: '华强建材有限公司', content: '钢材采购款', refNo: 'ZF202612050001' },
-    ],
-  },
+      { type: 'bank', label: '网银转账回单', date: '2026-12-05', totalAmount: 135600, payer: '鼎立建筑工程有限公司', payeeName: '华强建材有限公司', content: '钢材采购款', refNo: 'ZF202612050001' }]},
   {
     date: '2026-12-07',
     title: '租赁施工机械（挖掘机）',
@@ -187,12 +156,9 @@ const tasks = [
     tip: '施工机械租赁费直接记入合同履约成本-机械使用费。建筑业的施工机械费用是工程直接成本的重要组成部分，包含租赁费和自有设备的折旧费。',
     entries: [
       { subjectCode: '540104', debit: 20000, credit: 0, summary: '挖掘机12月租金', explanation: '合同履约成本-机械使用费增加记借方。施工机械租赁费是工程直接成本，计入合同履约成本。' },
-      { subjectCode: '100201', debit: 0, credit: 20000, summary: '支付挖掘机租金', explanation: '银行存款减少20,000元。支付租赁费，出纳需保存租赁合同和付款回单。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目540104），属于"支付其他与经营活动有关的现金"。'},
-    ],
+      { subjectCode: '100201', debit: 0, credit: 20000, summary: '支付挖掘机租金', explanation: '银行存款减少20,000元。支付租赁费，出纳需保存租赁合同和付款回单。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目540104），属于"支付其他与经营活动有关的现金"。'}],
     documents: [
-      { type: 'bank', label: '付款回单', date: '2026-12-07', totalAmount: 20000, payer: '鼎立建筑工程有限公司', payeeName: '鑫源机械租赁有限公司', content: '挖掘机12月租金', refNo: 'ZF202612070001' },
-    ],
-  },
+      { type: 'bank', label: '付款回单', date: '2026-12-07', totalAmount: 20000, payer: '鼎立建筑工程有限公司', payeeName: '鑫源机械租赁有限公司', content: '挖掘机12月租金', refNo: 'ZF202612070001' }]},
   {
     date: '2026-12-08',
     title: '计提12月职工薪酬',
@@ -204,31 +170,24 @@ const tasks = [
       { subjectCode: '540101', debit: 85000, credit: 0, summary: '施工人员12月工资', explanation: '合同履约成本-人工成本增加记借方。直接从事工程施工的工人工资85,000元，是工程成本的核心组成部分。' },
       { subjectCode: '540106', debit: 15000, credit: 0, summary: '项目部管理人员12月工资', explanation: '合同履约成本-间接费用增加记借方。项目部管理人员工资属于间接成本，需分配计入各工程项目。' },
       { subjectCode: '660201', debit: 25000, credit: 0, summary: '公司管理人员12月工资', explanation: '管理费用增加记借方。公司行政管理人员工资不计入工程成本，作为期间费用直接计入当期损益。' },
-      { subjectCode: '221101', debit: 0, credit: 125000, summary: '应付职工薪酬-工资', explanation: '应付职工薪酬-工资增加记贷方。计提形成对职工的工资负债，待实际发放时冲减。' },
-    ],
+      { subjectCode: '221101', debit: 0, credit: 125000, summary: '应付职工薪酬-工资', explanation: '应付职工薪酬-工资增加记贷方。计提形成对职工的工资负债，待实际发放时冲减。' }],
     documents: [
       { type: 'text', label: '工资表', docTitle: '2026年12月职工工资表', content: `施工人员（17人）：85,000元
 项目部管理人员（3人）：15,000元
 公司管理人员（4人）：25,000元
-合计：125,000元`, signature: '人事部 王经理' },
-    ],
-  },
+合计：125,000元`, signature: '人事部 王经理' }]},
   {
     date: '2026-12-08',
     title: '发放12月工资（出纳）',
     tags: ['资金管理', '工资社保'],
     difficulty: 1,
-    role: 'cashier',
     description: '出纳通过工商银行代发12月职工工资125,000元。',
     tip: '发放工资时：借：应付职工薪酬-工资，贷：银行存款。出纳需核对工资表与代发金额一致后操作。代发工资需在银行规定时间内提交代发文件。',
     entries: [
       { subjectCode: '221101', debit: 125000, credit: 0, summary: '代发12月工资', explanation: '出纳操作银行代发工资125,000元，应付职工薪酬减少。' },
-      { subjectCode: '100201', debit: 0, credit: 125000, summary: '工行发放工资', explanation: '银行存款减少125,000元，出纳在银行日记账登记"付"方。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221101），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'},
-    ],
+      { subjectCode: '100201', debit: 0, credit: 125000, summary: '工行发放工资', explanation: '银行存款减少125,000元，出纳在银行日记账登记"付"方。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221101），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'}],
     documents: [
-      { type: 'bank', label: '代发工资回单', date: '2026-12-08', totalAmount: 125000, payer: '鼎立建筑工程有限公司', payeeName: '公司员工代发户', content: '12月工资代发', refNo: 'GZ202612080001' },
-    ],
-  },
+      { type: 'bank', label: '代发工资回单', date: '2026-12-08', totalAmount: 125000, payer: '鼎立建筑工程有限公司', payeeName: '公司员工代发户', content: '12月工资代发', refNo: 'GZ202612080001' }]},
   {
     date: '2026-12-09',
     title: '计提12月社会保险费',
@@ -240,31 +199,24 @@ const tasks = [
     entries: [
       { subjectCode: '540106', debit: 17000, credit: 0, summary: '施工及项目部人员社保', explanation: '间接费用增加记借方。工程施工人员社保14,000元+项目部管理人员社保3,000元=17,000元，计入合同履约成本-间接费用。' },
       { subjectCode: '660201', debit: 5000, credit: 0, summary: '公司管理人员社保', explanation: '管理费用增加记借方。公司行政管理人员社保费5,000元不计入工程成本，作为期间费用。' },
-      { subjectCode: '221102', debit: 0, credit: 22000, summary: '应付职工薪酬-社保', explanation: '应付职工薪酬-社保增加记贷方。计提形成对社保机构的负债，待实际缴纳时冲减。' },
-    ],
+      { subjectCode: '221102', debit: 0, credit: 22000, summary: '应付职工薪酬-社保', explanation: '应付职工薪酬-社保增加记贷方。计提形成对社保机构的负债，待实际缴纳时冲减。' }],
     documents: [
       { type: 'text', label: '社保计提表', docTitle: '2026年12月社会保险费计算表', content: `施工人员社保（单位部分）：14,000元
 项目部管理人员社保（单位部分）：3,000元
 公司管理人员社保（单位部分）：5,000元
-合计：22,000元`, signature: '财务部 赵会计' },
-    ],
-  },
+合计：22,000元`, signature: '财务部 赵会计' }]},
   {
     date: '2026-12-09',
     title: '缴纳12月社保（出纳）',
     tags: ['资金管理', '工资社保'],
     difficulty: 1,
-    role: 'cashier',
     description: '出纳通过网银缴纳12月社会保险费22,000元。',
     tip: '社保缴费完成后，冲减应付职工薪酬-社保。出纳需在每月规定期限内完成缴费，保存缴费回单。',
     entries: [
       { subjectCode: '221102', debit: 22000, credit: 0, summary: '缴纳12月社保费', explanation: '出纳完成社保缴纳，应付职工薪酬-社保减少22,000元。' },
-      { subjectCode: '100201', debit: 0, credit: 22000, summary: '工行缴纳社保', explanation: '银行存款减少22,000元，出纳登记银行存款日记账。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221102），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'},
-    ],
+      { subjectCode: '100201', debit: 0, credit: 22000, summary: '工行缴纳社保', explanation: '银行存款减少22,000元，出纳登记银行存款日记账。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221102），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'}],
     documents: [
-      { type: 'bank', label: '社保缴费回单', date: '2026-12-09', totalAmount: 22000, payer: '鼎立建筑工程有限公司', payeeName: '社会保险事业管理中心', content: '12月社保缴费', refNo: 'SB202612090001' },
-    ],
-  },
+      { type: 'bank', label: '社保缴费回单', date: '2026-12-09', totalAmount: 22000, payer: '鼎立建筑工程有限公司', payeeName: '社会保险事业管理中心', content: '12月社保缴费', refNo: 'SB202612090001' }]},
   {
     date: '2026-12-10',
     title: '计提12月固定资产折旧',
@@ -275,15 +227,12 @@ const tasks = [
     entries: [
       { subjectCode: '540104', debit: 5000, credit: 0, summary: '工程车辆折旧', explanation: '合同履约成本-机械使用费增加记借方。工程运输车辆用于材料运输和现场作业，折旧费计入工程成本。' },
       { subjectCode: '660201', debit: 5000, credit: 0, summary: '办公设备折旧', explanation: '管理费用增加记借方。公司办公设备折旧费计入管理费用，不影响工程成本。' },
-      { subjectCode: '1602', debit: 0, credit: 10000, summary: '累计折旧增加', explanation: '累计折旧增加记贷方。累计折旧是固定资产的备抵科目，贷方表示增加。12月折旧合计10,000元，全年折旧至此计提完毕。' },
-    ],
+      { subjectCode: '1602', debit: 0, credit: 10000, summary: '累计折旧增加', explanation: '累计折旧增加记贷方。累计折旧是固定资产的备抵科目，贷方表示增加。12月折旧合计10,000元，全年折旧至此计提完毕。' }],
     documents: [
       { type: 'text', label: '折旧计算表', docTitle: '2026年12月固定资产折旧计算表', content: `工程运输车辆：原值×月折旧率=5,000元（计入合同履约成本-机械使用费）
 办公设备：原值×月折旧率=5,000元（计入管理费用）
 合计：10,000元
-折旧方法：直线法`, signature: '财务部 赵会计' },
-    ],
-  },
+折旧方法：直线法`, signature: '财务部 赵会计' }]},
   {
     date: '2026-12-11',
     title: '摊销本月预付租金',
@@ -293,12 +242,9 @@ const tasks = [
     tip: '预付账款按受益期分期摊销。办公用房租金摊销计入管理费用-租赁费。借：管理费用，贷：预付账款。注意：摊销时不需要实际支付现金，只是调整预付账款的账面价值。',
     entries: [
       { subjectCode: '660201', debit: 20000, credit: 0, summary: '摊销12月办公租金', explanation: '管理费用增加记借方。办公用房租金于受益期间分期确认，12月摊销额20,000元。本次摊销后预付租金余额为零，全年租金摊销完毕。' },
-      { subjectCode: '1123', debit: 0, credit: 20000, summary: '冲减预付租金', explanation: '预付账款减少20,000元。预付租金逐月摊销，至12月全部摊完。' },
-    ],
+      { subjectCode: '1123', debit: 0, credit: 20000, summary: '冲减预付租金', explanation: '预付账款减少20,000元。预付租金逐月摊销，至12月全部摊完。' }],
     documents: [
-      { type: 'text', label: '摊销计算表', docTitle: '预付租金摊销计算表', content: '办公用房预付租金60,000元，分3个月摊销，每月20,000元。12月为最后一次摊销。', signature: '财务部 赵会计' },
-    ],
-  },
+      { type: 'text', label: '摊销计算表', docTitle: '预付租金摊销计算表', content: '办公用房预付租金60,000元，分3个月摊销，每月20,000元。12月为最后一次摊销。', signature: '财务部 赵会计' }]},
 
   // ═══════════════════════════════════════════════════════════════════
   // 第三阶段：分包结算与工程结算（12/12 - 12/16）
@@ -313,31 +259,24 @@ const tasks = [
     entries: [
       { subjectCode: '540103', debit: 50000, credit: 0, summary: '分包基础工程结算', explanation: '合同履约成本-分包成本增加记借方。分包工程完工结算50,000元，计入工程成本。建筑业专业分包是行业惯例，需严格管理分包质量。' },
       { subjectCode: '222101', debit: 4500, credit: 0, summary: '分包增值税进项（50,000×9%）', explanation: '应交税费-应交增值税（进项税额）增加记借方。取得分包方开具的增值税专用发票，可抵扣进项税额。' },
-      { subjectCode: '220202', debit: 0, credit: 54500, summary: '应付账款-丁公司（大地基础）', explanation: '应付账款-丁公司增加记贷方。分包结算款54,500元尚未支付，形成对分包商的债务。' },
-    ],
+      { subjectCode: '220202', debit: 0, credit: 54500, summary: '应付账款-丁公司（大地基础）', explanation: '应付账款-丁公司增加记贷方。分包结算款54,500元尚未支付，形成对分包商的债务。' }],
     documents: [
       { type: 'invoice', label: '增值税专用发票（分包）', date: '2026-12-12', region: '江苏省', invoiceNo: '3200261212', buyer: '鼎立建筑工程有限公司', seller: '大地基础工程有限公司',
         lineItems: [{ name: '基础工程分包进度款', qty: 1, unit: '项', price: 50000, amount: 50000 }],
         totalAmount: 54500, taxRate: '9%', taxAmount: 4500 },
-      { type: 'text', label: '分包工程验收单', docTitle: '分包工程进度验收单', content: '基础工程12月进度已完工，经监理验收合格。', signature: '监理 李工 / 项目经理 陈经理' },
-    ],
-  },
+      { type: 'text', label: '分包工程验收单', docTitle: '分包工程进度验收单', content: '基础工程12月进度已完工，经监理验收合格。', signature: '监理 李工 / 项目经理 陈经理' }]},
   {
     date: '2026-12-12',
     title: '支付分包工程款（出纳）',
     tags: ['资金管理', '分包管理'],
     difficulty: 1,
-    role: 'cashier',
     description: '出纳通过网银支付大地基础工程有限公司分包结算款54,500元。',
     tip: '出纳支付分包款时，需核对分包合同、结算单和发票信息，确认无误后办理转账。支付后登记银行日记账并保存付款回单。',
     entries: [
       { subjectCode: '220202', debit: 54500, credit: 0, summary: '支付大地基础分包款', explanation: '应付账款-丁公司减少记借方。支付分包结算款，清偿对分包商的债务。' },
-      { subjectCode: '100201', debit: 0, credit: 54500, summary: '工行支付分包款', explanation: '银行存款减少54,500元。出纳通过网银办理转账支付。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目220202），属于"支付其他与经营活动有关的现金"。'},
-    ],
+      { subjectCode: '100201', debit: 0, credit: 54500, summary: '工行支付分包款', explanation: '银行存款减少54,500元。出纳通过网银办理转账支付。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目220202），属于"支付其他与经营活动有关的现金"。'}],
     documents: [
-      { type: 'bank', label: '付款回单', date: '2026-12-12', totalAmount: 54500, payer: '鼎立建筑工程有限公司', payeeName: '大地基础工程有限公司', content: '分包工程结算款', refNo: 'ZF202612120001' },
-    ],
-  },
+      { type: 'bank', label: '付款回单', date: '2026-12-12', totalAmount: 54500, payer: '鼎立建筑工程有限公司', payeeName: '大地基础工程有限公司', content: '分包工程结算款', refNo: 'ZF202612120001' }]},
   {
     date: '2026-12-14',
     title: '确认12月工程进度收入（完工百分比法）',
@@ -348,8 +287,7 @@ const tasks = [
     entries: [
       { subjectCode: '2205', debit: 500000, credit: 0, summary: '合同负债转入收入（冲抵预收款）', explanation: '合同负债减少记借方。恒达地产办公楼项目12月完工进度10%，对应收入500,000元从预收款中冲抵。此前收到预收款1,500,000元，累计已冲抵1,000,000元。' },
       { subjectCode: '6001', debit: 0, credit: 455000, summary: '确认主营业务收入（不含税）', explanation: '主营业务收入增加记贷方。确认12月工程收入455,000元（不含税）。根据《企业会计准则第14号——收入》第十二条，企业应在客户取得相关商品控制权时确认收入。采用投入法确定完工进度。' },
-      { subjectCode: '222101', debit: 0, credit: 45000, summary: '增值税销项税额（500,000×9%）', explanation: '应交税费-应交增值税（销项税额）增加记贷方。开具增值税专用发票后纳税义务产生，按工程结算款的9%计算销项税额。' },
-    ],
+      { subjectCode: '222101', debit: 0, credit: 45000, summary: '增值税销项税额（500,000×9%）', explanation: '应交税费-应交增值税（销项税额）增加记贷方。开具增值税专用发票后纳税义务产生，按工程结算款的9%计算销项税额。' }],
     documents: [
       { type: 'invoice', label: '增值税专用发票（销项）', date: '2026-12-14', region: '江苏省', invoiceNo: '3200261214', buyer: '恒达地产有限公司', seller: '鼎立建筑工程有限公司',
         lineItems: [{ name: '办公楼工程进度款（主体结构封顶）', qty: 1, unit: '项', price: 500000, amount: 500000 }],
@@ -358,9 +296,7 @@ const tasks = [
 本月完成节点：主体结构封顶
 完工进度：10%（累计60%）
 确认收入：500,000元
-监理确认：工程合格，同意计量`, signature: '监理单位 / 恒达地产 / 鼎立建筑' },
-    ],
-  },
+监理确认：工程合格，同意计量`, signature: '监理单位 / 恒达地产 / 鼎立建筑' }]},
   {
     date: '2026-12-14',
     title: '结转12月合同履约成本',
@@ -375,8 +311,7 @@ const tasks = [
       { subjectCode: '540103', debit: 0, credit: 50000, summary: '结转分包成本', explanation: '合同履约成本-分包成本减少记贷方。结转分包基础工程成本50,000元。' },
       { subjectCode: '540104', debit: 0, credit: 25000, summary: '结转机械使用费', explanation: '合同履约成本-机械使用费减少记贷方。结转施工机械租赁费20,000元+折旧5,000元。' },
       { subjectCode: '540105', debit: 0, credit: 10000, summary: '结转其他直接费用', explanation: '合同履约成本-其他直接费用减少记贷方。结转其他直接费用10,000元。' },
-      { subjectCode: '540106', debit: 0, credit: 32000, summary: '结转间接费用', explanation: '合同履约成本-间接费用减少记贷方。结转间接费用32,000元（项目管理工资15,000+社保17,000）。' },
-    ],
+      { subjectCode: '540106', debit: 0, credit: 32000, summary: '结转间接费用', explanation: '合同履约成本-间接费用减少记贷方。结转间接费用32,000元（项目管理工资15,000+社保17,000）。' }],
     documents: [
       { type: 'text', label: '成本结转计算表', docTitle: '2026年12月合同履约成本结转表', content: `成本项目              发生额        结转额
 人工成本              85,000       85,000
@@ -387,9 +322,7 @@ const tasks = [
 间接费用              32,000       32,000
 合计                 322,000      322,000
 
-已全部结转至主营业务成本。`, signature: '财务部 赵会计' },
-    ],
-  },
+已全部结转至主营业务成本。`, signature: '财务部 赵会计' }]},
   {
     date: '2026-12-15',
     title: '计提坏账准备（年末核查）',
@@ -399,17 +332,14 @@ const tasks = [
     tip: '坏账准备是企业对可能无法收回的应收账款预先提取的准备金。年末按应收账款余额的一定比例计提。分录：借：资产减值损失，贷：坏账准备。依据《企业会计准则第8号——资产减值》。注意：坏账准备是应收账款的备抵科目，资产负债表上应收账款以净额列示。',
     entries: [
       { subjectCode: '6701', debit: 10000, credit: 0, summary: '年末计提坏账准备', explanation: '资产减值损失增加记借方。年末按应收账款余额200,000元的5%计提坏账准备10,000元。根据《企业会计准则第8号——资产减值》第十五条，企业应当在资产负债表日判断资产是否存在可能发生减值的迹象。' },
-      { subjectCode: '1231', debit: 0, credit: 10000, summary: '坏账准备增加', explanation: '坏账准备增加记贷方。坏账准备是应收账款的备抵科目，年末调整后应收账款账面价值=200,000-10,000=190,000元。' },
-    ],
+      { subjectCode: '1231', debit: 0, credit: 10000, summary: '坏账准备增加', explanation: '坏账准备增加记贷方。坏账准备是应收账款的备抵科目，年末调整后应收账款账面价值=200,000-10,000=190,000元。' }],
     documents: [
       { type: 'text', label: '坏账准备计算表', docTitle: '2026年度坏账准备计提计算表', content: `应收账款年末余额：200,000元
 计提比例：5%
 应计提坏账准备：200,000×5%=10,000元
 
 依据：《企业会计准则第8号——资产减值》
-应收账款明细：乙公司市政道路工程款`, signature: '财务部 赵会计' },
-    ],
-  },
+应收账款明细：乙公司市政道路工程款`, signature: '财务部 赵会计' }]},
   {
     date: '2026-12-15',
     title: '计提12月短期借款利息',
@@ -419,12 +349,9 @@ const tasks = [
     tip: '短期借款利息按月计提，计入财务费用。分录：借：财务费用，贷：应付利息。利息=本金×年利率÷12。根据权责发生制，即使利息尚未实际支付，也应在受益期间确认费用。',
     entries: [
       { subjectCode: '6603', debit: 1450, credit: 0, summary: '12月短期借款利息', explanation: '财务费用增加记借方。短期借款400,000元月利息=400,000×4.35%÷12=1,450元。根据权责发生制原则，借款利息在受益期间确认。' },
-      { subjectCode: '2232', debit: 0, credit: 1450, summary: '应付利息增加', explanation: '应付利息增加记贷方。计提的利息尚未支付，形成对银行的付息负债。' },
-    ],
+      { subjectCode: '2232', debit: 0, credit: 1450, summary: '应付利息增加', explanation: '应付利息增加记贷方。计提的利息尚未支付，形成对银行的付息负债。' }],
     documents: [
-      { type: 'text', label: '利息计算表', docTitle: '短期借款利息计算表', content: '借款本金：400,000元\n年利率：4.35%\n月利息：400,000×4.35%÷12=1,450元\n借款银行：工商银行', signature: '财务部 赵会计' },
-    ],
-  },
+      { type: 'text', label: '利息计算表', docTitle: '短期借款利息计算表', content: '借款本金：400,000元\n年利率：4.35%\n月利息：400,000×4.35%÷12=1,450元\n借款银行：工商银行', signature: '财务部 赵会计' }]},
   {
     date: '2026-12-16',
     title: '计算12月增值税及附加税费',
@@ -435,8 +362,7 @@ const tasks = [
     entries: [
       { subjectCode: '6403', debit: 2490, credit: 0, summary: '计提12月城建税及教育费附加', explanation: '税金及附加增加记借方。以应交增值税24,900元为计税依据，城建税7%+教育费附加3%=10%，合计2,490元。根据《城市维护建设税暂行条例》和《征收教育费附加的暂行规定》。' },
       { subjectCode: '222103', debit: 0, credit: 1743, summary: '应交城建税（24,900×7%）', explanation: '应交税费-应交城建税增加记贷方。城建税=24,900×7%=1,743元。' },
-      { subjectCode: '222104', debit: 0, credit: 747, summary: '应交教育费附加（24,900×3%）', explanation: '应交税费-应交教育费附加增加记贷方。教育费附加=24,900×3%=747元。' },
-    ],
+      { subjectCode: '222104', debit: 0, credit: 747, summary: '应交教育费附加（24,900×3%）', explanation: '应交税费-应交教育费附加增加记贷方。教育费附加=24,900×3%=747元。' }],
     documents: [
       { type: 'text', label: '税金计算表', docTitle: '2026年12月增值税及附加计算表', content: `一、增值税：
 销项税额：45,000元
@@ -446,27 +372,21 @@ const tasks = [
 二、附加税费：
 城建税（7%）：24,900×7%=1,743元
 教育费附加（3%）：24,900×3%=747元
-合计：2,490元`, signature: '财务部 赵会计' },
-    ],
-  },
+合计：2,490元`, signature: '财务部 赵会计' }]},
   {
     date: '2026-12-16',
     title: '缴纳增值税及附加（出纳）',
     tags: ['资金管理', '税费'],
     difficulty: 1,
-    role: 'cashier',
     description: '出纳通过网银预缴12月增值税24,900元、城建税1,743元、教育费附加747元，合计27,390元。',
     tip: '出纳根据会计编制的纳税申报表办理税款缴纳。建筑业一般纳税人通常按月申报缴纳增值税。出纳需在申报期内完成缴款，避免逾期。',
     entries: [
       { subjectCode: '222101', debit: 24900, credit: 0, summary: '缴纳12月增值税', explanation: '应交税费-应交增值税减少记借方。出纳完成增值税缴纳。' },
       { subjectCode: '222103', debit: 1743, credit: 0, summary: '缴纳12月城建税', explanation: '应交税费-应交城建税减少记借方。' },
       { subjectCode: '222104', debit: 747, credit: 0, summary: '缴纳12月教育费附加', explanation: '应交税费-应交教育费附加减少记借方。' },
-      { subjectCode: '100201', debit: 0, credit: 27390, summary: '工行缴纳税款', explanation: '银行存款减少27,390元。出纳登记银行存款日记账。' , cashFlowItem: 'cf-op4', cashFlowExplanation: '缴纳税费支出（配对科目222101），属于"支付的各项税费"——经营活动现金流出。'},
-    ],
+      { subjectCode: '100201', debit: 0, credit: 27390, summary: '工行缴纳税款', explanation: '银行存款减少27,390元。出纳登记银行存款日记账。' , cashFlowItem: 'cf-op4', cashFlowExplanation: '缴纳税费支出（配对科目222101），属于"支付的各项税费"——经营活动现金流出。'}],
     documents: [
-      { type: 'bank', label: '缴税回单', date: '2026-12-16', totalAmount: 27390, payer: '鼎立建筑工程有限公司', payeeName: '国家金库', content: '12月增值税及附加', refNo: 'NS202612160001' },
-    ],
-  },
+      { type: 'bank', label: '缴税回单', date: '2026-12-16', totalAmount: 27390, payer: '鼎立建筑工程有限公司', payeeName: '国家金库', content: '12月增值税及附加', refNo: 'NS202612160001' }]},
 
   // ═══════════════════════════════════════════════════════════════════
   // 第四阶段：年度损益结转与利润分配（12/18 - 12/22）
@@ -486,8 +406,7 @@ const tasks = [
       { subjectCode: '660201', debit: 0, credit: 90000, summary: '结转管理费用', explanation: '管理费用转出90,000元，余额归零。含工资25,000+折旧5,000+社保5,000+摊销20,000+其他费用35,000。' },
       { subjectCode: '6603', debit: 0, credit: 1450, summary: '结转财务费用', explanation: '财务费用转出1,450元，余额归零。含短期借款利息。' },
       { subjectCode: '6403', debit: 0, credit: 2490, summary: '结转税金及附加', explanation: '税金及附加转出2,490元，余额归零。含城建税1,743+教育费附加747。' },
-      { subjectCode: '6701', debit: 0, credit: 10000, summary: '结转资产减值损失', explanation: '资产减值损失转出10,000元，余额归零。含计提的坏账准备。' },
-    ],
+      { subjectCode: '6701', debit: 0, credit: 10000, summary: '结转资产减值损失', explanation: '资产减值损失转出10,000元，余额归零。含计提的坏账准备。' }],
     documents: [
       { type: 'text', label: '损益汇总表', docTitle: '2026年12月损益计算表', content: `一、营业收入：455,000.00元
   主营业务收入：455,000元（恒达地产办公楼工程进度款）
@@ -505,9 +424,7 @@ const tasks = [
 
 六、12月利润总额：29,060.00元
 
-📌 全年累计利润总额（含1~11月）：610,000.00元`, signature: '财务部 赵会计' },
-    ],
-  },
+📌 全年累计利润总额（含1~11月）：610,000.00元`, signature: '财务部 赵会计' }]},
   {
     date: '2026-12-19',
     title: '计提年度所得税费用',
@@ -517,17 +434,14 @@ const tasks = [
     tip: '企业所得税按年计算，分期预缴，年终汇算清缴。12月末根据全年利润总额计提全年所得税费用。分录：借：所得税费用，贷：应交税费-应交所得税。标准税率为25%。注意：所得税费用在结转损益之后、年终结转利润之前计提。',
     entries: [
       { subjectCode: '6801', debit: 152500, credit: 0, summary: '计提全年所得税费用（610,000×25%）', explanation: '所得税费用增加记借方。全年利润总额610,000元×25%=152,500元。根据《中华人民共和国企业所得税法》第四条，企业所得税税率为25%。所得税费用属于损益类科目，期末需结转至本年利润。' },
-      { subjectCode: '222102', debit: 0, credit: 152500, summary: '应交企业所得税', explanation: '应交税费-应交所得税增加记贷方。计提的所得税形成对税务机关的负债，实际缴纳时冲减。' },
-    ],
+      { subjectCode: '222102', debit: 0, credit: 152500, summary: '应交企业所得税', explanation: '应交税费-应交所得税增加记贷方。计提的所得税形成对税务机关的负债，实际缴纳时冲减。' }],
     documents: [
       { type: 'text', label: '所得税计算表', docTitle: '2026年度企业所得税计算表', content: `全年利润总额：610,000.00元
 适用税率：25%
 应纳所得税额：610,000×25%=152,500.00元
 
 依据：《中华人民共和国企业所得税法》第四条、第五条
-备注：本表为简化计算，未考虑纳税调整事项。`, signature: '财务部 赵会计' },
-    ],
-  },
+备注：本表为简化计算，未考虑纳税调整事项。`, signature: '财务部 赵会计' }]},
   {
     date: '2026-12-19',
     title: '结转所得税费用',
@@ -537,8 +451,7 @@ const tasks = [
     tip: '所得税费用是损益类科目，期末需结转至本年利润。结转后所得税费用余额归零，本年利润余额即为全年净利润。',
     entries: [
       { subjectCode: '4103', debit: 152500, credit: 0, summary: '所得税费用结转至本年利润', explanation: '本年利润减少记借方。将所得税费用152,500元结转至本年利润。全年净利润=利润总额610,000-所得税152,500=457,500元。' },
-      { subjectCode: '6801', debit: 0, credit: 152500, summary: '结转所得税费用', explanation: '所得税费用转出152,500元，余额归零。所得税费用结转后无余额。' },
-    ],
+      { subjectCode: '6801', debit: 0, credit: 152500, summary: '结转所得税费用', explanation: '所得税费用转出152,500元，余额归零。所得税费用结转后无余额。' }],
     documents: [
       { type: 'text', label: '结转说明', docTitle: '所得税费用结转说明', content: `会计分录：
 借：本年利润          152,500.00
@@ -546,9 +459,7 @@ const tasks = [
 
 结转后：
 本年利润余额：610,000-152,500=457,500.00元（全年净利润）
-所得税费用余额：0元 ✓`, signature: '财务部 赵会计' },
-    ],
-  },
+所得税费用余额：0元 ✓`, signature: '财务部 赵会计' }]},
   {
     date: '2026-12-20',
     title: '年终·结转本年利润至未分配利润',
@@ -558,8 +469,7 @@ const tasks = [
     tip: '年终结转——全年只有一次的关键分录！将"本年利润"贷方余额（净利润）结转至"利润分配-未分配利润"。结转后本年利润科目余额归零，下一年重新开始累积。未分配利润是所有者权益的重要组成部分，反映企业历年累积的留存收益。',
     entries: [
       { subjectCode: '4103', debit: 457500, credit: 0, summary: '全年净利润结转至利润分配', explanation: '本年利润减少457,500元（借方结转）。全年实现净利润457,500元（利润总额610,000-所得税费用152,500）。结转后"本年利润"科目余额归零，下一年度重新开始核算。根据《企业会计准则——基本准则》第四十六条。' },
-      { subjectCode: '410401', debit: 0, credit: 457500, summary: '未分配利润增加', explanation: '利润分配-未分配利润增加457,500元。未分配利润反映企业历年累积的留存收益。这457,500元为可供分配的利润，后续按顺序：①提取法定盈余公积（10%）②提取任意盈余公积③分配现金股利④剩余为年末未分配利润。' },
-    ],
+      { subjectCode: '410401', debit: 0, credit: 457500, summary: '未分配利润增加', explanation: '利润分配-未分配利润增加457,500元。未分配利润反映企业历年累积的留存收益。这457,500元为可供分配的利润，后续按顺序：①提取法定盈余公积（10%）②提取任意盈余公积③分配现金股利④剩余为年末未分配利润。' }],
     documents: [
       { type: 'text', label: '年终结转表', docTitle: '2026年度利润结转表', content: `2026年度利润汇总：
 全年利润总额（税前）：610,000.00元
@@ -571,9 +481,7 @@ const tasks = [
 借：本年利润              457,500.00
   贷：利润分配-未分配利润    457,500.00
 
-结转后本年利润余额：零 ✓`, signature: '财务部 赵会计' },
-    ],
-  },
+结转后本年利润余额：零 ✓`, signature: '财务部 赵会计' }]},
   {
     date: '2026-12-21',
     title: '提取法定盈余公积',
@@ -583,16 +491,13 @@ const tasks = [
     tip: '法定盈余公积是强制提取的——公司制企业按净利润的10%提取，累计达到注册资本的50%时可以不再提取。分录：借：利润分配-提取盈余公积，贷：盈余公积。注意：提取盈余公积是所有者权益内部结构调整，不涉及现金减少。',
     entries: [
       { subjectCode: '410402', debit: 45750, credit: 0, summary: '提取法定盈余公积（457,500×10%）', explanation: '利润分配-提取盈余公积增加45,750元。根据《公司法》第一百六十六条，公司分配当年税后利润时，应当提取利润的10%列入公司法定公积金。法定公积金累计额为公司注册资本的50%以上的，可以不再提取。' },
-      { subjectCode: '4101', debit: 0, credit: 45750, summary: '法定盈余公积增加', explanation: '盈余公积增加45,750元。盈余公积属于所有者权益科目，可用于弥补亏损或转增资本（需经股东会决议）。提取盈余公积不意味着现金被"存起来"——这是所有者权益内部结构的调整，不涉及资产减少。' },
-    ],
+      { subjectCode: '4101', debit: 0, credit: 45750, summary: '法定盈余公积增加', explanation: '盈余公积增加45,750元。盈余公积属于所有者权益科目，可用于弥补亏损或转增资本（需经股东会决议）。提取盈余公积不意味着现金被"存起来"——这是所有者权益内部结构的调整，不涉及资产减少。' }],
     documents: [
       { type: 'text', label: '盈余公积计算表', docTitle: '法定盈余公积提取计算表', content: `全年净利润：457,500.00元
 提取比例：10%
 提取金额：457,500×10%=45,750.00元
 
-依据：《中华人民共和国公司法》第一百六十六条`, signature: '财务部 赵会计' },
-    ],
-  },
+依据：《中华人民共和国公司法》第一百六十六条`, signature: '财务部 赵会计' }]},
   {
     date: '2026-12-21',
     title: '计提应付股利（股东分红）',
@@ -602,8 +507,7 @@ const tasks = [
     tip: '宣告分配股利时，借记"利润分配-应付普通股股利"，贷记"应付股利"。宣告日即确认负债，与实际发放日是两笔不同的业务。分录中使用"利润分配-应付普通股股利"科目过渡，年末再结转至"利润分配-未分配利润"。',
     entries: [
       { subjectCode: '410403', debit: 250000, credit: 0, summary: '宣告分配现金股利', explanation: '利润分配-应付普通股股利增加250,000元。宣告分配股利意味着这部分利润将不再留存于公司，而是分配给股东。宣告日即确认负债，体现权责发生制原则。' },
-      { subjectCode: '2231', debit: 0, credit: 250000, summary: '应付股利增加', explanation: '应付股利增加250,000元。宣告分配现金股利形成对股东的负债，在实际支付前暂挂应付股利科目。实际支付时：借"应付股利"，贷"银行存款"。' },
-    ],
+      { subjectCode: '2231', debit: 0, credit: 250000, summary: '应付股利增加', explanation: '应付股利增加250,000元。宣告分配现金股利形成对股东的负债，在实际支付前暂挂应付股利科目。实际支付时：借"应付股利"，贷"银行存款"。' }],
     documents: [
       { type: 'text', label: '股东会决议', docTitle: '2026年度利润分配股东会决议（摘要）', content: `出席股东：全体股东（100%股权）
 决议事项：2026年度利润分配方案
@@ -612,9 +516,7 @@ const tasks = [
 3. 剩余未分配利润留存：161,750.00元
 
 全体股东签字：（签名）
-日期：2026年12月21日`, stampText: '鼎立建筑工程有限公司 公章' },
-    ],
-  },
+日期：2026年12月21日`, stampText: '鼎立建筑工程有限公司 公章' }]},
   {
     date: '2026-12-22',
     title: '利润分配明细科目结转',
@@ -626,8 +528,7 @@ const tasks = [
       { subjectCode: '410401', debit: 0, credit: 45750, summary: '结转提取的法定盈余公积', explanation: '利润分配-未分配利润减少45,750元。将已提取的法定盈余公积从提取明细转入未分配利润的反方向，使提取明细余额归零。' },
       { subjectCode: '410401', debit: 0, credit: 250000, summary: '结转应付股利', explanation: '利润分配-未分配利润减少250,000元。将已宣告的应付股利从明细科目结转至未分配利润的借方。' },
       { subjectCode: '410402', debit: 45750, credit: 0, summary: '盈余公积明细结转（余额归零）', explanation: '利润分配-提取盈余公积减少45,750元（余额归零）。明细科目余额结转至未分配利润。这是利润分配科目内部的结转，不涉及实际资金变动。' },
-      { subjectCode: '410403', debit: 250000, credit: 0, summary: '应付股利明细结转（余额归零）', explanation: '利润分配-应付普通股股利减少250,000元（余额归零）。' },
-    ],
+      { subjectCode: '410403', debit: 250000, credit: 0, summary: '应付股利明细结转（余额归零）', explanation: '利润分配-应付普通股股利减少250,000元（余额归零）。' }],
     documents: [
       { type: 'text', label: '利润分配结转表', docTitle: '2026年度利润分配明细结转表', content: `利润分配明细科目结转：
 1. 未分配利润转入：457,500.00（来自本年利润）
@@ -641,9 +542,7 @@ const tasks = [
 利润分配-提取盈余公积：0 ✓
 利润分配-应付普通股股利：0 ✓
 
-📌 年终结转全部完成！`, signature: '财务部 赵会计' },
-    ],
-  },
+📌 年终结转全部完成！`, signature: '财务部 赵会计' }]},
 
   // ═══════════════════════════════════════════════════════════════════
   // 第五阶段：年终奖与年末收尾（12/23 - 12/31）
@@ -659,73 +558,58 @@ const tasks = [
       { subjectCode: '540101', debit: 22000, credit: 0, summary: '施工人员年终奖', explanation: '合同履约成本-人工成本增加记借方。施工人员年终奖金22,000元属于直接人工成本，计入工程成本。' },
       { subjectCode: '540106', debit: 8000, credit: 0, summary: '项目部管理人员年终奖', explanation: '合同履约成本-间接费用增加记借方。项目部管理人员年终奖8,000元属于间接费用，计入工程成本。' },
       { subjectCode: '660201', debit: 20000, credit: 0, summary: '公司管理人员年终奖', explanation: '管理费用增加记借方。公司行政管理人员年终奖20,000元不计入工程成本，作为期间费用计入当期损益。' },
-      { subjectCode: '221101', debit: 0, credit: 50000, summary: '应付年终奖', explanation: '应付职工薪酬-工资增加记贷方。计提年终奖50,000元形成对职工的负债，待实际发放时冲减。根据《企业会计准则第9号——职工薪酬》第五条，年终奖金属于职工薪酬的范畴。' },
-    ],
+      { subjectCode: '221101', debit: 0, credit: 50000, summary: '应付年终奖', explanation: '应付职工薪酬-工资增加记贷方。计提年终奖50,000元形成对职工的负债，待实际发放时冲减。根据《企业会计准则第9号——职工薪酬》第五条，年终奖金属于职工薪酬的范畴。' }],
     documents: [
       { type: 'text', label: '年终奖计算表', docTitle: '2026年度年终奖金分配表', content: `施工人员年终奖（17人）：22,000元
 项目部管理人员年终奖（3人）：8,000元
 公司管理人员年终奖（4人）：20,000元
 合计：50,000元
 
-分配依据：年度绩效考核结果`, signature: '人事部 王经理' },
-    ],
-  },
+分配依据：年度绩效考核结果`, signature: '人事部 王经理' }]},
   {
     date: '2026-12-24',
     title: '支付年终奖金（出纳）',
     tags: ['资金管理', '工资社保'],
     difficulty: 1,
-    role: 'cashier',
     description: '出纳通过工商银行发放年终奖金50,000元。',
     tip: '年终奖金发放与工资发放操作相同。出纳通过银行代发系统操作，需提供代发清单。分录：借：应付职工薪酬-工资，贷：银行存款。',
     entries: [
       { subjectCode: '221101', debit: 50000, credit: 0, summary: '发放年终奖金', explanation: '应付职工薪酬-工资减少记借方。实际发放年终奖金50,000元，清偿对职工的薪酬负债。' },
-      { subjectCode: '100201', debit: 0, credit: 50000, summary: '工行支付年终奖', explanation: '银行存款减少50,000元。出纳通过银行代发系统发放年终奖。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221101），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'},
-    ],
+      { subjectCode: '100201', debit: 0, credit: 50000, summary: '工行支付年终奖', explanation: '银行存款减少50,000元。出纳通过银行代发系统发放年终奖。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221101），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'}],
     documents: [
-      { type: 'bank', label: '代发奖金回单', date: '2026-12-24', totalAmount: 50000, payer: '鼎立建筑工程有限公司', payeeName: '公司员工', content: '2026年度年终奖金', refNo: 'GZ202612240001' },
-    ],
-  },
+      { type: 'bank', label: '代发奖金回单', date: '2026-12-24', totalAmount: 50000, payer: '鼎立建筑工程有限公司', payeeName: '公司员工', content: '2026年度年终奖金', refNo: 'GZ202612240001' }]},
   {
     date: '2026-12-25',
     title: '提取备用金（出纳）',
     tags: ['资金管理', '资金管理'],
     difficulty: 1,
-    role: 'cashier',
     description: '出纳从工商银行提取备用金10,000元，用于年末零星开支。',
     tip: '提取备用金时：借：库存现金，贷：银行存款。出纳填写现金支票到银行柜台办理提现。年末需注意库存现金限额，超过部分应及时送存银行。',
     entries: [
       { subjectCode: '1001', debit: 10000, credit: 0, summary: '提取备用金', explanation: '库存现金增加10,000元。年末提取备用金用于零星开支，如购买办公用品、支付小额费用等。' },
-      { subjectCode: '100201', debit: 0, credit: 10000, summary: '工行提现', explanation: '银行存款减少10,000元。出纳登记银行存款日记账"付"方，同时登记现金日记账"收"方。' },
-    ],
+      { subjectCode: '100201', debit: 0, credit: 10000, summary: '工行提现', explanation: '银行存款减少10,000元。出纳登记银行存款日记账"付"方，同时登记现金日记账"收"方。' }],
     documents: [
-      { type: 'bank', label: '现金支票存根', date: '2026-12-25', totalAmount: 10000, payer: '鼎立建筑工程有限公司', payeeName: '鼎立建筑工程有限公司（提现）', content: '备用金', refNo: 'XJ202612250001' },
-    ],
-  },
+      { type: 'bank', label: '现金支票存根', date: '2026-12-25', totalAmount: 10000, payer: '鼎立建筑工程有限公司', payeeName: '鼎立建筑工程有限公司（提现）', content: '备用金', refNo: 'XJ202612250001' }]},
   {
     date: '2026-12-26',
     title: '银行手续费（出纳）',
     tags: ['资金管理', '资金管理'],
     difficulty: 1,
-    role: 'cashier',
     description: '工商银行扣收12月转账汇款手续费、账户管理费等共计350元。',
     tip: '银行手续费属于企业的财务费用，通常银行按月汇总扣收。出纳收到银行回单后需及时入账。分录：借：财务费用，贷：银行存款。',
     entries: [
       { subjectCode: '6603', debit: 350, credit: 0, summary: '12月银行手续费', explanation: '财务费用增加记借方。银行转账汇款手续费及账户管理费350元，计入财务费用-手续费。' },
-      { subjectCode: '100201', debit: 0, credit: 350, summary: '工行扣收手续费', explanation: '银行存款减少350元。银行直接扣收手续费，出纳需在日记账中登记。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'},
-    ],
+      { subjectCode: '100201', debit: 0, credit: 350, summary: '工行扣收手续费', explanation: '银行存款减少350元。银行直接扣收手续费，出纳需在日记账中登记。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
     documents: [
-      { type: 'bank', label: '银行收费回单', date: '2026-12-26', totalAmount: 350, payer: '鼎立建筑工程有限公司', payeeName: '中国工商银行', content: '12月转账汇款手续费', refNo: 'SX202612260001' },
-    ],
-  },
+      { type: 'bank', label: '银行收费回单', date: '2026-12-26', totalAmount: 350, payer: '鼎立建筑工程有限公司', payeeName: '中国工商银行', content: '12月转账汇款手续费', refNo: 'SX202612260001' }]},
   {
     date: '2026-12-28',
     title: '年末库存现金全面盘点',
     tags: ['资金管理', '期末'],
     difficulty: 1,
-    role: 'cashier',
     description: '年终对库存现金进行全面实地盘点，核对现金日记账余额与实际库存现金是否一致。经盘点账实相符。',
     tip: '年末全面盘点库存现金是出纳的年度重要工作。盘点时需有财务主管或会计在场监盘，盘点表由出纳和监盘人共同签字确认。盘点内容包括所有现金及现金等价物，检查是否有白条抵库。',
+    role: 'cashier',
     entries: [],
     documents: [
       { type: 'text', label: '现金盘点表', docTitle: '2026年度库存现金盘点表', content: `盘点日期：2026年12月28日 16:00
@@ -736,17 +620,15 @@ const tasks = [
 差异说明：无
 
 出纳：刘出纳
-监盘人：赵会计`, stampText: '财务专用章' },
-    ],
-  },
+监盘人：赵会计`, stampText: '财务专用章' }]},
   {
     date: '2026-12-29',
     title: '年末银行存款余额调节',
     tags: ['资金管理', '期末'],
     difficulty: 1,
-    role: 'cashier',
     description: '年末核对工商银行存款日记账余额与银行对账单是否一致，编制银行存款余额调节表。经核对无未达账项，余额一致。',
     tip: '年末出纳需仔细核对银行日记账与银行对账单余额，检查全年所有未达账项是否已全部处理。这是出纳年度最重要的工作之一，确保资金安全，为年度决算提供准确的货币资金数据。',
+    role: 'cashier',
     entries: [],
     documents: [
       { type: 'text', label: '银行存款余额调节表', docTitle: '2026年12月银行存款余额调节表', content: `账户：工商银行
@@ -762,9 +644,7 @@ const tasks = [
 
 结论：调节后余额一致 ✓
 
-出纳：刘出纳  日期：2026-12-29`, stampText: '财务专用章' },
-    ],
-  },
+出纳：刘出纳  日期：2026-12-29`, stampText: '财务专用章' }]},
   {
     date: '2026-12-30',
     title: '年末固定资产盘点',
@@ -772,6 +652,7 @@ const tasks = [
     difficulty: 1,
     description: '年终对全部固定资产进行实地盘点，核对固定资产台账与实物是否一致。经盘点所有固定资产账实相符。',
     tip: '固定资产年度盘点是企业资产管理的重要环节，每年至少盘点一次。盘点内容包括资产编号、名称、规格、使用部门、存放地点、使用状态等。盘点结果需形成书面报告。',
+    role: 'cashier',
     entries: [],
     documents: [
       { type: 'text', label: '固定资产盘点表', docTitle: '2026年度固定资产盘点表', content: `盘点日期：2026年12月30日
@@ -786,17 +667,15 @@ const tasks = [
 结论：全部固定资产账实相符，无盘盈盘亏。
 
 盘点人：设备部 张工
-监盘人：财务部 赵会计`, stampText: '财务专用章' },
-    ],
-  },
+监盘人：财务部 赵会计`, stampText: '财务专用章' }]},
   {
     date: '2026-12-31',
     title: '年度票据整理归档',
     tags: ['资金管理', '期末'],
     difficulty: 1,
-    role: 'cashier',
     description: '出纳将全年所有凭证、账簿和报表整理归档。包括：记账凭证、原始凭证、银行回单、工资表、合同等。按月份装订成册，编制归档清册。',
     tip: '年度票据归档是出纳年末的收尾工作。需将全年会计档案分类整理、装订、编号、登记归档清册。保管期限：原始凭证和记账凭证至少30年，月度报表至少10年，年度报表永久保存。',
+    role: 'cashier',
     entries: [],
     documents: [
       { type: 'text', label: '会计档案归档清册', docTitle: '2026年度会计档案归档清册', content: `一、凭证类：
@@ -813,9 +692,7 @@ const tasks = [
 
 归档人：刘出纳
 归档日期：2026-12-31
-保管期限：按档案管理规定执行`, stampText: '财务专用章' },
-    ],
-  },
+保管期限：按档案管理规定执行`, stampText: '财务专用章' }]},
 
   // ═══════════════════════════════════════════════════════════════════
   // 第六阶段：批量出纳日常任务
@@ -825,68 +702,55 @@ const tasks = [
     title: '微信收取工程质保金',
     tags: ['资金管理'],
     difficulty: 1,
-    role: 'cashier',
     description: '通过微信商户平台收取工程质保金20,000元，质保期至2027年12月，到期后退还。',
     tip: '收取质保金时：借：其他货币资金-微信，贷：其他应付款-质保金。质保金在保修期满后退还，属于暂收款项，非企业收入。',
     entries: [
       { subjectCode: '101204', debit: 20000, credit: 0, summary: '微信收取质保金', explanation: '其他货币资金-微信增加记借方。通过微信商户平台收取工程质保金20,000元，质保期限一年。' , cashFlowItem: 'cf-op5', cashFlowExplanation: '其他经营活动现金流入（配对科目2241），属于"收到其他与经营活动有关的现金"。'},
-      { subjectCode: '2241', debit: 0, credit: 20000, summary: '其他应付款-质保金', explanation: '其他应付款增加记贷方。收取的工程质保金在保修期满后退还，属于暂收款项，需专户管理。' },
-    ],
-    documents: [{ type: 'text', label: '微信收款记录', content: '微信商户平台收取工程质保金20,000元。' }],
-  },
+      { subjectCode: '2241', debit: 0, credit: 20000, summary: '其他应付款-质保金', explanation: '其他应付款增加记贷方。收取的工程质保金在保修期满后退还，属于暂收款项，需专户管理。' }],
+    documents: [{ type: 'text', label: '微信收款记录', content: '微信商户平台收取工程质保金20,000元。' }]},
   {
     date: '2026-12-10',
     title: '支付宝支付工具采购',
     tags: ['材料管理'],
     difficulty: 1,
-    role: 'cashier',
     description: '通过支付宝企业账户支付小型施工工具采购款8,000元，用于施工现场零星工具补充。',
     tip: '小额采购通过支付宝支付便捷高效。借：合同履约成本-其他直接费用，贷：其他货币资金-支付宝。',
     entries: [
       { subjectCode: '540105', debit: 8000, credit: 0, summary: '支付宝支付购买施工工具', explanation: '合同履约成本-其他直接费用增加记借方。通过支付宝采购小型施工工具8,000元，直接计入工程成本。' },
-      { subjectCode: '101205', debit: 0, credit: 8000, summary: '支付宝支付工具款', explanation: '其他货币资金-支付宝减少记贷方。支付宝企业账户支付8,000元，需保存支付凭证备查。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目540105），属于"支付其他与经营活动有关的现金"。'},
-    ],
-    documents: [{ type: 'text', label: '支付宝支付记录', content: '支付宝支付施工工具采购款8,000元。' }],
-  },
+      { subjectCode: '101205', debit: 0, credit: 8000, summary: '支付宝支付工具款', explanation: '其他货币资金-支付宝减少记贷方。支付宝企业账户支付8,000元，需保存支付凭证备查。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目540105），属于"支付其他与经营活动有关的现金"。'}],
+    documents: [{ type: 'text', label: '支付宝支付记录', content: '支付宝支付施工工具采购款8,000元。' }]},
   {
     date: '2026-12-18',
     title: '银行账户间资金调拨',
     tags: ['资金管理'],
     difficulty: 1,
-    role: 'cashier',
     description: '为满足建设银行账户付款需要，从工商银行调拨资金50,000元至建设银行账户。',
     tip: '拥有多个银行账户时，出纳需根据各账户余额进行资金统筹调拨。借：银行存款-建行，贷：银行存款-工行。这是企业内部资金划转，不影响货币资金总额。',
     entries: [
       { subjectCode: '100202', debit: 50000, credit: 0, summary: '工行转入建行', explanation: '银行存款-建设银行增加记借方。资金从工商银行调拨至建设银行账户50,000元，建行可用余额增加。' },
-      { subjectCode: '100201', debit: 0, credit: 50000, summary: '建行接收工行转入', explanation: '银行存款-工商银行减少记贷方。同一企业不同银行账户间资金调拨，不影响企业资金总额，仅为账户间划转。' },
-    ],
-    documents: [{ type: 'text', label: '内部调拨单', content: '工行转建行50,000元资金调拨。' }],
-  },
+      { subjectCode: '100201', debit: 0, credit: 50000, summary: '建行接收工行转入', explanation: '银行存款-工商银行减少记贷方。同一企业不同银行账户间资金调拨，不影响企业资金总额，仅为账户间划转。' }],
+    documents: [{ type: 'text', label: '内部调拨单', content: '工行转建行50,000元资金调拨。' }]},
   {
     date: '2026-12-20',
     title: '年末往来款对账（查看类）',
     tags: ['往来管理'],
     difficulty: 1,
-    role: 'cashier',
     description: '年末与各供应商和客户进行往来款对账，确认所有应付和应收账款余额一致，无差异。',
     tip: '年末对账是出纳和会计的重要工作，向各供应商和客户发送对账函，确认双方账面余额一致。如有差异需及时查找原因并调整。',
+    role: 'cashier',
     entries: [],
-    documents: [{ type: 'text', label: '往来对账单', content: '年末与各供应商和客户进行往来款对账，所有余额核对一致。' }],
-  },
+    documents: [{ type: 'text', label: '往来对账单', content: '年末与各供应商和客户进行往来款对账，所有余额核对一致。' }]},
   {
     date: '2026-12-23',
     title: '提取备用金（补充）',
     tags: ['资金管理'],
     difficulty: 1,
-    role: 'cashier',
     description: '年末补充备用金5,000元，用于元旦期间值班人员的零星支出。',
     tip: '提取备用金时：借：库存现金，贷：银行存款。年末需根据节假日安排适当补充备用金，满足假期期间的支付需求。',
     entries: [
       { subjectCode: '1001', debit: 5000, credit: 0, summary: '补充备用金', explanation: '库存现金增加记借方。年末补充备用金5,000元，用于元旦期间值班人员零星支出。' },
-      { subjectCode: '100201', debit: 0, credit: 5000, summary: '工行提现', explanation: '银行存款减少5,000元。出纳登记银行存款日记账"付"方。' },
-    ],
-    documents: [{ type: 'text', label: '提现记录', content: '补充备用金5,000元。' }],
-  },
+      { subjectCode: '100201', debit: 0, credit: 5000, summary: '工行提现', explanation: '银行存款减少5,000元。出纳登记银行存款日记账"付"方。' }],
+    documents: [{ type: 'text', label: '提现记录', content: '补充备用金5,000元。' }]},
   {
     date: '2026-12-27',
     title: '预付下年度办公用房租金',
@@ -896,21 +760,17 @@ const tasks = [
     tip: '预付下年度的租金属于跨期预付费用，不能直接计入当期费用（权责发生制原则）。借：预付账款，贷：银行存款。待下年度实际使用时再摊销计入管理费用。',
     entries: [
       { subjectCode: '1123', debit: 20000, credit: 0, summary: '预付2027年1月房租', explanation: '预付账款增加记借方。预付下年度办公用房租金20,000元，属于预付性质，不能计入当期费用。根据权责发生制原则，费用应在受益期间确认。' },
-      { subjectCode: '100201', debit: 0, credit: 20000, summary: '工行预付房租', explanation: '银行存款减少20,000元。出纳办理预付租金转账，保存租赁合同和付款回单。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目1123），属于"支付其他与经营活动有关的现金"。'},
-    ],
-    documents: [{ type: 'text', label: '租赁合同', content: '2027年度办公用房租赁合同，月租金20,000元，按月预付。' }],
-  },
+      { subjectCode: '100201', debit: 0, credit: 20000, summary: '工行预付房租', explanation: '银行存款减少20,000元。出纳办理预付租金转账，保存租赁合同和付款回单。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目1123），属于"支付其他与经营活动有关的现金"。'}],
+    documents: [{ type: 'text', label: '租赁合同', content: '2027年度办公用房租赁合同，月租金20,000元，按月预付。' }]},
   {
     date: '2026-12-31',
     title: '年终结账确认',
     tags: ['期末'],
     difficulty: 1,
-    role: 'cashier',
     description: '2026年度账务已全部处理完毕，确认无遗漏事项，可以进行年终结账操作。',
     tip: '年终结账确认是财务年度最后一步。确认所有业务已入账、损益已结转、利润已分配、凭证已过账后方可进行年终结账。',
+    role: 'cashier',
     entries: [],
-    documents: [{ type: 'text', label: '年终结账通知', content: '2026年度账务已全部处理完毕，可以结账。祝新年快乐！' }],
-  },
-]
+    documents: [{ type: 'text', label: '年终结账通知', content: '2026年度账务已全部处理完毕，可以结账。祝新年快乐！' }]}]
 
 export default tasks

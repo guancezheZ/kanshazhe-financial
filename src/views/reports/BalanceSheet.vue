@@ -61,6 +61,8 @@
         所有者权益总计：<strong>{{ fmt(reportData.equity?.total || 0) }}</strong>
       </div>
     </el-card>
+
+    <FinancialIndicators :indicators="financialIndicators" />
   </div>
 </template>
 
@@ -69,6 +71,7 @@ import { ref, reactive, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useStore } from '@/stores/store.js'
 import { formatAmount, getCurrentPeriod } from '@/utils/accounting.js'
+import FinancialIndicators from '@/components/FinancialIndicators.vue'
 
 const store = useStore()
 const route = useRoute()
@@ -79,6 +82,7 @@ const reportData = reactive({
   equity: { items: [], total: 0 },
   isBalanced: true,
 })
+const financialIndicators = ref([])
 
 function fmt(val) { return formatAmount(val) }
 
@@ -93,6 +97,7 @@ function loadData() {
   reportData.liabilities = data.liabilities
   reportData.equity = data.equity
   reportData.isBalanced = data.isBalanced
+  financialIndicators.value = store.getFinancialRatios(period.value)
 }
 
 // 支持从查询参数 ?period=202604 跳转时自动选中期期间

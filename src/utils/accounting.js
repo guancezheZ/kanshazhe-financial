@@ -574,6 +574,169 @@ export function calcCashFlow(subjects, periodBalances) {
 }
 
 /**
+ * 计算财务指标（盈利能力、偿债能力、营运能力）
+ *
+ * 从资产负债表和利润表数据中提取关键财务比率，用于教学展示。
+ * 每个指标附带：数值、判断（良好/一般/警惕）、讲解说明
+ *
+ * @param {Array} subjects - 科目列表
+ * @param {Array} periodBalances - 期间余额
+ * @returns {Array} 指标数组 [{ category, name, value, unit, judgment, explanation }]
+ */
+export function calcFinancialRatios(subjects, periodBalances) {
+  const bs = calcBalanceSheet(subjects, periodBalances)
+  const is = calcIncomeStatement(subjects, periodBalances)
+
+  const totalAssets = bs.assets.total || 0
+  const totalLiabilities = bs.liabilities.total || 0
+  const totalEquity = bs.equity.total || 0
+  const revenue = is.revenue || 0
+  const cost = is.cost || 0
+  const netProfit = is.netProfit || 0
+  const operatingProfit = is.operatingProfit || 0
+  const sellingExp = is.sellingExp || 0
+  const adminExp = is.adminExp || 0
+  const financeExp = is.financeExp || 0
+
+  // 计算流动资产/流动负债（通过科目编码前缀判断）
+  const CURRENT_ASSET_PREFIXES = ['1001', '1002', '1012', '1101', '1121', '1122', '1123', '1131', '1132', '1221', '1231', '1401', '1402', '1403', '1404', '1405', '1406', '1407', '1408', '1411']
+  const CURRENT_LIABILITY_PREFIXES = ['2001', '2101', '2201', '2202', '2203', '2211', '2221', '2231', '2232', '2241', '2311', '2312', '2313', '2314']
+
+  let currentAssets = 0
+  let currentLiabilities = 0
+
+  for (const pb of periodBalances) {
+    const subject = subjects.find(s => s.id === pb.subjectId)
+    if (!subject) continue
+    const closingAmount = round(Number(pb.closingDebit) - Number(pb.closingCredit))
+    if (closingAmount === 0) continue
+
+    if (subject.type === SUBJECT_TYPE.ASSET || subject.type === SUBJECT_TYPE.COST) {
+      const code = subject.code || ''
+      if (CURRENT_ASSET_PREFIXES.some(p => code.startsWith(p))) {
+        currentAssets += Math.abs(closingAmount)
+      }
+    }
+    if (subject.type === SUBJECT_TYPE.LIABILITY) {
+      const code = subject.code || ''
+      if (CURRENT_LIABILITY_PREFIXES.some(p => code.startsWith(p))) {
+        currentLiabilities += Math.abs(closingAmount)
+      }
+    }
+  }
+  currentAssets = round(currentAssets)
+  currentLiabilities = round(currentLiabilities)
+
+  // 计算各指标
+  const calcRate = (num, den) => den !== 0 ? round(num / den * 10000) / 100 : null // 保留两位小数百分比
+  const calcTimes = (num, den) => den !== 0 ? round(num / den * 100) / 100 : null // 保留两位小数倍数
+
+  const grossProfitRate = calcRate(revenue - cost, revenue)
+  const netProfitRate = calcRate(netProfit, revenue)
+  const operatingProfitRate = calcRate(operatingProfit, revenue)
+  const periodExpenseRate = calcRate(sellingExp + adminExp + financeExp, revenue)
+  const debtRatio = calcRate(totalLiabilities, totalAssets)
+  const currentRatio = calcRate(currentAssets, currentLiabilities)
+  const assetTurnover = calcTimes(revenue, totalAssets)
+  const roe = calcRate(netProfit, totalEquity)
+
+  const indicators = []
+
+  // ─── 盈利能力指标 ───
+  indicators.push({
+    category: '盈利能力',
+    name: '毛利率',
+    value: grossProfitRate,
+    unit: '%',
+    judgment: grossProfitRate === null ? '—' : grossProfitRate >= 30 ? '良好' : grossProfitRate >= 15 ? '一般' : '偏低',
+    explanation: grossProfitRate === null
+      ? '毛利率 = (营业收入 - 营业成本) ÷ 营业收入 × 100%。反映企业产品定价的盈利空间，无收入时无法计算。'
+      : `毛利率 = (${revenue} - ${cost}) ÷ ${revenue} × 100% = ${grossProfitRate}%。该指标反映企业核心业务的盈利空间。毛利率越高，说明产品附加值越高或成本控制越好。通常制造业30%以上、商业企业15%以上、服务业40%以上为良好。`,
+  })
+
+  indicators.push({
+    category: '盈利能力',
+    name: '净利率',
+    value: netProfitRate,
+    unit: '%',
+    judgment: netProfitRate === null ? '—' : netProfitRate >= 10 ? '良好' : netProfitRate >= 5 ? '一般' : '偏低',
+    explanation: netProfitRate === null
+      ? '净利率 = 净利润 ÷ 营业收入 × 100%。反映企业最终盈利水平，无收入时无法计算。'
+      : `净利率 = ${netProfit} ÷ ${revenue} × 100% = ${netProfitRate}%。该指标反映每100元收入能转化为多少净利润。考虑了所有费用和税费后的最终盈利能力。`,
+  })
+
+  indicators.push({
+    category: '盈利能力',
+    name: '营业利润率',
+    value: operatingProfitRate,
+    unit: '%',
+    judgment: operatingProfitRate === null ? '—' : operatingProfitRate >= 15 ? '良好' : operatingProfitRate >= 5 ? '一般' : '偏低',
+    explanation: operatingProfitRate === null
+      ? '营业利润率 = 营业利润 ÷ 营业收入 × 100%。反映主营业务盈利水平，无收入时无法计算。'
+      : `营业利润率 = ${operatingProfit} ÷ ${revenue} × 100% = ${operatingProfitRate}%。与毛利率的区别是扣除了期间费用（销售/管理/财务费用），更能反映企业的经营管理效率。`,
+  })
+
+  indicators.push({
+    category: '盈利能力',
+    name: '期间费用率',
+    value: periodExpenseRate,
+    unit: '%',
+    judgment: periodExpenseRate === null ? '—' : periodExpenseRate <= 15 ? '良好' : periodExpenseRate <= 30 ? '一般' : '偏高',
+    explanation: periodExpenseRate === null
+      ? '期间费用率 = (销售费用 + 管理费用 + 财务费用) ÷ 营业收入 × 100%。无收入时无法计算。'
+      : `期间费用率 = (${sellingExp} + ${adminExp} + ${financeExp}) ÷ ${revenue} × 100% = ${periodExpenseRate}%。该指标反映企业管理费用的控制能力。比率越低，说明费用控制越有效。`,
+  })
+
+  // ─── 偿债能力指标 ───
+  indicators.push({
+    category: '偿债能力',
+    name: '资产负债率',
+    value: debtRatio,
+    unit: '%',
+    judgment: debtRatio === null ? '—' : debtRatio <= 50 ? '良好' : debtRatio <= 70 ? '一般' : '偏高',
+    explanation: debtRatio === null
+      ? '资产负债率 = 总负债 ÷ 总资产 × 100%。反映企业资产中有多少是通过负债筹集的。'
+      : `资产负债率 = ${totalLiabilities} ÷ ${totalAssets} × 100% = ${debtRatio}%。该指标反映企业的财务杠杆水平。通常40%~60%为适中，低于40%说明财务保守，高于70%则债务风险较高。`,
+  })
+
+  indicators.push({
+    category: '偿债能力',
+    name: '流动比率',
+    value: currentRatio,
+    unit: '',
+    judgment: currentRatio === null ? '—' : currentRatio >= 2 ? '良好' : currentRatio >= 1.2 ? '一般' : '偏低',
+    explanation: currentRatio === null
+      ? '流动比率 = 流动资产 ÷ 流动负债。衡量企业短期偿债能力。'
+      : `流动比率 = ${currentAssets} ÷ ${currentLiabilities} = ${currentRatio}。该指标反映每1元流动负债有多少流动资产作为保障。通常2左右为理想，低于1则短期偿债压力大。注意：流动比率过高也可能意味着资金利用效率不足。`,
+  })
+
+  // ─── 营运能力指标 ───
+  indicators.push({
+    category: '营运能力',
+    name: '总资产周转率（次）',
+    value: assetTurnover,
+    unit: '次',
+    judgment: assetTurnover === null ? '—' : assetTurnover >= 1 ? '良好' : assetTurnover >= 0.5 ? '一般' : '偏低',
+    explanation: assetTurnover === null
+      ? '总资产周转率 = 营业收入 ÷ 总资产。反映企业资产的使用效率。'
+      : `总资产周转率 = ${revenue} ÷ ${totalAssets} = ${assetTurnover}次。该指标反映每1元资产能产生多少收入。周转率越高，说明资产利用效率越好。不同行业差异较大，零售业通常较高，重资产行业较低。`,
+  })
+
+  indicators.push({
+    category: '营运能力',
+    name: '净资产收益率 (ROE)',
+    value: roe,
+    unit: '%',
+    judgment: roe === null ? '—' : roe >= 15 ? '良好' : roe >= 8 ? '一般' : '偏低',
+    explanation: roe === null
+      ? '净资产收益率 = 净利润 ÷ 所有者权益 × 100%。衡量股东投入资本的回报率。'
+      : `净资产收益率 = ${netProfit} ÷ ${totalEquity} × 100% = ${roe}%。ROE是衡量企业为股东创造价值能力的核心指标。巴菲特将ROE作为选股的首要指标，通常ROE长期高于15%被认为是优秀企业。`,
+  })
+
+  return indicators
+}
+
+/**
  * 现金科目编码前缀
  */
 const CASH_ACCOUNT_PREFIXES = ['1001', '1002', '1012']

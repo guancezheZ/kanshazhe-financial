@@ -198,10 +198,26 @@ function unbindCode(code) {
 export async function initActivationCache() {
   try {
     const ss = await _getSecure()
-    const [code, fp] = await Promise.all([
+    let [code, fp] = await Promise.all([
       ss.getItem(STORAGE_KEY),
       ss.getItem(FINGERPRINT_KEY),
     ])
+
+    // ⭐ 迁移旧版加密数据：jd_activated 不再由 secure-storage 加密，
+    //    但老用户 localStorage 中可能还有 "🔒..." 前缀的旧数据
+    if (code && typeof code === 'string' && code.startsWith('🔒')) {
+      try {
+        await ss.migrateFromSecure()
+        code = localStorage.getItem(STORAGE_KEY)
+        fp = localStorage.getItem(FINGERPRINT_KEY)
+      } catch {
+        // 迁移失败，清除旧数据让用户重新激活
+        localStorage.removeItem(STORAGE_KEY)
+        localStorage.removeItem(FINGERPRINT_KEY)
+        code = null
+        fp = null
+      }
+    }
 
     // 从加密存储恢复明文（如有加密数据而明文不存在/不一致时）
     if (code) {

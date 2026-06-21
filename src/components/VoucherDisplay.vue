@@ -104,13 +104,103 @@
           </div>
         </template>
 
-        <!-- ===== 4. 文档/计算表/合同 ===== -->
+        <!-- ===== 4. 文档/计算表/合同（智能格式化） ===== -->
         <template v-else>
           <div v-if="doc.stampText" v-html="squareStamp(doc.stampText, 15, 15)" class="stamp-overlay"></div>
           <div class="doc-title-bar">{{ doc.docTitle || '原始凭证' }}</div>
           <div class="doc-body">
-            <pre class="doc-pre">{{ doc.content || '' }}</pre>
-            <div class="doc-signature" v-if="doc.signature">{{ doc.signature }}</div>
+            <!-- 合同类 -->
+            <template v-if="isContract(doc.docTitle)">
+              <div class="doc-contract-header">{{ doc.docTitle }}</div>
+              <div class="doc-contract-seal" v-if="doc.signature">签约方：{{ doc.signature }}</div>
+              <div class="doc-contract-body">
+                <pre class="doc-pre doc-pre-contract">{{ doc.content || '' }}</pre>
+              </div>
+              <div class="doc-contract-footer">
+                <div class="doc-signature">签约日期：{{ doc.date || '' }}</div>
+              </div>
+            </template>
+
+            <!-- 盘点表/对账表 -->
+            <template v-else-if="isInventory(doc.docTitle)">
+              <div class="doc-inv-header">{{ doc.docTitle }}</div>
+              <div class="doc-inv-body">
+                <table class="doc-inv-table">
+                  <tbody>
+                    <tr v-for="line in parseLines(doc.content)" :key="line">
+                      <td>{{ line }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div v-if="doc.signature" class="doc-signature">{{ doc.signature }}</div>
+            </template>
+
+            <!-- 成本/折旧/税费计算表 -->
+            <template v-else-if="isCalculation(doc.docTitle)">
+              <div class="doc-calc-header">{{ doc.docTitle }}</div>
+              <div class="doc-calc-body">
+                <div class="doc-calc-formula" v-for="(line, li) in parseLines(doc.content)" :key="li">
+                  <template v-if="line.includes('＝') || line.includes('=') || line.includes('：')">
+                    <span class="doc-calc-line">{{ line }}</span>
+                  </template>
+                  <template v-else>
+                    <span class="doc-calc-label">{{ line }}</span>
+                  </template>
+                </div>
+              </div>
+              <div v-if="doc.signature" class="doc-signature">{{ doc.signature }}</div>
+            </template>
+
+            <!-- 入库单/出库单 -->
+            <template v-else-if="isWarehouseDoc(doc.docTitle)">
+              <div class="doc-wh-header">{{ doc.docTitle }}</div>
+              <div class="doc-wh-body">
+                <div class="doc-wh-info" v-if="doc.date">日期：{{ doc.date }}</div>
+                <div class="doc-wh-content">
+                  <pre class="doc-pre">{{ doc.content || '' }}</pre>
+                </div>
+                <div v-if="doc.signature" class="doc-wh-signature">{{ doc.signature }}</div>
+              </div>
+            </template>
+
+            <!-- 日记账/对账单 -->
+            <template v-else-if="isLedger(doc.docTitle)">
+              <div class="doc-ledger-header">{{ doc.docTitle }}</div>
+              <div class="doc-ledger-body">
+                <div class="doc-ledger-line" v-for="(line, li) in parseLines(doc.content)" :key="li">
+                  <template v-if="line.startsWith('━━') || line.startsWith('———')">
+                    <div class="doc-ledger-sep"></div>
+                  </template>
+                  <template v-else-if="line.includes('：')">
+                    <span class="doc-ledger-label">{{ line.split('：')[0] }}：</span>
+                    <span class="doc-ledger-value">{{ line.split('：').slice(1).join('：') }}</span>
+                  </template>
+                  <template v-else>
+                    <span>{{ line }}</span>
+                  </template>
+                </div>
+              </div>
+              <div v-if="doc.signature" class="doc-signature">{{ doc.signature }}</div>
+            </template>
+
+            <!-- 报销单 -->
+            <template v-else-if="isExpenseReport(doc.docTitle)">
+              <div class="doc-exp-header">{{ doc.docTitle }}</div>
+              <div class="doc-exp-body">
+                <pre class="doc-pre">{{ doc.content || '' }}</pre>
+              </div>
+              <div class="doc-exp-footer">
+                <span v-if="doc.signature">{{ doc.signature }}</span>
+                <span v-if="doc.date">{{ doc.date }}</span>
+              </div>
+            </template>
+
+            <!-- 兜底：通用文档 -->
+            <template v-else>
+              <pre class="doc-pre">{{ doc.content || '' }}</pre>
+              <div class="doc-signature" v-if="doc.signature">{{ doc.signature }}</div>
+            </template>
           </div>
         </template>
       </div>
@@ -124,6 +214,9 @@ import { formatAmount } from '@/utils/accounting.js'
 const props = defineProps({
   doc: { type: Object, required: true },
 })
+
+// 用于 SVG stamp 的唯一 ID 计数器
+let stampIdCounter = 0
 
 function fmt(v) {
   if (v === undefined || v === null) return '0.00'
@@ -172,24 +265,62 @@ function cnNumber(n) {
 }
 
 function redStamp(text, size = 80, fontSize = 10, innerText, innerFontSize = 8) {
+  stampIdCounter++
+  const uid = 'stamp-path-' + stampIdCounter
   const half = size / 2
   return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" class="stamp-red">
     <circle cx="${half}" cy="${half}" r="${half - 2}" fill="none" stroke="#c0362d" stroke-width="2.5" opacity="0.85"/>
     <circle cx="${half}" cy="${half}" r="${half - 6}" fill="none" stroke="#c0362d" stroke-width="1" opacity="0.5"/>
     <text x="${half}" y="${half - 4}" text-anchor="middle" dominant-baseline="central" font-family="SimSun, serif" font-size="${fontSize}" fill="#c0362d" font-weight="bold" opacity="0.85">
-      <textPath href="#rcp-svg-path">${text}</textPath>
+      <textPath href="#${uid}">${text}</textPath>
     </text>
     ${innerText ? `<text x="${half}" y="${half + 12}" text-anchor="middle" font-family="SimSun, serif" font-size="${innerFontSize}" fill="#c0362d" font-weight="bold" opacity="0.85">${innerText}</text>` : ''}
-    <defs><path id="rcp-svg-path" d="M ${half - 18} ${half} A 18 18 0 1 1 ${half + 18} ${half} A 18 18 0 1 1 ${half - 18} ${half}"/></defs>
+    <defs><path id="${uid}" d="M ${half - 18} ${half} A 18 18 0 1 1 ${half + 18} ${half} A 18 18 0 1 1 ${half - 18} ${half}"/></defs>
   </svg>`
 }
 
 function squareStamp(text, right = 20, top = 20) {
   const color = '#c0362d'
-  // Use unique-ish id to avoid conflicts with multiple stamps on same page
   return `<div class="stamp-square" style="right:${right}px;top:${top}px;border:2px solid ${color};padding:4px 10px;color:${color};font-size:11px;font-weight:bold;font-family:SimSun,serif;opacity:0.8;transform:rotate(-5deg);mix-blend-mode:multiply;text-align:center;background:rgba(255,255,255,0.3)">
     ${text.replace(/\n/g, '<br>')}
   </div>`
+}
+
+// ─── 文档类型检测 ───
+
+function isContract(title) {
+  if (!title) return false
+  return /合同/.test(title)
+}
+
+function isInventory(title) {
+  if (!title) return false
+  return /盘点|库存表|对账表/.test(title)
+}
+
+function isCalculation(title) {
+  if (!title) return false
+  return /计算表|折旧|摊销|成本|税费计提/.test(title) && !isContract(title)
+}
+
+function isWarehouseDoc(title) {
+  if (!title) return false
+  return /入库|出库|收料/.test(title)
+}
+
+function isLedger(title) {
+  if (!title) return false
+  return /日记账|对账|余额调节/.test(title) || /资金日报/.test(title)
+}
+
+function isExpenseReport(title) {
+  if (!title) return false
+  return /报销/.test(title)
+}
+
+function parseLines(content) {
+  if (!content) return []
+  return content.split('\n').filter(l => l.trim())
 }
 </script>
 
@@ -283,12 +414,53 @@ function squareStamp(text, right = 20, top = 20) {
 .rct-total-cn { font-size:11px; color:#555; font-weight:400; margin-top:2px; }
 .rct-footer { display:flex; justify-content:space-between; margin-top:12px; font-size:11px; color:#666; padding-top:8px; border-top:1px dashed #ccc; }
 
-/* ─── 文档/计算表 ─── */
+/* ─── 文档/计算表/合同（智能格式化） ─── */
 .voucher-text { min-width: 480px; max-width: 640px; padding: 0; }
 .doc-title-bar { background:#2c3e50; color:#fff; text-align:center; padding:10px 16px; font-size:15px; font-weight:700; letter-spacing:1px; position:relative; z-index:2; }
-.doc-body { padding:18px 22px; font-family:'Noto Sans SC','Microsoft YaHei','SimHei',sans-serif; font-size:13px; line-height:2; position:relative; z-index:2; }
+.doc-body { padding:16px 20px; font-family:'Noto Sans SC','Microsoft YaHei','SimHei',sans-serif; font-size:13px; line-height:2; position:relative; z-index:2; }
 .doc-pre { font-family:'Noto Sans SC','Microsoft YaHei','SimHei',sans-serif; font-size:13px; line-height:1.9; white-space:pre-wrap; margin:0; }
 .doc-signature { margin-top:16px; padding-top:10px; border-top:1px dashed #ccc; display:flex; justify-content:space-between; font-size:11px; color:#666; }
+
+/* 合同样式 */
+.doc-contract-header { text-align:center; font-size:16px; font-weight:700; padding:8px 0 12px; border-bottom:2px solid #2c3e50; margin-bottom:12px; color:#2c3e50; }
+.doc-contract-seal { text-align:center; font-size:11px; color:#c0362d; margin-bottom:8px; font-weight:600; }
+.doc-contract-body { padding:4px 0; }
+.doc-pre-contract { line-height:2.2; font-size:13px; }
+.doc-contract-footer { margin-top:16px; padding-top:10px; border-top:1px dashed #ccc; font-size:11px; color:#666; display:flex; justify-content:space-between; }
+
+/* 盘点表样式 */
+.doc-inv-header { text-align:center; font-size:15px; font-weight:700; padding:6px 0 10px; border-bottom:2px solid #e6a23c; margin-bottom:8px; color:#b8821a; }
+.doc-inv-body { padding:0 4px; }
+.doc-inv-table { width:100%; border-collapse:collapse; }
+.doc-inv-table td { border:1px solid #d0d0d0; padding:6px 10px; font-size:12px; vertical-align:top; }
+.doc-inv-table tr:nth-child(even) { background:#faf8f4; }
+
+/* 成本/计算表样式 */
+.doc-calc-header { text-align:center; font-size:14px; font-weight:700; padding:6px 0 10px; border-bottom:2px solid #409eff; margin-bottom:8px; color:#2c6eb0; }
+.doc-calc-body { padding:4px 8px; background:#f9fafc; border-radius:4px; }
+.doc-calc-formula { padding:3px 0; font-size:12px; line-height:1.8; }
+.doc-calc-line { color:#303133; font-weight:500; }
+.doc-calc-label { color:#909399; font-size:11px; }
+
+/* 入库单/出库单样式 */
+.doc-wh-header { text-align:center; font-size:14px; font-weight:700; padding:6px 0 10px; border-bottom:2px solid #67c23a; margin-bottom:8px; color:#529b2e; }
+.doc-wh-body { padding:0 4px; }
+.doc-wh-info { font-size:12px; color:#909399; margin-bottom:6px; }
+.doc-wh-content { background:#f9fdf5; border:1px solid #e8f0e0; border-radius:4px; padding:8px 12px; }
+.doc-wh-signature { margin-top:10px; font-size:11px; color:#666; text-align:right; }
+
+/* 日记账/对账单样式 */
+.doc-ledger-header { text-align:center; font-size:14px; font-weight:700; padding:6px 0 10px; border-bottom:2px solid #909399; margin-bottom:8px; color:#606266; font-family:'Courier New',monospace; }
+.doc-ledger-body { background:#fcfcf9; border:1px solid #e8e4dd; border-radius:4px; padding:8px 12px; font-family:'Courier New',monospace; font-size:12px; }
+.doc-ledger-line { padding:2px 0; line-height:1.7; }
+.doc-ledger-label { color:#606266; }
+.doc-ledger-value { color:#303133; font-weight:500; }
+.doc-ledger-sep { border-top:1px solid #d0d0d0; margin:4px 0; }
+
+/* 报销单样式 */
+.doc-exp-header { text-align:center; font-size:14px; font-weight:700; padding:6px 0 10px; border-bottom:2px solid #f56c6c; margin-bottom:8px; color:#c0362d; }
+.doc-exp-body { padding:4px 8px; }
+.doc-exp-footer { margin-top:12px; padding-top:8px; border-top:1px dashed #ccc; display:flex; justify-content:space-between; font-size:11px; color:#666; }
 </style>
 
 <!-- 非scoped样式：让全局 data-theme="light" 能穿透到VoucherDisplay内部 -->

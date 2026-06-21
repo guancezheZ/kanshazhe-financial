@@ -28,6 +28,8 @@
         </el-table-column>
       </el-table>
     </el-card>
+
+    <FinancialIndicators :indicators="financialIndicators" />
   </div>
 </template>
 
@@ -36,11 +38,13 @@ import { ref, reactive, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useStore } from '@/stores/store.js'
 import { formatAmount, getCurrentPeriod } from '@/utils/accounting.js'
+import FinancialIndicators from '@/components/FinancialIndicators.vue'
 
 const store = useStore()
 const route = useRoute()
 const period = ref(getCurrentPeriod())
 const reportData = reactive({ items: [], operatingProfit: 0, totalProfit: 0, netProfit: 0 })
+const financialIndicators = ref([])
 
 function fmt(val) { return formatAmount(val) }
 
@@ -52,6 +56,7 @@ const periodLabel = computed(() => {
 function loadData() {
   const data = store.getIncomeStatement(period.value)
   Object.assign(reportData, data)
+  financialIndicators.value = store.getFinancialRatios(period.value)
 }
 
 // 支持从查询参数 ?period=202604 跳转时自动选中期期间

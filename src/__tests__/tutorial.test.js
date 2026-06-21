@@ -2258,6 +2258,8 @@ describe('建筑业教程数据', () => {
     for (const m of months) {
       const tasks = getScenarioTutorials('construction', m)
       const hasEmptyCashierTask = tasks.some(t => t.entries.length === 0 && t.role === 'cashier')
+      // 🏗️ 建筑业01月无信息类出纳任务（原有出纳任务全为填凭证，已转会计）
+      if (m === '01') continue
       expect(hasEmptyCashierTask).toBe(true)
     }
   })
@@ -2269,6 +2271,8 @@ describe('建筑业教程数据', () => {
       const hasAccountant = tasks.some(t => t.role === 'accountant' || !t.role)
       const hasCashier = tasks.some(t => t.role === 'cashier')
       expect(hasAccountant).toBe(true)
+      // 🏗️ 建筑业01月无出纳任务（原有出纳任务全为填凭证，已转会计）
+      if (m === '01') continue
       expect(hasCashier).toBe(true)
     }
   })

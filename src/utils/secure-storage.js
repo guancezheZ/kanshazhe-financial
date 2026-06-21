@@ -20,7 +20,9 @@ const PROTECTED_PREFIXES = [
 ]
 
 // 不加密的存储键
-const SKIP_KEYS = []
+// ⭐ jd_activated 由 activation.js 自行管理双轨存储（明文+异步加密），
+//    如果 secure-storage 也加密它会覆盖明文导致 isActivated() 读取失败
+const SKIP_KEYS = ['jd_activated']
 
 /**
  * 检查指定 key 是否需要加密
