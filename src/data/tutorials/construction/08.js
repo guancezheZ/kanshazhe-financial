@@ -629,6 +629,16 @@ const tasks = [
     entries: [
       { subjectCode: '220201', debit: 0, credit: 0, summary: '对账一致', explanation: '与供应商对账确认无误。' }],
     documents: [{ type: 'text', label: '对账确认单', docTitle: '往来对账确认单', content: '与供应商核对往来，确认全部款项已结清。', signature: '赵会计' }]},
+  {
+    date: "2026-08-31",
+    title: "模拟纳税申报",
+    tags: ["期末", "税费"],
+    difficulty: 1,
+    description: "根据本月已完成的账务处理，进行模拟纳税申报。系统已自动计算应缴税额（增值税和企业所得税），请前往纳税申报页面核对并提交。",
+    tip: "纳税申报是企业每月的法定义务。确认所有凭证已过账、期末结转已完成后，前往纳税申报页面核对各项税额后点击「提交申报」。",
+    entries: [],
+    documents: [
+      { type: "text", label: "纳税申报提醒", docTitle: "8月纳税申报提醒", content: "申报期间：2026-08-31\n\n请前往纳税申报页面：\n1. 核对增值税申报表数据\n2. 核对企业所得税申报表数据\n3. 确认无误后点击「提交申报」\n\n纳税申报是企业每月必做的合规义务，请按时完成。", stampText: "财务专用章" }]},
 ]
 
 export default tasks

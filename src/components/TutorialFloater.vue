@@ -485,20 +485,20 @@ function isTaskDone(t) {
   return localStorage.getItem(key) === 'true'
 }
 
-// 判断任务是否被前序任务锁定（同步 TutorialCenter 逻辑）
+// 判断任务是否被前序任务锁定（跨月+月内统一检查）
 function isTaskLocked(t) {
   if (!t) return false
   const monthlyMode = localStorage.getItem('jd_monthly_mode') !== 'false'
   if (!monthlyMode || store.isPracticeMode()) return false
   if (t.entries.length === 0) return false // 信息任务不锁
-  // 在当前月的 entry 任务中按日期排序，检查前面的任务是否都完成了
-  const monthTasks = flatTasks.value
-    .filter(task => task._month === t._month && task.entries.length > 0)
+  // 全局所有有分录任务按日期排序，前面的没做完就锁定后面的
+  const allEntryTasks = flatTasks.value
+    .filter(task => task.entries.length > 0)
     .sort((a, b) => (a.date || '').localeCompare(b.date || ''))
-  const idx = monthTasks.findIndex(task => task.date === t.date && task.title === t.title)
-  if (idx <= 0) return false
+  const idx = allEntryTasks.findIndex(task => task.date === t.date && task.title === t.title)
+  if (idx <= 0) return false // 第一个分录任务始终可用
   for (let i = 0; i < idx; i++) {
-    if (!isTaskDone(monthTasks[i])) return true
+    if (!isTaskDone(allEntryTasks[i])) return true
   }
   return false
 }
@@ -701,7 +701,7 @@ function nextTask() {
     next++
   }
   if (next >= tasks.length) {
-    ElMessage.info('已到达最后一个可用任务')
+    ElMessage.info('💡 请先完成当前任务')
     return
   }
   currentIdx.value = next

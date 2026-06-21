@@ -26,10 +26,10 @@ const MODULE_MAP = {
 const EXPECTED_HASHES = {
   "xp-system": "0435847d66102477badc0a8f017171396c76d6913baef41821ad72f931227a26",
   "scenarios": "6dd27583e14cd4a2704447aa605074e8989e4331c8cb77c53d678eff9f9a67f6",
-  "year1": "c5cc474eacd03c3ca1e1ccb97ec008f04e04ac218f909f1380c1c83e24a1eacf",
+  "year1": "0e839eaac5ee667905ce5d946f79e96f6f13a9c5bcc687106d86ffe39872338e",
   "commercial": "c52a663298cba2caf2bd237534565a2ae824674ddd72562d08fbeae7c25652ec",
-  "service": "df2ce43f65a8649b52e344034a288959cac43bbc7902a505affdfde0b49fe8a3",
-  "construction": "c5ca4cff2bbe92e4393752477b2eefba7b1e3214e1c593e2358af12fab3998e9",
+  "service": "15389f87c2d6ebb0583f35eb0db573c0ee1fb1318d15dfc36c0a13ad86b5b6a5",
+  "construction": "52cd388f772fccae76dae7ed1fb15c5b440cafbc8ac45abd994b614f3b182888",
   "cases": "30fcf4849c1f1f026e9c11976d74db393b16465821f0d85cd51487443d29bd7d",
 }
 

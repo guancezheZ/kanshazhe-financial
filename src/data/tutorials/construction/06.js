@@ -657,6 +657,17 @@ const tasks = [
     entries: [
       { subjectCode: '540104', debit: 3000, credit: 0, summary: '设备维护费', explanation: '施工设备维护费计入合同履约成本-机械使用费。' },
       { subjectCode: '100201', debit: 0, credit: 3000, summary: '支付维护费', explanation: '银行存款减少3,000元。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目540104），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [{ type: 'receipt', label: '维护费发票', items: [{ label: '设备日常维护', amount: 3000 }], totalAmount: 3000, stampText: '维修厂发票章' }]}]
+    documents: [{ type: 'receipt', label: '维护费发票', items: [{ label: '设备日常维护', amount: 3000 }], totalAmount: 3000, stampText: '维修厂发票章' }]},
+  {
+    date: "2026-06-30",
+    title: "模拟纳税申报",
+    tags: ["期末", "税费"],
+    difficulty: 1,
+    description: "根据本月已完成的账务处理，进行模拟纳税申报。系统已自动计算应缴税额（增值税和企业所得税），请前往纳税申报页面核对并提交。",
+    tip: "纳税申报是企业每月的法定义务。确认所有凭证已过账、期末结转已完成后，前往纳税申报页面核对各项税额后点击「提交申报」。",
+    entries: [],
+    documents: [
+      { type: "text", label: "纳税申报提醒", docTitle: "6月纳税申报提醒", content: "申报期间：2026-06-30\n\n请前往纳税申报页面：\n1. 核对增值税申报表数据\n2. 核对企业所得税申报表数据\n3. 确认无误后点击「提交申报」\n\n纳税申报是企业每月必做的合规义务，请按时完成。", stampText: "财务专用章" }]},
+]
 
 export default tasks

@@ -159,16 +159,30 @@ function getSubjectBalance(subjectCode) {
   return total
 }
 
+// 按行业获取采购/成本科目编码（用于进项税估算）
+function getPurchaseSubjectCode() {
+  const scenario = localStorage.getItem('jd_scenario') || 'manufacturing'
+  const map = {
+    manufacturing: '1403',     // 原材料
+    commercial: '1405',        // 库存商品（商品流通企业）
+    service: null,             // 服务业无存货
+    construction: '540102',    // 合同履约成本-材料成本
+  }
+  return map[scenario] || null
+}
+
 // 增值税数据
 const vatData = computed(() => {
-  // 销项：从主营业务收入中估算（简化：取收入 × 13%）
-  const revenue = getSubjectBalance('600101') // 主营业务收入
-  const sales = Math.max(0, revenue)
+  const period = getCurrentPeriod()
+  // 销项：从利润表营业收入中获取（跨行业通用）
+  const incomeStmt = store.getIncomeStatement(period)
+  const sales = Math.max(0, Math.abs(Number(incomeStmt?.revenue || 0)))
   const outputTax = Math.round(sales * 0.13 * 100) / 100
 
-  // 进项：从原材料采购中估算
-  const purchases = getSubjectBalance('1403') // 原材料借方发生
-  const inputTax = Math.round(Math.max(0, purchases) * 0.13 * 100) / 100
+  // 进项：按行业从对应采购/成本科目中估算
+  const purchaseCode = getPurchaseSubjectCode()
+  const purchases = purchaseCode ? Math.max(0, getSubjectBalance(purchaseCode)) : 0
+  const inputTax = Math.round(purchases * 0.13 * 100) / 100
 
   const dueTax = Math.max(0, Math.round((outputTax - inputTax) * 100) / 100)
   return { sales, outputTax, purchases, inputTax, dueTax }
@@ -209,7 +223,15 @@ function checkPrerequisites() {
 
   try {
     const tasks = getScenarioTutorials(scenarioId, month)
-    const closingTask = tasks.find(t => t.title.includes('期末结转损益'))
+    // 跨行业查找"结转损益"任务：
+    // 各行业标题不同：制造业=月末结转·期间损益，商业/服务业=期末结转损益，
+    // 建筑业=结转本月损益类科目/月末结转损益类科目/结转损益类科目至本年利润
+    // 共同特征：entry 中包含 本年利润(4103) + 主营业务收入(6001)
+    const closingTask = tasks.find(t =>
+      t.entries && t.entries.length > 0 &&
+      t.entries.some(e => e.subjectCode === '4103') &&
+      t.entries.some(e => ['6001', '6051'].includes(e.subjectCode))
+    )
     if (closingTask) {
       prerequisiteTask.value = closingTask.title
       const key = getProgressKey(scenarioId, closingTask.date, closingTask.title)
