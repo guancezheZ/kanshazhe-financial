@@ -470,20 +470,6 @@ const tasks = [
     documents: [
       { type: 'bank', label: '收款回单', date: '2026-01-10', totalAmount: 113000, payer: '鑫源商贸有限公司', payerAccount: '6222 0200 **** 1111', payeeName: '本公司', payeeAccount: '6222 0200 **** 8888', content: '货款（发票No.3100234568）', refNo: 'HD202601100001' }]},
   {
-    date: '2026-01-12',
-    title: '现金送存银行',
-    tags: ['出纳'],
-    difficulty: 1,
-    description: '库存现金余额已超过日常备用金限额5,000元，出纳清点超限额现金3,000元，填写现金缴款单送存工商银行账户。',
-    tip: '企业库存现金实行限额管理，超过限额的部分必须当天送存银行。操作流程：①清点现金→②填写现金缴款单（注明币种、金额、来源）→③送交银行柜台→④银行清点盖章后退还回单→⑤登记银行日记账和现金日记账。严禁"坐支"现金（即以收抵支）。',
-    entries: [
-      { subjectCode: '100201', summary: '现金送存银行', debit: 3000, credit: 0, explanation: '银行存款增加记借方。出纳将超额现金送存银行，工商银行账户增加3,000元。需保留银行盖章后的现金缴款回单。' },
-      { subjectCode: '1001', summary: '现金送存银行', debit: 0, credit: 3000, explanation: '库存现金减少记贷方。保险柜现金减少3,000元，现金日记账登记"付"方。送存后库存现金余额回到限额以内。' }],
-    documents: [
-      { type: 'bank', label: '现金缴款单', date: '2026-01-12', totalAmount: 3000, payer: '本公司', payeeName: '本公司工商银行账户', content: '送存多余现金', refNo: 'HD202601120010' },
-      { type: 'receipt', label: '现金缴款回单', docTitle: '中国工商银行现金缴款回单', date: '2026-01-12', totalAmount: 3000, stampText: '中国工商银行\n现金收讫\n业务专用章',
-        items: [{ name: '现金缴款（壹元券）', qty: 3000, price: 1, amount: 3000 }] }]},
-  {
     date: '2026-01-14',
     title: '收到前欠货款-银行确认',
     tags: ['出纳', '往来管理'],
@@ -551,20 +537,6 @@ const tasks = [
       { type: 'bank', label: '转账回单', date: '2026-01-18', totalAmount: 8000, payer: '本公司', payerAccount: '6222 0200 **** 8888', payeeName: 'XX网络科技有限公司', content: '1月网络推广服务费', refNo: 'HD202601180030' },
       { type: 'invoice', label: '服务发票', region: '北京', invoiceType: '普通', copy: '发票联', invoiceNo: '1100222333', date: '2026年01月18日', buyer: '本公司', buyerTaxId: '91440101MA3XXXXXXXX', seller: 'XX网络科技有限公司', sellerTaxId: '91110000MA6YYYYYYY', stampText: 'XX网络科技 发票专用章',
         lineItems: [{ name: '搜索引擎推广服务（2026年1月）', unit: '项', qty: 1, price: 8000, amount: 8000, taxRate: '6%', tax: 0 }], totalAmount: 8000 }]},
-  {
-    date: '2026-01-19',
-    title: '银行代扣手续费确认',
-    tags: ['出纳', '费用管理'],
-    difficulty: 1,
-    description: '收到银行对账单，显示本月银行账户产生转账汇款手续费、账户维护费、回单柜费用等共计150元，银行已自动从账户扣收。',
-    tip: '银行手续费一般是银行自动从账户扣收，出纳需在收到银行回单或对账单后：①确认扣款项目和金额是否合理②向银行索要手续费发票③登记银行日记账④将手续费单据移交会计做账。每月末需汇总当月全部手续费。',
-    entries: [
-      { subjectCode: '6602', summary: '银行手续费', debit: 150, credit: 0, explanation: '管理费用增加记借方。银行手续费属于企业日常管理支出，计入管理费用或财务费用。出纳需向银行索取手续费增值税发票。' },
-      { subjectCode: '100201', summary: '银行手续费', debit: 0, credit: 150, explanation: '银行存款减少记贷方。银行自动扣收手续费150元，出纳登记银行日记账"付"方。每月银行手续费需逐笔核对。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6602），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'bank', label: '银行扣款通知', date: '2026-01-19', totalAmount: 150, payer: '本公司（工商银行）', payeeName: '中国工商银行', content: '2026年1月银行手续费', refNo: 'HD202601190040' },
-      { type: 'receipt', label: '手续费清单', docTitle: '银行服务收费明细', date: '2026-01-19', totalAmount: 150, stampText: '中国工商银行 业务专用章',
-        items: [{ name: '转账汇款手续费（13笔）', qty: 13, price: 8, amount: 104 }, { name: '账户维护费（1月）', qty: 1, price: 30, amount: 30 }, { name: '电子回单柜服务费（1月）', qty: 1, price: 16, amount: 16 }] }]},
   {
     date: '2026-01-21',
     title: '购买转账支票本',

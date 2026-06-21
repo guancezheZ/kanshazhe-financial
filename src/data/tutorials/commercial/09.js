@@ -638,20 +638,6 @@ const tasks = [
     documents: [
       { type: 'bank', label: '付款回单', date: '2026-09-18', totalAmount: 40000, payer: '本公司', payeeName: '丙公司', content: '受托代销商品结算款', refNo: 'HD202609180002' }]},
   {
-    date: '2026-09-19',
-    title: '购买转账支票',
-    tags: ['出纳'],
-    difficulty: 1,
-    description: '向开户银行购买转账支票一本（25张），支付工本费及手续费共计35元，已从工商银行账户扣收。',
-    tip: '转账支票是出纳日常使用的重要支付凭证。购买支票时填写"票据和结算凭证领用单"，银行收取工本费和手续费。分录：借：财务费用，贷：银行存款。购买的空白支票需由出纳专柜保管，建立支票领用登记簿。',
-    entries: [
-      { subjectCode: '6603', summary: '购买转账支票工本费', debit: 35, credit: 0, explanation: '财务费用增加记借方。购买转账支票一本（25张），支付工本费及手续费35元。支票工本费属于银行结算手续费，计入财务费用。' },
-      { subjectCode: '100201', summary: '购买转账支票工本费', debit: 0, credit: 35, explanation: '银行存款减少记贷方。银行扣收支票工本费35元，银行存款减少。购买的空白支票需登记支票领用备查簿，按编号顺序使用。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'receipt', label: '支票工本费收据', docTitle: '银行收费凭证', date: '2026-09-19', stampText: '中国工商银行 业务专用章',
-        items: [{ name: '转账支票工本费（25张/本）', qty: 1, price: 25, amount: 25 }, { name: '支票购买手续费', qty: 1, price: 10, amount: 10 }],
-        totalAmount: 35 }]},
-  {
     date: '2026-09-22',
     title: '直运销售收款（收到甲公司直运货款）',
     tags: ['出纳', '往来管理'],

@@ -381,19 +381,6 @@ const tasks = [
       { type: 'receipt', label: '缴费凭证', date: '2026-02-25', totalAmount: 9300,
         items: [{ name: '办公用品采购', amount: 5500 }, { name: '电费', amount: 2800 }, { name: '水费', amount: 1000 }], stampText: '收款单位财务专用章' }]},
   {
-    date: '2026-02-26',
-    title: '支付银行手续费及账户管理费',
-    tags: ['资金管理', '资金管理'],
-    difficulty: 1,
-    description: '工商银行扣收2月份账户管理费200元及转账手续费350元，合计550元，已自动从账户扣除。出纳登录网银确认扣款记录。',
-    tip: '银行手续费计入"财务费用"。出纳需逐月核对银行扣款明细，确保金额准确。分录：借：财务费用，贷：银行存款。',
-    entries: [
-      { subjectCode: '6603', debit: 550, credit: 0, summary: '2月银行手续费及账户管理费', explanation: '财务费用增加550元。银行手续费和账户管理费是融资成本类费用，计入当期损益。' },
-      { subjectCode: '100201', debit: 0, credit: 550, summary: '银行扣款确认', explanation: '银行存款减少550元。银行自动扣收手续费，出纳需核对扣款明细。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'receipt', label: '银行扣费通知', docTitle: '中国工商银行业务收费回单', date: '2026-02-26', totalAmount: 550,
-        items: [{ name: '账户管理费', amount: 200 }, { name: '跨行转账手续费（7笔）', amount: 350 }], stampText: '中国工商银行 业务专用章' }]},
-  {
     date: '2026-02-27',
     title: '申报2月份工程进度产值',
     tags: ['工程合同', '往来管理'],
@@ -603,16 +590,6 @@ const tasks = [
     entries: [
       { subjectCode: '220201', debit: 0, credit: 0, summary: '对账一致', explanation: '与供应商对账确认无误。' }],
     documents: [{ type: 'text', label: '对账确认单', docTitle: '往来对账确认单', content: '与供应商核对往来，确认全部款项已结清。', signature: '赵会计' }]},
-  {
-    date: '2026-02-25',
-    title: '支付银行手续费',
-    tags: ['资金管理'],
-    difficulty: 1,
-    description: '本月银行费用680元，已由银行自动扣划。',
-    tip: '银行手续费计入财务费用。',
-    entries: [
-      { subjectCode: '6603', debit: 680, credit: 0, summary: '银行手续费', explanation: '银行手续费计入财务费用。' },
-      { subjectCode: '100201', debit: 0, credit: 680, summary: '银行扣款', explanation: '银行存款减少680元。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [{ type: 'bank', label: '银行扣款通知', totalAmount: 680, content: '银行手续费' }]}]
+]
 
 export default tasks

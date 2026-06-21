@@ -626,18 +626,6 @@ const tasks = [
     documents: [
       { type: 'receipt', label: '现金支票存根', date: '2026-10-24', docTitle: '现金支票存根', items: [{ name: '提取备用金补充', qty: 1, price: 5000, amount: 5000 }], stampText: '财务预留印鉴' }]},
   {
-    date: '2026-10-25',
-    title: '银行手续费扣款',
-    tags: ['资金管理', '资金管理'],
-    difficulty: 1,
-    description: '工商银行收取本月账户管理费及转账手续费350元，直接从账户扣收。',
-    tip: '银行费用直接从账户扣除，借记"财务费用"，贷记"银行存款"。出纳需逐笔核对银行扣款明细。',
-    entries: [
-      { subjectCode: '6603', debit: 350, credit: 0, summary: '银行手续费', explanation: '财务费用增加350元。银行账户管理及转账手续费。' },
-      { subjectCode: '100201', debit: 0, credit: 350, summary: '银行扣款', explanation: '工商银行存款减少350元，银行直接扣收手续费。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'bank', label: '银行扣款通知', date: '2026-10-25', totalAmount: 350, payer: '鼎立建筑工程有限公司', payeeName: '中国工商银行', content: '10月账户管理费及手续费', refNo: 'YH202610250001' }]},
-  {
     date: '2026-10-28',
     title: '现金盘点',
     tags: ['资金管理', '期末'],

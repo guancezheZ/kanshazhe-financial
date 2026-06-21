@@ -475,29 +475,6 @@ const tutorials = {
         { subjectCode: '6602', summary: '支付水电费', debit: 3300, credit: 0, explanation: '管理费用增加记借方。"支付水电费"是企业管理支出，减少当期利润。' },
         { subjectCode: '100201', summary: '支付水电费', debit: 0, credit: 3300, explanation: '银行存款减少记贷方。"支付水电费"，资金从银行划出，资产减少。月末需银行对账。', cashFlowItem: 'cf-op6', cashFlowExplanation: '水电费属于经营活动中的其他现金支出。' }]},
     {
-      date: '2026-01-16',
-      title: '银行手续费',
-      tags: ["费用"],
-      difficulty: 1,
-      description: '收到银行回单，本月银行手续费 200元。',
-      voucherType: 'receipt',
-      totalAmount: 200,
-      tip: '银行手续费计入"财务费用"。一般每月底银行会出具手续费清单，企业据以入账。',
-      documents: [
-        {
-          type: 'bank',
-          label: '银行回单',
-          date: '2026-01-16',
-          totalAmount: 200,
-          payer: '本公司',
-          payeeName: '中国工商银行',
-          content: '账户管理费50.00 + 转账手续费100.00 + 网银使用费50.00',
-          remark: '本月银行手续费合计：贰佰元整',
-          refNo: 'HD202601160085'}],
-      entries: [
-        { subjectCode: '6603', summary: '银行手续费', debit: 200, credit: 0, explanation: '财务费用增加记借方。"银行手续费"，融资成本或银行费用，减少利润。' },
-        { subjectCode: '100201', summary: '银行手续费', debit: 0, credit: 200, explanation: '银行存款减少记贷方。"银行手续费"，资金从银行划出，资产减少。月末需银行对账。', cashFlowItem: 'cf-op6', cashFlowExplanation: '银行手续费属于经营活动中的其他现金支出。' }]},
-    {
       date: '2026-01-17',
       title: '收到股东增资款',
       tags: ["融资"],
@@ -541,19 +518,6 @@ const tutorials = {
       entries: [
         { subjectCode: '100201', summary: '收到股东增资', debit: 100000, credit: 0, explanation: '银行存款增加记借方。"收到股东增资"，款项存入银行账户，资产增加。需逐笔登记银行日记账并与银行对账。', cashFlowItem: 'cf-fin3', cashFlowExplanation: '股东增资属于筹资活动现金流入——企业通过权益融资获得资金，区别于借款（负债融资）。' },
         { subjectCode: '4001', summary: '收到股东增资', debit: 0, credit: 100000, explanation: '实收资本增加记贷方。股东投入资本金，所有者权益增加。' }]},
-    {
-      date: '2026-01-18',
-      title: '现金支付零星快递费',
-      tags: ["出纳","费用"],
-      difficulty: 1,
-      description: '行政部寄送一批文件资料给客户，发生快递费 180元，出纳审核快递单后以备用金现金支付。',
-      tip: '小额快递费属零星费用，用备用金现金支付。分录：借：管理费用-办公费，贷：库存现金。注意：大额费用必须走银行转账，不能用现金支付。',
-      entries: [
-        { subjectCode: '660201', summary: '支付快递费', debit: 180, credit: 0, explanation: '管理费用-办公费增加记借方。零星快递费直接费用化，出纳审核快递单后付款。' },
-        { subjectCode: '1001', summary: '支付快递费', debit: 0, credit: 180, explanation: '库存现金减少记贷方。用备用金支付快递费180元后保险柜现金减少。出纳需在现金日记账中登记支出。', cashFlowItem: 'cf-op6', cashFlowExplanation: '现金支付快递费属于经营活动中的其他现金支出——使用备用金而非银行存款，但现金流分类相同。' }],
-      documents: [
-        { type: 'receipt', label: '快递费发票', docTitle: '增值税电子普通发票', date: '2026-01-18', totalAmount: 180, stampText: '顺丰速运\n发票专用章',
-          items: [{ name: '快递服务费（文件寄送×3件）', qty: 3, price: 60, amount: 180 }] }]},
     {
       date: '2026-01-18',
       title: '客户提前付款享受现金折扣 ⭐',
@@ -903,16 +867,6 @@ const tutorials = {
         { type: 'text', label: '回单清单', docTitle: '回单整理清单（1月第2周）', stampText: '财务专用章',
           content: `回单清单：1/5收到货款50,000 1/6支付房租8,000\n1/8缴社保18,000 1/9缴公积金9,000 均已完成勾对✓` }]},
     {
-      date: '2026-01-14', title: '银行账户管理费',
-      tags: ["出纳","费用"], difficulty: 1,
-      description: '收到银行回单，本月工商银行对公账户管理费 100元已自动扣除。出纳确认扣款并登记入账。',
-      tip: '银行对公账户每月收取账户管理费，银行自动扣款。分录：借：财务费用，贷：银行存款。出纳需核对扣款金额是否正确。',
-      entries: [
-        { subjectCode: '6603', summary: '账户管理费', debit: 100, credit: 0, explanation: '财务费用增加。银行账户管理费是银行服务费用。' },
-        { subjectCode: '100201', summary: '账户管理费', debit: 0, credit: 100, explanation: '银行存款减少。银行自动扣款，出纳需核对。', cashFlowItem: 'cf-op6', cashFlowExplanation: '银行账户管理费属于经营活动中的其他现金支出。' }],
-      documents: [
-        { type: 'bank', label: '扣款回单', date: '2026-01-14', totalAmount: 100, payer: '本公司', payeeName: '中国工商银行', content: '2026年1月账户管理费', refNo: 'HD202601140035' }]},
-    {
       date: '2026-01-17', title: '银行账户间资金划转 ⭐',
       tags: ["出纳"], difficulty: 2,
       description: '因建行账户需要支付一笔贷款利息，从工商银行划转 30,000元至建设银行。出纳通过企业网银办理同行转账。',
@@ -1000,14 +954,6 @@ const tutorials = {
           stampText: 'XX装卸服务部\n收款专用章',
           items: [
             { name: 'B型钢材装卸服务', qty: 3, price: 200, amount: 600 }]}]},
-    {
-      date: '2026-01-26', title: '出纳资金日报编制',
-      tags: ["出纳"], difficulty: 1,
-      description: '编制1月26日资金日报表，统计当日库存现金和银行存款的收支变动。',
-      tip: '资金日报表是出纳每日必做工作：昨日余额→本日收入→本日支出→本日余额。虽然今天无新增业务，但养成每日编制日报的习惯有助于及时发现账务异常。',
-      entries: [], documents: [
-        { type: 'text', label: '资金日报表', docTitle: '资金日报表（2026年1月26日）', stampText: '现金日记账\n银行日记账',
-          content: `项目        库存现金    银行存款\n昨日余额      2,000    637,900\n今日收入          —          —\n今日支出          —          —\n今日余额      2,000    637,900` }]},
     {
       date: '2026-01-28', title: '银行代扣社保/公积金缴费 ⭐',
       tags: ["出纳","工资社保"], difficulty: 2,

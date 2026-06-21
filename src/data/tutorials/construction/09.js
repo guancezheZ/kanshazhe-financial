@@ -416,18 +416,6 @@ const tasks = [
     documents: [
       { type: 'text', label: '税费计算表', date: '2026-09-28', docTitle: '2026年9月税费计提计算表', content: '应纳增值税：72,000元\n城建税：72,000×7%=5,040元\n教育费附加：72,000×5%=3,600元\n合计：8,640元', signature: '赵会计' }]},
   {
-    date: '2026-09-28',
-    title: '银行手续费确认',
-    tags: ['资金管理'],
-    difficulty: 1,
-    description: '本月银行手续费合计1,200元，包括账户管理费、转账手续费、支票工本费等。银行已从账户直接扣收。',
-    tip: '银行手续费计入"财务费用"。每月底核对银行回单，确认各项手续费的准确性。',
-    entries: [
-      { subjectCode: '6603', debit: 1200, credit: 0, summary: '银行手续费', explanation: '财务费用增加1,200元。包括账户管理费、转账手续费等。' },
-      { subjectCode: '100201', debit: 0, credit: 1200, summary: '银行手续费扣款', explanation: '银行存款减少1,200元。银行直接扣收。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'bank', label: '银行回单', date: '2026-09-28', totalAmount: 1200, payer: '鼎立建筑工程有限公司', payeeName: '中国工商银行', content: '9月银行手续费', refNo: 'HD202609280012' }]},
-  {
     date: '2026-09-29',
     title: '月末结转合同履约成本至主营业务成本',
     tags: ['工程成本', '期末'],

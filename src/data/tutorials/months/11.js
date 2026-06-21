@@ -206,18 +206,6 @@ const nov = [
   材料费：15,000.00元
   人工费：20,000.00元
   外部服务费：8,000.00元` }]},
-  {
-    date: '2026-11-12',
-    title: '银行手续费',
-    tags: ["费用"],
-    difficulty: 1,
-    description: '本月银行手续费180元。',
-    tip: '请根据业务场景理解并完成本业务的分录录入。',
-    entries: [
-      { subjectCode: '6603', summary: '银行手续费', debit: 180, credit: 0, explanation: '财务费用增加180元。' },
-      { subjectCode: '100201', summary: '手续费', debit: 0, credit: 180, explanation: '银行存款减少180元。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'bank', label: '银行回单', date: '2026-11-12', totalAmount: 180, payer: '本公司', payeeName: '中国工商银行', content: '账户管理费', refNo: 'HD202611120008' }]},
 
   // ═══════════════════════════════════════════════
   // 第三周 11/13~11/18：存货跌价+递延所得税
@@ -328,19 +316,6 @@ const nov = [
     documents: [
       { type: 'invoice', label: '增值税发票', region: '广东', invoiceType: '专用', invoiceNo: '4400322222', date: '2026年11月20日', buyer: '本公司', seller: '丙公司', stampText: '发票专用章',
         lineItems: [{ name: 'K材料', unit: '吨', qty: 3, price: 10000, amount: 30000, taxRate: '13%', tax: 3900 }], totalAmount: 33900 }]},
-  {
-    date: '2026-11-21',
-    title: '支付网络推广费',
-    tags: ["费用"],
-    difficulty: 1,
-    description: '支付本月网络推广费8,000元。',
-    tip: '请根据业务场景理解并完成本业务的分录录入。',
-    entries: [
-      { subjectCode: '660101', summary: '推广费', debit: 8000, credit: 0, explanation: '销售费用-广告费增加8,000元。' },
-      { subjectCode: '100201', summary: '支付推广费', debit: 0, credit: 8000, explanation: '银行存款减少8,000元。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目660101），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'invoice', label: '服务发票', region: '北京', invoiceType: '专用', invoiceNo: '1100987654', date: '2026年11月21日', buyer: '本公司', seller: '百度在线', stampText: '发票专用章',
-        lineItems: [{ name: '搜索推广服务费', unit: '项', qty: 1, price: 8000, amount: 8000, taxRate: '6%', tax: 480 }], totalAmount: 8480 }]},
   {
     date: '2026-11-24',
     title: '结转主营业务成本',
@@ -540,10 +515,6 @@ const nov = [
     tip: '日常操作。',
     entries: [{ subjectCode: '6603', summary: '支票本', debit: 45, credit: 0, explanation: '费用增加。' }, { subjectCode: '100201', summary: '支票本', debit: 0, credit: 45, explanation: '银行减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
     documents: [{ type: 'bank', label: '回单', date: '2026-11-18', totalAmount: 45, payer: '本公司', payeeName: '工行', content: '支票本', refNo: 'HD202611180018' }] },
-  { date: '2026-11-22', title: '出纳资金日报', tags: ["费用"], difficulty: 1,
-    role: 'cashier',
-    description: '编制11月22日资金日报。', tip: '坚持资金日报。', entries: [],
-    documents: [{ type: 'text', label: '日报', docTitle: '资金日报（11月22日）', stampText: '现金日记账', content: `现金：4,500  银行存款：379,470.09` }] },
   { date: '2026-11-23', title: '银行账户管理费', tags: ["费用"], difficulty: 1,
     description: '11月管理费100元。累计1,100元。',
     tip: '日常操作。',

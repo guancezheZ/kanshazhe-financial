@@ -439,34 +439,6 @@ const tasks = [
         items: [{ name: '上海出差差旅费预借（预计11/5-11/7）', qty: 1, price: 2000, amount: 2000 }] },
       { type: 'text', label: '审批记录', docTitle: '借款审批记录', content: '借款人：张明（销售部）\n借款事由：上海出差拜访客户（11/5-11/7）\n借款金额：2,000元\n\n部门经理：✓ 已审批（李经理）\n财务主管：✓ 已审批（王主管）\n出纳办理：✓ 已支付（王出纳）\n\n注意事项：出差返回后3日内凭有效票据报销。', signature: '2026年11月3日' }]},
   {
-    date: '2026-11-04',
-    title: '现金送存银行',
-    tags: ['出纳', '资金管理'],
-    difficulty: 1,
-    description: '月末临近，出纳清点保险柜库存现金发现库存余额较大（备用金5,000元+新提取5,000元-借支2,000元=8,000元），超过日常周转需要的3,000元限额。将多余现金8,000元送存工商银行。',
-    tip: '现金送存银行操作流程：①清点需送存现金（按面值分类整理）→②填写"现金进账单"（一式两联）→③将现金和进账单送交银行柜台→④银行清点后盖章退回一联进账单→⑤凭回单登记现金日记账和银行日记账。注意：大额现金送存需双人护送，确保安全。借：银行存款，贷：库存现金。',
-    entries: [
-      { subjectCode: '100201', summary: '现金送存银行', debit: 8000, credit: 0, explanation: '银行存款增加记借方。现金存入工商银行账户，银行日记账登记"收"方，附银行进账单回单。' },
-      { subjectCode: '1001', summary: '现金送存银行', debit: 0, credit: 8000, explanation: '库存现金减少记贷方。现金送存银行后，保险柜库存现金减少，现金日记账登记"付"方。' }],
-    documents: [
-      { type: 'bank', label: '现金进账单', date: '2026-11-04', totalAmount: 8000, payer: '本公司', payeeName: '本公司（工商银行账户）', content: '现金进账', refNo: 'HD202611040010' },
-      { type: 'receipt', label: '现金清点记录', docTitle: '现金送存明细', date: '2026-11-04', totalAmount: 8000, stampText: '出纳清点章',
-        items: [{ name: '100元面值 80张', qty: 80, price: 100, amount: 8000 }] }]},
-  {
-    date: '2026-11-06',
-    title: '银行转账手续费确认',
-    tags: ['出纳', '资金管理'],
-    difficulty: 1,
-    description: '收到银行电子回单，本月通过工商银行办理多笔转账业务（采购付款、税费缴纳等），产生转账汇款手续费共计55元，银行已自动从账户扣收。需确认扣款明细并索要发票。',
-    tip: '银行转账手续费一般由银行自动从账户扣收，出纳需：①登录网银查看银行服务收费明细→②逐笔核对手续费是否合理→③向银行索取增值税电子普通发票（可抵扣进项税）→④登记银行日记账→⑤将手续费单据移交会计做账。银行手续费每月汇总一次，建议做银行对账时一并核对。借：财务费用，贷：银行存款。',
-    entries: [
-      { subjectCode: '6603', summary: '银行转账手续费', debit: 55, credit: 0, explanation: '财务费用增加记借方。转账汇款手续费属于银行服务性收费，计入财务费用。出纳需向银行索取手续费发票。' },
-      { subjectCode: '100201', summary: '银行转账手续费', debit: 0, credit: 55, explanation: '银行存款减少记贷方。银行自动扣收转账手续费55元，出纳登记银行日记账"付"方。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'bank', label: '银行扣款通知', date: '2026-11-06', totalAmount: 55, payer: '本公司（工商银行）', payeeName: '中国工商银行', content: '转账汇款手续费（11月）', refNo: 'HD202611060010' },
-      { type: 'receipt', label: '手续费明细', docTitle: '银行服务收费明细清单', date: '2026-11-06', totalAmount: 55, stampText: '中国工商银行 业务专用章',
-        items: [{ name: '转账汇款手续费（11笔×5元）', qty: 11, price: 5, amount: 55 }] }]},
-  {
     date: '2026-11-08',
     title: '差旅费报销核销借支',
     tags: ['出纳', '费用管理'],
@@ -524,20 +496,6 @@ const tasks = [
       { type: 'bank', label: '缴税回单', date: '2026-11-12', totalAmount: 741, payer: '本公司（工商银行）', payeeName: '国家金库上海分库', content: '2026年11月城建税及教育费附加', refNo: 'HD202611120010' },
       { type: 'receipt', label: '附加税缴款明细', docTitle: '附加税缴款明细', date: '2026-11-12', totalAmount: 741, stampText: '电子税务局 已扣款',
         items: [{ name: '城市维护建设税（7%）', qty: 1, price: 518.7, amount: 518.7 }, { name: '教育费附加（3%）', qty: 1, price: 222.3, amount: 222.3 }] }]},
-  {
-    date: '2026-11-14',
-    title: '购买转账支票本',
-    tags: ['出纳', '资金管理'],
-    difficulty: 1,
-    description: '公司业务量增加需使用转账支票支付供应商货款，出纳前往工商银行柜台购买转账支票一本（25份/本），工本费及手续费合计35元，银行从账户自动扣收。',
-    tip: '购买支票操作：①填写"票据和结算凭证领用单"（加盖预留银行印鉴）→②银行审核后发售支票→③自动扣收工本费→④出纳在"支票登记簿"登记购买信息（支票号码起止、购买日期、份数）→⑤支票簿存入保险柜保管。支票和印鉴必须分开保管（出纳管支票，会计管印鉴），防止被盗用。借：财务费用，贷：银行存款。',
-    entries: [
-      { subjectCode: '6603', summary: '购买转账支票本', debit: 35, credit: 0, explanation: '财务费用增加记借方。银行支票工本费及手续费属于银行服务费用，计入财务费用。' },
-      { subjectCode: '100201', summary: '购买转账支票本', debit: 0, credit: 35, explanation: '银行存款减少记贷方。银行扣收支票工本费35元，出纳登记银行日记账"付"方，同时在支票登记簿登记新支票起止号码。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'receipt', label: '银行收费凭证', docTitle: '中国工商银行收费凭证', date: '2026-11-14', totalAmount: 35, stampText: '中国工商银行 业务专用章',
-        items: [{ name: '转账支票（25份/本）', qty: 1, price: 25, amount: 25 }, { name: '支票受理手续费', qty: 1, price: 10, amount: 10 }] },
-      { type: 'text', label: '支票登记簿', docTitle: '支票领用登记簿', content: '购买日期：2026年11月14日\n支票类型：转账支票\n银行名称：工行上海分行\n起止号码：ZZ123482~ZZ123506\n份数：25份\n保管人：王出纳\n\n已使用记录：\n[空白，待后续使用登记]', stampText: '出纳专用章' }]},
   {
     date: '2026-11-15',
     title: '微信账户提现',

@@ -181,18 +181,6 @@ const tasks = [
       { type: 'bank', label: '收款回单（永辉）', date: '2026-04-06', totalAmount: 25000, payer: '永辉超市', payeeName: '本公司', content: '前欠货款', refNo: 'HD202604060002' }]},
   // ══════ 出纳任务 ══════
   {
-    date: '2026-04-06',
-    title: '现金送存银行',
-    tags: ['出纳', '资金管理'],
-    difficulty: 1,
-    description: '出纳将库存现金中超出日常备用金限额的3,000元送存工商银行账户，已填写现金缴款单办理完毕。',
-    tip: '企业库存现金不能超过核定限额，超出部分需及时送存银行。分录：借：银行存款，贷：库存现金。出纳需填写"现金缴款单"到银行柜台办理，办理完成后将回单附在记账凭证后。',
-    entries: [
-      { subjectCode: '100201', summary: '现金送存银行', debit: 3000, credit: 0, explanation: '银行存款增加记借方。超限额现金送存银行后公司银行存款增加，出纳需登记银行存款日记账。' },
-      { subjectCode: '1001', summary: '现金送存银行', debit: 0, credit: 3000, explanation: '库存现金减少记贷方。送存后保险柜现金减少至日常备用金水平，确保资金安全。' }],
-    documents: [
-      { type: 'bank', label: '现金缴款回单', date: '2026-04-06', totalAmount: 3000, payer: '本公司', payeeName: '本公司（工行账户）', content: '现金缴存', refNo: 'HD202604060088' }]},
-  {
     date: '2026-04-07',
     title: '支付销售运费',
     tags: ['商品销售', '费用管理'],
@@ -303,18 +291,6 @@ const tasks = [
     documents: [
       { type: 'text', label: '成本计算表', docTitle: '商品销售成本计算表（4月第二批）', content: 'A类商品：销售200件×单位成本100元=20,000元\nC类商品：销售100件×单位成本150元=15,000元\nB类商品：销售250件×单位成本120元=30,000元\n合计：65,000元', stampText: '财务专用章' }]},
   // ══════ 出纳任务 ══════
-  {
-    date: '2026-04-10',
-    title: '购买转账支票',
-    tags: ['出纳', '资金管理'],
-    difficulty: 1,
-    description: '出纳到工商银行购买转账支票簿一本（25张），支付工本费及手续费共计25元，银行直接从账户扣划。',
-    tip: '购买支票簿的费用计入"财务费用"科目。分录：借：财务费用-手续费，贷：银行存款。出纳需保管好购买的空白支票，建立支票领用登记簿，实行"票印分离"管理（空白支票与印鉴章分开保管）。',
-    entries: [
-      { subjectCode: '6603', summary: '购买转账支票', debit: 25, credit: 0, explanation: '财务费用增加记借方。支票工本费及手续费属于银行服务费用，计入财务费用。' },
-      { subjectCode: '100201', summary: '购买转账支票', debit: 0, credit: 25, explanation: '银行存款减少记贷方。银行直接从账户扣划支票工本费，出纳需登记银行存款日记账。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'bank', label: '银行收费回单', date: '2026-04-10', totalAmount: 25, payer: '本公司', payeeName: '工商银行', content: '转账支票簿工本费及手续费（25张×1元）', refNo: 'HD202604100011' }]},
   {
     date: '2026-04-11',
     title: '收到前欠货款',
@@ -500,30 +476,7 @@ const tasks = [
 4/11      鑫源回款              40,000      HD202604110001
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━
 整理人：出纳  日期：2026-04-18` }]},
-  {
-    date: '2026-04-19',
-    title: '银行手续费',
-    tags: ['费用管理', '资金管理'],
-    difficulty: 1,
-    description: '支付工商银行账户管理费及汇款手续费350元，已从账户扣划。',
-    tip: '银行手续费计入"财务费用"。借：财务费用，贷：银行存款。注意银行手续费一般不需要发票，以银行回单作为原始凭证。',
-    entries: [
-      { subjectCode: '6603', summary: '支付银行手续费', debit: 350, credit: 0, explanation: '财务费用增加记借方。银行账户管理费及汇款手续费属于融资费用，计入财务费用。' },
-      { subjectCode: '100201', summary: '支付银行手续费', debit: 0, credit: 350, explanation: '银行存款减少记贷方。银行自动扣划手续费，资产减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'bank', label: '手续费回单', date: '2026-04-19', totalAmount: 350, payer: '本公司', payeeName: '工商银行', content: '账户管理费及汇款手续费', refNo: 'HD202604190001' }]},
   // ══════ 出纳任务 ══════
-  {
-    date: '2026-04-19',
-    title: '银行手续费确认回单',
-    tags: ['出纳', '资金管理'],
-    difficulty: 1,
-    description: '收到工商银行4月份账户管理费及电子回单箱服务费回单，合计350元已从账户自动扣划，出纳确认并登记银行存款日记账。',
-    tip: '银行手续费为银行提供的账户管理、结算等服务收取的费用。出纳收到银行扣款回单后，需核对扣款金额是否合理，并登记银行存款日记账。手续费原始凭证为银行回单，无需另外取得发票。',
-    role: 'cashier',
-    entries: [],
-    documents: [
-      { type: 'bank', label: '手续费回单', date: '2026-04-19', totalAmount: 350, payer: '本公司', payeeName: '工商银行', content: '4月账户管理费及电子回单箱服务费', refNo: 'HD202604190001' }]},
   {
     date: '2026-04-20',
     title: '支付水电费',

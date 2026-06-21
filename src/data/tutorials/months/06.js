@@ -370,24 +370,6 @@ const jun = [
     ],
   },
   {
-    date: '2026-06-17',
-    title: '支付网络推广费',
-    tags: ["费用"],
-    difficulty: 1,
-    description: '支付本月网络推广费 8,000元，以银行存款支付。',
-    tip: '推广费属于"销售费用-广告费"。注意：5月推广费7,000元，本月增加至8,000元，可能是在备战618促销活动。',
-    entries: [
-      { subjectCode: '660101', summary: '支付网络推广费', debit: 8000, credit: 0,
-        explanation: '销售费用-广告费增加8,000元。6月促销活动增多，推广费比5月增加1,000元。' },
-      { subjectCode: '100201', summary: '支付网络推广费', debit: 0, credit: 8000,
-        explanation: '银行存款减少8,000元。网络推广费用通常在服务提供后凭发票结算。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目660101），属于"支付其他与经营活动有关的现金"。'},
-    ],
-    documents: [
-      { type: 'invoice', label: '服务发票', region: '北京', invoiceType: '专用', copy: '发票联', invoiceNo: '1100666555', date: '2026年06月17日', buyer: '本公司', buyerTaxId: '91440101MA3XXXXXXXX', seller: '字节跳动科技有限公司', sellerTaxId: '91110000MA6YYYYYYY', stampText: '字节跳动\n发票专用章',
-        lineItems: [{ name: '信息流推广服务费（6月）', unit: '项', qty: 1, price: 8000, amount: 8000, taxRate: '6%', tax: 480 }], totalAmount: 8480 },
-    ],
-  },
-  {
     date: '2026-06-18',
     title: '计提固定资产折旧',
     tags: ["资产"],
@@ -892,22 +874,6 @@ Q2各月利息：
     ],
   },
   {
-    date: '2026-06-07',
-    title: '银行转账支付网络服务费',
-    tags: ["出纳","费用"],
-    difficulty: 1,
-    role: 'cashier',
-    description: '支付6月份企业宽带费和服务器托管费共计 2,600元，通过工商银行转账给中国电信。',
-    tip: '月度固定费用按时支付，避免因欠费导致服务中断。网络服务一旦中断，企业的日常办公和业务系统都会受影响。出纳应在每月5-10日之间安排支付。',
-    entries: [
-      { subjectCode: '6602', summary: '支付6月网络费', debit: 2600, credit: 0, explanation: '管理费用增加。企业宽带和服务器托管费是日常管理支出。' },
-      { subjectCode: '100201', summary: '支付6月网络费', debit: 0, credit: 2600, explanation: '银行存款减少。通过银行转账支付网络费，出纳需保留回单。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6602），属于"支付其他与经营活动有关的现金"。'},
-    ],
-    documents: [
-      { type: 'bank', label: '转账回单', date: '2026-06-07', totalAmount: 2600, payer: '本公司', payeeName: '中国电信XX分公司', content: '6月企业宽带+服务器托管费', refNo: 'HD202606070012' },
-    ],
-  },
-  {
     date: '2026-06-09',
     title: '收到客户银行承兑汇票 ⭐',
     tags: ["出纳","销售"],
@@ -1038,30 +1004,6 @@ Q2各月利息：
     ],
   },
   {
-    date: '2026-06-22',
-    title: '出纳资金日报编制',
-    tags: ["出纳"],
-    difficulty: 1,
-    role: 'cashier',
-    description: '编制6月22日的资金日报表，统计当日库存现金和银行存款的收支变动情况，报送财务主管。',
-    tip: '出纳坚持每日编制资金日报，月底汇总时就会非常清晰。半年度末报表编制需要准确的资金数据，日报的积累是半年报数据准确的基础保障。',
-    entries: [],
-    documents: [
-      { type: 'text', label: '资金日报表', docTitle: '资金日报表（2026年6月22日）', stampText: '现金日记账\n银行日记账',
-        content: `资金日报表
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-日期：2026年6月22日
-                             库存现金    银行存款
-昨日余额                      4,600    467,371.00
-本日收入                          —          —
-本日支出                          —          —
-本日余额                      4,600    467,371.00
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-备注：本日无资金变动
-编制人：王出纳  审阅：_______` },
-    ],
-  },
-  {
     date: '2026-06-25',
     title: '银行账户管理费确认',
     tags: ["出纳","费用"],
@@ -1075,22 +1017,6 @@ Q2各月利息：
     ],
     documents: [
       { type: 'bank', label: '扣款回单', date: '2026-06-25', totalAmount: 100, payer: '本公司', payeeName: '中国工商银行', content: '2026年6月账户管理费', refNo: 'HD202606250035' },
-    ],
-  },
-  {
-    date: '2026-06-26',
-    title: '银行手续费确认',
-    tags: ["出纳","费用"],
-    difficulty: 1,
-    role: 'cashier',
-    description: '收到银行月度手续费回单，6月份各项转账手续费合计 220元。出纳核对当月转账笔数后确认入账。',
-    tip: '6月手续费较之前月份略高（20元增加），可能是因为票据托收和汇票业务产生了额外费用。出纳核对费用明细时如发现异常增长需向银行问明原因。',
-    entries: [
-      { subjectCode: '6603', summary: '6月银行手续费', debit: 220, credit: 0, explanation: '财务费用增加。银行转账和票据手续费是银行服务费用。' },
-      { subjectCode: '100201', summary: '6月银行手续费', debit: 0, credit: 220, explanation: '银行存款减少。银行自动扣收手续费。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'},
-    ],
-    documents: [
-      { type: 'bank', label: '手续费回单', date: '2026-06-26', totalAmount: 220, payer: '本公司', payeeName: '中国工商银行', content: '6月银行手续费（含票据托收费）', refNo: 'HD202606260038' },
     ],
   },
   {

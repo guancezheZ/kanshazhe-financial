@@ -54,7 +54,6 @@
     <!-- 教学模式（引导/练习/考试/纠错） -->
     <div class="mode-switch">
       <el-radio-group v-model="tutorialMode" size="small">
-        <el-radio-button value="guided">📖 分步引导</el-radio-button>
         <el-radio-button value="practice">✏️ 练习</el-radio-button>
         <el-radio-button value="exam">📝 考试</el-radio-button>
         <el-radio-button value="error-find">🔍 纠错</el-radio-button>
@@ -111,16 +110,7 @@
         </div>
       </div>
 
-      <!-- 步骤指引（仅引导模式） -->
-      <div v-if="tutorialMode === 'guided'" class="step-guide">
-        <div class="step step-done">① 理解业务</div>
-        <div class="step step-active">② 逐笔分析分录</div>
-        <div class="step">③ 检查确认</div>
-        <div class="step">④ 保存凭证</div>
-        <div class="step-guide-text">跟随分步引导逐步推理，然后保存提交</div>
-      </div>
-
-      <!-- 电子凭证展示区 -->
+<!-- 电子凭证展示区 -->
       <div class="voucher-doc">
         <div class="doc-header">
           <span class="doc-title">📎 原始凭证</span>
@@ -163,12 +153,8 @@
           </div>
       </div>
 
-      <!-- 教学提示（折叠，练习/考试模式隐藏） -->
-      <details v-if="tutorialMode === 'guided'" class="tip-section">
-        <summary style="cursor:pointer;font-size:12px;color:#909399">💡 查看教学提示</summary>
-        <div class="tip-text">{{ task.tip }}</div>
-      </details>
-      <details v-if="tutorialMode === 'practice'" class="tip-section" open>
+      <!-- 教学提示 -->
+      <details class="tip-section" open>
         <summary style="cursor:pointer;font-size:12px;color:#909399">💡 教学提示（可参考）</summary>
         <div class="tip-text">{{ task.tip }}</div>
       </details>
@@ -195,7 +181,7 @@
         🧾 去报税
       </el-button>
       <el-button v-else size="small" type="primary" @click="goToEntry">
-        {{ tutorialMode === 'guided' ? '📖 引导录入' : tutorialMode === 'exam' ? '📝 开始答题' : '✏️ 开始练习' }}
+        {{ tutorialMode === 'exam' ? '📝 开始答题' : '✏️ 开始练习' }}
       </el-button>
       <el-button v-if="tutorialMode !== 'exam' && hasEntries" size="small" @click="showAnswer">查看答案</el-button>
       <el-button size="small" type="danger" plain @click="showWrongAnswers = true">📝 错题本</el-button>
@@ -628,10 +614,6 @@ function goToWrongTask(item) {
     currentIdx.value = idx
     updateTask()
     showWrongAnswers.value = false
-    // 如果当前不在引导模式，切回引导
-    if (tutorialMode.value !== 'guided') {
-      tutorialMode.value = 'guided'
-    }
     // 自动弹出录入
     setTimeout(() => goToEntry(), 300)
   } else {

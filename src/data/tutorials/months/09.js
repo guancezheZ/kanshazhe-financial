@@ -187,20 +187,6 @@ const sep = [
         items: [{ name: '往返机票（广州-北京）', qty: 1, price: 2000, amount: 2000 }, { name: '住宿费（2晚）', qty: 2, price: 500, amount: 1000 }, { name: '出差补贴（5天×100元）', qty: 5, price: 100, amount: 500 }] },
       { type: 'bank', label: '银行回单', date: '2026-09-07', totalAmount: 3500, payer: '本公司', payeeName: '王明', content: '报销差旅费', refNo: 'HD202609070008' }]},
   {
-    date: '2026-09-08',
-    title: '银行手续费',
-    tags: ["费用"],
-    difficulty: 1,
-    description: '收到银行回单，本月银行手续费 250元（账户管理费+转账手续费）。',
-    tip: '银行手续费计入"财务费用"。每月底银行出具手续费清单，企业据以入账。',
-    entries: [
-      { subjectCode: '6603', summary: '银行手续费', debit: 250, credit: 0,
-        explanation: '财务费用增加250元。银行手续费是融资成本或银行费用，减少利润。' },
-      { subjectCode: '100201', summary: '银行手续费', debit: 0, credit: 250,
-        explanation: '银行存款减少250元。银行直接从账户扣收。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'bank', label: '银行回单', date: '2026-09-08', totalAmount: 250, payer: '本公司', payeeName: '中国工商银行', content: '账户管理费100+转账手续费150', refNo: 'HD202609080009' }]},
-  {
     date: '2026-09-09',
     title: '计提固定资产折旧',
     tags: ["资产"],
@@ -414,22 +400,6 @@ const sep = [
   // 第四周 9/21~9/25：常规运营
   // ═══════════════════════════════════════════════
 
-  {
-    date: '2026-09-21',
-    title: '支付网络推广费',
-    tags: ["费用"],
-    difficulty: 1,
-    description: '支付本月网络搜索推广服务费 9,000元（不含税），以银行存款支付。',
-    tip: '推广费计入"销售费用-广告费"。广告费不超过当年营业收入15%的部分可以税前扣除。',
-    entries: [
-      { subjectCode: '660101', summary: '支付推广费', debit: 9000, credit: 0,
-        explanation: '销售费用-广告费增加9,000元。推广费用直接费用化。' },
-      { subjectCode: '100201', summary: '支付推广费', debit: 0, credit: 9000,
-        explanation: '银行存款减少9,000元。每月推广支出是营销费用的重要组成部分。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目660101），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'invoice', label: '服务发票', region: '北京', invoiceType: '专用', invoiceNo: '1100765432', date: '2026年09月21日', buyer: '本公司', seller: '百度在线网络技术有限公司', stampText: '发票专用章',
-        lineItems: [{ name: '搜索推广服务费', unit: '项', qty: 1, price: 9000, amount: 9000, taxRate: '6%', tax: 540 }], totalAmount: 9540 },
-      { type: 'bank', label: '银行回单', date: '2026-09-21', totalAmount: 9540, payer: '本公司', payeeName: '百度在线网络技术有限公司', content: '支付推广服务费', refNo: 'HD202609210012' }]},
   {
     date: '2026-09-22',
     title: '采购原材料（含税）',
@@ -816,14 +786,6 @@ A产品    200件      400.00    80,000.00
       { subjectCode: '6603', summary: '支票本', debit: 45, credit: 0, explanation: '财务费用增加。' },
       { subjectCode: '100201', summary: '支票本', debit: 0, credit: 45, explanation: '银行存款减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
     documents: [{ type: 'bank', label: '收费回单', date: '2026-09-19', totalAmount: 45, payer: '本公司', payeeName: '中国工商银行', content: '购买支票本', refNo: 'HD202609190018' }]},
-  {
-    date: '2026-09-22', title: '出纳资金日报编制',
-    tags: ["出纳"], difficulty: 1,
-    description: '编制9月22日资金日报表。',
-    role: 'cashier',
-    tip: '坚持日报。', entries: [],
-    documents: [{ type: 'text', label: '资金日报表', docTitle: '资金日报表（9月22日）', stampText: '现金日记账',
-      content: `库存现金：4,500    银行存款：244,379.67\n美元户：US$10,000（RMB 71,200）` }]},
   {
     date: '2026-09-23', title: '银行转账支付清洁费',
     tags: ["出纳","费用"], difficulty: 1,

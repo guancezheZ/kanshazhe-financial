@@ -355,19 +355,6 @@ const tasks = [
       { subjectCode: '2232', debit: 0, credit: 1450, summary: '应付利息增加', explanation: '应付利息增加1,450元。本月已发生但尚未支付的利息，负债增加。' }],
     documents: [
       { type: 'text', label: '利息计算表', docTitle: '2026年3月借款利息计提明细', content: '短期借款400,000元，年利率4.35%，月利息=400,000×4.35%÷12=1,450元。', signature: '财务部' }]},
-  {
-    date: '2026-03-20',
-    title: '支付银行手续费',
-    tags: ['资金管理', '资金管理'],
-    difficulty: 1,
-    description: '工商银行收取本月账户管理费、转账手续费等共计200元，已自动扣划。',
-    tip: '银行手续费金额虽小，但每月发生。出纳需关注账户明细变动，确保扣款准确。',
-    entries: [
-      { subjectCode: '6603', debit: 200, credit: 0, summary: '银行手续费', explanation: '财务费用增加200元。银行收取的各项手续费计入财务费用。' },
-      { subjectCode: '100201', debit: 0, credit: 200, summary: '银行自动扣划', explanation: '银行存款减少200元。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'receipt', label: '银行业务收费回单', date: '2026-03-20', items: [{ label: '账户管理费', amount: 100 }, { label: '转账手续费', amount: 100 }], totalAmount: 200, stampText: '中国工商银行 业务专用章' }]},
-
   // ═════════════════════════════════════════════════════════════════════
   // 第四周：季度税务 + 期末结转（3月23日~3月27日）
   // ═════════════════════════════════════════════════════════════════════

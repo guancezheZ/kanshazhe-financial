@@ -575,20 +575,6 @@ const tasks = [
     documents: [
       { type: 'bank', label: '收款回单', date: '2026-02-21', totalAmount: 40680, payer: '乙公司', payerAccount: '6222 0200 **** 3333', payeeName: '本公司', payeeAccount: '6222 0200 **** 8888', content: '货款（发票No.3100234576）', refNo: 'HD202602210001' }]},
   {
-    date: '2026-02-23',
-    title: '现金送存银行',
-    tags: ['出纳'],
-    difficulty: 1,
-    description: '春节期间提取的备用金10,000元已使用部分，但仍有较多现金结余。出纳清点后，将超出限额（5,000元）的部分送存工商银行。',
-    tip: '节日过后备用金结余较多时应及时送存银行，压降库存现金至限额以内。操作流程：①清点需送存的现金②填写现金缴款单③送交银行柜台④银行盖章后取回回单⑤登记现金日记账和银行日记账。',
-    entries: [
-      { subjectCode: '100201', summary: '现金送存银行', debit: 5000, credit: 0, explanation: '银行存款增加记借方。将超出限额的现金送存工商银行账户。' },
-      { subjectCode: '1001', summary: '现金送存银行', debit: 0, credit: 5000, explanation: '库存现金减少记贷方。送存现金5,000元后，库存现金余额回到限额以内。' }],
-    documents: [
-      { type: 'bank', label: '现金缴款单', date: '2026-02-23', totalAmount: 5000, payer: '本公司', payeeName: '本公司工商银行账户', content: '送存多余现金', refNo: 'HD202602230050' },
-      { type: 'receipt', label: '现金缴款回单', docTitle: '中国工商银行现金缴款回单', date: '2026-02-23', totalAmount: 5000, stampText: '中国工商银行 现金收讫 业务专用章',
-        items: [{ name: '现金缴款', qty: 5000, price: 1, amount: 5000 }] }]},
-  {
     date: '2026-02-25',
     title: '备用金借支——差旅预借',
     tags: ['出纳', '费用管理'],
@@ -602,32 +588,6 @@ const tasks = [
       { type: 'receipt', label: '借款单', docTitle: '员工借款单', date: '2026-02-25', totalAmount: 1500, stampText: '财务专用章',
         items: [{ name: '差旅费预借——浙江出差（2月26-28日）', qty: 1, price: 1500, amount: 1500 }] },
       { type: 'text', label: '审批记录', docTitle: '借款审批记录', content: '借款人：李强（销售部）\n事由：拜访浙江客户\n金额：1,500.00\n部门经理：同意☑  财务主管：同意☑\n前账记录：无未报销借款', signature: '出纳：已支付 王出纳' }]},
-  {
-    date: '2026-02-26',
-    title: '银行代扣手续费确认',
-    tags: ['出纳', '费用管理'],
-    difficulty: 1,
-    description: '收到银行对账单，显示本月银行转账汇款手续费合计约200元（含工行和建行账户），银行已自动从账户扣收。出纳逐笔核对后登记银行日记账。',
-    tip: '银行手续费核对要点：①逐笔核对账单上的手续费明细②确认手续费计算是否正确（一般按笔数和金额分段计费）③向银行索取手续费增值税发票④登记银行日记账⑤月末汇总当月全部手续费。不同银行账户的手续费分开登记。',
-    entries: [
-      { subjectCode: '6602', summary: '银行手续费（工行）', debit: 150, credit: 0, explanation: '管理费用增加记借方。工商银行账户2月转账汇款手续费约150元。' },
-      { subjectCode: '100201', summary: '银行手续费（工行）', debit: 0, credit: 150, explanation: '银行存款-工行减少记贷方。工行账户自动扣收手续费150元。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6602），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'bank', label: '银行扣款通知', date: '2026-02-26', totalAmount: 150, payer: '本公司（工商银行）', payeeName: '中国工商银行', content: '2月电子汇划费及手续费', refNo: 'HD202602260060' },
-      { type: 'receipt', label: '手续费清单', docTitle: '银行服务收费明细（2月）', date: '2026-02-26', totalAmount: 150, stampText: '中国工商银行 业务专用章',
-        items: [{ name: '转账汇款手续费', qty: 15, price: 8, amount: 120 }, { name: '账户维护费', qty: 1, price: 30, amount: 30 }] }]},
-  {
-    date: '2026-02-27',
-    title: '银行账户管理费确认',
-    tags: ['出纳', '费用管理'],
-    difficulty: 1,
-    description: '建设银行账户产生本月账户管理费20元，银行已自动扣收。出纳收到扣款通知后登记银行日记账，并向银行索取发票。',
-    tip: '银行账户管理费一般是按季度或按月收取，出纳需留意各银行账户的扣款情况。如果认为费用不合理，可以联系客户经理申请减免。注意：管理费金额虽小，但也是企业实际发生的费用，必须逐笔登记入账。',
-    entries: [
-      { subjectCode: '6602', summary: '建行账户管理费', debit: 20, credit: 0, explanation: '管理费用增加记借方。建设银行账户2月账户管理费20元。' },
-      { subjectCode: '100202', summary: '建行账户管理费', debit: 0, credit: 20, explanation: '银行存款-建行减少记贷方。建行账户自动扣收管理费20元，建行日记账登记"付"方。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6602），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'bank', label: '建行扣款通知', date: '2026-02-27', totalAmount: 20, payer: '本公司（建设银行）', payeeName: '中国建设银行', content: '2月账户管理费', refNo: 'CCB202602270010' }]},
   {
     date: '2026-02-27',
     title: '出纳资金日报编制',

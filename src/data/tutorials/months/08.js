@@ -354,21 +354,6 @@ const aug = [
       { type: 'receipt', label: '收据', docTitle: '收  据', date: '2026-08-19', totalAmount: 700, payer: '本公司', stampText: '办公用品店\n发票专用章',
         items: [{ name: '打印纸 5包×100元', qty: 5, price: 100, amount: 500 }, { name: '文具套裝 10套×20元', qty: 10, price: 20, amount: 200 }] }]},
   {
-    date: '2026-08-20',
-    title: '支付网络推广费',
-    tags: ["费用"],
-    difficulty: 1,
-    description: '支付本月网络推广费 9,000元，以银行存款支付。',
-    tip: '推广费属于"销售费用-广告费"。8月推广费与7月持平，为9月销售旺季做持续铺垫。',
-    entries: [
-      { subjectCode: '660101', summary: '支付网络推广费', debit: 9000, credit: 0,
-        explanation: '销售费用-广告费增加9,000元。夏季推广持续投入。' },
-      { subjectCode: '100201', summary: '支付网络推广费', debit: 0, credit: 9000,
-        explanation: '银行存款减少9,000元。推广费是企业维持市场曝光度的必要开支。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目660101），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'invoice', label: '服务发票', region: '北京', invoiceType: '专用', copy: '发票联', invoiceNo: '1100888555', date: '2026年08月20日', buyer: '本公司', buyerTaxId: '91440101MA3XXXXXXXX', seller: '字节跳动科技有限公司', sellerTaxId: '91110000MA6YYYYYYY', stampText: '字节跳动\n发票专用章',
-        lineItems: [{ name: '信息流推广服务费（8月）', unit: '项', qty: 1, price: 9000, amount: 9000, taxRate: '6%', tax: 540 }], totalAmount: 9540 }]},
-  {
     date: '2026-08-21',
     title: '计提固定资产折旧',
     tags: ["资产"],
@@ -799,14 +784,6 @@ Q3累计利息：543.75×2=1,087.50元
       { subjectCode: '100201', summary: '支票本', debit: 0, credit: 45, explanation: '银行存款减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
     documents: [{ type: 'bank', label: '收费回单', date: '2026-08-19', totalAmount: 45, payer: '本公司', payeeName: '中国工商银行', content: '购买支票本', refNo: 'HD202608190020' }]},
   {
-    date: '2026-08-22', title: '出纳资金日报编制',
-    tags: ["出纳"], difficulty: 1,
-    description: '编制8月22日资金日报表。',
-    role: 'cashier',
-    tip: '坚持资金日报。', entries: [],
-    documents: [{ type: 'text', label: '资金日报表', docTitle: '资金日报表（8月22日）', stampText: '现金日记账',
-      content: `库存现金：4,800    银行存款：687,720.92\n备注：本日无变动` }]},
-  {
     date: '2026-08-23', title: '银行转账支付清洁费',
     tags: ["出纳","费用"], difficulty: 1,
     description: '支付8月清洁服务费 1,800元。',
@@ -824,15 +801,6 @@ Q3累计利息：543.75×2=1,087.50元
       { subjectCode: '6603', summary: '管理费', debit: 100, credit: 0, explanation: '财务费用增加。' },
       { subjectCode: '100201', summary: '管理费', debit: 0, credit: 100, explanation: '银行存款减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
     documents: [{ type: 'bank', label: '扣款回单', date: '2026-08-25', totalAmount: 100, payer: '本公司', payeeName: '中国工商银行', content: '8月管理费', refNo: 'HD202608250025' }]},
-  {
-    date: '2026-08-26', title: '银行手续费确认',
-    tags: ["出纳","费用"], difficulty: 1,
-    description: '8月银行手续费合计 200元。',
-    tip: '核对当月转账笔数估算手续费。',
-    entries: [
-      { subjectCode: '6603', summary: '手续费', debit: 200, credit: 0, explanation: '财务费用增加。' },
-      { subjectCode: '100201', summary: '手续费', debit: 0, credit: 200, explanation: '银行存款减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [{ type: 'bank', label: '手续费回单', date: '2026-08-26', totalAmount: 200, payer: '本公司', payeeName: '中国工商银行', content: '8月手续费', refNo: 'HD202608260028' }]},
   {
     date: '2026-08-28', title: '银行转账支付培训费',
     tags: ["出纳","费用"], difficulty: 1,

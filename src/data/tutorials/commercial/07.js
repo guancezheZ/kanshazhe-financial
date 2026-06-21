@@ -404,19 +404,6 @@ const tasks = [
       { type: 'receipt', label: '现金支票存根', docTitle: '中国工商银行现金支票存根', date: '2026-07-02', totalAmount: 5000, stampText: '预留印鉴',
         items: [{ name: '提取备用金（日常零星开支）', qty: 1, price: 5000, amount: 5000 }] }]},
   {
-    date: '2026-07-04',
-    title: '现金送存银行',
-    tags: ['出纳', '资金管理'],
-    difficulty: 1,
-    description: '将库存现金3,000元送存工商银行，减少库存现金存量。',
-    tip: '当库存现金超过银行核定的限额时，出纳应将超额部分送存银行。借：银行存款，贷：库存现金。送存时需填制现金进账单，银行盖章后退回一联作为记账凭证。',
-    entries: [
-      { subjectCode: '100201', summary: '现金送存银行', debit: 3000, credit: 0, explanation: '银行存款增加记借方。将现金存入工行账户，银行存款增加3,000元。' },
-      { subjectCode: '1001', summary: '现金送存银行', debit: 0, credit: 3000, explanation: '库存现金减少记贷方。送存银行后，库存现金减少3,000元。' }],
-    documents: [
-      { type: 'receipt', label: '现金进账单', docTitle: '中国工商银行现金进账单', date: '2026-07-04', totalAmount: 3000, stampText: '中国工商银行 业务专用章',
-        items: [{ name: '库存现金送存', qty: 1, price: 3000, amount: 3000 }] }]},
-  {
     date: '2026-07-05',
     title: '备用金借支（员工预借差旅费）',
     tags: ['出纳', '费用管理'],
@@ -478,18 +465,6 @@ const tasks = [
       { subjectCode: '101205', summary: '支付宝提现转出', debit: 0, credit: 2000, explanation: '其他货币资金-支付宝账户减少记贷方。支付宝余额减少2,000元，第三方支付平台资金减少。' }],
     documents: [
       { type: 'bank', label: '支付宝提现记录', date: '2026-07-10', totalAmount: 2000, payer: '支付宝账户', payeeName: '本公司工行账户', content: '支付宝余额提现', refNo: 'ZFB20260710001' }]},
-  {
-    date: '2026-07-12',
-    title: '银行手续费',
-    tags: ['出纳', '费用管理', '资金管理'],
-    difficulty: 1,
-    description: '工商银行收取本月账户管理费及转账手续费共180元。',
-    tip: '银行手续费包括账户管理费、转账手续费等，银行通常直接从账户中扣收。借：财务费用，贷：银行存款。出纳需逐笔核对银行扣款金额，发现异常及时联系银行。',
-    entries: [
-      { subjectCode: '6603', summary: '银行手续费', debit: 180, credit: 0, explanation: '财务费用增加记借方。银行账户管理费及转账手续费180元，属于银行服务费用，计入财务费用。' },
-      { subjectCode: '100201', summary: '银行手续费', debit: 0, credit: 180, explanation: '银行存款减少记贷方。银行直接扣收手续费180元，银行存款减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'bank', label: '银行扣款通知', date: '2026-07-12', totalAmount: 180, payer: '本公司', payeeName: '中国工商银行', content: '7月账户管理费及转账手续费', refNo: 'HD202607120001' }]},
   {
     date: '2026-07-14',
     title: '购买支票本',

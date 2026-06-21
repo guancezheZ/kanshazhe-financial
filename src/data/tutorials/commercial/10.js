@@ -499,20 +499,6 @@ const tasks = [
     documents: [
       { type: 'text', label: '支付宝收款截图', docTitle: '支付宝商家后台收款记录', content: '交易时间：2026-10-09 10:15:42\n交易单号：AL202610091015420001\n付款方式：支付宝扫码\n交易金额：4,520.00元\n商品说明：促销F类商品\n交易状态：交易成功 ✅', stampText: '支付宝商家平台电子回单' }]},
   {
-    date: '2026-10-10',
-    title: '现金送存银行',
-    tags: ['出纳', '资金管理'],
-    difficulty: 1,
-    description: '出纳将库存现金中超出日常备用金限额的5,000元送存工商银行账户，已填写现金缴款单办理完毕。',
-    tip: '企业库存现金不能超过核定限额，超出部分需及时送存银行。分录：借：银行存款，贷：库存现金。出纳需填写"现金缴款单"到银行柜台办理，办理完成后将回单附在记账凭证后。',
-    entries: [
-      { subjectCode: '100201', summary: '现金送存银行', debit: 5000, credit: 0, explanation: '银行存款增加记借方。超限额现金送存银行后公司银行存款增加，出纳需登记银行存款日记账。' },
-      { subjectCode: '1001', summary: '现金送存银行', debit: 0, credit: 5000, explanation: '库存现金减少记贷方。送存现金5,000元后保险柜现金减少，出纳需在现金日记账贷方登记此笔支出，并保管现金缴款单回单。' }],
-    documents: [
-      { type: 'bank', label: '现金缴款单', date: '2026-10-10', totalAmount: 5000, payer: '本公司', payeeName: '本公司', content: '现金送存银行（超限额部分）', refNo: 'CJ202610100001' },
-      { type: 'receipt', label: '缴款回单', docTitle: '现金进账单', date: '2026-10-10', totalAmount: 5000, stampText: '中国工商银行 业务清讫章',
-        items: [{ name: '现金缴款（超限额备用金）', qty: 1, price: 5000, amount: 5000 }] }]},
-  {
     date: '2026-10-11',
     title: '购买转账支票',
     tags: ['出纳', '资金管理'],
@@ -525,18 +511,6 @@ const tasks = [
     documents: [
       { type: 'receipt', label: '工本费收据', docTitle: '中国工商银行收费凭证', date: '2026-10-11', totalAmount: 25, stampText: '中国工商银行 业务专用章',
         items: [{ name: '转账支票簿（25张）工本费', qty: 1, price: 25, amount: 25 }] }]},
-  {
-    date: '2026-10-11',
-    title: '银行账户管理费扣收',
-    tags: ['出纳', '资金管理'],
-    difficulty: 1,
-    description: '收到工商银行10月份账户管理费及电子回单箱服务费回单，合计80元已从账户自动扣划，出纳确认并登记银行存款日记账。',
-    tip: '银行账户管理费是银行对账户提供的日常管理服务收取的费用，属于财务费用。出纳收到银行扣款回单后需核对扣款金额是否合理，并登记银行存款日记账。对于自动扣划的费用，出纳应定期查看银行流水，确保无误。',
-    entries: [
-      { subjectCode: '6603', summary: '账户管理费', debit: 80, credit: 0, explanation: '财务费用-手续费增加记借方。银行账户管理费及回单箱服务费属于维护银行账户的必要支出。' },
-      { subjectCode: '100201', summary: '账户管理费扣收', debit: 0, credit: 80, explanation: '银行存款减少记贷方。银行自动扣划管理费用80元，出纳需核对银行回单并登记日记账。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'bank', label: '银行扣款回单', date: '2026-10-11', totalAmount: 80, payer: '本公司', payeeName: '中国工商银行', content: '10月账户管理费及回单箱服务费', refNo: 'GL202610110001' }]},
   {
     date: '2026-10-13',
     title: '银行转账支付电商平台推广费',

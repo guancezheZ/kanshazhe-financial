@@ -422,17 +422,6 @@ const tasks = [
       { subjectCode: '100201', debit: 0, credit: 10000, summary: '支付监理费', explanation: '银行存款减少10,000元。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目540105），属于"支付其他与经营活动有关的现金"。'}],
     documents: [{ type: 'bank', label: '银行回单', totalAmount: 10000, payer: '鼎立建筑工程有限公司', payeeName: '工程监理有限公司', content: '1月份工程监理费', refNo: 'JL202601190001' }]},
   {
-    date: '2026-01-21',
-    title: '支付银行手续费',
-    tags: ['资金管理'],
-    difficulty: 1,
-    description: '本月银行账户管理费及转账手续费共850元，已由银行自动扣划。',
-    tip: '银行手续费计入财务费用。',
-    entries: [
-      { subjectCode: '6603', debit: 850, credit: 0, summary: '银行手续费', explanation: '银行手续费属于财务费用，计入当期损益。' },
-      { subjectCode: '100201', debit: 0, credit: 850, summary: '银行扣划手续费', explanation: '银行存款减少850元。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [{ type: 'bank', label: '银行扣款通知', totalAmount: 850, content: '账户管理费及转账手续费', refNo: 'YX202601210001' }]},
-  {
     date: '2026-01-23',
     title: '支付材料运输费',
     tags: ['材料管理', '工程成本'],

@@ -12,10 +12,10 @@ import { getScenarioTutorials } from '@/data/scenarios.js'
 import { compareAnswers } from '@/data/tutorials/year1.js'
 
 const SCENARIOS = [
-  { id: 'manufacturing', name: '制造业', count: 585 },
-  { id: 'commercial', name: '商业企业', count: 531 },
-  { id: 'service', name: '服务业', count: 490 },
-  { id: 'construction', name: '建筑业', count: 501 },
+  { id: 'manufacturing', name: '制造业', count: 530 },
+  { id: 'commercial', name: '商业企业', count: 502 },
+  { id: 'service', name: '服务业', count: 481 },
+  { id: 'construction', name: '建筑业', count: 489 },
 ]
 const MONTHS = ['01','02','03','04','05','06','07','08','09','10','11','12']
 

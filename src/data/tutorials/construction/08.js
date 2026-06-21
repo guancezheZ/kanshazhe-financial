@@ -378,18 +378,6 @@ const tasks = [
     documents: [
       { type: 'receipt', label: '差旅费报销单', date: '2026-08-22', items: [{ label: '交通费（飞机+市内交通）', amount: 2200 }, { label: '住宿费（3晚）', amount: 1600 }, { label: '出差补贴（3天）', amount: 1000 }], totalAmount: 4800, stampText: '鼎立建筑工程有限公司财务专用章' }]},
   {
-    date: '2026-08-23',
-    title: '支付银行手续费',
-    tags: ['资金管理'],
-    difficulty: 1,
-    description: '收到银行回单，本月银行手续费合计350元（含账户管理费100元、转账手续费200元、网银使用费50元），银行已自动扣收。',
-    tip: '银行手续费计入"财务费用"。银行手续费是融资成本的一部分，直接影响当期利润。出纳需核对银行扣款明细，确保金额准确。',
-    entries: [
-      { subjectCode: '6603', debit: 350, credit: 0, summary: '本月银行手续费', explanation: '财务费用增加350元。账户管理费、转账手续费和网银使用费均属银行服务费用。' },
-      { subjectCode: '100201', debit: 0, credit: 350, summary: '银行自动扣收', explanation: '工商银行存款减少350元，银行自动扣收手续费。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'bank', label: '银行扣款回单', date: '2026-08-23', totalAmount: 350, payer: '鼎立建筑工程有限公司', payeeName: '中国工商银行', content: '账户管理费100+转账手续费200+网银使用费50', refNo: 'YH202608230001' }]},
-  {
     date: '2026-08-24',
     title: '摊销临时设施费用',
     tags: ['工程成本'],
@@ -640,16 +628,6 @@ const tasks = [
     entries: [
       { subjectCode: '220201', debit: 0, credit: 0, summary: '对账一致', explanation: '与供应商对账确认无误。' }],
     documents: [{ type: 'text', label: '对账确认单', docTitle: '往来对账确认单', content: '与供应商核对往来，确认全部款项已结清。', signature: '赵会计' }]},
-  {
-    date: '2026-08-25',
-    title: '支付银行手续费',
-    tags: ['资金管理'],
-    difficulty: 1,
-    description: '本月银行费用680元，已由银行自动扣划。',
-    tip: '银行手续费计入财务费用。',
-    entries: [
-      { subjectCode: '6603', debit: 680, credit: 0, summary: '银行手续费', explanation: '银行手续费计入财务费用。' },
-      { subjectCode: '100201', debit: 0, credit: 680, summary: '银行扣款', explanation: '银行存款减少680元。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [{ type: 'bank', label: '银行扣款通知', totalAmount: 680, content: '银行手续费' }]}]
+]
 
 export default tasks

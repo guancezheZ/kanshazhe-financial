@@ -379,18 +379,6 @@ const tasks = [
     documents: [
       { type: 'receipt', label: '费用报销单', date: '2026-11-22', items: [{ label: '交通费', amount: 1500 }, { label: '通讯费', amount: 1000 }, { label: '其他', amount: 500 }], totalAmount: 3000, stampText: '鼎立建筑工程有限公司财务专用章' }]},
   {
-    date: '2026-11-23',
-    title: '支付银行手续费',
-    tags: ['资金管理'],
-    difficulty: 1,
-    description: '收到银行扣收的11月结算手续费1,500元(含转账手续费、账户管理费等)。',
-    tip: '银行手续费计入"财务费用"。出纳需核对银行回单上的手续费金额与银行对账单一致。',
-    entries: [
-      { subjectCode: '6603', debit: 1500, credit: 0, summary: '支付银行手续费', explanation: '银行结算手续费计入财务费用，反映企业为使用银行服务而支付的费用。' },
-      { subjectCode: '100201', debit: 0, credit: 1500, summary: '银行扣收手续费', explanation: '银行存款减少1,500元，银行直接扣收。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'bank', label: '银行业务回单', date: '2026-11-23', totalAmount: 1500, payer: '鼎立建筑工程有限公司', payeeName: '工商银行', content: '11月结算手续费', refNo: 'YH202611230001' }]},
-  {
     date: '2026-11-24',
     title: '支付零星维修费',
     tags: ['工程成本'],
@@ -582,16 +570,7 @@ const tasks = [
     entries: [
       { subjectCode: '220201', debit: 0, credit: 0, summary: '对账一致', explanation: '与供应商对账确认无误。' }],
     documents: [{ type: 'text', label: '对账确认单', docTitle: '往来对账确认单', content: '与供应商核对往来，确认全部款项已结清。', signature: '赵会计' }]},
-  {
-    date: '2026-11-25',
-    title: '支付银行手续费',
-    tags: ['资金管理'],
-    difficulty: 1,
-    description: '本月银行费用600元，已由银行自动扣划。',
-    tip: '银行手续费计入财务费用。',
-    entries: [
-      { subjectCode: '6603', debit: 600, credit: 0, summary: '银行手续费', explanation: '银行手续费计入财务费用。' },
-      { subjectCode: '100201', debit: 0, credit: 600, summary: '银行扣款', explanation: '银行存款减少600元。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [{ type: 'bank', label: '银行扣款通知', totalAmount: 600 }]}]
+]
 
 export default tasks
+

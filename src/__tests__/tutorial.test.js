@@ -3,9 +3,9 @@ import { getTutorials, compareAnswers } from '@/data/tutorials/year1.js'
 import { getScenarioTutorials } from '@/data/scenarios.js'
 
 describe('教程数据 - 结构', () => {
-  it('1月份有39个教学任务', () => {
+  it('1月份有35个教学任务', () => {
     const tasks = getTutorials('01')
-    expect(tasks.length).toBe(39)
+    expect(tasks.length).toBe(35)
   })
 
   it('每个任务有完整字段', () => {
@@ -42,9 +42,9 @@ describe('教程数据 - 结构', () => {
     }
   })
 
-  it('2月份有48个教学任务', () => {
+  it('2月份有41个教学任务', () => {
     const tasks = getTutorials('02')
-    expect(tasks.length).toBe(48)
+    expect(tasks.length).toBe(41)
   })
 
   it('2月每个任务有完整字段', () => {
@@ -136,9 +136,9 @@ describe('教程数据 - 结构', () => {
     expect(lastTask.role).toBe('cashier')
   })
 
-  it('4月份有54个教学任务', () => {
+  it('4月份有49个教学任务', () => {
     const tasks = getTutorials('04')
-    expect(tasks.length).toBe(54)
+    expect(tasks.length).toBe(49)
   })
 
   it('4月每个任务有完整字段', () => {
@@ -192,9 +192,9 @@ describe('教程数据 - 结构', () => {
   })
 
 
-  it('5月份有51个教学任务', () => {
+  it('5月份有43个教学任务', () => {
     const tasks = getTutorials('05')
-    expect(tasks.length).toBe(51)
+    expect(tasks.length).toBe(43)
   })
 
   it('5月每个任务有完整字段', () => {
@@ -246,9 +246,9 @@ describe('教程数据 - 结构', () => {
     expect(lastTask.role).toBe('cashier')
   })
 
-  it('6月份有51个教学任务', () => {
+  it('6月份有47个教学任务', () => {
     const tasks = getTutorials('06')
-    expect(tasks.length).toBe(51)
+    expect(tasks.length).toBe(47)
   })
 
   it('6月每个任务有完整字段', () => {
@@ -300,9 +300,9 @@ describe('教程数据 - 结构', () => {
     expect(lastTask.role).toBe('cashier')
   })
 
-  it('7月份有49个教学任务', () => {
+  it('7月份有40个教学任务', () => {
     const tasks = getTutorials('07')
-    expect(tasks.length).toBe(49)
+    expect(tasks.length).toBe(40)
   })
 
   it('7月每个任务有完整字段', () => {
@@ -354,9 +354,9 @@ describe('教程数据 - 结构', () => {
     expect(lastTask.role).toBe('cashier')
   })
 
-  it('8月份有49个教学任务', () => {
+  it('8月份有46个教学任务', () => {
     const tasks = getTutorials('08')
-    expect(tasks.length).toBe(49)
+    expect(tasks.length).toBe(46)
   })
 
   it('8月每个任务有完整字段', () => {
@@ -408,9 +408,9 @@ describe('教程数据 - 结构', () => {
     expect(lastTask.role).toBe('cashier')
   })
 
-  it('9月份有50个教学任务', () => {
+  it('9月份有47个教学任务', () => {
     const tasks = getTutorials('09')
-    expect(tasks.length).toBe(50)
+    expect(tasks.length).toBe(47)
   })
 
   it('9月每个任务有完整字段', () => {
@@ -462,9 +462,9 @@ describe('教程数据 - 结构', () => {
     expect(lastTask.role).toBe('cashier')
   })
 
-  it('10月份有48个教学任务', () => {
+  it('10月份有40个教学任务', () => {
     const tasks = getTutorials('10')
-    expect(tasks.length).toBe(48)
+    expect(tasks.length).toBe(40)
   })
 
   it('10月每个任务有完整字段', () => {
@@ -516,9 +516,9 @@ describe('教程数据 - 结构', () => {
     expect(lastTask.role).toBe('cashier')
   })
 
-  it('11月份有46个教学任务', () => {
+  it('11月份有43个教学任务', () => {
     const tasks = getTutorials('11')
-    expect(tasks.length).toBe(46)
+    expect(tasks.length).toBe(43)
   })
 
   it('11月每个任务有完整字段', () => {
@@ -570,9 +570,9 @@ describe('教程数据 - 结构', () => {
     expect(lastTask.role).toBe('cashier')
   })
 
-  it('12月份有47个教学任务', () => {
+  it('12月份有46个教学任务', () => {
     const tasks = getTutorials('12')
-    expect(tasks.length).toBe(47)
+    expect(tasks.length).toBe(46)
   })
 
   it('12月每个任务有完整字段', () => {
@@ -775,7 +775,7 @@ describe('商业企业教程数据', () => {
 
   it('商业企业1月有43个教学任务（含19个出纳任务）', () => {
     const tasks = getScenarioTutorials('commercial', '01')
-    expect(tasks.length).toBe(43)
+    expect(tasks.length).toBe(41)
   })
 
   it('每个任务有完整字段', () => {
@@ -871,7 +871,7 @@ describe('商业企业教程数据', () => {
 
   it('商业企业2月有45个教学任务（含19个出纳任务）', () => {
     const tasks = getScenarioTutorials('commercial', '02')
-    expect(tasks.length).toBe(45)
+    expect(tasks.length).toBe(42)
   })
 
   it('2月每个任务有完整字段', () => {
@@ -965,9 +965,9 @@ describe('商业企业教程数据', () => {
     }
   })
 
-  it('商业企业3月有45个教学任务（含19个出纳任务）', () => {
+  it('商业企业3月有43个教学任务（含4个出纳任务）', () => {
     const tasks = getScenarioTutorials('commercial', '03')
-    expect(tasks.length).toBe(45)
+    expect(tasks.length).toBe(43)
   })
 
   it('3月每个任务有完整字段', () => {
@@ -1061,9 +1061,9 @@ describe('商业企业教程数据', () => {
     }
   })
 
-  it('商业企业4月有45个教学任务', () => {
+  it('商业企业4月有44个教学任务', () => {
     const tasks = getScenarioTutorials('commercial', '04')
-    expect(tasks.length).toBe(45)
+    expect(tasks.length).toBe(41)
   })
 
   it('4月每个任务有完整字段', () => {
@@ -1157,9 +1157,9 @@ describe('商业企业教程数据', () => {
     }
   })
 
-  it('商业企业5月有46个教学任务（含20个出纳任务）', () => {
+  it('商业企业5月有44个教学任务（含2个出纳任务）', () => {
     const tasks = getScenarioTutorials('commercial', '05')
-    expect(tasks.length).toBe(46)
+    expect(tasks.length).toBe(42)
   })
 
   it('5月每个任务有完整字段', () => {
@@ -1254,7 +1254,7 @@ describe('商业企业教程数据', () => {
 
   it('商业企业7月有43个教学任务', () => {
     const tasks = getScenarioTutorials('commercial', '07')
-    expect(tasks.length).toBe(43)
+    expect(tasks.length).toBe(41)
   })
 
   it('7月每个任务有完整字段', () => {
@@ -1348,9 +1348,9 @@ describe('商业企业教程数据', () => {
     }
   })
 
-  it('商业企业6月有44个教学任务（含18个出纳任务）', () => {
+  it('商业企业6月有42个教学任务（含2个出纳任务）', () => {
     const tasks = getScenarioTutorials('commercial', '06')
-    expect(tasks.length).toBe(44)
+    expect(tasks.length).toBe(42)
   })
 
   it('6月每个任务有完整字段', () => {
@@ -1444,9 +1444,9 @@ describe('商业企业教程数据', () => {
     }
   })
 
-  it('商业企业8月有40个教学任务', () => {
+  it('商业企业8月有39个教学任务', () => {
     const tasks = getScenarioTutorials('commercial', '08')
-    expect(tasks.length).toBe(40)
+    expect(tasks.length).toBe(37)
   })
 
   it('8月每个任务有完整字段', () => {
@@ -1540,9 +1540,9 @@ describe('商业企业教程数据', () => {
     }
   })
 
-  it('商业企业9月有44个教学任务（含18个出纳任务）', () => {
+  it('商业企业9月有43个教学任务（含2个出纳任务）', () => {
     const tasks = getScenarioTutorials('commercial', '09')
-    expect(tasks.length).toBe(44)
+    expect(tasks.length).toBe(43)
   })
 
   it('9月每个任务有完整字段', () => {
@@ -1637,7 +1637,7 @@ describe('商业企业教程数据', () => {
 
   it('商业企业10月有46个教学任务（含19个出纳任务）', () => {
     const tasks = getScenarioTutorials('commercial', '10')
-    expect(tasks.length).toBe(46)
+    expect(tasks.length).toBe(44)
   })
 
   it('10月每个任务有完整字段', () => {
@@ -1731,9 +1731,9 @@ describe('商业企业教程数据', () => {
     }
   })
 
-  it('11月有43个教学任务', () => {
+  it('11月有42个教学任务', () => {
     const tasks = getScenarioTutorials('commercial', '11')
-    expect(tasks.length).toBe(43)
+    expect(tasks.length).toBe(40)
   })
 
   it('11月每个任务有完整字段', () => {
@@ -1827,9 +1827,9 @@ describe('商业企业教程数据', () => {
     }
   })
 
-  it('商业企业12月有47个教学任务', () => {
+  it('商业企业12月有46个教学任务', () => {
     const tasks = getScenarioTutorials('commercial', '12')
-    expect(tasks.length).toBe(47)
+    expect(tasks.length).toBe(46)
   })
 
   it('12月每个任务有完整字段', () => {
@@ -2069,7 +2069,7 @@ describe('服务业教程数据 - 结构', () => {
     const months = ['04','05','06','07','08','09','10','11','12']
     for (const m of months) {
       const tasks = getScenarioTutorials('service', m)
-      expect(tasks.length).toBeGreaterThanOrEqual(39)
+      expect(tasks.length).toBeGreaterThanOrEqual(37)
       for (const t of tasks) {
         if (t.entries.length === 0) continue
         let debitTotal = 0
@@ -2110,9 +2110,9 @@ describe('服务业教程数据 - 结构', () => {
 const CONSTRUCTION_VALID_TAGS = ['工程合同','工程成本','分包管理','材料管理','机械使用','往来管理','资金管理','工资社保','税费','期末']
 
 describe('建筑业教程数据', () => {
-  it('1月有32个教学任务', () => {
+  it('1月有31个教学任务', () => {
     const tasks = getScenarioTutorials('construction', '01')
-    expect(tasks.length).toBe(32)
+    expect(tasks.length).toBe(31)
   })
 
   it('1月每个任务有完整字段', () => {
@@ -2179,7 +2179,7 @@ describe('建筑业教程数据', () => {
   })
 
   it('2-12月均有教学任务', () => {
-    const monthCounts = { '02': 41, '03': 41, '04': 43, '05': 43, '06': 43, '07': 40, '08': 42, '09': 41, '10': 46, '11': 43, '12': 46 }
+    const monthCounts = { '02': 39, '03': 40, '04': 42, '05': 42, '06': 43, '07': 40, '08': 40, '09': 40, '10': 45, '11': 41, '12': 46 }
     for (const [m, count] of Object.entries(monthCounts)) {
       const tasks = getScenarioTutorials('construction', m)
       expect(tasks.length).toBe(count)

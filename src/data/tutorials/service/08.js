@@ -1168,39 +1168,6 @@ const tasks = [
     "description": "以现金支付1,800元。"
   },
   {
-    "date": "2026-08-14",
-    "title": "银行代扣手续费",
-    "tags": [
-      "费用管理"
-    ],
-    "difficulty": 1,
-    "entries": [
-      {
-        "subjectCode": "6603",
-        "summary": "财务费用",
-        "debit": 220,
-        "credit": 0,
-        "explanation": "财务费用增加记借方。利息支出计入财务费用。"
-      },
-      {
-        "subjectCode": "100201",
-        "summary": "银行存款减少",
-        "debit": 0,
-        "credit": 220,
-        "explanation": "银行存款减少记贷方。银行款项支出。",
-        "cashFlowItem": "cf-op6",
-        "cashFlowExplanation": "其他经营活动现金支出（配对科目6603），属于\"支付其他与经营活动有关的现金\"。"
-      }
-    ],
-    "documents": [
-      {
-        "type": "text",
-        "label": "记录"
-      }
-    ],
-    "description": "通过银行转账/代扣支付220元。"
-  },
-  {
     "date": "2026-08-19",
     "title": "银行存款账户间转账",
     "tags": [
@@ -1296,37 +1263,6 @@ const tasks = [
       }
     ],
     "description": "以现金支付1,200元。"
-  },
-  {
-    "date": "2026-08-26",
-    "title": "购买转账支票",
-    "tags": ["资金管理"],
-    "difficulty": 1,
-    "entries": [
-      {
-        "subjectCode": "660201",
-        "summary": "管理费用",
-        "debit": 100,
-        "credit": 0,
-        "explanation": "管理费用-办公费增加记借方。办公费用计入管理费。"
-      },
-      {
-        "subjectCode": "1001",
-        "summary": "现金减少",
-        "debit": 0,
-        "credit": 100,
-        "explanation": "库存现金减少记贷方。现金支付款项。",
-        "cashFlowItem": "cf-op6",
-        "cashFlowExplanation": "其他经营活动现金支出（配对科目660201），属于\"支付其他与经营活动有关的现金\"。"
-      }
-    ],
-    "documents": [
-      {
-        "type": "text",
-        "label": "记录"
-      }
-    ],
-    "description": "通过银行转账/代扣支付100元。"
   },
   {
     "date": "2026-08-31",

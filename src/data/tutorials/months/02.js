@@ -308,19 +308,6 @@ const feb = [
       { type: 'invoice', label: '增值税发票', region: '广东', invoiceType: '专用', copy: '发票联', invoiceNo: '4400212222', date: '2026年02月17日', buyer: '本公司', buyerTaxId: '91440101MA3XXXXXXXX', seller: '得力办公用品店', sellerTaxId: '91440101MA5DDDDDDD', stampText: '得力办公\n发票专用章',
         lineItems: [{ name: '办公用品一批', unit: '批', qty: 1, price: 1200, amount: 1200, taxRate: '13%', tax: 156 }], totalAmount: 1356 }]},
   {
-    date: '2026-02-18',
-    title: '支付网络推广费',
-    tags: ["费用"],
-      difficulty: 1,
-    description: '支付本月网络推广费 8,000元，以银行存款支付。',
-    tip: '推广费属于"销售费用-广告费"。企业发生的符合条件的广告费和业务宣传费，不超过当年销售收入15%的部分准予税前扣除。',
-    entries: [
-      { subjectCode: '660101', summary: '支付网络推广费', debit: 8000, credit: 0, explanation: '销售费用-广告费增加记借方。广告宣传支出直接费用化。' },
-      { subjectCode: '100201', summary: '支付网络推广费', debit: 0, credit: 8000, explanation: '银行存款减少记贷方。"支付网络推广费"，资金从银行划出，资产减少。月末需银行对账。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目660101），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'invoice', label: '服务发票', region: '北京', invoiceType: '专用', copy: '发票联', invoiceNo: '1100222333', date: '2026年02月18日', buyer: '本公司', buyerTaxId: '91440101MA3XXXXXXXX', seller: '字节跳动科技有限公司', sellerTaxId: '91110000MA6YYYYYYY', stampText: '字节跳动\n发票专用章',
-        lineItems: [{ name: '信息流推广服务费', unit: '项', qty: 1, price: 8000, amount: 8000, taxRate: '6%', tax: 480 }], totalAmount: 8480 }]},
-  {
     date: '2026-02-19',
     title: '计提2月份员工工资',
     tags: ["工资社保"],
@@ -719,46 +706,6 @@ const feb = [
 共5笔 合计 92,000.00
 整理人：王出纳  日期：2026-02-05` }]},
   {
-    date: '2026-02-07',
-    title: '银行转账支付快递费用',
-    tags: ["出纳","费用"],
-    difficulty: 1,
-    description: '支付本月EMS国内快递费 650元，出纳通过企业网银办理转账支付给顺丰速运有限公司。',
-    tip: '日常小额费用也可以通过银行转账支付，出纳操作时需确认收款方信息准确。分录：借：管理费用，贷：银行存款。转账后需打印电子回单或截图保存。',
-    entries: [
-      { subjectCode: '6602', summary: '支付2月快递费', debit: 650, credit: 0, explanation: '管理费用增加。快递费是企业日常管理支出，减少当期利润。' },
-      { subjectCode: '100201', summary: '支付2月快递费', debit: 0, credit: 650, explanation: '银行存款减少。通过银行转账支付快递费，出纳需保留转账回单备查。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6602），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'bank', label: '转账回单', date: '2026-02-07', totalAmount: 650, payer: '本公司', payeeName: '顺丰速运有限公司', content: '2月快递费', refNo: 'HD202602070040' },
-      { type: 'invoice', label: '电子发票', region: '广东', invoiceType: '普通', copy: '发票联', invoiceNo: '4400277777', date: '2026年02月07日', buyer: '本公司', buyerTaxId: '91440101MA3XXXXXXXX', seller: '顺丰速运有限公司', sellerTaxId: '91440101MA9KKKKKKK', stampText: '顺丰速运\n发票专用章',
-        lineItems: [{ name: '快递服务费', unit: '项', qty: 1, price: 650, amount: 650, taxRate: '6%', tax: 39 }], totalAmount: 689 }]},
-  {
-    date: '2026-02-10',
-    title: '银行代扣手续费确认',
-    tags: ["出纳","费用"],
-    difficulty: 1,
-    description: '本月发生多笔银行转账业务（支付丙公司货款、缴纳税费等），银行收取跨行转账手续费合计 180元，已自动从工行账户扣除。出纳登录网银查看扣款明细并确认。',
-    tip: '银行手续费包括：跨行转账手续费（通常5-50元/笔）、账户管理费、网银年费等。分录：借：财务费用，贷：银行存款。出纳需核对当月转账笔数估算手续费是否合理。',
-    entries: [
-      { subjectCode: '6603', summary: '2月银行手续费', debit: 180, credit: 0, explanation: '财务费用增加。银行手续费是融资成本类费用，减少当期利润。出纳需确认当月每笔转账的手续费明细。' },
-      { subjectCode: '100201', summary: '2月银行手续费', debit: 0, credit: 180, explanation: '银行存款减少。银行自动扣收手续费，出纳需核对扣款金额是否与当月转账笔数匹配。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'bank', label: '手续费回单', date: '2026-02-10', totalAmount: 180, payer: '本公司', payeeName: '中国工商银行', content: '2月跨行转账手续费汇总', refNo: 'HD202602100045' }]},
-  {
-    date: '2026-02-13',
-    title: '银行转账支付办公区域清洁费',
-    tags: ["出纳","费用"],
-    difficulty: 1,
-    description: '支付2月份办公区域保洁服务费 2,200元，通过工商银行转账给XX保洁服务有限公司。保洁公司已开具增值税普通发票。',
-    tip: '办公区域清洁费属于"管理费用-物业/保洁费"的范畴。出纳办理转账时需核对：①服务合同约定的费用标准；②发票金额与合同一致；③收款方账户信息准确。',
-    entries: [
-      { subjectCode: '6602', summary: '支付2月保洁费', debit: 2200, credit: 0, explanation: '管理费用增加。办公区域保洁服务费是企业日常管理支出，减少当期利润。' },
-      { subjectCode: '100201', summary: '支付2月保洁费', debit: 0, credit: 2200, explanation: '银行存款减少。通过银行转账支付保洁服务费，出纳需保留转账回单及服务发票。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6602），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'bank', label: '转账回单', date: '2026-02-13', totalAmount: 2200, payer: '本公司', payeeName: 'XX保洁服务有限公司', content: '2月办公区域保洁服务费', refNo: 'HD202602130055' },
-      { type: 'invoice', label: '服务发票', region: '广东', invoiceType: '普通', copy: '发票联', invoiceNo: '4400288888', date: '2026年02月13日', buyer: '本公司', buyerTaxId: '91440101MA3XXXXXXXX', seller: 'XX保洁服务有限公司', sellerTaxId: '91440101MA8JJJJJJJ', stampText: 'XX保洁\n发票专用章',
-        lineItems: [{ name: '办公区域保洁服务（2月）', unit: '项', qty: 1, price: 2200, amount: 2200, taxRate: '3%', tax: 66 }], totalAmount: 2266 }]},
-  {
     date: '2026-02-17',
     title: '银行转账支付印刷费',
     tags: ["出纳","费用"],
@@ -772,52 +719,6 @@ const feb = [
       { type: 'bank', label: '转账回单', date: '2026-02-17', totalAmount: 1800, payer: '本公司', payeeName: 'XX彩印厂', content: '宣传资料印刷费', refNo: 'HD202602170058' },
       { type: 'invoice', label: '增值税发票', region: '广东', invoiceType: '普通', copy: '发票联', invoiceNo: '4400299999', date: '2026年02月17日', buyer: '本公司', buyerTaxId: '91440101MA3XXXXXXXX', seller: 'XX彩印厂', sellerTaxId: '91440101MA5AAAAAA', stampText: 'XX彩印厂\n发票专用章',
         lineItems: [{ name: '产品手册印刷（500份）', unit: '份', qty: 500, price: 2.4, amount: 1200 }, { name: '企业画册印刷（200份）', unit: '份', qty: 200, price: 3, amount: 600 }], totalAmount: 1800 }]},
-  {
-    date: '2026-02-19',
-    title: '购买转账支票本',
-    tags: ["出纳"],
-    difficulty: 1,
-    description: '公司原有转账支票本即将用完，出纳前往开户银行购买新的转账支票本一本（25张/本），工本费 25元 + 手续费 20元，合计 45元由银行直接扣收。新支票号码段：ZZ1200456801~ZZ1200456825。',
-    tip: '支票本由出纳负责保管和签发。购买新支票本后，出纳需在"支票登记簿"上登记新支票号码的起止范围，按序号使用。作废支票需加盖"作废"章并剪角妥善保管，不得自行销毁。',
-    entries: [
-      { subjectCode: '6603', summary: '购买转账支票本', debit: 45, credit: 0, explanation: '财务费用增加。银行票据工本费和手续费是银行服务费用，减少当期利润。' },
-      { subjectCode: '100201', summary: '购买转账支票本', debit: 0, credit: 45, explanation: '银行存款减少。银行直接扣款，出纳需核对扣款金额并在支票登记簿上记录新支票号码段。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'bank', label: '收费回单', date: '2026-02-19', totalAmount: 45, payer: '本公司', payeeName: '中国工商银行', content: '购买转账支票本（25张）', refNo: 'HD202602190060' }]},
-  {
-    date: '2026-02-23',
-    title: '出纳资金日报编制',
-    tags: ["出纳"],
-    difficulty: 1,
-    description: '编制2月23日的资金日报表，统计当日库存现金和银行存款的收支变动情况，报送财务主管审阅。本日无新增业务，资金余额与昨日相同。',
-    tip: '资金日报表是出纳每日必做的基础工作，报送财务主管及时掌握资金动态。格式：昨日余额 → 本日收入 → 本日支出 → 本日余额。即使当日无业务发生也要编制（标注"无变动"），养成良好的日清月结习惯。',
-    role: 'cashier',
-    entries: [],
-    documents: [
-      { type: 'text', label: '资金日报表', docTitle: '资金日报表（2026年2月23日）', stampText: '现金日记账\n银行日记账',
-        content: `资金日报表
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-日期：2026年2月23日
-                             库存现金    银行存款
-昨日余额                      4,440    686,294.00
-本日收入                          —          —
-本日支出                          —          —
-本日余额                      4,440    686,294.00
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-备注：本日无资金变动
-编制人：王出纳  审阅：_______` }]},
-  {
-    date: '2026-02-25',
-    title: '银行账户管理费确认',
-    tags: ["出纳","费用"],
-    difficulty: 1,
-    description: '收到银行回单，2月份工商银行对公账户管理费 100元已自动从账户扣除。出纳登录网银确认扣款记录，核对金额后登记入账。',
-    tip: '银行对公账户每月收取账户管理费（通常30-100元/月，视银行和套餐而定）。出纳收到回单后应核对：①扣款金额是否正确；②是否为本月费用；③如有异议需及时联系银行客户经理。',
-    entries: [
-      { subjectCode: '6603', summary: '2月账户管理费', debit: 100, credit: 0, explanation: '财务费用增加。银行账户管理费是银行服务费用，减少当期利润。' },
-      { subjectCode: '100201', summary: '2月账户管理费', debit: 0, credit: 100, explanation: '银行存款减少。银行自动扣收账户管理费，出纳需核对扣款金额并保留回单归档。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'bank', label: '扣款回单', date: '2026-02-25', totalAmount: 100, payer: '本公司', payeeName: '中国工商银行', content: '2026年2月账户管理费', refNo: 'HD202602250068' }]},
   {
     date: '2026-02-27',
     title: '银行转账支付报刊订阅费',

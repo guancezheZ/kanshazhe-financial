@@ -1300,39 +1300,6 @@ const tasks = [
     "description": "以现金支付3,500元。"
   },
   {
-    "date": "2026-05-22",
-    "title": "银行手续费确认",
-    "tags": [
-      "费用管理"
-    ],
-    "difficulty": 1,
-    "entries": [
-      {
-        "subjectCode": "6603",
-        "summary": "财务费用",
-        "debit": 150,
-        "credit": 0,
-        "explanation": "财务费用增加记借方。利息支出计入财务费用。"
-      },
-      {
-        "subjectCode": "100201",
-        "summary": "银行存款减少",
-        "debit": 0,
-        "credit": 150,
-        "explanation": "银行存款减少记贷方。银行款项支出。",
-        "cashFlowItem": "cf-op6",
-        "cashFlowExplanation": "其他经营活动现金支出（配对科目6603），属于\"支付其他与经营活动有关的现金\"。"
-      }
-    ],
-    "documents": [
-      {
-        "type": "text",
-        "label": "记录"
-      }
-    ],
-    "description": "通过银行转账/代扣支付150元。"
-  },
-  {
     "date": "2026-05-23",
     "title": "购买转账支票",
     "tags": ["资金管理"],

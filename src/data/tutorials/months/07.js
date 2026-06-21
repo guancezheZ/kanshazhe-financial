@@ -417,24 +417,6 @@ const jul = [
     ],
   },
   {
-    date: '2026-07-17',
-    title: '支付网络推广费',
-    tags: ["费用"],
-    difficulty: 1,
-    description: '支付本月网络推广费 9,000元，以银行存款支付。',
-    tip: '推广费属于"销售费用-广告费"。7月淡季持续推广，费用比6月增加1,000元，可能是在为下半年旺季做铺垫。',
-    entries: [
-      { subjectCode: '660101', summary: '支付网络推广费', debit: 9000, credit: 0,
-        explanation: '销售费用-广告费增加9,000元。7月推广费继续增长，为下半年销售旺季蓄力。' },
-      { subjectCode: '100201', summary: '支付网络推广费', debit: 0, credit: 9000,
-        explanation: '银行存款减少9,000元。推广费是企业维持市场曝光度的必要开支。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目660101），属于"支付其他与经营活动有关的现金"。'},
-    ],
-    documents: [
-      { type: 'invoice', label: '服务发票', region: '北京', invoiceType: '专用', copy: '发票联', invoiceNo: '1100777555', date: '2026年07月17日', buyer: '本公司', buyerTaxId: '91440101MA3XXXXXXXX', seller: '字节跳动科技有限公司', sellerTaxId: '91110000MA6YYYYYYY', stampText: '字节跳动\n发票专用章',
-        lineItems: [{ name: '信息流推广服务费（7月）', unit: '项', qty: 1, price: 9000, amount: 9000, taxRate: '6%', tax: 540 }], totalAmount: 9540 },
-    ],
-  },
-  {
     date: '2026-07-18',
     title: '固定资产改扩建 ⭐',
     tags: ["资产"],
@@ -860,22 +842,6 @@ const jul = [
     ],
   },
   {
-    date: '2026-07-06',
-    title: '银行转账支付网络服务费',
-    tags: ["出纳","费用"],
-    difficulty: 1,
-    role: 'cashier',
-    description: '支付7月份企业宽带费和服务器托管费共计 2,600元，通过工商银行转账给中国电信。',
-    tip: '月度固定费用及时支付。H2开始，出纳可以检查一下年度服务合同是否需续签。',
-    entries: [
-      { subjectCode: '6602', summary: '支付7月网络费', debit: 2600, credit: 0, explanation: '管理费用增加。宽带和服务器托管费是日常管理支出。' },
-      { subjectCode: '100201', summary: '支付7月网络费', debit: 0, credit: 2600, explanation: '银行存款减少。通过银行转账支付。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6602），属于"支付其他与经营活动有关的现金"。'},
-    ],
-    documents: [
-      { type: 'bank', label: '转账回单', date: '2026-07-06', totalAmount: 2600, payer: '本公司', payeeName: '中国电信XX分公司', content: '7月企业宽带+服务器托管费', refNo: 'HD202607060008' },
-    ],
-  },
-  {
     date: '2026-07-08',
     title: '申请开立银行承兑汇票 ⭐',
     tags: ["出纳","采购"],
@@ -927,100 +893,6 @@ const jul = [
     ],
   },
   {
-    date: '2026-07-14',
-    title: '银行转账支付快递费',
-    tags: ["出纳","费用"],
-    difficulty: 1,
-    role: 'cashier',
-    description: '支付7月份快递费 680元，通过工商银行转账给顺丰速运。',
-    tip: '与上月相比快递费略有下降（680元 vs 750元），可能是业务量季节性波动。出纳需保留快递发票。',
-    entries: [
-      { subjectCode: '6602', summary: '支付快递费', debit: 680, credit: 0, explanation: '管理费用增加。' },
-      { subjectCode: '100201', summary: '支付快递费', debit: 0, credit: 680, explanation: '银行存款减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6602），属于"支付其他与经营活动有关的现金"。'},
-    ],
-    documents: [
-      { type: 'bank', label: '转账回单', date: '2026-07-14', totalAmount: 680, payer: '本公司', payeeName: '顺丰速运', content: '7月快递费', refNo: 'HD202607140015' },
-    ],
-  },
-  {
-    date: '2026-07-19',
-    title: '购买转账支票本',
-    tags: ["出纳"],
-    difficulty: 1,
-    role: 'cashier',
-    description: '出纳购买转账支票本一本（25张），工本费+手续费共45元由银行扣收。新号码段：ZZ1200456901~ZZ1200456925。',
-    tip: 'H2下半年，确保支票本充足。购买后在登记簿记录新号码段。',
-    entries: [
-      { subjectCode: '6603', summary: '购买支票本', debit: 45, credit: 0, explanation: '财务费用增加。' },
-      { subjectCode: '100201', summary: '购买支票本', debit: 0, credit: 45, explanation: '银行存款减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'},
-    ],
-    documents: [
-      { type: 'bank', label: '收费回单', date: '2026-07-19', totalAmount: 45, payer: '本公司', payeeName: '中国工商银行', content: '购买转账支票本', refNo: 'HD202607190018' },
-    ],
-  },
-  {
-    date: '2026-07-22',
-    title: '出纳资金日报编制',
-    tags: ["出纳"],
-    difficulty: 1,
-    role: 'cashier',
-    description: '编制7月22日的资金日报表，报送财务主管。',
-    tip: '坚持每日资金日报，H2继续坚持好习惯！',
-    entries: [],
-    documents: [
-      { type: 'text', label: '资金日报表', docTitle: '资金日报表（2026年7月22日）', stampText: '现金日记账\n银行日记账',
-        content: `资金日报表\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n日期：2026年7月22日\n库存现金：4,100    银行存款：641,170.92\n备注：本日无资金变动` },
-    ],
-  },
-  {
-    date: '2026-07-23',
-    title: '银行转账支付清洁服务费',
-    tags: ["出纳","费用"],
-    difficulty: 1,
-    role: 'cashier',
-    description: '支付7月份办公区域清洁服务费 1,800元，通过工商银行转账给物业公司。',
-    tip: '清洁费按月支付。注意夏季空调使用增加，物业费可能略有上浮。',
-    entries: [
-      { subjectCode: '6602', summary: '支付7月清洁费', debit: 1800, credit: 0, explanation: '管理费用增加。' },
-      { subjectCode: '100201', summary: '支付7月清洁费', debit: 0, credit: 1800, explanation: '银行存款减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6602），属于"支付其他与经营活动有关的现金"。'},
-    ],
-    documents: [
-      { type: 'bank', label: '转账回单', date: '2026-07-23', totalAmount: 1800, payer: '本公司', payeeName: 'XX物业公司', content: '7月清洁服务费', refNo: 'HD202607230022' },
-    ],
-  },
-  {
-    date: '2026-07-25',
-    title: '银行账户管理费确认',
-    tags: ["出纳","费用"],
-    difficulty: 1,
-    role: 'cashier',
-    description: '收到银行回单，7月份工商银行对公账户管理费 100元已自动扣除。',
-    tip: 'H2第一个月的账户管理费。累计已支付700元（1-7月）。',
-    entries: [
-      { subjectCode: '6603', summary: '7月账户管理费', debit: 100, credit: 0, explanation: '财务费用增加。' },
-      { subjectCode: '100201', summary: '7月账户管理费', debit: 0, credit: 100, explanation: '银行存款减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'},
-    ],
-    documents: [
-      { type: 'bank', label: '扣款回单', date: '2026-07-25', totalAmount: 100, payer: '本公司', payeeName: '中国工商银行', content: '7月账户管理费', refNo: 'HD202607250025' },
-    ],
-  },
-  {
-    date: '2026-07-26',
-    title: '银行手续费确认',
-    tags: ["出纳","费用"],
-    difficulty: 1,
-    role: 'cashier',
-    description: '收到银行月度手续费回单，7月份各项手续费合计 250元（含银行承兑汇票开立手续费）。',
-    tip: '本月手续费增加（250元 vs上月220元），因开立银行承兑汇票产生了额外手续费（约50元）。出纳需核对费用明细。',
-    entries: [
-      { subjectCode: '6603', summary: '7月银行手续费', debit: 250, credit: 0, explanation: '财务费用增加。含承兑汇票开立手续费。' },
-      { subjectCode: '100201', summary: '7月银行手续费', debit: 0, credit: 250, explanation: '银行存款减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'},
-    ],
-    documents: [
-      { type: 'bank', label: '手续费回单', date: '2026-07-26', totalAmount: 250, payer: '本公司', payeeName: '中国工商银行', content: '7月银行手续费（含承兑汇票费）', refNo: 'HD202607260028' },
-    ],
-  },
-  {
     date: '2026-07-28',
     title: '银行转账支付咨询培训费',
     tags: ["出纳","费用"],
@@ -1034,22 +906,6 @@ const jul = [
     ],
     documents: [
       { type: 'bank', label: '转账回单', date: '2026-07-28', totalAmount: 3500, payer: '本公司', payeeName: 'XX培训机构', content: '7月员工培训费', refNo: 'HD202607280030' },
-    ],
-  },
-  {
-    date: '2026-07-29',
-    title: '银行转账支付印刷费',
-    tags: ["出纳","费用"],
-    difficulty: 1,
-    role: 'cashier',
-    description: '支付7月份宣传资料印刷费 1,200元，通过工商银行转账给XX彩印厂。',
-    tip: 'H2宣传物料更新，印刷费正常支出。出纳需核对印刷品数量和单价。',
-    entries: [
-      { subjectCode: '6602', summary: '支付印刷费', debit: 1200, credit: 0, explanation: '管理费用增加。' },
-      { subjectCode: '100201', summary: '支付印刷费', debit: 0, credit: 1200, explanation: '银行存款减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6602），属于"支付其他与经营活动有关的现金"。'},
-    ],
-    documents: [
-      { type: 'bank', label: '转账回单', date: '2026-07-29', totalAmount: 1200, payer: '本公司', payeeName: 'XX彩印厂', content: '7月印刷费', refNo: 'HD202607290032' },
     ],
   },
   {

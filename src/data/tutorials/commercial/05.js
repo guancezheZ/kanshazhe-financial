@@ -419,18 +419,6 @@ const tasks = [
       { type: 'bank', label: '现金支票存根', date: '2026-05-04', totalAmount: 5000, payer: '本公司工商银行账户', payeeName: '本公司', content: '提取备用金', refNo: 'ZZ567890' },
       { type: 'text', label: '备用金登记簿', docTitle: '备用金登记簿', content: '备用金提取记录：\n日期：2026年5月4日\n金额：5,000元\n用途：日常零星开支\n经手人：张出纳\n审批人：财务主管', signature: '张出纳' }]},
   {
-    date: '2026-05-06',
-    title: '现金送存银行',
-    tags: ['出纳', '资金管理'],
-    difficulty: 1,
-    description: '库存现金余额已超过日常备用金限额5,000元，出纳清点超限额现金3,000元，填写现金缴款单送存工商银行账户。',
-    tip: '企业库存现金实行限额管理，超过限额的部分必须当天送存银行。操作流程：①清点现金→②填写现金缴款单→③送交银行柜台→④银行清点盖章后退还回单→⑤登记银行日记账和现金日记账。严禁"坐支"现金（即以收抵支）。',
-    entries: [
-      { subjectCode: '100201', summary: '现金送存工商银行', debit: 3000, credit: 0, explanation: '银行存款增加记借方。超限额现金送存银行，银行日记账登记收入栏。库存现金限额管理要求超过规定限额的现金必须及时送存银行。' },
-      { subjectCode: '1001', summary: '库存现金减少', debit: 0, credit: 3000, explanation: '库存现金减少记贷方。送存银行后库存现金减少，现金日记账登记支出栏。' }],
-    documents: [
-      { type: 'bank', label: '现金缴款单回单', date: '2026-05-06', totalAmount: 3000, payer: '本公司', payeeName: '本公司工商银行账户', content: '现金送存', refNo: 'XJ202605060001' }]},
-  {
     date: '2026-05-07',
     title: '现金支付采购运费',
     tags: ['出纳', '费用管理'],
@@ -482,18 +470,6 @@ const tasks = [
     documents: [
       { type: 'bank', label: '收款回单', date: '2026-05-12', totalAmount: 64410, payer: '甲公司', payeeName: '本公司', content: '货款（发票No.3100567805）', refNo: 'HD202605120002' }]},
   {
-    date: '2026-05-13',
-    title: '银行手续费扣款确认',
-    tags: ['出纳', '费用管理'],
-    difficulty: 1,
-    description: '收到银行对账单，显示本月银行转账汇款手续费、网银服务费等合计180元，银行已自动从工商银行账户扣收。出纳逐笔核对后登记银行日记账。',
-    tip: '银行手续费一般是银行自动从账户扣收，出纳需在收到银行回单或对账单后：①确认扣款项目和金额是否合理②向银行索取手续费增值税发票③登记银行日记账④将手续费单据移交会计做账。每月末需汇总当月全部手续费。',
-    entries: [
-      { subjectCode: '6603', summary: '银行手续费支出', debit: 180, credit: 0, explanation: '财务费用增加记借方。银行转账汇款手续费、网银服务费等属财务费用，计入当期损益。依据《企业会计准则第22号——金融工具确认和计量》。' },
-      { subjectCode: '100201', summary: '银行自动扣收手续费', debit: 0, credit: 180, explanation: '银行存款减少记贷方。银行自动扣收手续费，银行存款减少。出纳登记银行日记账支出栏。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'bank', label: '银行手续费回单', date: '2026-05-13', totalAmount: 180, payer: '本公司工商银行账户', payeeName: 'XX银行', content: '转账手续费及网银服务费', refNo: 'SXF20260513' }]},
-  {
     date: '2026-05-14',
     title: '微信支付采购运费',
     tags: ['出纳', '费用管理'],
@@ -531,31 +507,6 @@ const tasks = [
       { subjectCode: '101205', summary: '支付宝账户余额减少', debit: 0, credit: 5000, explanation: '其他货币资金-支付宝账户减少记贷方。支付宝余额减少5,000元。出纳在其他货币资金明细账中登记。' }],
     documents: [
       { type: 'bank', label: '支付宝提现回单', date: '2026-05-18', totalAmount: 5000, payer: '支付宝商户平台', payeeName: '本公司建设银行账户', content: '支付宝商户提现', refNo: 'ZFB202605180001' }]},
-  {
-    date: '2026-05-19',
-    title: '购买转账支票',
-    tags: ['出纳'],
-    difficulty: 1,
-    description: '公司业务量增加，需使用转账支票支付供应商货款。出纳前往工商银行购买转账支票一本（25份），支付工本费及手续费共50元，银行从账户自动扣收。',
-    tip: '购买支票的操作流程：①填写"票据和结算凭证领用单"（加盖预留银行印鉴）→②银行审核后发售支票→③支付工本费→④出纳在"支票登记簿"上登记购买信息（支票号码起止、购买日期、份数）→⑤支票簿存入保险柜保管。支票和印鉴必须分开保管，防止被盗用。',
-    entries: [
-      { subjectCode: '6603', summary: '支票工本费及手续费', debit: 50, credit: 0, explanation: '财务费用增加记借方。购买转账支票的工本费及手续费属于财务费用，计入当期损益。' },
-      { subjectCode: '100201', summary: '银行扣收支票费用', debit: 0, credit: 50, explanation: '银行存款减少记贷方。银行自动扣收支票工本费，银行存款减少。出纳登记银行日记账支出栏。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'bank', label: '银行收费回单', date: '2026-05-19', totalAmount: 50, payer: '本公司工商银行账户', payeeName: 'XX银行', content: '购买转账支票（25份）工本费及手续费', refNo: 'ZF202605190001' },
-      { type: 'text', label: '支票登记簿', docTitle: '支票领用登记簿', content: '购买记录：\n购买日期：2026年5月19日\n种类：转账支票\n份数：25份（1本）\n支票号码：ZZ567901~ZZ567925\n工本费合计：50.00元\n保管人：张出纳', signature: '张出纳' }]},
-  {
-    date: '2026-05-20',
-    title: '银行账户管理费确认',
-    tags: ['出纳', '费用管理'],
-    difficulty: 1,
-    description: '工商银行账户产生本月账户管理费30元，银行已自动扣收。出纳收到扣款通知后登记银行日记账，并向银行索取发票。',
-    tip: '银行账户管理费一般是按月或按季收取，出纳需留意各银行账户的扣款情况。如果认为费用不合理，可以联系客户经理申请减免。管理费金额虽小，但也是企业实际发生的费用，必须逐笔登记入账。',
-    entries: [
-      { subjectCode: '6603', summary: '账户管理费支出', debit: 30, credit: 0, explanation: '财务费用增加记借方。银行账户管理费属财务费用，计入当期损益。' },
-      { subjectCode: '100201', summary: '银行扣收管理费', debit: 0, credit: 30, explanation: '银行存款减少记贷方。银行自动扣收账户管理费，银行存款减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'bank', label: '银行收费回单', date: '2026-05-20', totalAmount: 30, payer: '本公司工商银行账户', payeeName: 'XX银行', content: '2026年5月账户管理费', refNo: 'GLF20260520' }]},
   {
     date: '2026-05-21',
     title: '银行转账——支付供应商货款',

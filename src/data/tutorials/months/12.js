@@ -122,17 +122,6 @@ const dec = [
       { subjectCode: '100201', summary: '报销差旅费', debit: 0, credit: 2500, explanation: '银行存款减少2,500元。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6601），属于"支付其他与经营活动有关的现金"。'}],
     documents: [{ type: 'receipt', label: '报销单', docTitle: '差旅费报销单', date: '2026-12-08', totalAmount: 2500, payer: '本公司', stampText: '财务\n审核专用章', items: [{ name: '交通+住宿', qty: 1, price: 2500, amount: 2500 }] }]},
   {
-    date: '2026-12-08',
-    title: '银行手续费',
-    tags: ["费用"],
-    difficulty: 1,
-    description: '本月银行手续费150元。',
-    tip: '请根据业务场景理解并完成本业务的分录录入。',
-    entries: [
-      { subjectCode: '6603', summary: '银行手续费', debit: 150, credit: 0, explanation: '财务费用增加150元。' },
-      { subjectCode: '100201', summary: '手续费', debit: 0, credit: 150, explanation: '银行存款减少150元。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [{ type: 'bank', label: '银行回单', date: '2026-12-08', totalAmount: 150, payer: '本公司', payeeName: '中国工商银行', content: '账户管理费', refNo: 'HD202612080005' }]},
-  {
     date: '2026-12-09',
     title: '计提固定资产折旧',
     tags: ["资产"],

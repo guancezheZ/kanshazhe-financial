@@ -265,19 +265,6 @@ const tasks = [
     documents: [
       { type: 'bank', label: '公积金缴费回单', date: '2026-06-17', totalAmount: 3500, payer: '本公司', payeeName: '上海市公积金管理中心', content: '2026年6月住房公积金（单位部分）', refNo: 'HD202606170001' },
       { type: 'text', label: '公积金汇缴书', docTitle: '住房公积金汇缴书（2026年6月）', content: '单位名称：本公司\n缴存月份：2026年6月\n缴存基数：50,000.00元\n单位缴存比例：7%\n单位缴存金额：3,500.00元\n合计缴存：3,500.00元（仅单位部分，个人部分由工资代扣）', stampText: '上海市公积金管理中心 业务专用章' }]},
-  {
-    date: '2026-06-18',
-    title: '银行账户管理费',
-    tags: ['费用管理', '资金管理'],
-    difficulty: 1,
-    description: '支付工商银行6月账户管理费及网银服务费共计600元，已由银行自动扣划。',
-    tip: '银行账户管理费属于财务费用。分录：借：财务费用，贷：银行存款。银行费用一般不需要发票，以银行回单作为原始凭证。每月定期检查账户扣款情况。',
-    entries: [
-      { subjectCode: '6603', summary: '支付银行账户管理费', debit: 600, credit: 0, explanation: '财务费用增加记借方。银行账户管理费及网银服务费属于银行服务性收费，计入财务费用。' },
-      { subjectCode: '100201', summary: '支付银行账户管理费', debit: 0, credit: 600, explanation: '银行存款减少记贷方。工商银行自动扣划账户管理费及网银服务费600元，资产减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'bank', label: '银行扣费回单', date: '2026-06-18', totalAmount: 600, payer: '本公司', payeeName: '工商银行', content: '2026年6月账户管理费及网银服务费', refNo: 'HD202606180001' }]},
-
   // ═══════════════════════════════════════════
   // 第四阶段：月末——期末+出纳（6/22 - 6/30）
   // ═══════════════════════════════════════════
@@ -467,18 +454,6 @@ const tasks = [
       { subjectCode: '1001', summary: '李四预借差旅费', debit: 0, credit: 2000, explanation: '库存现金减少记贷方。以现金支付员工差旅费借支2,000元，资产减少。支付时需核对借款单审批手续是否完备。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目1221），属于"支付其他与经营活动有关的现金"。'}],
     documents: [
       { type: 'receipt', label: '借款单', docTitle: '员工借款单', date: '2026-06-06', totalAmount: 2000, stampText: '财务审核专用章', items: [{ name: '差旅费预借款（李四赴广州出差）', qty: 1, price: 2000, amount: 2000 }] }]},
-  {
-    date: '2026-06-07',
-    title: '购买转账支票及结算凭证',
-    tags: ['出纳', '费用管理'],
-    difficulty: 1,
-    description: '因业务需要，向开户银行工商银行购买转账支票1本（25张）及相关结算凭证，支付工本费及手续费共计45元，银行直接从账户扣划。',
-    tip: '购买支票的工本费和手续费属于财务费用。分录：借：财务费用，贷：银行存款。支票购买后需在支票领用登记簿上记录，出纳需妥善保管空白支票和支付密码器。',
-    entries: [
-      { subjectCode: '6603', summary: '购买支票及结算凭证', debit: 45, credit: 0, explanation: '财务费用增加记借方。购买转账支票本及结算凭证的手续费和工本费，属于银行相关费用，计入财务费用。' },
-      { subjectCode: '100201', summary: '购买支票及结算凭证', debit: 0, credit: 45, explanation: '银行存款减少记贷方。银行直接扣划支票工本费及手续费，资产减少。出纳需在支票领用登记簿上记录起止号码，妥善保管空白支票。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'bank', label: '银行收费回单', date: '2026-06-07', totalAmount: 45, payer: '本公司', payeeName: '工商银行', content: '购买转账支票1本（25张）工本费+手续费', refNo: 'HD202606070001' }]},
   {
     date: '2026-06-08',
     title: '支付宝余额提现',

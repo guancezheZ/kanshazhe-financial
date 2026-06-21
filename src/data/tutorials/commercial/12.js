@@ -621,19 +621,6 @@ const tasks = [
     documents: [
       { type: 'bank', label: '银行手续费回单', date: '2026-12-05', totalAmount: 200, payer: '本公司', payeeName: '中国工商银行', content: '2026年12月转账汇款手续费', refNo: 'HD202612050001' }]},
   {
-    date: '2026-12-05',
-    title: '购买转账支票本',
-    tags: ['出纳', '费用管理'],
-    difficulty: 1,
-    description: '向工商银行购买转账支票2本，支付工本费120元，以现金支付。',
-    tip: '购买空白支票时银行收取工本费（包括支票本费+维护费）。出纳购买后需在"空白重要凭证登记簿"上登记支票起止号码，妥善保管。支票使用时要按号码顺序使用，作废支票需加盖"作废"章并留存备查。分录：借：管理费用-办公费，贷：库存现金。',
-    entries: [
-      { subjectCode: '660201', summary: '购买转账支票2本', debit: 120, credit: 0, explanation: '管理费用-办公费增加记借方。支票工本费属于办公费用，金额较小直接计入当期损益。出纳需在重要空白凭证登记簿上登记支票号码：支票No.12345680~12345699。' },
-      { subjectCode: '1001', summary: '支付支票工本费', debit: 0, credit: 120, explanation: '库存现金减少记贷方。以现金支付购买支票工本费120元，现金减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目660201），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'receipt', label: '银行收费凭证', docTitle: '中国工商银行收费凭证', date: '2026-12-05', totalAmount: 120, stampText: '中国工商银行 业务专用章',
-        items: [{ name: '转账支票（2本×60元）', qty: 2, price: 60, amount: 120 }] }]},
-  {
     date: '2026-12-07',
     title: '银行预付采购定金',
     tags: ['出纳', '商品采购', '资金管理'],

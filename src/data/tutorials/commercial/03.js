@@ -557,33 +557,6 @@ const tasks = [
     documents: [
       { type: 'bank', label: '银行手续费回单', date: '2026-03-08', totalAmount: 50, payer: '本公司', payeeName: '中国工商银行', content: '跨行转账手续费（3月）', refNo: 'SF20260308001' }]},
   {
-    date: '2026-03-10',
-    title: '银行账户管理费',
-    tags: ['出纳', '资金管理'],
-    difficulty: 1,
-    description: '工商银行扣收本月账户管理费100元。出纳需获取银行收费回单并登记银行日记账。',
-    tip: '银行账户管理费是银行为企业提供账户日常管理服务收取的费用，通常按月或按季度收取。出纳应关注各银行账户的收费标准和扣收时间，及时取回回单。借：财务费用，贷：银行存款。',
-    entries: [
-      { subjectCode: '6603', summary: '银行账户管理费', debit: 100, credit: 0, explanation: '财务费用增加记借方。工商银行收取本月账户管理费100元，属于银行服务性收费，计入财务费用科目。不同银行的账户管理费标准不同，出纳需关注。' },
-      { subjectCode: '100201', summary: '银行账户管理费', debit: 0, credit: 100, explanation: '银行存款减少记贷方。工商银行直接从账户中扣除管理费100元，银行存款减少。出纳需获取银行收费回单作为记账凭证附件。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'bank', label: '银行收费回单', date: '2026-03-10', totalAmount: 100, payer: '本公司', payeeName: '中国工商银行', content: '2026年3月账户管理费', refNo: 'GLF20260310001' },
-      { type: 'text', label: '银行收费标准', docTitle: '工商银行对公账户收费标准（摘录）', content: '账户管理费：100元/月/户\n（日均存款低于50,000元时收取）\n本账户本月日均余额：35,000元\n按规定收取账户管理费100元' }]},
-  {
-    date: '2026-03-11',
-    title: '购买转账支票',
-    tags: ['出纳', '资金管理'],
-    difficulty: 1,
-    description: '向工商银行购买转账支票簿一本（25张/本），支付工本费25元。',
-    tip: '支票是出纳日常使用的重要支付凭证，需向开户银行购买。购买支票时银行收取工本费，通常每本25元。出纳需妥善保管空白支票，建立支票领用登记制度，作废支票需加盖"作废"章留存备查。工本费计入财务费用。',
-    entries: [
-      { subjectCode: '6603', summary: '购买转账支票工本费', debit: 25, credit: 0, explanation: '财务费用增加记借方。购买转账支票簿支付工本费25元，属于银行相关费用，计入财务费用科目。' },
-      { subjectCode: '100201', summary: '购买转账支票工本费', debit: 0, credit: 25, explanation: '银行存款减少记贷方。工商银行扣收支票工本费25元，银行存款减少。出纳需保管好支票购买凭证，并登记空白支票领用登记簿。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'receipt', label: '银行收费凭证', docTitle: '中国工商银行收费凭证', date: '2026-03-11', totalAmount: 25, stampText: '中国工商银行 业务专用章',
-        items: [{ name: '转账支票簿（25张/本）', qty: 1, price: 25, amount: 25 }] },
-      { type: 'text', label: '支票购买申请表', docTitle: '空白凭证购买申请表', content: '购买单位：本公司\n账户：工商银行 xxxx\n凭证名称：转账支票\n数量：1本（25张）\n工本费：25元\n经办人：赵出纳', signature: '赵出纳' }]},
-  {
     date: '2026-03-12',
     title: '编制资金日报',
     tags: ['出纳'],

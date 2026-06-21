@@ -638,16 +638,6 @@ const tasks = [
     entries: [
       { subjectCode: '220201', debit: 0, credit: 0, summary: '对账一致', explanation: '与供应商对账确认无误。' }],
     documents: [{ type: 'text', label: '对账确认单', docTitle: '往来对账确认单', content: '与供应商核对往来，确认全部款项已结清。', signature: '赵会计' }]},
-  {
-    date: '2026-05-25',
-    title: '支付银行手续费',
-    tags: ['资金管理'],
-    difficulty: 1,
-    description: '本月银行费用600元，已由银行自动扣划。',
-    tip: '银行手续费计入财务费用。',
-    entries: [
-      { subjectCode: '6603', debit: 600, credit: 0, summary: '银行手续费', explanation: '银行手续费计入财务费用。' },
-      { subjectCode: '100201', debit: 0, credit: 600, summary: '银行扣款', explanation: '银行存款减少600元。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [{ type: 'bank', label: '银行扣款通知', totalAmount: 600 }]}]
+]
 
 export default tasks
