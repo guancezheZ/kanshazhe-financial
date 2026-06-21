@@ -6,10 +6,7 @@ const tasks = [
   {
     "date": "2026-08-01",
     "title": "缴纳7月增值税",
-    "tags": [
-      "税费",
-      "资金管理"
-    ],
+    "tags": ["税费"],
     "difficulty": 2,
     "entries": [
       {
@@ -55,10 +52,7 @@ const tasks = [
   {
     "date": "2026-08-02",
     "title": "缴纳7月社保",
-    "tags": [
-      "工资社保",
-      "资金管理"
-    ],
+    "tags": ["工资社保"],
     "difficulty": 1,
     "entries": [
       {
@@ -580,10 +574,7 @@ const tasks = [
   {
     "date": "2026-08-22",
     "title": "计提08月借款利息",
-    "tags": [
-      "资金管理",
-      "期末"
-    ],
+    "tags": ["期末"],
     "difficulty": 1,
     "entries": [
       {
@@ -838,10 +829,7 @@ const tasks = [
   {
     "date": "2026-08-05",
     "title": "定金到账确认",
-    "tags": [
-      "出纳",
-      "资金管理"
-    ],
+    "tags": ["出纳"],
     "difficulty": 1,
     "role": "cashier",
     "entries": [
@@ -1000,9 +988,7 @@ const tasks = [
   {
     "date": "2026-08-08",
     "title": "微信收款-ERP项目阶段款",
-    "tags": [
-      "资金管理"
-    ],
+    "tags": ["出纳"],
     "difficulty": 1,
     "entries": [
       {
@@ -1106,9 +1092,7 @@ const tasks = [
   {
     "date": "2026-08-12",
     "title": "提取备用金",
-    "tags": [
-      "资金管理"
-    ],
+    "tags": ["出纳"],
     "difficulty": 1,
     "entries": [
       {
@@ -1170,9 +1154,7 @@ const tasks = [
   {
     "date": "2026-08-19",
     "title": "银行存款账户间转账",
-    "tags": [
-      "资金管理"
-    ],
+    "tags": ["资金管理"],
     "difficulty": 1,
     "entries": [
       {
@@ -1267,7 +1249,7 @@ const tasks = [
   {
     "date": "2026-08-31",
     "title": "月末归档",
-    "tags": ["资金管理"],
+    "tags": ["出纳"],
     "difficulty": 1,
     "entries": [],
     "documents": [

@@ -3,14 +3,19 @@
     <div class="page-header">
       <h2 class="page-title">🧾 模拟纳税申报</h2>
       <div class="page-actions">
-        <el-button type="primary" @click="handleSubmit">📤 提交申报</el-button>
+        <el-button type="primary" @click="handleSubmit"
+          :disabled="submitDone || !canSubmit"
+          :title="!canSubmit ? '请先完成【' + prerequisiteTask + '】任务' : ''">
+          {{ submitDone ? '✅ 已申报' : (!canSubmit ? '🔒 未达申报时间' : '📤 提交申报') }}
+        </el-button>
         <el-button @click="refreshData">🔄 刷新数据</el-button>
       </div>
     </div>
 
     <div class="tax-intro">
-      根据教学账套中的凭证数据自动计算应缴税额。请核对各项数据后提交申报。
-      <span v-if="submitDone" class="tax-done">✅ 本期已申报</span>
+      <template v-if="submitDone">✅ 本期已申报 — 数据已锁定</template>
+      <template v-else-if="!canSubmit">🔒 请先完成【{{ prerequisiteTask }}】任务，完成账务处理后才能进行纳税申报</template>
+      <template v-else>根据教学账套中的凭证数据自动计算应缴税额。请核对各项数据后提交申报。</template>
     </div>
 
     <el-tabs v-model="activeTab">
@@ -106,11 +111,14 @@
 import { ref, computed, onMounted } from 'vue'
 import { useStore } from '@/stores/store.js'
 import { getCurrentPeriod, formatAmount } from '@/utils/accounting.js'
+import { getScenarioTutorials, getProgressKey } from '@/data/scenarios.js'
 import { ElMessage } from 'element-plus'
 
 const store = useStore()
 const activeTab = ref('vat')
 const submitDone = ref(false)
+const canSubmit = ref(true)
+const prerequisiteTask = ref('')
 
 function fmt(v) { return '¥' + formatAmount(v) }
 
@@ -187,7 +195,46 @@ function refreshData() {
   ElMessage.success('数据已刷新')
 }
 
+function checkPrerequisites() {
+  // 非教学模式下不允许申报（无教学上下文）
+  if (localStorage.getItem('teaching_active') !== 'true') {
+    canSubmit.value = false
+    prerequisiteTask.value = '进入教学模式并完成期末结转'
+    return
+  }
+
+  const period = getCurrentPeriod()
+  const month = period.substring(4, 6)
+  const scenarioId = localStorage.getItem('jd_scenario') || 'manufacturing'
+
+  try {
+    const tasks = getScenarioTutorials(scenarioId, month)
+    const closingTask = tasks.find(t => t.title.includes('期末结转损益'))
+    if (closingTask) {
+      prerequisiteTask.value = closingTask.title
+      const key = getProgressKey(scenarioId, closingTask.date, closingTask.title)
+      canSubmit.value = localStorage.getItem(key) === 'true'
+    } else {
+      // 找不到结转任务 → 不允许申报（可能月份不对或无数据）
+      canSubmit.value = false
+      prerequisiteTask.value = '期末结转损益'
+    }
+  } catch {
+    // 异常情况下也不允许申报
+    canSubmit.value = false
+    prerequisiteTask.value = '期末结转损益'
+  }
+}
+
 function handleSubmit() {
+  if (submitDone.value) {
+    ElMessage.info('本期已申报，无需重复提交')
+    return
+  }
+  if (!canSubmit.value) {
+    ElMessage.warning(`🔒 请先完成【${prerequisiteTask.value}】任务后再申报`)
+    return
+  }
   submitDone.value = true
   const period = getCurrentPeriod()
   localStorage.setItem('tax_submitted_' + period, 'true')
@@ -197,6 +244,7 @@ function handleSubmit() {
 onMounted(() => {
   const period = getCurrentPeriod()
   submitDone.value = localStorage.getItem('tax_submitted_' + period) === 'true'
+  checkPrerequisites()
 })
 </script>
 

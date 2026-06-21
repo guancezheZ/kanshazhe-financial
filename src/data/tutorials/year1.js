@@ -89,7 +89,8 @@ const tutorials = {
       title: '现金日记账启用与期初余额确认',
       tags: ["出纳"],
       difficulty: 1,
-      description: '新年度第一个工作周，出纳清点库存现金，确认现金日记账期初余额为 2,000元（上年结转），与总账核对一致，启用新账页。',
+      description: '新年度第一个工作周，出纳清点库存现金，确认现金日记账期初余额为2,000元（上年结转），与总账核对一致，启用新账页。',
+      role: 'cashier',
       tip: '每年初出纳需启用新的现金日记账和银行日记账账页，期初余额承上年末余额。确认账实相符后开始登记新年度的收支业务。这是出纳"日清月结"制度的起点。',
       entries: [],
       documents: [
@@ -845,7 +846,7 @@ const tutorials = {
       tags: ["出纳","销售"], difficulty: 1,
       description: '客户甲公司通过银行转账支付一笔货款 50,000元，款项已到账。出纳登录网银确认入账，登记银行日记账。',
       tip: '出纳每日需登录企业网银查看是否有新到款项。收到银行进账通知后，确认金额和付款方，登记银行日记账。若无分录需要做，确认即可。',
-      entries: [],
+      role: 'cashier', entries: [],
       documents: [
         { type: 'bank', label: '银行进账回单', date: '2026-01-06', totalAmount: 50000, payer: '甲公司', payeeName: '本公司', content: '货款', refNo: 'HD202601060015' }]},
     {
@@ -863,7 +864,7 @@ const tutorials = {
       tags: ["出纳"], difficulty: 1,
       description: '过去一周发生了多笔银行业务（缴社保、缴公积金、收款、付款等），出纳整理银行回单并分类归档。',
       tip: '及时整理银行回单是出纳的重要日常工作。回单需按月装订成册，作为会计档案保存至少10年。',
-      entries: [], documents: [
+      role: 'cashier', entries: [], documents: [
         { type: 'text', label: '回单清单', docTitle: '回单整理清单（1月第2周）', stampText: '财务专用章',
           content: `回单清单：1/5收到货款50,000 1/6支付房租8,000\n1/8缴社保18,000 1/9缴公积金9,000 均已完成勾对✓` }]},
     {
@@ -891,7 +892,7 @@ const tutorials = {
       tags: ["出纳","工资社保"], difficulty: 1,
       description: '本月工资已由银行代发完毕，出纳确认银行代发回单，核对实发金额与工资表一致。',
       tip: '银行代发工资是出纳的月度例行工作。出纳需将工资明细表提交银行，银行批量转账至员工账户。收到银行回单后确认代发成功，若有个别失败需查明原因。',
-      entries: [], documents: [
+      role: 'cashier', entries: [], documents: [
         { type: 'bank', label: '代发工资回单', date: '2026-01-22', totalAmount: 49500, payer: '本公司', payeeName: '员工代发户', content: '2026年1月工资代发', refNo: 'HD202601220060' },
         { type: 'text', label: '代发明细', docTitle: '银行代发工资明细表', stampText: '银行受理章',
           content: `代发总金额：49,500.00\n代发人数：13人\n成功：13笔\n失败：0笔` }]},
@@ -900,7 +901,7 @@ const tutorials = {
       tags: ["出纳"], difficulty: 1,
       description: '从网银下载本月截至目前（1月1日-23日）的银行对账单，与银行日记账逐笔勾对，检查是否有未达账项。',
       tip: '出纳应定期（建议每周）核对银行日记账与银行对账单，及时发现未达账项和异常交易。不要在月底才一次性对账，平时定期核对效率更高、错误更少。',
-      entries: [], documents: [
+      role: 'cashier', entries: [], documents: [
         { type: 'text', label: '银行对账单', docTitle: '中国工商银行对账单（截至1月23日）', stampText: '中国工商银行\n电子业务\n专用章',
           content: `账户余额：637,900.00\n已勾对笔数：15笔\n未达账项：0笔` }]},
     {

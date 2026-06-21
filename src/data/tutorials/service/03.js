@@ -13,7 +13,7 @@ const tasks = [
   {
     date: '2026-03-02',
     title: '缴纳上月增值税及附加税',
-    tags: ['税费', '资金管理'],
+    tags: ['税费'],
     difficulty: 2,
     description: '缴纳2月增值税15,000元、城建税1,050元、教育费附加450元，合计16,500元，银行转账。',
     entries: [
@@ -26,7 +26,7 @@ const tasks = [
   {
     date: '2026-03-03',
     title: '缴纳2月社保费用',
-    tags: ['工资社保', '资金管理'],
+    tags: ['工资社保'],
     difficulty: 1,
     description: '缴纳2月社保费34,250元（单位+个人），银行转账。',
     entries: [
@@ -254,7 +254,7 @@ const tasks = [
   {
     date: '2026-03-24',
     title: '计提3月短期借款利息',
-    tags: ['资金管理', '期末'],
+    tags: ['期末'],
     difficulty: 1,
     description: '计提3月借款利息1,087.50元。',
     entries: [
@@ -360,14 +360,14 @@ const tasks = [
 { subjectCode: '100201', summary: '购电脑', debit: 0, credit: 60000 , explanation: '银行存款减少记贷方。资金流出，资产减少。', cashFlowItem: 'cf-inv', cashFlowExplanation: '购建固定资产/无形资产支出（配对科目160103），属于投资活动现金流出——资本性支出，区别于日常经营支出。'}],
     documents: [{ type: 'bank', label: '付款回单', date: '2026-03-06', totalAmount: 60000, payer: '雲帆管理咨询有限公司', payeeName: '联想科技', content: '电脑采购', refNo: 'FK202603060001' }]},
   {
-    date: '2026-03-09', title: '咨询项目尾款到账', tags: ['出纳', '资金管理'], difficulty: 1,
+    date: '2026-03-09', title: '咨询项目尾款到账', tags: ['出纳'], difficulty: 1,
     description: '确认丙客户支付的项目尾款190,800元到账。',
     entries: [
 { subjectCode: '100201', summary: '尾款到账', debit: 190800, credit: 0 , explanation: '银行存款增加记借方。资金流入企业，资产增加。', cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金（配对科目6001），属于经营活动现金流入——主营业务产生的现金收入。'},
 { subjectCode: '6001', summary: '项目收入', debit: 0, credit: 190800 , explanation: '主营业务收入增加记贷方。确认收入，所有者权益增加。'}],
     documents: [{ type: 'bank', label: '银行回单', date: '2026-03-09', totalAmount: 190800, payer: '丙客户', payeeName: '雲帆管理咨询有限公司', content: '项目尾款', refNo: 'HD202603090001' }]},
   {
-    date: '2026-03-11', title: '培训费收款确认', tags: ['出纳', '资金管理'], difficulty: 1,
+    date: '2026-03-11', title: '培训费收款确认', tags: ['出纳'], difficulty: 1,
     description: '确认培训费合计95,400元到账。',
     entries: [
 { subjectCode: '100201', summary: '培训费到账', debit: 95400, credit: 0 , explanation: '银行存款增加记借方。资金流入企业，资产增加。', cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金（配对科目6001），属于经营活动现金流入——主营业务产生的现金收入。'},
@@ -389,14 +389,14 @@ const tasks = [
 { subjectCode: '100201', summary: '水电费', debit: 0, credit: 5800 , explanation: '银行存款减少记贷方。资金流出，资产减少。', cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目660201），属于"支付其他与经营活动有关的现金"。'}],
     documents: [{ type: 'bank', label: '付款回单', date: '2026-03-17', totalAmount: 5800, payer: '雲帆管理咨询有限公司', payeeName: '供电公司', content: '水电费', refNo: 'FK202603170001' }]},
   {
-    date: '2026-03-18', title: '软件开发尾款到账', tags: ['出纳', '资金管理'], difficulty: 1,
+    date: '2026-03-18', title: '软件开发尾款到账', tags: ['出纳'], difficulty: 1,
     description: '确认乙客户软件开发终验尾款127,200元到账。',
     entries: [
 { subjectCode: '100201', summary: '尾款到账', debit: 127200, credit: 0 , explanation: '银行存款增加记借方。资金流入企业，资产增加。', cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金（配对科目6001），属于经营活动现金流入——主营业务产生的现金收入。'},
 { subjectCode: '6001', summary: '收入确认', debit: 0, credit: 127200 , explanation: '主营业务收入增加记贷方。确认收入，所有者权益增加。'}],
     documents: [{ type: 'bank', label: '银行回单', date: '2026-03-18', totalAmount: 127200, payer: '乙客户', payeeName: '雲帆管理咨询有限公司', content: '系统终验款', refNo: 'HD202603180001' }]},
   {
-    date: '2026-03-25', title: '提取备用金', tags: ['出纳', '资金管理'], difficulty: 1,
+    date: '2026-03-25', title: '提取备用金', tags: ['出纳'], difficulty: 1,
     description: '因库存现金不足，从银行提取备用金10,000元。',
     entries: [
 { subjectCode: '1001', summary: '提取备用金', debit: 10000, credit: 0 , explanation: '库存现金增加记借方。资金流入，资产增加。'},

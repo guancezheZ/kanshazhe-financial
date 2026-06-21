@@ -6,10 +6,7 @@ const tasks = [
   {
     "date": "2026-06-01",
     "title": "缴纳5月增值税及附加税",
-    "tags": [
-      "税费",
-      "资金管理"
-    ],
+    "tags": ["税费"],
     "difficulty": 2,
     "entries": [
       {
@@ -55,10 +52,7 @@ const tasks = [
   {
     "date": "2026-06-02",
     "title": "缴纳5月社保费",
-    "tags": [
-      "工资社保",
-      "资金管理"
-    ],
+    "tags": ["工资社保"],
     "difficulty": 1,
     "entries": [
       {
@@ -380,9 +374,7 @@ const tasks = [
   {
     "date": "2026-06-13",
     "title": "取得新短期借款",
-    "tags": [
-      "资金管理"
-    ],
+    "tags": ["资金管理"],
     "difficulty": 1,
     "description": "为补充流动资金，向建设银行借入短期借款200,000元，年利率4.0%。",
     "entries": [
@@ -618,10 +610,7 @@ const tasks = [
   {
     "date": "2026-06-23",
     "title": "计提6月借款利息",
-    "tags": [
-      "资金管理",
-      "期末"
-    ],
+    "tags": ["期末"],
     "difficulty": 1,
     "description": "计提6月新借款利息。建设银行200,000×4.0%÷12=666.67元。",
     "entries": [
@@ -978,9 +967,7 @@ const tasks = [
   {
     "date": "2026-06-05",
     "title": "终验尾款到账",
-    "tags": [
-      "资金管理"
-    ],
+    "tags": ["出纳"],
     "difficulty": 1,
     "entries": [
       {
@@ -1012,9 +999,7 @@ const tasks = [
   {
     "date": "2026-06-13",
     "title": "新借款到账",
-    "tags": [
-      "资金管理"
-    ],
+    "tags": ["出纳"],
     "difficulty": 1,
     "entries": [
       {
@@ -1130,9 +1115,7 @@ const tasks = [
   {
     "date": "2026-06-08",
     "title": "支付宝收款-项目尾款",
-    "tags": [
-      "资金管理"
-    ],
+    "tags": ["出纳"],
     "difficulty": 1,
     "entries": [
       {
@@ -1269,9 +1252,7 @@ const tasks = [
   {
     "date": "2026-06-12",
     "title": "提取备用金",
-    "tags": [
-      "资金管理"
-    ],
+    "tags": ["出纳"],
     "difficulty": 1,
     "entries": [
       {
@@ -1333,9 +1314,7 @@ const tasks = [
   {
     "date": "2026-06-24",
     "title": "微信收款-培训费",
-    "tags": [
-      "资金管理"
-    ],
+    "tags": ["出纳"],
     "difficulty": 1,
     "entries": [
       {

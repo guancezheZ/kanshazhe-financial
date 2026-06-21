@@ -772,10 +772,12 @@ describe('教程数据 - 答案比对', () => {
 // ═══════════════════════════════════════════
 describe('商业企业教程数据', () => {
   const COMMERCIAL_VALID_TAGS = ['商品采购','商品销售','仓存管理','往来管理','资金管理','费用管理','工资社保','税费','期末','出纳']
+  // 资金管理标签已精简为仅对真正资金筹措类任务使用（约7个），不再每月检查覆盖率
+  const COMMERCIAL_COVERAGE_TAGS = COMMERCIAL_VALID_TAGS.filter(t => t !== '资金管理')
 
-  it('商业企业1月有43个教学任务（含19个出纳任务）', () => {
+  it('商业企业1月有44个教学任务（含19个出纳任务）', () => {
     const tasks = getScenarioTutorials('commercial', '01')
-    expect(tasks.length).toBe(41)
+    expect(tasks.length).toBe(42)
   })
 
   it('每个任务有完整字段', () => {
@@ -850,7 +852,7 @@ describe('商业企业教程数据', () => {
 
   it('余额核对任务无分录且角色为出纳', () => {
     const tasks = getScenarioTutorials('commercial', '01')
-    const lastTask = tasks[tasks.length - 1]
+    const lastTask = tasks[tasks.length - 2]
     expect(lastTask.title).toContain('银行存款余额核对')
     expect(lastTask.entries.length).toBe(0)
     expect(lastTask.role).toBe('cashier')
@@ -864,14 +866,14 @@ describe('商业企业教程数据', () => {
         tagCount[tag] = (tagCount[tag] || 0) + 1
       }
     }
-    for (const tag of COMMERCIAL_VALID_TAGS) {
+    for (const tag of COMMERCIAL_COVERAGE_TAGS) {
       expect(tagCount[tag]).toBeGreaterThanOrEqual(1)
     }
   })
 
   it('商业企业2月有45个教学任务（含19个出纳任务）', () => {
     const tasks = getScenarioTutorials('commercial', '02')
-    expect(tasks.length).toBe(42)
+    expect(tasks.length).toBe(43)
   })
 
   it('2月每个任务有完整字段', () => {
@@ -946,7 +948,7 @@ describe('商业企业教程数据', () => {
 
   it('2月余额核对任务无分录且角色为出纳', () => {
     const tasks = getScenarioTutorials('commercial', '02')
-    const lastTask = tasks[tasks.length - 1]
+    const lastTask = tasks[tasks.length - 2]
     expect(lastTask.title).toContain('银行存款余额核对')
     expect(lastTask.entries.length).toBe(0)
     expect(lastTask.role).toBe('cashier')
@@ -960,14 +962,14 @@ describe('商业企业教程数据', () => {
         tagCount[tag] = (tagCount[tag] || 0) + 1
       }
     }
-    for (const tag of COMMERCIAL_VALID_TAGS) {
+    for (const tag of COMMERCIAL_COVERAGE_TAGS) {
       expect(tagCount[tag]).toBeGreaterThanOrEqual(1)
     }
   })
 
   it('商业企业3月有43个教学任务（含4个出纳任务）', () => {
     const tasks = getScenarioTutorials('commercial', '03')
-    expect(tasks.length).toBe(43)
+    expect(tasks.length).toBe(44)
   })
 
   it('3月每个任务有完整字段', () => {
@@ -1042,7 +1044,7 @@ describe('商业企业教程数据', () => {
 
   it('3月余额核对任务无分录且角色为出纳', () => {
     const tasks = getScenarioTutorials('commercial', '03')
-    const lastTask = tasks[tasks.length - 1]
+    const lastTask = tasks[tasks.length - 2]
     expect(lastTask.title).toContain('银行存款余额核对')
     expect(lastTask.entries.length).toBe(0)
     expect(lastTask.role).toBe('cashier')
@@ -1056,14 +1058,14 @@ describe('商业企业教程数据', () => {
         tagCount[tag] = (tagCount[tag] || 0) + 1
       }
     }
-    for (const tag of COMMERCIAL_VALID_TAGS) {
+    for (const tag of COMMERCIAL_COVERAGE_TAGS) {
       expect(tagCount[tag]).toBeGreaterThanOrEqual(1)
     }
   })
 
   it('商业企业4月有44个教学任务', () => {
     const tasks = getScenarioTutorials('commercial', '04')
-    expect(tasks.length).toBe(41)
+    expect(tasks.length).toBe(42)
   })
 
   it('4月每个任务有完整字段', () => {
@@ -1138,7 +1140,7 @@ describe('商业企业教程数据', () => {
 
   it('4月余额核对任务无分录且角色为出纳', () => {
     const tasks = getScenarioTutorials('commercial', '04')
-    const lastTask = tasks[tasks.length - 1]
+    const lastTask = tasks[tasks.length - 2]
     expect(lastTask.title).toContain('银行存款余额核对')
     expect(lastTask.entries.length).toBe(0)
     expect(lastTask.role).toBe('cashier')
@@ -1152,14 +1154,14 @@ describe('商业企业教程数据', () => {
         tagCount[tag] = (tagCount[tag] || 0) + 1
       }
     }
-    for (const tag of COMMERCIAL_VALID_TAGS) {
+    for (const tag of COMMERCIAL_COVERAGE_TAGS) {
       expect(tagCount[tag]).toBeGreaterThanOrEqual(1)
     }
   })
 
   it('商业企业5月有44个教学任务（含2个出纳任务）', () => {
     const tasks = getScenarioTutorials('commercial', '05')
-    expect(tasks.length).toBe(42)
+    expect(tasks.length).toBe(43)
   })
 
   it('5月每个任务有完整字段', () => {
@@ -1233,7 +1235,7 @@ describe('商业企业教程数据', () => {
 
   it('5月余额核对任务无分录且角色为出纳', () => {
     const tasks = getScenarioTutorials('commercial', '05')
-    const lastTask = tasks[tasks.length - 1]
+    const lastTask = tasks[tasks.length - 2]
     expect(lastTask.title).toContain('银行存款余额核对')
     expect(lastTask.entries.length).toBe(0)
     expect(lastTask.role).toBe('cashier')
@@ -1247,14 +1249,14 @@ describe('商业企业教程数据', () => {
         tagCount[tag] = (tagCount[tag] || 0) + 1
       }
     }
-    for (const tag of COMMERCIAL_VALID_TAGS) {
+    for (const tag of COMMERCIAL_COVERAGE_TAGS) {
       expect(tagCount[tag]).toBeGreaterThanOrEqual(1)
     }
   })
 
   it('商业企业7月有43个教学任务', () => {
     const tasks = getScenarioTutorials('commercial', '07')
-    expect(tasks.length).toBe(41)
+    expect(tasks.length).toBe(42)
   })
 
   it('7月每个任务有完整字段', () => {
@@ -1329,7 +1331,7 @@ describe('商业企业教程数据', () => {
 
   it('7月余额核对任务无分录且角色为出纳', () => {
     const tasks = getScenarioTutorials('commercial', '07')
-    const lastTask = tasks[tasks.length - 1]
+    const lastTask = tasks[tasks.length - 2]
     expect(lastTask.title).toContain('银行存款余额核对')
     expect(lastTask.entries.length).toBe(0)
     expect(lastTask.role).toBe('cashier')
@@ -1343,14 +1345,14 @@ describe('商业企业教程数据', () => {
         tagCount[tag] = (tagCount[tag] || 0) + 1
       }
     }
-    for (const tag of COMMERCIAL_VALID_TAGS) {
+    for (const tag of COMMERCIAL_COVERAGE_TAGS) {
       expect(tagCount[tag]).toBeGreaterThanOrEqual(1)
     }
   })
 
   it('商业企业6月有42个教学任务（含2个出纳任务）', () => {
     const tasks = getScenarioTutorials('commercial', '06')
-    expect(tasks.length).toBe(42)
+    expect(tasks.length).toBe(43)
   })
 
   it('6月每个任务有完整字段', () => {
@@ -1425,7 +1427,7 @@ describe('商业企业教程数据', () => {
 
   it('6月余额核对任务无分录且角色为出纳', () => {
     const tasks = getScenarioTutorials('commercial', '06')
-    const lastTask = tasks[tasks.length - 1]
+    const lastTask = tasks[tasks.length - 2]
     expect(lastTask.title).toContain('银行存款余额核对')
     expect(lastTask.entries.length).toBe(0)
     expect(lastTask.role).toBe('cashier')
@@ -1439,14 +1441,14 @@ describe('商业企业教程数据', () => {
         tagCount[tag] = (tagCount[tag] || 0) + 1
       }
     }
-    for (const tag of COMMERCIAL_VALID_TAGS) {
+    for (const tag of COMMERCIAL_COVERAGE_TAGS) {
       expect(tagCount[tag]).toBeGreaterThanOrEqual(1)
     }
   })
 
   it('商业企业8月有39个教学任务', () => {
     const tasks = getScenarioTutorials('commercial', '08')
-    expect(tasks.length).toBe(37)
+    expect(tasks.length).toBe(40)
   })
 
   it('8月每个任务有完整字段', () => {
@@ -1521,7 +1523,7 @@ describe('商业企业教程数据', () => {
 
   it('8月余额核对任务无分录且角色为出纳', () => {
     const tasks = getScenarioTutorials('commercial', '08')
-    const lastTask = tasks[tasks.length - 1]
+    const lastTask = tasks[tasks.length - 2]
     expect(lastTask.title).toContain('银行存款余额核对')
     expect(lastTask.entries.length).toBe(0)
     expect(lastTask.role).toBe('cashier')
@@ -1535,14 +1537,14 @@ describe('商业企业教程数据', () => {
         tagCount[tag] = (tagCount[tag] || 0) + 1
       }
     }
-    for (const tag of COMMERCIAL_VALID_TAGS) {
+    for (const tag of COMMERCIAL_COVERAGE_TAGS) {
       expect(tagCount[tag]).toBeGreaterThanOrEqual(1)
     }
   })
 
   it('商业企业9月有43个教学任务（含2个出纳任务）', () => {
     const tasks = getScenarioTutorials('commercial', '09')
-    expect(tasks.length).toBe(43)
+    expect(tasks.length).toBe(44)
   })
 
   it('9月每个任务有完整字段', () => {
@@ -1616,7 +1618,7 @@ describe('商业企业教程数据', () => {
 
   it('9月余额核对任务无分录且角色为出纳', () => {
     const tasks = getScenarioTutorials('commercial', '09')
-    const lastTask = tasks[tasks.length - 1]
+    const lastTask = tasks[tasks.length - 2]
     expect(lastTask.title).toContain('银行存款余额核对')
     expect(lastTask.entries.length).toBe(0)
     expect(lastTask.role).toBe('cashier')
@@ -1630,14 +1632,14 @@ describe('商业企业教程数据', () => {
         tagCount[tag] = (tagCount[tag] || 0) + 1
       }
     }
-    for (const tag of COMMERCIAL_VALID_TAGS) {
+    for (const tag of COMMERCIAL_COVERAGE_TAGS) {
       expect(tagCount[tag]).toBeGreaterThanOrEqual(1)
     }
   })
 
   it('商业企业10月有46个教学任务（含19个出纳任务）', () => {
     const tasks = getScenarioTutorials('commercial', '10')
-    expect(tasks.length).toBe(44)
+    expect(tasks.length).toBe(47)
   })
 
   it('10月每个任务有完整字段', () => {
@@ -1712,7 +1714,7 @@ describe('商业企业教程数据', () => {
 
   it('10月余额核对任务无分录且角色为出纳', () => {
     const tasks = getScenarioTutorials('commercial', '10')
-    const lastTask = tasks[tasks.length - 1]
+    const lastTask = tasks[tasks.length - 2]
     expect(lastTask.title).toContain('银行存款余额核对')
     expect(lastTask.entries.length).toBe(0)
     expect(lastTask.role).toBe('cashier')
@@ -1726,14 +1728,14 @@ describe('商业企业教程数据', () => {
         tagCount[tag] = (tagCount[tag] || 0) + 1
       }
     }
-    for (const tag of COMMERCIAL_VALID_TAGS) {
+    for (const tag of COMMERCIAL_COVERAGE_TAGS) {
       expect(tagCount[tag]).toBeGreaterThanOrEqual(1)
     }
   })
 
   it('11月有42个教学任务', () => {
     const tasks = getScenarioTutorials('commercial', '11')
-    expect(tasks.length).toBe(40)
+    expect(tasks.length).toBe(41)
   })
 
   it('11月每个任务有完整字段', () => {
@@ -1808,7 +1810,7 @@ describe('商业企业教程数据', () => {
 
   it('11月余额核对任务无分录且角色为出纳', () => {
     const tasks = getScenarioTutorials('commercial', '11')
-    const lastTask = tasks[tasks.length - 1]
+    const lastTask = tasks[tasks.length - 2]
     expect(lastTask.title).toContain('银行存款余额核对')
     expect(lastTask.entries.length).toBe(0)
     expect(lastTask.role).toBe('cashier')
@@ -1822,14 +1824,14 @@ describe('商业企业教程数据', () => {
         tagCount[tag] = (tagCount[tag] || 0) + 1
       }
     }
-    for (const tag of COMMERCIAL_VALID_TAGS) {
+    for (const tag of COMMERCIAL_COVERAGE_TAGS) {
       expect(tagCount[tag]).toBeGreaterThanOrEqual(1)
     }
   })
 
-  it('商业企业12月有46个教学任务', () => {
+  it('商业企业12月有49个教学任务', () => {
     const tasks = getScenarioTutorials('commercial', '12')
-    expect(tasks.length).toBe(46)
+    expect(tasks.length).toBe(50)
   })
 
   it('12月每个任务有完整字段', () => {
@@ -1904,7 +1906,7 @@ describe('商业企业教程数据', () => {
 
   it('12月余额核对任务无分录且角色为出纳', () => {
     const tasks = getScenarioTutorials('commercial', '12')
-    const lastTask = tasks[tasks.length - 1]
+    const lastTask = tasks[tasks.length - 2]
     expect(lastTask.title).toContain('银行存款余额核对')
     expect(lastTask.entries.length).toBe(0)
     expect(lastTask.role).toBe('cashier')
@@ -1918,7 +1920,7 @@ describe('商业企业教程数据', () => {
         tagCount[tag] = (tagCount[tag] || 0) + 1
       }
     }
-    for (const tag of COMMERCIAL_VALID_TAGS) {
+    for (const tag of COMMERCIAL_COVERAGE_TAGS) {
       expect(tagCount[tag]).toBeGreaterThanOrEqual(1)
     }
   })
@@ -1955,6 +1957,8 @@ describe('商业企业教程数据', () => {
 // ═══════════════════════════════════════════
 
 const SERVICE_VALID_TAGS = ['项目核算','收入确认','人工成本','费用管理','工资社保','税费','往来管理','资金管理','期末','出纳']
+// 资金管理标签已精简，不再每月检查覆盖率
+const SERVICE_COVERAGE_TAGS = SERVICE_VALID_TAGS.filter(t => t !== '资金管理')
 
 describe('服务业教程数据 - 结构', () => {
   it('1月份有42个教学任务', () => {
@@ -2016,7 +2020,7 @@ describe('服务业教程数据 - 结构', () => {
         tagCount[tag] = (tagCount[tag] || 0) + 1
       }
     }
-    for (const tag of SERVICE_VALID_TAGS) {
+    for (const tag of SERVICE_COVERAGE_TAGS) {
       expect(tagCount[tag]).toBeGreaterThanOrEqual(1)
     }
   })
@@ -2107,7 +2111,8 @@ describe('服务业教程数据 - 结构', () => {
 // 建筑业教学数据测试
 // ═══════════════════════════════════════════════
 
-const CONSTRUCTION_VALID_TAGS = ['工程合同','工程成本','分包管理','材料管理','机械使用','往来管理','资金管理','工资社保','税费','期末']
+const CONSTRUCTION_VALID_TAGS = ['工程合同','工程成本','分包管理','材料管理','机械使用','往来管理','资金管理','工资社保','税费','期末','出纳','费用管理','资产']
+const CONSTRUCTION_COVERAGE_TAGS = CONSTRUCTION_VALID_TAGS.filter(t => t !== '资金管理')
 
 describe('建筑业教程数据', () => {
   it('1月有31个教学任务', () => {
@@ -2171,8 +2176,8 @@ describe('建筑业教程数据', () => {
     }
     // 1月为企业设立阶段，往来管理业务较少
     expect((tagCount['往来管理'] || 0)).toBeGreaterThanOrEqual(0)
-    for (const tag of CONSTRUCTION_VALID_TAGS) {
-      if (tag !== '往来管理') {
+    for (const tag of CONSTRUCTION_COVERAGE_TAGS) {
+      if (tag !== '往来管理' && tag !== '费用管理' && tag !== '资产' && tag !== '出纳') {
         expect((tagCount[tag] || 0)).toBeGreaterThanOrEqual(1)
       }
     }
@@ -2229,7 +2234,7 @@ describe('建筑业教程数据', () => {
         }
       }
     }
-    for (const tag of CONSTRUCTION_VALID_TAGS) {
+    for (const tag of CONSTRUCTION_COVERAGE_TAGS) {
       expect(tagCount[tag]).toBeGreaterThanOrEqual(1)
     }
   })

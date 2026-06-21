@@ -6,10 +6,7 @@ const tasks = [
   {
     "date": "2026-04-01",
     "title": "缴纳3月增值税及附加税",
-    "tags": [
-      "税费",
-      "资金管理"
-    ],
+    "tags": ["税费"],
     "difficulty": 2,
     "description": "缴纳3月应交增值税19,800元、城建税1,386元、教育费附加594元，合计21,780元。",
     "entries": [
@@ -60,10 +57,7 @@ const tasks = [
   {
     "date": "2026-04-02",
     "title": "缴纳3月社保费",
-    "tags": [
-      "工资社保",
-      "资金管理"
-    ],
+    "tags": ["工资社保"],
     "difficulty": 1,
     "description": "缴纳3月社保费34,250元，银行转账。",
     "entries": [
@@ -98,10 +92,7 @@ const tasks = [
   {
     "date": "2026-04-03",
     "title": "缴纳一季度所得税",
-    "tags": [
-      "税费",
-      "资金管理"
-    ],
+    "tags": ["税费"],
     "difficulty": 2,
     "description": "缴纳一季度预缴所得税140,096.25元，银行转账。",
     "entries": [
@@ -228,9 +219,7 @@ const tasks = [
   {
     "date": "2026-04-07",
     "title": "短期借款到期还本付息",
-    "tags": [
-      "资金管理"
-    ],
+    "tags": ["资金管理"],
     "difficulty": 2,
     "description": "1月取得的短期借款300,000元到期，支付本息合计303,262.50元。",
     "entries": [
@@ -788,9 +777,7 @@ const tasks = [
   {
     "date": "2026-04-25",
     "title": "收到银行活期利息",
-    "tags": [
-      "资金管理"
-    ],
+    "tags": ["资金管理"],
     "difficulty": 1,
     "description": "收到银行活期存款利息500元。",
     "entries": [
@@ -1105,9 +1092,7 @@ const tasks = [
   {
     "date": "2026-04-05",
     "title": "购车大额转账",
-    "tags": [
-      "资金管理"
-    ],
+    "tags": ["出纳"],
     "difficulty": 1,
     "entries": [
       {
@@ -1144,9 +1129,7 @@ const tasks = [
   {
     "date": "2026-04-07",
     "title": "借款还本付息操作",
-    "tags": [
-      "资金管理"
-    ],
+    "tags": ["资金管理"],
     "difficulty": 2,
     "entries": [
       {
@@ -1190,9 +1173,7 @@ const tasks = [
   {
     "date": "2026-04-08",
     "title": "新合同定金到账",
-    "tags": [
-      "资金管理"
-    ],
+    "tags": ["出纳"],
     "difficulty": 1,
     "entries": [
       {
@@ -1264,9 +1245,7 @@ const tasks = [
   {
     "date": "2026-04-16",
     "title": "App尾款到账",
-    "tags": [
-      "资金管理"
-    ],
+    "tags": ["出纳"],
     "difficulty": 1,
     "entries": [
       {
@@ -1303,9 +1282,7 @@ const tasks = [
   {
     "date": "2026-04-25",
     "title": "银行利息到账确认",
-    "tags": [
-      "资金管理"
-    ],
+    "tags": ["出纳"],
     "difficulty": 1,
     "entries": [
       {
@@ -1395,9 +1372,7 @@ const tasks = [
   {
     "date": "2026-04-06",
     "title": "微信收款—咨询费",
-    "tags": [
-      "资金管理"
-    ],
+    "tags": ["出纳"],
     "difficulty": 1,
     "entries": [
       {
@@ -1436,9 +1411,7 @@ const tasks = [
   {
     "date": "2026-04-10",
     "title": "支付宝付款—采购软件工具",
-    "tags": [
-      "资金管理"
-    ],
+    "tags": ["出纳"],
     "difficulty": 1,
     "entries": [
       {
@@ -1504,9 +1477,7 @@ const tasks = [
   {
     "date": "2026-04-12",
     "title": "银行账户间转账（工行→建行）",
-    "tags": [
-      "资金管理"
-    ],
+    "tags": ["资金管理"],
     "difficulty": 1,
     "entries": [
       {
@@ -1671,9 +1642,7 @@ const tasks = [
   {
     "date": "2026-04-24",
     "title": "提取备用金补充库存",
-    "tags": [
-      "资金管理"
-    ],
+    "tags": ["出纳"],
     "difficulty": 1,
     "entries": [
       {
@@ -1768,9 +1737,7 @@ const tasks = [
   {
     "date": "2026-04-28",
     "title": "银行账户季度结息",
-    "tags": [
-      "资金管理"
-    ],
+    "tags": ["资金管理"],
     "difficulty": 1,
     "entries": [
       {
@@ -1801,7 +1768,7 @@ const tasks = [
   {
     "date": "2026-04-29",
     "title": "出纳月末现金盘点",
-    "tags": ["资金管理"],
+    "tags": ["出纳"],
     "difficulty": 1,
     "entries": [],
     "documents": [
@@ -1815,7 +1782,7 @@ const tasks = [
   {
     "date": "2026-04-29",
     "title": "银行对账调节表编制",
-    "tags": ["资金管理"],
+    "tags": ["出纳"],
     "difficulty": 1,
     "entries": [],
     "documents": [
@@ -1829,7 +1796,7 @@ const tasks = [
   {
     "date": "2026-04-30",
     "title": "月末凭证装订归档",
-    "tags": ["资金管理"],
+    "tags": ["出纳"],
     "difficulty": 1,
     "entries": [],
     "documents": [

@@ -99,6 +99,9 @@
             <el-icon><SetUp /></el-icon>
             <span>资产管理</span>
           </template>
+          <el-menu-item v-if="fm('/accounting/inventory')" index="/accounting/inventory">
+            <el-icon><Box /></el-icon><template #title>存货管理</template>
+          </el-menu-item>
           <el-menu-item v-if="fm('/accounting/fixed-assets')" index="/accounting/fixed-assets">
             <el-icon><SetUp /></el-icon><template #title>固定资产</template>
           </el-menu-item>
@@ -130,6 +133,9 @@
           </el-menu-item>
           <el-menu-item v-if="fm('/reports/period-end-transfer')" index="/reports/period-end-transfer">
             <el-icon><Setting /></el-icon><template #title>期末结转</template>
+          </el-menu-item>
+          <el-menu-item v-if="fm('/reports/financial-trend')" index="/reports/financial-trend">
+            <el-icon><TrendCharts /></el-icon><template #title>财务分析趋势</template>
           </el-menu-item>
         </el-sub-menu>
 
@@ -333,7 +339,7 @@ import {
   Fold, HomeFilled, Reading, List, EditPen, Search,
   Document, DataAnalysis, Money, Setting, ArrowDown,
   UserFilled, SwitchButton, DataBoard, Coin, CopyDocument, SetUp,
-  Moon, Sunny, Monitor, Plus, Bell, Notebook, ChatLineRound, Lock, Close, Check, Download,
+  Moon, Sunny, Monitor, Plus, Bell, Notebook, ChatLineRound, Lock, Close, Check, Download, Box, TrendCharts,
 } from '@element-plus/icons-vue'
 import { useStore } from '@/stores/store.js'
 import { calcLevel } from '@/data/xp-system.js'
@@ -469,8 +475,8 @@ const showVoucherGroup = computed(() => fm('/accounting/voucher/entry') || fm('/
 const showLedgerGroup = computed(() => fm('/accounting/subjects') || fm('/accounting/subject-balance') || fm('/accounting/trial-balance') || fm('/accounting/ledger') || fm('/accounting/auxiliary'))
 const showCashierGroup = computed(() => fm('/accounting/cashier'))
 const showARAPGroup = computed(() => fm('/accounting/arap') || fm('/accounting/forex'))
-const showAssetGroup = computed(() => fm('/accounting/fixed-assets') || fm('/accounting/payroll'))
-const showReportGroup = computed(() => fm('/reports/balance-sheet') || fm('/reports/income-statement') || fm('/reports/cash-flow') || fm('/reports/custom') || fm('/reports/tax-filing') || fm('/reports/period-end-transfer'))
+const showAssetGroup = computed(() => fm('/accounting/inventory') || fm('/accounting/fixed-assets') || fm('/accounting/payroll'))
+const showReportGroup = computed(() => fm('/reports/balance-sheet') || fm('/reports/income-statement') || fm('/reports/cash-flow') || fm('/reports/custom') || fm('/reports/tax-filing') || fm('/reports/period-end-transfer') || fm('/reports/financial-trend'))
 
 const currentUser = computed(() => {
   try { const u = JSON.parse(localStorage.getItem('jd_user') || '{}'); return u.name || '未知用户' }

@@ -485,6 +485,24 @@ function isTaskDone(t) {
   return localStorage.getItem(key) === 'true'
 }
 
+// 判断任务是否被前序任务锁定（同步 TutorialCenter 逻辑）
+function isTaskLocked(t) {
+  if (!t) return false
+  const monthlyMode = localStorage.getItem('jd_monthly_mode') !== 'false'
+  if (!monthlyMode || store.isPracticeMode()) return false
+  if (t.entries.length === 0) return false // 信息任务不锁
+  // 在当前月的 entry 任务中按日期排序，检查前面的任务是否都完成了
+  const monthTasks = flatTasks.value
+    .filter(task => task._month === t._month && task.entries.length > 0)
+    .sort((a, b) => (a.date || '').localeCompare(b.date || ''))
+  const idx = monthTasks.findIndex(task => task.date === t.date && task.title === t.title)
+  if (idx <= 0) return false
+  for (let i = 0; i < idx; i++) {
+    if (!isTaskDone(monthTasks[i])) return true
+  }
+  return false
+}
+
 function loadTask() {
   try {
     // 案例模式下不显示教学浮动窗
@@ -550,10 +568,23 @@ function loadTask() {
       currentIdx.value = 0
       task.value = filtered.length > 0 ? filtered[0] : flatTasks.value[0]
     }
+    // 如果当前任务被锁定，跳到第一个未锁定的任务
+    if (isTaskLocked(task.value)) {
+      const unlockedIdx = filtered.findIndex(t => !isTaskLocked(t) && !isTaskDone(t))
+      if (unlockedIdx >= 0) {
+        currentIdx.value = unlockedIdx
+        task.value = filtered[unlockedIdx]
+      }
+    }
   } catch { task.value = null }
 }
 
 function goToEntry() {
+  // 月度模式锁定检查
+  if (isTaskLocked(task.value)) {
+    ElMessage.warning('该任务尚未解锁，请先完成前面的任务')
+    return
+  }
   // 特殊操作：跳转到指定页面（如税申报）
   const nextAction = task.value?.nextAction
   if (nextAction === 'tax-filing') {
@@ -611,6 +642,11 @@ function goToWrongTask(item) {
   // 定位到错题对应的任务
   const idx = flatTasks.value.findIndex(t => t.date === item.date && t.title === item.title)
   if (idx >= 0) {
+    const locked = isTaskLocked(flatTasks.value[idx])
+    if (locked) {
+      ElMessage.warning('该任务已被锁定，请先完成前面的任务')
+      return
+    }
     currentIdx.value = idx
     updateTask()
     showWrongAnswers.value = false
@@ -652,15 +688,23 @@ function onErrorFindQuit() {
 
 function prevTask() {
   if (currentIdx.value > 0) {
-    // 允许回退到上个月
     currentIdx.value--
     updateTask()
   }
 }
 
 function nextTask() {
-  if (currentIdx.value >= filteredTasks.value.length - 1) return
-  currentIdx.value++
+  const tasks = filteredTasks.value
+  let next = currentIdx.value + 1
+  // 跳过被锁定的任务
+  while (next < tasks.length && isTaskLocked(tasks[next])) {
+    next++
+  }
+  if (next >= tasks.length) {
+    ElMessage.info('已到达最后一个可用任务')
+    return
+  }
+  currentIdx.value = next
   updateTask()
 }
 
@@ -671,7 +715,15 @@ function toggleTag(tag) {
 }
 
 function updateTask() {
-  const t = filteredTasks.value[currentIdx.value]
+  let idx = currentIdx.value
+  const tasks = filteredTasks.value
+  // 如果当前任务被锁定，跳到下一个可用的
+  while (idx < tasks.length && isTaskLocked(tasks[idx])) {
+    idx++
+  }
+  if (idx >= tasks.length) idx = currentIdx.value // 没有可用的，回退到原位置
+  currentIdx.value = idx
+  const t = tasks[idx]
   if (t) {
     localStorage.setItem('tutorial_task', JSON.stringify(t))
     task.value = t

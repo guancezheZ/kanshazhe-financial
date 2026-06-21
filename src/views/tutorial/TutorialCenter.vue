@@ -203,19 +203,43 @@
       </el-scrollbar>
     </div>
 
+    <!-- 月度模式开关 -->
+    <div class="monthly-mode-bar">
+      <el-switch
+        :model-value="monthlyMode"
+        @update:model-value="toggleMonthlyMode"
+        size="small"
+        :disabled="store.isPracticeMode()"
+      />
+      <span class="mode-label">📅 月度模式</span>
+      <el-tooltip content="开启后，必须完成当前月的所有任务才能解锁下一个月" placement="top" :show-after="300">
+        <span class="mode-info">ⓘ</span>
+      </el-tooltip>
+      <span v-if="monthlyMode && store.isPracticeMode()" class="mode-warning">
+        ⚠️ 自由练习中，月度锁定已暂停
+      </span>
+    </div>
+
     <!-- 月份学习进度 -->
     <el-card shadow="never">
-      <el-tabs v-model="activeMonth" @tab-change="onTabChange">
+      <el-tabs v-model="activeMonth" @tab-change="onTabChange" :before-leave="handleBeforeLeaveTab">
         <el-tab-pane
           v-for="m in monthStats"
           :key="m.value"
           :name="m.value"
         >
           <template #label>
-            <span class="tab-label">
+            <span class="tab-label" :class="{ 'is-locked': m.locked }">
               <span>{{ m.shortLabel }}</span>
               <el-tag
-                v-if="m.total > 0 && m.done === m.total"
+                v-if="m.locked"
+                size="small"
+                type="info"
+                effect="plain"
+                class="tab-tag"
+              >🔒 {{ m.done }}/{{ m.total }}</el-tag>
+              <el-tag
+                v-else-if="m.total > 0 && m.done === m.total"
                 size="small"
                 type="success"
                 effect="dark"
@@ -310,16 +334,24 @@
                 </div>
               </template>
             </el-table-column>
-            <el-table-column label="状态" width="100">
+            <el-table-column label="状态" width="110">
               <template #default="{ row }">
                 <el-tag v-if="isCompleted(row)" type="success" size="small" effect="dark">✅ 已完成</el-tag>
+                <el-tag v-else-if="isTaskLocked(row)" type="info" size="small" effect="plain">🔒 未解锁</el-tag>
                 <el-tag v-else type="warning" size="small" effect="plain">⏳ 待完成</el-tag>
               </template>
             </el-table-column>
-            <el-table-column label="操作" width="140">
+            <el-table-column label="操作" width="150">
               <template #default="{ row }">
+                <el-tooltip v-if="isTaskLocked(row)" content="请先完成前面的任务" placement="left">
+                  <el-button
+                    size="small"
+                    type="info"
+                    disabled
+                  >🔒 已锁定</el-button>
+                </el-tooltip>
                 <el-button
-                  v-if="row.entries.length > 0"
+                  v-else-if="row.entries.length > 0"
                   size="small"
                   type="primary"
                   @click="startTask(row)"
@@ -338,9 +370,11 @@
 
     <!-- 教学提示对话框 -->
     <el-dialog v-model="tipVisible" :title="tipTitle" width="600">
-      <div class="tip-content">{{ tipContent }}</div>
+      <div class="tip-content" style="white-space:pre-line">{{ tipContent }}</div>
       <template #footer>
-        <el-button type="primary" @click="tipVisible = false">知道了</el-button>
+        <el-button v-if="tipIsTaxTask" type="primary" @click="goTaxFiling">📤 去申报</el-button>
+        <el-button v-else type="success" @click="markTipDone">✅ 标记完成</el-button>
+        <el-button type="default" @click="tipVisible = false">知道了</el-button>
       </template>
     </el-dialog>
   </div>
@@ -363,9 +397,12 @@ const searchQuery = ref('')
 const tipVisible = ref(false)
 const tipTitle = ref('')
 const tipContent = ref('')
+const tipIsTaxTask = ref(false)
+const currentTipTask = ref(null)
 const tick = ref(0)  // 响应式计数器，强制刷新完成状态
 const activeTag = ref('')  // 当前筛选的知识点标签
 const activeDifficulty = ref(0)  // 当前筛选的难度（0=全部）
+const monthlyMode = ref(localStorage.getItem('jd_monthly_mode') !== 'false')
 const currentRole = computed(() => store.getCurrentRole())
 
 // 声望等级
@@ -395,10 +432,13 @@ function getMonthTasks(m) {
 // 监听store角色变化，刷新数据
 watch([currentRole, currentScenarioId], () => {
   window.dispatchEvent(new CustomEvent('task-updated'))
-  const stats = monthStats.value
-  const firstNonEmpty = stats.find(s => s.total > 0)
-  if (firstNonEmpty) activeMonth.value = firstNonEmpty.value
   tick.value++
+  const stats = monthStats.value
+  // 月度模式下跳到第一个非锁定月，否则跳到第一个非空月
+  const target = monthlyMode.value && !store.isPracticeMode()
+    ? stats.find(m => !m.locked && m.total > 0)
+    : stats.find(s => s.total > 0)
+  if (target) activeMonth.value = target.value
   // 角色/场景变化时重新加载当月任务列表
   loadTasks()
 })
@@ -445,6 +485,14 @@ function highlightMatch(text, query) {
 }
 
 function goToSearchResult(task) {
+  // 检查目标月份是否被锁定
+  if (monthlyMode.value && !store.isPracticeMode()) {
+    const targetMonth = monthStats.value.find(m => m.value === task.month)
+    if (targetMonth?.locked) {
+      ElMessage.warning('该月已被锁定，请先完成前一个月的所有任务')
+      return
+    }
+  }
   // 切换到该任务所在月份
   activeMonth.value = task.month
   searchQuery.value = ''
@@ -511,12 +559,30 @@ function isCompleted(task) {
   return localStorage.getItem(key) === 'true'
 }
 
+// 判断当月内任务是否被前序任务锁定（月度模式 + 有分录任务才锁）
+function isTaskLocked(task) {
+  if (!monthlyMode.value || store.isPracticeMode()) return false
+  if (task.entries.length === 0) return false // 信息任务不锁
+  const monthTasks = getMonthTasks(activeMonth.value)
+    .filter(t => t.entries.length > 0) // 只看有分录的任务
+    .sort((a, b) => (a.date || '').localeCompare(b.date || ''))
+  const idx = monthTasks.findIndex(t => t.date === task.date && t.title === task.title)
+  if (idx <= 0) return false
+  // 前面任何一个有分录的任务没完成则锁定
+  for (let i = 0; i < idx; i++) {
+    if (!isCompleted(monthTasks[i])) return true
+  }
+  return false
+}
+
 // ─── 计算各月统计 ───
 
 const monthStats = computed(() => {
   const months = getScenarioMonths()
   const labels = getScenarioMonthLabels()
-  return months.map((m, i) => {
+  const isLockActive = monthlyMode.value && !store.isPracticeMode()
+  // 第一趟：计算各月统计数据
+  const result = months.map((m, i) => {
     const monthTasks = getMonthTasks(m)
     const total = monthTasks.length
     const done = monthTasks.filter(t => isCompleted(t)).length
@@ -526,9 +592,19 @@ const monthStats = computed(() => {
       total,
       done,
       remaining: total - done,
-      percentage: total > 0 ? Math.round(done / total * 100) : 0,
+      percentage: total > 0 ? Math.round(done / total * 100) : 100,
+      locked: false,
     }
   })
+  // 第二趟：计算锁定状态（月度模式开启且非自由练习时）
+  if (isLockActive) {
+    for (let i = 1; i < result.length; i++) {
+      if (result[i - 1].remaining > 0) {
+        result[i].locked = true
+      }
+    }
+  }
+  return result
 })
 
 const overallStats = computed(() => {
@@ -543,6 +619,21 @@ const currentMonthStats = computed(() => {
 })
 
 const hasIncomplete = computed(() => overallStats.value.remaining > 0)
+
+// 监控月状态变化：当当前激活月变为锁定（如重置进度后），自动切到第一个非锁定月
+watch(monthStats, (newStats) => {
+  if (monthlyMode.value && !store.isPracticeMode()) {
+    const current = newStats.find(m => m.value === activeMonth.value)
+    if (current?.locked) {
+      const firstUnlocked = newStats.find(m => !m.locked && m.total > 0)
+      if (firstUnlocked) {
+        activeMonth.value = firstUnlocked.value
+        loadTasks()
+        ElMessage.info(`已切换到「${firstUnlocked.shortLabel}」`)
+      }
+    }
+  }
+})
 
 function overallFormat(p) {
   return `${overallStats.value.done}/${overallStats.value.total} (${p}%)`
@@ -613,6 +704,21 @@ function onTabChange() {
   loadTasks()
 }
 
+function toggleMonthlyMode(val) {
+  monthlyMode.value = val
+  localStorage.setItem('jd_monthly_mode', val ? 'true' : 'false')
+}
+
+function handleBeforeLeaveTab(newName) {
+  if (!monthlyMode.value || store.isPracticeMode()) return true
+  const m = monthStats.value.find(s => s.value === newName)
+  if (m?.locked) {
+    ElMessage.warning('请先完成前一个月的所有任务')
+    return false
+  }
+  return true
+}
+
 // ─── 场景切换 ───
 function handleScenarioChange(id) {
   if (id === currentScenarioId.value) return
@@ -633,9 +739,10 @@ function handleScenarioChange(id) {
 
 function continueLearning() {
   for (const m of monthStats.value) {
-    if (m.total === 0 || m.done === m.total) continue
+    if (m.total === 0 || m.done === m.total || m.locked) continue
     const monthTasks = getMonthTasks(m.value)
     for (const task of monthTasks) {
+      if (isTaskLocked(task)) continue
       if (!isCompleted(task)) {
         // 有分录 → 设任务，浮动窗自动弹出，用户通过浮动窗选模式
         if (task.entries.length > 0) {
@@ -655,7 +762,21 @@ function continueLearning() {
         }
         // 无分录 → 弹提示说明
         tipTitle.value = task.title
-        tipContent.value = `该任务无需录入凭证：\n\n${task.description}\n\n${task.tip || ''}`
+        currentTipTask.value = task
+        tipIsTaxTask.value = task.tags && task.tags.includes('申报')
+        if (tipIsTaxTask.value) {
+          const period = task.date.substring(0, 7).replace('-', '')
+          if (localStorage.getItem('tax_submitted_' + period) === 'true') {
+            const key = getProgressKey(currentScenarioId.value, task.date, task.title)
+            localStorage.setItem(key, 'true')
+            window.dispatchEvent(new CustomEvent('task-updated'))
+            continueLearning()
+            return
+          }
+          tipContent.value = task.description + '\n\n' + (task.tip || '')
+        } else {
+          tipContent.value = `该任务无需录入凭证：\n\n${task.description}\n\n${task.tip || ''}`
+        }
         tipVisible.value = true
         return
       }
@@ -670,6 +791,10 @@ function continueLearning() {
 // ─── 开始任务 ───
 
 function startTask(task) {
+  if (isTaskLocked(task)) {
+    ElMessage.warning('该任务尚未解锁，请先完成前面的任务')
+    return
+  }
   localStorage.setItem('tutorial_task', JSON.stringify({
     date: task.date,
     title: task.title,
@@ -687,23 +812,41 @@ function startTask(task) {
 
 function showTip(row) {
   tipTitle.value = row.title
+  currentTipTask.value = row
+  tipIsTaxTask.value = row.tags && row.tags.includes('申报')
   tipContent.value = row.tip || '该任务无需录入凭证，请按说明操作。'
   tipVisible.value = true
 }
 
-// ─── 重置教学进度（仅当前角色+当前行业） ───
+function markTipDone() {
+  if (!currentTipTask.value) return
+  const key = getProgressKey(currentScenarioId.value, currentTipTask.value.date, currentTipTask.value.title)
+  localStorage.setItem(key, 'true')
+  tipVisible.value = false
+  window.dispatchEvent(new CustomEvent('task-updated'))
+  tick.value++
+  ElMessage.success('✅ 已标记完成：' + currentTipTask.value.title)
+  currentTipTask.value = null
+}
+
+function goTaxFiling() {
+  tipVisible.value = false
+  router.push('/reports/tax-filing')
+}
+
+// ─── 重置教学进度（仅当前角色+当前行业，保留等级成就） ───
 
 function resetProgress() {
   const scenarioLabel = currentScenario.value?.label || '当前'
   const roleLabel = { cashier: '出纳', accountant: '会计', supervisor: '主管' }[currentRole.value] || '当前角色'
   ElMessageBox.confirm(
-    `重置「${roleLabel} → ${scenarioLabel}」教学进度将：<br>` +
-    `① 清除「${roleLabel}」在本行业的已完成标记<br>` +
+    `重置「${roleLabel} → ${scenarioLabel}」教学数据将：<br>` +
+    `① 清除「${roleLabel}」在本行业的已完成标记（任务可重做）<br>` +
     `② 清除该场景的凭证和余额数据（工作台数据重置）<br>` +
-    `③ 清除XP和经验等级数据<br>` +
+    `③ ⭐ 保留等级、成就、XP不变（已获经验的任务不再给经验）<br>` +
     `④ 其他场景和角色的数据不受影响<br><br>` +
     `此操作不可撤销，确定要继续吗？`,
-    `⚠️ 重置${roleLabel}教学进度`,
+    `⚠️ 重置${roleLabel}教学数据`,
     { confirmButtonText: '确认重置', cancelButtonText: '取消', type: 'warning', dangerouslyUseHTMLString: true }
   ).then(() => {
     // 获取当前场景的所有任务
@@ -738,20 +881,23 @@ function resetProgress() {
     } else if (sid === 'construction') {
       store.initConstructionAccount()
     }
-    // 清除XP数据
-    localStorage.removeItem('jd_xp_data')
-    localStorage.removeItem('jd_achievements')
-    // 清除旧tag stats
+    // ⭐ 保留 XP/等级/成就数据（仅清除教学辅助统计）
     Object.keys(localStorage).filter(k => k.includes('tag_stats')).forEach(k => localStorage.removeItem(k))
+    Object.keys(localStorage).filter(k => k.includes('wrong_answers')).forEach(k => localStorage.removeItem(k))
+    Object.keys(localStorage).filter(k => k.includes('_streak')).forEach(k => localStorage.removeItem(k))
+    // 清除纳税申报状态（重置后可重新申报）
+    Object.keys(localStorage).filter(k => k.startsWith('tax_submitted_')).forEach(k => localStorage.removeItem(k))
 
     tick.value++
-    ElMessage.success(`✅ 已完全重置「${roleLabel} → ${scenarioLabel}」的教学进度和工作台数据`)
+    ElMessage.success(`✅ 已重置「${roleLabel} → ${scenarioLabel}」教学数据，等级和成就已保留`)
     loadTasks()
   }).catch(() => {})
 }
 
 onMounted(() => {
   loadTasks()
+  // 监听任务完成事件，刷新完成状态统计
+  window.addEventListener('task-updated', () => { tick.value++ })
 })
 </script>
 
@@ -822,6 +968,30 @@ onMounted(() => {
   margin-top: 4px;
 }
 
+/* ─── 月度模式开关 ─── */
+.monthly-mode-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+  margin-bottom: 8px;
+}
+.mode-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #303133;
+}
+.mode-info {
+  font-size: 14px;
+  color: #909399;
+  cursor: help;
+}
+.mode-warning {
+  font-size: 12px;
+  color: #e6a23c;
+  margin-left: 4px;
+}
+
 /* ─── 总体进度条 ─── */
 .overall-progress-bar {
   margin-bottom: 20px;
@@ -837,6 +1007,10 @@ onMounted(() => {
   align-items: center;
   gap: 6px;
   font-size: 13px;
+}
+.tab-label.is-locked {
+  opacity: 0.55;
+  cursor: not-allowed;
 }
 .tab-tag {
   font-size: 10px !important;

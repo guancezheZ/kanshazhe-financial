@@ -105,6 +105,12 @@ const routes = [
         meta: { title: '自定义报表', icon: 'DataAnalysis' },
       },
       {
+        path: 'reports/financial-trend',
+        name: 'FinancialTrend',
+        component: () => import('@/views/reports/FinancialTrend.vue'),
+        meta: { title: '财务分析趋势', icon: 'TrendCharts' },
+      },
+      {
         path: 'reports/period-end-transfer',
         name: 'PeriodEndTransfer',
         component: () => import('@/views/reports/PeriodEndTransfer.vue'),
@@ -121,6 +127,12 @@ const routes = [
         name: 'ARAPMgmt',
         component: () => import('@/views/accounting/ARAPMgmt.vue'),
         meta: { title: '应收应付', icon: 'Coin' },
+      },
+      {
+        path: 'accounting/inventory',
+        name: 'InventoryMgmt',
+        component: () => import('@/views/accounting/InventoryMgmt.vue'),
+        meta: { title: '存货管理', icon: 'Box' },
       },
       {
         path: 'accounting/fixed-assets',

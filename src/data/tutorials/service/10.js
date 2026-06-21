@@ -6,10 +6,7 @@ const tasks = [
   {
     "date": "2026-10-01",
     "title": "缴纳9月增值税",
-    "tags": [
-      "税费",
-      "资金管理"
-    ],
+    "tags": ["税费"],
     "difficulty": 2,
     "entries": [
       {
@@ -55,10 +52,7 @@ const tasks = [
   {
     "date": "2026-10-02",
     "title": "缴纳9月社保",
-    "tags": [
-      "工资社保",
-      "资金管理"
-    ],
+    "tags": ["工资社保"],
     "difficulty": 1,
     "entries": [
       {
@@ -580,10 +574,7 @@ const tasks = [
   {
     "date": "2026-10-22",
     "title": "计提10月借款利息",
-    "tags": [
-      "资金管理",
-      "期末"
-    ],
+    "tags": ["期末"],
     "difficulty": 1,
     "entries": [
       {
@@ -838,10 +829,7 @@ const tasks = [
   {
     "date": "2026-10-04",
     "title": "启动金到账确认",
-    "tags": [
-      "出纳",
-      "资金管理"
-    ],
+    "tags": ["出纳"],
     "difficulty": 1,
     "role": "cashier",
     "entries": [
@@ -1000,9 +988,7 @@ const tasks = [
   {
     "date": "2026-10-08",
     "title": "微信收款-数字化项目阶段款",
-    "tags": [
-      "资金管理"
-    ],
+    "tags": ["出纳"],
     "difficulty": 1,
     "entries": [
       {
@@ -1106,9 +1092,7 @@ const tasks = [
   {
     "date": "2026-10-11",
     "title": "提取备用金",
-    "tags": [
-      "资金管理"
-    ],
+    "tags": ["出纳"],
     "difficulty": 1,
     "entries": [
       {
@@ -1203,9 +1187,7 @@ const tasks = [
   {
     "date": "2026-10-19",
     "title": "银行账户间调拨",
-    "tags": [
-      "资金管理"
-    ],
+    "tags": ["资金管理"],
     "difficulty": 1,
     "entries": [
       {
@@ -1283,7 +1265,7 @@ const tasks = [
   {
     "date": "2026-10-26",
     "title": "购买转账支票",
-    "tags": ["资金管理"],
+    "tags": ["出纳"],
     "difficulty": 1,
     "entries": [
       {
@@ -1314,7 +1296,7 @@ const tasks = [
   {
     "date": "2026-10-31",
     "title": "月末票据归档",
-    "tags": ["资金管理"],
+    "tags": ["出纳"],
     "difficulty": 1,
     "entries": [],
     "documents": [
