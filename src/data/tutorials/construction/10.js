@@ -455,6 +455,7 @@ const tasks = [
   // ═════════════════════════════════════════════════════════════════════
   {
     date: '2026-10-01',
+    role: 'accountant',
     title: '纳税转账',
     tags: ['税费'],
     difficulty: 1,
@@ -469,6 +470,7 @@ const tasks = [
       { type: 'bank', label: '缴税回单', date: '2026-10-01', totalAmount: 61600, payer: '鼎立建筑工程有限公司', payeeName: '国家金库', content: '缴纳9月增值税及附加', refNo: 'NS202610010001' }]},
   {
     date: '2026-10-01',
+    role: 'accountant',
     title: '社保缴纳',
     tags: ['工资社保'],
     difficulty: 1,
@@ -481,6 +483,7 @@ const tasks = [
       { type: 'bank', label: '社保回单', date: '2026-10-01', totalAmount: 38500, payer: '鼎立建筑工程有限公司', payeeName: '社会保险事业管理中心', content: '9月社保费', refNo: 'SB202610010002' }]},
   {
     date: '2026-10-02',
+    role: 'accountant',
     title: '工资代发',
     tags: ['工资社保'],
     difficulty: 1,
@@ -494,6 +497,7 @@ const tasks = [
       { type: 'bank', label: '代发工资回单', date: '2026-10-02', totalAmount: 141000, payer: '鼎立建筑工程有限公司', payeeName: '公司全体员工', content: '9月工资发放', refNo: 'GZ202610020002' }]},
   {
     date: '2026-10-05',
+    role: 'accountant',
     title: '提取备用金',
     tags: ['出纳'],
     difficulty: 1,
@@ -506,6 +510,7 @@ const tasks = [
       { type: 'receipt', label: '现金支票存根', date: '2026-10-05', docTitle: '现金支票存根', items: [{ name: '提取备用金', qty: 1, price: 10000, amount: 10000 }], stampText: '财务预留印鉴' }]},
   {
     date: '2026-10-08',
+    role: 'accountant',
     title: '现金支付办公用品费',
     tags: ['工程成本'],
     difficulty: 1,
@@ -518,6 +523,7 @@ const tasks = [
       { type: 'receipt', label: '办公用品收据', date: '2026-10-08', totalAmount: 1200, items: [{ label: '打印纸（5箱）', amount: 500 }, { label: '墨盒（3个）', amount: 450 }, { label: '文件夹（20个）', amount: 250 }], stampText: '办公用品店收款章' }]},
   {
     date: '2026-10-09',
+    role: 'accountant',
     title: '微信支付临时用工劳务费',
     tags: ['工资社保'],
     difficulty: 1,
@@ -530,6 +536,7 @@ const tasks = [
       { type: 'text', label: '微信支付截图', date: '2026-10-09', content: '收款方：临时用工班组\n金额：8,000元\n用途：办公楼竣工清理劳务费' }]},
   {
     date: '2026-10-11',
+    role: 'accountant',
     title: '支付压路机租赁费',
     tags: ['机械使用'],
     difficulty: 1,
@@ -543,6 +550,7 @@ const tasks = [
       { type: 'bank', label: '付款回单', date: '2026-10-11', totalAmount: 56500, payer: '鼎立建筑工程有限公司', payeeName: '永固机械设备租赁有限公司', content: '压路机及摊铺机10月租赁费', refNo: 'FK202610110001' }]},
   {
     date: '2026-10-12',
+    role: 'accountant',
     title: '支付沥青材料款',
     tags: ['材料管理'],
     difficulty: 1,
@@ -555,6 +563,7 @@ const tasks = [
       { type: 'bank', label: '付款回单', date: '2026-10-12', totalAmount: 339000, payer: '鼎立建筑工程有限公司', payeeName: '丁公司', content: '支付沥青及碎石材料采购款', refNo: 'FK202610120001' }]},
   {
     date: '2026-10-13',
+    role: 'accountant',
     title: '支付周转材料租赁费',
     tags: ['材料管理'],
     difficulty: 1,
@@ -567,6 +576,7 @@ const tasks = [
       { type: 'bank', label: '转账回单', date: '2026-10-13', totalAmount: 8000, payer: '鼎立建筑工程有限公司', payeeName: '恒运脚手架租赁公司', content: '道路工程周转材料租赁费', refNo: 'ZL202610130001' }]},
   {
     date: '2026-10-14',
+    role: 'accountant',
     title: '支付宝支付材料运输费',
     tags: ['材料管理'],
     difficulty: 1,
@@ -579,6 +589,7 @@ const tasks = [
       { type: 'text', label: '支付宝支付记录', date: '2026-10-14', content: '收款方：顺达物流\n金额：3,000元\n用途：沥青材料运输费' }]},
   {
     date: '2026-10-17',
+    role: 'accountant',
     title: '现金支付差旅费',
     tags: ['工程成本'],
     difficulty: 1,
@@ -591,6 +602,7 @@ const tasks = [
       { type: 'receipt', label: '报销单', date: '2026-10-17', totalAmount: 6500, items: [{ label: '交通费', amount: 2500 }, { label: '住宿费', amount: 2400 }, { label: '餐补', amount: 1600 }], stampText: '现金付讫' }]},
   {
     date: '2026-10-18',
+    role: 'accountant',
     title: '现金支付保洁费',
     tags: ['工程成本'],
     difficulty: 1,
@@ -603,6 +615,7 @@ const tasks = [
       { type: 'receipt', label: '保洁费收据', date: '2026-10-18', totalAmount: 800, items: [{ label: '10月办公室保洁服务费', amount: 800 }], stampText: '家政服务公司收款章' }]},
   {
     date: '2026-10-22',
+    role: 'accountant',
     title: '银行账户间调拨',
     tags: ['资金管理'],
     difficulty: 1,
@@ -615,6 +628,7 @@ const tasks = [
       { type: 'bank', label: '内部调拨单', date: '2026-10-22', totalAmount: 50000, payer: '鼎立建筑工程有限公司（建行）', payeeName: '鼎立建筑工程有限公司（工行）', content: '资金调拨', refNo: 'DB202610220001' }]},
   {
     date: '2026-10-24',
+    role: 'accountant',
     title: '提取现金支付零星费用',
     tags: ['出纳'],
     difficulty: 1,
@@ -660,6 +674,7 @@ const tasks = [
       { type: 'text', label: '会计档案归档清单', docTitle: '2026年10月会计档案归档清单', content: '归档日期：2026年10月31日\n归档范围：\n1. 记账凭证：共XX册\n2. 银行回单：XX份\n3. 增值税发票：XX份（进项+销项）\n4. 合同及协议：XX份\n5. 竣工资料：办公楼竣工验收全套文件\n6. 工资表及社保表：XX份\n\n保管期限：30年\n归档人：刘出纳  复核：赵会计', signature: '刘出纳  赵会计' }]},
   {
     date: "2026-10-31",
+    role: 'accountant',
     title: "模拟纳税申报",
     tags: ["期末", "税费"],
     difficulty: 1,

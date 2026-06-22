@@ -31,6 +31,7 @@ const tasks = [
   // ═══════════════════════════════════════════════════════════════════
   {
     date: '2026-04-02',
+    role: 'accountant',
     title: '退还投标保证金',
     tags: ['往来管理'],
     difficulty: 1,
@@ -90,6 +91,7 @@ const tasks = [
       { type: 'invoice', label: '增值税专用发票', date: '2026-04-05', region: '江苏省', invoiceNo: '3200260405', buyer: '鼎立建筑工程有限公司', seller: '通达建材有限公司', lineItems: [{ name: '沥青', qty: 50, unit: '吨', price: 3500, amount: 175000 }, { name: '碎石', qty: 300, unit: '吨', price: 250, amount: 75000 }], totalAmount: 282500 }]},
   {
     date: '2026-04-06',
+    role: 'accountant',
     title: '提取备用金',
     tags: ['出纳'],
     difficulty: 1,
@@ -102,6 +104,7 @@ const tasks = [
       { type: 'bank', label: '现金支票存根', date: '2026-04-06', totalAmount: 15000, payer: '鼎立建筑工程有限公司', payeeName: '鼎立建筑工程有限公司', content: '备用金', refNo: 'XJ0456789012' }]},
   {
     date: '2026-04-07',
+    role: 'accountant',
     title: '支付材料采购款',
     tags: ['材料管理', '往来管理'],
     difficulty: 1,
@@ -144,6 +147,7 @@ const tasks = [
       { type: 'invoice', label: '增值税普通发票', date: '2026-04-09', region: '江苏省', invoiceNo: '3200260409', buyer: '鼎立建筑工程有限公司', seller: '宏远租赁有限公司', lineItems: [{ name: '压路机租赁费', qty: 1, unit: '月', price: 30000, amount: 30000 }, { name: '沥青摊铺机租赁费', qty: 1, unit: '月', price: 25000, amount: 25000 }], totalAmount: 55000 }]},
   {
     date: '2026-04-10',
+    role: 'accountant',
     title: '支付机械租赁费',
     tags: ['机械使用'],
     difficulty: 1,
@@ -173,6 +177,7 @@ const tasks = [
       { type: 'bank', label: '银行回单', date: '2026-04-10', totalAmount: 45000, payer: '鼎立建筑工程有限公司', payeeName: '大地基础工程有限公司', content: '预付土方分包工程款', refNo: 'ZF202604100002' }]},
   {
     date: '2026-04-11',
+    role: 'accountant',
     title: '预付办公楼项目分包款',
     tags: ['分包管理', '工程成本'],
     difficulty: 2,
@@ -217,6 +222,7 @@ const tasks = [
       { type: 'text', label: '工程进度确认单', docTitle: '工程完工进度确认单', content: '办公楼工程累计完成40%，本期完成10%，经监理验收合格。', signature: '李监理 恒达地产 鼎立建筑' }]},
   {
     date: '2026-04-15',
+    role: 'accountant',
     title: '收到办公楼工程进度款',
     tags: ['往来管理'],
     difficulty: 1,
@@ -249,6 +255,7 @@ const tasks = [
       { type: 'text', label: '工资表', docTitle: '2026年4月职工工资表', content: '办公楼施工人员50,000元；市政施工人员40,000元；项目管理人员35,000元；公司管理人员25,000元。合计150,000元。', signature: '王人事' }]},
   {
     date: '2026-04-16',
+    role: 'accountant',
     title: '发放职工工资',
     tags: ['工资社保'],
     difficulty: 1,
@@ -261,6 +268,7 @@ const tasks = [
       { type: 'bank', label: '银行代发工资回单', date: '2026-04-16', totalAmount: 150000, payer: '鼎立建筑工程有限公司', payeeName: '公司全体员工', content: '4月份工资发放', refNo: 'GZ202604160001' }]},
   {
     date: '2026-04-17',
+    role: 'accountant',
     title: '缴纳社保及公积金',
     tags: ['工资社保'],
     difficulty: 1,
@@ -292,6 +300,7 @@ const tasks = [
       { type: 'receipt', label: '差旅费报销单', date: '2026-04-18', items: [{ label: '办公楼项目差旅费', amount: 2000 }, { label: '市政项目差旅费', amount: 2500 }], totalAmount: 4500, stampText: '鼎立建筑工程有限公司财务专用章' }]},
   {
     date: '2026-04-19',
+    role: 'accountant',
     title: '支付办公费及水电费',
     tags: ['费用管理'],
     difficulty: 1,
@@ -320,6 +329,7 @@ const tasks = [
       { type: 'invoice', label: '增值税专用发票', date: '2026-04-20', region: '江苏省', invoiceNo: '3200260420', buyer: '鼎立建筑工程有限公司', seller: '华强建材有限公司', lineItems: [{ name: '瓷砖', qty: 2000, unit: '平方米', price: 50, amount: 100000 }, { name: '涂料', qty: 100, unit: '桶', price: 500, amount: 50000 }], totalAmount: 169500 }]},
   {
     date: '2026-04-20',
+    role: 'accountant',
     title: '支付办公楼材料款',
     tags: ['材料管理'],
     difficulty: 1,
@@ -352,6 +362,7 @@ const tasks = [
       { type: 'text', label: '折旧计算表', docTitle: '固定资产折旧计算表', content: '直线法折旧。运输车辆月折旧5,000元（双项目各50%）；施工机械月折旧15,000元；办公设备月折旧2,000元。合计22,000元。', signature: '赵会计' }]},
   {
     date: '2026-04-22',
+    role: 'accountant',
     title: '支付短期借款利息',
     tags: ['费用管理'],
     difficulty: 1,
@@ -368,6 +379,7 @@ const tasks = [
   // ═══════════════════════════════════════════════════════════════════
   {
     date: '2026-04-23',
+    role: 'accountant',
     title: '报销办公用品及杂费',
     tags: ['费用管理'],
     difficulty: 1,
@@ -380,6 +392,7 @@ const tasks = [
       { type: 'receipt', label: '办公用品发票', date: '2026-04-23', items: [{ label: '打印纸', amount: 500 }, { label: '墨盒', amount: 800 }, { label: '文具', amount: 1700 }], totalAmount: 3000, stampText: '收款单位财务专用章' }]},
   {
     date: '2026-04-24',
+    role: 'accountant',
     title: '支付分包工程结算款',
     tags: ['分包管理', '往来管理'],
     difficulty: 1,
@@ -600,6 +613,7 @@ const tasks = [
 
   {
     date: '2026-04-18',
+    role: 'accountant',
     title: '支付日常办公费用',
     tags: ['费用管理'],
     difficulty: 1,
@@ -634,6 +648,7 @@ const tasks = [
     documents: [{ type: 'receipt', label: '维护费发票', items: [{ label: '设备日常维护', amount: 3000 }], totalAmount: 3000, stampText: '维修厂发票章' }]},
   {
     date: "2026-04-30",
+    role: 'accountant',
     title: "模拟纳税申报",
     tags: ["期末", "税费"],
     difficulty: 1,

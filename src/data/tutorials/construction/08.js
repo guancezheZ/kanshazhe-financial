@@ -16,6 +16,7 @@ const tasks = [
   // ═══════════════════════════════════════════════════════════════════
   {
     date: '2026-08-01',
+    role: 'accountant',
     title: '缴纳7月增值税及附加税费',
     tags: ['税费'],
     difficulty: 1,
@@ -30,6 +31,7 @@ const tasks = [
       { type: 'bank', label: '电子缴税回单', date: '2026-08-01', totalAmount: 24200, payer: '鼎立建筑工程有限公司', payeeName: '国家税务局', content: '7月增值税及附加税费', refNo: 'JS202608010001' }]},
   {
     date: '2026-08-02',
+    role: 'accountant',
     title: '缴纳7月社会保险费',
     tags: ['工资社保'],
     difficulty: 1,
@@ -42,6 +44,7 @@ const tasks = [
       { type: 'bank', label: '社保缴费回单', date: '2026-08-02', totalAmount: 35000, payer: '鼎立建筑工程有限公司', payeeName: '社会保险基金管理局', content: '7月社保费', refNo: 'SB202608020001' }]},
   {
     date: '2026-08-03',
+    role: 'accountant',
     title: '缴纳7月住房公积金',
     tags: ['工资社保'],
     difficulty: 1,
@@ -54,6 +57,7 @@ const tasks = [
       { type: 'bank', label: '公积金汇缴回单', date: '2026-08-03', totalAmount: 18000, payer: '鼎立建筑工程有限公司', payeeName: '住房公积金管理中心', content: '7月公积金', refNo: 'GJJ202608030001' }]},
   {
     date: '2026-08-04',
+    role: 'accountant',
     title: '发放7月职工工资',
     tags: ['工资社保'],
     difficulty: 2,
@@ -104,6 +108,7 @@ const tasks = [
       { type: 'bank', label: '转账回单', date: '2026-08-06', totalAmount: 120000, payer: '鼎立建筑工程有限公司', payeeName: '精艺建筑装饰有限公司', content: '办公楼装饰工程备料款', refNo: 'ZF202608060001' }]},
   {
     date: '2026-08-06',
+    role: 'accountant',
     title: '申请银行汇票备付材料采购',
     tags: ['资金管理'],
     difficulty: 1,
@@ -120,6 +125,7 @@ const tasks = [
   // ═══════════════════════════════════════════════════════════════════
   {
     date: '2026-08-07',
+    role: 'accountant',
     title: '提取备用金',
     tags: ['出纳'],
     difficulty: 1,
@@ -132,6 +138,7 @@ const tasks = [
       { type: 'bank', label: '现金支票存根', date: '2026-08-07', totalAmount: 10000, payer: '鼎立建筑工程有限公司', payeeName: '鼎立建筑工程有限公司', content: '备用金', refNo: 'XJ202608070001' }]},
   {
     date: '2026-08-07',
+    role: 'accountant',
     title: '购买转账支票及财务用品',
     tags: ['出纳'],
     difficulty: 1,
@@ -186,6 +193,7 @@ const tasks = [
       { type: 'bank', label: '网银转账回单', date: '2026-08-08', totalAmount: 80000, payer: '鼎立建筑工程有限公司（工行）', payeeName: '鼎立建筑工程有限公司（建行专户）', content: '农民工工资专户资金划转', refNo: 'ZZ202608080001' }]},
   {
     date: '2026-08-09',
+    role: 'accountant',
     title: '通过专户发放农民工工资',
     tags: ['工资社保'],
     difficulty: 2,
@@ -198,6 +206,7 @@ const tasks = [
       { type: 'bank', label: '专户代发工资回单', date: '2026-08-09', totalAmount: 75000, payer: '鼎立建筑工程有限公司（建行专户）', payeeName: '农民工工资代发户（21人）', content: '8月农民工工资发放', refNo: 'GZ202608090001' }]},
   {
     date: '2026-08-10',
+    role: 'accountant',
     title: '支付装饰材料供应商货款',
     tags: ['材料管理'],
     difficulty: 1,
@@ -247,6 +256,7 @@ const tasks = [
 合同总价：5,000,000元（不含税）。` }]},
   {
     date: '2026-08-13',
+    role: 'accountant',
     title: '收到甲方装饰阶段进度款',
     tags: ['往来管理'],
     difficulty: 1,
@@ -276,6 +286,7 @@ const tasks = [
       { type: 'bank', label: '转账回单', date: '2026-08-14', totalAmount: 20000, payer: '鼎立建筑工程有限公司', payeeName: '鑫源租赁有限公司', content: '装饰工程设备租赁费', refNo: 'ZF202608140001' }]},
   {
     date: '2026-08-15',
+    role: 'accountant',
     title: '微信支付采购零星装饰工具',
     tags: ['材料管理'],
     difficulty: 1,
@@ -307,6 +318,7 @@ const tasks = [
       { type: 'text', label: '工资汇总表', docTitle: '2026年8月工资汇总表', content: '施工人员（含农民工21人）65,000元；项目部管理人员（5人）28,000元；公司管理人员（4人）22,000元。合计115,000元。', signature: '王人事' }]},
   {
     date: '2026-08-18',
+    role: 'accountant',
     title: '支付装饰分包进度款',
     tags: ['分包管理'],
     difficulty: 1,
@@ -353,6 +365,7 @@ const tasks = [
       { type: 'text', label: '折旧计算表', docTitle: '固定资产折旧计算表（2026年8月）', content: '直线法折旧。运输车辆（原值120万，月折旧5,000元）；办公设备（原值48万，月折旧2,000元）。合计7,000元。', signature: '赵会计' }]},
   {
     date: '2026-08-21',
+    role: 'accountant',
     title: '支付现场水电费及办公费',
     tags: ['往来管理'],
     difficulty: 1,
@@ -392,6 +405,7 @@ const tasks = [
       { type: 'text', label: '摊销计算表', docTitle: '长期待摊费用摊销表', content: '临时设施原值60,000元，摊销期6个月，月摊销10,000元。截至本月已摊销4个月，余额20,000元。', signature: '赵会计' }]},
   {
     date: '2026-08-25',
+    role: 'accountant',
     title: '支付现场保安保洁服务费',
     tags: ['工程成本'],
     difficulty: 1,
@@ -404,6 +418,7 @@ const tasks = [
       { type: 'bank', label: '转账回单', date: '2026-08-25', totalAmount: 6000, payer: '鼎立建筑工程有限公司', payeeName: 'XX物业服务有限公司', content: '8月保安保洁服务费', refNo: 'ZF202608250001' }]},
   {
     date: '2026-08-25',
+    role: 'accountant',
     title: '购入办公用品',
     tags: ['往来管理'],
     difficulty: 1,
@@ -440,6 +455,7 @@ const tasks = [
 附加合计：4,068元`, signature: '赵会计' }]},
   {
     date: '2026-08-26',
+    role: 'accountant',
     title: '通过银行汇票支付材料采购欠款',
     tags: ['材料管理'],
     difficulty: 2,
@@ -452,6 +468,7 @@ const tasks = [
       { type: 'bank', label: '银行汇票背书转让凭证', date: '2026-08-26', totalAmount: 60000, payer: '鼎立建筑工程有限公司', payeeName: '丙公司', content: '支付材料采购款', refNo: 'HP202608260001' }]},
   {
     date: '2026-08-27',
+    role: 'accountant',
     title: '收到银行存款利息',
     tags: ['出纳'],
     difficulty: 1,
@@ -608,6 +625,7 @@ const tasks = [
 
   {
     date: '2026-08-15',
+    role: 'accountant',
     title: '支付日常办公费用',
     tags: ['费用管理'],
     difficulty: 1,
@@ -630,6 +648,7 @@ const tasks = [
     documents: [{ type: 'text', label: '对账确认单', docTitle: '往来对账确认单', content: '与供应商核对往来，确认全部款项已结清。', signature: '赵会计' }]},
   {
     date: "2026-08-31",
+    role: 'accountant',
     title: "模拟纳税申报",
     tags: ["期末", "税费"],
     difficulty: 1,

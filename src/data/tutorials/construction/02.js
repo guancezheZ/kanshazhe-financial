@@ -78,6 +78,7 @@ const tasks = [
         items: [{ name: '单位缴存（24人×666.67）', amount: 16000 }, { name: '个人缴存（24人×333.33）', amount: 8000 }], stampText: 'XX市住房公积金管理中心 业务专用章' }]},
   {
     date: '2026-02-05',
+    role: 'accountant',
     title: '提取备用金（现金支票）',
     tags: ['出纳'],
     difficulty: 1,
@@ -105,6 +106,7 @@ const tasks = [
         lineItems: [{ name: 'HRB400钢筋Φ25mm', unit: '吨', qty: 10, price: 14000, amount: 140000 }, { name: 'PO42.5水泥', unit: '吨', qty: 60, price: 1000, amount: 60000 }], totalAmount: 226000 }]},
   {
     date: '2026-02-07',
+    role: 'accountant',
     title: '支付材料采购款',
     tags: ['材料管理'],
     difficulty: 1,
@@ -136,6 +138,7 @@ const tasks = [
         lineItems: [{ name: '河砂（中粗）', unit: '立方米', qty: 100, price: 500, amount: 50000 }, { name: '碎石（5-25mm）', unit: '立方米', qty: 50, price: 400, amount: 20000 }, { name: '标准砖', unit: '千块', qty: 10, price: 1000, amount: 10000 }], totalAmount: 90400 }]},
   {
     date: '2026-02-09',
+    role: 'accountant',
     title: '支付砂石料采购款',
     tags: ['材料管理'],
     difficulty: 1,
@@ -148,6 +151,7 @@ const tasks = [
       { type: 'bank', label: '网银转账回单', date: '2026-02-09', totalAmount: 90400, payer: '鼎立建筑工程有限公司', payeeName: '丁公司', content: '支付材料采购款（砂石料/砖块）', refNo: 'ZF202602090001' }]},
   {
     date: '2026-02-10',
+    role: 'accountant',
     title: '支付分包工程春节前进度款',
     tags: ['分包管理'],
     difficulty: 2,
@@ -192,6 +196,7 @@ const tasks = [
         content: '春节前一周（2月8日-14日）赶工加班统计：\n施工人员25人×平均加班3天\n\n日工资标准：400元/天\n加班工资：25人×3天×400元×300%=30,000元\n\n附：考勤汇总表、加班审批单' }]},
   {
     date: '2026-02-13',
+    role: 'accountant',
     title: '发放春节加班补贴（现金）',
     tags: ['工资社保'],
     difficulty: 1,
@@ -239,6 +244,7 @@ const tasks = [
   // ═══════════════════════════════════════════════════════════════════
   {
     date: '2026-02-16',
+    role: 'accountant',
     title: '支付塔吊租赁费',
     tags: ['机械使用'],
     difficulty: 1,
@@ -251,6 +257,7 @@ const tasks = [
       { type: 'bank', label: '网银转账回单', date: '2026-02-16', totalAmount: 40000, payer: '鼎立建筑工程有限公司', payeeName: '丙公司', content: '塔吊租赁费', refNo: 'ZF202602160001' }]},
   {
     date: '2026-02-17',
+    role: 'accountant',
     title: '支付施工机械维修费',
     tags: ['机械使用'],
     difficulty: 1,
@@ -323,6 +330,7 @@ const tasks = [
         content: '车辆原值300,000元，月折旧5,000元（年限5年，残值率5%）\n办公设备原值120,000元，月折旧2,000元（年限5年，残值率5%）\n合计月折旧：7,000元' }]},
   {
     date: '2026-02-22',
+    role: 'accountant',
     title: '报销工程管理人员差旅费',
     tags: ['工程成本'],
     difficulty: 1,
@@ -368,6 +376,7 @@ const tasks = [
         content: '公积金计提（比例12%）：\n施工人员：100,000×12%=12,000\n项目部管理人员：35,000×12%=4,200\n公司管理人员：28,000×12%=3,360\n\n合计：19,560元' }]},
   {
     date: '2026-02-25',
+    role: 'accountant',
     title: '支付办公费及水电费',
     tags: ['工程成本'],
     difficulty: 1,
@@ -398,6 +407,7 @@ const tasks = [
         content: '经核实，鼎立建筑工程有限公司2月份完成以下工程量：\n1. 基础钢筋绑扎完成65%\n2. 基础混凝土浇筑完成40%\n3. 基础回填完成20%\n\n综合完工进度：15%（本月）/ 累计25%\n同意按此进度支付工程款。' }]},
   {
     date: '2026-02-27',
+    role: 'accountant',
     title: '收到工程进度款到账确认',
     tags: ['往来管理'],
     difficulty: 1,
@@ -570,6 +580,7 @@ const tasks = [
 
   {
     date: '2026-02-15',
+    role: 'accountant',
     title: '支付日常办公费用',
     tags: ['费用管理'],
     difficulty: 1,
@@ -592,6 +603,7 @@ const tasks = [
     documents: [{ type: 'text', label: '对账确认单', docTitle: '往来对账确认单', content: '与供应商核对往来，确认全部款项已结清。', signature: '赵会计' }]},
   {
     date: "2026-02-28",
+    role: 'accountant',
     title: "模拟纳税申报",
     tags: ["期末", "税费"],
     difficulty: 1,

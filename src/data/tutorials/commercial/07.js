@@ -26,6 +26,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-07-01',
+    role: 'accountant',
     title: '支付办公室房租',
     tags: ['费用管理'],
     difficulty: 1,
@@ -40,6 +41,7 @@ const tasks = [
       { type: 'text', label: '房屋租赁合同', docTitle: '办公用房租赁合同（摘录）', content: '租赁地址：上海市浦东新区XX路XX号XX室\n租赁期限：2026年1月1日至2026年12月31日\n月租金：6,000元（含税）\n支付方式：每月初转账支付', stampText: '合同专用章' }]},
   {
     date: '2026-07-02',
+    role: 'accountant',
     title: '报销差旅费（销售人员出差）',
     tags: ['费用管理'],
     difficulty: 1,
@@ -54,6 +56,7 @@ const tasks = [
       { type: 'text', label: '出差申请单', docTitle: '出差申请单', content: '出差人：李华（销售部）\n出差地点：广州\n出差事由：拜访客户、洽谈合作协议\n出差日期：2026年6月30日-7月2日\n审批人：销售经理 王经理', signature: '销售经理 王经理' }]},
   {
     date: '2026-07-03',
+    role: 'accountant',
     title: '支付广告费（网络推广）',
     tags: ['费用管理'],
     difficulty: 1,
@@ -67,6 +70,7 @@ const tasks = [
         items: [{ name: '百度搜索引擎推广服务（7月）', qty: 1, price: 8000, amount: 8000 }] }]},
   {
     date: '2026-07-04',
+    role: 'accountant',
     title: '支付水电费',
     tags: ['费用管理'],
     difficulty: 1,
@@ -83,6 +87,7 @@ const tasks = [
         items: [{ name: '2026年7月水费', qty: 1, price: 800, amount: 800 }] }]},
   {
     date: '2026-07-05',
+    role: 'accountant',
     title: '支付通讯费（电话+网络）',
     tags: ['费用管理'],
     difficulty: 1,
@@ -103,6 +108,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-07-06',
+    role: 'accountant',
     title: '购入低值易耗品（办公桌椅+文件柜）',
     tags: ['费用管理'],
     difficulty: 2,
@@ -119,6 +125,7 @@ const tasks = [
         items: [{ name: 'XX办公家具有限公司——低值易耗品购置款', qty: 1, price: 6000, amount: 6000 }] }]},
   {
     date: '2026-07-07',
+    role: 'accountant',
     title: '低值易耗品摊销（一次摊销法——办公桌椅）',
     tags: ['费用管理'],
     difficulty: 2,
@@ -131,6 +138,7 @@ const tasks = [
       { type: 'text', label: '低值易耗品领用单', docTitle: '低值易耗品领用单（一次摊销）', content: '领用部门：行政部\n物品名称：办公桌椅10套\n原值：3,000元\n摊销方法：一次摊销法（全额摊销）\n摊销金额：3,000元\n审批：行政主管 张主管', signature: '行政主管 张主管' }]},
   {
     date: '2026-07-08',
+    role: 'accountant',
     title: '低值易耗品摊销（五五摊销法——领用文件柜）',
     tags: ['费用管理'],
     difficulty: 2,
@@ -143,6 +151,7 @@ const tasks = [
       { type: 'text', label: '低值易耗品领用单', docTitle: '低值易耗品领用单（五五摊销）', content: '领用部门：销售部\n物品名称：铁皮文件柜4个\n原值：3,000元\n摊销方法：五五摊销法\n本次摊销：50% = 1,500元\n剩余待摊销：1,500元（报废时摊销）\n审批：销售经理 王经理', signature: '销售经理 王经理' }]},
   {
     date: '2026-07-11',
+    role: 'accountant',
     title: '低值易耗品报废（五五摊销法——剩余50%）',
     tags: ['费用管理'],
     difficulty: 2,
@@ -159,6 +168,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-07-13',
+    role: 'accountant',
     title: '在途物资购入（商品已付款未到货）',
     tags: ['商品采购'],
     difficulty: 2,
@@ -175,6 +185,7 @@ const tasks = [
       { type: 'bank', label: '付款回单', date: '2026-07-13', totalAmount: 45200, payer: '本公司', payeeName: '华强供应链有限公司', content: 'D类商品采购货款', refNo: 'HD202607130001' }]},
   {
     date: '2026-07-14',
+    role: 'accountant',
     title: '在途物资到货入库（冲转在途物资）',
     tags: ['商品采购', '仓存管理'],
     difficulty: 2,
@@ -188,6 +199,7 @@ const tasks = [
         content: '供应商：华强供应链有限公司\n商品名称：D类商品\n数量：400件\n单价：100元\n金额：40,000元\n验收结果：质量合格、数量无误\n经手人：仓库管理员 王强' }]},
   {
     date: '2026-07-15',
+    role: 'accountant',
     title: '现购商品',
     tags: ['商品采购', '税费'],
     difficulty: 2,
@@ -204,6 +216,7 @@ const tasks = [
       { type: 'bank', label: '付款回单', date: '2026-07-15', totalAmount: 33900, payer: '本公司', payeeName: '鼎盛贸易有限公司', content: 'C类商品货款', refNo: 'HD202607150001' }]},
   {
     date: '2026-07-15',
+    role: 'accountant',
     title: '赊购商品',
     tags: ['商品采购', '往来管理'],
     difficulty: 2,
@@ -220,6 +233,7 @@ const tasks = [
       { type: 'text', label: '入库单', docTitle: '商品入库单', content: '供应商：丙公司\n商品名称：B类商品\n数量：250件\n单价：200元\n金额：50,000元\n验收结果：合格\n经手人：仓库管理员 王强', signature: '仓库管理员 王强' }]},
   {
     date: '2026-07-16',
+    role: 'accountant',
     title: '现销商品',
     tags: ['商品销售'],
     difficulty: 2,
@@ -236,6 +250,7 @@ const tasks = [
       { type: 'bank', label: '收款回单', date: '2026-07-16', totalAmount: 135600, payer: '永辉超市', payeeName: '本公司', content: '货款（发票No.3100789014）', refNo: 'HD202607160001' }]},
   {
     date: '2026-07-16',
+    role: 'accountant',
     title: '赊销商品',
     tags: ['商品销售', '往来管理'],
     difficulty: 2,
@@ -252,6 +267,7 @@ const tasks = [
       { type: 'text', label: '出库单', docTitle: '商品出库单', content: '商品名称：A类商品\n数量：500件\n单价：200元\n金额：100,000元\n承运人：顺丰物流\n经手人：仓库管理员 王强', signature: '仓库管理员 王强' }]},
   {
     date: '2026-07-17',
+    role: 'accountant',
     title: '结转已销商品成本',
     tags: ['商品销售', '仓存管理'],
     difficulty: 2,
@@ -270,6 +286,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-07-20',
+    role: 'accountant',
     title: '计提短期借款利息',
     tags: ['费用管理'],
     difficulty: 2,
@@ -282,6 +299,7 @@ const tasks = [
       { type: 'text', label: '利息计算表', docTitle: '短期借款利息计算表', content: '借款银行：工商银行\n借款本金：500,000元\n年利率：4.35%\n月利率：0.3625%（4.35%÷12）\n本月利息：500,000×4.35%÷12=1,812.50元\n付息方式：到期一次性还本付息', stampText: '财务专用章' }]},
   {
     date: '2026-07-21',
+    role: 'accountant',
     title: '报销差旅费（管理人员出差）',
     tags: ['费用管理'],
     difficulty: 1,
@@ -296,6 +314,7 @@ const tasks = [
       { type: 'text', label: '培训通知', docTitle: '企业管理能力提升培训通知', content: '培训主题：现代企业管理与财务思维\n参训人员：行政主管 张明\n培训时间：2026年7月19日-7月21日\n培训地点：北京\n主办单位：中国企业联合会', stampText: '中国企业联合会 公章' }]},
   {
     date: '2026-07-22',
+    role: 'accountant',
     title: '计提本月工资',
     tags: ['工资社保'],
     difficulty: 2,
@@ -309,6 +328,7 @@ const tasks = [
       { type: 'text', label: '工资表', docTitle: '2026年7月工资汇总表', content: '管理人员：5人×5,000元=25,000元\n销售人员：4人×5,000元=20,000元\n合计：45,000元\n实发金额：45,000元（无社保公积金扣缴）\n制表：人事部  审核：财务部', stampText: '行政人事部章' }]},
   {
     date: '2026-07-23',
+    role: 'accountant',
     title: '发放本月工资',
     tags: ['工资社保'],
     difficulty: 1,
@@ -321,6 +341,7 @@ const tasks = [
       { type: 'bank', label: '代发工资回单', date: '2026-07-23', totalAmount: 45000, payer: '本公司', payeeName: '员工代发户', content: '2026年7月工资', refNo: 'HD202607230001' }]},
   {
     date: '2026-07-25',
+    role: 'accountant',
     title: '计提固定资产折旧',
     tags: ['费用管理'],
     difficulty: 2,
@@ -333,6 +354,7 @@ const tasks = [
       { type: 'text', label: '折旧计算表', docTitle: '固定资产折旧计算表（2026年7月）', content: '固定资产折旧计算（直线法）：\n\n房屋建筑物：原值500,000×月折旧率0.2%=1,000元\n办公设备：原值80,000×月折旧率0.8%=640元\n运输设备：原值200,000×月折旧率0.6%=1,200元\n\n合计：2,840元\n所有资产均归管理部门使用，折旧全部计入管理费用。', stampText: '财务专用章' }]},
   {
     date: '2026-07-28',
+    role: 'accountant',
     title: '计提城建税及教育费附加',
     tags: ['税费'],
     difficulty: 2,
@@ -346,6 +368,7 @@ const tasks = [
       { type: 'text', label: '税金计算表', docTitle: '附加税费计算表（2026年7月）', content: '计税依据：\n销项税额：28,600元\n进项税额：15,600元\n应交增值税：13,000元\n\n城市维护建设税：13,000×7%=910元\n教育费附加：13,000×3%=390元\n合计：1,300元', stampText: '财务专用章' }]},
   {
     date: '2026-07-29',
+    role: 'accountant',
     title: '缴纳增值税',
     tags: ['税费'],
     difficulty: 2,
@@ -359,6 +382,7 @@ const tasks = [
       { type: 'text', label: '增值税纳税申报表', docTitle: '增值税纳税申报表（简表）', content: '所属期：2026年7月\n销项税额：28,600元\n进项税额：15,600元\n应交增值税：13,000元\n已缴纳：13,000元\n申报日期：2026年7月29日' }]},
   {
     date: '2026-07-30',
+    role: 'accountant',
     title: '期末结转损益',
     tags: ['期末'],
     difficulty: 3,
@@ -396,6 +420,7 @@ const tasks = [
       { type: 'text', label: '现金日记账', docTitle: '现金日记账（2026年7月）', content: '日期：2026年7月1日\n页码：第1页\n\n期初余额：20,000.00元\n\n说明：本月现金期初余额已核对无误，与上月期末余额一致。', stampText: '出纳员章' }]},
   {
     date: '2026-07-02',
+    role: 'accountant',
     title: '提取备用金',
     tags: ['出纳'],
     difficulty: 1,
@@ -409,6 +434,7 @@ const tasks = [
         items: [{ name: '提取备用金（日常零星开支）', qty: 1, price: 5000, amount: 5000 }] }]},
   {
     date: '2026-07-05',
+    role: 'accountant',
     title: '备用金借支（员工预借差旅费）',
     tags: ['出纳', '费用管理'],
     difficulty: 1,
@@ -423,6 +449,7 @@ const tasks = [
       { type: 'text', label: '借款申请审批单', docTitle: '借款审批单', content: '借款人：王芳（行政部）\n借款事由：赴杭州出差预借差旅费\n借款金额：2,000元\n预计还款方式：出差归来后凭票报销\n审批人：行政主管 张主管', signature: '行政主管 张主管' }]},
   {
     date: '2026-07-07',
+    role: 'accountant',
     title: '银行转账付款（支付供应商货款）',
     tags: ['出纳', '商品采购'],
     difficulty: 1,
@@ -435,6 +462,7 @@ const tasks = [
       { type: 'bank', label: '付款回单', date: '2026-07-07', totalAmount: 20000, payer: '本公司', payeeName: '丙公司', content: '支付采购货款（部分付款）', refNo: 'HD202607070001' }]},
   {
     date: '2026-07-08',
+    role: 'accountant',
     title: '银行收款（收到客户汇款）',
     tags: ['出纳', '商品销售'],
     difficulty: 1,
@@ -447,6 +475,7 @@ const tasks = [
       { type: 'bank', label: '收款回单', date: '2026-07-08', totalAmount: 50000, payer: '甲公司', payeeName: '本公司', content: '货款（上月赊销款项）', refNo: 'HD202607080001' }]},
   {
     date: '2026-07-09',
+    role: 'accountant',
     title: '微信提现至银行',
     tags: ['出纳'],
     difficulty: 1,
@@ -459,6 +488,7 @@ const tasks = [
       { type: 'bank', label: '微信提现记录', date: '2026-07-09', totalAmount: 3000, payer: '微信账户', payeeName: '本公司工行账户', content: '微信余额提现', refNo: 'WX20260709001' }]},
   {
     date: '2026-07-10',
+    role: 'accountant',
     title: '支付宝提现至银行',
     tags: ['出纳'],
     difficulty: 1,
@@ -471,6 +501,7 @@ const tasks = [
       { type: 'bank', label: '支付宝提现记录', date: '2026-07-10', totalAmount: 2000, payer: '支付宝账户', payeeName: '本公司工行账户', content: '支付宝余额提现', refNo: 'ZFB20260710001' }]},
   {
     date: '2026-07-14',
+    role: 'accountant',
     title: '购买支票本',
     tags: ['出纳'],
     difficulty: 1,
@@ -484,6 +515,7 @@ const tasks = [
         items: [{ name: '现金支票工本费', qty: 1, price: 30, amount: 30 }, { name: '转账支票工本费', qty: 1, price: 30, amount: 30 }] }]},
   {
     date: '2026-07-15',
+    role: 'accountant',
     title: '银行转账付款（支付物流运费）',
     tags: ['出纳', '商品销售'],
     difficulty: 1,
@@ -496,6 +528,7 @@ const tasks = [
       { type: 'bank', label: '付款回单', date: '2026-07-15', totalAmount: 2500, payer: '本公司', payeeName: '顺丰物流有限公司', content: '支付7月物流运费', refNo: 'HD202607150002' }]},
   {
     date: '2026-07-16',
+    role: 'accountant',
     title: '银行转账付款（支付设备维修费）',
     tags: ['出纳', '费用管理'],
     difficulty: 1,
@@ -531,6 +564,7 @@ const tasks = [
       { type: 'text', label: '资金日报表', docTitle: '资金日报表（2026年7月第三周）', content: '编制日期：2026年7月19日\n单位：元\n\n项目      期初余额    本期收入    本期支出    期末余额\n库存现金   20,000      5,000       7,000       18,000\n银行存款   800,000     55,000      23,740      831,260\n\n合计       820,000     60,000      30,740      849,260\n\n制表：出纳员  复核：会计主管', stampText: '财务专用章' }]},
   {
     date: '2026-07-22',
+    role: 'accountant',
     title: '缴纳社保费',
     tags: ['出纳', '工资社保'],
     difficulty: 2,
@@ -544,6 +578,7 @@ const tasks = [
       { type: 'text', label: '社保缴费明细', docTitle: '上海市社保缴费通知单（7月）', content: '单位名称：本公司\n缴费月份：2026年7月\n\n养老保险（单位16%+个人8%）：\n医疗保险（单位9.5%+个人2%）：\n失业保险（单位0.5%+个人0.5%）：\n工伤保险（单位0.2%）：\n生育保险（单位1%）：\n\n单位合计：10,800元\n个人代扣：2,700元\n本月应缴合计：13,500元', stampText: '上海市社会保险事业管理中心 业务专用章' }]},
   {
     date: '2026-07-24',
+    role: 'accountant',
     title: '代扣代缴个人所得税',
     tags: ['出纳', '税费'],
     difficulty: 2,
@@ -556,6 +591,7 @@ const tasks = [
       { type: 'bank', label: '缴税回单', date: '2026-07-24', totalAmount: 2250, payer: '本公司', payeeName: '国家金库上海分库', content: '代扣代缴个人所得税（7月）', refNo: 'HD202607240001' }]},
   {
     date: '2026-07-26',
+    role: 'accountant',
     title: '费用报销（购买办公用品）',
     tags: ['出纳', '费用管理'],
     difficulty: 1,
@@ -571,6 +607,7 @@ const tasks = [
         items: [{ name: '7月办公用品采购', qty: 1, price: 1500, amount: 1500 }] }]},
   {
     date: '2026-07-27',
+    role: 'accountant',
     title: '银行转账付款（支付供应商丁公司）',
     tags: ['出纳', '商品采购'],
     difficulty: 1,
@@ -595,6 +632,7 @@ const tasks = [
 
   {
     date: '2026-07-31',
+    role: 'accountant',
     title: '模拟纳税申报',
     tags: ['期末', '税费'],
     difficulty: 1,

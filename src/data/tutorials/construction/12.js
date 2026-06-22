@@ -29,6 +29,7 @@ const tasks = [
   // ═══════════════════════════════════════════════════════════════════
   {
     date: '2026-12-01',
+    role: 'accountant',
     title: '缴纳11月增值税及附加税费',
     tags: ['税费'],
     difficulty: 2,
@@ -43,6 +44,7 @@ const tasks = [
       { type: 'bank', label: '电子缴税付款凭证', date: '2026-12-01', totalAmount: 38500, payer: '鼎立建筑工程有限公司', payeeName: '国家金库', content: '2026年11月增值税及附加税费', refNo: 'NS202612010001' }]},
   {
     date: '2026-12-01',
+    role: 'accountant',
     title: '纳税转账（出纳）',
     tags: ['税费'],
     difficulty: 1,
@@ -57,6 +59,7 @@ const tasks = [
       { type: 'bank', label: '网银缴税回单', date: '2026-12-01', totalAmount: 38500, payer: '鼎立建筑工程有限公司', payeeName: '国家金库', content: '缴纳税款', refNo: 'NS202612010002' }]},
   {
     date: '2026-12-02',
+    role: 'accountant',
     title: '缴纳11月社会保险费',
     tags: ['工资社保'],
     difficulty: 1,
@@ -69,6 +72,7 @@ const tasks = [
       { type: 'bank', label: '社保缴费回单', date: '2026-12-02', totalAmount: 22000, payer: '鼎立建筑工程有限公司', payeeName: '社会保险事业管理中心', content: '2026年11月社会保险费', refNo: 'SB202612020001' }]},
   {
     date: '2026-12-02',
+    role: 'accountant',
     title: '社保缴纳（出纳）',
     tags: ['工资社保'],
     difficulty: 1,
@@ -81,6 +85,7 @@ const tasks = [
       { type: 'bank', label: '社保缴费回单', date: '2026-12-02', totalAmount: 22000, payer: '鼎立建筑工程有限公司', payeeName: '社会保险事业管理中心', content: '社保缴费', refNo: 'SB202612020002' }]},
   {
     date: '2026-12-03',
+    role: 'accountant',
     title: '发放11月职工工资',
     tags: ['工资社保'],
     difficulty: 2,
@@ -93,6 +98,7 @@ const tasks = [
       { type: 'bank', label: '代发工资回单', date: '2026-12-03', totalAmount: 130000, payer: '鼎立建筑工程有限公司', payeeName: '公司员工', content: '2026年11月工资发放', refNo: 'GZ202612030001' }]},
   {
     date: '2026-12-03',
+    role: 'accountant',
     title: '工资代发（出纳）',
     tags: ['工资社保'],
     difficulty: 1,
@@ -105,6 +111,7 @@ const tasks = [
       { type: 'bank', label: '银行代发回单', date: '2026-12-03', totalAmount: 130000, payer: '鼎立建筑工程有限公司', payeeName: '公司员工代发户', content: '11月工资代发', refNo: 'GZ202612030002' }]},
   {
     date: '2026-12-04',
+    role: 'accountant',
     title: '收到乙公司工程进度款',
     tags: ['往来管理'],
     difficulty: 1,
@@ -121,6 +128,7 @@ const tasks = [
   // ═══════════════════════════════════════════════════════════════════
   {
     date: '2026-12-05',
+    role: 'accountant',
     title: '采购工程材料（钢材）',
     tags: ['材料管理', '工程成本'],
     difficulty: 2,
@@ -137,6 +145,7 @@ const tasks = [
       { type: 'text', label: '材料验收单', docTitle: '工程材料验收单', content: '采购钢材25吨已运抵工地，经质检合格入库。', signature: '材料员 刘工' }]},
   {
     date: '2026-12-05',
+    role: 'accountant',
     title: '支付材料采购款（出纳）',
     tags: ['材料管理'],
     difficulty: 1,
@@ -149,6 +158,7 @@ const tasks = [
       { type: 'bank', label: '网银转账回单', date: '2026-12-05', totalAmount: 135600, payer: '鼎立建筑工程有限公司', payeeName: '华强建材有限公司', content: '钢材采购款', refNo: 'ZF202612050001' }]},
   {
     date: '2026-12-07',
+    role: 'accountant',
     title: '租赁施工机械（挖掘机）',
     tags: ['机械使用', '工程成本'],
     difficulty: 1,
@@ -161,6 +171,7 @@ const tasks = [
       { type: 'bank', label: '付款回单', date: '2026-12-07', totalAmount: 20000, payer: '鼎立建筑工程有限公司', payeeName: '鑫源机械租赁有限公司', content: '挖掘机12月租金', refNo: 'ZF202612070001' }]},
   {
     date: '2026-12-08',
+    role: 'accountant',
     title: '计提12月职工薪酬',
     tags: ['工资社保', '工程成本'],
     difficulty: 2,
@@ -178,6 +189,7 @@ const tasks = [
 合计：125,000元`, signature: '人事部 王经理' }]},
   {
     date: '2026-12-08',
+    role: 'accountant',
     title: '发放12月工资（出纳）',
     tags: ['工资社保'],
     difficulty: 1,
@@ -190,6 +202,7 @@ const tasks = [
       { type: 'bank', label: '代发工资回单', date: '2026-12-08', totalAmount: 125000, payer: '鼎立建筑工程有限公司', payeeName: '公司员工代发户', content: '12月工资代发', refNo: 'GZ202612080001' }]},
   {
     date: '2026-12-09',
+    role: 'accountant',
     title: '计提12月社会保险费',
     tags: ['工资社保'],
     difficulty: 2,
@@ -207,6 +220,7 @@ const tasks = [
 合计：22,000元`, signature: '财务部 赵会计' }]},
   {
     date: '2026-12-09',
+    role: 'accountant',
     title: '缴纳12月社保（出纳）',
     tags: ['工资社保'],
     difficulty: 1,
@@ -219,6 +233,7 @@ const tasks = [
       { type: 'bank', label: '社保缴费回单', date: '2026-12-09', totalAmount: 22000, payer: '鼎立建筑工程有限公司', payeeName: '社会保险事业管理中心', content: '12月社保缴费', refNo: 'SB202612090001' }]},
   {
     date: '2026-12-10',
+    role: 'accountant',
     title: '计提12月固定资产折旧',
     tags: ['机械使用', '期末'],
     difficulty: 2,
@@ -235,6 +250,7 @@ const tasks = [
 折旧方法：直线法`, signature: '财务部 赵会计' }]},
   {
     date: '2026-12-11',
+    role: 'accountant',
     title: '摊销本月预付租金',
     tags: ['资金管理'],
     difficulty: 1,
@@ -251,6 +267,7 @@ const tasks = [
   // ═══════════════════════════════════════════════════════════════════
   {
     date: '2026-12-12',
+    role: 'accountant',
     title: '办理分包工程结算',
     tags: ['分包管理', '工程成本'],
     difficulty: 2,
@@ -267,6 +284,7 @@ const tasks = [
       { type: 'text', label: '分包工程验收单', docTitle: '分包工程进度验收单', content: '基础工程12月进度已完工，经监理验收合格。', signature: '监理 李工 / 项目经理 陈经理' }]},
   {
     date: '2026-12-12',
+    role: 'accountant',
     title: '支付分包工程款（出纳）',
     tags: ['分包管理'],
     difficulty: 1,
@@ -279,6 +297,7 @@ const tasks = [
       { type: 'bank', label: '付款回单', date: '2026-12-12', totalAmount: 54500, payer: '鼎立建筑工程有限公司', payeeName: '大地基础工程有限公司', content: '分包工程结算款', refNo: 'ZF202612120001' }]},
   {
     date: '2026-12-14',
+    role: 'accountant',
     title: '确认12月工程进度收入（完工百分比法）',
     tags: ['工程合同', '工程成本'],
     difficulty: 3,
@@ -299,6 +318,7 @@ const tasks = [
 监理确认：工程合格，同意计量`, signature: '监理单位 / 恒达地产 / 鼎立建筑' }]},
   {
     date: '2026-12-14',
+    role: 'accountant',
     title: '结转12月合同履约成本',
     tags: ['工程成本', '期末'],
     difficulty: 3,
@@ -325,6 +345,7 @@ const tasks = [
 已全部结转至主营业务成本。`, signature: '财务部 赵会计' }]},
   {
     date: '2026-12-15',
+    role: 'accountant',
     title: '计提坏账准备（年末核查）',
     tags: ['往来管理', '期末'],
     difficulty: 2,
@@ -342,6 +363,7 @@ const tasks = [
 应收账款明细：乙公司市政道路工程款`, signature: '财务部 赵会计' }]},
   {
     date: '2026-12-15',
+    role: 'accountant',
     title: '计提12月短期借款利息',
     tags: ['费用管理'],
     difficulty: 1,
@@ -354,6 +376,7 @@ const tasks = [
       { type: 'text', label: '利息计算表', docTitle: '短期借款利息计算表', content: '借款本金：400,000元\n年利率：4.35%\n月利息：400,000×4.35%÷12=1,450元\n借款银行：工商银行', signature: '财务部 赵会计' }]},
   {
     date: '2026-12-16',
+    role: 'accountant',
     title: '计算12月增值税及附加税费',
     tags: ['税费'],
     difficulty: 2,
@@ -375,6 +398,7 @@ const tasks = [
 合计：2,490元`, signature: '财务部 赵会计' }]},
   {
     date: '2026-12-16',
+    role: 'accountant',
     title: '缴纳增值税及附加（出纳）',
     tags: ['税费'],
     difficulty: 1,
@@ -393,6 +417,7 @@ const tasks = [
   // ═══════════════════════════════════════════════════════════════════
   {
     date: '2026-12-18',
+    role: 'accountant',
     title: '期末结转12月损益类科目',
     tags: ['期末'],
     difficulty: 3,
@@ -427,6 +452,7 @@ const tasks = [
 📌 全年累计利润总额（含1~11月）：610,000.00元`, signature: '财务部 赵会计' }]},
   {
     date: '2026-12-19',
+    role: 'accountant',
     title: '计提年度所得税费用',
     tags: ['税费', '期末'],
     difficulty: 3,
@@ -444,6 +470,7 @@ const tasks = [
 备注：本表为简化计算，未考虑纳税调整事项。`, signature: '财务部 赵会计' }]},
   {
     date: '2026-12-19',
+    role: 'accountant',
     title: '结转所得税费用',
     tags: ['期末'],
     difficulty: 2,
@@ -462,6 +489,7 @@ const tasks = [
 所得税费用余额：0元 ✓`, signature: '财务部 赵会计' }]},
   {
     date: '2026-12-20',
+    role: 'accountant',
     title: '年终·结转本年利润至未分配利润',
     tags: ['期末'],
     difficulty: 3,
@@ -484,6 +512,7 @@ const tasks = [
 结转后本年利润余额：零 ✓`, signature: '财务部 赵会计' }]},
   {
     date: '2026-12-21',
+    role: 'accountant',
     title: '提取法定盈余公积',
     tags: ['期末'],
     difficulty: 2,
@@ -500,6 +529,7 @@ const tasks = [
 依据：《中华人民共和国公司法》第一百六十六条`, signature: '财务部 赵会计' }]},
   {
     date: '2026-12-21',
+    role: 'accountant',
     title: '计提应付股利（股东分红）',
     tags: ['期末'],
     difficulty: 2,
@@ -519,6 +549,7 @@ const tasks = [
 日期：2026年12月21日`, stampText: '鼎立建筑工程有限公司 公章' }]},
   {
     date: '2026-12-22',
+    role: 'accountant',
     title: '利润分配明细科目结转',
     tags: ['期末'],
     difficulty: 3,
@@ -549,6 +580,7 @@ const tasks = [
   // ═══════════════════════════════════════════════════════════════════
   {
     date: '2026-12-23',
+    role: 'accountant',
     title: '计提年终奖金',
     tags: ['工资社保', '期末'],
     difficulty: 2,
@@ -568,6 +600,7 @@ const tasks = [
 分配依据：年度绩效考核结果`, signature: '人事部 王经理' }]},
   {
     date: '2026-12-24',
+    role: 'accountant',
     title: '支付年终奖金（出纳）',
     tags: ['工资社保'],
     difficulty: 1,
@@ -580,6 +613,7 @@ const tasks = [
       { type: 'bank', label: '代发奖金回单', date: '2026-12-24', totalAmount: 50000, payer: '鼎立建筑工程有限公司', payeeName: '公司员工', content: '2026年度年终奖金', refNo: 'GZ202612240001' }]},
   {
     date: '2026-12-25',
+    role: 'accountant',
     title: '提取备用金（出纳）',
     tags: ['出纳'],
     difficulty: 1,
@@ -592,6 +626,7 @@ const tasks = [
       { type: 'bank', label: '现金支票存根', date: '2026-12-25', totalAmount: 10000, payer: '鼎立建筑工程有限公司', payeeName: '鼎立建筑工程有限公司（提现）', content: '备用金', refNo: 'XJ202612250001' }]},
   {
     date: '2026-12-26',
+    role: 'accountant',
     title: '银行手续费（出纳）',
     tags: ['费用管理'],
     difficulty: 1,
@@ -699,6 +734,7 @@ const tasks = [
   // ═══════════════════════════════════════════════════════════════════
   {
     date: '2026-12-07',
+    role: 'accountant',
     title: '微信收取工程质保金',
     tags: ['费用管理'],
     difficulty: 1,
@@ -710,6 +746,7 @@ const tasks = [
     documents: [{ type: 'text', label: '微信收款记录', content: '微信商户平台收取工程质保金20,000元。' }]},
   {
     date: '2026-12-10',
+    role: 'accountant',
     title: '支付宝支付工具采购',
     tags: ['材料管理'],
     difficulty: 1,
@@ -721,6 +758,7 @@ const tasks = [
     documents: [{ type: 'text', label: '支付宝支付记录', content: '支付宝支付施工工具采购款8,000元。' }]},
   {
     date: '2026-12-18',
+    role: 'accountant',
     title: '银行账户间资金调拨',
     tags: ['往来管理'],
     difficulty: 1,
@@ -742,6 +780,7 @@ const tasks = [
     documents: [{ type: 'text', label: '往来对账单', content: '年末与各供应商和客户进行往来款对账，所有余额核对一致。' }]},
   {
     date: '2026-12-23',
+    role: 'accountant',
     title: '提取备用金（补充）',
     tags: ['出纳'],
     difficulty: 1,
@@ -753,6 +792,7 @@ const tasks = [
     documents: [{ type: 'text', label: '提现记录', content: '补充备用金5,000元。' }]},
   {
     date: '2026-12-27',
+    role: 'accountant',
     title: '预付下年度办公用房租金',
     tags: ['费用管理'],
     difficulty: 1,
@@ -774,6 +814,7 @@ const tasks = [
     documents: [{ type: 'text', label: '年终结账通知', content: '2026年度账务已全部处理完毕，可以结账。祝新年快乐！' }]},
   {
     date: "2026-12-31",
+    role: 'accountant',
     title: "模拟纳税申报",
     tags: ["期末", "税费"],
     difficulty: 1,

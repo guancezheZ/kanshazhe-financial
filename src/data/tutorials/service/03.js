@@ -12,6 +12,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-03-02',
+    role: 'accountant',
     title: '缴纳上月增值税及附加税',
     tags: ['税费'],
     difficulty: 2,
@@ -25,6 +26,7 @@ const tasks = [
       { type: 'bank', label: '银行付款回单', date: '2026-03-02', totalAmount: 16500, payer: '雲帆管理咨询有限公司', payeeName: '国家金库', content: '纳税', refNo: 'FK202603020001' }]},
   {
     date: '2026-03-03',
+    role: 'accountant',
     title: '缴纳2月社保费用',
     tags: ['工资社保'],
     difficulty: 1,
@@ -36,6 +38,7 @@ const tasks = [
       { type: 'bank', label: '付款回单', date: '2026-03-03', totalAmount: 34250, payer: '雲帆管理咨询有限公司', payeeName: '社保中心', content: '社保缴纳', refNo: 'FK202603030001' }]},
   {
     date: '2026-03-04',
+    role: 'accountant',
     title: '缴纳上月代扣个税',
     tags: ['税费', '工资社保'],
     difficulty: 1,
@@ -48,6 +51,7 @@ const tasks = [
       { type: 'bank', label: '付款回单', date: '2026-03-04', totalAmount: 3090, payer: '雲帆管理咨询有限公司', payeeName: '国家税务局', content: '个税缴纳', refNo: 'FK202603040001' }]},
   {
     date: '2026-03-05',
+    role: 'accountant',
     title: '发放2月工资（代扣个税）',
     tags: ['人工成本', '工资社保'],
     difficulty: 3,
@@ -60,6 +64,7 @@ const tasks = [
       { type: 'bank', label: '银行付款回单', date: '2026-03-05', totalAmount: 132890, payer: '雲帆管理咨询有限公司', payeeName: '批量代发工资', content: '2月工资', refNo: 'FK202603050001' }]},
   {
     date: '2026-03-06',
+    role: 'accountant',
     title: '购买办公用电脑（固定资产）',
     tags: ['费用管理'],
     difficulty: 1,
@@ -72,6 +77,7 @@ const tasks = [
       { type: 'bank', label: '付款回单', date: '2026-03-06', totalAmount: 60000, payer: '雲帆管理咨询有限公司', payeeName: '联想科技有限公司', content: '电脑采购', refNo: 'FK202603060001' }]},
   {
     date: '2026-03-07',
+    role: 'accountant',
     title: '计提无形资产摊销（财务软件）',
     tags: ['费用管理'],
     difficulty: 2,
@@ -87,6 +93,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-03-09',
+    role: 'accountant',
     title: '丙客户咨询项目完成（确认收入）',
     tags: ['收入确认', '项目核算'],
     difficulty: 3,
@@ -102,6 +109,7 @@ const tasks = [
       { type: 'text', label: '项目终验单', docTitle: '战略规划咨询项目最终验收确认书', content: '经丙客户验收，雲帆咨询提供的三年战略规划方案全部完成且质量合格。', signature: '丙客户（盖章） | 雲帆咨询（盖章）' }]},
   {
     date: '2026-03-10',
+    role: 'accountant',
     title: '结转丙咨询项目成本至主营业务成本',
     tags: ['项目核算', '期末'],
     difficulty: 2,
@@ -115,6 +123,7 @@ const tasks = [
       { type: 'text', label: '成本结转表', docTitle: '丙项目成本结转明细', content: '人工24,000+外包25,000+差旅5,500=54,500元。', signature: '财务部' }]},
   {
     date: '2026-03-11',
+    role: 'accountant',
     title: '拓展培训业务（收取培训费）',
     tags: ['收入确认'],
     difficulty: 2,
@@ -128,6 +137,7 @@ const tasks = [
       { type: 'bank', label: '银行回单', date: '2026-03-11', totalAmount: 95400, payer: '各参训企业', payeeName: '雲帆管理咨询有限公司', content: '公开课培训费', refNo: 'HD202603110001' }]},
   {
     date: '2026-03-12',
+    role: 'accountant',
     title: '支付培训场地及讲师费',
     tags: ['项目核算'],
     difficulty: 2,
@@ -140,6 +150,7 @@ const tasks = [
       { type: 'invoice', label: '增值税发票', date: '2026-03-12', buyer: '雲帆管理咨询有限公司', seller: '华文会议中心', lineItems: [{ name: '场地租赁', amount: 8000 }, { name: '讲师费', amount: 15000 }], totalAmount: 23000 }]},
   {
     date: '2026-03-13',
+    role: 'accountant',
     title: '计提3月上半月项目人员工资',
     tags: ['项目核算', '人工成本'],
     difficulty: 2,
@@ -151,6 +162,7 @@ const tasks = [
       { type: 'text', label: '工资计提表', content: '项目组上半月工资46,000元。', signature: '人力资源部' }]},
   {
     date: '2026-03-14',
+    role: 'accountant',
     title: '计提3月上半月管理人员工资',
     tags: ['人工成本', '工资社保'],
     difficulty: 1,
@@ -166,6 +178,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-03-16',
+    role: 'accountant',
     title: '摊销办公室3月租金',
     tags: ['费用管理'],
     difficulty: 1,
@@ -177,6 +190,7 @@ const tasks = [
       { type: 'text', label: '费用摊销表', content: '办公室租金第3次摊销20,000元，剩余待摊60,000元。', signature: '财务部' }]},
   {
     date: '2026-03-17',
+    role: 'accountant',
     title: '支付3月水电费',
     tags: ['费用管理'],
     difficulty: 1,
@@ -188,6 +202,7 @@ const tasks = [
       { type: 'receipt', label: '水电费账单', items: [{ name: '电费', amount: 4300 }, { name: '水费', amount: 1500 }], totalAmount: 5800 }]},
   {
     date: '2026-03-18',
+    role: 'accountant',
     title: '软件开发项目资本化支出转入无形资产',
     tags: ['项目核算'],
     difficulty: 3,
@@ -204,6 +219,7 @@ const tasks = [
       { type: 'text', label: '项目终验报告', docTitle: 'ERP管理系统终验报告', content: '系统全部功能开发完成，通过测试验收，交付客户使用。', signature: '乙客户（盖章） | 雲帆咨询（盖章）' }]},
   {
     date: '2026-03-19',
+    role: 'accountant',
     title: '计提3月下半月项目人员工资',
     tags: ['项目核算', '人工成本'],
     difficulty: 2,
@@ -215,6 +231,7 @@ const tasks = [
       { type: 'text', label: '工资计提表', content: '项目组下半月46,000元。', signature: '人力资源部' }]},
   {
     date: '2026-03-20',
+    role: 'accountant',
     title: '计提3月下半月管理人员工资',
     tags: ['人工成本', '工资社保'],
     difficulty: 1,
@@ -226,6 +243,7 @@ const tasks = [
       { type: 'text', label: '工资计提表', content: '管理人员下半月22,500元。', signature: '人力资源部' }]},
   {
     date: '2026-03-21',
+    role: 'accountant',
     title: '计提3月社保费用',
     tags: ['人工成本', '工资社保'],
     difficulty: 2,
@@ -242,6 +260,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-03-23',
+    role: 'accountant',
     title: '计提3月固定资产折旧',
     tags: ['费用管理'],
     difficulty: 1,
@@ -253,6 +272,7 @@ const tasks = [
       { type: 'text', label: '折旧计算表', content: '办公设备760+电脑950=1,710元。', signature: '财务部' }]},
   {
     date: '2026-03-24',
+    role: 'accountant',
     title: '计提3月短期借款利息',
     tags: ['期末'],
     difficulty: 1,
@@ -264,6 +284,7 @@ const tasks = [
       { type: 'text', label: '利息计算表', content: '300,000×4.35%÷12=1,087.50元。', signature: '财务部' }]},
   {
     date: '2026-03-25',
+    role: 'accountant',
     title: '计算季度企业所得税（预缴）',
     tags: ['税费', '期末'],
     difficulty: 3,
@@ -276,6 +297,7 @@ const tasks = [
       { type: 'text', label: '所得税计算表', docTitle: '2026年一季度企业所得税预缴计算', content: '利润总额560,385×25%=140,096.25元。', signature: '财务部' }]},
   {
     date: '2026-03-26',
+    role: 'accountant',
     title: '培训业务结转成本',
     tags: ['项目核算', '期末'],
     difficulty: 2,
@@ -288,6 +310,7 @@ const tasks = [
       { type: 'text', label: '成本结转表', content: '培训业务成本23,000元。', signature: '财务部' }]},
   {
     date: '2026-03-27',
+    role: 'accountant',
     title: '计算3月增值税及附加税',
     tags: ['税费', '期末'],
     difficulty: 2,
@@ -301,6 +324,7 @@ const tasks = [
       { type: 'text', label: '增值税计算表', content: '销项23,400-进项3,600=应交19,800。附加税1,980元。', signature: '财务部' }]},
   {
     date: '2026-03-28',
+    role: 'accountant',
     title: '期末结转损益',
     tags: ['期末'],
     difficulty: 3,
@@ -323,6 +347,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-03-02', title: '纳税申报银行转账', tags: ['出纳', '税费'], difficulty: 1,
+    role: 'accountant',
     description: '银行转账缴纳2月增值税及附加税16,500元。',
     entries: [
 { subjectCode: '222101', summary: '缴增值税', debit: 15000, credit: 0 , explanation: '应交税费-应交增值税减少记借方。负债减少。'},
@@ -332,6 +357,7 @@ const tasks = [
     documents: [{ type: 'bank', label: '付款回单', date: '2026-03-02', totalAmount: 16500, payer: '雲帆管理咨询有限公司', payeeName: '国家金库', content: '纳税', refNo: 'FK202603020001' }]},
   {
     date: '2026-03-03', title: '社保费银行代缴', tags: ['出纳', '工资社保'], difficulty: 1,
+    role: 'accountant',
     description: '银行转账缴纳2月社保费34,250元。',
     entries: [
 { subjectCode: '221102', summary: '缴社保', debit: 34250, credit: 0 , explanation: '应付职工薪酬-社保减少记借方。负债减少。'},
@@ -339,6 +365,7 @@ const tasks = [
     documents: [{ type: 'bank', label: '付款回单', date: '2026-03-03', totalAmount: 34250, payer: '雲帆管理咨询有限公司', payeeName: '社保中心', content: '社保', refNo: 'FK202603030001' }]},
   {
     date: '2026-03-04', title: '个税缴纳申报操作', tags: ['出纳', '税费'], difficulty: 1,
+    role: 'accountant',
     description: '申报并缴纳1月代扣个税3,090元。',
     entries: [
 { subjectCode: '222102', summary: '缴个税', debit: 3090, credit: 0 , explanation: '应交税费-应交所得税减少记借方。负债减少。'},
@@ -346,6 +373,7 @@ const tasks = [
     documents: [{ type: 'bank', label: '付款回单', date: '2026-03-04', totalAmount: 3090, payer: '雲帆管理咨询有限公司', payeeName: '税务局', content: '个税', refNo: 'FK202603040001' }]},
   {
     date: '2026-03-05', title: '银行代发工资操作', tags: ['出纳', '工资社保'], difficulty: 2,
+    role: 'accountant',
     description: '银行批量代发2月工资132,890元。',
     entries: [
 { subjectCode: '221101', summary: '代发工资', debit: 137000, credit: 0 , explanation: '应付职工薪酬-工资减少记借方。负债减少。'},
@@ -354,6 +382,7 @@ const tasks = [
     documents: [{ type: 'bank', label: '付款回单', date: '2026-03-05', totalAmount: 132890, payer: '雲帆管理咨询有限公司', payeeName: '批量代发', content: '2月工资', refNo: 'FK202603050001' }]},
   {
     date: '2026-03-06', title: '电脑采购银行转账', tags: ['出纳', '费用管理'], difficulty: 1,
+    role: 'accountant',
     description: '银行转账支付电脑采购款60,000元。',
     entries: [
 { subjectCode: '160103', summary: '购电脑', debit: 60000, credit: 0 , explanation: '固定资产-办公设备增加记借方。资产购置，固定资产增加。'},
@@ -361,6 +390,7 @@ const tasks = [
     documents: [{ type: 'bank', label: '付款回单', date: '2026-03-06', totalAmount: 60000, payer: '雲帆管理咨询有限公司', payeeName: '联想科技', content: '电脑采购', refNo: 'FK202603060001' }]},
   {
     date: '2026-03-09', title: '咨询项目尾款到账', tags: ['出纳'], difficulty: 1,
+    role: 'accountant',
     description: '确认丙客户支付的项目尾款190,800元到账。',
     entries: [
 { subjectCode: '100201', summary: '尾款到账', debit: 190800, credit: 0 , explanation: '银行存款增加记借方。资金流入企业，资产增加。', cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金（配对科目6001），属于经营活动现金流入——主营业务产生的现金收入。'},
@@ -368,6 +398,7 @@ const tasks = [
     documents: [{ type: 'bank', label: '银行回单', date: '2026-03-09', totalAmount: 190800, payer: '丙客户', payeeName: '雲帆管理咨询有限公司', content: '项目尾款', refNo: 'HD202603090001' }]},
   {
     date: '2026-03-11', title: '培训费收款确认', tags: ['出纳'], difficulty: 1,
+    role: 'accountant',
     description: '确认培训费合计95,400元到账。',
     entries: [
 { subjectCode: '100201', summary: '培训费到账', debit: 95400, credit: 0 , explanation: '银行存款增加记借方。资金流入企业，资产增加。', cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金（配对科目6001），属于经营活动现金流入——主营业务产生的现金收入。'},
@@ -375,6 +406,7 @@ const tasks = [
     documents: [{ type: 'bank', label: '银行回单', date: '2026-03-11', totalAmount: 95400, payer: '各参训企业', payeeName: '雲帆管理咨询有限公司', content: '培训费', refNo: 'HD202603110001' }]},
   {
     date: '2026-03-12', title: '培训费用银行转账', tags: ['出纳', '项目核算'], difficulty: 1,
+    role: 'accountant',
     description: '银行转账支付培训场地及讲师费23,000元。',
     entries: [
 { subjectCode: '520101', summary: '讲师费', debit: 15000, credit: 0 , explanation: '劳务成本-人工成本增加记借方。直接计入项目成本。'},
@@ -383,6 +415,7 @@ const tasks = [
     documents: [{ type: 'bank', label: '付款回单', date: '2026-03-12', totalAmount: 23000, payer: '雲帆管理咨询有限公司', payeeName: '华文会议中心', content: '培训费', refNo: 'FK202603120001' }]},
   {
     date: '2026-03-17', title: '水电费银行转账', tags: ['出纳', '费用管理'], difficulty: 1,
+    role: 'accountant',
     description: '支付3月水电费5,800元。',
     entries: [
 { subjectCode: '660201', summary: '水电费', debit: 5800, credit: 0 , explanation: '管理费用-办公费增加记借方。计入当期损益。'},
@@ -390,6 +423,7 @@ const tasks = [
     documents: [{ type: 'bank', label: '付款回单', date: '2026-03-17', totalAmount: 5800, payer: '雲帆管理咨询有限公司', payeeName: '供电公司', content: '水电费', refNo: 'FK202603170001' }]},
   {
     date: '2026-03-18', title: '软件开发尾款到账', tags: ['出纳'], difficulty: 1,
+    role: 'accountant',
     description: '确认乙客户软件开发终验尾款127,200元到账。',
     entries: [
 { subjectCode: '100201', summary: '尾款到账', debit: 127200, credit: 0 , explanation: '银行存款增加记借方。资金流入企业，资产增加。', cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金（配对科目6001），属于经营活动现金流入——主营业务产生的现金收入。'},
@@ -397,6 +431,7 @@ const tasks = [
     documents: [{ type: 'bank', label: '银行回单', date: '2026-03-18', totalAmount: 127200, payer: '乙客户', payeeName: '雲帆管理咨询有限公司', content: '系统终验款', refNo: 'HD202603180001' }]},
   {
     date: '2026-03-25', title: '提取备用金', tags: ['出纳'], difficulty: 1,
+    role: 'accountant',
     description: '因库存现金不足，从银行提取备用金10,000元。',
     entries: [
 { subjectCode: '1001', summary: '提取备用金', debit: 10000, credit: 0 , explanation: '库存现金增加记借方。资金流入，资产增加。'},
@@ -428,6 +463,7 @@ const tasks = [
     documents: [{ type: 'text', label: '余额确认表', content: '季度末银行存款余额确认无误。', signature: '出纳 | 财务主管' }]},
   {
     date: "2026-03-31",
+    role: 'accountant',
     title: "模拟纳税申报",
     tags: ["期末", "税费"],
     difficulty: 1,

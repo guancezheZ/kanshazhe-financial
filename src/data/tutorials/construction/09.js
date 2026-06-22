@@ -55,6 +55,7 @@ const tasks = [
       { type: 'bank', label: '银行回单', date: '2026-09-01', totalAmount: 4200, payer: '鼎立建筑工程有限公司', payeeName: '国家税务总局XX分局', content: '缴纳8月城建税及教育费附加', refNo: 'HD202609010002' }]},
   {
     date: '2026-09-01',
+    role: 'accountant',
     title: '缴纳8月社会保险费',
     tags: ['工资社保'],
     difficulty: 1,
@@ -68,6 +69,7 @@ const tasks = [
       { type: 'bank', label: '银行回单', date: '2026-09-01', totalAmount: 18500, payer: '鼎立建筑工程有限公司', payeeName: 'XX市社会保险基金管理局', content: '缴纳8月社保费', refNo: 'HD202609010003' }]},
   {
     date: '2026-09-02',
+    role: 'accountant',
     title: '缴纳8月住房公积金',
     tags: ['工资社保'],
     difficulty: 1,
@@ -81,6 +83,7 @@ const tasks = [
       { type: 'bank', label: '银行回单', date: '2026-09-02', totalAmount: 8400, payer: '鼎立建筑工程有限公司', payeeName: 'XX市住房公积金管理中心', content: '缴纳8月公积金', refNo: 'HD202609020004' }]},
   {
     date: '2026-09-02',
+    role: 'accountant',
     title: '发放8月职工工资',
     tags: ['工资社保'],
     difficulty: 2,
@@ -118,6 +121,7 @@ const tasks = [
       { type: 'bank', label: '银行回单', date: '2026-09-03', totalAmount: 50000, payer: '鼎立建筑工程有限公司', payeeName: 'XX建材经营部', content: '采购收尾零星材料', refNo: 'ZF202609030001' }]},
   {
     date: '2026-09-04',
+    role: 'accountant',
     title: '提取备用金',
     tags: ['出纳'],
     difficulty: 1,
@@ -130,6 +134,7 @@ const tasks = [
       { type: 'bank', label: '现金支票存根', date: '2026-09-04', totalAmount: 15000, payer: '鼎立建筑工程有限公司', payeeName: '鼎立建筑工程有限公司', content: '提取备用金', refNo: 'XJ202609040001' }]},
   {
     date: '2026-09-04',
+    role: 'accountant',
     title: '支付竣工现场保洁及垃圾清运费',
     tags: ['工程成本'],
     difficulty: 1,
@@ -175,6 +180,7 @@ const tasks = [
       { type: 'text', label: '劳务结算单', date: '2026-09-08', docTitle: '工程劳务分包结算单', content: '分包单位：大地建筑劳务有限公司\n工程内容：办公楼主体结构施工\n本次结算尾款：48,000元\n累计结算金额：360,000元', signature: '鼎立建筑工程项目部  大地劳务' }]},
   {
     date: '2026-09-09',
+    role: 'accountant',
     title: '支付分包工程尾款',
     tags: ['分包管理'],
     difficulty: 1,
@@ -200,6 +206,7 @@ const tasks = [
       { type: 'text', label: '分包结算单', date: '2026-09-10', docTitle: '分包工程结算单', content: '分包单位：大地基础工程有限公司\n工程内容：办公楼基础工程\n分包总价：800,000元\n已预付：240,000元（30%）\n本次核销预付：240,000元\n本月支付尾款：240,000元\n应付余额：320,000元', signature: '鼎立建筑  大地基础' }]},
   {
     date: '2026-09-11',
+    role: 'accountant',
     title: '报销竣工资料编制人员差旅费',
     tags: ['工程成本'],
     difficulty: 1,
@@ -246,6 +253,7 @@ const tasks = [
       { type: 'text', label: '工程竣工验收报告', date: '2026-09-14', docTitle: '单位（子单位）工程质量竣工验收报告', content: '工程名称：恒达地产办公楼工程\n施工单位：鼎立建筑工程有限公司\n监理单位：XX工程监理有限公司\n验收结论：工程质量合格，同意验收\n合同总价：5,000,000元\n本次确认收入：800,000元\n累计确认收入：5,000,000元（100%）', signature: '建设单位：恒达地产  施工单位：鼎立建筑  监理单位：XX监理  设计单位：XX设计院' }]},
   {
     date: '2026-09-15',
+    role: 'accountant',
     title: '收到甲方工程尾款',
     tags: ['出纳'],
     difficulty: 1,
@@ -258,6 +266,7 @@ const tasks = [
       { type: 'bank', label: '银行回单', date: '2026-09-15', totalAmount: 500000, payer: '恒达地产有限公司', payeeName: '鼎立建筑工程有限公司', content: '办公楼工程尾款', refNo: 'HD202609150006' }]},
   {
     date: '2026-09-16',
+    role: 'accountant',
     title: '支付塔吊租赁费尾款',
     tags: ['机械使用'],
     difficulty: 1,
@@ -271,6 +280,7 @@ const tasks = [
       { type: 'bank', label: '银行回单', date: '2026-09-16', totalAmount: 15000, payer: '鼎立建筑工程有限公司', payeeName: 'XX建筑机械租赁公司', content: '塔吊租赁费尾款', refNo: 'ZF202609160007' }]},
   {
     date: '2026-09-16',
+    role: 'accountant',
     title: '支付工程资料归档服务费',
     tags: ['工程成本'],
     difficulty: 1,
@@ -345,6 +355,7 @@ const tasks = [
       { type: 'text', label: '摊销计算表', date: '2026-09-21', docTitle: '预付费用摊销计算表', content: '办公用房租金10,000元/月。截至9月已摊销9个月。', signature: '赵会计' }]},
   {
     date: '2026-09-22',
+    role: 'accountant',
     title: '支付办公费及水电费',
     tags: ['工程成本'],
     difficulty: 1,
@@ -359,6 +370,7 @@ const tasks = [
       { type: 'bank', label: '银行回单', date: '2026-09-22', totalAmount: 8000, payer: '鼎立建筑工程有限公司', payeeName: '各收款单位', content: '办公费及水电费', refNo: 'ZF202609220009' }]},
   {
     date: '2026-09-23',
+    role: 'accountant',
     title: '支付工程竣工审计费',
     tags: ['工程成本'],
     difficulty: 1,
@@ -372,6 +384,7 @@ const tasks = [
       { type: 'bank', label: '银行回单', date: '2026-09-23', totalAmount: 12000, payer: '鼎立建筑工程有限公司', payeeName: 'XX会计师事务所', content: '竣工结算审计费', refNo: 'ZF202609230010' }]},
   {
     date: '2026-09-24',
+    role: 'accountant',
     title: '收到银行季度结息',
     tags: ['工程合同'],
     difficulty: 1,
@@ -625,6 +638,7 @@ const tasks = [
 
   {
     date: '2026-09-15',
+    role: 'accountant',
     title: '支付日常办公费用',
     tags: ['费用管理'],
     difficulty: 1,
@@ -647,6 +661,7 @@ const tasks = [
     documents: [{ type: 'text', label: '对账确认单', docTitle: '往来对账确认单', content: '与供应商核对往来，确认全部款项已结清。', signature: '赵会计' }]},
   {
     date: '2026-09-25',
+    role: 'accountant',
     title: '支付银行手续费',
     tags: ['费用管理'],
     difficulty: 1,
@@ -658,6 +673,7 @@ const tasks = [
     documents: [{ type: 'bank', label: '银行扣款通知', totalAmount: 680, content: '银行手续费' }]},
   {
     date: "2026-09-30",
+    role: 'accountant',
     title: "模拟纳税申报",
     tags: ["期末", "税费"],
     difficulty: 1,

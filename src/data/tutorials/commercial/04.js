@@ -60,6 +60,7 @@ const tasks = [
         items: [{ name: '100元纸币', qty: 40, price: 100, amount: 4000 }, { name: '50元纸币', qty: 12, price: 50, amount: 600 }, { name: '20元及以下零钱', qty: 1, price: 400, amount: 400 }] }]},
   {
     date: '2026-04-02',
+    role: 'accountant',
     title: '赊销商品（大额）',
     tags: ['商品销售', '往来管理'],
     difficulty: 2,
@@ -77,6 +78,7 @@ const tasks = [
   // ══════ 出纳任务 ══════
   {
     date: '2026-04-02',
+    role: 'accountant',
     title: '提取备用金',
     tags: ['出纳'],
     difficulty: 1,
@@ -91,6 +93,7 @@ const tasks = [
         content: '支票号码：XX789012\n收款人：本公司\n用途：备用金' }]},
   {
     date: '2026-04-03',
+    role: 'accountant',
     title: '结转已销商品成本（现销+赊销）',
     tags: ['商品销售', '仓存管理'],
     difficulty: 2,
@@ -106,6 +109,7 @@ const tasks = [
   // ══════ 出纳任务 ══════
   {
     date: '2026-04-03',
+    role: 'accountant',
     title: '备用金借支（员工出差）',
     tags: ['出纳', '费用管理'],
     difficulty: 1,
@@ -120,6 +124,7 @@ const tasks = [
         content: '借款人：李明（销售部）\n借款事由：广州客户拜访出差\n预计还款日：出差归来后3个工作日内\n审批人：销售经理 张伟\n财务审批：王芳' }]},
   {
     date: '2026-04-04',
+    role: 'accountant',
     title: '销售退回（客户退货）',
     tags: ['商品销售', '仓存管理'],
     difficulty: 2,
@@ -139,6 +144,7 @@ const tasks = [
         items: [{ name: 'C类商品退货（质量问题）', qty: 30, price: 282.5, amount: 8475 }] }]},
   {
     date: '2026-04-05',
+    role: 'accountant',
     title: '销售折让（质量问题让步）',
     tags: ['商品销售', '往来管理'],
     difficulty: 2,
@@ -153,6 +159,7 @@ const tasks = [
   // ══════ 出纳任务 ══════
   {
     date: '2026-04-05',
+    role: 'accountant',
     title: '现金报销快递费',
     tags: ['出纳', '费用管理'],
     difficulty: 1,
@@ -166,6 +173,7 @@ const tasks = [
         items: [{ name: '快递服务费（样品+合同）', qty: 1, price: 580, amount: 580 }] }]},
   {
     date: '2026-04-06',
+    role: 'accountant',
     title: '收到前欠货款（多笔）',
     tags: ['往来管理'],
     difficulty: 1,
@@ -182,6 +190,7 @@ const tasks = [
   // ══════ 出纳任务 ══════
   {
     date: '2026-04-07',
+    role: 'accountant',
     title: '支付销售运费',
     tags: ['商品销售', '费用管理'],
     difficulty: 1,
@@ -196,6 +205,7 @@ const tasks = [
   // ══════ 出纳任务 ══════
   {
     date: '2026-04-07',
+    role: 'accountant',
     title: '银行转账支付仓储费',
     tags: ['出纳', '费用管理'],
     difficulty: 1,
@@ -214,6 +224,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-04-08',
+    role: 'accountant',
     title: '现销商品（多品种二批）',
     tags: ['商品销售'],
     difficulty: 2,
@@ -232,6 +243,7 @@ const tasks = [
   // ══════ 出纳任务 ══════
   {
     date: '2026-04-08',
+    role: 'accountant',
     title: '微信收款确认（客户回款）',
     tags: ['出纳'],
     difficulty: 2,
@@ -246,6 +258,7 @@ const tasks = [
         content: '交易单号：WX202604080001\n付款方：永辉超市\n收款账户：本公司微信商户\n交易方式：扫码支付' }]},
   {
     date: '2026-04-09',
+    role: 'accountant',
     title: '赊销商品（大额二批）',
     tags: ['商品销售', '往来管理'],
     difficulty: 2,
@@ -263,6 +276,7 @@ const tasks = [
   // ══════ 出纳任务 ══════
   {
     date: '2026-04-09',
+    role: 'accountant',
     title: '支付宝提现至银行',
     tags: ['出纳'],
     difficulty: 2,
@@ -278,6 +292,7 @@ const tasks = [
         content: '提现单号：AL20260409001\n到账账户：工商银行\n提现金额：8,000.00元\n处理状态：已到账' }]},
   {
     date: '2026-04-10',
+    role: 'accountant',
     title: '结转已销商品成本（第二批）',
     tags: ['商品销售', '仓存管理'],
     difficulty: 2,
@@ -293,6 +308,7 @@ const tasks = [
   // ══════ 出纳任务 ══════
   {
     date: '2026-04-11',
+    role: 'accountant',
     title: '收到前欠货款',
     tags: ['往来管理'],
     difficulty: 1,
@@ -305,6 +321,7 @@ const tasks = [
       { type: 'bank', label: '收款回单', date: '2026-04-11', totalAmount: 40000, payer: '鑫源商贸有限公司', payeeName: '本公司', content: '前欠货款', refNo: 'HD202604110001' }]},
   {
     date: '2026-04-12',
+    role: 'accountant',
     title: '计提坏账准备',
     tags: ['往来管理', '期末'],
     difficulty: 3,
@@ -337,6 +354,7 @@ const tasks = [
 日期：2026年4月12日` }]},
   {
     date: '2026-04-13',
+    role: 'accountant',
     title: '支付广告推广费',
     tags: ['费用管理'],
     difficulty: 1,
@@ -350,6 +368,7 @@ const tasks = [
         items: [{ name: '搜索引擎推广服务（4月）', qty: 1, price: 6000, amount: 6000 }] }]},
   {
     date: '2026-04-14',
+    role: 'accountant',
     title: '员工报销差旅费',
     tags: ['费用管理'],
     difficulty: 1,
@@ -364,6 +383,7 @@ const tasks = [
   // ══════ 出纳任务 ══════
   {
     date: '2026-04-14',
+    role: 'accountant',
     title: '备用金补充',
     tags: ['出纳'],
     difficulty: 1,
@@ -382,6 +402,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-04-15',
+    role: 'accountant',
     title: '采购商品（现购）',
     tags: ['商品采购', '税费'],
     difficulty: 2,
@@ -398,6 +419,7 @@ const tasks = [
       { type: 'bank', label: '付款回单', date: '2026-04-15', totalAmount: 45200, payer: '本公司', payeeName: '华强供应链有限公司', content: '货款（发票No.4400789012）', refNo: 'HD202604150001' }]},
   {
     date: '2026-04-16',
+    role: 'accountant',
     title: '采购商品（赊购）',
     tags: ['商品采购', '往来管理'],
     difficulty: 2,
@@ -415,6 +437,7 @@ const tasks = [
   // ══════ 出纳任务 ══════
   {
     date: '2026-04-16',
+    role: 'accountant',
     title: '银行转账支付供应商货款',
     tags: ['出纳'],
     difficulty: 2,
@@ -428,6 +451,7 @@ const tasks = [
       { type: 'text', label: '付款审批单', docTitle: '付款审批单', date: '2026-04-16', content: '收款单位：鼎盛贸易有限公司\n金额：20,000.00元\n付款事由：采购货款（B类商品）\n审批人：财务主管 王芳\n审批人：总经理 张伟', signature: '出纳签收' }]},
   {
     date: '2026-04-17',
+    role: 'accountant',
     title: '支付采购运费',
     tags: ['商品采购', '费用管理'],
     difficulty: 1,
@@ -441,6 +465,7 @@ const tasks = [
         items: [{ name: '采购商品运输费', qty: 1, price: 1500, amount: 1500 }] }]},
   {
     date: '2026-04-18',
+    role: 'accountant',
     title: '银行存款利息收入',
     tags: ['费用管理'],
     difficulty: 1,
@@ -479,6 +504,7 @@ const tasks = [
   // ══════ 出纳任务 ══════
   {
     date: '2026-04-20',
+    role: 'accountant',
     title: '支付水电费',
     tags: ['费用管理'],
     difficulty: 1,
@@ -494,6 +520,7 @@ const tasks = [
         items: [{ name: '4月水费', qty: 1, price: 1000, amount: 1000 }] }]},
   {
     date: '2026-04-21',
+    role: 'accountant',
     title: '购买办公用品',
     tags: ['费用管理'],
     difficulty: 1,
@@ -531,6 +558,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-04-22',
+    role: 'accountant',
     title: '计提固定资产折旧',
     tags: ['费用管理'],
     difficulty: 2,
@@ -563,6 +591,7 @@ const tasks = [
 核对结果：日记账余额 759,325.00 ✓  银行对账单 759,325.00 ✓` }]},
   {
     date: '2026-04-23',
+    role: 'accountant',
     title: '计提本月工资',
     tags: ['工资社保'],
     difficulty: 2,
@@ -577,6 +606,7 @@ const tasks = [
   // ══════ 出纳任务 ══════
   {
     date: '2026-04-23',
+    role: 'accountant',
     title: '员工归还备用金借款',
     tags: ['出纳', '费用管理'],
     difficulty: 1,
@@ -591,6 +621,7 @@ const tasks = [
         content: '借款日期：2026-04-03\n借款金额：2,000.00元\n归还日期：2026-04-23\n备注：客户行程变更，借款全额归还' }]},
   {
     date: '2026-04-24',
+    role: 'accountant',
     title: '发放本月工资',
     tags: ['工资社保'],
     difficulty: 1,
@@ -603,6 +634,7 @@ const tasks = [
       { type: 'bank', label: '代发工资回单', date: '2026-04-24', totalAmount: 50000, payer: '本公司', payeeName: '员工代发户', content: '2026年4月工资', refNo: 'HD202604240001' }]},
   {
     date: '2026-04-25',
+    role: 'accountant',
     title: '计提城建税及教育费附加',
     tags: ['税费', '期末'],
     difficulty: 2,
@@ -628,6 +660,7 @@ const tasks = [
       { type: 'bank', label: '网银查询截图', date: '2026-04-25', totalAmount: 0, payer: '工商银行', payeeName: '本公司', content: '工行账户余额查询', refNo: 'HD202604250011' }]},
   {
     date: '2026-04-26',
+    role: 'accountant',
     title: '期末结转损益',
     tags: ['期末'],
     difficulty: 3,
@@ -660,6 +693,7 @@ const tasks = [
 
   {
     date: '2026-04-30',
+    role: 'accountant',
     title: '模拟纳税申报',
     tags: ['期末', '税费'],
     difficulty: 1,

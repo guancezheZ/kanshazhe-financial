@@ -30,6 +30,7 @@ const may = [
         content: `5月期初余额：2,500.00\n核对人：王出纳` }]},
   {
     date: '2026-05-05', title: '缴纳上月代扣个税',
+    role: 'accountant',
     tags: ["出纳","税费"], difficulty: 1,
     description: '向税务机关申报并缴纳4月代扣的个人所得税 2,000元，通过工商银行转账。',
     tip: '代扣个税在次月15日前缴纳。分录：借：应交税费-应交个人所得税，贷：银行存款。出纳需在申报期内完成缴款，避免滞纳金。',
@@ -41,6 +42,7 @@ const may = [
         items: [{ name: '个人所得税（代扣代缴）', qty: 1, price: 2000, amount: 2000 }] }]},
   {
     date: '2026-05-12', title: '缴存多余现金',
+    role: 'accountant',
     tags: ["出纳"], difficulty: 1,
     description: '库存现金超限额，将 800元缴存银行。',
     tip: '分录：借：银行存款，贷：库存现金。',
@@ -51,6 +53,7 @@ const may = [
       { type: 'bank', label: '缴款单', date: '2026-05-12', totalAmount: 800, payer: '本公司', payeeName: '本公司', content: '缴存现金', refNo: 'HD202605120010' }]},
   {
     date: '2026-05-25', title: '办理银行汇票 ⭐',
+    role: 'accountant',
     tags: ["出纳"], difficulty: 2,
     description: '向工商银行申请签发银行汇票 50,000元，用于向戊公司采购，款项从银行账户划出。',
     tip: '银行汇票是重要结算方式。分录：借：其他货币资金-银行汇票存款，贷：银行存款。',
@@ -66,6 +69,7 @@ const may = [
 
   {
     date: '2026-05-06',
+    role: 'accountant',
     title: '缴纳4月增值税',
     tags: ["税费"],
     difficulty: 1,
@@ -82,6 +86,7 @@ const may = [
       { type: 'bank', label: '银行回单', date: '2026-05-06', totalAmount: 19500, payer: '本公司', payeeName: '国家税务总局XX分局', content: '缴纳4月增值税', refNo: 'HD202605060001' }]},
   {
     date: '2026-05-06',
+    role: 'accountant',
     title: '缴纳4月城建税',
     tags: ["税费"],
     difficulty: 1,
@@ -98,6 +103,7 @@ const may = [
       { type: 'bank', label: '银行回单', date: '2026-05-06', totalAmount: 1365, payer: '本公司', payeeName: '国家税务总局XX分局', content: '缴纳4月城建税', refNo: 'HD202605060002' }]},
   {
     date: '2026-05-06',
+    role: 'accountant',
     title: '缴纳4月教育费附加',
     tags: ["税费"],
     difficulty: 1,
@@ -114,6 +120,7 @@ const may = [
       { type: 'bank', label: '银行回单', date: '2026-05-06', totalAmount: 585, payer: '本公司', payeeName: '国家税务总局XX分局', content: '缴纳4月教育费附加', refNo: 'HD202605060003' }]},
   {
     date: '2026-05-09',
+    role: 'accountant',
     title: '发放4月份员工工资',
     tags: ["工资社保"],
     difficulty: 2,
@@ -143,6 +150,7 @@ const may = [
       { type: 'bank', label: '银行回单', date: '2026-05-09', totalAmount: 57500, payer: '本公司', payeeName: '员工工资代发户', content: '4月份工资发放', refNo: 'HD202605090004' }]},
   {
     date: '2026-05-09',
+    role: 'accountant',
     title: '缴纳代扣社保及公积金个人部分',
     tags: ["工资社保"],
     difficulty: 2,
@@ -162,6 +170,7 @@ const may = [
         items: [{ name: '个人缴存（4月）', qty: 14, price: 250, amount: 3500 }] }]},
   {
     date: '2026-05-09',
+    role: 'accountant',
     title: '缴纳4月代扣个税',
     tags: ["税费"],
     difficulty: 1,
@@ -178,6 +187,7 @@ const may = [
       { type: 'bank', label: '银行回单', date: '2026-05-09', totalAmount: 2000, payer: '本公司', payeeName: '国家税务总局XX分局', content: '缴纳4月代扣个税', refNo: 'HD202605090005' }]},
   {
     date: '2026-05-09',
+    role: 'accountant',
     title: '暂估入库——材料已到发票未到 ⭐',
     tags: ["采购"],
     difficulty: 3,
@@ -222,6 +232,7 @@ const may = [
 
   {
     date: '2026-05-12',
+    role: 'accountant',
     title: '收到甲公司货款',
     tags: ["销售"],
     difficulty: 1,
@@ -236,6 +247,7 @@ const may = [
       { type: 'bank', label: '银行回单', date: '2026-05-12', totalAmount: 90400, payer: '甲公司', payerAccount: '6222 0100 **** 8888', payeeName: '本公司', content: '支付4月货款', refNo: 'HD202605120006' }]},
   {
     date: '2026-05-13',
+    role: 'accountant',
     title: '支付供应商货款',
     tags: ["采购"],
     difficulty: 1,
@@ -250,6 +262,7 @@ const may = [
       { type: 'bank', label: '银行回单', date: '2026-05-13', totalAmount: 56500, payer: '本公司', payeeName: '戊公司', content: '支付C材料采购款', refNo: 'HD202605130007' }]},
   {
     date: '2026-05-14',
+    role: 'accountant',
     title: '采购原材料（含税）',
     tags: ["采购"],
     difficulty: 2,
@@ -268,6 +281,7 @@ const may = [
       { type: 'bank', label: '银行回单', date: '2026-05-14', totalAmount: 39550, payer: '本公司', payeeName: '庚公司', content: '采购E材料款', refNo: 'HD202605140008' }]},
   {
     date: '2026-05-15',
+    role: 'accountant',
     title: '销售商品（款已收）',
     tags: ["销售"],
     difficulty: 2,
@@ -286,6 +300,7 @@ const may = [
       { type: 'bank', label: '银行回单', date: '2026-05-15', totalAmount: 169500, payer: '己公司', payeeName: '本公司', content: '购买B产品货款', refNo: 'HD202605150009' }]},
   {
     date: '2026-05-16',
+    role: 'accountant',
     title: '赊销商品给丙公司',
     tags: ["销售"],
     difficulty: 2,
@@ -315,6 +330,7 @@ const may = [
 发货日期：2026年5月16日` }]},
   {
     date: '2026-05-16',
+    role: 'accountant',
     title: '员工报销差旅费',
     tags: ["费用"],
     difficulty: 1,
@@ -335,6 +351,7 @@ const may = [
       { type: 'bank', label: '银行回单', date: '2026-05-16', totalAmount: 2500, payer: '本公司', payeeName: '员工李四', content: '报销差旅费', refNo: 'HD202605160010' }]},
   {
     date: '2026-05-16',
+    role: 'accountant',
     title: '支付水电费',
     tags: ["费用"],
     difficulty: 1,
@@ -357,6 +374,7 @@ const may = [
 
   {
     date: '2026-05-19',
+    role: 'accountant',
     title: '债务重组——债务减免收益 ⭐',
     tags: ["融资"],
     difficulty: 3,
@@ -387,6 +405,7 @@ const may = [
       { type: 'bank', label: '银行回单', date: '2026-05-19', totalAmount: 35000, payer: '本公司', payeeName: '辛公司', content: '支付D材料采购款（债务重组）', refNo: 'HD202605190011' }]},
   {
     date: '2026-05-20',
+    role: 'accountant',
     title: '计提产品质量保证费用 ⭐',
     tags: ["费用"],
     difficulty: 3,
@@ -418,6 +437,7 @@ const may = [
   符合行业平均水平。` }]},
   {
     date: '2026-05-21',
+    role: 'accountant',
     title: '购买办公用品',
     tags: ["费用"],
     difficulty: 1,
@@ -433,6 +453,7 @@ const may = [
         items: [{ name: '打印纸 3包×100元', qty: 3, price: 100, amount: 300 }, { name: '墨盒 1个', qty: 1, price: 200, amount: 200 }, { name: '文件夹 5个×20元', qty: 5, price: 20, amount: 100 }] }]},
   {
     date: '2026-05-23',
+    role: 'accountant',
     title: '计提固定资产折旧',
     tags: ["资产"],
     difficulty: 2,
@@ -458,6 +479,7 @@ const may = [
 净残值率：5%` }]},
   {
     date: '2026-05-23',
+    role: 'accountant',
     title: '无形资产摊销',
     tags: ["资产"],
     difficulty: 2,
@@ -479,6 +501,7 @@ const may = [
 剩余净值：98,000元` }]},
   {
     date: '2026-05-23',
+    role: 'accountant',
     title: '计提短期借款利息',
     tags: ["融资"],
     difficulty: 2,
@@ -506,6 +529,7 @@ const may = [
 
   {
     date: '2026-05-26',
+    role: 'accountant',
     title: '计提5月份员工工资',
     tags: ["工资社保"],
     difficulty: 2,
@@ -531,6 +555,7 @@ const may = [
 发放日：次月10日` }]},
   {
     date: '2026-05-26',
+    role: 'accountant',
     title: '计提5月社保及公积金个人部分',
     tags: ["工资社保"],
     difficulty: 2,
@@ -555,6 +580,7 @@ const may = [
 合计代扣：10,500.00` }]},
   {
     date: '2026-05-27',
+    role: 'accountant',
     title: '缴纳5月社保费（单位部分）',
     tags: ["工资社保"],
     difficulty: 1,
@@ -575,6 +601,7 @@ const may = [
           { name: '生育保险（5月）', qty: 1, price: 350, amount: 350 }] }]},
   {
     date: '2026-05-27',
+    role: 'accountant',
     title: '缴纳5月公积金（单位部分）',
     tags: ["工资社保"],
     difficulty: 1,
@@ -590,6 +617,7 @@ const may = [
         items: [{ name: '单位缴存（5月）', qty: 14, price: 696.43, amount: 9750 }] }]},
   {
     date: '2026-05-28',
+    role: 'accountant',
     title: '计提应收账款坏账准备',
     tags: ["资产"],
     difficulty: 2,
@@ -614,6 +642,7 @@ const may = [
 依据：《企业会计准则第13号——或有事项》` }]},
   {
     date: '2026-05-29',
+    role: 'accountant',
     title: '利润分配——计提盈余公积 ⭐',
     tags: ["期末"],
     difficulty: 3,
@@ -656,6 +685,7 @@ const may = [
     └─────────────────────┘` }]},
   {
     date: '2026-05-30',
+    role: 'accountant',
     title: '计提5月城建税及教育费附加',
     tags: ["税费"],
     difficulty: 2,
@@ -683,6 +713,7 @@ const may = [
 合计：2,795.00` }]},
   {
     date: '2026-05-31',
+    role: 'accountant',
     title: '月末结转·期间损益',
     tags: ["期末"],
     difficulty: 3,
@@ -755,6 +786,7 @@ const may = [
 
   {
     date: '2026-05-06',
+    role: 'accountant',
     title: '提取备用金（现金支票）',
     tags: ["出纳"],
     difficulty: 1,
@@ -790,6 +822,7 @@ const may = [
 整理人：王出纳  日期：2026-05-07` }]},
   {
     date: '2026-05-10',
+    role: 'accountant',
     title: '银行代扣社保缴费确认',
     tags: ["出纳","工资社保"],
     difficulty: 2,
@@ -803,6 +836,7 @@ const may = [
       { type: 'bank', label: '社保扣款回单', date: '2026-05-10', totalAmount: 26000, payer: '本公司', payeeName: 'XX市社会保险基金管理局', content: '5月社保费（单位+个人代扣）', refNo: 'HD202605100015' }]},
   {
     date: '2026-05-16',
+    role: 'accountant',
     title: '银行代扣公积金缴费确认',
     tags: ["出纳","工资社保"],
     difficulty: 2,
@@ -816,6 +850,7 @@ const may = [
       { type: 'bank', label: '公积金扣款回单', date: '2026-05-16', totalAmount: 13000, payer: '本公司', payeeName: 'XX市住房公积金管理中心', content: '5月公积金（单位+个人代扣）', refNo: 'HD202605160020' }]},
   {
     date: '2026-05-20',
+    role: 'accountant',
     title: '银行转账支付法律咨询费',
     tags: ["出纳","费用"],
     difficulty: 1,
@@ -828,6 +863,7 @@ const may = [
       { type: 'bank', label: '转账回单', date: '2026-05-20', totalAmount: 4500, payer: '本公司', payeeName: 'XX律师事务所', content: '5月法律顾问服务费', refNo: 'HD202605200025' }]},
   {
     date: '2026-05-26',
+    role: 'accountant',
     title: '银行汇票使用——支付采购款 ⭐',
     tags: ["出纳","采购"],
     difficulty: 2,
@@ -855,6 +891,7 @@ const may = [
      ═══════════════════════════════════════════════ */
   {
     date: '2026-05-28',
+    role: 'accountant',
     title: '商业折扣销售 ⭐',
     tags: ["销售"],
     difficulty: 2,
@@ -883,6 +920,7 @@ const may = [
       { type: 'bank', label: '银行回单', date: '2026-05-28', totalAmount: 101700, payer: '戊公司', payeeName: '本公司', content: '购买A产品（商业折扣后）', refNo: 'HD202605280035' }]},
   {
     date: '2026-05-29',
+    role: 'accountant',
     title: '分期收款销售 ⭐',
     tags: ["销售"],
     difficulty: 3,
@@ -912,6 +950,7 @@ const may = [
       { type: 'bank', label: '银行回单', date: '2026-05-29', totalAmount: 45200, payer: '丁公司', payeeName: '本公司', content: '分期收款第一期', refNo: 'HD202605290036' }]},
   {
     date: '2026-05-30',
+    role: 'accountant',
     title: '代销商品——收到代销清单',
     tags: ["销售"],
     difficulty: 2,
@@ -998,6 +1037,7 @@ const may = [
 注意暂估入库的款项未付，不影响银行账` }]},
   {
     date: "2026-05-31",
+    role: 'accountant',
     title: "模拟纳税申报",
     tags: ["期末", "税费"],
     difficulty: 1,

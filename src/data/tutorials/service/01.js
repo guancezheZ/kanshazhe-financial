@@ -19,6 +19,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-01-02',
+    role: 'accountant',
     title: '投资者追加资本金',
     tags: ['资金管理'],
     difficulty: 1,
@@ -32,6 +33,7 @@ const tasks = [
       { type: 'text', label: '增资协议', docTitle: '增资扩股协议', content: '经股东会决议，同意新投资者以货币500,000元增资，增资后注册资本变更为500万元。', signature: '全体股东签字' }]},
   {
     date: '2026-01-03',
+    role: 'accountant',
     title: '取得短期流动资金借款',
     tags: ['出纳'],
     difficulty: 1,
@@ -45,6 +47,7 @@ const tasks = [
       { type: 'text', label: '借款合同', docTitle: '流动资金借款合同', content: '雲帆管理咨询有限公司向工商银行申请短期流动资金贷款300,000元，年利率4.35%，期限6个月（2026.1.3-2026.7.2），到期一次性还本付息。', stampText: '中国工商银行 合同专用章' }]},
   {
     date: '2026-01-04',
+    role: 'accountant',
     title: '购买办公设备',
     tags: ['费用管理'],
     difficulty: 1,
@@ -58,6 +61,7 @@ const tasks = [
       { type: 'bank', label: '付款回单', date: '2026-01-04', totalAmount: 48000, payer: '雲帆管理咨询有限公司', payeeName: '京华办公家具有限公司', content: '设备采购款', refNo: 'FK202601040001' }]},
   {
     date: '2026-01-05',
+    role: 'accountant',
     title: '预付办公室半年租金',
     tags: ['费用管理'],
     difficulty: 1,
@@ -71,6 +75,7 @@ const tasks = [
       { type: 'bank', label: '付款回单', date: '2026-01-05', totalAmount: 120000, payer: '雲帆管理咨询有限公司', payeeName: '北京鼎盛物业管理有限公司', content: '办公室租金', refNo: 'FK202601050001' }]},
   {
     date: '2026-01-06',
+    role: 'accountant',
     title: '购买办公用品（现金）',
     tags: ['费用管理'],
     difficulty: 1,
@@ -83,6 +88,7 @@ const tasks = [
       { type: 'invoice', label: '增值税普通发票', region: '北京市', invoiceNo: '1100987654', date: '2026-01-06', buyer: '雲帆管理咨询有限公司', seller: '文化办公用品商店', lineItems: [{ name: '办公用品一批', qty: 1, price: 1500, amount: 1500 }], totalAmount: 1500 }]},
   {
     date: '2026-01-07',
+    role: 'accountant',
     title: '支付银行账户管理费',
     tags: ['费用管理'],
     difficulty: 1,
@@ -99,6 +105,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-01-09',
+    role: 'accountant',
     title: '签订管理咨询合同并收取定金',
     tags: ['收入确认', '往来管理'],
     difficulty: 2,
@@ -113,6 +120,7 @@ const tasks = [
       { type: 'text', label: '咨询合同', docTitle: '企业管理咨询服务合同', content: '雲帆管理咨询有限公司为甲客户提供组织架构优化咨询服务，合同总价200,000元（不含税），服务周期30天。付款：签约付50%，验收后付50%。', signature: '双方盖章' }]},
   {
     date: '2026-01-10',
+    role: 'accountant',
     title: '咨询项目人员出差（差旅费预支）',
     tags: ['项目核算'],
     difficulty: 2,
@@ -125,6 +133,7 @@ const tasks = [
       { type: 'text', label: '借款单', docTitle: '差旅费借款申请单', content: '咨询项目组三人赴甲客户现场调研，预借差旅费9,000元（交通+住宿+补助），预计出差5天。', signature: '项目负责人签字 | 财务审批签字' }]},
   {
     date: '2026-01-11',
+    role: 'accountant',
     title: '计提咨询项目组1月上半月工资',
     tags: ['项目核算', '人工成本'],
     difficulty: 2,
@@ -137,6 +146,7 @@ const tasks = [
       { type: 'text', label: '工资计提表', docTitle: '咨询项目组工资计提明细', content: '咨询项目组3人，月薪各12,000元，1月上半月各计提6,000元，合计18,000元。', signature: '人力资源部 | 财务部' }]},
   {
     date: '2026-01-12',
+    role: 'accountant',
     title: '支付软件开发工具授权费',
     tags: ['项目核算'],
     difficulty: 2,
@@ -150,6 +160,7 @@ const tasks = [
       { type: 'bank', label: '付款回单', date: '2026-01-12', totalAmount: 30000, payer: '雲帆管理咨询有限公司', payeeName: '天工软件技术有限公司', content: '软件授权费', refNo: 'FK202601120001' }]},
   {
     date: '2026-01-13',
+    role: 'accountant',
     title: '签订软件开发合同并收取启动资金',
     tags: ['收入确认', '往来管理'],
     difficulty: 2,
@@ -164,6 +175,7 @@ const tasks = [
       { type: 'text', label: '开发合同', docTitle: '定制软件开发合同', content: '雲帆管理咨询有限公司为乙客户开发ERP管理系统，合同总价400,000元（不含税），开发周期预计90天。付款：签约付30%，中期验收付40%，终验付30%。', signature: '双方盖章' }]},
   {
     date: '2026-01-14',
+    role: 'accountant',
     title: '分配办公场所租金（本月摊销）',
     tags: ['费用管理'],
     difficulty: 1,
@@ -180,6 +192,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-01-16',
+    role: 'accountant',
     title: '员工报销差旅费（冲抵预借）',
     tags: ['项目核算', '费用管理'],
     difficulty: 2,
@@ -194,6 +207,7 @@ const tasks = [
       { type: 'text', label: '出差报告', docTitle: '甲客户现场调研工作报告', content: '完成甲客户组织架构访谈，收集业务流程资料，形成调研报告初稿。', signature: '项目负责人' }]},
   {
     date: '2026-01-17',
+    role: 'accountant',
     title: '计提全公司管理人员工资',
     tags: ['人工成本', '工资社保'],
     difficulty: 2,
@@ -206,6 +220,7 @@ const tasks = [
       { type: 'text', label: '工资计提表', docTitle: '2026年1月管理人员工资明细', content: '行政部3人共18,000元，财务部2人共14,000元，HR部2人共13,000元。', signature: '人力资源部 | 财务部' }]},
   {
     date: '2026-01-18',
+    role: 'accountant',
     title: '计提咨询项目组1月下半月工资',
     tags: ['项目核算', '人工成本'],
     difficulty: 2,
@@ -218,6 +233,7 @@ const tasks = [
       { type: 'text', label: '工资计提表', docTitle: '2026年1月下半月项目人员工资明细', content: '软件开发组2人各11,000元=22,000元，咨询组3人各6,000元=18,000元，合计40,000元。', signature: '人力资源部 | 财务部' }]},
   {
     date: '2026-01-19',
+    role: 'accountant',
     title: '支付办公室水电费',
     tags: ['费用管理'],
     difficulty: 1,
@@ -230,6 +246,7 @@ const tasks = [
       { type: 'receipt', label: '水电费账单', docTitle: '2026年1月水电费缴费通知', items: [{ name: '电费', amount: 4200 }, { name: '水费', amount: 1400 }], totalAmount: 5600, stampText: '北京市供电公司 | 北京市自来水公司' }]},
   {
     date: '2026-01-20',
+    role: 'accountant',
     title: '支付业务招待费',
     tags: ['费用管理'],
     difficulty: 1,
@@ -242,6 +259,7 @@ const tasks = [
       { type: 'invoice', label: '餐饮发票', region: '北京市', invoiceNo: '1100789012', date: '2026-01-20', buyer: '雲帆管理咨询有限公司', seller: '华庭酒店餐饮部', lineItems: [{ name: '餐饮费', qty: 1, price: 2000, amount: 2000 }], totalAmount: 2000 }]},
   {
     date: '2026-01-21',
+    role: 'accountant',
     title: '咨询项目第一阶段完成（确认收入）',
     tags: ['收入确认', '项目核算'],
     difficulty: 3,
@@ -258,6 +276,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-01-22',
+    role: 'accountant',
     title: '咨询项目第二阶段完成并收款',
     tags: ['收入确认', '往来管理'],
     difficulty: 2,
@@ -272,6 +291,7 @@ const tasks = [
       { type: 'text', label: '项目终验单', docTitle: '管理咨询项目最终验收确认书', content: '组织架构优化方案全部完成，甲客户验收通过。项目总价200,000元已全部履行完毕。', signature: '甲客户（盖章） | 雲帆咨询（盖章）' }]},
   {
     date: '2026-01-23',
+    role: 'accountant',
     title: '计算并提取单位社保费用',
     tags: ['人工成本', '工资社保'],
     difficulty: 2,
@@ -285,6 +305,7 @@ const tasks = [
       { type: 'text', label: '社保计提表', docTitle: '2026年1月社保费用计提明细', content: '项目人员工资58,000×25%=14,500，管理人员工资45,000×25%=11,250，合计25,750。', signature: '人力资源部' }]},
   {
     date: '2026-01-24',
+    role: 'accountant',
     title: '计提固定资产折旧',
     tags: ['费用管理'],
     difficulty: 2,
@@ -297,6 +318,7 @@ const tasks = [
       { type: 'text', label: '折旧计算表', docTitle: '2026年1月固定资产折旧明细', content: '办公设备原值48,000元，残值率5%，使用年限5年，月折旧额=48,000×0.95÷60=760元。', signature: '财务部' }]},
   {
     date: '2026-01-25',
+    role: 'accountant',
     title: '月末计提短期借款利息',
     tags: ['期末'],
     difficulty: 1,
@@ -309,6 +331,7 @@ const tasks = [
       { type: 'text', label: '利息计算表', docTitle: '2026年1月借款利息计提明细', content: '短期借款300,000元，年利率4.35%，月利息=300,000×4.35%÷12=1,087.50元。', signature: '财务部' }]},
   {
     date: '2026-01-26',
+    role: 'accountant',
     title: '计算并结转本月增值税',
     tags: ['税费', '期末'],
     difficulty: 2,
@@ -323,6 +346,7 @@ const tasks = [
       { type: 'text', label: '增值税计算表', docTitle: '2026年1月增值税及附加税计算表', content: '销项税额合计19,200元（咨询收入+软件开发预收款），进项税额0元（服务业进项较少），应交增值税19,200元。城建税1,344元，教育费附加576元。', signature: '财务部' }]},
   {
     date: '2026-01-27',
+    role: 'accountant',
     title: '期末结转劳务成本至主营业务成本',
     tags: ['项目核算', '期末'],
     difficulty: 3,
@@ -336,6 +360,7 @@ const tasks = [
       { type: 'text', label: '成本结转计算表', docTitle: '2026年1月项目成本结转明细', content: '甲客户咨询项目成本：人工成本36,000+差旅费8,500=44,500元。软件开发项目成本仍在归集（未完工），暂不结转。', signature: '财务部' }]},
   {
     date: '2026-01-31',
+    role: 'accountant',
     title: '期末结转损益',
     tags: ['期末'],
     difficulty: 3,
@@ -369,6 +394,7 @@ const tasks = [
       { type: 'text', label: '日记账启用表', docTitle: '雲帆管理咨询有限公司现金日记账启用', content: '2026年1月1日启用现金日记账，期初余额：0元。银行存款日记账期初余额：600,000元。', signature: '出纳 | 财务主管' }]},
   {
     date: '2026-01-02',
+    role: 'accountant',
     title: '投资款到账确认并登记',
     tags: ['出纳'],
     difficulty: 1,
@@ -381,6 +407,7 @@ const tasks = [
       { type: 'bank', label: '银行回单', date: '2026-01-02', totalAmount: 500000, payer: '新投资者', payeeName: '雲帆管理咨询有限公司', content: '投资款入账', refNo: 'HD202601020001' }]},
   {
     date: '2026-01-03',
+    role: 'accountant',
     title: '提取备用金（现金支票）',
     tags: ['出纳'],
     difficulty: 1,
@@ -393,6 +420,7 @@ const tasks = [
       { type: 'text', label: '现金支票存根', docTitle: '中国工商银行现金支票（存根）', content: '支票号码：XY123456，收款人：雲帆管理咨询有限公司，金额：20,000元，用途：备用金。', stampText: '财务专用章 | 法人章' }]},
   {
     date: '2026-01-04',
+    role: 'accountant',
     title: '办公设备采购银行转账',
     tags: ['出纳', '费用管理'],
     difficulty: 1,
@@ -405,6 +433,7 @@ const tasks = [
       { type: 'bank', label: '银行付款回单', date: '2026-01-04', totalAmount: 48000, payer: '雲帆管理咨询有限公司', payeeName: '京华办公家具有限公司', content: '设备采购款', refNo: 'FK202601040001' }]},
   {
     date: '2026-01-05',
+    role: 'accountant',
     title: '预付房租银行转账操作',
     tags: ['出纳', '费用管理'],
     difficulty: 1,
@@ -417,6 +446,7 @@ const tasks = [
       { type: 'bank', label: '付款回单', date: '2026-01-05', totalAmount: 120000, payer: '雲帆管理咨询有限公司', payeeName: '北京鼎盛物业管理有限公司', content: '办公室租金', refNo: 'FK202601050001' }]},
   {
     date: '2026-01-07',
+    role: 'accountant',
     title: '银行账户管理费确认',
     tags: ['出纳', '费用管理'],
     difficulty: 1,
@@ -429,6 +459,7 @@ const tasks = [
       { type: 'receipt', label: '银行扣费通知', docTitle: '业务收费回单', items: [{ name: '账户管理费', amount: 200 }], totalAmount: 200, stampText: '中国工商银行 业务专用章' }]},
   {
     date: '2026-01-09',
+    role: 'accountant',
     title: '咨询合同定金到账确认',
     tags: ['出纳', '往来管理'],
     difficulty: 1,
@@ -441,6 +472,7 @@ const tasks = [
       { type: 'bank', label: '银行回单', date: '2026-01-09', totalAmount: 106000, payer: '甲客户', payeeName: '雲帆管理咨询有限公司', content: '咨询合同定金', refNo: 'HD202601090001' }]},
   {
     date: '2026-01-10',
+    role: 'accountant',
     title: '差旅费借款现金支付',
     tags: ['出纳', '费用管理'],
     difficulty: 1,
@@ -453,6 +485,7 @@ const tasks = [
       { type: 'text', label: '借款单（存根）', docTitle: '差旅费借款申请单', content: '项目组三人出差预借差旅费9,000元，领款人签字确认。', signature: '借款人签字 | 财务审批签字' }]},
   {
     date: '2026-01-12',
+    role: 'accountant',
     title: '开发工具授权费银行转账支付',
     tags: ['出纳', '项目核算'],
     difficulty: 1,
@@ -465,6 +498,7 @@ const tasks = [
       { type: 'bank', label: '付款回单', date: '2026-01-12', totalAmount: 30000, payer: '雲帆管理咨询有限公司', payeeName: '天工软件技术有限公司', content: '开发工具授权费', refNo: 'FK202601120001' }]},
   {
     date: '2026-01-13',
+    role: 'accountant',
     title: '软件开发启动资金到账确认',
     tags: ['出纳'],
     difficulty: 1,
@@ -477,6 +511,7 @@ const tasks = [
       { type: 'bank', label: '银行回单', date: '2026-01-13', totalAmount: 127200, payer: '乙客户', payeeName: '雲帆管理咨询有限公司', content: '软件开发启动资金', refNo: 'HD202601130001' }]},
   {
     date: '2026-01-16',
+    role: 'accountant',
     title: '员工差旅费报销退回现金',
     tags: ['出纳', '费用管理'],
     difficulty: 1,
@@ -490,6 +525,7 @@ const tasks = [
       { type: 'receipt', label: '现金收款收据', docTitle: '现金收款收据', items: [{ name: '收回多余差旅借款', amount: 500 }], totalAmount: 500, stampText: '雲帆管理咨询有限公司 财务专用章' }]},
   {
     date: '2026-01-19',
+    role: 'accountant',
     title: '水电费银行转账支付',
     tags: ['出纳', '费用管理'],
     difficulty: 1,
@@ -502,6 +538,7 @@ const tasks = [
       { type: 'bank', label: '付款回单', date: '2026-01-19', totalAmount: 5600, payer: '雲帆管理咨询有限公司', payeeName: '北京市供电公司', content: '电费', refNo: 'FK202601190001' }]},
   {
     date: '2026-01-22',
+    role: 'accountant',
     title: '咨询项目尾款到账确认',
     tags: ['出纳'],
     difficulty: 1,
@@ -558,6 +595,7 @@ const tasks = [
       { type: 'text', label: '票据归档清单', docTitle: '2026年1月出纳票据归档登记', content: '银行回单14份，付款审批单8份，现金支票存根1份，其他票据6份，合计29份已装订。', signature: '出纳 | 财务主管' }]},
   {
     date: "2026-01-31",
+    role: 'accountant',
     title: "模拟纳税申报",
     tags: ["期末", "税费"],
     difficulty: 1,

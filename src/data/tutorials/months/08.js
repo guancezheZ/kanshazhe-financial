@@ -26,6 +26,7 @@ const aug = [
 
   {
     date: '2026-08-03',
+    role: 'accountant',
     title: '缴纳7月增值税',
     tags: ["税费"],
     difficulty: 1,
@@ -42,6 +43,7 @@ const aug = [
       { type: 'bank', label: '银行回单', date: '2026-08-03', totalAmount: 32500, payer: '本公司', payeeName: '国家税务总局XX分局', content: '缴纳7月增值税', refNo: 'HD202608030001' }]},
   {
     date: '2026-08-03',
+    role: 'accountant',
     title: '缴纳7月城建税',
     tags: ["税费"],
     difficulty: 1,
@@ -58,6 +60,7 @@ const aug = [
       { type: 'bank', label: '银行回单', date: '2026-08-03', totalAmount: 2275, payer: '本公司', payeeName: '国家税务总局XX分局', content: '缴纳7月城建税', refNo: 'HD202608030002' }]},
   {
     date: '2026-08-03',
+    role: 'accountant',
     title: '缴纳7月教育费附加',
     tags: ["税费"],
     difficulty: 1,
@@ -74,6 +77,7 @@ const aug = [
       { type: 'bank', label: '银行回单', date: '2026-08-03', totalAmount: 975, payer: '本公司', payeeName: '国家税务总局XX分局', content: '缴纳7月教育费附加', refNo: 'HD202608030003' }]},
   {
     date: '2026-08-05',
+    role: 'accountant',
     title: '发放7月份员工工资',
     tags: ["工资社保"],
     difficulty: 2,
@@ -103,6 +107,7 @@ const aug = [
       { type: 'bank', label: '银行回单', date: '2026-08-05', totalAmount: 59200, payer: '本公司', payeeName: '员工工资代发户', content: '7月份工资发放', refNo: 'HD202608050004' }]},
   {
     date: '2026-08-05',
+    role: 'accountant',
     title: '缴纳代扣社保及公积金个人部分',
     tags: ["工资社保"],
     difficulty: 2,
@@ -122,6 +127,7 @@ const aug = [
         items: [{ name: '个人缴存（7月）', qty: 14, price: 257.14, amount: 3600 }] }]},
   {
     date: '2026-08-05',
+    role: 'accountant',
     title: '缴纳7月代扣个税',
     tags: ["税费"],
     difficulty: 1,
@@ -143,6 +149,7 @@ const aug = [
 
   {
     date: '2026-08-10',
+    role: 'accountant',
     title: '改扩建完工——在建工程转回固定资产 ⭐',
     tags: ["资产"],
     difficulty: 3,
@@ -178,6 +185,7 @@ const aug = [
   （65,000 - 65,000×5%）/ 8年 / 12月 ≈ 643元/月` }]},
   {
     date: '2026-08-11',
+    role: 'accountant',
     title: '采购原材料（含税）',
     tags: ["采购"],
     difficulty: 2,
@@ -196,6 +204,7 @@ const aug = [
       { type: 'bank', label: '银行回单', date: '2026-08-11', totalAmount: 39550, payer: '本公司', payeeName: '子材料有限公司', content: '采购H材料款', refNo: 'HD202608110006' }]},
   {
     date: '2026-08-12',
+    role: 'accountant',
     title: '销售商品（款已收）',
     tags: ["销售"],
     difficulty: 2,
@@ -214,6 +223,7 @@ const aug = [
       { type: 'bank', label: '银行回单', date: '2026-08-12', totalAmount: 248600, payer: '己公司', payeeName: '本公司', content: '购买B产品货款', refNo: 'HD202608120007' }]},
   {
     date: '2026-08-13',
+    role: 'accountant',
     title: '赊销商品给癸公司',
     tags: ["销售"],
     difficulty: 2,
@@ -243,6 +253,7 @@ const aug = [
 发货日期：2026年8月13日` }]},
   {
     date: '2026-08-13',
+    role: 'accountant',
     title: '收到辛公司货款',
     tags: ["销售"],
     difficulty: 1,
@@ -257,6 +268,7 @@ const aug = [
       { type: 'bank', label: '银行回单', date: '2026-08-13', totalAmount: 90400, payer: '辛公司', payerAccount: '6222 0100 **** 5555', payeeName: '本公司', content: '支付7月货款', refNo: 'HD202608130008' }]},
   {
     date: '2026-08-14',
+    role: 'accountant',
     title: '产品质量保证——实际维修支出',
     tags: ["费用"],
     difficulty: 2,
@@ -290,6 +302,7 @@ const aug = [
 
   {
     date: '2026-08-17',
+    role: 'accountant',
     title: '支付供应商货款',
     tags: ["采购"],
     difficulty: 1,
@@ -304,6 +317,7 @@ const aug = [
       { type: 'bank', label: '银行回单', date: '2026-08-17', totalAmount: 39550, payer: '本公司', payeeName: '子材料有限公司', content: '支付H材料采购款', refNo: 'HD202608170009' }]},
   {
     date: '2026-08-18',
+    role: 'accountant',
     title: '员工报销差旅费',
     tags: ["费用"],
     difficulty: 1,
@@ -323,6 +337,7 @@ const aug = [
           { name: '市内交通费', qty: 1, price: 50, amount: 50 }] }]},
   {
     date: '2026-08-18',
+    role: 'accountant',
     title: '支付水电费',
     tags: ["费用"],
     difficulty: 1,
@@ -340,6 +355,7 @@ const aug = [
         items: [{ name: '生产用水 300 吨 × 4.00元', qty: 300, price: 4, amount: 1200 }] }]},
   {
     date: '2026-08-19',
+    role: 'accountant',
     title: '购买办公用品',
     tags: ["费用"],
     difficulty: 1,
@@ -355,6 +371,7 @@ const aug = [
         items: [{ name: '打印纸 5包×100元', qty: 5, price: 100, amount: 500 }, { name: '文具套裝 10套×20元', qty: 10, price: 20, amount: 200 }] }]},
   {
     date: '2026-08-21',
+    role: 'accountant',
     title: '计提固定资产折旧',
     tags: ["资产"],
     difficulty: 2,
@@ -383,6 +400,7 @@ const aug = [
 折旧方法：平均年限法（直线法）净残值率5%` }]},
   {
     date: '2026-08-21',
+    role: 'accountant',
     title: '无形资产摊销',
     tags: ["资产"],
     difficulty: 2,
@@ -404,6 +422,7 @@ const aug = [
 剩余净值：92,000元` }]},
   {
     date: '2026-08-21',
+    role: 'accountant',
     title: '国债利息收入确认',
     tags: ["资产"],
     difficulty: 2,
@@ -427,6 +446,7 @@ const aug = [
 到期日：2027年4月16日` }]},
   {
     date: '2026-08-22',
+    role: 'accountant',
     title: '计提短期借款利息',
     tags: ["融资"],
     difficulty: 2,
@@ -454,6 +474,7 @@ Q3累计利息：543.75×2=1,087.50元
 
   {
     date: '2026-08-25',
+    role: 'accountant',
     title: '计提8月份员工工资',
     tags: ["工资社保"],
     difficulty: 2,
@@ -476,6 +497,7 @@ Q3累计利息：543.75×2=1,087.50元
 合  计     13     40,000     33,000     73,000` }]},
   {
     date: '2026-08-25',
+    role: 'accountant',
     title: '计提8月社保及公积金个人部分',
     tags: ["工资社保"],
     difficulty: 2,
@@ -500,6 +522,7 @@ Q3累计利息：543.75×2=1,087.50元
 合计代扣：10,950.00` }]},
   {
     date: '2026-08-28',
+    role: 'accountant',
     title: '缴纳8月社保费（单位部分）',
     tags: ["工资社保"],
     difficulty: 1,
@@ -520,6 +543,7 @@ Q3累计利息：543.75×2=1,087.50元
           { name: '生育保险（8月）', qty: 1, price: 450, amount: 450 }] }]},
   {
     date: '2026-08-28',
+    role: 'accountant',
     title: '缴纳8月公积金（单位部分）',
     tags: ["工资社保"],
     difficulty: 1,
@@ -535,6 +559,7 @@ Q3累计利息：543.75×2=1,087.50元
         items: [{ name: '单位缴存（8月）', qty: 14, price: 728.57, amount: 10200 }] }]},
   {
     date: '2026-08-29',
+    role: 'accountant',
     title: '计提应收账款坏账准备',
     tags: ["资产"],
     difficulty: 2,
@@ -559,6 +584,7 @@ Q3累计利息：543.75×2=1,087.50元
 依据：《企业会计准则第13号——或有事项》` }]},
   {
     date: '2026-08-29',
+    role: 'accountant',
     title: '固定资产减值测试 ⭐',
     tags: ["资产"],
     difficulty: 3,
@@ -601,6 +627,7 @@ Q3累计利息：543.75×2=1,087.50元
 建议计提减值准备。` }]},
   {
     date: '2026-08-30',
+    role: 'accountant',
     title: '计提8月城建税及教育费附加',
     tags: ["税费"],
     difficulty: 2,
@@ -628,6 +655,7 @@ Q3累计利息：543.75×2=1,087.50元
 合计：3,705.00` }]},
   {
     date: '2026-08-31',
+    role: 'accountant',
     title: '月末结转·期间损益',
     tags: ["期末"],
     difficulty: 3,
@@ -691,6 +719,7 @@ Q3累计利息：543.75×2=1,087.50元
       content: `8月期初余额：3,200.00\n核对人：王出纳` }]},
   {
     date: '2026-08-02', title: '提取备用金（现金支票）',
+    role: 'accountant',
     tags: ["出纳"], difficulty: 1,
     description: '签发现金支票提取 3,000元备用金。现金支票号码：XJ202608001。',
     tip: '暑期办公正常进行，备用金按需补充。',
@@ -708,6 +737,7 @@ Q3累计利息：543.75×2=1,087.50元
       content: `8月第1周回单：共4笔，合计38,750元。\n整理人：王出纳` }]},
   {
     date: '2026-08-06', title: '银行代扣社保缴费确认',
+    role: 'accountant',
     tags: ["出纳","工资社保"], difficulty: 2,
     description: '8月份社保费（单位21,000+个人7,000=28,000元）已代扣。',
     tip: '社保按时扣缴。8月缴费基数可能与上月相同，出纳需核对。',
@@ -718,6 +748,7 @@ Q3累计利息：543.75×2=1,087.50元
     documents: [{ type: 'bank', label: '社保扣款回单', date: '2026-08-06', totalAmount: 28000, payer: '本公司', payeeName: 'XX市社保局', content: '8月社保费', refNo: 'HD202608060005' }]},
   {
     date: '2026-08-07', title: '银行转账支付网络费',
+    role: 'accountant',
     tags: ["出纳","费用"], difficulty: 1,
     description: '支付8月份网络费 2,600元。',
     tip: '支付月度固定费用，保留发票。',
@@ -727,6 +758,7 @@ Q3累计利息：543.75×2=1,087.50元
     documents: [{ type: 'bank', label: '转账回单', date: '2026-08-07', totalAmount: 2600, payer: '本公司', payeeName: '中国电信', content: '8月网络费', refNo: 'HD202608070008' }]},
   {
     date: '2026-08-09', title: '办理票据贴现 ⭐',
+    role: 'accountant',
     tags: ["出纳","融资"], difficulty: 2,
     description: '持有一张未到期的银行承兑汇票（面额100,000元，剩余期限2个月），前往工商银行办理贴现。银行贴现率4.8%，贴现息=100,000×4.8%÷12×2=800元，实际到账99,200元。',
     tip: '票据贴现是出纳需要掌握的重要融资方式。贴现息=票面金额×贴现率÷12×剩余月数。出纳需填写贴现凭证，银行审核后扣除贴现息将余额转入账户。贴现后如汇票到期不能兑付，银行有权向企业追索。',
@@ -749,6 +781,7 @@ Q3累计利息：543.75×2=1,087.50元
         content: `票据号码：HC202606090001\n金额：100,000元\n贴现日：2026-08-09\n贴现息：800元\n实收：99,200元\n状态：已贴现✓` }]},
   {
     date: '2026-08-12', title: '银行代扣公积金确认',
+    role: 'accountant',
     tags: ["出纳","工资社保"], difficulty: 2,
     description: '8月公积金（单位10,200+个人3,400=13,600元）已代扣。',
     tip: '公积金按时缴纳，出纳核对金额。',
@@ -759,6 +792,7 @@ Q3累计利息：543.75×2=1,087.50元
     documents: [{ type: 'bank', label: '公积金扣款回单', date: '2026-08-12', totalAmount: 13600, payer: '本公司', payeeName: 'XX市公积金中心', content: '8月公积金', refNo: 'HD202608120015' }]},
   {
     date: '2026-08-14', title: '银行转账支付快递费',
+    role: 'accountant',
     tags: ["出纳","费用"], difficulty: 1,
     description: '支付8月快递费 600元。',
     tip: '保留快递发票，核对金额。',
@@ -768,6 +802,7 @@ Q3累计利息：543.75×2=1,087.50元
     documents: [{ type: 'bank', label: '转账回单', date: '2026-08-14', totalAmount: 600, payer: '本公司', payeeName: '顺丰速运', content: '8月快递费', refNo: 'HD202608140018' }]},
   {
     date: '2026-08-19', title: '购买转账支票本',
+    role: 'accountant',
     tags: ["出纳"], difficulty: 1,
     description: '购买转账支票本（25张），45元。新号码段：ZZ1200456926~ZZ1200456950。',
     tip: '购买后及时登记支票登记簿。',
@@ -777,6 +812,7 @@ Q3累计利息：543.75×2=1,087.50元
     documents: [{ type: 'bank', label: '收费回单', date: '2026-08-19', totalAmount: 45, payer: '本公司', payeeName: '中国工商银行', content: '购买支票本', refNo: 'HD202608190020' }]},
   {
     date: '2026-08-23', title: '银行转账支付清洁费',
+    role: 'accountant',
     tags: ["出纳","费用"], difficulty: 1,
     description: '支付8月清洁服务费 1,800元。',
     tip: '核对发票与合同金额。',
@@ -786,6 +822,7 @@ Q3累计利息：543.75×2=1,087.50元
     documents: [{ type: 'bank', label: '转账回单', date: '2026-08-23', totalAmount: 1800, payer: '本公司', payeeName: 'XX物业', content: '8月清洁费', refNo: 'HD202608230022' }]},
   {
     date: '2026-08-25', title: '银行账户管理费确认',
+    role: 'accountant',
     tags: ["出纳","费用"], difficulty: 1,
     description: '8月账户管理费100元已扣。累计已支付800元（1-8月）。',
     tip: '每月固定扣款，核对金额即可。',
@@ -795,6 +832,7 @@ Q3累计利息：543.75×2=1,087.50元
     documents: [{ type: 'bank', label: '扣款回单', date: '2026-08-25', totalAmount: 100, payer: '本公司', payeeName: '中国工商银行', content: '8月管理费', refNo: 'HD202608250025' }]},
   {
     date: '2026-08-28', title: '银行转账支付培训费',
+    role: 'accountant',
     tags: ["出纳","费用"], difficulty: 1,
     description: '支付8月员工培训费 2,800元。',
     tip: '培训费计入管理费用，核对合同。',
@@ -813,6 +851,7 @@ Q3累计利息：543.75×2=1,087.50元
         content: `应收票据：0张（8月已贴现）\n应付票据：1张（40,000元，10-08到期）\n差异：0 ✓` }]},
   {
     date: '2026-08-30', title: '银行转账支付印刷费',
+    role: 'accountant',
     tags: ["出纳","费用"], difficulty: 1,
     description: '支付8月宣传资料印刷费 1,500元。',
     tip: '核对印刷品验收单与发票。',
@@ -825,6 +864,7 @@ Q3累计利息：543.75×2=1,087.50元
      ═══════════════════════════════════════════════ */
   {
     date: '2026-08-28',
+    role: 'accountant',
     title: '混合销售——兼营不同税率 ⭐',
     tags: ["销售"],
     difficulty: 2,
@@ -843,6 +883,7 @@ Q3累计利息：543.75×2=1,087.50元
       { type: 'bank', label: '银行回单', date: '2026-08-28', totalAmount: 101300, payer: '乙公司', payeeName: '本公司', content: '购买A产品含安装服务', refNo: 'HD202608280030' }]},
   {
     date: '2026-08-29',
+    role: 'accountant',
     title: '附有销售退回条款的销售 ⭐',
     tags: ["销售"],
     difficulty: 3,
@@ -929,6 +970,7 @@ Q3累计利息：543.75×2=1,087.50元
 请逐笔核对确保入账正确` }]},
   {
     date: "2026-08-31",
+    role: 'accountant',
     title: "模拟纳税申报",
     tags: ["期末", "税费"],
     difficulty: 1,

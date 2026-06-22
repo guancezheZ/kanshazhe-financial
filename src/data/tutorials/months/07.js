@@ -24,6 +24,7 @@ const jul = [
 
   {
     date: '2026-07-01',
+    role: 'accountant',
     title: '缴纳6月增值税',
     tags: ["税费"],
     difficulty: 1,
@@ -43,6 +44,7 @@ const jul = [
   },
   {
     date: '2026-07-01',
+    role: 'accountant',
     title: '缴纳6月城建税',
     tags: ["税费"],
     difficulty: 1,
@@ -62,6 +64,7 @@ const jul = [
   },
   {
     date: '2026-07-01',
+    role: 'accountant',
     title: '缴纳6月教育费附加',
     tags: ["税费"],
     difficulty: 1,
@@ -81,6 +84,7 @@ const jul = [
   },
   {
     date: '2026-07-01',
+    role: 'accountant',
     title: '缴纳Q2企业所得税',
     tags: ["税费"],
     difficulty: 2,
@@ -100,6 +104,7 @@ const jul = [
   },
   {
     date: '2026-07-03',
+    role: 'accountant',
     title: '发放6月份员工工资',
     tags: ["工资社保"],
     difficulty: 2,
@@ -132,6 +137,7 @@ const jul = [
   },
   {
     date: '2026-07-03',
+    role: 'accountant',
     title: '缴纳代扣社保及公积金个人部分',
     tags: ["工资社保"],
     difficulty: 2,
@@ -154,6 +160,7 @@ const jul = [
   },
   {
     date: '2026-07-03',
+    role: 'accountant',
     title: '缴纳6月代扣个税',
     tags: ["税费"],
     difficulty: 1,
@@ -178,6 +185,7 @@ const jul = [
 
   {
     date: '2026-07-07',
+    role: 'accountant',
     title: '收到政府稳岗补贴 ⭐',
     tags: ["融资"],
     difficulty: 2,
@@ -204,6 +212,7 @@ const jul = [
   },
   {
     date: '2026-07-08',
+    role: 'accountant',
     title: '采购原材料（含税）',
     tags: ["采购"],
     difficulty: 2,
@@ -225,6 +234,7 @@ const jul = [
   },
   {
     date: '2026-07-09',
+    role: 'accountant',
     title: '销售商品（款已收）',
     tags: ["销售"],
     difficulty: 2,
@@ -246,6 +256,7 @@ const jul = [
   },
   {
     date: '2026-07-10',
+    role: 'accountant',
     title: '赊销商品给辛公司',
     tags: ["销售"],
     difficulty: 2,
@@ -280,6 +291,7 @@ const jul = [
   },
   {
     date: '2026-07-10',
+    role: 'accountant',
     title: '收到庚公司货款',
     tags: ["销售"],
     difficulty: 1,
@@ -297,6 +309,7 @@ const jul = [
   },
   {
     date: '2026-07-11',
+    role: 'accountant',
     title: '存货盘亏处理 ⭐',
     tags: ["资产"],
     difficulty: 3,
@@ -341,6 +354,7 @@ const jul = [
 
   {
     date: '2026-07-14',
+    role: 'accountant',
     title: '员工报销差旅费',
     tags: ["费用"],
     difficulty: 1,
@@ -363,6 +377,7 @@ const jul = [
   },
   {
     date: '2026-07-14',
+    role: 'accountant',
     title: '支付水电费',
     tags: ["费用"],
     difficulty: 1,
@@ -383,6 +398,7 @@ const jul = [
   },
   {
     date: '2026-07-15',
+    role: 'accountant',
     title: '支付供应商货款',
     tags: ["采购"],
     difficulty: 1,
@@ -400,6 +416,7 @@ const jul = [
   },
   {
     date: '2026-07-16',
+    role: 'accountant',
     title: '购买办公用品',
     tags: ["费用"],
     difficulty: 1,
@@ -418,6 +435,7 @@ const jul = [
   },
   {
     date: '2026-07-18',
+    role: 'accountant',
     title: '固定资产改扩建 ⭐',
     tags: ["资产"],
     difficulty: 3,
@@ -466,6 +484,7 @@ const jul = [
 
   {
     date: '2026-07-21',
+    role: 'accountant',
     title: '计提固定资产折旧及无形资产摊销',
     tags: ["资产"],
     difficulty: 2,
@@ -502,6 +521,7 @@ const jul = [
   },
   {
     date: '2026-07-22',
+    role: 'accountant',
     title: '国债利息收入确认',
     tags: ["资产"],
     difficulty: 2,
@@ -528,6 +548,7 @@ const jul = [
   },
   {
     date: '2026-07-23',
+    role: 'accountant',
     title: '计提短期借款利息',
     tags: ["融资"],
     difficulty: 2,
@@ -554,6 +575,7 @@ const jul = [
   },
   {
     date: '2026-07-25',
+    role: 'accountant',
     title: '计提7月份员工工资',
     tags: ["工资社保"],
     difficulty: 2,
@@ -581,6 +603,7 @@ const jul = [
   },
   {
     date: '2026-07-25',
+    role: 'accountant',
     title: '计提7月社保及公积金个人部分',
     tags: ["工资社保"],
     difficulty: 2,
@@ -610,6 +633,7 @@ const jul = [
   },
   {
     date: '2026-07-28',
+    role: 'accountant',
     title: '缴纳7月社保费（单位部分）',
     tags: ["工资社保"],
     difficulty: 1,
@@ -634,6 +658,7 @@ const jul = [
   },
   {
     date: '2026-07-28',
+    role: 'accountant',
     title: '缴纳7月公积金（单位部分）',
     tags: ["工资社保"],
     difficulty: 1,
@@ -652,6 +677,7 @@ const jul = [
   },
   {
     date: '2026-07-29',
+    role: 'accountant',
     title: '计提应收账款坏账准备',
     tags: ["资产"],
     difficulty: 2,
@@ -681,6 +707,7 @@ const jul = [
   },
   {
     date: '2026-07-30',
+    role: 'accountant',
     title: '计提7月城建税及教育费附加',
     tags: ["税费"],
     difficulty: 2,
@@ -711,6 +738,7 @@ const jul = [
   },
   {
     date: '2026-07-31',
+    role: 'accountant',
     title: '月末结转·期间损益',
     tags: ["期末"],
     difficulty: 3,
@@ -915,6 +943,7 @@ const jul = [
      ═══════════════════════════════════════════════ */
   {
     date: '2026-07-28',
+    role: 'accountant',
     title: '多产品成本分配 ⭐',
     tags: ["成本核算"],
     difficulty: 2,
@@ -942,6 +971,7 @@ B产品    1,000    12.00   12,000.00
   },
   {
     date: '2026-07-29',
+    role: 'accountant',
     title: '预付采购定金',
     tags: ["采购"],
     difficulty: 1,
@@ -1033,6 +1063,7 @@ B产品    1,000    12.00   12,000.00
   },
   {
     date: "2026-07-31",
+    role: 'accountant',
     title: "模拟纳税申报",
     tags: ["期末", "税费"],
     difficulty: 1,

@@ -24,6 +24,7 @@ const nov = [
 
   {
     date: '2026-11-02',
+    role: 'accountant',
     title: '缴纳10月增值税',
     tags: ["税费"],
     difficulty: 1,
@@ -36,6 +37,7 @@ const nov = [
       { type: 'receipt', label: '税收缴款书', docTitle: '税收缴款书', date: '2026-11-02', totalAmount: 20800, payer: '本公司', stampText: '国家税务总局\n征收章', items: [{ name: '增值税（10月）', qty: 1, price: 20800, amount: 20800 }] }]},
   {
     date: '2026-11-02',
+    role: 'accountant',
     title: '缴纳10月城建税',
     tags: ["税费"],
     difficulty: 1,
@@ -48,6 +50,7 @@ const nov = [
       { type: 'receipt', label: '税收缴款书', docTitle: '城建税缴款书', date: '2026-11-02', totalAmount: 1456, payer: '本公司', stampText: '国家税务总局\n征收章', items: [{ name: '城建税（10月）', qty: 1, price: 1456, amount: 1456 }] }]},
   {
     date: '2026-11-02',
+    role: 'accountant',
     title: '缴纳10月教育费附加',
     tags: ["税费"],
     difficulty: 1,
@@ -60,6 +63,7 @@ const nov = [
       { type: 'receipt', label: '缴款凭证', docTitle: '教育费附加缴款凭证', date: '2026-11-02', totalAmount: 624, payer: '本公司', stampText: '国家税务总局\n征收章', items: [{ name: '教育费附加（10月）', qty: 1, price: 624, amount: 624 }] }]},
   {
     date: '2026-11-03',
+    role: 'accountant',
     title: '缴纳10月社保及公积金',
     tags: ["工资社保"],
     difficulty: 1,
@@ -73,6 +77,7 @@ const nov = [
       { type: 'receipt', label: '社保缴费单', docTitle: '社保缴费单', date: '2026-11-03', totalAmount: 21000, payer: '本公司', stampText: 'XX市社保局\n社保征缴章', items: [{ name: '养老+医疗+失业+工伤+生育', qty: 1, price: 21000, amount: 21000 }] }]},
   {
     date: '2026-11-03',
+    role: 'accountant',
     title: '发放10月职工工资',
     tags: ["工资社保"],
     difficulty: 2,
@@ -88,6 +93,7 @@ const nov = [
       { type: 'text', label: '工资汇总表', docTitle: '10月工资发放汇总表', stampText: 'HR\n工资专用章', content: `部门  应发   代扣社保  代扣公积金  代扣个税  实发\n行政部 31,000 1,800 1,600 900 26,700\n销售部 42,000 2,400 2,000 1,100 36,500\n合计 73,000 4,200 3,600 2,000 63,200` }]},
   {
     date: '2026-11-04',
+    role: 'accountant',
     title: '缴纳代扣个税及社保',
     tags: ["税费","工资社保"],
     difficulty: 1,
@@ -106,6 +112,7 @@ const nov = [
 
   {
     date: '2026-11-06',
+    role: 'accountant',
     title: '支付10月水电费',
     tags: ["费用"],
     difficulty: 1,
@@ -118,6 +125,7 @@ const nov = [
       { type: 'receipt', label: '电费单', docTitle: '电费缴费凭证', date: '2026-11-06', totalAmount: 4000, payer: '本公司', stampText: '国家电网\n电费收讫章', items: [{ name: '电费', qty: 4000, price: 1, amount: 4000 }] }]},
   {
     date: '2026-11-06',
+    role: 'accountant',
     title: '购买办公用品',
     tags: ["费用"],
     difficulty: 1,
@@ -130,6 +138,7 @@ const nov = [
       { type: 'receipt', label: '收据', docTitle: '收据', date: '2026-11-06', totalAmount: 600, payer: '本公司', stampText: '发票专用章', items: [{ name: '文具用品', qty: 1, price: 600, amount: 600 }] }]},
   {
     date: '2026-11-07',
+    role: 'accountant',
     title: '计提固定资产折旧',
     tags: ["资产"],
     difficulty: 2,
@@ -145,6 +154,7 @@ const nov = [
       { type: 'text', label: '折旧表', docTitle: '折旧计算表（11月）', stampText: '固定资产\n专用章', content: `房屋2,000+办公设备2,000+运输1,500+机器5,000=10,500` }]},
   {
     date: '2026-11-07',
+    role: 'accountant',
     title: '员工报销差旅费',
     tags: ["费用"],
     difficulty: 1,
@@ -157,6 +167,7 @@ const nov = [
       { type: 'receipt', label: '报销单', docTitle: '差旅费报销单', date: '2026-11-07', totalAmount: 2000, payer: '本公司', stampText: '财务\n审核专用章', items: [{ name: '市内交通+餐补', qty: 1, price: 2000, amount: 2000 }] }]},
   {
     date: '2026-11-10',
+    role: 'accountant',
     title: '研发支出·费用化支出 ⭐',
     tags: ["资产","费用"],
     difficulty: 3,
@@ -183,6 +194,7 @@ const nov = [
   合计：23,000.00元` }]},
   {
     date: '2026-11-11',
+    role: 'accountant',
     title: '研发支出·资本化支出 ⭐',
     tags: ["资产"],
     difficulty: 3,
@@ -213,6 +225,7 @@ const nov = [
 
   {
     date: '2026-11-13',
+    role: 'accountant',
     title: '收取投资性房地产租金',
     tags: ["资产","费用"],
     difficulty: 2,
@@ -225,6 +238,7 @@ const nov = [
       { type: 'bank', label: '银行回单', date: '2026-11-13', totalAmount: 8000, payer: 'M科技有限公司', payeeName: '本公司', content: '11月办公楼租金', refNo: 'HD202611130009' }]},
   {
     date: '2026-11-14',
+    role: 'accountant',
     title: '投资性房地产计提折旧',
     tags: ["资产"],
     difficulty: 2,
@@ -237,6 +251,7 @@ const nov = [
       { type: 'text', label: '折旧表', docTitle: '投资性房地产折旧计算表（11月）', stampText: '固定资产\n专用章', content: `月折旧：2,375.00元\n本月计提：2,375.00元` }]},
   {
     date: '2026-11-17',
+    role: 'accountant',
     title: '计提存货跌价准备 ⭐',
     tags: ["资产","成本核算"],
     difficulty: 3,
@@ -260,6 +275,7 @@ const nov = [
 依据：《企业会计准则第1号——存货》第十五条` }]},
   {
     date: '2026-11-18',
+    role: 'accountant',
     title: '确认递延所得税资产 ⭐',
     tags: ["税费","资产"],
     difficulty: 3,
@@ -289,6 +305,7 @@ const nov = [
 
   {
     date: '2026-11-19',
+    role: 'accountant',
     title: '销售商品',
     tags: ["销售"],
     difficulty: 2,
@@ -304,6 +321,7 @@ const nov = [
       { type: 'bank', label: '银行回单', date: '2026-11-19', totalAmount: 135600, payer: '己公司', payeeName: '本公司', content: '购买A产品', refNo: 'HD202611190010' }]},
   {
     date: '2026-11-20',
+    role: 'accountant',
     title: '采购原材料',
     tags: ["采购"],
     difficulty: 2,
@@ -318,6 +336,7 @@ const nov = [
         lineItems: [{ name: 'K材料', unit: '吨', qty: 3, price: 10000, amount: 30000, taxRate: '13%', tax: 3900 }], totalAmount: 33900 }]},
   {
     date: '2026-11-24',
+    role: 'accountant',
     title: '结转主营业务成本',
     tags: ["成本核算"],
     difficulty: 2,
@@ -330,6 +349,7 @@ const nov = [
       { type: 'text', label: '成本表', docTitle: '销售成本计算表（11月）', stampText: '财务专用章', content: `A产品150件×400元/件=60,000元` }]},
   {
     date: '2026-11-25',
+    role: 'accountant',
     title: '计提坏账准备',
     tags: ["资产"],
     difficulty: 2,
@@ -347,6 +367,7 @@ const nov = [
 
   {
     date: '2026-11-26',
+    role: 'accountant',
     title: '计提11月员工工资',
     tags: ["工资社保"],
     difficulty: 2,
@@ -360,6 +381,7 @@ const nov = [
       { type: 'text', label: '工资表', docTitle: '11月工资计提表', stampText: 'HR\n工资专用章', content: `行政部31,000+销售部42,000=73,000` }]},
   {
     date: '2026-11-27',
+    role: 'accountant',
     title: '计提11月城建税及教育费附加',
     tags: ["税费"],
     difficulty: 2,
@@ -374,6 +396,7 @@ const nov = [
       { type: 'text', label: '税费计算表', docTitle: '11月税费计算表', stampText: '财务专用章', content: `销项15,600-进项3,900=应纳11,700\n城建税11,700×7%=819\n教育费附加11,700×3%=351` }]},
   {
     date: '2026-11-28',
+    role: 'accountant',
     title: '庚公司实现净利润·确认投资收益',
     tags: ["资产","融资"],
     difficulty: 3,
@@ -386,6 +409,7 @@ const nov = [
       { type: 'text', label: '庚公司报表', docTitle: '庚公司11月利润表', stampText: '庚公司\n财务专用章', content: `11月净利润50,000×30%=15,000` }]},
   {
     date: '2026-11-28',
+    role: 'accountant',
     title: '摊销长期待摊费用',
     tags: ["资产"],
     difficulty: 2,
@@ -398,6 +422,7 @@ const nov = [
       { type: 'text', label: '摊销表', docTitle: '长期待摊费用摊销表', stampText: '财务专用章', content: `月摊销2,000元，已摊销10个月共20,000元，剩余28,000元` }]},
   {
     date: '2026-11-29',
+    role: 'accountant',
     title: '月末结转·研发支出费用化',
     tags: ["资产","期末"],
     difficulty: 2,
@@ -418,6 +443,7 @@ const nov = [
       { type: 'text', label: '研发支出结转表', docTitle: '研发支出结转表（11月）', stampText: '财务专用章', content: `费用化支出23,000元→管理费用\n资本化支出43,000元→继续留在研发支出科目（待完工转无形资产）` }]},
   {
     date: '2026-11-30',
+    role: 'accountant',
     title: '月末结转·期间损益',
     tags: ["期末"],
     difficulty: 3,
@@ -484,6 +510,7 @@ const nov = [
     description: '清点现金3,000元，账实相符。', tip: '年终准备月。', entries: [],
     documents: [{ type: 'text', label: '现金日记账', docTitle: '现金日记账（11月）', stampText: '现金日记账', content: `11月期初：3,000` }] },
   { date: '2026-11-02', title: '提取备用金', tags: ["费用"], difficulty: 1,
+  role: 'accountant',
     description: '提取4,000元备用金。',
     tip: '日常操作。',
     entries: [{ subjectCode: '1001', summary: '备用金', debit: 4000, credit: 0, explanation: '现金增加。' }, { subjectCode: '100201', summary: '备用金', debit: 0, credit: 4000, explanation: '银行减少。' }],
@@ -493,15 +520,18 @@ const nov = [
     description: '整理月初回单。', tip: '日常整理。', entries: [],
     documents: [{ type: 'text', label: '回单清单', docTitle: '回单清（11月）', stampText: '财务章', content: `本月第1周` }] },
   { date: '2026-11-05', title: '银行代扣社保', tags: ["工资社保"], difficulty: 2,
+  role: 'accountant',
     description: '11月社保（单位21,000+个人7,000=28,000元）已代扣。', tip: '核对金额。',
     entries: [{ subjectCode: '221102', summary: '社保单位', debit: 21000, credit: 0, explanation: '社保减少。' }, { subjectCode: '224101', summary: '社保个人', debit: 7000, credit: 0, explanation: '其他应付款减少。' }, { subjectCode: '100201', summary: '社保费', debit: 0, credit: 28000, explanation: '银行减少。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221102），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'}],
     documents: [{ type: 'bank', label: '社保回单', date: '2026-11-05', totalAmount: 28000, payer: '本公司', payeeName: 'XX社保局', content: '11月社保', refNo: 'HD202611050005' }] },
   { date: '2026-11-06', title: '银行转账支付网络费', tags: ["费用"], difficulty: 1,
+  role: 'accountant',
     description: '支付11月网络费2,600元。',
     tip: '日常操作。',
     entries: [{ subjectCode: '6602', summary: '网络费', debit: 2600, credit: 0, explanation: '管理费增加。' }, { subjectCode: '100201', summary: '网络费', debit: 0, credit: 2600, explanation: '银行减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6602），属于"支付其他与经营活动有关的现金"。'}],
     documents: [{ type: 'bank', label: '回单', date: '2026-11-06', totalAmount: 2600, payer: '本公司', payeeName: '中国电信', content: '11月网络费', refNo: 'HD202611060008' }] },
   { date: '2026-11-08', title: '开立信用证保证金 ⭐', tags: ["采购"], difficulty: 2,
+  role: 'accountant',
     description: '因进口原材料需要，向工商银行申请开立信用证，金额US$8,000。按30%存入保证金US$2,400（按汇率6.90折合RMB 16,560）。信用证有效期90天。',
     tip: '信用证是国际贸易重要结算方式。开证流程：①提交开证申请书+合同；②存入保证金（通常20-50%）；③银行开立信用证并通知国外受益人；④受益人发货后提交单据；⑤银行审单后付款。出纳需保管信用证副本和保证金回单。',
     entries: [
@@ -509,36 +539,43 @@ const nov = [
       { subjectCode: '100201', summary: '划转保证金', debit: 0, credit: 16560, explanation: '银行存款减少16,560元。保证金转入专户后活期余额减少。' }],
     documents: [{ type: 'bank', label: '信用证申请书', date: '2026-11-08', totalAmount: 16560, payer: '本公司', payeeName: '境外供应商', content: '开立进口信用证US$8,000保证金30%', refNo: 'LC202611080001' }] },
   { date: '2026-11-10', title: '银行代扣公积金', tags: ["工资社保"], difficulty: 2,
+  role: 'accountant',
     description: '11月公积金（单位10,200+个人3,400=13,600元）已代扣。',
     tip: '日常操作。',
     entries: [{ subjectCode: '221103', summary: '公积单位', debit: 10200, credit: 0, explanation: '公积金减少。' }, { subjectCode: '224102', summary: '公积个人', debit: 3400, credit: 0, explanation: '其他应付款减少。' }, { subjectCode: '100201', summary: '公积金', debit: 0, credit: 13600, explanation: '银行减少。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221103），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'}],
     documents: [{ type: 'bank', label: '公积回单', date: '2026-11-10', totalAmount: 13600, payer: '本公司', payeeName: 'XX公积金中心', content: '11月公积金', refNo: 'HD202611100012' }] },
   { date: '2026-11-12', title: '银行转账支付快递费', tags: ["费用"], difficulty: 1,
+  role: 'accountant',
     description: '支付11月快递费600元。',
     tip: '日常操作。',
     entries: [{ subjectCode: '6602', summary: '快递费', debit: 600, credit: 0, explanation: '管理费增加。' }, { subjectCode: '100201', summary: '快递费', debit: 0, credit: 600, explanation: '银行减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6602），属于"支付其他与经营活动有关的现金"。'}],
     documents: [{ type: 'bank', label: '回单', date: '2026-11-12', totalAmount: 600, payer: '本公司', payeeName: '顺丰', content: '11月快递', refNo: 'HD202611120015' }] },
   { date: '2026-11-18', title: '购买支票本', tags: ["费用"], difficulty: 1,
+  role: 'accountant',
     description: '购买支票本45元。',
     tip: '日常操作。',
     entries: [{ subjectCode: '6603', summary: '支票本', debit: 45, credit: 0, explanation: '费用增加。' }, { subjectCode: '100201', summary: '支票本', debit: 0, credit: 45, explanation: '银行减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
     documents: [{ type: 'bank', label: '回单', date: '2026-11-18', totalAmount: 45, payer: '本公司', payeeName: '工行', content: '支票本', refNo: 'HD202611180018' }] },
   { date: '2026-11-23', title: '银行账户管理费', tags: ["费用"], difficulty: 1,
+  role: 'accountant',
     description: '11月管理费100元。累计1,100元。',
     tip: '日常操作。',
     entries: [{ subjectCode: '6603', summary: '管理费', debit: 100, credit: 0, explanation: '费用增加。' }, { subjectCode: '100201', summary: '管理费', debit: 0, credit: 100, explanation: '银行减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
     documents: [{ type: 'bank', label: '回单', date: '2026-11-23', totalAmount: 100, payer: '本公司', payeeName: '工行', content: '11月管理费', refNo: 'HD202611230022' }] },
   { date: '2026-11-25', title: '银行手续费确认', tags: ["费用"], difficulty: 1,
+  role: 'accountant',
     description: '11月手续费180元。',
     tip: '日常操作。',
     entries: [{ subjectCode: '6603', summary: '手续费', debit: 180, credit: 0, explanation: '费用增加。' }, { subjectCode: '100201', summary: '手续费', debit: 0, credit: 180, explanation: '银行减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6603），属于"支付其他与经营活动有关的现金"。'}],
     documents: [{ type: 'bank', label: '回单', date: '2026-11-25', totalAmount: 180, payer: '本公司', payeeName: '工行', content: '11月手续费', refNo: 'HD202611250025' }] },
   { date: '2026-11-26', title: '银行转账支付清洁费', tags: ["费用"], difficulty: 1,
+  role: 'accountant',
     description: '支付11月清洁费1,800元。',
     tip: '日常操作。',
     entries: [{ subjectCode: '6602', summary: '清洁费', debit: 1800, credit: 0, explanation: '管理费增加。' }, { subjectCode: '100201', summary: '清洁费', debit: 0, credit: 1800, explanation: '银行减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6602），属于"支付其他与经营活动有关的现金"。'}],
     documents: [{ type: 'bank', label: '回单', date: '2026-11-26', totalAmount: 1800, payer: '本公司', payeeName: 'XX物业', content: '11月清洁费', refNo: 'HD202611260028' }] },
   { date: '2026-11-27', title: '银行转账支付印刷费', tags: ["费用"], difficulty: 1,
+  role: 'accountant',
     description: '支付11月印刷费1,000元。',
     tip: '日常操作。',
     entries: [{ subjectCode: '6602', summary: '印刷费', debit: 1000, credit: 0, explanation: '管理费增加。' }, { subjectCode: '100201', summary: '印刷费', debit: 0, credit: 1000, explanation: '银行减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6602），属于"支付其他与经营活动有关的现金"。'}],
@@ -630,6 +667,7 @@ const nov = [
 存货跌价准备也是会计估计，皆不涉及银行流水` }]},
   {
     date: "2026-11-30",
+    role: 'accountant',
     title: "模拟纳税申报",
     tags: ["期末", "税费"],
     difficulty: 1,

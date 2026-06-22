@@ -42,6 +42,7 @@ const tasks = [
       { type: 'invoice', label: '增值税专用发票', date: '2026-11-01', region: '江苏省', invoiceNo: '3200261101', buyer: '鼎立建筑工程有限公司', seller: '丙公司建材有限公司', lineItems: [{ name: '沥青混凝土(AC-20)', qty: 500, unit: '吨', price: 600, amount: 300000 }, { name: '沥青混凝土(AC-13)', qty: 200, unit: '吨', price: 500, amount: 100000 }], totalAmount: 452000 }]},
   {
     date: '2026-11-02',
+    role: 'accountant',
     title: '支付材料采购款',
     tags: ['材料管理'],
     difficulty: 1,
@@ -67,6 +68,7 @@ const tasks = [
       { type: 'bank', label: '银行回单', date: '2026-11-02', totalAmount: 90000, payer: '鼎立建筑工程有限公司', payeeName: '丁公司路桥建设有限公司', content: '预付道路附属工程分包款', refNo: 'ZF202611020002' }]},
   {
     date: '2026-11-03',
+    role: 'accountant',
     title: '提取备用金',
     tags: ['出纳'],
     difficulty: 1,
@@ -94,6 +96,7 @@ const tasks = [
       { type: 'text', label: '工资表', docTitle: '2026年11月职工工资表', content: '施工人员(18人)200,000元；项目部管理人员(6人)50,000元；公司管理人员(5人)30,000元。合计280,000元。', signature: '王人事' }]},
   {
     date: '2026-11-04',
+    role: 'accountant',
     title: '发放职工工资',
     tags: ['工资社保'],
     difficulty: 1,
@@ -106,6 +109,7 @@ const tasks = [
       { type: 'bank', label: '银行代发工资回单', date: '2026-11-04', totalAmount: 280000, payer: '鼎立建筑工程有限公司', payeeName: '公司全体员工', content: '11月份工资发放', refNo: 'GZ202611040001' }]},
   {
     date: '2026-11-04',
+    role: 'accountant',
     title: '支付施工机械租赁费',
     tags: ['机械使用'],
     difficulty: 1,
@@ -150,6 +154,7 @@ const tasks = [
       { type: 'receipt', label: '增值税普通发票', date: '2026-11-06', items: [{ label: '安全锥', amount: 5000 }, { label: '警示牌', amount: 6000 }, { label: '反光衣', amount: 4000 }], totalAmount: 15000, stampText: '安全用品有限公司发票专用章' }]},
   {
     date: '2026-11-07',
+    role: 'accountant',
     title: '报销项目管理人员差旅费',
     tags: ['工程成本'],
     difficulty: 1,
@@ -162,6 +167,7 @@ const tasks = [
       { type: 'receipt', label: '差旅费报销单', date: '2026-11-07', items: [{ label: '交通费', amount: 2000 }, { label: '住宿费', amount: 1500 }, { label: '餐补', amount: 1000 }], totalAmount: 4500, stampText: '鼎立建筑工程有限公司财务专用章' }]},
   {
     date: '2026-11-08',
+    role: 'accountant',
     title: '支付办公费及水电费',
     tags: ['工程成本'],
     difficulty: 1,
@@ -217,6 +223,7 @@ const tasks = [
       { type: 'text', label: '保修费用计提表', docTitle: '办公楼保修费用预提计算表', content: '恒达地产办公楼合同总价5,000,000元，按0.4%/月计提保修费20,000元。保修期至2027年10月。', signature: '赵会计' }]},
   {
     date: '2026-11-12',
+    role: 'accountant',
     title: '支付分包工程结算尾款',
     tags: ['分包管理'],
     difficulty: 1,
@@ -229,6 +236,7 @@ const tasks = [
       { type: 'bank', label: '银行回单', date: '2026-11-12', totalAmount: 237000, payer: '鼎立建筑工程有限公司', payeeName: '丁公司路桥建设有限公司', content: '道路附属分包工程尾款', refNo: 'ZF202611120001' }]},
   {
     date: '2026-11-13',
+    role: 'accountant',
     title: '购买办公用品',
     tags: ['工程成本'],
     difficulty: 1,
@@ -259,6 +267,7 @@ const tasks = [
       { type: 'invoice', label: '增值税专用发票', date: '2026-11-14', region: '江苏省', invoiceNo: '3200261114', buyer: '鼎立建筑工程有限公司', seller: '路美交通设施有限公司', lineItems: [{ name: '热熔型路面标线涂料', qty: 2000, unit: 'kg', price: 12, amount: 24000 }, { name: '玻璃微珠', qty: 300, unit: 'kg', price: 20, amount: 6000 }], totalAmount: 33900 }]},
   {
     date: '2026-11-15',
+    role: 'accountant',
     title: '支付材料尾款',
     tags: ['材料管理'],
     difficulty: 1,
@@ -271,6 +280,7 @@ const tasks = [
       { type: 'bank', label: '网银转账回单', date: '2026-11-15', totalAmount: 50000, payer: '鼎立建筑工程有限公司', payeeName: '丙公司建材有限公司', content: '材料尾款', refNo: 'ZF202611150001' }]},
   {
     date: '2026-11-16',
+    role: 'accountant',
     title: '支付办公楼保修维修费',
     tags: ['工程成本'],
     difficulty: 1,
@@ -336,6 +346,7 @@ const tasks = [
       { type: 'bank', label: '银行回单', date: '2026-11-19', totalAmount: 472000, payer: '市政工程管理处', payeeName: '鼎立建筑工程有限公司', content: '道路工程完工结算款(扣除质保金)', refNo: 'HD202611190001' }]},
   {
     date: '2026-11-20',
+    role: 'accountant',
     title: '缴纳增值税及附加税费',
     tags: ['税费'],
     difficulty: 2,
@@ -368,6 +379,7 @@ const tasks = [
       { type: 'text', label: '税金计算表', docTitle: '城建税及教育费附加计算表', content: '增值税48,100元。城建税=48,100x7%=3,367元；教育费附加=48,100x5%=2,405元。合计5,772元。', signature: '赵会计' }]},
   {
     date: '2026-11-22',
+    role: 'accountant',
     title: '报销日常零星费用',
     tags: ['工程成本'],
     difficulty: 1,
@@ -380,6 +392,7 @@ const tasks = [
       { type: 'receipt', label: '费用报销单', date: '2026-11-22', items: [{ label: '交通费', amount: 1500 }, { label: '通讯费', amount: 1000 }, { label: '其他', amount: 500 }], totalAmount: 3000, stampText: '鼎立建筑工程有限公司财务专用章' }]},
   {
     date: '2026-11-24',
+    role: 'accountant',
     title: '支付零星维修费',
     tags: ['工程成本'],
     difficulty: 1,
@@ -549,6 +562,7 @@ const tasks = [
 
   {
     date: '2026-11-18',
+    role: 'accountant',
     title: '支付日常办公费用',
     tags: ['费用管理'],
     difficulty: 1,
@@ -571,6 +585,7 @@ const tasks = [
     documents: [{ type: 'text', label: '对账确认单', docTitle: '往来对账确认单', content: '与供应商核对往来，确认全部款项已结清。', signature: '赵会计' }]},
   {
     date: "2026-11-30",
+    role: 'accountant',
     title: "模拟纳税申报",
     tags: ["期末", "税费"],
     difficulty: 1,

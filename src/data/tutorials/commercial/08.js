@@ -27,6 +27,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-08-03',
+    role: 'accountant',
     title: '购入办公设备（电脑等固定资产）',
     tags: ['资金管理', '费用管理'],
     difficulty: 2,
@@ -44,6 +45,7 @@ const tasks = [
       { type: 'text', label: '固定资产验收单', docTitle: '固定资产验收单', content: '设备名称：笔记本电脑\n品牌型号：ThinkPad T14p\n数量：10台\n单价：5,000元\n总价：50,000元\n使用部门：行政部\n验收人：行政部 刘主任', signature: '行政部 刘主任 / 财务部 王会计' }]},
   {
     date: '2026-08-04',
+    role: 'accountant',
     title: '购入运输设备（送货用车辆）',
     tags: ['资金管理', '费用管理'],
     difficulty: 2,
@@ -61,6 +63,7 @@ const tasks = [
       { type: 'text', label: '机动车登记证书', docTitle: '机动车行驶证/登记证书', content: '车辆牌照：沪A·8F612\n品牌型号：上汽大通MAXUS V80\n使用性质：货运\n登记日期：2026年8月4日\n核定载质量：2.5吨\n使用部门：物流配送部', stampText: '上海市公安局交通警察总队 车辆管理所' }]},
   {
     date: '2026-08-05',
+    role: 'accountant',
     title: '购入无形资产（财务软件专利权）',
     tags: ['资金管理', '费用管理'],
     difficulty: 2,
@@ -77,6 +80,7 @@ const tasks = [
       { type: 'text', label: '软件授权书', docTitle: '软件使用许可协议', content: '授权方：星辰软件科技有限公司\n被授权方：本公司\n产品名称：财务管理系统V8.0\n授权类型：永久使用许可\n授权日期：2026年8月5日\n\n本软件用于企业日常财务核算与管理，含总账、报表、固定资产、工资等模块。', stampText: '星辰软件科技有限公司 合同专用章' }]},
   {
     date: '2026-08-06',
+    role: 'accountant',
     title: '长期待摊费用（装修费）摊销',
     tags: ['费用管理'],
     difficulty: 2,
@@ -91,6 +95,7 @@ const tasks = [
       { type: 'text', label: '摊销计算表', docTitle: '长期待摊费用摊销计算表', content: '项目：办公室装修费\n原值：60,000元\n摊销期限：5年（60个月）\n月摊销额：60,000÷60=1,000元\n本月摊销：1,000元\n剩余未摊销：59,000元', stampText: '财务专用章' }]},
   {
     date: '2026-08-07',
+    role: 'accountant',
     title: '计提固定资产折旧（办公设备+运输设备）',
     tags: ['费用管理'],
     difficulty: 2,
@@ -116,6 +121,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-08-10',
+    role: 'accountant',
     title: '固定资产处置（出售旧设备）',
     tags: ['资金管理', '费用管理'],
     difficulty: 3,
@@ -145,6 +151,7 @@ const tasks = [
 批准人：总经理`, stampText: '公司资产处置专用章' }]},
   {
     date: '2026-08-12',
+    role: 'accountant',
     title: '固定资产清理（报废）',
     tags: ['费用管理'],
     difficulty: 3,
@@ -169,6 +176,7 @@ const tasks = [
 批准人：行政部 刘主任 / 总经理`, stampText: '公司资产处置专用章' }]},
   {
     date: '2026-08-14',
+    role: 'accountant',
     title: '无形资产摊销（财务软件）',
     tags: ['费用管理'],
     difficulty: 2,
@@ -181,6 +189,7 @@ const tasks = [
       { type: 'text', label: '摊销计算表', docTitle: '无形资产摊销计算表', content: '项目：财务管理系统V8.0\n原值：60,000元\n预计使用年限：5年\n残值：0\n月摊销额：60,000÷5÷12=1,000元\n本月摊销：1,000元（当月新增当月摊销）\n剩余账面价值：59,000元\n摊销方法：直线法', stampText: '财务专用章' }]},
   {
     date: '2026-08-15',
+    role: 'accountant',
     title: '固定资产清理净损益结转',
     tags: ['期末', '费用管理'],
     difficulty: 3,
@@ -213,6 +222,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-08-09',
+    role: 'accountant',
     title: '毛利率法估算期末存货成本（一）',
     tags: ['仓存管理'],
     difficulty: 2,
@@ -223,6 +233,7 @@ const tasks = [
       { type: 'text', label: '毛利率法计算表', docTitle: '毛利率法——期末存货估算表', content: '一、已知条件：\n期初库存商品余额：180,000元\n本期采购总额：320,000元\n本期销售收入：500,000元\n历史平均毛利率：35%\n\n二、计算过程：\n估计销售成本 = 销售收入 × (1 - 毛利率)\n              = 500,000 × (1 - 35%)\n              = 500,000 × 65%\n              = 325,000元\n\n估计期末存货 = 期初存货 + 本期购货 - 估计销售成本\n              = 180,000 + 320,000 - 325,000\n              = 175,000元\n\n三、结果：\n估计销售成本：325,000元\n估计期末存货：175,000元\n\n四、说明：\n毛利率法假设本期毛利率与历史水平一致。若实际情况发生重大变化（如促销导致毛利率下降），估算结果可能偏差较大。实地盘点完成后应以实际数为准进行调整。', stampText: '财务专用章' }]},
   {
     date: '2026-08-09',
+    role: 'accountant',
     title: '毛利率法估算期末存货成本（二）',
     tags: ['仓存管理'],
     difficulty: 2,
@@ -238,6 +249,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-08-17',
+    role: 'accountant',
     title: '现购商品',
     tags: ['商品采购', '税费'],
     difficulty: 2,
@@ -254,6 +266,7 @@ const tasks = [
       { type: 'bank', label: '付款回单', date: '2026-08-17', totalAmount: 54240, payer: '本公司', payeeName: '华强供应链有限公司', content: '货款', refNo: 'HD202608170001' }]},
   {
     date: '2026-08-18',
+    role: 'accountant',
     title: '赊购商品',
     tags: ['商品采购', '往来管理'],
     difficulty: 2,
@@ -270,6 +283,7 @@ const tasks = [
       { type: 'text', label: '入库单', docTitle: '商品入库单', content: 'B类商品500件已验收入库，质量合格，供应商：丙公司。', signature: '仓库管理员 张保管' }]},
   {
     date: '2026-08-19',
+    role: 'accountant',
     title: '现销商品',
     tags: ['商品销售', '资金管理'],
     difficulty: 2,
@@ -286,6 +300,7 @@ const tasks = [
       { type: 'bank', label: '收款回单', date: '2026-08-19', totalAmount: 67800, payer: '鑫源商贸有限公司', payeeName: '本公司', content: '货款', refNo: 'HD202608190001' }]},
   {
     date: '2026-08-20',
+    role: 'accountant',
     title: '赊销商品',
     tags: ['商品销售', '往来管理'],
     difficulty: 2,
@@ -302,6 +317,7 @@ const tasks = [
       { type: 'text', label: '出库单', docTitle: '商品出库单', content: 'B类商品200件已出库并发货，承运人：顺丰物流。', signature: '仓库管理员 张保管' }]},
   {
     date: '2026-08-21',
+    role: 'accountant',
     title: '结转已销商品成本',
     tags: ['商品销售', '仓存管理'],
     difficulty: 2,
@@ -328,6 +344,7 @@ const tasks = [
 合计：68,000元`, stampText: '财务专用章' }]},
   {
     date: '2026-08-22',
+    role: 'accountant',
     title: '收到货款',
     tags: ['往来管理', '资金管理'],
     difficulty: 1,
@@ -344,6 +361,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-08-24',
+    role: 'accountant',
     title: '支付应付账款',
     tags: ['往来管理', '资金管理'],
     difficulty: 1,
@@ -356,6 +374,7 @@ const tasks = [
       { type: 'bank', label: '转账回单', date: '2026-08-24', totalAmount: 31500, payer: '本公司', payeeName: '丙公司', content: '支付货款', refNo: 'HD202608240001' }]},
   {
     date: '2026-08-25',
+    role: 'accountant',
     title: '计提本月工资',
     tags: ['工资社保'],
     difficulty: 2,
@@ -369,6 +388,7 @@ const tasks = [
       { type: 'text', label: '工资表', docTitle: '2026年8月工资汇总表', content: '管理人员：5人×6,000元=30,000元\n销售人员：4人×5,000元=20,000元\n合计：50,000元', stampText: '行政人事部章' }]},
   {
     date: '2026-08-26',
+    role: 'accountant',
     title: '发放本月工资',
     tags: ['工资社保'],
     difficulty: 1,
@@ -381,6 +401,7 @@ const tasks = [
       { type: 'bank', label: '代发工资回单', date: '2026-08-26', totalAmount: 50000, payer: '本公司', payeeName: '员工代发户', content: '2026年8月工资', refNo: 'HD202608260001' }]},
   {
     date: '2026-08-27',
+    role: 'accountant',
     title: '计提城建税及教育费附加',
     tags: ['税费'],
     difficulty: 2,
@@ -411,6 +432,7 @@ const tasks = [
   本月进项较大（含固定资产进项），形成留抵税额22,580元，可结转下期抵扣。`, stampText: '财务专用章' }]},
   {
     date: '2026-08-28',
+    role: 'accountant',
     title: '支付销售运费',
     tags: ['商品销售', '费用管理'],
     difficulty: 1,
@@ -424,6 +446,7 @@ const tasks = [
         items: [{ name: '销售商品运输费', qty: 1, price: 1800, amount: 1800 }] }]},
   {
     date: '2026-08-29',
+    role: 'accountant',
     title: '期末结转损益',
     tags: ['期末'],
     difficulty: 3,
@@ -488,6 +511,7 @@ const tasks = [
 3. 出纳印章、法人章请妥善保管，使用时严格登记` }]},
   {
     date: '2026-08-02',
+    role: 'accountant',
     title: '提取备用金（现金支票）',
     tags: ['出纳'],
     difficulty: 1,
@@ -501,6 +525,7 @@ const tasks = [
         items: [{ name: '备用金', qty: 1, price: 5000, amount: 5000 }] }]},
   {
     date: '2026-08-03',
+    role: 'accountant',
     title: '固定资产采购款转账支付确认',
     tags: ['出纳', '资金管理'],
     difficulty: 1,
@@ -515,6 +540,7 @@ const tasks = [
       { type: 'text', label: '付款申请单', docTitle: '付款申请单（编号：FK-202608-001）', content: '申请部门：行政部\n用途：采购办公用电脑10台\n收款方：联想科技（上海）有限公司\n金额：56,500.00元\n付款方式：网银转账\n审批人：部门经理✓ 财务主管✓ 总经理✓', stampText: '财务部 付款专用章' }]},
   {
     date: '2026-08-04',
+    role: 'accountant',
     title: '车辆购置款转账支付确认',
     tags: ['出纳', '资金管理'],
     difficulty: 1,
@@ -529,6 +555,7 @@ const tasks = [
       { type: 'text', label: '付款申请单', docTitle: '付款申请单（编号：FK-202608-002）', content: '申请部门：物流部\n用途：采购送货用轻型货车1辆\n收款方：上海大众汽车销售有限公司\n金额：135,600.00元\n付款方式：网银转账（建行）\n审批人：部门经理✓ 财务主管✓ 总经理✓', stampText: '财务部 付款专用章' }]},
   {
     date: '2026-08-05',
+    role: 'accountant',
     title: '软件采购款转账确认',
     tags: ['出纳', '资金管理'],
     difficulty: 1,
@@ -543,6 +570,7 @@ const tasks = [
       { type: 'text', label: '付款申请单', docTitle: '付款申请单（编号：FK-202608-003）', content: '申请部门：IT部\n用途：采购财务管理系统V8.0\n收款方：星辰软件科技有限公司\n金额：63,600.00元\n付款方式：网银转账（工行）\n审批人：部门经理✓ 财务主管✓ 总经理✓', stampText: '财务部 付款专用章' }]},
   {
     date: '2026-08-08',
+    role: 'accountant',
     title: '备用金借支—差旅预借',
     tags: ['出纳', '费用管理'],
     difficulty: 1,
@@ -556,6 +584,7 @@ const tasks = [
         items: [{ name: '出差地点：广州\n出差事由：洽谈配送合作\n预计天数：5天\n预计费用：3,000元（交通+住宿+伙食补贴）', qty: 1, price: 3000, amount: 3000 }] }]},
   {
     date: '2026-08-10',
+    role: 'accountant',
     title: '收到固定资产出售款项确认',
     tags: ['出纳', '资金管理'],
     difficulty: 1,
@@ -570,6 +599,7 @@ const tasks = [
       { type: 'text', label: '固定资产处置单', docTitle: '固定资产处置审批单（出售）', content: '资产名称：办公设备（旧）\n处置方式：出售\n购买方：二手设备回收有限公司\n收款金额：45,200.00元（含税）\n发票号码：3100890129\n收款确认人：出纳（签收）', stampText: '财务部 收款确认章' }]},
   {
     date: '2026-08-16',
+    role: 'accountant',
     title: '微信收款（零星商品销售）',
     tags: ['出纳', '商品销售'],
     difficulty: 2,
@@ -584,6 +614,7 @@ const tasks = [
         items: [{ name: '交易单号：WX202608161423001\n付款方式：微信支付\n商品：零星商品销售\n交易时间：2026-08-16 14:23:00', qty: 1, price: 3390, amount: 3390 }] }]},
   {
     date: '2026-08-19',
+    role: 'accountant',
     title: '销售收款到账确认',
     tags: ['出纳', '商品销售'],
     difficulty: 1,
@@ -597,6 +628,7 @@ const tasks = [
       { type: 'bank', label: '收款回单', date: '2026-08-19', totalAmount: 67800, payer: '鑫源商贸有限公司', payeeName: '本公司', content: '货款（发票No.3100890127）', refNo: 'HD202608190001' }]},
   {
     date: '2026-08-22',
+    role: 'accountant',
     title: '收到赊销前欠货款确认',
     tags: ['出纳', '往来管理'],
     difficulty: 1,
@@ -609,6 +641,7 @@ const tasks = [
       { type: 'bank', label: '收款回单', date: '2026-08-22', totalAmount: 58760, payer: '乙公司', payeeName: '本公司', content: '货款（发票No.3100890128）', refNo: 'HD202608220001' }]},
   {
     date: '2026-08-23',
+    role: 'accountant',
     title: '支付宝收款确认',
     tags: ['出纳', '往来管理'],
     difficulty: 2,
@@ -623,6 +656,7 @@ const tasks = [
         items: [{ name: '交易流水号：AL20260823001\n付款方式：支付宝扫码\n商品：商品销售（无票）\n交易时间：2026-08-23 10:15:00', qty: 1, price: 5650, amount: 5650 }] }]},
   {
     date: '2026-08-25',
+    role: 'accountant',
     title: '微信提现至银行账户',
     tags: ['出纳', '资金管理'],
     difficulty: 2,
@@ -637,6 +671,7 @@ const tasks = [
         items: [{ name: '提现申请单号：TX20260825001\n提现金额：3,390.00元\n手续费：3.39元（0.1%）\n实际到账：3,386.61元\n到账账户：工商银行\n处理时间：2026-08-25 15:30:00', qty: 1, price: 3390, amount: 3390 }] }]},
   {
     date: '2026-08-26',
+    role: 'accountant',
     title: '银行代发工资操作',
     tags: ['出纳', '工资社保'],
     difficulty: 2,
@@ -762,6 +797,7 @@ const tasks = [
 
   {
     date: '2026-08-31',
+    role: 'accountant',
     title: '模拟纳税申报',
     tags: ['期末', '税费'],
     difficulty: 1,

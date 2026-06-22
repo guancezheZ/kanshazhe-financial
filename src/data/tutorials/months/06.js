@@ -28,6 +28,7 @@ const jun = [
 
   {
     date: '2026-06-02',
+    role: 'accountant',
     title: '缴纳5月增值税',
     tags: ["税费"],
     difficulty: 1,
@@ -47,6 +48,7 @@ const jun = [
   },
   {
     date: '2026-06-02',
+    role: 'accountant',
     title: '缴纳5月城建税',
     tags: ["税费"],
     difficulty: 1,
@@ -66,6 +68,7 @@ const jun = [
   },
   {
     date: '2026-06-02',
+    role: 'accountant',
     title: '缴纳5月教育费附加',
     tags: ["税费"],
     difficulty: 1,
@@ -85,6 +88,7 @@ const jun = [
   },
   {
     date: '2026-06-05',
+    role: 'accountant',
     title: '发放5月份员工工资',
     tags: ["工资社保"],
     difficulty: 2,
@@ -117,6 +121,7 @@ const jun = [
   },
   {
     date: '2026-06-05',
+    role: 'accountant',
     title: '缴纳代扣社保及公积金个人部分',
     tags: ["工资社保"],
     difficulty: 2,
@@ -139,6 +144,7 @@ const jun = [
   },
   {
     date: '2026-06-05',
+    role: 'accountant',
     title: '缴纳5月代扣个税',
     tags: ["税费"],
     difficulty: 1,
@@ -163,6 +169,7 @@ const jun = [
 
   {
     date: '2026-06-09',
+    role: 'accountant',
     title: '暂估入库冲回——收到辛公司发票 ⭐',
     tags: ["采购"],
     difficulty: 3,
@@ -198,6 +205,7 @@ const jun = [
   },
   {
     date: '2026-06-10',
+    role: 'accountant',
     title: '采购原材料（含税）',
     tags: ["采购"],
     difficulty: 2,
@@ -219,6 +227,7 @@ const jun = [
   },
   {
     date: '2026-06-11',
+    role: 'accountant',
     title: '销售商品（款已收）',
     tags: ["销售"],
     difficulty: 2,
@@ -240,6 +249,7 @@ const jun = [
   },
   {
     date: '2026-06-12',
+    role: 'accountant',
     title: '赊销商品给庚公司',
     tags: ["销售"],
     difficulty: 2,
@@ -272,6 +282,7 @@ const jun = [
   },
   {
     date: '2026-06-12',
+    role: 'accountant',
     title: '收到丙公司货款',
     tags: ["销售"],
     difficulty: 1,
@@ -289,6 +300,7 @@ const jun = [
   },
   {
     date: '2026-06-13',
+    role: 'accountant',
     title: '支付供应商货款',
     tags: ["采购"],
     difficulty: 1,
@@ -306,6 +318,7 @@ const jun = [
   },
   {
     date: '2026-06-13',
+    role: 'accountant',
     title: '员工报销差旅费',
     tags: ["费用"],
     difficulty: 1,
@@ -328,6 +341,7 @@ const jun = [
   },
   {
     date: '2026-06-13',
+    role: 'accountant',
     title: '支付水电费',
     tags: ["费用"],
     difficulty: 1,
@@ -353,6 +367,7 @@ const jun = [
 
   {
     date: '2026-06-16',
+    role: 'accountant',
     title: '购买办公用品',
     tags: ["费用"],
     difficulty: 1,
@@ -371,6 +386,7 @@ const jun = [
   },
   {
     date: '2026-06-18',
+    role: 'accountant',
     title: '计提固定资产折旧',
     tags: ["资产"],
     difficulty: 2,
@@ -399,6 +415,7 @@ const jun = [
   },
   {
     date: '2026-06-18',
+    role: 'accountant',
     title: '无形资产摊销',
     tags: ["资产"],
     difficulty: 2,
@@ -423,6 +440,7 @@ const jun = [
   },
   {
     date: '2026-06-19',
+    role: 'accountant',
     title: '产品质量保证——实际维修支出 ⭐',
     tags: ["费用"],
     difficulty: 3,
@@ -455,6 +473,7 @@ const jun = [
   },
   {
     date: '2026-06-20',
+    role: 'accountant',
     title: '国债利息收入确认 ⭐',
     tags: ["资产"],
     difficulty: 2,
@@ -489,6 +508,7 @@ const jun = [
   },
   {
     date: '2026-06-20',
+    role: 'accountant',
     title: '按季支付短期借款利息 ⭐',
     tags: ["融资"],
     difficulty: 2,
@@ -523,6 +543,7 @@ Q2各月利息：
 
   {
     date: '2026-06-23',
+    role: 'accountant',
     title: '计提6月份员工工资',
     tags: ["工资社保"],
     difficulty: 2,
@@ -550,6 +571,7 @@ Q2各月利息：
   },
   {
     date: '2026-06-23',
+    role: 'accountant',
     title: '计提6月社保及公积金个人部分',
     tags: ["工资社保"],
     difficulty: 2,
@@ -579,6 +601,7 @@ Q2各月利息：
   },
   {
     date: '2026-06-24',
+    role: 'accountant',
     title: '缴纳6月社保费（单位部分）',
     tags: ["工资社保"],
     difficulty: 1,
@@ -603,6 +626,7 @@ Q2各月利息：
   },
   {
     date: '2026-06-24',
+    role: 'accountant',
     title: '缴纳6月公积金（单位部分）',
     tags: ["工资社保"],
     difficulty: 1,
@@ -621,6 +645,7 @@ Q2各月利息：
   },
   {
     date: '2026-06-25',
+    role: 'accountant',
     title: '计提应收账款坏账准备',
     tags: ["资产"],
     difficulty: 2,
@@ -648,6 +673,7 @@ Q2各月利息：
   },
   {
     date: '2026-06-26',
+    role: 'accountant',
     title: '计提Q2企业所得税 ⭐',
     tags: ["税费"],
     difficulty: 3,
@@ -680,6 +706,7 @@ Q2各月利息：
   },
   {
     date: '2026-06-27',
+    role: 'accountant',
     title: '计提6月城建税及教育费附加',
     tags: ["税费"],
     difficulty: 2,
@@ -710,6 +737,7 @@ Q2各月利息：
   },
   {
     date: '2026-06-30',
+    role: 'accountant',
     title: '月末结转·期间损益',
     tags: ["期末"],
     difficulty: 3,
@@ -1099,6 +1127,7 @@ Q2各月利息：
      ═══════════════════════════════════════════════ */
   {
     date: '2026-06-28',
+    role: 'accountant',
     title: '冲回暂估入库——收到发票 ⭐',
     tags: ["采购"],
     difficulty: 2,
@@ -1119,6 +1148,7 @@ Q2各月利息：
   },
   {
     date: '2026-06-29',
+    role: 'accountant',
     title: '销售折让处理',
     tags: ["销售"],
     difficulty: 2,
@@ -1212,6 +1242,7 @@ Q2各月利息：
   },
   {
     date: "2026-06-30",
+    role: 'accountant',
     title: "模拟纳税申报",
     tags: ["期末", "税费"],
     difficulty: 1,

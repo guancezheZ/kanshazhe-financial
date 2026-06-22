@@ -19,6 +19,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-03-02',
+    role: 'accountant',
     title: '暂估入库——货到票未到',
     tags: ['商品采购', '仓存管理'],
     difficulty: 2,
@@ -60,6 +61,7 @@ const tasks = [
 签订日期：2026年2月25日` }]},
   {
     date: '2026-03-03',
+    role: 'accountant',
     title: '暂估冲回——收到发票入账',
     tags: ['商品采购', '往来管理'],
     difficulty: 3,
@@ -78,6 +80,7 @@ const tasks = [
       { type: 'text', label: '红字冲回说明', docTitle: '会计调整说明——暂估冲回', content: '调整原因：上月暂估入库的A类商品300件（暂估30,000元）本月收到发票。\n处理方式：红字冲回原暂估分录，按发票金额重新入账。\n附件：增值税专用发票No.3100367890', stampText: '财务专用章' }]},
   {
     date: '2026-03-04',
+    role: 'accountant',
     title: '采购商品（现购）',
     tags: ['商品采购', '税费'],
     difficulty: 2,
@@ -94,6 +97,7 @@ const tasks = [
       { type: 'bank', label: '付款回单', date: '2026-03-04', totalAmount: 45200, payer: '本公司', payeeName: '华强供应链有限公司', content: '货款（发票No.4400789012）', refNo: 'HD202603040001' }]},
   {
     date: '2026-03-05',
+    role: 'accountant',
     title: '采购商品（赊购）',
     tags: ['商品采购', '往来管理'],
     difficulty: 2,
@@ -110,6 +114,7 @@ const tasks = [
       { type: 'text', label: '入库单', docTitle: '商品入库单', content: 'C类商品500件已验收入库，质量合格。\n经手人：仓库管理员 张保管\n供应商：丁公司', signature: '仓库管理员 张保管' }]},
   {
     date: '2026-03-06',
+    role: 'accountant',
     title: '采购退货——退回不合格商品',
     tags: ['商品采购', '仓存管理'],
     difficulty: 2,
@@ -141,6 +146,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-03-09',
+    role: 'accountant',
     title: '支付采购运费',
     tags: ['商品采购', '费用管理'],
     difficulty: 1,
@@ -154,6 +160,7 @@ const tasks = [
         items: [{ name: '运输费（丙公司→本公司仓库）', qty: 1, price: 1500, amount: 1500 }] }]},
   {
     date: '2026-03-10',
+    role: 'accountant',
     title: '员工报销差旅费',
     tags: ['费用管理'],
     difficulty: 1,
@@ -167,6 +174,7 @@ const tasks = [
         items: [{ name: '火车票（上海→南京）', qty: 2, price: 400, amount: 800 }, { name: '火车票（南京→上海）', qty: 2, price: 400, amount: 800 }, { name: '住宿费', qty: 3, price: 400, amount: 1200 }] }]},
   {
     date: '2026-03-11',
+    role: 'accountant',
     title: '支付应付账款（偿还丙公司货款）',
     tags: ['往来管理'],
     difficulty: 1,
@@ -179,6 +187,7 @@ const tasks = [
       { type: 'bank', label: '转账回单', date: '2026-03-11', totalAmount: 33900, payer: '本公司', payeeName: '丙公司', content: '支付货款（发票No.3100367890）', refNo: 'HD202603110001' }]},
   {
     date: '2026-03-12',
+    role: 'accountant',
     title: '支付应付账款（偿还丁公司货款）',
     tags: ['往来管理'],
     difficulty: 1,
@@ -191,6 +200,7 @@ const tasks = [
       { type: 'bank', label: '转账回单', date: '2026-03-12', totalAmount: 50850, payer: '本公司', payeeName: '丁公司', content: '支付货款（扣除退货后净额）', refNo: 'HD202603120001' }]},
   {
     date: '2026-03-13',
+    role: 'accountant',
     title: '收到客户预付定金',
     tags: ['往来管理'],
     difficulty: 2,
@@ -204,6 +214,7 @@ const tasks = [
       { type: 'text', label: '销售合同', docTitle: '商品销售合同', content: '甲方（卖方）：本公司\n乙方（买方）：乙公司\n\n商品：C类商品 200件\n总价：60,000元（不含税）\n预付定金：30,000元\n余款：发货前付清\n\n签订日期：2026年3月12日', stampText: '合同专用章' }]},
   {
     date: '2026-03-14',
+    role: 'accountant',
     title: '预付采购定金',
     tags: ['商品采购'],
     difficulty: 2,
@@ -221,6 +232,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-03-16',
+    role: 'accountant',
     title: '销售商品（现销）',
     tags: ['商品销售'],
     difficulty: 2,
@@ -237,6 +249,7 @@ const tasks = [
       { type: 'bank', label: '收款回单', date: '2026-03-16', totalAmount: 90400, payer: '鑫源商贸有限公司', payeeName: '本公司', content: '货款', refNo: 'HD202603160001' }]},
   {
     date: '2026-03-17',
+    role: 'accountant',
     title: '结转已销商品成本（现销）',
     tags: ['商品销售', '仓存管理'],
     difficulty: 2,
@@ -249,6 +262,7 @@ const tasks = [
       { type: 'text', label: '成本计算表', docTitle: '商品销售成本计算表（现销）', content: '销售商品：A类商品\n销售数量：200件\n单位成本：100元（移动加权平均）\n销售成本：20,000元\n\n计算方法：期初库存0 + 本期入库300件×100元 = 30,000元 ÷ 300件 = 100元/件', stampText: '财务专用章' }]},
   {
     date: '2026-03-18',
+    role: 'accountant',
     title: '销售商品（赊销）',
     tags: ['商品销售', '往来管理'],
     difficulty: 2,
@@ -265,6 +279,7 @@ const tasks = [
       { type: 'text', label: '出库单', docTitle: '商品出库单', content: 'B类商品 150件 已出库并发货。\n承运人：顺丰物流\n经手人：仓库管理员 张保管', signature: '仓库管理员 张保管' }]},
   {
     date: '2026-03-19',
+    role: 'accountant',
     title: '结转已销商品成本（赊销）',
     tags: ['商品销售', '仓存管理'],
     difficulty: 2,
@@ -277,6 +292,7 @@ const tasks = [
       { type: 'text', label: '成本计算表', docTitle: '商品销售成本计算表（赊销）', content: '销售商品：B类商品\n销售数量：150件\n单位成本：200元（移动加权平均）\n销售成本：30,000元\n\n计算方法：期初库存0 + 本期入库200件×200元 = 40,000元 ÷ 200件 = 200元/件', stampText: '财务专用章' }]},
   {
     date: '2026-03-20',
+    role: 'accountant',
     title: '收到前欠货款',
     tags: ['往来管理'],
     difficulty: 1,
@@ -289,6 +305,7 @@ const tasks = [
       { type: 'bank', label: '收款回单', date: '2026-03-20', totalAmount: 67800, payer: '鑫源商贸有限公司', payeeName: '本公司', content: '货款（发票No.3100367894）', refNo: 'HD202603200001' }]},
   {
     date: '2026-03-21',
+    role: 'accountant',
     title: '支付销售运费',
     tags: ['商品销售', '费用管理'],
     difficulty: 1,
@@ -306,6 +323,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-03-23',
+    role: 'accountant',
     title: '支付水电费',
     tags: ['费用管理'],
     difficulty: 1,
@@ -321,6 +339,7 @@ const tasks = [
         items: [{ name: '水费（3月）', qty: 1, price: 800, amount: 800 }] }]},
   {
     date: '2026-03-24',
+    role: 'accountant',
     title: '支付广告费',
     tags: ['费用管理'],
     difficulty: 1,
@@ -334,6 +353,7 @@ const tasks = [
         items: [{ name: '搜索引擎推广服务（3月）', qty: 1, price: 4000, amount: 4000 }] }]},
   {
     date: '2026-03-25',
+    role: 'accountant',
     title: '计提本月工资',
     tags: ['工资社保'],
     difficulty: 2,
@@ -347,6 +367,7 @@ const tasks = [
       { type: 'text', label: '工资表', docTitle: '2026年3月工资汇总表', content: '管理人员：5人 × 6,000元 = 30,000元\n销售人员：4人 × 5,000元 = 20,000元\n合计：50,000元\n实发金额：50,000元（无社保公积金扣除）', stampText: '行政人事部章' }]},
   {
     date: '2026-03-26',
+    role: 'accountant',
     title: '发放本月工资',
     tags: ['工资社保'],
     difficulty: 1,
@@ -359,6 +380,7 @@ const tasks = [
       { type: 'bank', label: '代发工资回单', date: '2026-03-26', totalAmount: 50000, payer: '本公司', payeeName: '员工代发户', content: '2026年3月工资', refNo: 'HD202603260001' }]},
   {
     date: '2026-03-27',
+    role: 'accountant',
     title: '计提固定资产折旧',
     tags: ['费用管理'],
     difficulty: 2,
@@ -371,6 +393,7 @@ const tasks = [
       { type: 'text', label: '折旧计算表', docTitle: '固定资产折旧计算表（2026年3月）', content: '房屋建筑物：原值500,000×月折旧率0.2%=1,000元\n办公设备：原值60,000×月折旧率0.8%=480元\n运输设备：原值200,000×月折旧率1.0%=2,000元\n合计：3,480元\n折旧方法：直线法（年限平均法）', stampText: '财务专用章' }]},
   {
     date: '2026-03-28',
+    role: 'accountant',
     title: '计提城建税及教育费附加',
     tags: ['税费'],
     difficulty: 2,
@@ -384,6 +407,7 @@ const tasks = [
       { type: 'text', label: '税金计算表', docTitle: '附加税费计算表（2026年3月）', content: '计税依据：应交增值税=销项18,200-进项14,950=3,250元\n城市维护建设税：3,250×7%=227.50元\n教育费附加：3,250×3%=97.50元\n合计：325.00元\n\n附：进项税额明细\n暂估冲回进项：3,900\n现购进项：5,200\n赊购进项：6,500\n退货冲减进项：-650\n进项合计：14,950\n\n销项税额明细\n现销销项：10,400\n赊销销项：7,800\n销项合计：18,200', stampText: '财务专用章' }]},
   {
     date: '2026-03-29',
+    role: 'accountant',
     title: '缴纳增值税',
     tags: ['税费'],
     difficulty: 1,
@@ -397,6 +421,7 @@ const tasks = [
       { type: 'text', label: '纳税申报表', docTitle: '增值税纳税申报表（简表）', content: '所属期：2026年2月\n销项税额：（略）\n进项税额：（略）\n应交增值税：1,500元\n已缴纳：1,500元\n申报日期：2026年3月15日' }]},
   {
     date: '2026-03-30',
+    role: 'accountant',
     title: '期末结转损益',
     tags: ['期末'],
     difficulty: 3,
@@ -454,6 +479,7 @@ const tasks = [
 经办人：赵出纳    复核人：钱会计` }]},
   {
     date: '2026-03-01',
+    role: 'accountant',
     title: '提取备用金',
     tags: ['出纳'],
     difficulty: 1,
@@ -468,6 +494,7 @@ const tasks = [
         items: [{ name: '提取备用金—库存现金', qty: 1, price: 5000, amount: 5000 }] }]},
   {
     date: '2026-03-02',
+    role: 'accountant',
     title: '现金支付快递费',
     tags: ['出纳', '费用管理'],
     difficulty: 1,
@@ -481,6 +508,7 @@ const tasks = [
         items: [{ name: '国内标准快递（合同、发票等）', qty: 6, price: 60, amount: 360 }] }]},
   {
     date: '2026-03-03',
+    role: 'accountant',
     title: '银行账户间资金调拨',
     tags: ['出纳'],
     difficulty: 2,
@@ -494,6 +522,7 @@ const tasks = [
       { type: 'text', label: '资金调拨审批单', docTitle: '银行间资金调拨申请单', content: '申请部门：财务部\n调出账户：工商银行 xxxx\n调入账户：建设银行 xxxx\n调拨金额：50,000元\n调拨原因：建行账户需支付供应商货款\n审批人：财务主管 孙主管', signature: '财务主管 孙主管' }]},
   {
     date: '2026-03-05',
+    role: 'accountant',
     title: '收到客户预付货款',
     tags: ['出纳', '往来管理'],
     difficulty: 1,
@@ -507,6 +536,7 @@ const tasks = [
       { type: 'text', label: '销售合同', docTitle: '商品销售合同（甲公司）', content: '甲方（卖方）：本公司\n乙方（买方）：甲公司\n\n商品：A类商品\n合同金额：50,000元（不含税）\n预付定金：20,000元\n余款：发货前付清\n\n签订日期：2026年3月4日', stampText: '合同专用章' }]},
   {
     date: '2026-03-06',
+    role: 'accountant',
     title: '微信收款确认',
     tags: ['出纳'],
     difficulty: 2,
@@ -520,6 +550,7 @@ const tasks = [
         items: [{ name: '商品货款（客户微信支付）', qty: 1, price: 2260, amount: 2260 }] }]},
   {
     date: '2026-03-07',
+    role: 'accountant',
     title: '微信提现至银行',
     tags: ['出纳'],
     difficulty: 1,
@@ -534,6 +565,7 @@ const tasks = [
       { type: 'bank', label: '银行入账回单', date: '2026-03-07', totalAmount: 2000, payer: '财付通支付科技有限公司', payeeName: '本公司', content: '微信提现入账', refNo: 'TX20260307001' }]},
   {
     date: '2026-03-07',
+    role: 'accountant',
     title: '员工借支差旅备用金',
     tags: ['出纳', '费用管理'],
     difficulty: 1,
@@ -549,6 +581,7 @@ const tasks = [
         items: [{ name: '张明借支差旅费', qty: 1, price: 2000, amount: 2000 }] }]},
   {
     date: '2026-03-08',
+    role: 'accountant',
     title: '银行手续费扣收',
     tags: ['出纳'],
     difficulty: 1,
@@ -585,6 +618,7 @@ const tasks = [
  编制人：赵出纳    复核人：钱会计` }]},
   {
     date: '2026-03-15',
+    role: 'accountant',
     title: '银行承兑汇票到期收款',
     tags: ['出纳'],
     difficulty: 2,
@@ -635,6 +669,7 @@ const tasks = [
  结论：账实相符，无差异。` }]},
   {
     date: '2026-03-18',
+    role: 'accountant',
     title: '备用金归还',
     tags: ['出纳', '费用管理'],
     difficulty: 2,
@@ -651,6 +686,7 @@ const tasks = [
         items: [{ name: '收回张明备用金余款', qty: 1, price: 500, amount: 500 }] }]},
   {
     date: '2026-03-20',
+    role: 'accountant',
     title: '支付宝收款确认',
     tags: ['出纳'],
     difficulty: 2,
@@ -664,6 +700,7 @@ const tasks = [
         items: [{ name: '采购质量保证金（客户支付宝支付）', qty: 1, price: 3000, amount: 3000 }] }]},
   {
     date: '2026-03-22',
+    role: 'accountant',
     title: '现金支付办公用品费',
     tags: ['出纳', '费用管理'],
     difficulty: 1,
@@ -688,6 +725,7 @@ const tasks = [
  采购人：李采购    验收人：王行政` }]},
   {
     date: '2026-03-25',
+    role: 'accountant',
     title: '支付宝提现至银行',
     tags: ['出纳'],
     difficulty: 1,
@@ -702,6 +740,7 @@ const tasks = [
       { type: 'bank', label: '银行入账回单', date: '2026-03-25', totalAmount: 2800, payer: '支付宝（中国）网络技术有限公司', payeeName: '本公司', content: '支付宝提现入账', refNo: 'TX20260325001' }]},
   {
     date: '2026-03-30',
+    role: 'accountant',
     title: '现金送存银行',
     tags: ['出纳'],
     difficulty: 1,
@@ -754,6 +793,7 @@ const tasks = [
 
   {
     date: '2026-03-31',
+    role: 'accountant',
     title: '模拟纳税申报',
     tags: ['期末', '税费'],
     difficulty: 1,

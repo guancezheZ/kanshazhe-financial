@@ -5,6 +5,7 @@
 const tasks = [
   {
     "date": "2026-05-04",
+    "role": "accountant",
     "title": "缴纳4月增值税及附加税",
     "tags": ["税费"],
     "difficulty": 2,
@@ -52,6 +53,7 @@ const tasks = [
   },
   {
     "date": "2026-05-05",
+    "role": "accountant",
     "title": "缴纳4月社保费",
     "tags": ["工资社保"],
     "difficulty": 1,
@@ -85,6 +87,7 @@ const tasks = [
   },
   {
     "date": "2026-05-06",
+    "role": "accountant",
     "title": "发放4月工资",
     "tags": [
       "人工成本",
@@ -128,6 +131,7 @@ const tasks = [
   },
   {
     "date": "2026-05-07",
+    "role": "accountant",
     "title": "签订新IT咨询大合同",
     "tags": [
       "收入确认",
@@ -171,6 +175,7 @@ const tasks = [
   },
   {
     "date": "2026-05-08",
+    "role": "accountant",
     "title": "收到应收账款（戊客户中期款）",
     "tags": ["往来管理"],
     "difficulty": 2,
@@ -211,6 +216,7 @@ const tasks = [
   },
   {
     "date": "2026-05-09",
+    "role": "accountant",
     "title": "摊销5月办公室租金",
     "tags": [
       "费用管理"
@@ -243,6 +249,7 @@ const tasks = [
   },
   {
     "date": "2026-05-10",
+    "role": "accountant",
     "title": "计提5月上半月项目工资",
     "tags": [
       "项目核算",
@@ -276,6 +283,7 @@ const tasks = [
   },
   {
     "date": "2026-05-11",
+    "role": "accountant",
     "title": "计提5月上半月管理工资",
     "tags": [
       "人工成本",
@@ -309,6 +317,7 @@ const tasks = [
   },
   {
     "date": "2026-05-12",
+    "role": "accountant",
     "title": "支付5月水电费",
     "tags": [
       "费用管理"
@@ -343,6 +352,7 @@ const tasks = [
   },
   {
     "date": "2026-05-13",
+    "role": "accountant",
     "title": "计提坏账准备",
     "tags": [
       "往来管理"
@@ -375,6 +385,7 @@ const tasks = [
   },
   {
     "date": "2026-05-14",
+    "role": "accountant",
     "title": "戊客户IT咨询项目第一阶段完成",
     "tags": [
       "收入确认",
@@ -412,6 +423,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     "date": "2026-05-15",
+    "role": "accountant",
     "title": "投入法计算甲项目完工进度",
     "tags": ["项目核算", "收入确认"],
     "difficulty": 2,
@@ -424,6 +436,7 @@ const tasks = [
   },
   {
     "date": "2026-05-16",
+    "role": "accountant",
     "title": "按完工百分比确认项目收入",
     "tags": ["收入确认", "项目核算"],
     "difficulty": 3,
@@ -440,6 +453,7 @@ const tasks = [
   },
   {
     "date": "2026-05-17",
+    "role": "accountant",
     "title": "确认丁项目合同预计损失",
     "tags": ["项目核算", "收入确认"],
     "difficulty": 3,
@@ -455,6 +469,7 @@ const tasks = [
   },
   {
     "date": "2026-05-15",
+    "role": "accountant",
     "title": "发生业务招待费（大额）",
     "tags": [
       "费用管理"
@@ -489,6 +504,7 @@ const tasks = [
   },
   {
     "date": "2026-05-16",
+    "role": "accountant",
     "title": "其他业务收入：出售废旧电脑",
     "tags": [
       "费用管理"
@@ -523,6 +539,7 @@ const tasks = [
   },
   {
     "date": "2026-05-18",
+    "role": "accountant",
     "title": "计提5月下半月项目工资",
     "tags": [
       "项目核算",
@@ -556,6 +573,7 @@ const tasks = [
   },
   {
     "date": "2026-05-19",
+    "role": "accountant",
     "title": "计提5月下半月管理工资",
     "tags": [
       "人工成本",
@@ -589,6 +607,7 @@ const tasks = [
   },
   {
     "date": "2026-05-20",
+    "role": "accountant",
     "title": "计提5月社保",
     "tags": [
       "人工成本",
@@ -629,6 +648,7 @@ const tasks = [
   },
   {
     "date": "2026-05-21",
+    "role": "accountant",
     "title": "计提5月折旧",
     "tags": [
       "费用管理"
@@ -661,6 +681,7 @@ const tasks = [
   },
   {
     "date": "2026-05-22",
+    "role": "accountant",
     "title": "计提无形资产摊销",
     "tags": [
       "费用管理"
@@ -693,6 +714,7 @@ const tasks = [
   },
   {
     "date": "2026-05-23",
+    "role": "accountant",
     "title": "补提房租摊销（预付期满）",
     "tags": [
       "费用管理"
@@ -725,6 +747,7 @@ const tasks = [
   },
   {
     "date": "2026-05-24",
+    "role": "accountant",
     "title": "计算5月增值税",
     "tags": [
       "税费",
@@ -772,6 +795,7 @@ const tasks = [
   },
   {
     "date": "2026-05-26",
+    "role": "accountant",
     "title": "期末结转损益",
     "description": "月末将收入类、费用类科目余额结转至本年利润科目，计算当月经营成果。",
     "tags": [
@@ -944,6 +968,7 @@ const tasks = [
   },
   {
     "date": "2026-05-08",
+    "role": "accountant",
     "title": "中期款到账",
     "tags": ["出纳"],
     "difficulty": 1,
@@ -976,6 +1001,7 @@ const tasks = [
   },
   {
     "date": "2026-05-16",
+    "role": "accountant",
     "title": "废旧物资收款",
     "tags": ["出纳"],
     "difficulty": 1,
@@ -1008,6 +1034,7 @@ const tasks = [
   },
   {
     "date": "2026-05-27",
+    "role": "accountant",
     "title": "现金盘点",
     "tags": [
       "期末"
@@ -1025,6 +1052,7 @@ const tasks = [
   },
   {
     "date": "2026-05-28",
+    "role": "accountant",
     "title": "银行对账",
     "tags": [
       "期末"
@@ -1042,6 +1070,7 @@ const tasks = [
   },
   {
     "date": "2026-05-30",
+    "role": "accountant",
     "title": "票据归档",
     "tags": [
       "期末"
@@ -1059,6 +1088,7 @@ const tasks = [
   },
   {
     "date": "2026-05-12",
+    "role": "accountant",
     "title": "微信收款-咨询费",
     "tags": ["出纳"],
     "difficulty": 1,
@@ -1097,6 +1127,7 @@ const tasks = [
   },
   {
     "date": "2026-05-14",
+    "role": "accountant",
     "title": "支付宝支付外包设计费",
     "tags": [
       "项目核算"
@@ -1130,6 +1161,7 @@ const tasks = [
   },
   {
     "date": "2026-05-15",
+    "role": "accountant",
     "title": "银行账户间调拨",
     "tags": ["资金管理"],
     "difficulty": 1,
@@ -1159,6 +1191,7 @@ const tasks = [
   },
   {
     "date": "2026-05-18",
+    "role": "accountant",
     "title": "现金支付快递及办公杂费",
     "tags": [
       "费用管理"
@@ -1192,6 +1225,7 @@ const tasks = [
   },
   {
     "date": "2026-05-19",
+    "role": "accountant",
     "title": "银行代扣账户管理费",
     "tags": [
       "费用管理"
@@ -1225,6 +1259,7 @@ const tasks = [
   },
   {
     "date": "2026-05-20",
+    "role": "accountant",
     "title": "提取备用金",
     "tags": ["出纳"],
     "difficulty": 1,
@@ -1254,6 +1289,7 @@ const tasks = [
   },
   {
     "date": "2026-05-21",
+    "role": "accountant",
     "title": "缴纳团建费用",
     "tags": [
       "费用管理"
@@ -1287,6 +1323,7 @@ const tasks = [
   },
   {
     "date": "2026-05-23",
+    "role": "accountant",
     "title": "购买转账支票",
     "tags": ["出纳"],
     "difficulty": 1,
@@ -1318,6 +1355,7 @@ const tasks = [
   },
   {
     "date": "2026-05-27",
+    "role": "accountant",
     "title": "出纳月末现金盘点",
     "tags": ["出纳"],
     "difficulty": 1,
@@ -1332,6 +1370,7 @@ const tasks = [
   },
   {
     "date": "2026-05-28",
+    "role": "accountant",
     "title": "银行存款余额调节",
     "tags": ["出纳"],
     "difficulty": 1,
@@ -1346,6 +1385,7 @@ const tasks = [
   },
   {
     date: "2026-05-31",
+    "role": "accountant",
     title: "模拟纳税申报",
     tags: ["期末", "税费"],
     difficulty: 1,

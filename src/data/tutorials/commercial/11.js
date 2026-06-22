@@ -26,6 +26,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-11-02',
+    role: 'accountant',
     title: '增值税进项税额认证',
     tags: ['商品采购', '税费'],
     difficulty: 2,
@@ -43,6 +44,7 @@ const tasks = [
       { type: 'text', label: '发票认证结果', docTitle: '增值税发票综合服务平台认证结果', content: '发票代码：3200789012\n认证结果：通过 ✓\n认证日期：2026-11-02\n所属期：2026年11月\n认证方式：在线勾选认证\n\n温馨提示：认证通过的发票应在当月申报抵扣，逾期不得抵扣。', stampText: '增值税发票电子底账系统' }]},
   {
     date: '2026-11-03',
+    role: 'accountant',
     title: '现购商品',
     tags: ['商品采购', '税费'],
     difficulty: 2,
@@ -59,6 +61,7 @@ const tasks = [
       { type: 'bank', label: '付款回单', date: '2026-11-03', totalAmount: 84750, payer: '本公司', payeeName: '华强供应链有限公司', content: '货款', refNo: 'HD202611030001' }]},
   {
     date: '2026-11-04',
+    role: 'accountant',
     title: '赊购商品',
     tags: ['商品采购', '往来管理'],
     difficulty: 2,
@@ -75,6 +78,7 @@ const tasks = [
       { type: 'text', label: '入库单', docTitle: '商品入库单', content: 'C类商品 150件 已验收入库，质量合格。检验员：李明。', signature: '仓库管理员 王强' }]},
   {
     date: '2026-11-05',
+    role: 'accountant',
     title: '现销商品',
     tags: ['商品销售'],
     difficulty: 1,
@@ -91,6 +95,7 @@ const tasks = [
       { type: 'bank', label: '收款回单', date: '2026-11-05', totalAmount: 113000, payer: '鑫源商贸有限公司', payeeName: '本公司', content: '货款', refNo: 'HD202611050001' }]},
   {
     date: '2026-11-06',
+    role: 'accountant',
     title: '赊销商品',
     tags: ['商品销售', '往来管理'],
     difficulty: 2,
@@ -107,6 +112,7 @@ const tasks = [
       { type: 'text', label: '出库单', docTitle: '商品出库单', content: 'B类商品 300件 已出库并发货，承运人：顺丰物流。', signature: '仓库管理员 王强' }]},
   {
     date: '2026-11-07',
+    role: 'accountant',
     title: '结转已销商品成本',
     tags: ['商品销售', '仓存管理'],
     difficulty: 2,
@@ -136,6 +142,7 @@ const tasks = [
       { type: 'text', label: '增值税计算表', docTitle: '2026年11月增值税计算表（截至11月7日）', content: '一、销项税额计算\n  11月5日现销A商品：100,000×13%=13,000元\n  11月6日赊销B商品：90,000×13%=11,700元\n  销项税额合计：24,700元\n\n二、进项税额计算\n  11月2日采购A商品认证：5,200元\n  11月3日采购B商品：9,750元\n  11月4日赊购C商品：2,340元\n  进项税额合计：17,290元\n\n三、应交增值税\n  24,700-17,290=7,410元\n\n注：城建税=7,410×7%=518.70元\n教育费附加=7,410×3%=222.30元', stampText: '财务专用章' }]},
   {
     date: '2026-11-10',
+    role: 'accountant',
     title: '计提城建税及教育费附加',
     tags: ['税费'],
     difficulty: 2,
@@ -149,6 +156,7 @@ const tasks = [
       { type: 'text', label: '附加税费计算表', docTitle: '附加税费计算表（11月）', content: '计税依据：应交增值税=7,410元\n\n城市维护建设税：7,410×7%=518.70元\n教育费附加：7,410×3%=222.30元\n\n合计：741元\n\n政策依据：\n- 《城市维护建设税暂行条例》\n- 《征收教育费附加的暂行规定》', stampText: '财务专用章' }]},
   {
     date: '2026-11-11',
+    role: 'accountant',
     title: '缴纳增值税',
     tags: ['税费'],
     difficulty: 1,
@@ -162,6 +170,7 @@ const tasks = [
       { type: 'text', label: '增值税纳税申报表', docTitle: '增值税纳税申报表（主表摘要）', content: '税款所属期：2026年11月\n\n销项税额：24,700元\n进项税额：17,290元\n应交增值税：7,410元\n\n本期应补退税额：7,410元\n申报日期：2026-11-11', stampText: '电子税务局 已申报' }]},
   {
     date: '2026-11-12',
+    role: 'accountant',
     title: '缴纳城建税及教育费附加',
     tags: ['税费'],
     difficulty: 1,
@@ -175,6 +184,7 @@ const tasks = [
       { type: 'bank', label: '缴税回单', date: '2026-11-12', totalAmount: 741, payer: '本公司', payeeName: '国家金库上海分库', content: '缴纳2026年11月城建税及教育费附加', refNo: 'HD202611120001' }]},
   {
     date: '2026-11-13',
+    role: 'accountant',
     title: '收到前欠货款',
     tags: ['往来管理'],
     difficulty: 1,
@@ -187,6 +197,7 @@ const tasks = [
       { type: 'bank', label: '收款回单', date: '2026-11-13', totalAmount: 101700, payer: '甲公司', payeeName: '本公司', content: '货款（发票No.3100234597）', refNo: 'HD202611130001' }]},
   {
     date: '2026-11-14',
+    role: 'accountant',
     title: '支付广告费',
     tags: ['费用管理'],
     difficulty: 1,
@@ -205,6 +216,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-11-16',
+    role: 'accountant',
     title: '计提固定资产折旧',
     tags: ['费用管理'],
     difficulty: 2,
@@ -217,6 +229,7 @@ const tasks = [
       { type: 'text', label: '折旧计算表', docTitle: '固定资产折旧计算表（11月）', content: '折旧方法：直线法（年限平均法）\n\n一、房屋建筑物\n  原值：500,000元\n  月折旧率：0.2%\n  月折旧额：1,000元\n\n二、办公设备\n  原值：60,000元\n  月折旧率：0.8%\n  月折旧额：480元\n\n三、运输设备\n  原值：120,000元\n  月折旧率：0.6%\n  月折旧额：720元\n\n合计：2,200元\n全部为管理部门使用，计入管理费用。', stampText: '财务专用章' }]},
   {
     date: '2026-11-17',
+    role: 'accountant',
     title: '计提本月工资',
     tags: ['工资社保'],
     difficulty: 2,
@@ -230,6 +243,7 @@ const tasks = [
       { type: 'text', label: '工资汇总表', docTitle: '2026年11月工资汇总表', content: '管理部门：5人×7,000元=35,000元\n销售部门：5人×5,000元=25,000元\n\n应发合计：60,000元\n\n代扣项目：\n  社保个人（10.5%）：6,300元\n  公积金个人（7%）：4,200元\n  个税：约500元\n\n实发合计：约49,000元', stampText: '行政人事部章' }]},
   {
     date: '2026-11-18',
+    role: 'accountant',
     title: '发放工资（含代扣个税/社保/公积金）',
     tags: ['工资社保', '出纳'],
     difficulty: 3,
@@ -246,6 +260,7 @@ const tasks = [
       { type: 'text', label: '工资条', docTitle: '工资发放明细表（11月）', content: '应发合计：60,000元\n代扣社保（个人）：-6,300元\n代扣公积金（个人）：-4,200元\n代扣个税：-500元\n实发合计：49,000元\n\n发放方式：银行代发\n发放日期：2026-11-18', stampText: '财务专用章' }]},
   {
     date: '2026-11-19',
+    role: 'accountant',
     title: '缴纳社保单位部分',
     tags: ['工资社保'],
     difficulty: 2,
@@ -261,6 +276,7 @@ const tasks = [
       { type: 'text', label: '社保缴费计算表', docTitle: '社会保险费计算表（11月）', content: '一、单位部分（25%）\n  管理人员：35,000×25%=8,750元\n  销售人员：25,000×25%=6,250元\n  小计：15,000元\n\n二、个人部分（10.5%，代扣）\n  60,000×10.5%=6,300元\n\n三、合计缴纳：21,300元', stampText: '社保专用' }]},
   {
     date: '2026-11-19',
+    role: 'accountant',
     title: '缴纳公积金单位部分',
     tags: ['工资社保'],
     difficulty: 2,
@@ -276,6 +292,7 @@ const tasks = [
       { type: 'text', label: '公积金缴费计算表', docTitle: '住房公积金计算表（11月）', content: '缴存比例：7%\n\n一、单位部分（7%）\n  管理人员：35,000×7%=2,450元\n  销售人员：25,000×7%=1,750元\n  小计：4,200元\n\n二、个人部分（7%，代扣）\n  60,000×7%=4,200元\n\n三、合计缴纳：8,400元', stampText: '公积金专用' }]},
   {
     date: '2026-11-20',
+    role: 'accountant',
     title: '个税代扣代缴',
     tags: ['税费'],
     difficulty: 1,
@@ -289,6 +306,7 @@ const tasks = [
       { type: 'text', label: '个税申报表', docTitle: '个人所得税扣缴申报表', content: '税款所属期：2026年11月\n\n扣缴义务人：本公司\n\n应纳税所得额：按工资薪金计算\n应扣缴税额：500元\n已扣缴税额：500元\n\n申报日期：2026-11-20', stampText: '自然人电子税务局 已申报' }]},
   {
     date: '2026-11-21',
+    role: 'accountant',
     title: '计提企业所得税（季度预缴）',
     tags: ['税费'],
     difficulty: 3,
@@ -306,6 +324,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-11-23',
+    role: 'accountant',
     title: '现购商品',
     tags: ['商品采购', '税费'],
     difficulty: 1,
@@ -322,6 +341,7 @@ const tasks = [
       { type: 'bank', label: '付款回单', date: '2026-11-23', totalAmount: 22600, payer: '本公司', payeeName: '华强供应链有限公司', content: '货款', refNo: 'HD202611230001' }]},
   {
     date: '2026-11-24',
+    role: 'accountant',
     title: '现销商品',
     tags: ['商品销售'],
     difficulty: 1,
@@ -338,6 +358,7 @@ const tasks = [
       { type: 'bank', label: '收款回单', date: '2026-11-24', totalAmount: 22600, payer: '鑫源商贸有限公司', payeeName: '本公司', content: '货款', refNo: 'HD202611240001' }]},
   {
     date: '2026-11-25',
+    role: 'accountant',
     title: '结转已销商品成本',
     tags: ['商品销售', '仓存管理'],
     difficulty: 2,
@@ -350,6 +371,7 @@ const tasks = [
       { type: 'text', label: '成本计算表', docTitle: '商品销售成本计算表（11月第二批）', content: '销售商品：A类商品\n销售数量：50件\n单位成本：200元/件\n销售成本：50×200=10,000元\n计价方法：移动加权平均法', stampText: '财务专用章' }]},
   {
     date: '2026-11-26',
+    role: 'accountant',
     title: '缴纳企业所得税',
     tags: ['税费'],
     difficulty: 1,
@@ -363,6 +385,7 @@ const tasks = [
       { type: 'text', label: '企业所得税预缴申报表', docTitle: '企业所得税季度预缴纳税申报表（A类）摘要', content: '税款所属期：2026年第四季度（10-12月）\n\n利润总额：14,859元\n税率：25%\n应纳所得税额：3,714.75元\n\n本期实际应补（退）所得税额：3,714.75元\n\n申报日期：2026-11-26', stampText: '电子税务局 已申报' }]},
   {
     date: '2026-11-28',
+    role: 'accountant',
     title: '期末结转损益（含所得税费用）',
     tags: ['期末'],
     difficulty: 3,
@@ -414,6 +437,7 @@ const tasks = [
 备注：本月新增备用金操作将在日常业务中逐笔记录。` }]},
   {
     date: '2026-11-01',
+    role: 'accountant',
     title: '提取备用金',
     tags: ['出纳'],
     difficulty: 1,
@@ -428,6 +452,7 @@ const tasks = [
         items: [{ name: '提取备用金（补充库存现金）', qty: 1, price: 5000, amount: 5000 }] }]},
   {
     date: '2026-11-03',
+    role: 'accountant',
     title: '员工差旅费借支',
     tags: ['出纳', '费用管理'],
     difficulty: 1,
@@ -442,6 +467,7 @@ const tasks = [
       { type: 'text', label: '审批记录', docTitle: '借款审批记录', content: '借款人：张明（销售部）\n借款事由：上海出差拜访客户（11/5-11/7）\n借款金额：2,000元\n\n部门经理：✓ 已审批（李经理）\n财务主管：✓ 已审批（王主管）\n出纳办理：✓ 已支付（王出纳）\n\n注意事项：出差返回后3日内凭有效票据报销。', signature: '2026年11月3日' }]},
   {
     date: '2026-11-08',
+    role: 'accountant',
     title: '差旅费报销核销借支',
     tags: ['出纳', '费用管理'],
     difficulty: 2,
@@ -458,6 +484,7 @@ const tasks = [
         items: [{ name: '差旅费借支余额退回', qty: 1, price: 200, amount: 200 }] }]},
   {
     date: '2026-11-09',
+    role: 'accountant',
     title: '支付丙公司前欠货款',
     tags: ['出纳', '往来管理'],
     difficulty: 1,
@@ -471,6 +498,7 @@ const tasks = [
       { type: 'text', label: '付款审批单', docTitle: '付款申请审批单', content: '收款单位：丙公司\n付款事由：C类商品赊购货款（11月4日采购）\n合同金额：20,340元\n本次申请付款：20,340元\n\n部门经理：✓ 同意\n财务主管：✓ 已审核\n总经理：✓ 批准\n\n出纳办理：✓ 已于11月9日网银转账支付', signature: '制单：采购部 审核：财务部' }]},
   {
     date: '2026-11-11',
+    role: 'accountant',
     title: '办理增值税缴纳',
     tags: ['出纳', '税费'],
     difficulty: 1,
@@ -485,6 +513,7 @@ const tasks = [
         items: [{ name: '增值税（2026年11月）', qty: 1, price: 7410, amount: 7410 }] }]},
   {
     date: '2026-11-12',
+    role: 'accountant',
     title: '办理附加税缴纳',
     tags: ['出纳', '税费'],
     difficulty: 1,
@@ -500,6 +529,7 @@ const tasks = [
         items: [{ name: '城市维护建设税（7%）', qty: 1, price: 518.7, amount: 518.7 }, { name: '教育费附加（3%）', qty: 1, price: 222.3, amount: 222.3 }] }]},
   {
     date: '2026-11-15',
+    role: 'accountant',
     title: '微信账户提现',
     tags: ['出纳'],
     difficulty: 1,
@@ -514,6 +544,7 @@ const tasks = [
         items: [{ name: '微信商户余额提现（11月累计收款）', qty: 1, price: 3500, amount: 3500 }] }]},
   {
     date: '2026-11-15',
+    role: 'accountant',
     title: '支付宝账户提现',
     tags: ['出纳'],
     difficulty: 1,
@@ -528,6 +559,7 @@ const tasks = [
         items: [{ name: '支付宝商家余额提现（11月累计收款）', qty: 1, price: 2500, amount: 2500 }] }]},
   {
     date: '2026-11-17',
+    role: 'accountant',
     title: '银行账户间资金调拨',
     tags: ['出纳'],
     difficulty: 1,
@@ -541,6 +573,7 @@ const tasks = [
       { type: 'text', label: '资金调拨单', docTitle: '资金调拨审批单', content: '调出账户：工商银行（100201）\n调入账户：建设银行（100202）\n调拨金额：30,000元\n调拨原因：建行账户余额不足，需备付采购货款\n\n财务主管：✓ 同意调拨\n总经理：✓ 批准\n\n操作人：王出纳\n复核人：李会计', signature: '2026年11月17日' }]},
   {
     date: '2026-11-20',
+    role: 'accountant',
     title: '办理个人所得税代缴',
     tags: ['出纳', '税费'],
     difficulty: 1,
@@ -589,6 +622,7 @@ const tasks = [
   期末余额：5,200.00` }]},
   {
     date: '2026-11-26',
+    role: 'accountant',
     title: '办理企业所得税预缴',
     tags: ['出纳', '税费'],
     difficulty: 1,
@@ -701,6 +735,7 @@ const tasks = [
 
   {
     date: '2026-11-30',
+    role: 'accountant',
     title: '模拟纳税申报',
     tags: ['期末', '税费'],
     difficulty: 1,

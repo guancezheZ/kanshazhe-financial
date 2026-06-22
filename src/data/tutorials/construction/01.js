@@ -52,6 +52,7 @@ const tasks = [
       { type: 'bank', label: '银行回单', date: '2026-01-04', totalAmount: 60000, payer: '鼎立建筑工程有限公司', payeeName: '鑫源租赁有限公司', content: '预付办公用房租金', refNo: 'ZF202601040001' }]},
   {
     date: '2026-01-05',
+    role: 'accountant',
     title: '提取备用金',
     tags: ['出纳'],
     difficulty: 1,
@@ -110,6 +111,7 @@ const tasks = [
       { type: 'invoice', label: '增值税专用发票', date: '2026-01-08', region: '江苏省', invoiceNo: '3200260108', buyer: '鼎立建筑工程有限公司', seller: '华强建材有限公司', lineItems: [{ name: '钢筋', qty: 10, unit: '吨', price: 12000, amount: 120000 }, { name: '水泥', qty: 80, unit: '吨', price: 1000, amount: 80000 }], totalAmount: 226000 }]},
   {
     date: '2026-01-09',
+    role: 'accountant',
     title: '支付材料采购款',
     tags: ['材料管理'],
     difficulty: 1,
@@ -185,6 +187,7 @@ const tasks = [
       { type: 'text', label: '工资表', docTitle: '2026年1月职工工资表', content: '施工人员（15人）80,000元；项目部管理人员（5人）30,000元；公司管理人员（4人）25,000元。合计135,000元。', signature: '王人事' }]},
   {
     date: '2026-01-17',
+    role: 'accountant',
     title: '发放职工工资',
     tags: ['工资社保'],
     difficulty: 1,
@@ -231,6 +234,7 @@ const tasks = [
       { type: 'receipt', label: '差旅费报销单', date: '2026-01-22', items: [{ label: '交通费', amount: 1200 }, { label: '住宿费', amount: 1500 }, { label: '餐补', amount: 500 }], totalAmount: 3200, stampText: '鼎立建筑工程有限公司财务专用章' }]},
   {
     date: '2026-01-24',
+    role: 'accountant',
     title: '支付办公费及水电费',
     tags: ['工程成本'],
     difficulty: 1,
@@ -389,6 +393,7 @@ const tasks = [
     documents: [{ type: 'bank', label: '银行回单', totalAmount: 15000, payer: '鼎立建筑工程有限公司', payeeName: '平安保险公司', content: '建筑工程一切险保费', refNo: 'BX202601130001' }]},
   {
     date: '2026-01-14',
+    role: 'accountant',
     title: '支付施工用水电费',
     tags: ['工程成本'],
     difficulty: 1,
@@ -424,6 +429,7 @@ const tasks = [
     documents: [{ type: 'bank', label: '银行回单', totalAmount: 10000, payer: '鼎立建筑工程有限公司', payeeName: '工程监理有限公司', content: '1月份工程监理费', refNo: 'JL202601190001' }]},
   {
     date: '2026-01-23',
+    role: 'accountant',
     title: '支付材料运输费',
     tags: ['材料管理', '工程成本'],
     difficulty: 1,
@@ -446,6 +452,7 @@ const tasks = [
     documents: [{ type: 'text', label: '对账确认单', docTitle: '往来款项对账确认单', content: '与华强建材有限公司核对1月份往来，确认全部款项已结清。', signature: '赵会计' }]},
   {
     date: "2026-01-31",
+    role: 'accountant',
     title: "模拟纳税申报",
     tags: ["期末", "税费"],
     difficulty: 1,

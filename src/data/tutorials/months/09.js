@@ -27,6 +27,7 @@ const sep = [
 
   {
     date: '2026-09-01',
+    role: 'accountant',
     title: '缴纳8月增值税',
     tags: ["税费"],
     difficulty: 1,
@@ -43,6 +44,7 @@ const sep = [
       { type: 'bank', label: '银行回单', date: '2026-09-01', totalAmount: 32500, payer: '本公司', payeeName: '国家税务总局XX分局', content: '缴纳8月增值税', refNo: 'HD202609010001' }]},
   {
     date: '2026-09-01',
+    role: 'accountant',
     title: '缴纳8月城建税',
     tags: ["税费"],
     difficulty: 1,
@@ -59,6 +61,7 @@ const sep = [
       { type: 'bank', label: '银行回单', date: '2026-09-01', totalAmount: 2275, payer: '本公司', payeeName: '国家税务总局XX分局', content: '缴纳8月城建税', refNo: 'HD202609010002' }]},
   {
     date: '2026-09-01',
+    role: 'accountant',
     title: '缴纳8月教育费附加',
     tags: ["税费"],
     difficulty: 1,
@@ -75,6 +78,7 @@ const sep = [
       { type: 'bank', label: '银行回单', date: '2026-09-01', totalAmount: 975, payer: '本公司', payeeName: '国家税务总局XX分局', content: '缴纳8月教育费附加', refNo: 'HD202609010003' }]},
   {
     date: '2026-09-02',
+    role: 'accountant',
     title: '缴纳8月社保费',
     tags: ["工资社保"],
     difficulty: 1,
@@ -91,6 +95,7 @@ const sep = [
       { type: 'bank', label: '银行回单', date: '2026-09-02', totalAmount: 21000, payer: '本公司', payeeName: 'XX市社会保险基金管理局', content: '缴纳8月社保费', refNo: 'HD202609020004' }]},
   {
     date: '2026-09-02',
+    role: 'accountant',
     title: '缴纳8月公积金',
     tags: ["工资社保"],
     difficulty: 1,
@@ -107,6 +112,7 @@ const sep = [
       { type: 'bank', label: '银行回单', date: '2026-09-02', totalAmount: 10200, payer: '本公司', payeeName: 'XX市住房公积金管理中心', content: '缴纳8月公积金', refNo: 'HD202609020005' }]},
   {
     date: '2026-09-02',
+    role: 'accountant',
     title: '发放8月职工工资',
     tags: ["工资社保"],
     difficulty: 2,
@@ -134,6 +140,7 @@ const sep = [
       { type: 'bank', label: '银行回单', date: '2026-09-02', totalAmount: 63200, payer: '本公司', payeeName: '本公司（代发工资）', content: '8月职工工资代发', refNo: 'HD202609020006' }]},
   {
     date: '2026-09-03',
+    role: 'accountant',
     title: '支付8月水电费',
     tags: ["费用"],
     difficulty: 1,
@@ -151,6 +158,7 @@ const sep = [
         items: [{ name: '用水量 300 吨 × 4.00元', qty: 300, price: 4.00, amount: 1200 }] }]},
   {
     date: '2026-09-04',
+    role: 'accountant',
     title: '购买办公用品',
     tags: ["费用"],
     difficulty: 1,
@@ -172,6 +180,7 @@ const sep = [
 
   {
     date: '2026-09-07',
+    role: 'accountant',
     title: '员工报销差旅费',
     tags: ["费用"],
     difficulty: 1,
@@ -188,6 +197,7 @@ const sep = [
       { type: 'bank', label: '银行回单', date: '2026-09-07', totalAmount: 3500, payer: '本公司', payeeName: '王明', content: '报销差旅费', refNo: 'HD202609070008' }]},
   {
     date: '2026-09-09',
+    role: 'accountant',
     title: '计提固定资产折旧',
     tags: ["资产"],
     difficulty: 2,
@@ -216,6 +226,7 @@ const sep = [
 合计                        2,010,000    11,500    408,000` }]},
   {
     date: '2026-09-10',
+    role: 'accountant',
     title: '取得长期股权投资（权益法）⭐',
     tags: ["资产","融资"],
     difficulty: 3,
@@ -244,6 +255,7 @@ const sep = [
       { type: 'bank', label: '银行回单', date: '2026-09-10', totalAmount: 360000, payer: '本公司', payeeName: '庚公司原股东', content: '支付庚公司30%股权转让款', refNo: 'HD202609100010' }]},
   {
     date: '2026-09-11',
+    role: 'accountant',
     title: '销售A产品给乙公司',
     tags: ["销售"],
     difficulty: 2,
@@ -269,6 +281,7 @@ const sep = [
 
   {
     date: '2026-09-14',
+    role: 'accountant',
     title: '庚公司实现净利润·确认投资收益',
     tags: ["资产","融资"],
     difficulty: 3,
@@ -295,6 +308,7 @@ const sep = [
   长期股权投资账面价值调整为：360,000 + 24,000 = 384,000.00` }]},
   {
     date: '2026-09-15',
+    role: 'accountant',
     title: '庚公司宣告发放现金股利',
     tags: ["资产","融资"],
     difficulty: 2,
@@ -316,6 +330,7 @@ const sep = [
 本公司持股30%，应得股利：9,000.00元` }]},
   {
     date: '2026-09-16',
+    role: 'accountant',
     title: '将自用办公楼转为出租（投资性房地产）⭐',
     tags: ["资产"],
     difficulty: 3,
@@ -354,6 +369,7 @@ const sep = [
 付款方式：每月20日前支付当月租金` }]},
   {
     date: '2026-09-17',
+    role: 'accountant',
     title: '收取投资性房地产租金',
     tags: ["资产","费用"],
     difficulty: 2,
@@ -370,6 +386,7 @@ const sep = [
         items: [{ name: 'XX大厦801室 2026年9月租金', qty: 1, price: 8000, amount: 8000 }] }]},
   {
     date: '2026-09-18',
+    role: 'accountant',
     title: '投资性房地产计提折旧',
     tags: ["资产"],
     difficulty: 2,
@@ -402,6 +419,7 @@ const sep = [
 
   {
     date: '2026-09-22',
+    role: 'accountant',
     title: '采购原材料（含税）',
     tags: ["采购"],
     difficulty: 2,
@@ -421,6 +439,7 @@ const sep = [
       { type: 'text', label: '入库单', docTitle: '收料单', stampText: '仓库\n验收专用章', content: `I材料 4吨×10,000元=40,000元 已验收入库` }]},
   {
     date: '2026-09-23',
+    role: 'accountant',
     title: '结转本月主营业务成本',
     tags: ["成本核算"],
     difficulty: 2,
@@ -440,6 +459,7 @@ A产品    200件      400.00    80,000.00
 合计                           80,000.00` }]},
   {
     date: '2026-09-24',
+    role: 'accountant',
     title: '计提坏账准备',
     tags: ["资产"],
     difficulty: 2,
@@ -459,6 +479,7 @@ A产品    200件      400.00    80,000.00
 本期应补提：25,900 - 23,150 = 2,750.00元` }]},
   {
     date: '2026-09-24',
+    role: 'accountant',
     title: '计提9月份员工工资',
     tags: ["工资社保"],
     difficulty: 2,
@@ -481,6 +502,7 @@ A产品    200件      400.00    80,000.00
 合计         73,000` }]},
   {
     date: '2026-09-25',
+    role: 'accountant',
     title: '摊销长期待摊费用',
     tags: ["资产"],
     difficulty: 2,
@@ -507,6 +529,7 @@ A产品    200件      400.00    80,000.00
 
   {
     date: '2026-09-28',
+    role: 'accountant',
     title: '收到国债利息收入',
     tags: ["融资"],
     difficulty: 2,
@@ -521,6 +544,7 @@ A产品    200件      400.00    80,000.00
       { type: 'bank', label: '银行回单', date: '2026-09-28', totalAmount: 104.17, payer: '中国国债登记结算公司', payeeName: '本公司', content: '国债利息（2026年9月）', refNo: 'HD202609280014' }]},
   {
     date: '2026-09-28',
+    role: 'accountant',
     title: '银行季度结息',
     tags: ["费用"],
     difficulty: 1,
@@ -535,6 +559,7 @@ A产品    200件      400.00    80,000.00
       { type: 'bank', label: '银行回单', date: '2026-09-28', totalAmount: 9800, payer: '中国工商银行', payeeName: '本公司', content: '2026年第三季度活期存款结息', refNo: 'HD202609280015' }]},
   {
     date: '2026-09-29',
+    role: 'accountant',
     title: '计提9月城建税及教育费附加',
     tags: ["税费"],
     difficulty: 2,
@@ -562,6 +587,7 @@ A产品    200件      400.00    80,000.00
 合计：1,430.00` }]},
   {
     date: '2026-09-29',
+    role: 'accountant',
     title: '计提Q3企业所得税 ⭐',
     tags: ["税费"],
     difficulty: 3,
@@ -594,6 +620,7 @@ A产品    200件      400.00    80,000.00
 依据：《中华人民共和国企业所得税法》第四条、第五十四条` }]},
   {
     date: '2026-09-30',
+    role: 'accountant',
     title: '交易性金融资产·公允价值变动',
     tags: ["资产"],
     difficulty: 2,
@@ -615,6 +642,7 @@ A产品    200件      400.00    80,000.00
 确认依据：中国国债登记结算公司2026年9月30日估值` }]},
   {
     date: '2026-09-30',
+    role: 'accountant',
     title: '月末结转·期间损益（Q3季末）',
     tags: ["期末"],
     difficulty: 3,
@@ -692,6 +720,7 @@ A产品    200件      400.00    80,000.00
       content: `9月期初余额：2,800.00\n核对人：王出纳` }]},
   {
     date: '2026-09-02', title: '提取备用金（现金支票）',
+    role: 'accountant',
     tags: ["出纳"], difficulty: 1,
     description: '签发现金支票提取 5,000元备用金。现金支票号码：XJ202609001。',
     tip: '季度末备用金需求可能增加，多提取一些备用。',
@@ -709,6 +738,7 @@ A产品    200件      400.00    80,000.00
       content: `9月第1周：共5笔，合计40,610元。` }]},
   {
     date: '2026-09-05', title: '银行代扣社保确认',
+    role: 'accountant',
     tags: ["出纳","工资社保"], difficulty: 2,
     description: '9月社保费（单位21,000+个人7,000=28,000元）已代扣。',
     tip: 'Q3最后一次社保扣款，核对金额。',
@@ -719,6 +749,7 @@ A产品    200件      400.00    80,000.00
     documents: [{ type: 'bank', label: '社保扣款回单', date: '2026-09-05', totalAmount: 28000, payer: '本公司', payeeName: 'XX市社保局', content: '9月社保费', refNo: 'HD202609050005' }]},
   {
     date: '2026-09-06', title: '银行转账支付网络费',
+    role: 'accountant',
     tags: ["出纳","费用"], difficulty: 1,
     description: '支付9月网络费 2,600元。',
     tip: '月度固定费用。',
@@ -728,6 +759,7 @@ A产品    200件      400.00    80,000.00
     documents: [{ type: 'bank', label: '转账回单', date: '2026-09-06', totalAmount: 2600, payer: '本公司', payeeName: '中国电信', content: '9月网络费', refNo: 'HD202609060008' }]},
   {
     date: '2026-09-09', title: '收到美元出口货款 ⭐',
+    role: 'accountant',
     tags: ["出纳","销售"], difficulty: 2,
     description: '收到国外客户支付的美元货款 US$10,000，已存入美元账户。当日汇率：1 USD = 7.12 RMB，折合人民币 71,200元。出纳确认外汇到账并登记外币日记账。',
     tip: '外币收款流程：①收到银行入账通知；②确认币种、金额、汇率；③登记外币银行存款日记账（双币种记录：原币USD和本位币RMB）；④保存外汇兑换水单。注意：企业有美元账户才能直接收美元，否则银行会强制结汇。',
@@ -747,6 +779,7 @@ A产品    200件      400.00    80,000.00
         content: `美元户银行存款日记账\n━━━━━━━━━━━━━━━━━━━━\n09-09 收款 US$10,000 汇率7.12\n        借方：RMB 71,200\n余额：US$10,000（RMB 71,200）` }]},
   {
     date: '2026-09-12', title: '银行代扣公积金确认',
+    role: 'accountant',
     tags: ["出纳","工资社保"], difficulty: 2,
     description: '9月公积金（单位10,200+个人3,400=13,600元）已代扣。',
     tip: 'Q3最后一次公积金扣款。',
@@ -757,6 +790,7 @@ A产品    200件      400.00    80,000.00
     documents: [{ type: 'bank', label: '公积金扣款回单', date: '2026-09-12', totalAmount: 13600, payer: '本公司', payeeName: 'XX市公积金中心', content: '9月公积金', refNo: 'HD202609120012' }]},
   {
     date: '2026-09-14', title: '银行转账支付快递费',
+    role: 'accountant',
     tags: ["出纳","费用"], difficulty: 1,
     description: '支付9月快递费 750元。',
     tip: '保留发票。',
@@ -766,6 +800,7 @@ A产品    200件      400.00    80,000.00
     documents: [{ type: 'bank', label: '转账回单', date: '2026-09-14', totalAmount: 750, payer: '本公司', payeeName: '顺丰速运', content: '9月快递费', refNo: 'HD202609140015' }]},
   {
     date: '2026-09-19', title: '购买转账支票本',
+    role: 'accountant',
     tags: ["出纳"], difficulty: 1,
     description: '购买转账支票本（25张），45元。',
     tip: '登记支票登记簿。',
@@ -775,6 +810,7 @@ A产品    200件      400.00    80,000.00
     documents: [{ type: 'bank', label: '收费回单', date: '2026-09-19', totalAmount: 45, payer: '本公司', payeeName: '中国工商银行', content: '购买支票本', refNo: 'HD202609190018' }]},
   {
     date: '2026-09-23', title: '银行转账支付清洁费',
+    role: 'accountant',
     tags: ["出纳","费用"], difficulty: 1,
     description: '支付9月清洁服务费 1,800元。',
     tip: 'Q3最后一期清洁费。',
@@ -784,6 +820,7 @@ A产品    200件      400.00    80,000.00
     documents: [{ type: 'bank', label: '转账回单', date: '2026-09-23', totalAmount: 1800, payer: '本公司', payeeName: 'XX物业', content: '9月清洁费', refNo: 'HD202609230022' }]},
   {
     date: '2026-09-25', title: '银行账户管理费确认',
+    role: 'accountant',
     tags: ["出纳","费用"], difficulty: 1,
     description: '9月账户管理费100元已扣。累计已支付900元（1-9月）。',
     tip: '季度末核对费用。',
@@ -793,6 +830,7 @@ A产品    200件      400.00    80,000.00
     documents: [{ type: 'bank', label: '扣款回单', date: '2026-09-25', totalAmount: 100, payer: '本公司', payeeName: '中国工商银行', content: '9月管理费', refNo: 'HD202609250025' }]},
   {
     date: '2026-09-26', title: '银行手续费确认',
+    role: 'accountant',
     tags: ["出纳","费用"], difficulty: 1,
     description: '9月银行手续费合计 180元。',
     tip: '核对当月业务笔数。',
@@ -802,6 +840,7 @@ A产品    200件      400.00    80,000.00
     documents: [{ type: 'bank', label: '手续费回单', date: '2026-09-26', totalAmount: 180, payer: '本公司', payeeName: '中国工商银行', content: '9月手续费', refNo: 'HD202609260028' }]},
   {
     date: '2026-09-27', title: '银行承兑汇票到期兑付',
+    role: 'accountant',
     tags: ["出纳","采购"], difficulty: 2,
     description: '7月开立的银行承兑汇票（40,000元）今日到期，银行已从保证金账户扣划兑付。出纳确认票据已结清，在应付票据登记簿中注销。保证金12,000元已解冻转回活期账户。',
     tip: '汇票到期兑付流程：①到期日前确保账户余额充足；②银行自动扣划兑付；③取得银行兑付凭证；④在票据登记簿中记录"已兑付"。保证金在汇票兑付后解冻。',
@@ -814,6 +853,7 @@ A产品    200件      400.00    80,000.00
       { type: 'bank', label: '汇票兑付凭证', date: '2026-09-27', totalAmount: 40000, payer: '本公司', payeeName: '癸公司', content: '银行承兑汇票到期兑付', refNo: 'HD202609270030' }]},
   {
     date: '2026-09-28', title: '银行转账支付印刷费',
+    role: 'accountant',
     tags: ["出纳","费用"], difficulty: 1,
     description: '支付9月印刷费 1,200元。',
     tip: '核对验收单。',
@@ -835,6 +875,7 @@ A产品    200件      400.00    80,000.00
      ═══════════════════════════════════════════════ */
   {
     date: '2026-09-28',
+    role: 'accountant',
     title: '进口原材料采购（外币业务）⭐',
     tags: ["采购"],
     difficulty: 2,
@@ -947,6 +988,7 @@ Q4需关注年底可能的审计费、年检费等额外支出。
 注意区分银行流水与非货币交易的区别` }]},
   {
     date: "2026-09-30",
+    role: 'accountant',
     title: "模拟纳税申报",
     tags: ["期末", "税费"],
     difficulty: 1,

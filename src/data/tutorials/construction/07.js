@@ -32,6 +32,7 @@ const tasks = [
       { type: 'bank', label: '电子缴税凭证', date: '2026-07-01', totalAmount: 31360, payer: '鼎立建筑工程有限公司', payeeName: '国家金库', content: '缴纳6月增值税及附加', refNo: 'JS202607010001' }]},
   {
     date: '2026-07-01',
+    role: 'accountant',
     title: '缴纳6月社会保险费',
     tags: ['工资社保'],
     difficulty: 1,
@@ -44,6 +45,7 @@ const tasks = [
       { type: 'bank', label: '社保缴费回单', date: '2026-07-01', totalAmount: 42000, payer: '鼎立建筑工程有限公司', payeeName: '社会保险事业管理中心', content: '2026年6月社保费', refNo: 'SB202607010001' }]},
   {
     date: '2026-07-02',
+    role: 'accountant',
     title: '发放6月职工工资',
     tags: ['工资社保'],
     difficulty: 1,
@@ -86,6 +88,7 @@ const tasks = [
       { type: 'bank', label: '转账回单', date: '2026-07-04', totalAmount: 50000, payer: '鼎立建筑工程有限公司', payeeName: '华东建材贸易有限公司', content: '预付雨季防护物资采购款', refNo: 'YF202607040001' }]},
   {
     date: '2026-07-05',
+    role: 'accountant',
     title: '提取备用金',
     tags: ['出纳'],
     difficulty: 1,
@@ -98,6 +101,7 @@ const tasks = [
       { type: 'receipt', label: '现金支票存根', date: '2026-07-05', totalAmount: 30000, docTitle: '现金支票存根', items: [{ name: '提取备用金（雨季项目部）', qty: 1, price: 30000, amount: 30000 }], stampText: '财务预留印鉴' }]},
   {
     date: '2026-07-06',
+    role: 'accountant',
     title: '现金采购防雨劳保用品',
     tags: ['材料管理'],
     difficulty: 1,
@@ -186,6 +190,7 @@ const tasks = [
       { type: 'invoice', label: '增值税专用发票', date: '2026-07-11', region: '江苏省', invoiceNo: '3200260711', buyer: '鼎立建筑工程有限公司', seller: '丁公司', lineItems: [{ name: '螺纹钢HRB400', qty: 15, unit: '吨', price: 4000, amount: 60000 }, { name: '普通硅酸盐水泥P.O42.5', qty: 40, unit: '吨', price: 500, amount: 20000 }], totalAmount: 90400 }]},
   {
     date: '2026-07-12',
+    role: 'accountant',
     title: '支付材料采购欠款',
     tags: ['材料管理'],
     difficulty: 1,
@@ -264,6 +269,7 @@ const tasks = [
   // ═════════════════════════════════════════════════════════════════════
   {
     date: '2026-07-15',
+    role: 'accountant',
     title: '银行账户管理费扣收',
     tags: ['出纳'],
     difficulty: 1,
@@ -276,6 +282,7 @@ const tasks = [
       { type: 'bank', label: '银行扣款通知', date: '2026-07-15', totalAmount: 180, payer: '鼎立建筑工程有限公司', payeeName: '中国工商银行', content: '7月账户管理费及手续费', refNo: 'YH202607150001' }]},
   {
     date: '2026-07-17',
+    role: 'accountant',
     title: '发放7月职工工资',
     tags: ['工资社保'],
     difficulty: 1,
@@ -318,6 +325,7 @@ const tasks = [
       { type: 'receipt', label: '差旅费报销单', date: '2026-07-19', totalAmount: 4600, docTitle: '差旅费报销单', items: [{ name: '往返高铁票（2人）', qty: 4, price: 500, amount: 2000 }, { name: '住宿费（2间×2晚）', qty: 4, price: 400, amount: 1600 }, { name: '出差餐补（2人×2天）', qty: 4, price: 250, amount: 1000 }], stampText: '财务审核专用章' }]},
   {
     date: '2026-07-20',
+    role: 'accountant',
     title: '转账支付分包工程款',
     tags: ['分包管理'],
     difficulty: 1,
@@ -330,6 +338,7 @@ const tasks = [
       { type: 'bank', label: '付款回单', date: '2026-07-20', totalAmount: 218000, payer: '鼎立建筑工程有限公司', payeeName: '大地基础工程有限公司', content: '支付7月分包工程进度款', refNo: 'FK202607200001' }]},
   {
     date: '2026-07-20',
+    role: 'accountant',
     title: '微信支付提现至银行账户',
     tags: ['费用管理'],
     difficulty: 1,
@@ -368,6 +377,7 @@ const tasks = [
       { type: 'text', label: '物资领用单', docTitle: '防护物资领用单', date: '2026-07-22', content: '防雨布2,000平米×8元=16,000元\n排水泵4台×3,000元=12,000元\n防水电缆500米×14元=7,000元\n合计：35,000元', stampText: '项目部章' }]},
   {
     date: '2026-07-22',
+    role: 'accountant',
     title: '支付宝余额提现至银行',
     tags: ['出纳'],
     difficulty: 1,
@@ -380,6 +390,7 @@ const tasks = [
       { type: 'bank', label: '支付宝提现记录', date: '2026-07-22', totalAmount: 3200, payer: '支付宝账户', payeeName: '鼎立建筑工程有限公司（工行）', content: '支付宝余额提现', refNo: 'ZFB202607220001' }]},
   {
     date: '2026-07-23',
+    role: 'accountant',
     title: '支付办公费及水电费',
     tags: ['工程成本'],
     difficulty: 1,
@@ -394,6 +405,7 @@ const tasks = [
       { type: 'receipt', label: '电费缴费单', date: '2026-07-23', totalAmount: 4500, docTitle: '电力公司电费通知单', items: [{ name: '7月施工用电', qty: 1, price: 4500, amount: 4500 }], stampText: '电力公司收费章' }]},
   {
     date: '2026-07-24',
+    role: 'accountant',
     title: '支付塔吊大修费',
     tags: ['机械使用'],
     difficulty: 2,
@@ -533,6 +545,7 @@ const tasks = [
   // ═════════════════════════════════════════════════════════════════════
   {
     date: '2026-07-30',
+    role: 'accountant',
     title: '现金送存银行',
     tags: ['出纳'],
     difficulty: 1,
@@ -578,6 +591,7 @@ const tasks = [
       { type: 'text', label: '会计档案归档清单', docTitle: '2026年7月会计档案归档清单', content: '归档日期：2026年7月31日\n归档范围：记账凭证、银行回单、增值税发票、合同、工资表等\n保管期限：30年\n归档人：刘出纳  复核：赵会计', signature: '刘出纳  赵会计' }]},
   {
     date: "2026-07-31",
+    role: 'accountant',
     title: "模拟纳税申报",
     tags: ["期末", "税费"],
     difficulty: 1,

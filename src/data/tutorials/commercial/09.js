@@ -26,6 +26,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-09-01',
+    role: 'accountant',
     title: '收到商业承兑汇票（客户付款）',
     tags: ['往来管理'],
     difficulty: 2,
@@ -39,6 +40,7 @@ const tasks = [
       { type: 'text', label: '票据信息', docTitle: '商业承兑汇票登记簿', content: '票据类型：商业承兑汇票\n出票人：鑫源商贸有限公司\n收款人：本公司\n面值：90,400.00元\n出票日期：2026年9月1日\n到期日期：2026年12月1日\n对应发票：No.3100234568\n备注：偿还前欠购货款', stampText: '财务专用章' }]},
   {
     date: '2026-09-02',
+    role: 'accountant',
     title: '商业承兑汇票到期收款',
     tags: ['往来管理'],
     difficulty: 1,
@@ -51,6 +53,7 @@ const tasks = [
       { type: 'bank', label: '银行收款回单', date: '2026-09-02', totalAmount: 90400, payer: '鑫源商贸有限公司', payeeName: '本公司', content: '商业承兑汇票到期兑付', refNo: 'HD202609020001' }]},
   {
     date: '2026-09-04',
+    role: 'accountant',
     title: '商业汇票贴现（提前兑现支付贴息）',
     tags: ['资金管理'],
     difficulty: 3,
@@ -65,6 +68,7 @@ const tasks = [
       { type: 'text', label: '贴现计算表', docTitle: '商业汇票贴现计算表', content: '票据面值：50,000元\n贴现利率：年利率3.6%\n贴现期限：约150天\n贴现利息：50,000×3.6%÷360×150=750元\n贴现实收金额：50,000-750=49,250元\n\n贴现银行：工商银行上海分行\n贴现日期：2026年9月4日', stampText: '财务专用章' }]},
   {
     date: '2026-09-05',
+    role: 'accountant',
     title: '开出银行承兑汇票（支付采购款）',
     tags: ['商品采购', '往来管理'],
     difficulty: 2,
@@ -86,6 +90,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-09-07',
+    role: 'accountant',
     title: '委托代销商品（发出商品给代销方）',
     tags: ['商品销售', '仓存管理'],
     difficulty: 2,
@@ -98,6 +103,7 @@ const tasks = [
       { type: 'text', label: '代销发货单', docTitle: '委托代销发货单', content: '委托方：本公司\n受托方：乙公司\n商品名称：A类商品\n数量：200件\n成本单价：100元\n成本总额：20,000元\n\n合同约定：乙公司代销后按月结算代销清单，未售出商品可退货。\n代销手续费：销售收入的10%', stampText: '发货专用章 / 乙公司签收' }]},
   {
     date: '2026-09-09',
+    role: 'accountant',
     title: '委托代销商品结算（收到代销清单）',
     tags: ['商品销售', '往来管理'],
     difficulty: 3,
@@ -116,6 +122,7 @@ const tasks = [
         totalAmount: 33900, taxRate: '13%', taxAmount: 3900, totalInWords: '叁万叁仟玖佰元整' }]},
   {
     date: '2026-09-10',
+    role: 'accountant',
     title: '受托代销商品（收到代销商品）',
     tags: ['商品采购', '仓存管理'],
     difficulty: 2,
@@ -128,6 +135,7 @@ const tasks = [
       { type: 'text', label: '受托代销收货单', docTitle: '受托代销商品收货单', content: '受托方：本公司\n委托方：丙公司\n商品名称：D类商品\n数量：500件\n协议代销单价：60元\n协议总价：30,000元（不含税）\n\n代销方式：视同买断\n手续费约定：本公司可加价销售，差价作为代销手续费\n\n商品已验收入库，存放于代销专区。', signature: '仓库管理员 张保管 / 丙公司送货员' }]},
   {
     date: '2026-09-11',
+    role: 'accountant',
     title: '受托代销商品售出',
     tags: ['商品销售'],
     difficulty: 3,
@@ -144,6 +152,7 @@ const tasks = [
       { type: 'text', label: '代销销售清单', docTitle: '受托代销商品销售清单', content: '委托方：丙公司\n受托方：本公司\n销售商品：D类商品\n销售数量：500件\n销售单价：80元\n销售收入：40,000元\n增值税（13%）：5,200元\n价税合计：45,200元\n\n结算说明：\n协议代销价：30,000元\n应付丙公司：40,000元（待扣除手续费后结算）\n手续费收入：10,000元（计入其他业务收入）\n\n状态：款项已收存银行，待与丙公司结算。', stampText: '财务专用章' }]},
   {
     date: '2026-09-12',
+    role: 'accountant',
     title: '直运销售（商品从供应商直达客户）',
     tags: ['商品销售', '商品采购'],
     difficulty: 3,
@@ -170,6 +179,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-09-14',
+    role: 'accountant',
     title: '预收货款销售（收到客户预付款）',
     tags: ['商品销售', '往来管理'],
     difficulty: 2,
@@ -183,6 +193,7 @@ const tasks = [
       { type: 'text', label: '销售合同', docTitle: '商品销售合同', content: '甲方（卖方）：本公司\n乙方（买方）：乙公司\n\n商品：C类商品\n数量：500件\n单价：160元/件（不含税）\n总价：80,000元（不含税）\n\n付款方式：\n预付定金：50,000元（合同签订日支付）\n尾款：40,400元（发货前付清）\n\n交货日期：2026年9月15日', stampText: '合同专用章' }]},
   {
     date: '2026-09-15',
+    role: 'accountant',
     title: '预收款销售结算（发货确认收入）',
     tags: ['商品销售', '往来管理'],
     difficulty: 2,
@@ -201,6 +212,7 @@ const tasks = [
       { type: 'text', label: '出库单', docTitle: '商品出库单', content: 'C类商品 500件 已出库并发货\n承运人：德邦物流\n客户：乙公司\n备注：预收款销售，已付定金50,000元，尾款已结清。', signature: '仓库管理员 张保管' }]},
   {
     date: '2026-09-16',
+    role: 'accountant',
     title: '现购商品',
     tags: ['商品采购', '税费'],
     difficulty: 2,
@@ -218,6 +230,7 @@ const tasks = [
       { type: 'text', label: '入库单', docTitle: '商品入库单', content: 'C类商品 400件×150元=60,000元\n供应商：华强供应链有限公司\n已验收入库，质量合格。', signature: '仓库管理员 张保管' }]},
   {
     date: '2026-09-17',
+    role: 'accountant',
     title: '赊购商品',
     tags: ['商品采购', '往来管理'],
     difficulty: 2,
@@ -234,6 +247,7 @@ const tasks = [
       { type: 'text', label: '入库单', docTitle: '商品入库单', content: 'A类商品 200件×120元=24,000元\n供应商：丁公司\n已验收入库，质量合格。', signature: '仓库管理员 张保管' }]},
   {
     date: '2026-09-18',
+    role: 'accountant',
     title: '现销商品',
     tags: ['商品销售'],
     difficulty: 2,
@@ -250,6 +264,7 @@ const tasks = [
       { type: 'bank', label: '收款回单', date: '2026-09-18', totalAmount: 101700, payer: '鑫源商贸有限公司', payeeName: '本公司', content: '货款', refNo: 'HD202609180001' }]},
   {
     date: '2026-09-18',
+    role: 'accountant',
     title: '赊销商品',
     tags: ['商品销售', '往来管理'],
     difficulty: 2,
@@ -266,6 +281,7 @@ const tasks = [
       { type: 'text', label: '出库单', docTitle: '商品出库单', content: 'C类商品 200件×200元=40,000元\n客户：甲公司\n承运人：顺丰物流\n备注：赊销，货款未收，信用期30天。', signature: '仓库管理员 张保管' }]},
   {
     date: '2026-09-19',
+    role: 'accountant',
     title: '结转已销商品成本',
     tags: ['商品销售', '仓存管理'],
     difficulty: 2,
@@ -284,6 +300,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-09-21',
+    role: 'accountant',
     title: '收到前欠货款',
     tags: ['往来管理'],
     difficulty: 1,
@@ -296,6 +313,7 @@ const tasks = [
       { type: 'bank', label: '收款回单', date: '2026-09-21', totalAmount: 45200, payer: '甲公司', payeeName: '本公司', content: '货款（发票No.3100890135）', refNo: 'HD202609210001' }]},
   {
     date: '2026-09-22',
+    role: 'accountant',
     title: '支付采购运费',
     tags: ['商品采购', '费用管理'],
     difficulty: 1,
@@ -309,6 +327,7 @@ const tasks = [
         items: [{ name: '运输费（华强供应链→本公司仓库）', qty: 1, price: 1500, amount: 1500 }] }]},
   {
     date: '2026-09-23',
+    role: 'accountant',
     title: '支付广告费',
     tags: ['费用管理'],
     difficulty: 1,
@@ -322,6 +341,7 @@ const tasks = [
         items: [{ name: '搜索引擎推广服务（9月）', qty: 1, price: 5000, amount: 5000 }] }]},
   {
     date: '2026-09-24',
+    role: 'accountant',
     title: '计提本月工资',
     tags: ['工资社保'],
     difficulty: 2,
@@ -335,6 +355,7 @@ const tasks = [
       { type: 'text', label: '工资表', docTitle: '2026年9月工资汇总表', content: '管理人员：5人×6,000元=30,000元\n销售人员：4人×5,000元=20,000元\n合计：50,000元（无社保公积金扣除）', stampText: '行政人事部章' }]},
   {
     date: '2026-09-25',
+    role: 'accountant',
     title: '发放本月工资',
     tags: ['工资社保'],
     difficulty: 1,
@@ -347,6 +368,7 @@ const tasks = [
       { type: 'bank', label: '代发工资回单', date: '2026-09-25', totalAmount: 50000, payer: '本公司', payeeName: '员工代发户', content: '2026年9月工资', refNo: 'HD202609250001' }]},
   {
     date: '2026-09-26',
+    role: 'accountant',
     title: '计提固定资产折旧',
     tags: ['费用管理'],
     difficulty: 2,
@@ -371,6 +393,7 @@ const tasks = [
   折旧方法：直线法（年限平均法）`, stampText: '财务专用章' }]},
   {
     date: '2026-09-27',
+    role: 'accountant',
     title: '计提短期借款利息',
     tags: ['费用管理'],
     difficulty: 2,
@@ -383,6 +406,7 @@ const tasks = [
       { type: 'text', label: '利息计算表', docTitle: '短期借款利息计算表（2026年9月）', content: '借款本金：500,000元\n年利率：4.35%\n月利息：500,000×4.35%÷12=1,812.50元\n\n借款合同：工行流动资金贷款\n借款日期：2026年1月3日\n到期日期：2026年7月2日\n付息方式：到期一次性还本付息\n备注：借款已超期，正在办理续贷手续', stampText: '财务专用章' }]},
   {
     date: '2026-09-28',
+    role: 'accountant',
     title: '计提城建税及教育费附加',
     tags: ['税费'],
     difficulty: 2,
@@ -414,6 +438,7 @@ const tasks = [
   合计：2,158.00元`, stampText: '财务专用章' }]},
   {
     date: '2026-09-29',
+    role: 'accountant',
     title: '期末结转损益',
     tags: ['期末'],
     difficulty: 3,
@@ -470,6 +495,7 @@ const tasks = [
       { type: 'text', label: '现金日记账', docTitle: '库存现金日记账（9月1日）', content: '期初余额：（承上月）\n清点确认：账实相符\n\n出纳：张三\n日期：2026年9月1日', signature: '出纳 张三' }]},
   {
     date: '2026-09-02',
+    role: 'accountant',
     title: '提取备用金',
     tags: ['出纳'],
     difficulty: 1,
@@ -482,6 +508,7 @@ const tasks = [
       { type: 'bank', label: '现金支票存根', date: '2026-09-02', totalAmount: 5000, payer: '本公司', payeeName: '本公司', content: '提取备用金', refNo: 'ZX123456' }]},
   {
     date: '2026-09-03',
+    role: 'accountant',
     title: '现金送存银行',
     tags: ['出纳'],
     difficulty: 1,
@@ -494,6 +521,7 @@ const tasks = [
       { type: 'bank', label: '现金缴款单', date: '2026-09-03', totalAmount: 8000, payer: '本公司', payeeName: '本公司（工行账户）', content: '现金缴款', refNo: 'CJ202609030001' }]},
   {
     date: '2026-09-04',
+    role: 'accountant',
     title: '职工预借差旅费',
     tags: ['出纳', '费用管理'],
     difficulty: 1,
@@ -507,6 +535,7 @@ const tasks = [
         items: [{ name: '差旅费预借款（李四-销售部-出差上海）', qty: 1, price: 2000, amount: 2000 }] }]},
   {
     date: '2026-09-06',
+    role: 'accountant',
     title: '银行转账支付供应商货款',
     tags: ['出纳', '往来管理'],
     difficulty: 1,
@@ -519,6 +548,7 @@ const tasks = [
       { type: 'bank', label: '转账付款回单', date: '2026-09-06', totalAmount: 45000, payer: '本公司', payeeName: '丙公司', content: '支付前欠货款', refNo: 'HD202609060001' }]},
   {
     date: '2026-09-07',
+    role: 'accountant',
     title: '委托代销货款收款（收到乙公司结算款）',
     tags: ['出纳', '往来管理'],
     difficulty: 1,
@@ -531,6 +561,7 @@ const tasks = [
       { type: 'bank', label: '收款回单', date: '2026-09-07', totalAmount: 33900, payer: '乙公司', payeeName: '本公司', content: '委托代销商品结算款', refNo: 'HD202609070001' }]},
   {
     date: '2026-09-08',
+    role: 'accountant',
     title: '收到客户转账支票',
     tags: ['出纳', '往来管理'],
     difficulty: 1,
@@ -543,6 +574,7 @@ const tasks = [
       { type: 'bank', label: '转账支票+进账单', date: '2026-09-08', totalAmount: 28000, payer: '甲公司', payeeName: '本公司', content: '偿还前欠货款', refNo: '支票号：ZZ789012 / 进账单号：JZ202609080001' }]},
   {
     date: '2026-09-10',
+    role: 'accountant',
     title: '银行承兑汇票到期收款',
     tags: ['出纳', '往来管理'],
     difficulty: 1,
@@ -555,6 +587,7 @@ const tasks = [
       { type: 'bank', label: '银行收款回单', date: '2026-09-10', totalAmount: 50000, payer: '出票人', payeeName: '本公司', content: '银行承兑汇票到期兑付', refNo: 'HD202609100001' }]},
   {
     date: '2026-09-11',
+    role: 'accountant',
     title: '微信收款（客户支付货款）',
     tags: ['出纳'],
     difficulty: 1,
@@ -568,6 +601,7 @@ const tasks = [
         items: [{ name: '微信支付-客户货款', qty: 1, price: 3500, amount: 3500 }] }]},
   {
     date: '2026-09-12',
+    role: 'accountant',
     title: '支付宝收款（客户支付货款）',
     tags: ['出纳'],
     difficulty: 1,
@@ -581,6 +615,7 @@ const tasks = [
         items: [{ name: '支付宝支付-客户货款', qty: 1, price: 2800, amount: 2800 }] }]},
   {
     date: '2026-09-13',
+    role: 'accountant',
     title: '商业汇票背书转让支付货款',
     tags: ['出纳', '往来管理'],
     difficulty: 2,
@@ -593,6 +628,7 @@ const tasks = [
       { type: 'text', label: '背书转让凭证', docTitle: '商业汇票背书转让登记表', content: '汇票面值：30,000元\n汇票种类：商业承兑汇票\n出票人：鑫源商贸有限公司\n背书人：本公司\n被背书人：丙公司\n\n背书日期：2026年9月13日\n用途：支付前欠采购货款\n\n备注：汇票背面已加盖公司公章及法人章', stampText: '财务专用章' }]},
   {
     date: '2026-09-15',
+    role: 'accountant',
     title: '微信提现至银行账户',
     tags: ['出纳'],
     difficulty: 2,
@@ -605,6 +641,7 @@ const tasks = [
       { type: 'bank', label: '提现回单', date: '2026-09-15', totalAmount: 3500, payer: '财付通（微信）', payeeName: '本公司（工行账户）', content: '微信账户提现', refNo: 'TX202609150001' }]},
   {
     date: '2026-09-16',
+    role: 'accountant',
     title: '支付宝提现至银行账户',
     tags: ['出纳'],
     difficulty: 2,
@@ -617,6 +654,7 @@ const tasks = [
       { type: 'bank', label: '提现回单', date: '2026-09-16', totalAmount: 2800, payer: '支付宝（中国）', payeeName: '本公司（工行账户）', content: '支付宝账户提现', refNo: 'TX202609160001' }]},
   {
     date: '2026-09-17',
+    role: 'accountant',
     title: '银行扣收手续费',
     tags: ['出纳', '费用管理'],
     difficulty: 1,
@@ -629,6 +667,7 @@ const tasks = [
       { type: 'bank', label: '银行手续费回单', date: '2026-09-17', totalAmount: 150, payer: '本公司', payeeName: '中国工商银行', content: '账户管理费/网银服务费', refNo: 'SF202609170001' }]},
   {
     date: '2026-09-18',
+    role: 'accountant',
     title: '受托代销结算付款（支付丙公司代销货款）',
     tags: ['出纳', '往来管理'],
     difficulty: 2,
@@ -641,6 +680,7 @@ const tasks = [
       { type: 'bank', label: '付款回单', date: '2026-09-18', totalAmount: 40000, payer: '本公司', payeeName: '丙公司', content: '受托代销商品结算款', refNo: 'HD202609180002' }]},
   {
     date: '2026-09-22',
+    role: 'accountant',
     title: '直运销售收款（收到甲公司直运货款）',
     tags: ['出纳', '往来管理'],
     difficulty: 2,
@@ -653,6 +693,7 @@ const tasks = [
       { type: 'bank', label: '收款回单', date: '2026-09-22', totalAmount: 90400, payer: '甲公司', payeeName: '本公司', content: '直运销售货款（合同No.2026010）', refNo: 'HD202609220001' }]},
   {
     date: '2026-09-28',
+    role: 'accountant',
     title: '现金盘点（盘盈处理）',
     tags: ['出纳', '期末'],
     difficulty: 2,
@@ -703,6 +744,7 @@ const tasks = [
 
   {
     date: '2026-09-30',
+    role: 'accountant',
     title: '模拟纳税申报',
     tags: ['期末', '税费'],
     difficulty: 1,

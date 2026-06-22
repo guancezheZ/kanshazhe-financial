@@ -1240,6 +1240,8 @@ export function useStore() {
   function getCurrentRole() { return state.currentRole }
 
   function switchRole(roleId) {
+    // 出纳角色锁定
+    if (roleId === 'cashier') return
     // 保存当前角色的数据
     persist()
     state.currentRole = roleId

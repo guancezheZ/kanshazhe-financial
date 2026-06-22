@@ -578,7 +578,7 @@ html.dark .xp-card { border-color: #3a3a3a !important; }
 html.dark .xp-card .xp-title { color: #e0e0e0 !important; }
 html.dark .xp-card .xp-sub { color: #808090 !important; }
 html.dark .xp-card .xp-bar-label { color: #808090 !important; }
-html.dark .xp-progress :deep(.el-progress-bar__outer) { background: #2a2a2a !important; }
+html.dark .xp-progress ::deep(.el-progress-bar__outer) { background: #2a2a2a !important; }
 
 /* 待办面板暗色 */
 html.dark .todo-item:hover { background: #2a2a2a !important; }

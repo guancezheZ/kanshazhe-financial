@@ -1,6 +1,9 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import { isActivated } from '@/utils/activation.js'
 
+/** 出纳角色锁定：设为 true 后出纳路由、角色切换全部拦截 */
+const CASHIER_LOCKED = true
+
 const routes = [
   {
     path: '/login',
@@ -243,6 +246,12 @@ router.beforeEach((to, from, next) => {
   // 已引导完成或已在引导页，正常放行
   // 另外：如果已引导完成还去/onboarding，重定向到工作台
   if (to.name === 'Onboarding' && onboardingDone) {
+    next({ path: '/dashboard' })
+    return
+  }
+
+  // 出纳角色锁定：禁止直接 URL 访问出纳页面
+  if (CASHIER_LOCKED && to.path.includes('/accounting/cashier')) {
     next({ path: '/dashboard' })
     return
   }

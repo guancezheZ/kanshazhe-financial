@@ -19,6 +19,7 @@ const tasks = [
   // ═══════════════════════════════════════════════════════════════════
   {
     date: '2026-05-04',
+    role: 'accountant',
     title: '缴纳4月增值税及附加税费',
     tags: ['税费'],
     difficulty: 2,
@@ -33,6 +34,7 @@ const tasks = [
       { type: 'bank', label: '电子缴税付款凭证', date: '2026-05-04', totalAmount: 21280, payer: '鼎立建筑工程有限公司', payeeName: '国家金库', content: '4月增值税及附加税费', refNo: 'JS202605040001' }]},
   {
     date: '2026-05-04',
+    role: 'accountant',
     title: '缴纳4月社保费',
     tags: ['工资社保'],
     difficulty: 1,
@@ -45,6 +47,7 @@ const tasks = [
       { type: 'bank', label: '社保缴费回单', date: '2026-05-04', totalAmount: 33345, payer: '鼎立建筑工程有限公司', payeeName: '社会保险费征收机构', content: '4月社保费', refNo: 'SB202605040001' }]},
   {
     date: '2026-05-05',
+    role: 'accountant',
     title: '发放4月职工工资',
     tags: ['工资社保'],
     difficulty: 1,
@@ -57,6 +60,7 @@ const tasks = [
       { type: 'bank', label: '银行代发工资回单', date: '2026-05-05', totalAmount: 135000, payer: '鼎立建筑工程有限公司', payeeName: '公司全体员工', content: '4月份工资发放', refNo: 'GZ202605050001' }]},
   {
     date: '2026-05-05',
+    role: 'accountant',
     title: '提取备用金',
     tags: ['出纳'],
     difficulty: 1,
@@ -119,6 +123,7 @@ const tasks = [
       { type: 'invoice', label: '增值税专用发票', date: '2026-05-07', region: '江苏省', invoiceNo: '3200260507', buyer: '鼎立建筑工程有限公司', seller: '丙公司（华强建材）', lineItems: [{ name: '钢筋HRB400', qty: 40, unit: '吨', price: 4500, amount: 180000 }, { name: '水泥PO42.5', qty: 300, unit: '吨', price: 400, amount: 120000 }], totalAmount: 339000 }]},
   {
     date: '2026-05-07',
+    role: 'accountant',
     title: '支付钢材水泥采购款',
     tags: ['出纳'],
     difficulty: 1,
@@ -145,6 +150,7 @@ const tasks = [
       { type: 'invoice', label: '增值税专用发票', date: '2026-05-08', region: '江苏省', invoiceNo: '3200260508', buyer: '鼎立建筑工程有限公司', seller: '丁公司', lineItems: [{ name: '碎石', qty: 200, unit: '方', price: 300, amount: 60000 }, { name: '中砂', qty: 200, unit: '方', price: 200, amount: 40000 }], totalAmount: 113000 }]},
   {
     date: '2026-05-08',
+    role: 'accountant',
     title: '支付砂石料采购款',
     tags: ['材料管理'],
     difficulty: 1,
@@ -310,6 +316,7 @@ const tasks = [
   // ═══════════════════════════════════════════════════════════════════
   {
     date: '2026-05-18',
+    role: 'accountant',
     title: '报销项目管理人员差旅费',
     tags: ['工程成本'],
     difficulty: 1,
@@ -322,6 +329,7 @@ const tasks = [
       { type: 'receipt', label: '差旅费报销单', date: '2026-05-18', items: [{ label: '恒达项目-交通费', amount: 300 }, { label: '恒达项目-住宿费', amount: 1000 }, { label: '恒达项目-餐补', amount: 500 }, { label: '市政项目-交通费', amount: 400 }, { label: '市政项目-住宿费', amount: 800 }, { label: '市政项目-餐补', amount: 500 }], totalAmount: 3500, stampText: '鼎立建筑工程有限公司财务专用章' }]},
   {
     date: '2026-05-19',
+    role: 'accountant',
     title: '支付5月办公费及水电费',
     tags: ['费用管理'],
     difficulty: 1,
@@ -335,6 +343,7 @@ const tasks = [
       { type: 'receipt', label: '缴费凭证', date: '2026-05-19', items: [{ label: '办公费（办公用品、耗材等）', amount: 5500 }, { label: '工程部水电费', amount: 3800 }], totalAmount: 9300, stampText: '收款单位财务专用章' }]},
   {
     date: '2026-05-19',
+    role: 'accountant',
     title: '银行账户间资金调拨',
     tags: ['费用管理'],
     difficulty: 1,
@@ -367,6 +376,7 @@ const tasks = [
       { type: 'text', label: '分包工程结算单', docTitle: '分包工程月度结算单', content: '恒达基础分包200,000元+市政路基分包100,000元，合计300,000元（不含税），扣预付100,000元，应付227,000元。', signature: '赵会计 丁公司' }]},
   {
     date: '2026-05-20',
+    role: 'accountant',
     title: '支付分包工程结算款',
     tags: ['分包管理'],
     difficulty: 1,
@@ -397,6 +407,7 @@ const tasks = [
       { type: 'text', label: '增值税计算表', docTitle: '2026年5月增值税及附加计算表', content: '销项合计99,000元（恒达45K+市政54K）。进项合计79,000元（钢材水泥39K+砂石13K+分包27K）。预缴18,000元。应交2,000元。附加税240元。', signature: '赵会计' }]},
   {
     date: '2026-05-21',
+    role: 'accountant',
     title: '银行代扣账户管理费及手续费',
     tags: ['费用管理'],
     difficulty: 1,
@@ -414,6 +425,7 @@ const tasks = [
   // ═══════════════════════════════════════════════════════════════════
   {
     date: '2026-05-22',
+    role: 'accountant',
     title: '支付零星工程费用',
     tags: ['工程成本'],
     difficulty: 1,
@@ -549,6 +561,7 @@ const tasks = [
   // ═══════════════════════════════════════════════════════════════════
   {
     date: '2026-05-22',
+    role: 'accountant',
     title: '现金支付材料运费',
     tags: ['材料管理'],
     difficulty: 1,
@@ -561,6 +574,7 @@ const tasks = [
       { type: 'receipt', label: '运费收据', date: '2026-05-22', items: [{ label: '钢材运输费', amount: 1800 }, { label: '砂石运输费', amount: 1000 }], totalAmount: 2800, stampText: '收款单位财务专用章' }]},
   {
     date: '2026-05-25',
+    role: 'accountant',
     title: '购买转账支票及财务用品',
     tags: ['出纳'],
     difficulty: 1,
@@ -618,6 +632,7 @@ const tasks = [
 
   {
     date: '2026-05-18',
+    role: 'accountant',
     title: '支付日常办公费用',
     tags: ['费用管理'],
     difficulty: 1,
@@ -640,6 +655,7 @@ const tasks = [
     documents: [{ type: 'text', label: '对账确认单', docTitle: '往来对账确认单', content: '与供应商核对往来，确认全部款项已结清。', signature: '赵会计' }]},
   {
     date: "2026-05-31",
+    role: 'accountant',
     title: "模拟纳税申报",
     tags: ["期末", "税费"],
     difficulty: 1,

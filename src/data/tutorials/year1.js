@@ -32,6 +32,7 @@ const tutorials = {
   '01': [
     {
       date: '2026-01-02',
+      role: 'accountant',
       title: '提取备用金',
       tags: ["出纳"],
       difficulty: 1,
@@ -47,6 +48,7 @@ const tutorials = {
         { type: 'bank', label: '银行回单', date: '2026-01-02', totalAmount: 2000, payer: '本公司', payeeName: '本公司（现金）', content: '提取备用金', refNo: 'HD202601020002' }]},
     {
       date: '2026-01-03',
+      role: 'accountant',
       title: '购买办公用品',
       tags: ["费用"],
       difficulty: 1,
@@ -107,6 +109,7 @@ const tutorials = {
 核对日期：2026年1月4日` }]},
     {
       date: '2026-01-05',
+      role: 'accountant',
       title: '收到客户货款',
       tags: ["销售"],
       difficulty: 1,
@@ -145,6 +148,7 @@ const tutorials = {
         { subjectCode: '112201', summary: '收到甲公司货款', debit: 0, credit: 50000, explanation: '应收账款减少记贷方。客户还款后债权减少。注意：收回欠款不确认收入（收入在赊销时已确认）。' }]},
     {
       date: '2026-01-06',
+      role: 'accountant',
       title: '支付办公室房租',
       tags: ["费用"],
       difficulty: 1,
@@ -187,6 +191,7 @@ const tutorials = {
         { subjectCode: '100201', summary: '支付1月房租', debit: 0, credit: 8000, explanation: '银行存款减少记贷方。"支付1月房租"，资金从银行划出，资产减少。月末需银行对账。', cashFlowItem: 'cf-op6', cashFlowExplanation: '支付办公室房租属于经营活动中的其他现金支出。' }]},
     {
       date: '2026-01-07',
+      role: 'accountant',
       title: '计提并发放员工工资',
       tags: ["工资社保"],
       difficulty: 2,
@@ -218,6 +223,7 @@ const tutorials = {
         { subjectCode: '221101', summary: '计提1月工资', debit: 0, credit: 60000, explanation: '工资计提时形成对员工的负债，贷"应付职工薪酬-工资"。实际发放时再冲减该科目。' }]},
     {
       date: '2026-01-08',
+      role: 'accountant',
       title: '缴纳上月社保费',
       tags: ["工资社保"],
       difficulty: 1,
@@ -255,6 +261,7 @@ const tutorials = {
         { subjectCode: '100201', summary: '缴纳上月社保', debit: 0, credit: 18000, explanation: '银行存款减少记贷方。"缴纳上月社保"，资金从银行划出，资产减少。月末需银行对账。', cashFlowItem: 'cf-op3', cashFlowExplanation: '缴纳社保属于为职工支付的现金支出，归入经营活动。' }]},
     {
       date: '2026-01-09',
+      role: 'accountant',
       title: '缴纳上月公积金',
       tags: ["工资社保"],
       difficulty: 1,
@@ -288,6 +295,7 @@ const tutorials = {
         { subjectCode: '100201', summary: '缴纳上月公积金', debit: 0, credit: 9000, explanation: '银行存款减少记贷方。"缴纳上月公积金"，资金从银行划出，资产减少。月末需银行对账。', cashFlowItem: 'cf-op3', cashFlowExplanation: '缴纳公积金属于为职工支付的现金支出，归入经营活动。' }]},
     {
       date: '2026-01-10',
+      role: 'accountant',
       title: '计提固定资产折旧',
       tags: ["资产"],
       difficulty: 2,
@@ -333,6 +341,7 @@ const tutorials = {
         { subjectCode: '1602', summary: '计提折旧', debit: 0, credit: 7000, explanation: '累计折旧增加记贷方。固定资产价值因使用消耗而减少。不直接减原值，保持历史成本。' }]},
     {
       date: '2026-01-11',
+      role: 'accountant',
       title: '银行转账支付快递月结费',
       tags: ["出纳","费用"],
       difficulty: 1,
@@ -347,6 +356,7 @@ const tutorials = {
           items: [{ name: '文件寄送服务（共20件）', qty: 20, price: 60, amount: 1200 }] }]},
     {
       date: '2026-01-13',
+      role: 'accountant',
       title: '采购原材料',
       tags: ["采购"],
       difficulty: 1,
@@ -395,6 +405,7 @@ const tutorials = {
         { subjectCode: '220201', summary: '采购原材料-丙公司', debit: 0, credit: 30000, explanation: '应付账款增加记贷方。"采购原材料-丙公司"，采购未付款，形成负债。' }]},
     {
       date: '2026-01-14',
+      role: 'accountant',
       title: '销售商品（款已收）',
       tags: ["销售"],
       difficulty: 2,
@@ -442,6 +453,7 @@ const tutorials = {
         { subjectCode: '222101', summary: '销售商品-增值税', debit: 0, credit: 10400, explanation: '增值税是价外税，单独核算。销项税额 = 80,000 × 13% = 10,400元。' }]},
     {
       date: '2026-01-15',
+      role: 'accountant',
       title: '支付水电费',
       tags: ["费用"],
       difficulty: 1,
@@ -477,6 +489,7 @@ const tutorials = {
         { subjectCode: '100201', summary: '支付水电费', debit: 0, credit: 3300, explanation: '银行存款减少记贷方。"支付水电费"，资金从银行划出，资产减少。月末需银行对账。', cashFlowItem: 'cf-op6', cashFlowExplanation: '水电费属于经营活动中的其他现金支出。' }]},
     {
       date: '2026-01-17',
+      role: 'accountant',
       title: '收到股东增资款',
       tags: ["融资"],
       difficulty: 1,
@@ -521,6 +534,7 @@ const tutorials = {
         { subjectCode: '4001', summary: '收到股东增资', debit: 0, credit: 100000, explanation: '实收资本增加记贷方。股东投入资本金，所有者权益增加。' }]},
     {
       date: '2026-01-18',
+      role: 'accountant',
       title: '客户提前付款享受现金折扣 ⭐',
       tags: ["销售"],
       difficulty: 2,
@@ -566,6 +580,7 @@ const tutorials = {
   贷：应收账款      33,900`}]},
     {
       date: '2026-01-20',
+      role: 'accountant',
       title: '偿还银行短期借款',
       tags: ["融资"],
       difficulty: 1,
@@ -606,6 +621,7 @@ const tutorials = {
         { subjectCode: '100201', summary: '偿还短期借款', debit: 0, credit: 50000, explanation: '银行存款减少记贷方。"偿还短期借款"，资金从银行划出，资产减少。月末需银行对账。', cashFlowItem: 'cf-fin2', cashFlowExplanation: '偿还短期借款本金属于筹资活动现金流出——归还债务本金，区别于支付利息（利息计入经营活动或筹资活动）。' }]},
     {
       date: '2026-01-21',
+      role: 'accountant',
       title: '员工报销差旅费',
       tags: ["费用"],
       difficulty: 1,
@@ -642,6 +658,7 @@ const tutorials = {
         { subjectCode: '100201', summary: '报销张三差旅费', debit: 0, credit: 3000, explanation: '银行存款减少记贷方。"报销张三差旅费"，资金从银行划出，资产减少。月末需银行对账。', cashFlowItem: 'cf-op6', cashFlowExplanation: '差旅费属于经营活动中的其他现金支出——员工出差报销是日常管理性支出。' }]},
     {
       date: '2026-01-22',
+      role: 'accountant',
       title: '支付广告费',
       tags: ["费用"],
       difficulty: 1,
@@ -688,6 +705,7 @@ const tutorials = {
         { subjectCode: '100201', summary: '支付广告费', debit: 0, credit: 6000, explanation: '银行存款减少记贷方。"支付广告费"，资金从银行划出，资产减少。月末需银行对账。', cashFlowItem: 'cf-op6', cashFlowExplanation: '广告费属于经营活动中的其他现金支出——营销推广费用。' }]},
     {
       date: '2026-01-24',
+      role: 'accountant',
       title: '购买办公电脑',
       tags: ["资产"],
       difficulty: 2,
@@ -729,6 +747,7 @@ const tutorials = {
         { subjectCode: '100201', summary: '购买办公电脑', debit: 0, credit: 4500, explanation: '银行存款减少记贷方。"购买办公电脑"，资金从银行划出，资产减少。月末需银行对账。', cashFlowItem: 'cf-inv', cashFlowExplanation: '购买固定资产（办公电脑）属于投资活动现金流出——资本性支出不同于日常经营支出。' }]},
     {
       date: '2026-01-25',
+      role: 'accountant',
       title: '银行转账支付审计费',
       tags: ["出纳","费用"],
       difficulty: 2,
@@ -743,6 +762,7 @@ const tutorials = {
           lineItems: [{ name: '2026年度财务报表审计服务', unit: '项', qty: 1, price: 8000, amount: 8000, taxRate: '6%', tax: 480 }], totalAmount: 8480 }]},
     {
       date: '2026-01-27',
+      role: 'accountant',
       title: '计提本月税费',
       tags: ["税费"],
       difficulty: 2,
@@ -777,6 +797,7 @@ const tutorials = {
         { subjectCode: '222104', summary: '计提教育费附加', debit: 0, credit: 312, explanation: '应交教育费附加增加记贷方。月末计提（增值税×3%），形成负债。' }]},
     {
       date: '2026-01-28',
+      role: 'accountant',
       title: '月末结转·期间损益',
       tags: ["期末"],
       difficulty: 3,
@@ -830,6 +851,7 @@ const tutorials = {
         { subjectCode: '5101', summary: '结转制造费用', debit: 0, credit: 5000, explanation: '制造费用转出记贷方。期末分配至生产成本，余额归零。' }]},
     {
       date: '2026-01-29',
+      role: 'accountant',
       title: '银行代扣社保个人部分缴费',
       tags: ["出纳","工资社保"],
       difficulty: 2,
@@ -852,6 +874,7 @@ const tutorials = {
         { type: 'bank', label: '银行进账回单', date: '2026-01-06', totalAmount: 50000, payer: '甲公司', payeeName: '本公司', content: '货款', refNo: 'HD202601060015' }]},
     {
       date: '2026-01-09', title: '银行转账支付电话费',
+      role: 'accountant',
       tags: ["出纳","费用"], difficulty: 1,
       description: '支付1月份固定电话费和网络费共计 1,200元，通过工商银行转账支付。',
       tip: '通讯费是企业的日常管理费用。分录：借：管理费用-办公费，贷：银行存款。出纳办理后需将缴费回单归档。',
@@ -870,6 +893,7 @@ const tutorials = {
           content: `回单清单：1/5收到货款50,000 1/6支付房租8,000\n1/8缴社保18,000 1/9缴公积金9,000 均已完成勾对✓` }]},
     {
       date: '2026-01-17', title: '银行账户间资金划转 ⭐',
+      role: 'accountant',
       tags: ["出纳"], difficulty: 2,
       description: '因建行账户需要支付一笔贷款利息，从工商银行划转 30,000元至建设银行。出纳通过企业网银办理同行转账。',
       tip: '同一企业不同银行账户间的资金调拨，分录可简化为：借：银行存款-建行，贷：银行存款-工行。出纳需在两个账户的日记账中都登记此笔业务。',
@@ -880,6 +904,7 @@ const tutorials = {
         { type: 'bank', label: '网银转账回单', date: '2026-01-17', totalAmount: 30000, payer: '本公司（工行）', payeeName: '本公司（建行）', content: '资金调拨', refNo: 'HD202601170045' }]},
     {
       date: '2026-01-19', title: '银行存款利息收入确认',
+      role: 'accountant',
       tags: ["出纳","融资"], difficulty: 1,
       description: '收到工商银行1月份存款利息收入 8,500元，银行已自动入账。出纳确认利息收入并登记银行存款日记账。',
       tip: '存款利息冲减财务费用。分录：借：银行存款，贷：财务费用-利息收入。注意：利息收入不是营业收入。',
@@ -907,6 +932,7 @@ const tutorials = {
           content: `账户余额：637,900.00\n已勾对笔数：15笔\n未达账项：0笔` }]},
     {
       date: '2026-01-26',
+      role: 'accountant',
       title: '采购运杂费分摊',
       tags: ["采购"],
       difficulty: 1,
@@ -958,6 +984,7 @@ const tutorials = {
             { name: 'B型钢材装卸服务', qty: 3, price: 200, amount: 600 }]}]},
     {
       date: '2026-01-28', title: '银行代扣社保/公积金缴费 ⭐',
+      role: 'accountant',
       tags: ["出纳","工资社保"], difficulty: 2,
       description: '本月社保费单位部分 18,000元和公积金单位部分 9,000元已由银行自动代扣。出纳核对扣款回单并登记入账。',
       tip: '社保和公积金由银行按月自动代扣。出纳需在扣款后取得回单，确认金额与申报表一致。分录：借：应付职工薪酬-社保/公积金，贷：银行存款。',
@@ -1081,6 +1108,7 @@ const tutorials = {
       entries: []},
   {
     date: "2026-01-31",
+    role: 'accountant',
     title: "模拟纳税申报",
     tags: ["期末", "税费"],
     difficulty: 1,

@@ -23,6 +23,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-05-04',
+    role: 'accountant',
     title: '现购商品',
     tags: ['商品采购', '税费'],
     difficulty: 2,
@@ -39,6 +40,7 @@ const tasks = [
       { type: 'bank', label: '付款回单', date: '2026-05-04', totalAmount: 45200, payer: '本公司', payeeName: '华强供应链有限公司', content: '货款（发票No.3100567801）', refNo: 'HD202605040001' }]},
   {
     date: '2026-05-05',
+    role: 'accountant',
     title: '赊购商品',
     tags: ['商品采购', '往来管理'],
     difficulty: 2,
@@ -55,6 +57,7 @@ const tasks = [
       { type: 'text', label: '入库单', docTitle: '商品入库单', content: 'A类商品 300件 已验收入库，质量合格。经手人：仓库管理员 张保管。', signature: '仓库管理员 张保管' }]},
   {
     date: '2026-05-06',
+    role: 'accountant',
     title: '库存商品盘点——发现盘盈',
     tags: ['仓存管理'],
     difficulty: 2,
@@ -67,6 +70,7 @@ const tasks = [
       { type: 'text', label: '盘点表', docTitle: '存货盘点表（2026年5月）', content: 'A类商品账面库存：300件\nA类商品实盘库存：315件\n盘盈数量：15件\n盘盈金额：15×120元=1,800元\n\n盘点日期：2026年5月6日\n盘点人：仓库管理员 张保管\n监盘人：会计 李会计\n\n差异说明：待查明原因', stampText: '仓库盘点专用章' }]},
   {
     date: '2026-05-06',
+    role: 'accountant',
     title: '库存商品盘点——发现盘亏',
     tags: ['仓存管理'],
     difficulty: 2,
@@ -79,6 +83,7 @@ const tasks = [
       { type: 'text', label: '盘点表', docTitle: '存货盘点表（2026年5月）', content: 'B类商品账面库存：200件\nB类商品实盘库存：192件\n盘亏数量：8件\n盘亏金额：8×200元=1,600元\n\n盘点日期：2026年5月6日\n盘点人：仓库管理员 张保管\n监盘人：会计 李会计\n\n差异说明：待查明原因', stampText: '仓库盘点专用章' }]},
   {
     date: '2026-05-07',
+    role: 'accountant',
     title: '盘盈处理——冲减管理费用',
     tags: ['仓存管理', '费用管理'],
     difficulty: 2,
@@ -91,6 +96,7 @@ const tasks = [
       { type: 'text', label: '盘点处理审批单', docTitle: '存货盘点结果处理审批单', content: '盘盈商品：A类商品15件，金额1,800元\n盘盈原因：计量误差\n处理意见：冲减管理费用\n审批人：王总经理\n审批日期：2026年5月7日', stampText: '本公司 公章', signature: '王总经理' }]},
   {
     date: '2026-05-07',
+    role: 'accountant',
     title: '盘亏处理——查明原因计入管理费用',
     tags: ['仓存管理', '费用管理'],
     difficulty: 2,
@@ -103,6 +109,7 @@ const tasks = [
       { type: 'text', label: '盘点处理审批单', docTitle: '存货盘点结果处理审批单', content: '盘亏商品：B类商品8件，金额1,600元\n盘亏原因：仓储管理不善\n处理意见：计入管理费用\n审批人：王总经理\n审批日期：2026年5月7日', stampText: '本公司 公章', signature: '王总经理' }]},
   {
     date: '2026-05-08',
+    role: 'accountant',
     title: '零售商品售价法——商品进销差价',
     tags: ['商品采购', '仓存管理'],
     difficulty: 3,
@@ -123,6 +130,7 @@ const tasks = [
         content: '采用售价金额核算法：\n1. 库存商品按零售价入账\n2. 商品进销差价反映售价与进价的差额\n3. 月末计算综合差价率，分摊已销商品进销差价\n4. 结转后主营业务成本还原为实际成本' }]},
   {
     date: '2026-05-09',
+    role: 'accountant',
     title: '零售销售及结转已销商品进销差价',
     tags: ['商品销售', '仓存管理'],
     difficulty: 3,
@@ -148,6 +156,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-05-11',
+    role: 'accountant',
     title: '现销商品',
     tags: ['商品销售'],
     difficulty: 2,
@@ -164,6 +173,7 @@ const tasks = [
       { type: 'bank', label: '收款回单', date: '2026-05-11', totalAmount: 84750, payer: '鑫源商贸有限公司', payeeName: '本公司', content: '货款（发票No.3100567804）', refNo: 'HD202605110001' }]},
   {
     date: '2026-05-12',
+    role: 'accountant',
     title: '赊销商品',
     tags: ['商品销售', '往来管理'],
     difficulty: 2,
@@ -180,6 +190,7 @@ const tasks = [
       { type: 'text', label: '出库单', docTitle: '商品出库单', content: 'B类商品 150件 已出库并发货，承运人：顺丰物流。经手人：仓库管理员。', signature: '仓库管理员 张保管' }]},
   {
     date: '2026-05-12',
+    role: 'accountant',
     title: '结转已销商品成本',
     tags: ['商品销售', '仓存管理'],
     difficulty: 2,
@@ -193,6 +204,7 @@ const tasks = [
       { type: 'text', label: '成本计算表', docTitle: '商品销售成本计算表（5月中旬）', content: 'A类商品：销售250件×单位成本120元=30,000元\nB类商品：销售150件×单位成本200元=30,000元\n合计：60,000元\n计价方法：移动加权平均法', stampText: '财务专用章' }]},
   {
     date: '2026-05-13',
+    role: 'accountant',
     title: '收到前欠货款',
     tags: ['往来管理'],
     difficulty: 1,
@@ -205,6 +217,7 @@ const tasks = [
       { type: 'bank', label: '收款回单', date: '2026-05-13', totalAmount: 64410, payer: '甲公司', payeeName: '本公司', content: '货款（发票No.3100567805）', refNo: 'HD202605130001' }]},
   {
     date: '2026-05-14',
+    role: 'accountant',
     title: '支付应付账款',
     tags: ['往来管理'],
     difficulty: 1,
@@ -217,6 +230,7 @@ const tasks = [
       { type: 'bank', label: '转账回单', date: '2026-05-14', totalAmount: 40680, payer: '本公司', payeeName: '丙公司', content: '支付货款（发票No.3200567811）', refNo: 'HD202605140001' }]},
   {
     date: '2026-05-15',
+    role: 'accountant',
     title: '商品合理损耗计入销售费用',
     tags: ['仓存管理', '费用管理'],
     difficulty: 2,
@@ -230,6 +244,7 @@ const tasks = [
         content: '损耗商品：B类商品\n损耗数量：3件\n单位成本：200元/件\n损耗金额：600元\n损耗原因：自然损耗（水分蒸发导致重量减轻）\n损耗类型：合理损耗\n处理意见：计入销售费用\n审批人：王总经理' }]},
   {
     date: '2026-05-16',
+    role: 'accountant',
     title: '计提存货跌价准备',
     tags: ['仓存管理', '期末'],
     difficulty: 3,
@@ -246,6 +261,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-05-18',
+    role: 'accountant',
     title: '现购商品（二批）',
     tags: ['商品采购', '税费'],
     difficulty: 2,
@@ -262,6 +278,7 @@ const tasks = [
       { type: 'bank', label: '付款回单', date: '2026-05-18', totalAmount: 40680, payer: '本公司', payeeName: '华强供应链有限公司', content: '货款（发票No.3100567806）', refNo: 'HD202605180001' }]},
   {
     date: '2026-05-19',
+    role: 'accountant',
     title: '赊购商品（二批）',
     tags: ['商品采购', '往来管理'],
     difficulty: 2,
@@ -278,6 +295,7 @@ const tasks = [
       { type: 'text', label: '入库单', docTitle: '商品入库单', content: 'A类商品 100件 已验收入库，质量合格。供应商：丁公司。', signature: '仓库管理员 张保管' }]},
   {
     date: '2026-05-20',
+    role: 'accountant',
     title: '现销商品（二批）',
     tags: ['商品销售'],
     difficulty: 2,
@@ -294,6 +312,7 @@ const tasks = [
       { type: 'bank', label: '收款回单', date: '2026-05-20', totalAmount: 72320, payer: '永辉超市', payeeName: '本公司', content: '货款（发票No.3100567807）', refNo: 'HD202605200001' }]},
   {
     date: '2026-05-21',
+    role: 'accountant',
     title: '结转已销商品成本（二批）',
     tags: ['商品销售', '仓存管理'],
     difficulty: 2,
@@ -306,6 +325,7 @@ const tasks = [
       { type: 'text', label: '成本计算表', docTitle: '商品销售成本计算表（二批）', content: '销售商品：C类商品\n销售数量：200件\n单位成本：180元/件\n销售成本：200×180=36,000元\n计价方法：移动加权平均法', stampText: '财务专用章' }]},
   {
     date: '2026-05-22',
+    role: 'accountant',
     title: '支付采购运费',
     tags: ['商品采购', '费用管理'],
     difficulty: 1,
@@ -323,6 +343,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-05-25',
+    role: 'accountant',
     title: '计提本月工资',
     tags: ['工资社保'],
     difficulty: 2,
@@ -336,6 +357,7 @@ const tasks = [
       { type: 'text', label: '工资表', docTitle: '2026年5月工资汇总表', content: '管理人员：5人×6,000元=30,000元\n销售人员：4人×5,000元=20,000元\n合计：50,000元\n实发金额：50,000元（无社保公积金扣除）', stampText: '行政人事部章' }]},
   {
     date: '2026-05-26',
+    role: 'accountant',
     title: '发放本月工资',
     tags: ['工资社保'],
     difficulty: 1,
@@ -348,6 +370,7 @@ const tasks = [
       { type: 'bank', label: '代发工资回单', date: '2026-05-26', totalAmount: 50000, payer: '本公司', payeeName: '员工代发户', content: '2026年5月工资', refNo: 'HD202605260001' }]},
   {
     date: '2026-05-27',
+    role: 'accountant',
     title: '计提固定资产折旧',
     tags: ['费用管理'],
     difficulty: 2,
@@ -360,6 +383,7 @@ const tasks = [
       { type: 'text', label: '折旧计算表', docTitle: '固定资产折旧计算表（2026年5月）', content: '房屋建筑物：原值500,000×月折旧率0.2%=1,000元\n办公设备：原值80,000×月折旧率0.8%=640元\n运输设备：原值200,000×月折旧率1.0%=2,000元\n合计：3,640元\n折旧方法：直线法（年限平均法）', stampText: '财务专用章' }]},
   {
     date: '2026-05-28',
+    role: 'accountant',
     title: '计提城建税及教育费附加',
     tags: ['税费'],
     difficulty: 2,
@@ -373,6 +397,7 @@ const tasks = [
       { type: 'text', label: '税金计算表', docTitle: '附加税费计算表（2026年5月）', content: '计税依据：\n  销项税额合计：3,120+9,750+7,410+8,320=28,600元\n  进项税额合计：5,200+4,680+5,200+4,680+1,625=21,385元\n  应交增值税：28,600-21,385=7,215元\n\n附加税费：\n  城市维护建设税：7,215×7%=505.05元\n  教育费附加：7,215×3%=216.45元\n  合计：721.50元', stampText: '财务专用章' }]},
   {
     date: '2026-05-29',
+    role: 'accountant',
     title: '期末结转损益',
     tags: ['期末'],
     difficulty: 3,
@@ -409,6 +434,7 @@ const tasks = [
         content: '账簿名称：现金日记账（1001）\n启用日期：2026年5月1日\n上月结转余额：¥0.00\n\n账簿名称：银行存款日记账-工行（100201）\n启用日期：2026年5月1日\n上月结转余额：（承上月）\n\n账簿名称：银行存款日记账-建行（100202）\n启用日期：2026年5月1日\n上月结转余额：¥0.00\n\n出纳：张出纳    会计主管：李主管' }]},
   {
     date: '2026-05-04',
+    role: 'accountant',
     title: '提取备用金',
     tags: ['出纳'],
     difficulty: 1,
@@ -422,6 +448,7 @@ const tasks = [
       { type: 'text', label: '备用金登记簿', docTitle: '备用金登记簿', content: '备用金提取记录：\n日期：2026年5月4日\n金额：5,000元\n用途：日常零星开支\n经手人：张出纳\n审批人：财务主管', signature: '张出纳' }]},
   {
     date: '2026-05-07',
+    role: 'accountant',
     title: '现金支付采购运费',
     tags: ['出纳', '费用管理'],
     difficulty: 1,
@@ -435,6 +462,7 @@ const tasks = [
         items: [{ name: '5月商品运输费', qty: 1, price: 1800, amount: 1800 }] }]},
   {
     date: '2026-05-08',
+    role: 'accountant',
     title: '备用金借支——差旅预借',
     tags: ['出纳', '费用管理'],
     difficulty: 1,
@@ -448,6 +476,7 @@ const tasks = [
         items: [{ name: '差旅费预借——李强（销售部）', qty: 1, price: 2000, amount: 2000 }] }]},
   {
     date: '2026-05-11',
+    role: 'accountant',
     title: '银行转账——偿还应付丁公司货款',
     tags: ['出纳', '往来管理'],
     difficulty: 1,
@@ -461,6 +490,7 @@ const tasks = [
       { type: 'text', label: '付款申请单', docTitle: '付款申请单（审批齐全）', content: '收款方：丁公司\n金额：14,125.00元\n用途：支付5月19日赊购货款\n附件：发票No.3300567892、入库单\n审批人：部门经理→财务主管→总经理', signature: '审批齐全' }]},
   {
     date: '2026-05-12',
+    role: 'accountant',
     title: '销售收款银行到账确认',
     tags: ['出纳', '商品销售'],
     difficulty: 1,
@@ -473,6 +503,7 @@ const tasks = [
       { type: 'bank', label: '收款回单', date: '2026-05-12', totalAmount: 64410, payer: '甲公司', payeeName: '本公司', content: '货款（发票No.3100567805）', refNo: 'HD202605120002' }]},
   {
     date: '2026-05-14',
+    role: 'accountant',
     title: '微信支付采购运费',
     tags: ['出纳', '费用管理'],
     difficulty: 2,
@@ -487,6 +518,7 @@ const tasks = [
       { type: 'text', label: '微信支付截图', docTitle: '微信商户支付凭证', content: '支付方式：微信商户平台\n收款方：XX物流公司\n金额：1,200.00元\n支付时间：2026-05-14 10:30:25\n交易单号：WX20260514103025123456', stampText: '微信支付已完成' }]},
   {
     date: '2026-05-15',
+    role: 'accountant',
     title: '微信收款提现到工商银行',
     tags: ['出纳'],
     difficulty: 2,
@@ -499,6 +531,7 @@ const tasks = [
       { type: 'bank', label: '微信提现回单', date: '2026-05-15', totalAmount: 8000, payer: '微信商户平台', payeeName: '本公司工商银行账户', content: '微信商户提现', refNo: 'WX202605150001' }]},
   {
     date: '2026-05-18',
+    role: 'accountant',
     title: '支付宝收款提现到建设银行',
     tags: ['出纳'],
     difficulty: 2,
@@ -511,6 +544,7 @@ const tasks = [
       { type: 'bank', label: '支付宝提现回单', date: '2026-05-18', totalAmount: 5000, payer: '支付宝商户平台', payeeName: '本公司建设银行账户', content: '支付宝商户提现', refNo: 'ZFB202605180001' }]},
   {
     date: '2026-05-21',
+    role: 'accountant',
     title: '银行转账——支付供应商货款',
     tags: ['出纳', '商品采购'],
     difficulty: 1,
@@ -524,6 +558,7 @@ const tasks = [
       { type: 'text', label: '付款申请单', docTitle: '付款申请单', content: '收款方：XX供应商\n金额：25,000.00元\n用途：采购商品货款\n附件：采购合同、发票、入库单\n审批：已审批齐全', signature: '审批齐全' }]},
   {
     date: '2026-05-22',
+    role: 'accountant',
     title: '收到客户前欠货款',
     tags: ['出纳', '往来管理'],
     difficulty: 1,
@@ -536,6 +571,7 @@ const tasks = [
       { type: 'bank', label: '收款回单', date: '2026-05-22', totalAmount: 35000, payer: 'XX客户', payeeName: '本公司', content: '支付前欠货款', refNo: 'HD202605220001' }]},
   {
     date: '2026-05-25',
+    role: 'accountant',
     title: '差旅费报销结清借款',
     tags: ['出纳', '费用管理'],
     difficulty: 2,
@@ -555,6 +591,7 @@ const tasks = [
       { type: 'text', label: '借款结清说明', docTitle: '借款结清确认单', content: '借款人：李强（销售部）\n原借款金额：2,000.00元\n报销金额：1,850.00元\n退还现金：150.00元\n结清日期：2026年5月25日\n出纳员：张出纳  借款人：李强', signature: '已结清' }]},
   {
     date: '2026-05-26',
+    role: 'accountant',
     title: '银行利息收入确认',
     tags: ['出纳'],
     difficulty: 1,
@@ -567,6 +604,7 @@ const tasks = [
       { type: 'bank', label: '银行利息回单', date: '2026-05-26', totalAmount: 520.5, payer: 'XX银行（利息）', payeeName: '本公司工商银行账户', content: '2026年第二季度活期存款利息', refNo: 'LX202605260001' }]},
   {
     date: '2026-05-27',
+    role: 'accountant',
     title: '现金盘点——发现长款',
     tags: ['出纳'],
     difficulty: 2,
@@ -580,6 +618,7 @@ const tasks = [
         content: '盘点日期：2026年5月27日\n\n账面余额：XXX.XX元\n实盘金额：XXX.XX元\n长款金额：200.00元\n短款金额：0.00元\n\n差异原因：待查明\n\n盘点人：张出纳\n监盘人：李会计' }]},
   {
     date: '2026-05-28',
+    role: 'accountant',
     title: '银行转账——支付广告费',
     tags: ['出纳', '费用管理'],
     difficulty: 1,
@@ -595,6 +634,7 @@ const tasks = [
       { type: 'bank', label: '付款回单', date: '2026-05-28', totalAmount: 5000, payer: '本公司', payeeName: 'XX广告公司', content: '5月推广服务费', refNo: 'HD202605280001' }]},
   {
     date: '2026-05-29',
+    role: 'accountant',
     title: '银行代扣账户短信服务费',
     tags: ['出纳', '费用管理'],
     difficulty: 1,
@@ -624,6 +664,7 @@ const tasks = [
 
   {
     date: '2026-05-31',
+    role: 'accountant',
     title: '模拟纳税申报',
     tags: ['期末', '税费'],
     difficulty: 1,

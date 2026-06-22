@@ -27,6 +27,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-12-01',
+    role: 'accountant',
     title: '现购商品（年终备货）',
     tags: ['商品采购', '税费'],
     difficulty: 2,
@@ -44,6 +45,7 @@ const tasks = [
       { type: 'text', label: '入库单', docTitle: '商品入库单', content: 'F类商品 600件 已验收入库，质量合格。年终备货批次。', signature: '仓库管理员 王强' }]},
   {
     date: '2026-12-02',
+    role: 'accountant',
     title: '赊购商品',
     tags: ['商品采购', '往来管理'],
     difficulty: 2,
@@ -60,6 +62,7 @@ const tasks = [
       { type: 'text', label: '入库单', docTitle: '商品入库单', content: 'G类商品 500件 已验收入库，质量合格。', signature: '仓库管理员 王强' }]},
   {
     date: '2026-12-03',
+    role: 'accountant',
     title: '支付应付账款',
     tags: ['往来管理'],
     difficulty: 1,
@@ -72,6 +75,7 @@ const tasks = [
       { type: 'bank', label: '付款回单', date: '2026-12-03', totalAmount: 101700, payer: '本公司', payeeName: '丙公司', content: '支付前欠货款（发票No.3200678950）', refNo: 'HD202612030001' }]},
   {
     date: '2026-12-04',
+    role: 'accountant',
     title: '现销商品（年终促销）',
     tags: ['商品销售'],
     difficulty: 2,
@@ -88,6 +92,7 @@ const tasks = [
       { type: 'bank', label: '收款回单', date: '2026-12-04', totalAmount: 339000, payer: '鑫源商贸有限公司', payeeName: '本公司', content: '年终促销货款', refNo: 'HD202612040001' }]},
   {
     date: '2026-12-05',
+    role: 'accountant',
     title: '赊销商品',
     tags: ['商品销售', '往来管理'],
     difficulty: 2,
@@ -104,6 +109,7 @@ const tasks = [
       { type: 'text', label: '出库单', docTitle: '商品出库单', content: 'G类商品 500件 已出库并发货，承运人：顺丰物流。', signature: '仓库管理员 王强' }]},
   {
     date: '2026-12-06',
+    role: 'accountant',
     title: '结转已销商品成本',
     tags: ['商品销售', '仓存管理'],
     difficulty: 2,
@@ -128,6 +134,7 @@ const tasks = [
   三、合计：210,000元`, stampText: '财务专用章' }]},
   {
     date: '2026-12-07',
+    role: 'accountant',
     title: '收到前欠货款',
     tags: ['往来管理'],
     difficulty: 1,
@@ -144,6 +151,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-12-08',
+    role: 'accountant',
     title: '支付全年审计费',
     tags: ['费用管理'],
     difficulty: 1,
@@ -158,6 +166,7 @@ const tasks = [
       { type: 'text', label: '审计业务约定书', docTitle: '年度审计业务约定书（摘要）', content: '委托方：本公司\n受托方：天健会计师事务所\n审计范围：2026年度财务报表\n审计费用：30,000元\n出具报告时间：2027年1月31日前', stampText: '天健会计师事务所 公章' }]},
   {
     date: '2026-12-09',
+    role: 'accountant',
     title: '计提12月工资（含年终奖）',
     tags: ['工资社保'],
     difficulty: 2,
@@ -183,6 +192,7 @@ const tasks = [
   三、合计：90,000元`, stampText: '行政人事部章' }]},
   {
     date: '2026-12-10',
+    role: 'accountant',
     title: '发放工资及年终奖',
     tags: ['工资社保'],
     difficulty: 1,
@@ -195,6 +205,7 @@ const tasks = [
       { type: 'bank', label: '代发工资回单', date: '2026-12-10', totalAmount: 90000, payer: '本公司', payeeName: '员工代发户', content: '2026年12月工资及年终奖', refNo: 'HD202612100001' }]},
   {
     date: '2026-12-11',
+    role: 'accountant',
     title: '计提固定资产折旧',
     tags: ['费用管理'],
     difficulty: 2,
@@ -214,6 +225,7 @@ const tasks = [
   折旧方法：直线法（年限平均法）`, stampText: '财务专用章' }]},
   {
     date: '2026-12-11',
+    role: 'accountant',
     title: '计提短期借款利息',
     tags: ['费用管理'],
     difficulty: 2,
@@ -226,6 +238,7 @@ const tasks = [
       { type: 'text', label: '利息计算表', docTitle: '短期借款利息计算表（2026年12月）', content: '借款本金：500,000元\n年利率：4.35%\n月利息：500,000×4.35%÷12=1,812.50元\n\n借款来源：工商银行\n借款日期：2026年1月3日\n到期日期：2026年7月2日（续贷办理中）\n付息方式：到期一次性还本付息', stampText: '财务专用章' }]},
   {
     date: '2026-12-12',
+    role: 'accountant',
     title: '计提城建税及教育费附加',
     tags: ['税费'],
     difficulty: 2,
@@ -266,6 +279,7 @@ const tasks = [
       { type: 'text', label: '联营商品到货单', docTitle: '联营商品到货登记表', content: '联营品牌：丽人服饰\n到货日期：2026年12月13日\n商品名称：女装\n数量：200件\n保底价：150元/件\n零售价：299元/件\n扣率：25%（商场佣金比例）\n专柜位置：3F-12号\n备注：联营商品不入公司库存账，仅做备查登记。商品所有权归品牌商所有，商场不承担跌价风险。', stampText: '业务部 联营专柜专用章' }]},
   {
     date: '2026-12-13',
+    role: 'accountant',
     title: '联营专柜销售收入确认',
     tags: ['商品销售', '税费'],
     difficulty: 3,
@@ -284,6 +298,7 @@ const tasks = [
       { type: 'text', label: '联营结算单', docTitle: '联营专柜销售结算单', content: '联营品牌：丽人服饰\n销售期间：2026年12月13日\n含税销售额：14,950元\n扣率：25%\n佣金收入（不含税）：14,950÷1.13×25%=3,307.52元\n增值税：3,307.52×13%=430元\n应付款给品牌商：14,950-3,307.52-430=11,212.48元', stampText: '财务专用章' }]},
   {
     date: '2026-12-13',
+    role: 'accountant',
     title: '联营专柜结算与付款',
     tags: ['往来管理', '资金管理'],
     difficulty: 2,
@@ -305,6 +320,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-12-14',
+    role: 'accountant',
     title: '期末结转损益（12月当月）',
     tags: ['期末'],
     difficulty: 3,
@@ -344,6 +360,7 @@ const tasks = [
   📌 12月结束后，本年利润累计余额=1~11月495,512.50+12月104,487.50=600,000.00元`, stampText: '财务专用章' }]},
   {
     date: '2026-12-15',
+    role: 'accountant',
     title: '计提年度所得税费用',
     tags: ['税费'],
     difficulty: 3,
@@ -364,6 +381,7 @@ const tasks = [
   依据：《中华人民共和国企业所得税法》第四条、第五条`, stampText: '财务专用章' }]},
   {
     date: '2026-12-15',
+    role: 'accountant',
     title: '结转所得税费用',
     tags: ['期末'],
     difficulty: 2,
@@ -382,6 +400,7 @@ const tasks = [
   所得税费用余额：0元 ✓`, stampText: '财务专用章' }]},
   {
     date: '2026-12-16',
+    role: 'accountant',
     title: '年终·结转本年利润至利润分配 ⭐',
     tags: ['期末'],
     difficulty: 3,
@@ -404,6 +423,7 @@ const tasks = [
   结转后本年利润余额：零 ✓`, stampText: '财务专用章' }]},
   {
     date: '2026-12-17',
+    role: 'accountant',
     title: '提取法定盈余公积 ⭐',
     tags: ['期末'],
     difficulty: 3,
@@ -421,6 +441,7 @@ const tasks = [
   提取后盈余公积余额：45,000.00元`, stampText: '财务专用章' }]},
   {
     date: '2026-12-17',
+    role: 'accountant',
     title: '提取任意盈余公积 ⭐',
     tags: ['期末'],
     difficulty: 3,
@@ -441,6 +462,7 @@ const tasks = [
   日期：2026年12月17日`, stampText: '本公司\n公章' }]},
   {
     date: '2026-12-18',
+    role: 'accountant',
     title: '计提应付股利（股东分红）⭐',
     tags: ['期末'],
     difficulty: 3,
@@ -457,6 +479,7 @@ const tasks = [
   股利发放日：2027年1月15日`, stampText: '本公司\n公章' }]},
   {
     date: '2026-12-19',
+    role: 'accountant',
     title: '利润分配明细科目结转 ⭐',
     tags: ['期末'],
     difficulty: 3,
@@ -487,6 +510,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-12-21',
+    role: 'accountant',
     title: '年终库存商品全面盘点',
     tags: ['仓存管理'],
     difficulty: 2,
@@ -538,6 +562,7 @@ const tasks = [
   财务监盘：李会计`, stampText: '财务专用章' }]},
   {
     date: '2026-12-23',
+    role: 'accountant',
     title: '缴纳增值税',
     tags: ['税费'],
     difficulty: 2,
@@ -551,6 +576,7 @@ const tasks = [
       { type: 'text', label: '纳税申报表', docTitle: '增值税纳税申报表（12月）', content: '销项税额：58,500元\n进项税额：27,300元\n应交增值税：31,200元\n已缴纳：31,200元' }]},
   {
     date: '2026-12-26',
+    role: 'accountant',
     title: '支付水电费',
     tags: ['费用管理'],
     difficulty: 1,
@@ -566,6 +592,7 @@ const tasks = [
         items: [{ name: '12月水费', qty: 1, price: 1000, amount: 1000 }] }]},
   {
     date: '2026-12-28',
+    role: 'accountant',
     title: '购买办公用品',
     tags: ['费用管理'],
     difficulty: 1,
@@ -599,6 +626,7 @@ const tasks = [
 监盘人：李主管`, stampText: '财务专用章' }]},
   {
     date: '2026-12-01',
+    role: 'accountant',
     title: '提取备用金',
     tags: ['出纳'],
     difficulty: 1,
@@ -611,6 +639,7 @@ const tasks = [
       { type: 'bank', label: '现金支票存根', date: '2026-12-01', totalAmount: 10000, payer: '本公司', payeeName: '本公司（提现）', content: '提取备用金（现金支票No.12345678）', refNo: 'CX202612010001' }]},
   {
     date: '2026-12-02',
+    role: 'accountant',
     title: '预借差旅费',
     tags: ['出纳', '费用管理'],
     difficulty: 1,
@@ -624,6 +653,7 @@ const tasks = [
         items: [{ name: '差旅费预借款（张经理）', qty: 1, price: 5000, amount: 5000 }] }]},
   {
     date: '2026-12-03',
+    role: 'accountant',
     title: '差旅费报销退回现金',
     tags: ['出纳', '费用管理'],
     difficulty: 2,
@@ -650,6 +680,7 @@ const tasks = [
 部门经理：✓  财务审核：✓  主管审批：✓`, stampText: '财务专用章' }]},
   {
     date: '2026-12-04',
+    role: 'accountant',
     title: '现金送存银行',
     tags: ['出纳'],
     difficulty: 1,
@@ -662,6 +693,7 @@ const tasks = [
       { type: 'bank', label: '现金进账单', date: '2026-12-04', totalAmount: 6000, payer: '本公司', payeeName: '本公司（工行账户）', content: '库存现金送存', refNo: 'HD202612040002' }]},
   {
     date: '2026-12-05',
+    role: 'accountant',
     title: '银行转账手续费',
     tags: ['出纳', '费用管理'],
     difficulty: 1,
@@ -674,6 +706,7 @@ const tasks = [
       { type: 'bank', label: '银行手续费回单', date: '2026-12-05', totalAmount: 200, payer: '本公司', payeeName: '中国工商银行', content: '2026年12月转账汇款手续费', refNo: 'HD202612050001' }]},
   {
     date: '2026-12-07',
+    role: 'accountant',
     title: '银行预付采购定金',
     tags: ['出纳', '商品采购'],
     difficulty: 2,
@@ -692,6 +725,7 @@ const tasks = [
 付款方式：预付定金+货到付尾款`, stampText: '合同专用章' }]},
   {
     date: '2026-12-08',
+    role: 'accountant',
     title: '银行活期存款结息',
     tags: ['出纳'],
     difficulty: 1,
@@ -704,6 +738,7 @@ const tasks = [
       { type: 'bank', label: '银行结息通知单', date: '2026-12-08', totalAmount: 960, payer: '中国工商银行', payeeName: '本公司', content: '2026年第四季度活期存款结息', refNo: 'JX202612080001' }]},
   {
     date: '2026-12-09',
+    role: 'accountant',
     title: '网银缴纳社保费',
     tags: ['出纳', '工资社保'],
     difficulty: 2,
@@ -724,6 +759,7 @@ const tasks = [
         生育保险 1,000元`, stampText: '上海市社保中心 征缴专用章' }]},
   {
     date: '2026-12-10',
+    role: 'accountant',
     title: '银行账户资金调拨',
     tags: ['出纳'],
     difficulty: 1,
@@ -736,6 +772,7 @@ const tasks = [
       { type: 'bank', label: '内部转账回单', date: '2026-12-10', totalAmount: 30000, payer: '本公司（工行账户）', payeeName: '本公司（建行账户）', content: '银行账户间资金调拨', refNo: 'HD202612100002' }]},
   {
     date: '2026-12-11',
+    role: 'accountant',
     title: '建行账户年检管理费',
     tags: ['出纳', '费用管理'],
     difficulty: 1,
@@ -748,6 +785,7 @@ const tasks = [
       { type: 'bank', label: '银行收费回单', date: '2026-12-11', totalAmount: 500, payer: '本公司', payeeName: '中国建设银行', content: '2026年度账户年检及管理费', refNo: 'CCB202612110001' }]},
   {
     date: '2026-12-12',
+    role: 'accountant',
     title: '网银缴纳城建税及教育费附加',
     tags: ['出纳', '税费'],
     difficulty: 2,
@@ -770,6 +808,7 @@ const tasks = [
 收款国库：国家金库上海分库`, stampText: '国库业务专用章' }]},
   {
     date: '2026-12-14',
+    role: 'accountant',
     title: '建行收款-收回客户欠款',
     tags: ['出纳'],
     difficulty: 1,
@@ -782,6 +821,7 @@ const tasks = [
       { type: 'bank', label: '收款回单', date: '2026-12-14', totalAmount: 80000, payer: '甲公司', payeeName: '本公司（建行账户）', content: '支付前欠货款', refNo: 'CCB202612140001' }]},
   {
     date: '2026-12-15',
+    role: 'accountant',
     title: '支付宝提现到工行',
     tags: ['出纳'],
     difficulty: 2,
@@ -801,6 +841,7 @@ const tasks = [
 当前支付宝余额：已清空`, stampText: '支付宝电子凭证' }]},
   {
     date: '2026-12-16',
+    role: 'accountant',
     title: '微信提现到工行',
     tags: ['出纳'],
     difficulty: 2,
@@ -820,6 +861,7 @@ const tasks = [
 当前微信余额：已清空`, stampText: '微信支付电子凭证' }]},
   {
     date: '2026-12-18',
+    role: 'accountant',
     title: '银行转账-支付供应商年终结算款',
     tags: ['出纳'],
     difficulty: 1,
@@ -832,6 +874,7 @@ const tasks = [
       { type: 'bank', label: '付款回单', date: '2026-12-18', totalAmount: 40000, payer: '本公司', payeeName: '丙公司', content: '2026年度结算尾款', refNo: 'HD202612180001' }]},
   {
     date: '2026-12-21',
+    role: 'accountant',
     title: '银行承兑汇票到期托收',
     tags: ['出纳'],
     difficulty: 2,
@@ -879,6 +922,7 @@ const tasks = [
 财务负责人：王会计`, stampText: '财务专用章' }]},
   {
     date: '2026-12-25',
+    role: 'accountant',
     title: '银行转账-预付下年度办公用房租金',
     tags: ['出纳', '费用管理'],
     difficulty: 1,
@@ -926,6 +970,7 @@ const tasks = [
 
   {
     date: '2026-12-31',
+    role: 'accountant',
     title: '模拟纳税申报',
     tags: ['期末', '税费'],
     difficulty: 1,

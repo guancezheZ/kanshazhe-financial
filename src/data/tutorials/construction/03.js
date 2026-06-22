@@ -19,6 +19,7 @@ const tasks = [
   // ═════════════════════════════════════════════════════════════════════
   {
     date: '2026-03-02',
+    role: 'accountant',
     title: '缴纳1-2月增值税差额',
     tags: ['税费'],
     difficulty: 2,
@@ -31,6 +32,7 @@ const tasks = [
       { type: 'bank', label: '电子缴税凭证', date: '2026-03-02', totalAmount: 26500, payer: '鼎立建筑工程有限公司', payeeName: '国家金库', content: '增值税缴纳', refNo: 'NS202603020001' }]},
   {
     date: '2026-03-02',
+    role: 'accountant',
     title: '缴纳2月附加税费',
     tags: ['税费'],
     difficulty: 1,
@@ -44,6 +46,7 @@ const tasks = [
       { type: 'bank', label: '电子缴税凭证', date: '2026-03-02', totalAmount: 4500, payer: '鼎立建筑工程有限公司', payeeName: '国家金库', content: '附加税缴纳', refNo: 'NS202603020002' }]},
   {
     date: '2026-03-03',
+    role: 'accountant',
     title: '缴纳2月社会保险费',
     tags: ['工资社保'],
     difficulty: 1,
@@ -56,6 +59,7 @@ const tasks = [
       { type: 'bank', label: '社保缴费回单', date: '2026-03-03', totalAmount: 36250, payer: '鼎立建筑工程有限公司', payeeName: '社会保险事业管理中心', content: '2月社保费', refNo: 'SB202603030001' }]},
   {
     date: '2026-03-03',
+    role: 'accountant',
     title: '向丙公司采购工程钢筋',
     tags: ['材料管理', '工程成本'],
     difficulty: 2,
@@ -69,6 +73,7 @@ const tasks = [
       { type: 'invoice', label: '增值税专用发票', date: '2026-03-03', region: '江苏省', invoiceNo: '3200260303', buyer: '鼎立建筑工程有限公司', seller: '丙公司', lineItems: [{ name: '螺纹钢HRB400', qty: 20, unit: '吨', price: 7400, amount: 148000 }], totalAmount: 167240 }]},
   {
     date: '2026-03-04',
+    role: 'accountant',
     title: '支付丙公司钢筋材料款',
     tags: ['材料管理'],
     difficulty: 1,
@@ -81,6 +86,7 @@ const tasks = [
       { type: 'bank', label: '网银转账回单', date: '2026-03-04', totalAmount: 167240, payer: '鼎立建筑工程有限公司', payeeName: '丙公司', content: '钢筋采购款', refNo: 'ZF202603040001' }]},
   {
     date: '2026-03-04',
+    role: 'accountant',
     title: '租赁塔吊起重机',
     tags: ['机械使用', '工程成本'],
     difficulty: 1,
@@ -93,6 +99,7 @@ const tasks = [
       { type: 'bank', label: '付款回单', date: '2026-03-04', totalAmount: 25000, payer: '鼎立建筑工程有限公司', payeeName: '宏远机械租赁有限公司', content: '塔吊租赁费', refNo: 'ZF202603040002' }]},
   {
     date: '2026-03-05',
+    role: 'accountant',
     title: '提取备用金',
     tags: ['出纳'],
     difficulty: 1,
@@ -105,6 +112,7 @@ const tasks = [
       { type: 'text', label: '现金支票存根', docTitle: '现金支票存根', content: '支票号码：XC20260305，收款人：鼎立建筑工程有限公司，金额：30,000元，用途：备用金。', stampText: '财务专用章' }]},
   {
     date: '2026-03-05',
+    role: 'accountant',
     title: '采购工程水泥',
     tags: ['材料管理', '工程成本'],
     difficulty: 2,
@@ -118,6 +126,7 @@ const tasks = [
       { type: 'invoice', label: '增值税专用发票', date: '2026-03-05', region: '江苏省', invoiceNo: '3200260305', buyer: '鼎立建筑工程有限公司', seller: '丁公司', lineItems: [{ name: 'P.O42.5水泥', qty: 200, unit: '吨', price: 410, amount: 82000 }], totalAmount: 92660 }]},
   {
     date: '2026-03-06',
+    role: 'accountant',
     title: '分包工程阶段性完工结算',
     tags: ['分包管理', '工程成本'],
     difficulty: 3,
@@ -137,6 +146,7 @@ const tasks = [
   // ═════════════════════════════════════════════════════════════════════
   {
     date: '2026-03-09',
+    role: 'accountant',
     title: '确认3月工程进度并开票',
     tags: ['工程合同', '工程成本'],
     difficulty: 3,
@@ -152,6 +162,7 @@ const tasks = [
       { type: 'text', label: '工程进度确认单', docTitle: '工程产值确认单（2026年3月）', content: '截至3月底，办公楼工程累计完成产值2,500,000元（合同总价5,000,000元的50%）。本期完成产值1,250,000元。经甲方及监理确认。', signature: '恒达地产（章）监理单位（章）鼎立建筑（章）' }]},
   {
     date: '2026-03-09',
+    role: 'accountant',
     title: '收到工程进度款',
     tags: ['往来管理'],
     difficulty: 1,
@@ -164,6 +175,7 @@ const tasks = [
       { type: 'bank', label: '银行收款回单', date: '2026-03-09', totalAmount: 1112500, payer: '恒达地产有限公司', payeeName: '鼎立建筑工程有限公司', content: '办公楼工程进度款', refNo: 'HD202603090001' }]},
   {
     date: '2026-03-10',
+    role: 'accountant',
     title: '支付水泥材料款',
     tags: ['材料管理'],
     difficulty: 1,
@@ -176,6 +188,7 @@ const tasks = [
       { type: 'bank', label: '网银转账回单', date: '2026-03-10', totalAmount: 92660, payer: '鼎立建筑工程有限公司', payeeName: '丁公司', content: '水泥采购款', refNo: 'ZF202603100001' }]},
   {
     date: '2026-03-10',
+    role: 'accountant',
     title: '采购砂石材料',
     tags: ['材料管理', '工程成本'],
     difficulty: 2,
@@ -189,6 +202,7 @@ const tasks = [
       { type: 'invoice', label: '增值税专用发票', date: '2026-03-10', region: '江苏省', invoiceNo: '3200260310', buyer: '鼎立建筑工程有限公司', seller: '鑫鑫砂石经营部', lineItems: [{ name: '中砂', qty: 100, unit: '立方米', price: 300, amount: 30000 }, { name: '碎石', qty: 80, unit: '立方米', price: 250, amount: 20000 }], totalAmount: 51500 }]},
   {
     date: '2026-03-11',
+    role: 'accountant',
     title: '支付砂石材料款',
     tags: ['材料管理'],
     difficulty: 1,
@@ -201,6 +215,7 @@ const tasks = [
       { type: 'bank', label: '网银转账回单', date: '2026-03-11', totalAmount: 51500, payer: '鼎立建筑工程有限公司', payeeName: '鑫鑫砂石经营部', content: '砂石材料款', refNo: 'ZF202603110001' }]},
   {
     date: '2026-03-11',
+    role: 'accountant',
     title: '购买安全防护用品',
     tags: ['材料管理', '工程成本'],
     difficulty: 1,
@@ -214,6 +229,7 @@ const tasks = [
       { type: 'invoice', label: '增值税专用发票', date: '2026-03-11', region: '江苏省', invoiceNo: '3200260311', buyer: '鼎立建筑工程有限公司', seller: '安达安全设备有限公司', lineItems: [{ name: '安全网', qty: 100, unit: '张', price: 80, amount: 8000 }, { name: '安全帽', qty: 60, unit: '顶', price: 50, amount: 3000 }, { name: '防护栏', qty: 30, unit: '套', price: 300, amount: 9000 }], totalAmount: 22600 }]},
   {
     date: '2026-03-12',
+    role: 'accountant',
     title: '摊销3月办公室租金',
     tags: ['期末'],
     difficulty: 1,
@@ -226,6 +242,7 @@ const tasks = [
       { type: 'text', label: '费用摊销表', docTitle: '预付租金摊销计算表', content: '一季度房租60,000元，每月摊销20,000元，本月为最后一次摊销，预付账款余额为零。', signature: '财务部' }]},
   {
     date: '2026-03-12',
+    role: 'accountant',
     title: '报销项目部差旅费',
     tags: ['工程成本'],
     difficulty: 1,
@@ -238,6 +255,7 @@ const tasks = [
       { type: 'receipt', label: '差旅费报销单', date: '2026-03-12', items: [{ label: '交通费（高铁+打车）', amount: 3500 }, { label: '住宿费（4天）', amount: 3000 }, { label: '出差补助（4天×375）', amount: 1500 }], totalAmount: 8000, stampText: '鼎立建筑工程有限公司财务专用章' }]},
   {
     date: '2026-03-13',
+    role: 'accountant',
     title: '计提3月上半月职工薪酬',
     tags: ['工程成本', '工资社保'],
     difficulty: 2,
@@ -252,6 +270,7 @@ const tasks = [
       { type: 'text', label: '工资计提表', docTitle: '2026年3月上半月职工工资明细', content: '施工人员（15人）45,000元；项目部管理（5人）15,000元；公司管理（4人）12,500元。合计72,500元。', signature: '人力资源部' }]},
   {
     date: '2026-03-13',
+    role: 'accountant',
     title: '支付日常办公费用',
     tags: ['费用管理'],
     difficulty: 1,
@@ -268,6 +287,7 @@ const tasks = [
   // ═════════════════════════════════════════════════════════════════════
   {
     date: '2026-03-16',
+    role: 'accountant',
     title: '支付挖掘机租赁费',
     tags: ['机械使用'],
     difficulty: 1,
@@ -280,6 +300,7 @@ const tasks = [
       { type: 'bank', label: '付款回单', date: '2026-03-16', totalAmount: 30000, payer: '鼎立建筑工程有限公司', payeeName: '宏远机械租赁有限公司', content: '挖掘机租赁费', refNo: 'ZF202603160001' }]},
   {
     date: '2026-03-16',
+    role: 'accountant',
     title: '支付工程水电费',
     tags: ['工程成本'],
     difficulty: 1,
@@ -292,6 +313,7 @@ const tasks = [
       { type: 'receipt', label: '水电费缴费通知', date: '2026-03-16', items: [{ label: '施工用电', amount: 6000 }, { label: '施工用水', amount: 2000 }], totalAmount: 8000, stampText: '国网江苏省电力公司 江苏省自来水公司' }]},
   {
     date: '2026-03-17',
+    role: 'accountant',
     title: '计提3月固定资产折旧',
     tags: ['机械使用', '工程成本'],
     difficulty: 2,
@@ -305,6 +327,7 @@ const tasks = [
       { type: 'text', label: '折旧计算表', docTitle: '2026年3月固定资产折旧明细', content: '运输车辆原值300,000元，月折旧5,000元；办公设备原值120,000元，月折旧2,000元。合计7,000元。直线法折旧。', signature: '财务部' }]},
   {
     date: '2026-03-18',
+    role: 'accountant',
     title: '计提3月下半月职工薪酬',
     tags: ['工程成本', '工资社保'],
     difficulty: 2,
@@ -319,6 +342,7 @@ const tasks = [
       { type: 'text', label: '工资计提表', docTitle: '2026年3月下半月职工工资明细', content: '施工人员45,000+项目部15,000+公司12,500=72,500元。', signature: '人力资源部' }]},
   {
     date: '2026-03-18',
+    role: 'accountant',
     title: '报销公司管理人员差旅费',
     tags: ['费用管理'],
     difficulty: 1,
@@ -331,6 +355,7 @@ const tasks = [
       { type: 'receipt', label: '差旅费报销单', date: '2026-03-18', items: [{ label: '交通费', amount: 1500 }, { label: '住宿费', amount: 2000 }, { label: '餐补', amount: 1000 }], totalAmount: 4500, stampText: '鼎立建筑工程有限公司财务专用章' }]},
   {
     date: '2026-03-19',
+    role: 'accountant',
     title: '计提3月社会保险费',
     tags: ['工资社保', '工程成本'],
     difficulty: 2,
@@ -345,6 +370,7 @@ const tasks = [
       { type: 'text', label: '社保计提表', docTitle: '2026年3月社会保险费用计提明细', content: '施工工资90,000×25%=22,500；项目工资30,000×25%=7,500；管理工资25,000×25%=6,250。合计36,250元。', signature: '人力资源部' }]},
   {
     date: '2026-03-19',
+    role: 'accountant',
     title: '计提短期借款利息',
     tags: ['期末'],
     difficulty: 1,
@@ -360,6 +386,7 @@ const tasks = [
   // ═════════════════════════════════════════════════════════════════════
   {
     date: '2026-03-23',
+    role: 'accountant',
     title: '计算一季度应交增值税',
     tags: ['税费', '期末'],
     difficulty: 3,
@@ -375,6 +402,7 @@ const tasks = [
       { type: 'text', label: '增值税及附加税计算表', docTitle: '2026年3月增值税及附加税计算表', content: '销项税额112,500-进项税额106,000=应交增值税6,500元。附加税合计780元（城建税455+教育费附加195+地方教育附加130）。一季度累计应交增值税约33,000元（已缴56,500+本月6,500）。', signature: '财务部' }]},
   {
     date: '2026-03-24',
+    role: 'accountant',
     title: '计提一季度企业所得税',
     tags: ['税费', '期末'],
     difficulty: 3,
@@ -387,6 +415,7 @@ const tasks = [
       { type: 'text', label: '所得税计算表', docTitle: '2026年3月企业所得税计提明细', content: '利润总额119,820元，所得税率25%，本月所得税29,955元。一季度累计利润约267,600元，累计所得税约66,900元。', signature: '财务部' }]},
   {
     date: '2026-03-24',
+    role: 'accountant',
     title: '月末结转合同履约成本',
     tags: ['工程成本', '期末'],
     difficulty: 3,
@@ -426,6 +455,7 @@ const tasks = [
       { type: 'text', label: '银行对账单', docTitle: '中国工商银行对账单（2026年3月）', content: '3月对账单显示：期初余额约7,130,750元，本期收入1,112,500元，支出合计1,076,450元，期末余额约7,166,800元。核对一致。', stampText: '中国工商银行 业务专用章' }]},
   {
     date: '2026-03-26',
+    role: 'accountant',
     title: '月末结转损益类科目',
     tags: ['期末'],
     difficulty: 3,
@@ -443,6 +473,7 @@ const tasks = [
       { type: 'text', label: '损益结转计算表', docTitle: '2026年3月损益结转明细', content: '收入1,250,000-成本费用1,130,180=利润总额119,820元。一季度累计利润总额≈267,600元。', signature: '财务部' }]},
   {
     date: '2026-03-26',
+    role: 'accountant',
     title: '结转所得税费用',
     tags: ['税费', '期末'],
     difficulty: 2,
@@ -455,6 +486,7 @@ const tasks = [
       { type: 'text', label: '所得税结转表', docTitle: '2026年3月所得税费用结转', content: '所得税费用29,955元结转至本年利润。本月净利润=119,820-29,955=89,865元。', signature: '财务部' }]},
   {
     date: '2026-03-27',
+    role: 'accountant',
     title: '结转净利润至未分配利润',
     tags: ['期末'],
     difficulty: 2,
@@ -467,6 +499,7 @@ const tasks = [
       { type: 'text', label: '利润结转表', docTitle: '2026年3月净利润结转明细', content: '本月净利润89,865元结转至未分配利润。一季度累计净利润约173,540元。', signature: '财务部' }]},
   {
     date: '2026-03-27',
+    role: 'accountant',
     title: '提取盈余公积',
     tags: ['期末'],
     difficulty: 2,
@@ -502,6 +535,7 @@ const tasks = [
 
   {
     date: '2026-03-15',
+    role: 'accountant',
     title: '支付日常办公费用',
     tags: ['费用管理'],
     difficulty: 1,
@@ -524,6 +558,7 @@ const tasks = [
     documents: [{ type: 'text', label: '对账确认单', docTitle: '往来对账确认单', content: '与供应商核对往来，确认全部款项已结清。', signature: '赵会计' }]},
   {
     date: '2026-03-25',
+    role: 'accountant',
     title: '支付银行手续费',
     tags: ['费用管理'],
     difficulty: 1,
@@ -535,6 +570,7 @@ const tasks = [
     documents: [{ type: 'bank', label: '银行扣款通知', totalAmount: 680, content: '银行手续费' }]},
   {
     date: "2026-03-31",
+    role: 'accountant',
     title: "模拟纳税申报",
     tags: ["期末", "税费"],
     difficulty: 1,

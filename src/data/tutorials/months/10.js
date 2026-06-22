@@ -26,6 +26,7 @@ const oct = [
 
   {
     date: '2026-10-08',
+    role: 'accountant',
     title: '缴纳9月增值税',
     tags: ["税费"],
     difficulty: 1,
@@ -41,6 +42,7 @@ const oct = [
       { type: 'bank', label: '银行回单', date: '2026-10-08', totalAmount: 14300, payer: '本公司', payeeName: '国家税务总局XX分局', content: '缴纳9月增值税', refNo: 'HD202610080001' }]},
   {
     date: '2026-10-08',
+    role: 'accountant',
     title: '缴纳9月城建税',
     tags: ["税费"],
     difficulty: 1,
@@ -56,6 +58,7 @@ const oct = [
       { type: 'bank', label: '银行回单', date: '2026-10-08', totalAmount: 1001, payer: '本公司', payeeName: '国家税务总局XX分局', content: '缴纳9月城建税', refNo: 'HD202610080002' }]},
   {
     date: '2026-10-08',
+    role: 'accountant',
     title: '缴纳9月教育费附加',
     tags: ["税费"],
     difficulty: 1,
@@ -71,6 +74,7 @@ const oct = [
       { type: 'bank', label: '银行回单', date: '2026-10-08', totalAmount: 429, payer: '本公司', payeeName: '国家税务总局XX分局', content: '缴纳9月教育费附加', refNo: 'HD202610080003' }]},
   {
     date: '2026-10-09',
+    role: 'accountant',
     title: '缴纳9月社保费',
     tags: ["工资社保"],
     difficulty: 1,
@@ -86,6 +90,7 @@ const oct = [
       { type: 'bank', label: '银行回单', date: '2026-10-09', totalAmount: 21000, payer: '本公司', payeeName: 'XX市社保局', content: '缴纳9月社保', refNo: 'HD202610090004' }]},
   {
     date: '2026-10-09',
+    role: 'accountant',
     title: '缴纳9月公积金',
     tags: ["工资社保"],
     difficulty: 1,
@@ -101,6 +106,7 @@ const oct = [
       { type: 'bank', label: '银行回单', date: '2026-10-09', totalAmount: 10200, payer: '本公司', payeeName: 'XX市公积金管理中心', content: '缴纳9月公积金', refNo: 'HD202610090005' }]},
   {
     date: '2026-10-09',
+    role: 'accountant',
     title: '发放9月职工工资',
     tags: ["工资社保"],
     difficulty: 2,
@@ -128,6 +134,7 @@ const oct = [
       { type: 'bank', label: '银行回单', date: '2026-10-09', totalAmount: 63200, payer: '本公司', payeeName: '本公司（代发工资）', content: '9月职工工资', refNo: 'HD202610090006' }]},
   {
     date: '2026-10-10',
+    role: 'accountant',
     title: '缴纳个税及代扣社保',
     tags: ["税费","工资社保"],
     difficulty: 1,
@@ -149,6 +156,7 @@ const oct = [
 
   {
     date: '2026-10-13',
+    role: 'accountant',
     title: '支付9月水电费',
     tags: ["费用"],
     difficulty: 1,
@@ -164,6 +172,7 @@ const oct = [
       { type: 'receipt', label: '水费单', docTitle: '水费缴费凭证', date: '2026-10-13', totalAmount: 1200, payer: '本公司', stampText: '自来水公司\n水费收讫章', items: [{ name: '9月水费', qty: 300, price: 4.00, amount: 1200 }] }]},
   {
     date: '2026-10-13',
+    role: 'accountant',
     title: '购买办公用品',
     tags: ["费用"],
     difficulty: 1,
@@ -179,6 +188,7 @@ const oct = [
       { type: 'bank', label: '银行回单', date: '2026-10-13', totalAmount: 700, payer: '本公司', payeeName: 'XX办公用品店', content: '购买办公用品', refNo: 'HD202610130008' }]},
   {
     date: '2026-10-14',
+    role: 'accountant',
     title: '员工报销差旅费',
     tags: ["费用"],
     difficulty: 1,
@@ -194,6 +204,7 @@ const oct = [
       { type: 'bank', label: '银行回单', date: '2026-10-14', totalAmount: 2800, payer: '本公司', payeeName: '李强', content: '报销差旅费', refNo: 'HD202610140009' }]},
   {
     date: '2026-10-15',
+    role: 'accountant',
     title: '计提固定资产折旧',
     tags: ["资产"],
     difficulty: 2,
@@ -223,6 +234,7 @@ const oct = [
 （出租办公楼折旧单独计入其他业务成本）` }]},
   {
     date: '2026-10-16',
+    role: 'accountant',
     title: '非货币性资产交换（以产品换设备）⭐',
     tags: ["资产","销售"],
     difficulty: 3,
@@ -262,6 +274,7 @@ const oct = [
 
   {
     date: '2026-10-19',
+    role: 'accountant',
     title: '应收账款保理（转让给银行）⭐',
     tags: ["销售","融资"],
     difficulty: 3,
@@ -296,6 +309,7 @@ const oct = [
       { type: 'bank', label: '银行回单', date: '2026-10-19', totalAmount: 157635, payer: '中国工商银行', payeeName: '本公司', content: '应收账款保理融资款项', refNo: 'HD202610190011' }]},
   {
     date: '2026-10-20',
+    role: 'accountant',
     title: '收取投资性房地产租金',
     tags: ["资产","费用"],
     difficulty: 2,
@@ -310,6 +324,7 @@ const oct = [
       { type: 'bank', label: '银行回单', date: '2026-10-20', totalAmount: 8000, payer: 'M科技有限公司', payeeName: '本公司', content: '10月办公楼租金', refNo: 'HD202610200012' }]},
   {
     date: '2026-10-20',
+    role: 'accountant',
     title: '投资性房地产计提折旧',
     tags: ["资产"],
     difficulty: 2,
@@ -330,6 +345,7 @@ const oct = [
 账面净值：476,437.50` }]},
   {
     date: '2026-10-21',
+    role: 'accountant',
     title: '处置固定资产（出售旧设备）',
     tags: ["资产"],
     difficulty: 3,
@@ -367,6 +383,7 @@ const oct = [
       { type: 'bank', label: '银行回单', date: '2026-10-21', totalAmount: 120000, payer: 'P二手设备公司', payeeName: '本公司', content: '购买旧设备一台', refNo: 'HD202610210013' }]},
   {
     date: '2026-10-22',
+    role: 'accountant',
     title: '销售商品收款',
     tags: ["销售"],
     difficulty: 2,
@@ -385,6 +402,7 @@ const oct = [
       { type: 'bank', label: '银行回单', date: '2026-10-22', totalAmount: 226000, payer: '己公司', payeeName: '本公司', content: '购买B产品', refNo: 'HD202610220014' }]},
   {
     date: '2026-10-23',
+    role: 'accountant',
     title: '结转本月主营业务成本',
     tags: ["成本核算"],
     difficulty: 2,
@@ -412,6 +430,7 @@ B产品  200件    500.00   100,000.00
 
   {
     date: '2026-10-26',
+    role: 'accountant',
     title: '采购原材料',
     tags: ["采购"],
     difficulty: 2,
@@ -430,6 +449,7 @@ B产品  200件    500.00   100,000.00
       { type: 'bank', label: '银行回单', date: '2026-10-26', totalAmount: 56500, payer: '本公司', payeeName: '丁公司', content: '采购J材料', refNo: 'HD202610260015' }]},
   {
     date: '2026-10-27',
+    role: 'accountant',
     title: '支付网络推广费',
     tags: ["费用"],
     difficulty: 1,
@@ -451,6 +471,7 @@ B产品  200件    500.00   100,000.00
 注：因乙公司169,500元保理，风险部分转移，应收账款减少` }]},
   {
     date: '2026-10-28',
+    role: 'accountant',
     title: '摊销长期待摊费用',
     tags: ["资产"],
     difficulty: 2,
@@ -475,6 +496,7 @@ B产品  200件    500.00   100,000.00
 
   {
     date: '2026-10-29',
+    role: 'accountant',
     title: '计提10月城建税及教育费附加',
     tags: ["税费"],
     difficulty: 2,
@@ -502,6 +524,7 @@ B产品  200件    500.00   100,000.00
 合计：2,080.00` }]},
   {
     date: '2026-10-29',
+    role: 'accountant',
     title: '计提10月员工工资',
     tags: ["工资社保"],
     difficulty: 2,
@@ -524,6 +547,7 @@ B产品  200件    500.00   100,000.00
 合计         73,000` }]},
   {
     date: '2026-10-30',
+    role: 'accountant',
     title: '庚公司实现净利润·确认投资收益',
     tags: ["资产","融资"],
     difficulty: 3,
@@ -541,6 +565,7 @@ B产品  200件    500.00   100,000.00
 应确认投资收益：18,000.00元` }]},
   {
     date: '2026-10-31',
+    role: 'accountant',
     title: '结转固定资产清理净损益',
     tags: ["资产"],
     difficulty: 2,
@@ -566,6 +591,7 @@ B产品  200件    500.00   100,000.00
 余额：结平 ✓` }]},
   {
     date: '2026-10-31',
+    role: 'accountant',
     title: '月末结转·期间损益',
     tags: ["期末"],
     difficulty: 3,
@@ -632,6 +658,7 @@ B产品  200件    500.00   100,000.00
     description: '清点现金3,200元，账实相符。Q4开始！', tip: 'Q4最后一季度。', entries: [],
     documents: [{ type: 'text', label: '现金日记账', docTitle: '现金日记账（10月）', stampText: '现金日记账', content: `10月期初：3,200` }] },
   { date: '2026-10-02', title: '提取备用金', tags: ["费用"], difficulty: 1,
+  role: 'accountant',
     description: '提取4,000元备用金。', tip: 'Q4备用金补充。',
     entries: [{ subjectCode: '1001', summary: '备用金', debit: 4000, credit: 0, explanation: '库存现金增加。' }, { subjectCode: '100201', summary: '备用金', debit: 0, credit: 4000, explanation: '银行存款减少。' }],
     documents: [{ type: 'bank', label: '支票存根', date: '2026-10-02', totalAmount: 4000, payer: '本公司', payeeName: '本公司', content: '提取备用金', refNo: 'XJ202610001' }] },
@@ -640,14 +667,17 @@ B产品  200件    500.00   100,000.00
     description: '整理月初回单，含缴税回单。', tip: '月初整理。', entries: [],
     documents: [{ type: 'text', label: '回单清单', docTitle: '回单清单（10月）', stampText: '财务专用章', content: `共5笔` }] },
   { date: '2026-10-05', title: '银行代扣社保', tags: ["工资社保"], difficulty: 2,
+  role: 'accountant',
     description: '10月社保（单位21,000+个人7,000=28,000元）已代扣。', tip: '社保扣款核对。',
     entries: [{ subjectCode: '221102', summary: '社保单位', debit: 21000, credit: 0, explanation: '社保减少。' }, { subjectCode: '224101', summary: '社保个人', debit: 7000, credit: 0, explanation: '其他应付款减少。' }, { subjectCode: '100201', summary: '社保费', debit: 0, credit: 28000, explanation: '银行减少。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221102），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'}],
     documents: [{ type: 'bank', label: '社保回单', date: '2026-10-05', totalAmount: 28000, payer: '本公司', payeeName: 'XX市社保局', content: '10月社保', refNo: 'HD202610050005' }] },
   { date: '2026-10-06', title: '银行转账支付网络费', tags: ["费用"], difficulty: 1,
+  role: 'accountant',
     description: '支付10月网络费2,600元。', tip: '固定费用。',
     entries: [{ subjectCode: '6602', summary: '网络费', debit: 2600, credit: 0, explanation: '管理费增加。' }, { subjectCode: '100201', summary: '网络费', debit: 0, credit: 2600, explanation: '银行减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6602），属于"支付其他与经营活动有关的现金"。'}],
     documents: [{ type: 'bank', label: '回单', date: '2026-10-06', totalAmount: 2600, payer: '本公司', payeeName: '中国电信', content: '10月网络费', refNo: 'HD202610060008' }] },
   { date: '2026-10-09', title: '美元结汇为人民币 ⭐', tags: ["融资"], difficulty: 2,
+  role: 'accountant',
     description: '将美元户中的US$5,000结汇为人民币。当日汇率6.85，获RMB 34,250元转入人民币账户。结汇单编号：JH202610001。',
     tip: '结汇流程：①填制"结汇申请书"；②提供合同/发票证明结汇用途；③银行按当日牌价结汇；④人民币入账。出纳需留存结汇水单和外汇申报单。',
     entries: [
@@ -663,6 +693,7 @@ B产品  200件    500.00   100,000.00
       { type: 'text', label: '汇兑计算表', docTitle: '汇兑损益计算表（10月）', stampText: '财务管理章',
         content: `美元户余额：US$5,000\n月末汇率：6.90\n账面汇率：7.12\n汇兑收益=(7.12-6.90)×5,000=1,100元\n汇兑收益冲减财务费用。` }] },
   { date: '2026-10-12', title: '银行代扣公积金', tags: ["工资社保"], difficulty: 2,
+  role: 'accountant',
     description: '10月公积金（单位10,200+个人3,400=13,600元）已代扣。',
     tip: '公积金按月缴纳，核对金额。',
     entries: [{ subjectCode: '221103', summary: '公积单位', debit: 10200, credit: 0, explanation: '公积金减少。' }, { subjectCode: '224102', summary: '公积个人', debit: 3400, credit: 0, explanation: '其他应付款减少。' }, { subjectCode: '100201', summary: '公积金', debit: 0, credit: 13600, explanation: '银行减少。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221103），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'}],
@@ -678,6 +709,7 @@ B产品  200件    500.00   100,000.00
     documents: [{ type: 'text', label: '外币盘点', docTitle: '外币账户盘点表（10月）', stampText: '财务专用章',
       content: `美元户：US$5,000 汇率6.90 RMB 34,500\n差异：0 ✓` }] },
   { date: '2026-10-20', title: '支付宝收款与手续费核算 ⭐', tags: ["销售"], difficulty: 2,
+  role: 'accountant',
     description: '客户通过支付宝付款8,000元购买B产品（含税），支付宝扣除0.6%手续费48元后实际到账7,952元。出纳在支付宝商家中心查询到账记录并核对手续费是否准确。',
     tip: '**支付宝与微信的异同：**\n科目相同（其他货币资金），但手续费处理方式不同。支付宝收款手续费在每笔交易时实时扣除，微信则提现时另收提现手续费。\n\n**支付宝费率：**标准0.6%（部分行业有优惠），每笔实时扣除。手续费发票可在支付宝商家中心申请电子发票。\n\n**出纳每日必做：**\n① 登录支付宝商家中心→下载"资金流水"明细\n② 核对每笔收款与业务单据是否一致\n③ 注意区分：实收=应收×(1-0.6%)，差额是手续费\n④ 定期提现到银行账户（支付宝提现免手续费）',
     entries: [
@@ -703,6 +735,7 @@ B产品  200件    500.00   100,000.00
      ═══════════════════════════════════════════════ */
   {
     date: '2026-10-28',
+    role: 'accountant',
     title: '资金调度——内部银行调拨',
     tags: ["融资"],
     difficulty: 1,
@@ -715,6 +748,7 @@ B产品  200件    500.00   100,000.00
       { type: 'bank', label: '网银转账回单', date: '2026-10-28', totalAmount: 50000, payer: '本公司（工行）', payerAccount: '6222 0200 **** 1234', payeeName: '本公司（建行）', payeeAccount: '6222 0200 **** 5678', content: '资金调拨-采购设备尾款', refNo: 'HD202610280030' }]},
   {
     date: '2026-10-29',
+    role: 'accountant',
     title: '跨期费用分摊——财产保险费',
     tags: ["费用"],
     difficulty: 2,
@@ -791,6 +825,7 @@ B产品  200件    500.00   100,000.00
 庚公司投资收益18,000元为权益法核算，无实际资金流入` }]},
   {
     date: "2026-10-31",
+    role: 'accountant',
     title: "模拟纳税申报",
     tags: ["期末", "税费"],
     difficulty: 1,

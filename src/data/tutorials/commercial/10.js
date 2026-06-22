@@ -23,6 +23,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-10-08',
+    role: 'accountant',
     title: '国庆促销销售A（商业折扣9折）',
     tags: ['商品销售', '税费'],
     difficulty: 2,
@@ -39,6 +40,7 @@ const tasks = [
       { type: 'bank', label: '收款回单', date: '2026-10-08', totalAmount: 152550, payer: '鑫源商贸有限公司', payeeName: '本公司', content: '国庆促销货款（9折）', refNo: 'HD202610080001' }]},
   {
     date: '2026-10-08',
+    role: 'accountant',
     title: '结转促销商品成本A',
     tags: ['商品销售', '仓存管理'],
     difficulty: 1,
@@ -51,6 +53,7 @@ const tasks = [
       { type: 'text', label: '成本计算表', docTitle: '商品销售成本计算表（10月8日）', content: '销售商品：D类商品（国庆促销）\n销售数量：1,000件\n单位成本：80元（移动加权平均）\n销售成本：80,000元', stampText: '财务专用章' }]},
   {
     date: '2026-10-09',
+    role: 'accountant',
     title: '国庆促销销售B（满额折扣）',
     tags: ['商品销售', '税费'],
     difficulty: 2,
@@ -67,6 +70,7 @@ const tasks = [
       { type: 'bank', label: '收款回单', date: '2026-10-09', totalAmount: 62150, payer: '宏达贸易有限公司', payeeName: '本公司', content: '国庆促销货款（满额减）', refNo: 'HD202610090001' }]},
   {
     date: '2026-10-09',
+    role: 'accountant',
     title: '结转促销商品成本B',
     tags: ['商品销售', '仓存管理'],
     difficulty: 1,
@@ -79,6 +83,7 @@ const tasks = [
       { type: 'text', label: '成本计算表', docTitle: '商品销售成本计算表（10月9日）', content: '销售商品：E类商品（满额折扣）\n销售数量：300件\n单位成本：120元（移动加权平均）\n销售成本：36,000元', stampText: '财务专用章' }]},
   {
     date: '2026-10-09',
+    role: 'accountant',
     title: '赊销商品（现金折扣条件2/10）',
     tags: ['商品销售', '往来管理'],
     difficulty: 2,
@@ -95,6 +100,7 @@ const tasks = [
       { type: 'text', label: '出库单', docTitle: '商品出库单', content: 'F类商品 600件 已出库并发货，承运人：顺丰物流。\n付款条件：2/10，n/30', signature: '仓库管理员 王强' }]},
   {
     date: '2026-10-10',
+    role: 'accountant',
     title: '买一赠一促销',
     tags: ['商品销售', '税费'],
     difficulty: 3,
@@ -114,6 +120,7 @@ const tasks = [
       { type: 'text', label: '促销海报', docTitle: '国庆买赠活动说明', content: '活动规则：购买G类商品5件即赠送H类商品1件，多买多赠。活动时间：2026年10月1日-10月10日。', stampText: '市场部章' }]},
   {
     date: '2026-10-10',
+    role: 'accountant',
     title: '结转买赠商品成本',
     tags: ['商品销售', '仓存管理'],
     difficulty: 1,
@@ -126,6 +133,7 @@ const tasks = [
       { type: 'text', label: '成本计算表', docTitle: '买赠活动销售成本计算表', content: 'G类商品：30件×140元=4,200元\nH类商品（赠品）：6件×40元=240元\n合计销售成本：4,440元', stampText: '财务专用章' }]},
   {
     date: '2026-10-11',
+    role: 'accountant',
     title: '组合销售（套装商品）',
     tags: ['商品销售', '税费'],
     difficulty: 2,
@@ -152,6 +160,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-10-12',
+    role: 'accountant',
     title: '销售返利（达到目标返利）',
     tags: ['商品销售', '费用管理'],
     difficulty: 2,
@@ -165,6 +174,7 @@ const tasks = [
       { type: 'text', label: '返利协议', docTitle: '销售返利结算单', content: '客户：鑫源商贸有限公司\n第三季度累计采购额：200,000元\n返利比例：2%\n返利金额：4,000元\n经双方核对无误，予以支付。', stampText: '销售部章 财务专用章' }]},
   {
     date: '2026-10-14',
+    role: 'accountant',
     title: '职工福利（库存商品发放给员工）',
     tags: ['商品销售', '工资社保'],
     difficulty: 3,
@@ -182,6 +192,7 @@ const tasks = [
         items: [{ name: 'G类商品（职工福利）', qty: 10, price: 250, amount: 2500 }] }]},
   {
     date: '2026-10-15',
+    role: 'accountant',
     title: '职工福利（外购商品发放，进项税转出）',
     tags: ['费用管理', '税费', '工资社保'],
     difficulty: 3,
@@ -197,6 +208,7 @@ const tasks = [
         items: [{ name: 'H类商品（原采购）', qty: 20, price: 40, amount: 800 }] }]},
   {
     date: '2026-10-16',
+    role: 'accountant',
     title: '支付广告费',
     tags: ['费用管理'],
     difficulty: 1,
@@ -210,6 +222,7 @@ const tasks = [
         items: [{ name: '搜索引擎推广服务（10月）', qty: 1, price: 10000, amount: 10000 }] }]},
   {
     date: '2026-10-17',
+    role: 'accountant',
     title: '支付运杂费',
     tags: ['费用管理'],
     difficulty: 1,
@@ -223,6 +236,7 @@ const tasks = [
         items: [{ name: '10月销售商品运输费', qty: 1, price: 3000, amount: 3000 }] }]},
   {
     date: '2026-10-17',
+    role: 'accountant',
     title: '现金折扣收款（客户提前付款）',
     tags: ['往来管理'],
     difficulty: 2,
@@ -241,6 +255,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-10-18',
+    role: 'accountant',
     title: '会员积分发放——确认递延收益',
     tags: ['商品销售', '费用管理'],
     difficulty: 3,
@@ -258,6 +273,7 @@ const tasks = [
       { type: 'text', label: '积分计算表', docTitle: '会员积分计算及递延收益确认表', content: '消费金额：22,600元（含税）\n赠送积分：22,600÷10=2,260分\n每分价值：0.50元\n预计兑换率：80%\n预计兑换积分价值：2,260×0.50×80%=904元\n递延收益确认金额：904元\n\n依据：《企业会计准则第14号——收入》第三十五条', stampText: '财务专用章' }]},
   {
     date: '2026-10-18',
+    role: 'accountant',
     title: '会员积分兑换商品',
     tags: ['商品销售'],
     difficulty: 3,
@@ -282,6 +298,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-10-19',
+    role: 'accountant',
     title: '现购商品',
     tags: ['商品采购'],
     difficulty: 1,
@@ -299,6 +316,7 @@ const tasks = [
       { type: 'text', label: '入库单', docTitle: '商品入库单', content: 'D类商品 500件 已验收入库，质量合格。', signature: '仓库管理员 王强' }]},
   {
     date: '2026-10-20',
+    role: 'accountant',
     title: '赊购商品',
     tags: ['商品采购', '往来管理'],
     difficulty: 1,
@@ -315,6 +333,7 @@ const tasks = [
       { type: 'text', label: '入库单', docTitle: '商品入库单', content: 'E类商品 400件 已验收入库，质量合格。', signature: '仓库管理员 王强' }]},
   {
     date: '2026-10-21',
+    role: 'accountant',
     title: '现销商品（正常）',
     tags: ['商品销售'],
     difficulty: 1,
@@ -331,6 +350,7 @@ const tasks = [
       { type: 'bank', label: '收款回单', date: '2026-10-21', totalAmount: 5650, payer: '鑫源商贸有限公司', payeeName: '本公司', content: '货款', refNo: 'HD202610210001' }]},
   {
     date: '2026-10-22',
+    role: 'accountant',
     title: '赊销商品（正常）',
     tags: ['商品销售', '往来管理'],
     difficulty: 1,
@@ -347,6 +367,7 @@ const tasks = [
       { type: 'text', label: '出库单', docTitle: '商品出库单', content: 'E类商品 150件 已出库并发货，承运人：德邦物流。', signature: '仓库管理员 王强' }]},
   {
     date: '2026-10-22',
+    role: 'accountant',
     title: '结转已销商品成本（含促销商品成本）',
     tags: ['商品销售', '仓存管理'],
     difficulty: 2,
@@ -361,6 +382,7 @@ const tasks = [
       { type: 'text', label: '成本汇总表', docTitle: '10月22日商品销售成本汇总表', content: 'F类商品：600件×60元=36,000元（10/9赊销）\nG类商品：20件×140元=2,800元（10/21现销）\nE类商品：150件×120元=18,000元（10/22赊销）\n合计：56,800元', stampText: '财务专用章' }]},
   {
     date: '2026-10-23',
+    role: 'accountant',
     title: '支付应付账款',
     tags: ['往来管理'],
     difficulty: 1,
@@ -373,6 +395,7 @@ const tasks = [
       { type: 'bank', label: '付款回单', date: '2026-10-23', totalAmount: 30000, payer: '本公司', payeeName: '丙公司', content: '偿还前欠货款（部分）', refNo: 'HD202610230001' }]},
   {
     date: '2026-10-24',
+    role: 'accountant',
     title: '收到货款',
     tags: ['往来管理'],
     difficulty: 1,
@@ -390,6 +413,7 @@ const tasks = [
   // ═══════════════════════════════════════════
   {
     date: '2026-10-27',
+    role: 'accountant',
     title: '计提本月工资',
     tags: ['工资社保'],
     difficulty: 2,
@@ -403,6 +427,7 @@ const tasks = [
       { type: 'text', label: '工资表', docTitle: '2026年10月工资汇总表', content: '管理人员：7人×5,000元=35,000元\n销售人员：5人×5,000元=25,000元\n合计：60,000元\n（个税及社保由公司另行申报）', stampText: '行政人事部章' }]},
   {
     date: '2026-10-28',
+    role: 'accountant',
     title: '发放工资',
     tags: ['工资社保'],
     difficulty: 1,
@@ -415,6 +440,7 @@ const tasks = [
       { type: 'bank', label: '代发工资回单', date: '2026-10-28', totalAmount: 60000, payer: '本公司', payeeName: '员工代发户', content: '2026年10月工资', refNo: 'HD202610280001' }]},
   {
     date: '2026-10-29',
+    role: 'accountant',
     title: '计提固定资产折旧',
     tags: ['费用管理'],
     difficulty: 2,
@@ -427,6 +453,7 @@ const tasks = [
       { type: 'text', label: '折旧计算表', docTitle: '固定资产折旧计算表（2026年10月）', content: '房屋建筑物：原值500,000×月折旧率0.2%=1,000元\n办公设备：原值60,000×月折旧率0.8%=480元\n合计：1,480元\n折旧方法：直线法（年限平均法）', stampText: '财务专用章' }]},
   {
     date: '2026-10-30',
+    role: 'accountant',
     title: '计提城建税及教育费附加',
     tags: ['税费'],
     difficulty: 2,
@@ -440,6 +467,7 @@ const tasks = [
       { type: 'text', label: '税金计算表', docTitle: '2026年10月附加税费计算表', content: '计税依据：\n销项税额合计：39,598元\n进项税额合计：11,440元\n进项税额转出：104元\n应交增值税：39,598-11,440+104=28,262元\n\n城市维护建设税：28,262×7%=1,978.34元\n教育费附加：28,262×3%=847.86元\n合计：2,826.20元', stampText: '财务专用章' }]},
   {
     date: '2026-10-30',
+    role: 'accountant',
     title: '期末结转损益',
     tags: ['期末'],
     difficulty: 3,
@@ -476,6 +504,7 @@ const tasks = [
       { type: 'text', label: '现金盘点表', docTitle: '库存现金盘点表（2026年10月1日）', content: '现金日记账余额：3,000元\n保险柜实有现金：3,000元\n差异：0元\n结论：账实相符\n监盘人：财务主管 王芳', signature: '出纳 刘静  监盘人 王芳' }]},
   {
     date: '2026-10-02',
+    role: 'accountant',
     title: '提取备用金',
     tags: ['出纳'],
     difficulty: 1,
@@ -490,6 +519,7 @@ const tasks = [
         items: [{ name: '提取备用金（现金支票#102345）', qty: 1, price: 5000, amount: 5000 }] }]},
   {
     date: '2026-10-07',
+    role: 'accountant',
     title: '备用金借支差旅费',
     tags: ['出纳', '费用管理'],
     difficulty: 1,
@@ -504,6 +534,7 @@ const tasks = [
       { type: 'text', label: '审批单', docTitle: '借款审批单', content: '借款人：赵刚（销售部）\n事由：广州拜访客户\n借款金额：2,000元\n部门负责人：已审批 ✅\n财务负责人：已审批 ✅', signature: '销售部 张明  财务部 王芳' }]},
   {
     date: '2026-10-08',
+    role: 'accountant',
     title: '促销商品现金零售收款',
     tags: ['出纳', '商品销售', '税费'],
     difficulty: 2,
@@ -518,6 +549,7 @@ const tasks = [
         items: [{ name: 'D类商品（国庆促销现金零售）', qty: 1, price: 2260, amount: 2260 }] }]},
   {
     date: '2026-10-08',
+    role: 'accountant',
     title: '促销商品微信收款',
     tags: ['出纳', '商品销售', '税费'],
     difficulty: 2,
@@ -531,6 +563,7 @@ const tasks = [
       { type: 'text', label: '微信收款截图', docTitle: '微信商户后台收款记录', content: '交易时间：2026-10-08 14:23:15\n交易单号：WX202610081423150001\n付款方式：微信扫码\n交易金额：3,390.00元\n商品说明：促销E类商品\n交易状态：支付成功 ✅', stampText: '微信商户平台电子回单' }]},
   {
     date: '2026-10-09',
+    role: 'accountant',
     title: '促销商品支付宝收款',
     tags: ['出纳', '商品销售', '税费'],
     difficulty: 2,
@@ -544,6 +577,7 @@ const tasks = [
       { type: 'text', label: '支付宝收款截图', docTitle: '支付宝商家后台收款记录', content: '交易时间：2026-10-09 10:15:42\n交易单号：AL202610091015420001\n付款方式：支付宝扫码\n交易金额：4,520.00元\n商品说明：促销F类商品\n交易状态：交易成功 ✅', stampText: '支付宝商家平台电子回单' }]},
   {
     date: '2026-10-11',
+    role: 'accountant',
     title: '购买转账支票',
     tags: ['出纳'],
     difficulty: 1,
@@ -557,6 +591,7 @@ const tasks = [
         items: [{ name: '转账支票簿（25张）工本费', qty: 1, price: 25, amount: 25 }] }]},
   {
     date: '2026-10-13',
+    role: 'accountant',
     title: '银行转账支付电商平台推广费',
     tags: ['出纳', '费用管理'],
     difficulty: 1,
@@ -571,6 +606,7 @@ const tasks = [
         items: [{ name: '天猫旗舰店推广服务（10月）', qty: 1, price: 8000, amount: 8000 }] }]},
   {
     date: '2026-10-14',
+    role: 'accountant',
     title: '银行转账缴纳社保费',
     tags: ['出纳', '工资社保'],
     difficulty: 1,
@@ -584,6 +620,7 @@ const tasks = [
       { type: 'text', label: '社保缴费通知单', docTitle: '上海市社会保险费缴纳通知书（10月）', content: '单位名称：本公司\n缴费金额合计：18,000元\n其中：养老保险10,000元、医疗保险5,000元、失业保险2,000元、工伤保险1,000元\n缴费截止日：2026年10月20日', stampText: '上海市社会保险事业管理中心 业务专用章' }]},
   {
     date: '2026-10-15',
+    role: 'accountant',
     title: '微信提现至银行',
     tags: ['出纳'],
     difficulty: 2,
@@ -596,6 +633,7 @@ const tasks = [
       { type: 'text', label: '微信提现记录', docTitle: '微信商户平台提现记录', content: '提现时间：2026-10-15 16:30:00\n提现方式：普通提现（T+1到账）\n提现金额：3,000.00元\n到账账户：中国工商银行（尾号6789）\n提现单号：TX202610151630001\n状态：处理中（预计次日到账）', stampText: '微信商户平台' }]},
   {
     date: '2026-10-16',
+    role: 'accountant',
     title: '支付宝提现至银行',
     tags: ['出纳'],
     difficulty: 2,
@@ -608,6 +646,7 @@ const tasks = [
       { type: 'text', label: '支付宝提现记录', docTitle: '支付宝商家平台提现记录', content: '提现时间：2026-10-16 09:15:00\n提现方式：企业提现\n提现金额：4,000.00元\n到账账户：中国工商银行（尾号6789）\n提现单号：ALTX202610160915001\n状态：提现成功 ✅', stampText: '支付宝商家平台' }]},
   {
     date: '2026-10-18',
+    role: 'accountant',
     title: '收到客户银行汇款（前欠货款）',
     tags: ['出纳', '往来管理'],
     difficulty: 1,
@@ -622,6 +661,7 @@ const tasks = [
         items: [{ name: '乙公司偿还前欠货款（10月18日）', qty: 1, price: 25000, amount: 25000 }] }]},
   {
     date: '2026-10-19',
+    role: 'accountant',
     title: '备用金报销差旅费',
     tags: ['出纳', '费用管理'],
     difficulty: 1,
@@ -673,6 +713,7 @@ const tasks = [
       { type: 'text', label: '现金盘点表', docTitle: '库存现金盘点表（2026年10月26日）', content: '盘点时间：2026年10月26日 17:00\n\n面值100元：10张=1,000元\n面值50元：4张=200元\n面值20元：5张=100元\n面值10元：5张=50元\n面值5元：5张=25元\n面值1元：25枚=25元\n\n实盘金额：1,400.00元\n账面余额：1,400.00元\n差异：0.00元\n结论：账实相符 ✅\n\n监盘说明：经现场盘点，现金实有数与日记账余额一致，未发现白条抵库及挪用现金现象。', signature: '出纳 刘静  监盘人 财务主管 王芳' }]},
   {
     date: '2026-10-28',
+    role: 'accountant',
     title: '节前应付账款支付',
     tags: ['出纳', '往来管理'],
     difficulty: 1,
@@ -702,6 +743,7 @@ const tasks = [
 
   {
     date: '2026-10-31',
+    role: 'accountant',
     title: '模拟纳税申报',
     tags: ['期末', '税费'],
     difficulty: 1,

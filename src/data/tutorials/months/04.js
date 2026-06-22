@@ -96,6 +96,7 @@ const apr = [
 
   {
     date: '2026-04-01',
+    role: 'accountant',
     title: '缴纳Q1企业所得税',
     tags: ["税费"],
       difficulty: 1,
@@ -115,6 +116,7 @@ const apr = [
   },
   {
     date: '2026-04-01',
+    role: 'accountant',
     title: '缴纳3月城建税',
     tags: ["税费"],
       difficulty: 1,
@@ -134,6 +136,7 @@ const apr = [
   },
   {
     date: '2026-04-01',
+    role: 'accountant',
     title: '缴纳3月教育费附加',
     tags: ["税费"],
       difficulty: 1,
@@ -153,6 +156,7 @@ const apr = [
   },
   {
     date: '2026-04-02',
+    role: 'accountant',
     title: '银行季度结息收入 ⭐',
     tags: ["费用"],
       difficulty: 2,
@@ -178,6 +182,7 @@ const apr = [
   },
   {
     date: '2026-04-03',
+    role: 'accountant',
     title: '缴纳4月社保费（单位部分）',
     tags: ["工资社保"],
       difficulty: 1,
@@ -203,6 +208,7 @@ const apr = [
   },
   {
     date: '2026-04-03',
+    role: 'accountant',
     title: '缴纳4月公积金（单位部分）',
     tags: ["工资社保"],
       difficulty: 1,
@@ -227,6 +233,7 @@ const apr = [
 
   {
     date: '2026-04-07',
+    role: 'accountant',
     title: '采购原材料（含税）',
     tags: ["采购"],
       difficulty: 2,
@@ -248,6 +255,7 @@ const apr = [
   },
   {
     date: '2026-04-08',
+    role: 'accountant',
     title: '销售商品（款已收）',
     tags: ["销售"],
       difficulty: 2,
@@ -269,6 +277,7 @@ const apr = [
   },
   {
     date: '2026-04-09',
+    role: 'accountant',
     title: '赊销商品给甲公司',
     tags: ["销售"],
       difficulty: 2,
@@ -301,6 +310,7 @@ const apr = [
   },
   {
     date: '2026-04-10',
+    role: 'accountant',
     title: '发放3月份员工工资',
     tags: ["工资社保"],
       difficulty: 2,
@@ -333,6 +343,7 @@ const apr = [
   },
   {
     date: '2026-04-10',
+    role: 'accountant',
     title: '缴纳代扣社保及公积金个人部分',
     tags: ["工资社保"],
       difficulty: 2,
@@ -355,6 +366,7 @@ const apr = [
   },
   {
     date: '2026-04-11',
+    role: 'accountant',
     title: '缴纳3月代扣个税',
     tags: ["税费"],
       difficulty: 1,
@@ -379,6 +391,7 @@ const apr = [
 
   {
     date: '2026-04-14',
+    role: 'accountant',
     title: '支付供应商货款',
     tags: ["采购"],
       difficulty: 1,
@@ -404,6 +417,7 @@ const apr = [
   },
   {
     date: '2026-04-15',
+    role: 'accountant',
     title: '员工报销差旅费',
     tags: ["费用"],
       difficulty: 1,
@@ -428,6 +442,7 @@ const apr = [
   },
   {
     date: '2026-04-16',
+    role: 'accountant',
     title: '对外短期投资——购买国债 ⭐',
     tags: ["资产"],
       difficulty: 3,
@@ -456,6 +471,7 @@ const apr = [
   },
   {
     date: '2026-04-17',
+    role: 'accountant',
     title: '固定资产清理——出售旧设备 ⭐',
     tags: ["资产"],
       difficulty: 3,
@@ -496,6 +512,7 @@ const apr = [
   },
   {
     date: '2026-04-18',
+    role: 'accountant',
     title: '支付水电费',
     tags: ["费用"],
       difficulty: 1,
@@ -521,6 +538,7 @@ const apr = [
 
   {
     date: '2026-04-21',
+    role: 'accountant',
     title: '长期待摊费用摊销——办公室装修 ⭐',
     tags: ["费用"],
       difficulty: 3,
@@ -564,6 +582,7 @@ const apr = [
   },
   {
     date: '2026-04-22',
+    role: 'accountant',
     title: '计提固定资产折旧',
     tags: ["资产"],
       difficulty: 2,
@@ -594,6 +613,7 @@ const apr = [
   },
   {
     date: '2026-04-23',
+    role: 'accountant',
     title: '无形资产摊销',
     tags: ["资产"],
       difficulty: 2,
@@ -618,6 +638,7 @@ const apr = [
   },
   {
     date: '2026-04-24',
+    role: 'accountant',
     title: '计提4月份员工工资',
     tags: ["工资社保"],
       difficulty: 2,
@@ -645,6 +666,7 @@ const apr = [
   },
   {
     date: '2026-04-24',
+    role: 'accountant',
     title: '计提4月社保及公积金个人部分',
     tags: ["工资社保"],
       difficulty: 2,
@@ -674,6 +696,7 @@ const apr = [
   },
   {
     date: '2026-04-25',
+    role: 'accountant',
     title: '计提短期借款利息',
     tags: ["融资"],
       difficulty: 2,
@@ -710,6 +733,7 @@ const apr = [
 
   {
     date: '2026-04-28',
+    role: 'accountant',
     title: '分配制造费用',
     tags: ["成本核算"],
       difficulty: 3,
@@ -741,6 +765,7 @@ B产品应分配：400 × 15 = 6,000元
   },
   {
     date: '2026-04-28',
+    role: 'accountant',
     title: '完工产品入库',
     tags: ["成本核算"],
       difficulty: 3,
@@ -782,6 +807,7 @@ B产品      100件   50,000.00   500.00元/件
   },
   {
     date: '2026-04-29',
+    role: 'accountant',
     title: '结转已销产品成本',
     tags: ["成本核算"],
       difficulty: 3,
@@ -811,6 +837,7 @@ B产品      100件   50,000.00   500.00元/件
   },
   {
     date: '2026-04-29',
+    role: 'accountant',
     title: '计提坏账准备',
     tags: ["资产"],
       difficulty: 2,
@@ -838,6 +865,7 @@ B产品      100件   50,000.00   500.00元/件
   },
   {
     date: '2026-04-30',
+    role: 'accountant',
     title: '计提本月城建税及教育费附加',
     tags: ["税费"],
       difficulty: 2,
@@ -868,6 +896,7 @@ B产品      100件   50,000.00   500.00元/件
   },
   {
     date: '2026-04-30',
+    role: 'accountant',
     title: '月末结转·期间损益',
     tags: ["期末"],
       difficulty: 3,
@@ -1213,6 +1242,7 @@ B产品      100件   50,000.00   500.00元/件
      ═══════════════════════════════════════════════ */
   {
     date: '2026-04-28',
+    role: 'accountant',
     title: '销售退回处理',
     tags: ["销售"],
     difficulty: 2,
@@ -1246,6 +1276,7 @@ B产品      100件   50,000.00   500.00元/件
   },
   {
     date: '2026-04-29',
+    role: 'accountant',
     title: '采购合同违约金',
     tags: ["采购"],
     difficulty: 1,
@@ -1273,6 +1304,7 @@ B产品      100件   50,000.00   500.00元/件
   },
   {
     date: '2026-04-30',
+    role: 'accountant',
     title: '成本核算——连续生产完工入库 ⭐',
     tags: ["成本核算"],
     difficulty: 2,
@@ -1363,6 +1395,7 @@ B产品      100件   50,000.00   500.00元/件
   },
   {
     date: "2026-04-30",
+    role: 'accountant',
     title: "模拟纳税申报",
     tags: ["期末", "税费"],
     difficulty: 1,

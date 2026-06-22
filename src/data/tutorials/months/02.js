@@ -43,6 +43,7 @@ const feb = [
 监盘人：李会计` }]},
   {
     date: '2026-02-02',
+    role: 'accountant',
     title: '发放1月份员工工资',
     tags: ["工资社保"],
       difficulty: 2,
@@ -67,6 +68,7 @@ const feb = [
       { type: 'bank', label: '银行回单', date: '2026-02-02', totalAmount: 49500, payer: '本公司', payeeName: '员工工资代发户', content: '1月份工资发放', refNo: 'HD202602020015' }]},
   {
     date: '2026-02-03',
+    role: 'accountant',
     title: '缴纳上月代扣个税',
     tags: ["税费"],
       difficulty: 1,
@@ -81,6 +83,7 @@ const feb = [
       { type: 'bank', label: '银行回单', date: '2026-02-03', totalAmount: 1500, payer: '本公司', payeeName: '国家税务总局XX分局', content: '缴纳1月代扣个税', refNo: 'HD202602030022' }]},
   {
     date: '2026-02-04',
+    role: 'accountant',
     title: '缴纳上月社保费（含个人部分）',
     tags: ["工资社保"],
       difficulty: 2,
@@ -95,6 +98,7 @@ const feb = [
         items: [{ name: '单位部分（养老/医疗/失业/工伤/生育）', qty: 1, price: 18000, amount: 18000 }, { name: '个人部分（养老/医疗/失业）', qty: 1, price: 6000, amount: 6000 }] }]},
   {
     date: '2026-02-05',
+    role: 'accountant',
     title: '缴纳上月公积金（含个人部分）',
     tags: ["工资社保"],
       difficulty: 2,
@@ -109,6 +113,7 @@ const feb = [
         items: [{ name: '单位缴存', qty: 13, price: 692.31, amount: 9000 }, { name: '个人缴存', qty: 13, price: 230.77, amount: 3000 }] }]},
   {
     date: '2026-02-06',
+    role: 'accountant',
     title: '销售商品（赊销给丁公司）',
     tags: ["销售"],
       difficulty: 2,
@@ -135,6 +140,7 @@ const feb = [
 交货日期：2026年2月6日` }]},
   {
     date: '2026-02-07',
+    role: 'accountant',
     title: '收到甲公司上月货款尾款',
     tags: ["销售"],
       difficulty: 1,
@@ -147,6 +153,7 @@ const feb = [
       { type: 'bank', label: '银行回单', date: '2026-02-07', totalAmount: 70000, payer: '甲公司', payerAccount: '6222 0100 **** 8888', payeeName: '本公司', content: '支付货款尾款', refNo: 'HD202602070035' }]},
   {
     date: '2026-02-08',
+    role: 'accountant',
     title: '银行账户间资金划转',
     tags: ["出纳"],
     difficulty: 2,
@@ -159,6 +166,7 @@ const feb = [
       { type: 'bank', label: '网银转账回单', date: '2026-02-08', totalAmount: 50000, payer: '本公司（工行）', payerAccount: '6222 0200 **** 1234', payeeName: '本公司（建行）', payeeAccount: '6222 0200 **** 5678', content: '工行转建行-资金调拨', refNo: 'HD202602080028' }]},
   {
     date: '2026-02-09',
+    role: 'accountant',
     title: '缴存多余现金',
     tags: ["出纳"],
     difficulty: 1,
@@ -173,6 +181,7 @@ const feb = [
         items: [{ name: '现金缴存（壹元券）', qty: 3000, price: 1, amount: 3000 }] }]},
   {
     date: '2026-02-10',
+    role: 'accountant',
     title: '支付丙公司1月采购款',
     tags: ["采购"],
       difficulty: 1,
@@ -185,6 +194,7 @@ const feb = [
       { type: 'bank', label: '银行回单', date: '2026-02-10', totalAmount: 30000, payer: '本公司', payeeName: '丙公司', content: '支付1月采购款', refNo: 'HD202602100042' }]},
   {
     date: '2026-02-11',
+    role: 'accountant',
     title: '采购原材料（含税）',
     tags: ["采购"],
       difficulty: 2,
@@ -211,6 +221,7 @@ const feb = [
 备注：含税采购，发票已到` }]},
   {
     date: '2026-02-12',
+    role: 'accountant',
     title: '销售商品（收款）',
     tags: ["销售"],
       difficulty: 2,
@@ -226,6 +237,7 @@ const feb = [
       { type: 'bank', label: '银行回单', date: '2026-02-12', totalAmount: 113000, payer: '乙公司', payerAccount: '6222 0100 **** 6666', payeeName: '本公司', content: '购买产品货款', refNo: 'HD202602120056' }]},
   {
     date: '2026-02-13',
+    role: 'accountant',
     title: '员工报销差旅费',
     tags: ["费用"],
       difficulty: 1,
@@ -239,6 +251,7 @@ const feb = [
         items: [{ name: '往返机票', qty: 1, price: 1600, amount: 1600 }, { name: '住宿费（2晚）', qty: 2, price: 350, amount: 700 }, { name: '出差补贴（2天）', qty: 2, price: 250, amount: 500 }] }]},
   {
     date: '2026-02-14',
+    role: 'accountant',
     title: '收到银行一季度利息收入',
     tags: ["融资"],
       difficulty: 1,
@@ -251,6 +264,7 @@ const feb = [
       { type: 'bank', label: '利息回单', date: '2026-02-14', totalAmount: 3200, payer: '中国工商银行', payeeName: '本公司', content: '2026年第一季度存款利息', refNo: 'HD202602140078' }]},
   {
     date: '2026-02-14',
+    role: 'accountant',
     title: '支付水电费',
     tags: ["费用"],
       difficulty: 1,
@@ -266,6 +280,7 @@ const feb = [
         items: [{ name: '用水量 225 吨 × 4.00元', qty: 225, price: 4, amount: 900 }] }]},
   {
     date: '2026-02-15',
+    role: 'accountant',
     title: '现金支付零星办公用品费',
     tags: ["出纳","费用"],
     difficulty: 1,
@@ -281,6 +296,7 @@ const feb = [
         items: [{ name: '中性笔（12支）', qty: 12, price: 5, amount: 60 }, { name: 'A4打印纸（2包）', qty: 2, price: 120, amount: 240 }, { name: '文件夹（10个）', qty: 10, price: 18, amount: 180 }, { name: '便利贴（20包）', qty: 20, price: 4, amount: 80 }] }]},
   {
     date: '2026-02-16',
+    role: 'accountant',
     title: '银行转账支付设备维修费',
     tags: ["出纳","费用"],
     difficulty: 1,
@@ -295,6 +311,7 @@ const feb = [
         lineItems: [{ name: '复印机维修服务', unit: '项', qty: 1, price: 2000, amount: 2000, taxRate: '3%', tax: 0 }], totalAmount: 2000 }]},
   {
     date: '2026-02-17',
+    role: 'accountant',
     title: '购买办公用品（含增值税）',
     tags: ["费用"],
       difficulty: 2,
@@ -309,6 +326,7 @@ const feb = [
         lineItems: [{ name: '办公用品一批', unit: '批', qty: 1, price: 1200, amount: 1200, taxRate: '13%', tax: 156 }], totalAmount: 1356 }]},
   {
     date: '2026-02-19',
+    role: 'accountant',
     title: '计提2月份员工工资',
     tags: ["工资社保"],
       difficulty: 2,
@@ -330,6 +348,7 @@ const feb = [
 备注：本月含新入职员工1名` }]},
   {
     date: '2026-02-20',
+    role: 'accountant',
     title: '缴纳2月社保费（单位部分）',
     tags: ["工资社保"],
       difficulty: 1,
@@ -343,6 +362,7 @@ const feb = [
         items: [{ name: '养老保险', qty: 1, price: 13000, amount: 13000 }, { name: '医疗保险', qty: 1, price: 4300, amount: 4300 }, { name: '失业保险', qty: 1, price: 1300, amount: 1300 }, { name: '工伤保险', qty: 1, price: 550, amount: 550 }, { name: '生育保险', qty: 1, price: 350, amount: 350 }] }]},
   {
     date: '2026-02-20',
+    role: 'accountant',
     title: '缴纳2月公积金（单位部分）',
     tags: ["工资社保"],
       difficulty: 1,
@@ -356,6 +376,7 @@ const feb = [
         items: [{ name: '单位缴存', qty: 14, price: 696.43, amount: 9750 }] }]},
   {
     date: '2026-02-21',
+    role: 'accountant',
     title: '固定资产日常维修',
     tags: ["费用"],
       difficulty: 1,
@@ -369,6 +390,7 @@ const feb = [
         items: [{ name: '办公设备维修保养服务', qty: 1, price: 1500, amount: 1500 }] }]},
   {
     date: '2026-02-22',
+    role: 'accountant',
     title: '签发转账支票支付设备款',
     tags: ["出纳","资产"],
     difficulty: 2,
@@ -383,6 +405,7 @@ const feb = [
         lineItems: [{ name: 'HP LaserJet Pro 打印机', unit: '台', qty: 1, price: 3500, amount: 3500, taxRate: '13%', tax: 455 }], totalAmount: 3955 }]},
   {
     date: '2026-02-23',
+    role: 'accountant',
     title: '银行转账支付法律顾问费',
     tags: ["出纳","费用"],
     difficulty: 1,
@@ -397,6 +420,7 @@ const feb = [
         lineItems: [{ name: '法律顾问服务费（2月）', unit: '项', qty: 1, price: 5000, amount: 5000, taxRate: '6%', tax: 300 }], totalAmount: 5300 }]},
   {
     date: '2026-02-24',
+    role: 'accountant',
     title: '计提固定资产折旧',
     tags: ["资产"],
       difficulty: 2,
@@ -418,6 +442,7 @@ const feb = [
 方法：平均年限法  净残值率：5%` }]},
   {
     date: '2026-02-25',
+    role: 'accountant',
     title: '无形资产摊销',
     tags: ["资产"],
       difficulty: 2,
@@ -437,6 +462,7 @@ const feb = [
 剩余净值：106,000元` }]},
   {
     date: '2026-02-26',
+    role: 'accountant',
     title: '计提短期借款利息',
     tags: ["融资"],
       difficulty: 2,
@@ -457,6 +483,7 @@ const feb = [
 贷款行：中国工商银行XX支行` }]},
   {
     date: '2026-02-27',
+    role: 'accountant',
     title: '计提本月税费',
     tags: ["税费"],
       difficulty: 2,
@@ -480,6 +507,7 @@ const feb = [
 合计：2,194.40` }]},
   {
     date: '2026-02-28',
+    role: 'accountant',
     title: '计提2月社保个人部分',
     tags: ["工资社保"],
       difficulty: 2,
@@ -500,6 +528,7 @@ const feb = [
 合计代扣：9,750.00` }]},
   {
     date: '2026-02-28',
+    role: 'accountant',
     title: '月末结转·期间损益',
     tags: ["期末"],
       difficulty: 3,
@@ -592,6 +621,7 @@ const feb = [
      ═══════════════════════════════════════════════ */
   {
     date: '2026-02-11',
+    role: 'accountant',
     title: '网银制单与双人复核操作 ⭐',
     tags: ["出纳"],
     difficulty: 2,
@@ -673,6 +703,7 @@ const feb = [
 
   {
     date: '2026-02-02',
+    role: 'accountant',
     title: '提取备用金（现金支票）',
     tags: ["出纳"],
     difficulty: 1,
@@ -706,6 +737,7 @@ const feb = [
 整理人：王出纳  日期：2026-02-05` }]},
   {
     date: '2026-02-17',
+    role: 'accountant',
     title: '银行转账支付印刷费',
     tags: ["出纳","费用"],
     difficulty: 1,
@@ -720,6 +752,7 @@ const feb = [
         lineItems: [{ name: '产品手册印刷（500份）', unit: '份', qty: 500, price: 2.4, amount: 1200 }, { name: '企业画册印刷（200份）', unit: '份', qty: 200, price: 3, amount: 600 }], totalAmount: 1800 }]},
   {
     date: '2026-02-27',
+    role: 'accountant',
     title: '银行转账支付报刊订阅费',
     tags: ["出纳","费用"],
     difficulty: 1,
@@ -737,6 +770,7 @@ const feb = [
      ═══════════════════════════════════════════════ */
   {
     date: '2026-02-14',
+    role: 'accountant',
     title: '微信收款处理——客户扫码支付 ⭐',
     tags: ["出纳","销售"],
     difficulty: 2,
@@ -763,6 +797,7 @@ const feb = [
      ═══════════════════════════════════════════════ */
   {
     date: '2026-02-10',
+    role: 'accountant',
     title: '采购退货——材料质量不合格退回',
     tags: ["采购"],
     difficulty: 1,
@@ -788,6 +823,7 @@ const feb = [
       { type: 'bank', label: '退款回单', date: '2026-02-10', totalAmount: 4500, payer: '丙公司', payeeName: '本公司', content: '退货退款-材料质量不合格', refNo: 'HD202602100043' }]},
   {
     date: '2026-02-16',
+    role: 'accountant',
     title: '客户提前付款享受现金折扣 ⭐',
     tags: ["销售"],
     difficulty: 2,
@@ -818,6 +854,7 @@ const feb = [
 实际收款：135,600 - 2,400 = 133,200.00元` }]},
   {
     date: '2026-02-25',
+    role: 'accountant',
     title: '暂估入库——货到票未到',
     tags: ["采购"],
     difficulty: 2,
@@ -863,6 +900,7 @@ const feb = [
 次月1日必须红字冲回，避免重复入账。` }]},
   {
     date: "2026-02-28",
+    role: 'accountant',
     title: "模拟纳税申报",
     tags: ["期末", "税费"],
     difficulty: 1,

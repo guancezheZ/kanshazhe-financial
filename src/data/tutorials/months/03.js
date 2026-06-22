@@ -93,6 +93,7 @@ const mar = [
 
   {
     date: '2026-03-02',
+    role: 'accountant',
     title: '缴纳上月未交增值税',
     tags: ["税费"],
       difficulty: 1,
@@ -112,6 +113,7 @@ const mar = [
   },
   {
     date: '2026-03-02',
+    role: 'accountant',
     title: '缴纳上月城市维护建设税',
     tags: ["税费"],
       difficulty: 1,
@@ -131,6 +133,7 @@ const mar = [
   },
   {
     date: '2026-03-02',
+    role: 'accountant',
     title: '缴纳上月教育费附加',
     tags: ["税费"],
       difficulty: 1,
@@ -150,6 +153,7 @@ const mar = [
   },
   {
     date: '2026-03-03',
+    role: 'accountant',
     title: '采购原材料（含税）',
     tags: ["采购"],
       difficulty: 2,
@@ -171,6 +175,7 @@ const mar = [
   },
   {
     date: '2026-03-04',
+    role: 'accountant',
     title: '销售商品（款已收）',
     tags: ["销售"],
       difficulty: 2,
@@ -192,6 +197,7 @@ const mar = [
   },
   {
     date: '2026-03-05',
+    role: 'accountant',
     title: '购买办公用品',
     tags: ["费用"],
       difficulty: 1,
@@ -211,6 +217,7 @@ const mar = [
   },
   {
     date: '2026-03-07',
+    role: 'accountant',
     title: '收到甲公司货款',
     tags: ["销售"],
       difficulty: 1,
@@ -233,6 +240,7 @@ const mar = [
 
   {
     date: '2026-03-10',
+    role: 'accountant',
     title: '发放2月份员工工资',
     tags: ["工资社保"],
       difficulty: 2,
@@ -265,6 +273,7 @@ const mar = [
   },
   {
     date: '2026-03-10',
+    role: 'accountant',
     title: '缴纳上月代扣个税',
     tags: ["税费"],
       difficulty: 1,
@@ -284,6 +293,7 @@ const mar = [
   },
   {
     date: '2026-03-11',
+    role: 'accountant',
     title: '员工报销差旅费',
     tags: ["费用"],
       difficulty: 1,
@@ -308,6 +318,7 @@ const mar = [
   },
   {
     date: '2026-03-12',
+    role: 'accountant',
     title: '赊销商品给乙公司',
     tags: ["销售"],
       difficulty: 2,
@@ -339,6 +350,7 @@ const mar = [
   },
   {
     date: '2026-03-13',
+    role: 'accountant',
     title: '支付丙公司货款',
     tags: ["采购"],
       difficulty: 1,
@@ -356,6 +368,7 @@ const mar = [
   },
   {
     date: '2026-03-14',
+    role: 'accountant',
     title: '支付水电费',
     tags: ["费用"],
       difficulty: 1,
@@ -414,6 +427,7 @@ const mar = [
 
   {
     date: '2026-03-17',
+    role: 'accountant',
     title: '计提应收账款坏账准备 ⭐',
     tags: ["资产"],
       difficulty: 3,
@@ -441,6 +455,7 @@ const mar = [
   },
   {
     date: '2026-03-18',
+    role: 'accountant',
     title: '现金盘点短缺及报批处理 ⭐',
     tags: ["出纳"],
       difficulty: 3,
@@ -470,6 +485,7 @@ const mar = [
   },
   {
     date: '2026-03-19',
+    role: 'accountant',
     title: '领用低值易耗品 ⭐',
     tags: ["费用","资产"],
       difficulty: 3,
@@ -491,6 +507,7 @@ const mar = [
   },
   {
     date: '2026-03-20',
+    role: 'accountant',
     title: '对外公益性捐赠 ⭐',
     tags: ["费用"],
       difficulty: 2,
@@ -510,6 +527,7 @@ const mar = [
   },
   {
     date: '2026-03-21',
+    role: 'accountant',
     title: '分配制造费用 ⭐',
     tags: ["成本核算"],
       difficulty: 3,
@@ -538,6 +556,7 @@ A产品应分配：800 × 15 = 12,000元` },
   },
   {
     date: '2026-03-21',
+    role: 'accountant',
     title: '完工产品入库 ⭐',
     tags: ["成本核算"],
       difficulty: 3,
@@ -605,6 +624,7 @@ A产品应分配：800 × 15 = 12,000元` },
 
   {
     date: '2026-03-24',
+    role: 'accountant',
     title: '计提固定资产折旧',
     tags: ["资产"],
       difficulty: 2,
@@ -632,6 +652,7 @@ A产品应分配：800 × 15 = 12,000元` },
   },
   {
     date: '2026-03-25',
+    role: 'accountant',
     title: '无形资产摊销',
     tags: ["资产"],
       difficulty: 2,
@@ -656,6 +677,7 @@ A产品应分配：800 × 15 = 12,000元` },
   },
   {
     date: '2026-03-26',
+    role: 'accountant',
     title: '计提短期借款利息',
     tags: ["融资"],
       difficulty: 2,
@@ -681,6 +703,7 @@ A产品应分配：800 × 15 = 12,000元` },
   },
   {
     date: '2026-03-27',
+    role: 'accountant',
     title: '结转已销产品成本 ⭐',
     tags: ["成本核算"],
       difficulty: 3,
@@ -706,6 +729,7 @@ A产品应分配：800 × 15 = 12,000元` },
   },
   {
     date: '2026-03-28',
+    role: 'accountant',
     title: '计提3月份员工工资',
     tags: ["工资社保"],
       difficulty: 2,
@@ -734,6 +758,7 @@ A产品应分配：800 × 15 = 12,000元` },
   },
   {
     date: '2026-03-28',
+    role: 'accountant',
     title: '计提3月社保及公积金个人部分',
     tags: ["工资社保"],
       difficulty: 2,
@@ -763,6 +788,7 @@ A产品应分配：800 × 15 = 12,000元` },
   },
   {
     date: '2026-03-29',
+    role: 'accountant',
     title: '缴纳3月社保费（单位部分）',
     tags: ["工资社保"],
       difficulty: 1,
@@ -781,6 +807,7 @@ A产品应分配：800 × 15 = 12,000元` },
   },
   {
     date: '2026-03-29',
+    role: 'accountant',
     title: '缴纳3月公积金（单位部分）',
     tags: ["工资社保"],
       difficulty: 1,
@@ -799,6 +826,7 @@ A产品应分配：800 × 15 = 12,000元` },
   },
   {
     date: '2026-03-30',
+    role: 'accountant',
     title: '计提本月城建税和教育费附加',
     tags: ["税费"],
       difficulty: 2,
@@ -829,6 +857,7 @@ A产品应分配：800 × 15 = 12,000元` },
   },
   {
     date: '2026-03-31',
+    role: 'accountant',
     title: '计提Q1企业所得税 ⭐',
     tags: ["税费"],
       difficulty: 3,
@@ -858,6 +887,7 @@ Q1累计利润总额：约 224,628.10
   },
   {
     date: '2026-03-31',
+    role: 'accountant',
     title: '月末结转·期间损益',
     tags: ["期末"],
       difficulty: 3,
@@ -1185,6 +1215,7 @@ Q1累计利润总额：约 224,628.10
      ═══════════════════════════════════════════════ */
   {
     date: '2026-03-24',
+    role: 'accountant',
     title: '成本核算——约当产量法 ⭐',
     tags: ["成本核算"],
     difficulty: 2,
@@ -1228,6 +1259,7 @@ Q1累计利润总额：约 224,628.10
   },
   {
     date: '2026-03-25',
+    role: 'accountant',
     title: '多部门制造费用分配',
     tags: ["成本核算"],
     difficulty: 2,
@@ -1310,6 +1342,7 @@ Q1累计利润总额：约 224,628.10
     },
   {
     date: "2026-03-31",
+    role: 'accountant',
     title: "模拟纳税申报",
     tags: ["期末", "税费"],
     difficulty: 1,

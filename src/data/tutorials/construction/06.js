@@ -22,6 +22,7 @@ const tasks = [
   // ═══════════════════════════════════════════════════════════════════
   {
     date: '2026-06-01',
+    role: 'accountant',
     title: '支付丁公司钢材款',
     tags: ['往来管理'],
     difficulty: 1,
@@ -62,6 +63,7 @@ const tasks = [
       { type: 'invoice', label: '增值税专用发票', date: '2026-06-03', region: '江苏省', invoiceNo: '3200260603', buyer: '鼎立建筑工程有限公司', seller: '华强建材有限公司', lineItems: [{ name: '瓷砖', qty: 500, unit: '平方米', price: 120, amount: 60000 }, { name: '环保涂料', qty: 100, unit: '桶', price: 350, amount: 35000 }], totalAmount: 107350 }]},
   {
     date: '2026-06-04',
+    role: 'accountant',
     title: '支付装饰材料采购款',
     tags: ['材料管理'],
     difficulty: 1,
@@ -74,6 +76,7 @@ const tasks = [
       { type: 'bank', label: '网银转账回单', date: '2026-06-04', totalAmount: 107350, payer: '鼎立建筑工程有限公司', payeeName: '华强建材有限公司', content: '装饰材料采购款（发票No.3200260603）', refNo: 'ZF202606040001' }]},
   {
     date: '2026-06-05',
+    role: 'accountant',
     title: '提取备用金',
     tags: ['出纳'],
     difficulty: 1,
@@ -144,6 +147,7 @@ const tasks = [
       { type: 'text', label: '分包工程计量单', docTitle: '分包工程完工计量确认单', content: '分包单位：大地保温工程有限公司\n工程内容：办公楼外墙保温工程\n本月完成工程量：130,000元（不含税）\n质量验收：合格\n监理确认：李监理', signature: '李监理 大地保温 鼎立建筑' }]},
   {
     date: '2026-06-09',
+    role: 'accountant',
     title: '支付分包工程款',
     tags: ['分包管理'],
     difficulty: 1,
@@ -183,6 +187,7 @@ const tasks = [
       { type: 'invoice', label: '增值税专用发票', date: '2026-06-11', region: '江苏省', invoiceNo: '3200260611', buyer: '鼎立建筑工程有限公司', seller: '安达安全用品有限公司', lineItems: [{ name: '安全网', qty: 100, unit: '张', price: 120, amount: 12000 }, { name: '安全带', qty: 50, unit: '条', price: 150, amount: 7500 }, { name: '安全帽', qty: 50, unit: '顶', price: 50, amount: 2500 }], totalAmount: 24860 }]},
   {
     date: '2026-06-12',
+    role: 'accountant',
     title: '支付安全防护用品款',
     tags: ['材料管理'],
     difficulty: 1,
@@ -195,6 +200,7 @@ const tasks = [
       { type: 'bank', label: '网银转账回单', date: '2026-06-12', totalAmount: 24860, payer: '鼎立建筑工程有限公司', payeeName: '安达安全用品有限公司', content: '安全防护用品款', refNo: 'ZF202606120001' }]},
   {
     date: '2026-06-12',
+    role: 'accountant',
     title: '支付施工现场水电费',
     tags: ['工程成本'],
     difficulty: 1,
@@ -207,6 +213,7 @@ const tasks = [
       { type: 'receipt', label: '缴费凭证', date: '2026-06-12', items: [{ label: '施工用电', amount: 6500 }, { label: '施工用水', amount: 2700 }], totalAmount: 9200, stampText: '供电局/自来水公司收费专用章' }]},
   {
     date: '2026-06-13',
+    role: 'accountant',
     title: '支付银行承兑汇票手续费',
     tags: ['出纳'],
     difficulty: 1,
@@ -233,6 +240,7 @@ const tasks = [
       { type: 'text', label: '检测委托单', docTitle: '工程质量检测委托单', content: '检测项目：主体结构混凝土强度检测\n部位：办公楼主体结构（1-15层）\n检测标准：GB/T 50107-2010\n委托单位：鼎立建筑工程有限公司\n检测机构：中正检测机构', signature: '项目技术负责人' }]},
   {
     date: '2026-06-14',
+    role: 'accountant',
     title: '报销项目部差旅费',
     tags: ['工程成本'],
     difficulty: 1,
@@ -264,6 +272,7 @@ const tasks = [
       { type: 'text', label: '工资表', docTitle: '2026年6月职工工资表', content: '施工人员（18人）140,000元；项目部管理人员（6人）48,000元；公司管理人员（5人）38,000元。合计226,000元。', signature: '王人事' }]},
   {
     date: '2026-06-16',
+    role: 'accountant',
     title: '发放职工工资',
     tags: ['工资社保'],
     difficulty: 1,
@@ -276,6 +285,7 @@ const tasks = [
       { type: 'bank', label: '银行代发工资回单', date: '2026-06-16', totalAmount: 226000, payer: '鼎立建筑工程有限公司', payeeName: '公司全体员工', content: '6月份工资发放', refNo: 'GZ202606160001' }]},
   {
     date: '2026-06-17',
+    role: 'accountant',
     title: '缴纳社会保险',
     tags: ['工资社保'],
     difficulty: 2,
@@ -289,6 +299,7 @@ const tasks = [
       { type: 'text', label: '社保缴费通知单', docTitle: '社会保险费缴纳通知书（单位部分）', content: '缴费基数：226,000.00元\n养老保险（16%）：36,160.00元\n医疗保险（9.5%）：21,470.00元\n失业保险（0.5%）：1,130.00元\n工伤保险（0.2%）：452.00元\n生育保险（1%）：2,260.00元\n合计：61,472.00元', stampText: '江苏省社会保险事业管理中心 征收专用章' }]},
   {
     date: '2026-06-18',
+    role: 'accountant',
     title: '缴纳住房公积金',
     tags: ['工资社保'],
     difficulty: 2,
@@ -322,6 +333,7 @@ const tasks = [
       { type: 'text', label: '主体封顶验收报告', docTitle: '建设工程主体结构验收报告', content: '工程名称：恒达地产办公楼工程\n本次验收内容：主体结构封顶\n验收结论：经监理、设计、施工、甲方四方验收，主体结构工程质量符合设计及规范要求，同意验收。\n完成进度：12%（本月），累计74%\n验收日期：2026年6月19日\n参加单位：恒达地产、鼎立建筑、设计院、监理公司', signature: '四方验收签字' }]},
   {
     date: '2026-06-20',
+    role: 'accountant',
     title: '收到工程进度款',
     tags: ['往来管理'],
     difficulty: 1,
@@ -334,6 +346,7 @@ const tasks = [
       { type: 'bank', label: '收款回单', date: '2026-06-20', totalAmount: 454000, payer: '恒达地产有限公司', payeeName: '鼎立建筑工程有限公司', content: '办公楼主体封顶工程进度款', refNo: 'HD202606200001' }]},
   {
     date: '2026-06-20',
+    role: 'accountant',
     title: '支付现场保安保洁费',
     tags: ['工程成本'],
     difficulty: 1,
@@ -376,6 +389,7 @@ const tasks = [
       { type: 'invoice', label: '增值税专用发票', date: '2026-06-22', region: '江苏省', invoiceNo: '3200260622', buyer: '鼎立建筑工程有限公司', seller: '新型建材公司', lineItems: [{ name: '轻质隔墙材料', qty: 1, unit: '批', price: 35000, amount: 35000 }], totalAmount: 39550 }]},
   {
     date: '2026-06-23',
+    role: 'accountant',
     title: '支付变更工程材料及劳务款',
     tags: ['工程成本'],
     difficulty: 1,
@@ -419,6 +433,7 @@ const tasks = [
       { type: 'text', label: '成本分析报告', docTitle: '2026年上半年工程成本分析报告', content: '一、总体情况\n截至6月，办公楼工程累计完成进度约74%。\n\n二、成本超支分析\n1. 材料成本：钢材采购成本较预算超支约5%，主要原因是上半年钢材市场价格持续上涨。\n2. 人工成本：主体封顶施工阶段人工费略有超支，主要原因是加班费增加。\n3. 本月补记材料价差：32,000元。\n\n三、改进措施\n1. 加强与供应商的长期合作，争取更优惠的价格。\n2. 优化施工组织设计，减少非必要加班。\n3. 严格成本控制，每月进行成本分析。\n\n报告人：赵会计', signature: '赵会计 王项目经理' }]},
   {
     date: '2026-06-26',
+    role: 'accountant',
     title: '支付办公水电费',
     tags: ['费用管理'],
     difficulty: 1,
@@ -467,6 +482,7 @@ const tasks = [
       { type: 'text', label: '成本结转计算表', docTitle: '合同履约成本结转计算表（2026年6月）', content: '一、人工成本（540101）：158,000元\n  其中：施工人员工资140,000元，变更签证人工18,000元\n二、材料成本（540102）：162,000元\n  其中：装饰材料95,000元，变更材料35,000元，价差调整32,000元\n三、分包成本（540103）：130,000元\n  外墙保温分包工程\n四、机械使用费（540104）：47,000元\n  其中：施工电梯42,000元，运输车辆折旧5,000元\n五、其他直接费用（540105）：32,300元\n  其中：安全用品22,000元，检测费6,500元，差旅费3,800元\n六、间接费用（540106）：64,000元\n  其中：项目管理人员工资48,000元，水电费9,200元，保安保洁6,800元\n\n合计：593,300元', signature: '赵会计' }]},
   {
     date: '2026-06-28',
+    role: 'accountant',
     title: '支付办公用品及电话费',
     tags: ['费用管理'],
     difficulty: 1,
@@ -615,6 +631,7 @@ const tasks = [
 
   {
     date: '2026-06-18',
+    role: 'accountant',
     title: '支付日常办公费用',
     tags: ['费用管理'],
     difficulty: 1,
@@ -637,6 +654,7 @@ const tasks = [
     documents: [{ type: 'text', label: '对账确认单', docTitle: '往来对账确认单', content: '与供应商核对往来，确认全部款项已结清。', signature: '赵会计' }]},
   {
     date: '2026-06-25',
+    role: 'accountant',
     title: '支付银行手续费',
     tags: ['费用管理'],
     difficulty: 1,
@@ -660,6 +678,7 @@ const tasks = [
     documents: [{ type: 'receipt', label: '维护费发票', items: [{ label: '设备日常维护', amount: 3000 }], totalAmount: 3000, stampText: '维修厂发票章' }]},
   {
     date: "2026-06-30",
+    role: 'accountant',
     title: "模拟纳税申报",
     tags: ["期末", "税费"],
     difficulty: 1,
