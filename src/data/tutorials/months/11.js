@@ -403,9 +403,17 @@ const nov = [
     difficulty: 2,
     description: '月末将研发支出-费用化支出23,000元结转至"管理费用-研发费用"。',
     tip: '请根据业务场景理解并完成本业务的分录录入。',
-    entries: [
-      { subjectCode: '6602', summary: '结转研发支出-费用化', debit: 23000, credit: 0, explanation: '管理费用增加23,000元。研究阶段支出全部转入管理费用。' },
-      { subjectCode: '530101', summary: '费用化支出结转', debit: 0, credit: 23000, explanation: '研发支出-费用化支出减少23,000元。科目余额归零。' }],
+    entries: 
+[
+      { subjectCode: '6602', debit: 23000, credit: 0, summary: '结转管理费用', explanation: '管理费用结转至本年利润，余额归零。' },
+      { subjectCode: '660101', debit: 8000, credit: 0, summary: '结转销售费用-广告费', explanation: '广告费结转至本年利润，余额归零。' },
+      { subjectCode: '6602', debit: 17000, credit: 0, summary: '结转管理费用', explanation: '管理费用结转至本年利润，余额归零。' },
+      { subjectCode: '530101', debit: 0, credit: 23000, summary: '费用化支出结转', explanation: '研发支出费用化结转。' },
+      { subjectCode: '6603', debit: 0, credit: 145, summary: '结转财务费用', explanation: '财务费用结转至本年利润，余额归零。' },
+      { subjectCode: '5101', debit: 0, credit: 5000, summary: '结转制造费用', explanation: '制造费用结转至生产成本，余额归零。' },
+      { subjectCode: '4103', summary: '结转本年利润', debit: 0, credit: 19855, explanation: '本年利润结转至利润分配。' },
+    ]
+,
     documents: [
       { type: 'text', label: '研发支出结转表', docTitle: '研发支出结转表（11月）', stampText: '财务专用章', content: `费用化支出23,000元→管理费用\n资本化支出43,000元→继续留在研发支出科目（待完工转无形资产）` }]},
   {
