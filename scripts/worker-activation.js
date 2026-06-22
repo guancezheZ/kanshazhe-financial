@@ -109,12 +109,12 @@ async function handleVerify(url, env, request) {
   const record = db[code]
 
   if (!record) {
-    // 不在 KV 中 → 必须通过校验和验证
+    // ⭐ v0.8.3 安全加固：不在 KV 数据库中的激活码一律拒绝
+    //    必须通过 key-manager upload 预上传到 Worker 才能激活
     if (!verifyCode(code)) {
       return json({ valid: false, message: '校验和无效' })
     }
-    // 校验和通过但从未被激活过
-    return json({ valid: true, status: 'new' })
+    return json({ valid: false, message: '此激活码未在服务器注册，请联系管理员上传', block: true })
   }
 
   if (record.revoked) {
@@ -193,6 +193,14 @@ async function handleActivate(url, env, request) {
     await saveDB(env, db)
   }
 
+  // ✅ 已导入但未激活的码（key-manager upload 创建的记录）：允许首次激活
+  if (record && !record.fps) {
+    record.fps = [{ fp, platform, activatedAt: new Date().toISOString() }]
+    await saveDB(env, db)
+    await clearFailCount(env, clientIp)
+    return json({ success: true, message: '激活成功，已绑定本机', status: 'activated' })
+  }
+
   // 已存在的绑定：检查指纹是否匹配
   if (record?.fps && record.fps.length > 0) {
     const existing = record.fps.find(d => d.fp === fp)
@@ -215,12 +223,10 @@ async function handleActivate(url, env, request) {
     return json({ success: true, message: '激活成功（设备已绑定）', status: 'activated' })
   }
 
-  // 首次激活 → 创建绑定数组
-  db[code] = { fps: [{ fp, platform, activatedAt: new Date().toISOString() }] }
-  await saveDB(env, db)
-  // ✅ 成功激活，清除失败计数
-  await clearFailCount(env, clientIp)
-  return json({ success: true, message: '激活成功，已绑定本机', status: 'activated' })
+  // ⭐ v0.8.3 安全加固：不在 KV 数据库中的激活码一律拒绝
+  //    必须通过 key-manager upload 预上传到 Worker 才能激活
+  await recordFailAttempt(env, clientIp)
+  return json({ success: false, message: '此激活码未在服务器注册，请联系管理员上传', block: true })
 }
 
 // ─── 管理员操作 ───

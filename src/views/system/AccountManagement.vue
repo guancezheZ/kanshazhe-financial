@@ -40,6 +40,33 @@
       </el-col>
     </el-row>
 
+    <!-- ⭐ 存储空间清理 -->
+    <el-card shadow="never" class="storage-card" style="margin-top:16px">
+      <div class="storage-header">
+        <h3 class="storage-title">📦 本地存储空间</h3>
+        <el-tag :type="storageTagType" size="small">{{ storageUsage }} MB</el-tag>
+      </div>
+      <div class="storage-body">
+        <div class="storage-stats">
+          <span>教程标记: <strong>{{ stats.tutorialDone }}</strong> 项</span>
+          <span>场景数据: <strong>{{ stats.scenarioData }}</strong> 项</span>
+          <span>案例数据: <strong>{{ stats.caseData }}</strong> 项</span>
+          <span>其他数据: <strong>{{ stats.other }}</strong> 项</span>
+        </div>
+        <div class="storage-actions">
+          <el-button size="small" plain @click="handleStorageClean">
+            <el-icon><Delete /></el-icon> 清理过期数据
+          </el-button>
+          <span v-if="lastCleanup" class="storage-hint">
+            上次清理: {{ lastCleanup }}
+          </span>
+        </div>
+        <div v-if="cleanResult" class="storage-result" :class="{ success: !cleanResult.error }">
+          {{ cleanResult.message }}
+        </div>
+      </div>
+    </el-card>
+
     <!-- 新建账套对话框 -->
     <el-dialog v-model="showCreateDialog" title="新建账套" width="500">
       <el-form :model="createForm" :rules="createRules" ref="createFormRef" label-width="100px">
@@ -82,7 +109,7 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
-import { Plus, Coin } from '@element-plus/icons-vue'
+import { Plus, Coin, Delete } from '@element-plus/icons-vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { useStore } from '@/stores/store.js'
 
@@ -165,6 +192,52 @@ function handleReset() {
   showReset.value = false
   setTimeout(() => location.reload(), 1000)
 }
+
+// ─── 存储空间清理 ───
+import { getStorageStats, getStorageUsageMB, runCleanup, getLastCleanupInfo } from '@/utils/storage-cleanup.js'
+
+const storageUsage = ref('0')
+const stats = ref({ tutorialDone: 0, scenarioData: 0, caseData: 0, other: 0 })
+const cleanResult = ref(null)
+const lastCleanup = ref('')
+
+function refreshStorageInfo() {
+  storageUsage.value = getStorageUsageMB()
+  stats.value = getStorageStats()
+  const info = getLastCleanupInfo()
+  if (info?.lastRun) {
+    lastCleanup.value = new Date(info.lastRun).toLocaleString('zh-CN')
+  } else {
+    lastCleanup.value = ''
+  }
+}
+
+const storageTagType = computed(() => {
+  const mb = parseFloat(storageUsage.value)
+  if (mb > 4) return 'danger'
+  if (mb > 2) return 'warning'
+  return 'info'
+})
+
+function handleStorageClean() {
+  const result = runCleanup({ monthsToKeep: 6, maxCompletedTasks: 2000 })
+  const savedMB = ((result.beforeBytes - result.afterBytes) / (1024 * 1024)).toFixed(2)
+  const parts = []
+  if (result.tutorialMarkersRemoved > 0) parts.push('教程标记 ' + result.tutorialMarkersRemoved + ' 项')
+  if (result.xpTasksTrimmed > 0) parts.push('XP记录 ' + result.xpTasksTrimmed + ' 项')
+  if (result.orphansRemoved > 0) parts.push('冗余数据 ' + result.orphansRemoved + ' 项')
+  if (result.abandonedDataRemoved > 0) parts.push('废弃场景 ' + result.abandonedDataRemoved + ' 项')
+
+  const detail = parts.length > 0 ? '（' + parts.join('，') + '）' : '无过期数据'
+  cleanResult.value = {
+    message: '✅ 清理完成！释放 ' + savedMB + ' MB ' + detail,
+    error: false,
+  }
+  refreshStorageInfo()
+  setTimeout(() => { cleanResult.value = null }, 5000)
+}
+
+onMounted(() => { refreshStorageInfo() })
 </script>
 
 <style scoped>
@@ -199,5 +272,36 @@ function handleReset() {
   margin-top: 12px;
   display: flex;
   gap: 8px;
+}
+
+/* ⭐ 存储空间卡片 */
+.storage-card { background: var(--bg-card, #faf7f2); }
+.storage-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.storage-title { font-size: 16px; font-weight: 600; margin: 0; color: var(--text, #303133); }
+.storage-body { display: flex; flex-direction: column; gap: 10px; }
+.storage-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 13px;
+  color: var(--text-secondary, #606266);
+}
+.storage-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.storage-hint { font-size: 12px; color: var(--text-muted, #909399); }
+.storage-result {
+  font-size: 13px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: var(--bg-success, #f0f9eb);
+  color: var(--color-success, #67c23a);
 }
 </style>

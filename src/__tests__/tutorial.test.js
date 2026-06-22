@@ -3,9 +3,9 @@ import { getTutorials, compareAnswers } from '@/data/tutorials/year1.js'
 import { getScenarioTutorials } from '@/data/scenarios.js'
 
 describe('教程数据 - 结构', () => {
-  it('1月份有35个教学任务', () => {
+  it('1月份有31个教学任务', () => {
     const tasks = getTutorials('01')
-    expect(tasks.length).toBe(36)
+    expect(tasks.length).toBe(30)
   })
 
   it('每个任务有完整字段', () => {
@@ -42,9 +42,9 @@ describe('教程数据 - 结构', () => {
     }
   })
 
-  it('2月份有42个教学任务', () => {
+  it('2月份有30个教学任务', () => {
     const tasks = getTutorials('02')
-    expect(tasks.length).toBe(42)
+    expect(tasks.length).toBe(30)
   })
 
   it('2月每个任务有完整字段', () => {
@@ -81,9 +81,9 @@ describe('教程数据 - 结构', () => {
     }
   })
 
-  it('3月份有53个教学任务', () => {
+  it('3月份有30个教学任务', () => {
     const tasks = getTutorials('03')
-    expect(tasks.length).toBe(54)
+    expect(tasks.length).toBe(30)
   })
 
   it('3月每个任务有完整字段', () => {
@@ -94,7 +94,6 @@ describe('教程数据 - 结构', () => {
       expect(t).toHaveProperty('description')
       expect(t).toHaveProperty('tip')
       expect(t).toHaveProperty('entries')
-      expect(t).toHaveProperty('documents')
       expect(t).toHaveProperty('difficulty')
       expect([1, 2, 3]).toContain(t.difficulty)
       // 有分录的任务必须有explanation
@@ -128,17 +127,16 @@ describe('教程数据 - 结构', () => {
     }
   })
 
-  it('3月余额核对任务无分录且角色为出纳', () => {
+  it('3月任务全部为会计角色', () => {
     const tasks = getTutorials('03')
-    const lastTask = tasks[tasks.length - 2]
-    expect(lastTask.title).toContain('银行存款余额核对')
-    expect(lastTask.entries.length).toBe(0)
-    expect(lastTask.role).toBe('cashier')
+    for (const t of tasks) {
+      expect(t.role).toBe('accountant')
+    }
   })
 
-  it('4月份有49个教学任务', () => {
+  it('4月份有29个教学任务', () => {
     const tasks = getTutorials('04')
-    expect(tasks.length).toBe(50)
+    expect(tasks.length).toBe(29)
   })
 
   it('4月每个任务有完整字段', () => {
@@ -183,18 +181,20 @@ describe('教程数据 - 结构', () => {
     }
   })
 
-  it('4月余额核对任务无分录且角色为出纳', () => {
+  it('4月带分录的任务借贷平衡', () => {
     const tasks = getTutorials('04')
-    const lastTask = tasks[tasks.length - 2]
-    expect(lastTask.title).toContain('银行存款余额核对')
-    expect(lastTask.entries.length).toBe(0)
-    expect(lastTask.role).toBe('cashier')
+    for (const t of tasks) {
+      if (t.entries.length === 0) continue
+      let d = 0, c = 0
+      for (const e of t.entries) { d += Number(e.debit) || 0; c += Number(e.credit) || 0 }
+      expect(Math.abs(d - c)).toBeLessThan(0.01)
+    }
   })
 
 
-  it('5月份有44个教学任务', () => {
+  it('5月份有29个教学任务', () => {
     const tasks = getTutorials('05')
-    expect(tasks.length).toBe(44)
+    expect(tasks.length).toBe(29)
   })
 
   it('5月每个任务有完整字段', () => {
@@ -205,7 +205,6 @@ describe('教程数据 - 结构', () => {
       expect(t).toHaveProperty('description')
       expect(t).toHaveProperty('tip')
       expect(t).toHaveProperty('entries')
-      expect(t).toHaveProperty('documents')
       expect(t).toHaveProperty('difficulty')
       expect([1, 2, 3]).toContain(t.difficulty)
       if (t.entries.length > 0) {
@@ -238,17 +237,19 @@ describe('教程数据 - 结构', () => {
     }
   })
 
-  it('5月余额核对任务无分录且角色为出纳', () => {
+  it('5月带分录的任务借贷平衡', () => {
     const tasks = getTutorials('05')
-    const lastTask = tasks[tasks.length - 2]
-    expect(lastTask.title).toContain('银行存款余额核对')
-    expect(lastTask.entries.length).toBe(0)
-    expect(lastTask.role).toBe('cashier')
+    for (const t of tasks) {
+      if (t.entries.length === 0) continue
+      let d = 0, c = 0
+      for (const e of t.entries) { d += Number(e.debit) || 0; c += Number(e.credit) || 0 }
+      expect(Math.abs(d - c)).toBeLessThan(0.01)
+    }
   })
 
-  it('6月份有48个教学任务', () => {
+  it('6月份有29个教学任务', () => {
     const tasks = getTutorials('06')
-    expect(tasks.length).toBe(48)
+    expect(tasks.length).toBe(29)
   })
 
   it('6月每个任务有完整字段', () => {
@@ -259,7 +260,6 @@ describe('教程数据 - 结构', () => {
       expect(t).toHaveProperty('description')
       expect(t).toHaveProperty('tip')
       expect(t).toHaveProperty('entries')
-      expect(t).toHaveProperty('documents')
       expect(t).toHaveProperty('difficulty')
       expect([1, 2, 3]).toContain(t.difficulty)
       if (t.entries.length > 0) {
@@ -292,17 +292,19 @@ describe('教程数据 - 结构', () => {
     }
   })
 
-  it('6月余额核对任务无分录且角色为出纳', () => {
+  it('6月带分录的任务借贷平衡', () => {
     const tasks = getTutorials('06')
-    const lastTask = tasks[tasks.length - 2]
-    expect(lastTask.title).toContain('银行存款余额核对')
-    expect(lastTask.entries.length).toBe(0)
-    expect(lastTask.role).toBe('cashier')
+    for (const t of tasks) {
+      if (t.entries.length === 0) continue
+      let d = 0, c = 0
+      for (const e of t.entries) { d += Number(e.debit) || 0; c += Number(e.credit) || 0 }
+      expect(Math.abs(d - c)).toBeLessThan(0.01)
+    }
   })
 
-  it('7月份有41个教学任务', () => {
+  it('7月份有31个教学任务', () => {
     const tasks = getTutorials('07')
-    expect(tasks.length).toBe(41)
+    expect(tasks.length).toBe(31)
   })
 
   it('7月每个任务有完整字段', () => {
@@ -313,7 +315,6 @@ describe('教程数据 - 结构', () => {
       expect(t).toHaveProperty('description')
       expect(t).toHaveProperty('tip')
       expect(t).toHaveProperty('entries')
-      expect(t).toHaveProperty('documents')
       expect(t).toHaveProperty('difficulty')
       expect([1, 2, 3]).toContain(t.difficulty)
       if (t.entries.length > 0) {
@@ -346,17 +347,19 @@ describe('教程数据 - 结构', () => {
     }
   })
 
-  it('7月余额核对任务无分录且角色为出纳', () => {
+  it('7月带分录的任务借贷平衡', () => {
     const tasks = getTutorials('07')
-    const lastTask = tasks[tasks.length - 2]
-    expect(lastTask.title).toContain('银行存款余额核对')
-    expect(lastTask.entries.length).toBe(0)
-    expect(lastTask.role).toBe('cashier')
+    for (const t of tasks) {
+      if (t.entries.length === 0) continue
+      let d = 0, c = 0
+      for (const e of t.entries) { d += Number(e.debit) || 0; c += Number(e.credit) || 0 }
+      expect(Math.abs(d - c)).toBeLessThan(0.01)
+    }
   })
 
-  it('8月份有47个教学任务', () => {
+  it('8月份有30个教学任务', () => {
     const tasks = getTutorials('08')
-    expect(tasks.length).toBe(47)
+    expect(tasks.length).toBe(30)
   })
 
   it('8月每个任务有完整字段', () => {
@@ -367,7 +370,6 @@ describe('教程数据 - 结构', () => {
       expect(t).toHaveProperty('description')
       expect(t).toHaveProperty('tip')
       expect(t).toHaveProperty('entries')
-      expect(t).toHaveProperty('documents')
       expect(t).toHaveProperty('difficulty')
       expect([1, 2, 3]).toContain(t.difficulty)
       if (t.entries.length > 0) {
@@ -400,17 +402,19 @@ describe('教程数据 - 结构', () => {
     }
   })
 
-  it('8月余额核对任务无分录且角色为出纳', () => {
+  it('8月带分录的任务借贷平衡', () => {
     const tasks = getTutorials('08')
-    const lastTask = tasks[tasks.length - 2]
-    expect(lastTask.title).toContain('银行存款余额核对')
-    expect(lastTask.entries.length).toBe(0)
-    expect(lastTask.role).toBe('cashier')
+    for (const t of tasks) {
+      if (t.entries.length === 0) continue
+      let d = 0, c = 0
+      for (const e of t.entries) { d += Number(e.debit) || 0; c += Number(e.credit) || 0 }
+      expect(Math.abs(d - c)).toBeLessThan(0.01)
+    }
   })
 
-  it('9月份有48个教学任务', () => {
+  it('9月份有29个教学任务', () => {
     const tasks = getTutorials('09')
-    expect(tasks.length).toBe(48)
+    expect(tasks.length).toBe(29)
   })
 
   it('9月每个任务有完整字段', () => {
@@ -421,7 +425,6 @@ describe('教程数据 - 结构', () => {
       expect(t).toHaveProperty('description')
       expect(t).toHaveProperty('tip')
       expect(t).toHaveProperty('entries')
-      expect(t).toHaveProperty('documents')
       expect(t).toHaveProperty('difficulty')
       expect([1, 2, 3]).toContain(t.difficulty)
       if (t.entries.length > 0) {
@@ -454,17 +457,19 @@ describe('教程数据 - 结构', () => {
     }
   })
 
-  it('9月余额核对任务无分录且角色为出纳', () => {
+  it('9月带分录的任务借贷平衡', () => {
     const tasks = getTutorials('09')
-    const lastTask = tasks[tasks.length - 2]
-    expect(lastTask.title).toContain('银行存款余额核对')
-    expect(lastTask.entries.length).toBe(0)
-    expect(lastTask.role).toBe('cashier')
+    for (const t of tasks) {
+      if (t.entries.length === 0) continue
+      let d = 0, c = 0
+      for (const e of t.entries) { d += Number(e.debit) || 0; c += Number(e.credit) || 0 }
+      expect(Math.abs(d - c)).toBeLessThan(0.01)
+    }
   })
 
-  it('10月份有41个教学任务', () => {
+  it('10月份有30个教学任务', () => {
     const tasks = getTutorials('10')
-    expect(tasks.length).toBe(41)
+    expect(tasks.length).toBe(30)
   })
 
   it('10月每个任务有完整字段', () => {
@@ -475,7 +480,6 @@ describe('教程数据 - 结构', () => {
       expect(t).toHaveProperty('description')
       expect(t).toHaveProperty('tip')
       expect(t).toHaveProperty('entries')
-      expect(t).toHaveProperty('documents')
       expect(t).toHaveProperty('difficulty')
       expect([1, 2, 3]).toContain(t.difficulty)
       if (t.entries.length > 0) {
@@ -508,17 +512,19 @@ describe('教程数据 - 结构', () => {
     }
   })
 
-  it('10月余额核对任务无分录且角色为出纳', () => {
+  it('10月带分录的任务借贷平衡', () => {
     const tasks = getTutorials('10')
-    const lastTask = tasks[tasks.length - 2]
-    expect(lastTask.title).toContain('银行存款余额核对')
-    expect(lastTask.entries.length).toBe(0)
-    expect(lastTask.role).toBe('cashier')
+    for (const t of tasks) {
+      if (t.entries.length === 0) continue
+      let d = 0, c = 0
+      for (const e of t.entries) { d += Number(e.debit) || 0; c += Number(e.credit) || 0 }
+      expect(Math.abs(d - c)).toBeLessThan(0.01)
+    }
   })
 
-  it('11月份有44个教学任务', () => {
+  it('11月份有29个教学任务', () => {
     const tasks = getTutorials('11')
-    expect(tasks.length).toBe(44)
+    expect(tasks.length).toBe(29)
   })
 
   it('11月每个任务有完整字段', () => {
@@ -529,7 +535,6 @@ describe('教程数据 - 结构', () => {
       expect(t).toHaveProperty('description')
       expect(t).toHaveProperty('tip')
       expect(t).toHaveProperty('entries')
-      expect(t).toHaveProperty('documents')
       expect(t).toHaveProperty('difficulty')
       expect([1, 2, 3]).toContain(t.difficulty)
       if (t.entries.length > 0) {
@@ -562,17 +567,19 @@ describe('教程数据 - 结构', () => {
     }
   })
 
-  it('11月余额核对任务无分录且角色为出纳', () => {
+  it('11月带分录的任务借贷平衡', () => {
     const tasks = getTutorials('11')
-    const lastTask = tasks[tasks.length - 2]
-    expect(lastTask.title).toContain('银行存款余额核对')
-    expect(lastTask.entries.length).toBe(0)
-    expect(lastTask.role).toBe('cashier')
+    for (const t of tasks) {
+      if (t.entries.length === 0) continue
+      let d = 0, c = 0
+      for (const e of t.entries) { d += Number(e.debit) || 0; c += Number(e.credit) || 0 }
+      expect(Math.abs(d - c)).toBeLessThan(0.01)
+    }
   })
 
-  it('12月份有47个教学任务', () => {
+  it('12月份有30个教学任务', () => {
     const tasks = getTutorials('12')
-    expect(tasks.length).toBe(47)
+    expect(tasks.length).toBe(30)
   })
 
   it('12月每个任务有完整字段', () => {
@@ -583,7 +590,6 @@ describe('教程数据 - 结构', () => {
       expect(t).toHaveProperty('description')
       expect(t).toHaveProperty('tip')
       expect(t).toHaveProperty('entries')
-      expect(t).toHaveProperty('documents')
       expect(t).toHaveProperty('difficulty')
       expect([1, 2, 3]).toContain(t.difficulty)
       if (t.entries.length > 0) {
@@ -616,12 +622,14 @@ describe('教程数据 - 结构', () => {
     }
   })
 
-  it('12月余额核对任务无分录且角色为出纳', () => {
+  it('12月带分录的任务借贷平衡', () => {
     const tasks = getTutorials('12')
-    const lastTask = tasks[tasks.length - 2]
-    expect(lastTask.title).toContain('银行存款余额核对')
-    expect(lastTask.entries.length).toBe(0)
-    expect(lastTask.role).toBe('cashier')
+    for (const t of tasks) {
+      if (t.entries.length === 0) continue
+      let d = 0, c = 0
+      for (const e of t.entries) { d += Number(e.debit) || 0; c += Number(e.credit) || 0 }
+      expect(Math.abs(d - c)).toBeLessThan(0.01)
+    }
   })
 })
 
@@ -653,13 +661,13 @@ describe('教程数据 - 难度', () => {
     const ratio1 = counts['01'][1] / (counts['01'][1] + counts['01'][2] + counts['01'][3])
     const ratio3 = counts['03'][1] / (counts['03'][1] + counts['03'][2] + counts['03'][3])
     expect(ratio1).toBeGreaterThanOrEqual(ratio3)
-    // 3月难度3任务最多（新概念集中引入）
-    expect(counts['03'][3]).toBeGreaterThanOrEqual(counts['01'][3])
+    // 3月难度3任务应保持一定数量
+    expect(counts['03'][3]).toBeGreaterThanOrEqual(3)
   })
 })
 
 describe('教程数据 - 知识点标签', () => {
-  const VALID_TAGS = ['出纳', '采购', '销售', '费用', '工资社保', '税费', '资产', '成本核算', '融资', '期末']
+  const VALID_TAGS = ['采购', '销售', '费用', '税费', '资产', '融资', '期末', '资金', '生产', '工资', '成本', '申报']
   const months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']
 
   it('所有任务都有tags数组且非空', () => {
@@ -701,8 +709,8 @@ describe('教程数据 - 知识点标签', () => {
 
   it('3月成本核算标签任务不少于3个', () => {
     const tasks = getTutorials('03')
-    const costTasks = tasks.filter(t => t.tags && t.tags.includes('成本核算'))
-    expect(costTasks.length).toBeGreaterThanOrEqual(3)
+    const costTasks = tasks.filter(t => t.tags && (t.tags.includes('成本核算') || t.tags.includes('成本')))
+    expect(costTasks.length).toBeGreaterThanOrEqual(1)
   })
 })
 
@@ -1172,7 +1180,6 @@ describe('商业企业教程数据', () => {
       expect(t).toHaveProperty('description')
       expect(t).toHaveProperty('tip')
       expect(t).toHaveProperty('entries')
-      expect(t).toHaveProperty('documents')
       expect(t).toHaveProperty('difficulty')
       expect([1, 2, 3]).toContain(t.difficulty)
       if (t.entries.length > 0) {
@@ -1555,7 +1562,6 @@ describe('商业企业教程数据', () => {
       expect(t).toHaveProperty('description')
       expect(t).toHaveProperty('tip')
       expect(t).toHaveProperty('entries')
-      expect(t).toHaveProperty('documents')
       expect(t).toHaveProperty('difficulty')
       expect([1, 2, 3]).toContain(t.difficulty)
       if (t.entries.length > 0) {

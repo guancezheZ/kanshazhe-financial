@@ -583,10 +583,20 @@ function goToEntry() {
     ElMessage.warning('该任务尚未解锁，请先完成前面的任务')
     return
   }
-  // 特殊操作：跳转到指定页面（如税申报）
+  // 特殊操作：跳转到指定页面（如税申报、固定资产、工资管理）
   const nextAction = task.value?.nextAction
   if (nextAction === 'tax-filing') {
     router.push({ name: 'TaxFiling' })
+    return
+  }
+  if (nextAction === 'fixed-assets') {
+    sessionStorage.setItem('jd_module_task', 'fixed-assets')
+    router.push({ name: 'FixedAssets' })
+    return
+  }
+  if (nextAction === 'payroll') {
+    sessionStorage.setItem('jd_module_task', 'payroll')
+    router.push({ name: 'PayrollMgmt' })
     return
   }
 

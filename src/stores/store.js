@@ -29,7 +29,7 @@ import {
 } from '@/data/xp-system.js'
 import {
   trialBalance as trialBalanceFn,
-  calcBalanceSheet, calcIncomeStatement, calcCashFlow, calcFinancialRatios,
+  calcBalanceSheet, calcIncomeStatement, calcFinancialRatios,
   SUBJECT_TYPE_CN,
 } from '@/utils/accounting.js'
 
@@ -948,8 +948,45 @@ export function useStore() {
   }
 
   function getCashFlow(period) {
+    // 从当期已过账凭证逐笔汇总现金流量（直接法）
+    // 每笔分录的 cashFlowItem 由 determineCashFlowForEntry 自动判定
+    const postedVouchers = state.vouchers.filter(v =>
+      v.period === period && v.status === VOUCHER_STATUS.POSTED
+    )
+
+    // 按现金流量分类汇总（借方=流入，贷方=流出）
+    const cfAmounts = {}
+    for (const v of postedVouchers) {
+      for (const e of v.entries) {
+        if (!e.cashFlowItem) continue
+        cfAmounts[e.cashFlowItem] = (cfAmounts[e.cashFlowItem] || 0) + (Number(e.debit) || 0) - (Number(e.credit) || 0)
+      }
+    }
+
+    function buildCategory(items) {
+      const mapped = items.map(i => ({
+        id: i.id,
+        name: i.name,
+        amount: round(cfAmounts[i.id] || 0),
+      }))
+      const net = round(mapped.reduce((s, i) => s + i.amount, 0))
+      return { net, items: mapped }
+    }
+
+    const operating = buildCategory(state.cashFlowItems.filter(i => i.category === 'operating'))
+    const investing = buildCategory(state.cashFlowItems.filter(i => i.category === 'investing'))
+    const financing = buildCategory(state.cashFlowItems.filter(i => i.category === 'financing'))
+
+    const netIncrease = round(operating.net + investing.net + financing.net)
     const balances = getPeriodBalances(period)
-    return calcCashFlow(state.subjects, balances)
+
+    return {
+      operating,
+      investing,
+      financing,
+      netIncrease,
+      netProfit: round(calcIncomeStatement(state.subjects, balances).netProfit || 0),
+    }
   }
 
   function getFinancialRatios(period) {

@@ -151,14 +151,8 @@
           <el-icon><Collection /></el-icon><template #title>案例库</template>
         </el-menu-item>
 
-        <el-menu-item v-if="fm('/system/periods')" index="/system/periods">
-          <el-icon><Setting /></el-icon><template #title>会计期间</template>
-        </el-menu-item>
-        <el-menu-item v-if="fm('/system/audit-log')" index="/system/audit-log">
-          <el-icon><Search /></el-icon><template #title>审计轨迹</template>
-        </el-menu-item>
-        <el-menu-item v-if="fm('/system/accounts')" index="/system/accounts">
-          <el-icon><Setting /></el-icon><template #title>账套管理</template>
+        <el-menu-item v-if="fm('/system/settings')" index="/system/settings">
+          <el-icon><Setting /></el-icon><template #title>系统设置</template>
         </el-menu-item>
 
         <!-- 🚀 检查更新 -->
@@ -223,21 +217,6 @@
           </el-breadcrumb>
         </div>
         <div class="header-right">
-          <!-- 主题切换 -->
-          <el-tooltip :content="themeTooltip" placement="bottom">
-            <el-button text class="theme-btn" @click="cycleTheme">
-              <el-icon :size="18">
-                <Sunny v-if="currentTheme === 'ink'" />
-                <Monitor v-else />
-              </el-icon>
-            </el-button>
-          </el-tooltip>
-          <!-- 📬 意见反馈 -->
-          <el-tooltip content="意见反馈" placement="bottom">
-            <el-button text class="feedback-btn" @click="showFeedback = true">
-              <el-icon :size="18"><ChatLineRound /></el-icon>
-            </el-button>
-          </el-tooltip>
           <el-dropdown trigger="click" class="role-switcher">
             <span class="role-badge">
               <el-tag :type="currentRole === 'supervisor' ? 'danger' : currentRole === 'accountant' ? 'primary' : 'warning'" size="small">
@@ -298,7 +277,6 @@
       </div>
     </el-container>
   </el-container>
-  <FeedbackDialog v-model="showFeedback" />
   <ActivationDialog v-model="showActivation" :strict="!activated" @activated="onActivated" />
   <IntegrityCheckDialog v-model="showIntegrity" />
 </template>
@@ -311,17 +289,17 @@ import {
   Fold, HomeFilled, Reading, List, EditPen, Search,
   Document, DataAnalysis, Money, Setting, ArrowDown,
   UserFilled, SwitchButton, DataBoard, Coin, CopyDocument, SetUp,
-  Moon, Sunny, Monitor, Notebook, ChatLineRound, Lock, Close, Check, Download, Box, TrendCharts,
+  Moon, Notebook, Lock, Close, Check, Download, Box, TrendCharts,
 } from '@element-plus/icons-vue'
 import { useStore } from '@/stores/store.js'
 import { calcLevel } from '@/data/xp-system.js'
 import TutorialFloater from '@/components/TutorialFloater.vue'
 import TeachingSidePanel from '@/components/TeachingSidePanel.vue'
-import FeedbackDialog from '@/components/FeedbackDialog.vue'
 import ActivationDialog from '@/components/ActivationDialog.vue'
 import IntegrityCheckDialog from '@/components/IntegrityCheckDialog.vue'
 import { isActivated, syncTauriActivation, initDeviceFingerprint, initActivationCache } from '@/utils/activation.js'
 import { checkIntegrity } from '@/utils/integrity.js'
+import { shouldRunCleanup, runCleanup } from '@/utils/storage-cleanup.js'
 
 // ⭐ 配套资料（Tauri桌面端专用）
 const isTauri = computed(() => typeof window !== 'undefined' && window.__TAURI__ !== undefined)
@@ -407,7 +385,6 @@ async function checkLatestVersion() {
 const isCollapsed = ref(false)
 const sidebarWidth = computed(() => (isCollapsed.value ? '64px' : '220px'))
 const activeMenu = computed(() => route.path)
-const showFeedback = ref(false)
 const showActivation = ref(false)
 const showIntegrity = ref(false)
 const activated = ref(isActivated())
@@ -528,32 +505,13 @@ function openNotifications() {
   router.push('/dashboard')
 }
 
-// ----- 主题切换 -----
-const THEMES = ['ink', 'classic']
-const currentTheme = ref(localStorage.getItem('jd_theme') || 'ink')
-const themeTooltip = computed(() => {
-  const map = { ink: '水墨·国风', classic: '经典·蓝白' }
-  return map[currentTheme.value] || '切换主题'
-})
-
-function applyTheme(theme) {
-  document.documentElement.setAttribute('data-theme', theme)
-  document.documentElement.classList.remove('dark')
-  localStorage.setItem('jd_theme', theme)
-  currentTheme.value = theme
-}
-
-function cycleTheme() {
-  const idx = THEMES.indexOf(currentTheme.value)
-  const next = THEMES[(idx + 1) % THEMES.length]
-  applyTheme(next)
-}
-
 // 响应式：小屏自动收起侧栏
 let resizeHandler = null
 
 onMounted(() => {
-  applyTheme(currentTheme.value)
+  // 应用已保存的主题
+  const savedTheme = localStorage.getItem('jd_theme') || 'ink'
+  document.documentElement.setAttribute('data-theme', savedTheme)
   resizeHandler = () => {
     if (window.innerWidth < 1024) isCollapsed.value = true
   }
@@ -583,6 +541,17 @@ onMounted(() => {
   }).catch(() => {
     // 静默失败，不影响用户操作
   })
+
+  // 📦 存储空间自动清理（超过4MB或30天未清理时触发）
+  setTimeout(() => {
+    if (shouldRunCleanup()) {
+      const result = runCleanup({ monthsToKeep: 6, maxCompletedTasks: 2000 })
+      const savedMB = ((result.beforeBytes - result.afterBytes) / (1024 * 1024)).toFixed(2)
+      if (parseFloat(savedMB) > 0) {
+        console.log('[Storage] 自动清理完成，释放 ' + savedMB + ' MB')
+      }
+    }
+  }, 5000) // 延迟5秒，不影响首页加载
 
   // 🔄 自动检测最新版本
   setTimeout(() => checkLatestVersion(), 3000) // 延迟3秒，不影响首页加载
@@ -657,16 +626,10 @@ function handleLogout() {
 .header-breadcrumb { margin-left: 4px; }
 .header-breadcrumb :deep(.el-breadcrumb__inner) { font-size: 13px; color: var(--text-secondary); }
 .header-right { display: flex; align-items: center; gap: 12px; }
-.header-right .theme-btn,
-.header-right .feedback-btn { margin: 0 !important; padding: 2px !important; min-width: 0 !important; min-height: 0 !important; }
-.header-right .theme-btn .el-icon,
-.header-right .feedback-btn .el-icon { margin: 0 !important; }
 .role-switcher { cursor: pointer; }
 .role-badge { display: flex; align-items: center; }
 .user-info { display: flex; align-items: center; gap: 6px; cursor: pointer; padding: 4px 8px; border-radius: 4px; transition: background 0.2s; }
 .user-info:hover { background: var(--bg); }
-.theme-btn { color: var(--text-secondary) !important; font-size: 16px; transition: transform 0.3s ease !important; }
-.theme-btn:hover { transform: rotate(15deg) scale(1.1); }
 .user-avatar { background-color: var(--accent); }
 .user-name { font-size: 13px; color: var(--text); }
 

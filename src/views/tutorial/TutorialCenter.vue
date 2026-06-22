@@ -351,7 +351,7 @@
                   >🔒 已锁定</el-button>
                 </el-tooltip>
                 <el-button
-                  v-else-if="row.entries.length > 0"
+                  v-else-if="row.entries.length > 0 || row.nextAction"
                   size="small"
                   type="primary"
                   @click="startTask(row)"

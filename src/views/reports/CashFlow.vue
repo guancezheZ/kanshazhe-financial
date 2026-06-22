@@ -9,7 +9,7 @@
 
     <el-card shadow="never" style="max-width:700px">
       <template #header>
-        <div class="report-title">现金流量表（间接法）</div>
+        <div class="report-title">现金流量表</div>
         <div class="report-subtitle">{{ periodLabel }} 单位：元</div>
       </template>
 
@@ -39,9 +39,9 @@ import { formatAmount, getCurrentPeriod } from '@/utils/accounting.js'
 const store = useStore()
 const period = ref(getCurrentPeriod())
 const reportData = reactive({
-  operating: { net: 0 },
-  investing: { net: 0 },
-  financing: { net: 0 },
+  operating: { net: 0, items: [] },
+  investing: { net: 0, items: [] },
+  financing: { net: 0, items: [] },
   netIncrease: 0,
   netProfit: 0,
 })
@@ -53,16 +53,44 @@ const periodLabel = computed(() => {
   return p ? `${p.slice(0,4)}年${p.slice(4,6)}月` : ''
 })
 
-const tableData = computed(() => [
-  { name: '一、经营活动现金流量', amount: '', bold: true, indent: false },
-  { name: '净利润', amount: reportData.netProfit, bold: false, indent: true },
-  { name: '经营活动现金流量净额', amount: reportData.operating.net, bold: true, indent: false },
-  { name: '二、投资活动现金流量', amount: '', bold: true, indent: false },
-  { name: '投资活动现金流量净额', amount: reportData.investing.net, bold: true, indent: true },
-  { name: '三、筹资活动现金流量', amount: '', bold: true, indent: false },
-  { name: '筹资活动现金流量净额', amount: reportData.financing.net, bold: true, indent: true },
-  { name: '四、现金净增加额', amount: reportData.netIncrease, bold: true, indent: false },
-])
+const tableData = computed(() => {
+  const rows = []
+  // 一、经营活动
+  rows.push({ name: '一、经营活动现金流量', amount: '', bold: true, indent: false })
+  // 经营活动明细项目
+  const opItems = reportData.operating.items || []
+  for (const item of opItems) {
+    if (item.amount !== 0) {
+      rows.push({ name: item.name, amount: item.amount, bold: false, indent: true })
+    }
+  }
+  rows.push({ name: '经营活动现金流量净额', amount: reportData.operating.net, bold: true, indent: false })
+
+  // 二、投资活动
+  rows.push({ name: '二、投资活动现金流量', amount: '', bold: true, indent: false })
+  const invItems = reportData.investing.items || []
+  for (const item of invItems) {
+    if (item.amount !== 0) {
+      rows.push({ name: item.name, amount: item.amount, bold: false, indent: true })
+    }
+  }
+  rows.push({ name: '投资活动现金流量净额', amount: reportData.investing.net, bold: true, indent: true })
+
+  // 三、筹资活动
+  rows.push({ name: '三、筹资活动现金流量', amount: '', bold: true, indent: false })
+  const finItems = reportData.financing.items || []
+  for (const item of finItems) {
+    if (item.amount !== 0) {
+      rows.push({ name: item.name, amount: item.amount, bold: false, indent: true })
+    }
+  }
+  rows.push({ name: '筹资活动现金流量净额', amount: reportData.financing.net, bold: true, indent: true })
+
+  // 四、现金净增加额
+  rows.push({ name: '四、现金净增加额', amount: reportData.netIncrease, bold: true, indent: false })
+
+  return rows
+})
 
 function loadData() {
   const data = store.getCashFlow(period.value)

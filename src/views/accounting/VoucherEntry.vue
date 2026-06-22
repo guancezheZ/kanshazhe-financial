@@ -32,8 +32,9 @@
     <!-- 快捷键提示条 -->
     <div class="shortcut-bar">
       <span class="shortcut-item"><kbd>Ctrl+S</kbd> 保存</span>
-      <span class="shortcut-item"><kbd>Enter</kbd> 下一行</span>
-      <span class="shortcut-item"><kbd>F8</kbd> 借贷互换</span>
+      <span class="shortcut-item"><kbd>Ctrl+↵</kbd> 保存新增</span>
+      <span class="shortcut-item"><kbd>↵</kbd> 末行新增</span>
+      <span class="shortcut-item">⇄ 借贷互换</span>
       <span class="shortcut-item"><kbd>Esc</kbd> 取消选中</span>
     </div>
 
@@ -236,6 +237,18 @@
       @skip="handleGuideSkip"
       @close="handleGuideClose"
     />
+
+    <!-- ⌨️ 快捷键帮助 -->
+    <el-dialog v-model="showShortcutHelp" title="⌨️ 快捷键" width="420" :close-on-click-modal="true">
+      <div class="shortcut-help-grid">
+        <div class="sh-item"><kbd>Ctrl+S</kbd> <span>保存凭证</span></div>
+        <div class="sh-item"><kbd>Ctrl+↵</kbd> <span>保存并新增</span></div>
+        <div class="sh-item"><kbd>Ctrl+D</kbd> <span>删除当前行</span></div>
+        <div class="sh-item"><kbd>⇄</kbd> <span>借贷金额互换（按钮）</span></div>
+        <div class="sh-item"><kbd>Esc</kbd> <span>取消选中</span></div>
+        <div class="sh-item"><kbd>?</kbd> <span>打开本帮助</span></div>
+      </div>
+    </el-dialog>
   </div>
 </template>
 
@@ -380,8 +393,8 @@ function initNewVoucher() {
 
 function getDefaultEntries() {
   return [
-    { id: 'e1', summary: '', subjectId: '', subjectCode: '', subjectName: '', debit: null, credit: null, cashFlowItem: '' },
-    { id: 'e2', summary: '', subjectId: '', subjectCode: '', subjectName: '', debit: null, credit: null, cashFlowItem: '' },
+    { id: 'e1', summary: '', subjectId: '', subjectCode: '', subjectName: '', debit: null, credit: null },
+    { id: 'e2', summary: '', subjectId: '', subjectCode: '', subjectName: '', debit: null, credit: null },
   ]
 }
 
@@ -418,7 +431,6 @@ async function handleSave() {
       subjectName: e.subjectName,
       debit: e.debit || 0,
       credit: e.credit || 0,
-      cashFlowItem: e.cashFlowItem || '',
     })),
   }
 
@@ -652,9 +664,9 @@ function checkAnswer() {
   }
 
   const userEntries = entries.value.map(function(e) {
-    return { subjectCode: e.subjectCode || '', subjectName: e.subjectName || '', debit: Number(e.debit) || 0, credit: Number(e.credit) || 0, cashFlowItem: e.cashFlowItem || '' }
+    return { subjectCode: e.subjectCode || '', subjectName: e.subjectName || '', debit: Number(e.debit) || 0, credit: Number(e.credit) || 0 }
   })
-  // 预处理正确答案：手工现金流量标注优先，无则自动判断
+  // 预处理正确答案：手工现金流量标注优先，无则自动判断（仅用于过账时保存，不参与比对）
   const allEntries = tutorialTask.value?.entries || []
   if (allEntries.length === 0) { ElMessage.warning('该任务无需录入凭证'); return }
   const correct = allEntries.map(function(e) {
@@ -666,12 +678,7 @@ function checkAnswer() {
     }
     return { ...e, cashFlowItem: cfItem || '', cashFlowExplanation: cfExpl || '' }
   })
-  // 构建现金流量名称映射，用于比对时显示中文名称
-  const cashFlowMap = {}
-  for (const cf of store.state.cashFlowItems) {
-    cashFlowMap[cf.id] = cf.name
-  }
-  const result = compareAnswers(userEntries, correct, cashFlowMap)
+  const result = compareAnswers(userEntries, correct)
   checkResult.value = result
   // Show results
   const errors = result.filter(function(r) { return r.type === 'error' })
@@ -765,9 +772,9 @@ function checkAnswer() {
     let text = icon + ' ' + r.message
     if (r.explanation) text += '\n   📖 ' + r.explanation
     return text
-  }).join('\n\n')
+  }).join('\n')
   const guidance = guidedMode.value && errors.length > 0
-    ? '\n\n💡 提示：可修改后重新保存再次比对'
+    ? '\n💡 提示：可修改后重新保存再次比对'
     : ''
 
   if (errors.length === 0 && lastPostedPeriod.value && !store.isPracticeMode()) {
@@ -847,7 +854,7 @@ function checkAnswer() {
       h('span', { style: 'font-size:12px;color:#909399' }, xpInfo.levelInfo.icon + ' Lv.' + xpInfo.levelInfo.level + ' ' + xpInfo.levelInfo.title),
     ]) : null
     const achBlock = isSuccess && xpInfo?.newlyUnlocked?.length ? h('div', { style: 'background:#fff7e6;border-radius:6px;padding:8px 12px;margin-bottom:10px' }, '🏅 解锁成就：' + xpInfo.newlyUnlocked.map(a => a.icon + ' ' + a.title).join('、')) : null
-    const msgChildren = [xpBlock, achBlock, h('div', details), h('div', guidance)].filter(Boolean)
+    const msgChildren = [xpBlock, achBlock, h('div', { style: 'white-space:pre-wrap;line-height:1.8' }, details), h('div', guidance)].filter(Boolean)
     ElMessageBox.alert(h('div', msgChildren), isSuccess ? '🎉 恭喜完成！' : '比对结果', {
       confirmButtonText: '知道了',
       type: errors.length > 0 ? 'warning' : 'success',
@@ -976,6 +983,14 @@ function updateTagStats(task, isCorrect) {
   } catch { /* ignore */ }
 }
 
+const showShortcutHelp = ref(false)
+
+// 删除分录行（保持最少2行）
+function removeRow(index) {
+  if (entries.value.length <= 2) return
+  entries.value.splice(index, 1)
+}
+
 // 键盘快捷键
 function handleKeydown(e) {
   // Ctrl+S 保存
@@ -983,30 +998,16 @@ function handleKeydown(e) {
     e.preventDefault()
     handleSave()
   }
+  // Ctrl+Enter 保存并新增
+  if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+    e.preventDefault()
+    handleSaveNew()
+  }
   // Esc 取消选中
   if (e.key === 'Escape') {
     document.activeElement?.blur()
   }
-  // F8：借贷互换
-  if (e.key === 'F8') {
-    e.preventDefault()
-    const active = document.activeElement
-    if (active) {
-      const rowEl = active.closest('.el-table__row')
-      if (rowEl) {
-        const rowIndex = rowEl.dataset.index !== undefined ? parseInt(rowEl.dataset.index) : -1
-        if (rowIndex >= 0 && rowIndex < entries.value.length) {
-          const row = entries.value[rowIndex]
-          const db = Number(row.debit) || 0
-          const cr = Number(row.credit) || 0
-          if (db !== 0 || cr !== 0) {
-            row.debit = cr || null
-            row.credit = db || null
-          }
-        }
-      }
-    }
-  }
+  // F8 借贷互换 → 由 VoucherEntryTable 组件处理
 }
 
 onMounted(() => {
@@ -1326,4 +1327,30 @@ watch(() => route.query, (query) => {
   background: var(--bg);
   box-shadow: 0 0 0 1px var(--accent);
 }
+
+/* 快捷键帮助 */
+.shortcut-help-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.sh-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+.sh-item kbd {
+  display: inline-block;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-family: 'Courier New', monospace;
+  background: var(--el-fill-color-light, #f5f7fa);
+  border: 1px solid var(--el-border-color, #e4e7ed);
+  border-radius: 4px;
+  min-width: 60px;
+  text-align: center;
+  color: var(--text, #303133);
+}
+.sh-item span { color: var(--text-secondary, #606266); }
 </style>

@@ -2,7 +2,7 @@
  * 教学任务提交验证测试
  *
  * 对每个教学任务的正确答案调用 compareAnswers()，
- * 确保所有2,122个任务都能够正常提交通过。
+ * 确保所有1,880个任务都能够正常提交通过（制造业356）。
  *
  * 核心验证：提交正确答案 → compareAnswers 返回全部成功。
  * 附带扫描：标记数据质量问题（如借贷均为0的空分录）但不阻断测试。
@@ -12,7 +12,7 @@ import { getScenarioTutorials } from '@/data/scenarios.js'
 import { compareAnswers } from '@/data/tutorials/year1.js'
 
 const SCENARIOS = [
-  { id: 'manufacturing', name: '制造业', count: 542 },
+  { id: 'manufacturing', name: '制造业', count: 356 },
   { id: 'commercial', name: '商业企业', count: 521 },
   { id: 'service', name: '服务业', count: 502 },
   { id: 'construction', name: '建筑业', count: 501 },

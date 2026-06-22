@@ -37,7 +37,7 @@
 
         </template>
       </el-table-column>
-      <el-table-column label="借方金额" width="160">
+      <el-table-column label="借方金额" width="200">
         <template #default="{ row, $index }">
           <el-input-number
             v-model="row.debit"
@@ -51,14 +51,7 @@
           />
         </template>
       </el-table-column>
-      <el-table-column label="现金流量" width="140">
-        <template #default="{ row,  }">
-          <el-select v-model="row.cashFlowItem" placeholder="-" size="small" clearable style="width:130px">
-            <el-option v-for="cf in cashFlowItems" :key="cf.id" :label="cf.name" :value="cf.id" />
-          </el-select>
-        </template>
-      </el-table-column>
-      <el-table-column label="贷方金额" width="160">
+      <el-table-column label="贷方金额" width="200">
         <template #default="{ row, $index }">
           <el-input-number
             v-model="row.credit"
@@ -72,8 +65,11 @@
           />
         </template>
       </el-table-column>
-      <el-table-column label="操作" width="60" fixed="right">
-        <template #default="{ $index }">
+      <el-table-column label="操作" width="90" fixed="right">
+        <template #default="{ row, $index }">
+          <el-button text size="small" @click="swapAmounts($index)" title="借贷互换">
+            ⇄
+          </el-button>
           <el-button
             text
             type="danger"
@@ -116,7 +112,6 @@ import { ref, computed, watch } from 'vue'
 import { Delete, Plus } from '@element-plus/icons-vue'
 import SubjectSelect from './SubjectSelect.vue'
 import { useStore } from '@/stores/store.js'
-const cashFlowItems = computed(function() { return store.state.cashFlowItems })
 import { checkBalance, formatAmount } from '@/utils/accounting.js'
 
 const props = defineProps({
@@ -161,7 +156,6 @@ function createEmptyRow() {
     subjectName: '',
     debit: null,
     credit: null,
-    cashFlowItem: '',
     _editing: true,
   }
 }
@@ -175,6 +169,17 @@ function removeRow(index) {
   if (entries.value.length <= 2) return
   entries.value.splice(index, 1)
   emitUpdate()
+}
+
+function swapAmounts(index) {
+  const row = entries.value[index]
+  const db = Number(row.debit) || 0
+  const cr = Number(row.credit) || 0
+  if (db !== 0 || cr !== 0) {
+    row.debit = cr || null
+    row.credit = db || null
+    emitUpdate()
+  }
 }
 
 function handleSubjectChange(index, subject) {
@@ -218,12 +223,19 @@ function handleAmountChange(index) {
 }
 
 function handleSummaryEnter(index) {
-  // Enter时把当前行摘要复制到下一行
   const summary = entries.value[index].summary
-  if (summary && index < entries.value.length - 1) {
-    if (!entries.value[index + 1].summary) {
-      entries.value[index + 1].summary = summary
+  // 如果是在最后一行按 Enter，新增一行并复制摘要
+  if (index === entries.value.length - 1) {
+    entries.value.push(createEmptyRow())
+    if (summary) {
+      entries.value[entries.value.length - 1].summary = summary
     }
+    emitUpdate()
+    return
+  }
+  // 否则把当前行摘要复制到下一行（如果下一行无摘要）
+  if (summary && !entries.value[index + 1].summary) {
+    entries.value[index + 1].summary = summary
   }
 }
 
@@ -246,9 +258,9 @@ function emitUpdate() {
     subjectName: e.subjectName,
     debit: e.debit != null ? Number(e.debit) : 0,
     credit: e.credit != null ? Number(e.credit) : 0,
-    cashFlowItem: e.cashFlowItem || '',
   })))
 }
+
 </script>
 
 <style scoped>

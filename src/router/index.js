@@ -181,6 +181,12 @@ const routes = [
         meta: { title: '激活管理', icon: 'Key' },
       },
       {
+        path: 'system/settings',
+        name: 'SystemSettings',
+        component: () => import('@/views/system/SystemSettings.vue'),
+        meta: { title: '系统设置', icon: 'Setting' },
+      },
+      {
         path: 'tutorial',
         name: 'TutorialCenter',
         component: () => import('@/views/tutorial/TutorialCenter.vue'),
