@@ -503,6 +503,21 @@ watch(isTeachingActive, (val) => {
 
 .action-btn {
   width: 100%;
+  display: flex; align-items: center; justify-content: center; gap: 4px;
+}
+/* 让两个按钮视觉一致 */
+.action-section .el-button--primary {
+  --el-button-bg-color: var(--accent);
+  --el-button-border-color: var(--accent);
+}
+.action-section .el-button:not(.el-button--primary) {
+  --el-button-bg-color: transparent;
+  --el-button-border-color: var(--border);
+  --el-button-text-color: var(--text-secondary);
+}
+.action-section .el-button:not(.el-button--primary):hover {
+  --el-button-border-color: var(--accent);
+  --el-button-text-color: var(--accent);
 }
 
 /* 空状态 */

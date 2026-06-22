@@ -193,7 +193,20 @@ function isParentPnL(code) {
 
 function isClosingTask(title) {
   if (!title) return false
-  return title.includes('月末结转') && (title.includes('损益') || title.includes('期间损益'))
+  const patterns = [
+    '月末结转·期间损益',
+    '月末结转',
+    '期间损益结转',
+    '期末结转损益',         // 商业企业/服务业
+    '结转本月损益类科目',    // 建筑业
+    '月末结转损益类科目',    // 建筑业（部分月份）
+    '结转损益类科目',        // 建筑业（部分月份）
+    '结转所得税费用',        // 建筑业所得税
+    '计提并结转企业所得税',  // 建筑业所得税
+    '计提并结转所得税',      // 建筑业所得税
+    '计提并结转所得税费用',  // 建筑业所得税
+  ]
+  return patterns.some(p => title.includes(p))
 }
 
 // ═══════════════════════════════════════════
@@ -323,7 +336,7 @@ function generateFix(scenario, cfg, months) {
     // 5. 本年利润
     const totalDr = fixedEntries.filter(e => e.debit > 0).reduce((s, e) => s + e.debit, 0)
     const totalCr = fixedEntries.filter(e => e.credit > 0).reduce((s, e) => s + e.credit, 0)
-    const netProfit = totalCr - totalDr  // 收入贷记本年利润 - 费用借记本年利润
+    const netProfit = totalDr - totalCr  // 收入结转记借 → 4103贷 = 利润，费用结转记贷 → 4103借 = 亏损
 
     if (Math.abs(netProfit) > 0.01) {
       if (netProfit > 0) {

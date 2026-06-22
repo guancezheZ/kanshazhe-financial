@@ -86,15 +86,15 @@
           <h2 class="step-title">选择你的角色</h2>
           <p class="step-desc">
             不同角色的工作内容不同。建议初学者从<strong>会计</strong>开始，全面了解账务处理流程。<br>
-            出纳角色则专注收付款和资金管理。角色可在使用中随时切换。
+            出纳角色暂未推出，敬请期待。
           </p>
           <div class="role-grid">
             <div
               v-for="role in ROLES"
               :key="role.id"
               class="role-card"
-              :class="{ selected: selectedRole === role.id, [role.id]: true }"
-              @click="selectedRole = role.id"
+              :class="{ selected: selectedRole === role.id, disabled: role.id === 'cashier', [role.id]: true }"
+              @click="role.id !== 'cashier' && (selectedRole = role.id)"
             >
               <span class="role-icon">{{ role.icon }}</span>
               <span class="role-name">{{ role.name }}</span>
@@ -105,6 +105,7 @@
               <div class="role-check">
                 <span v-if="selectedRole === role.id" class="check-mark">✓</span>
               </div>
+              <div v-if="role.id === 'cashier'" class="role-locked-badge">暂未推出</div>
             </div>
           </div>
           <div class="step-actions">
@@ -322,8 +323,8 @@ function particleStyle(n) {
 [data-theme="dark"] .onboarding-card {
   background: rgba(37,37,64,0.98);
 }
-[data-theme="warm"] .onboarding-card {
-  background: rgba(255,253,249,0.98);
+[data-theme="ink"] .onboarding-card {
+  background: rgba(250,247,242,0.98);
 }
 
 @keyframes cardIn {
@@ -435,7 +436,7 @@ function particleStyle(n) {
   letter-spacing: 2px;
 }
 [data-theme="dark"] .welcome-subtitle { color: #e0e0e0; }
-[data-theme="warm"] .welcome-subtitle { color: #5c3a1a; }
+[data-theme="ink"] .welcome-subtitle { color: #2c2c2c; }
 .welcome-desc {
   font-size: 15px;
   color: #909399;
@@ -462,10 +463,10 @@ function particleStyle(n) {
   background: rgba(64,158,255,0.1);
   border-color: rgba(64,158,255,0.25);
 }
-[data-theme="warm"] .wf-item {
-  background: #fff8f0;
-  color: #e6a23c;
-  border-color: rgba(230,162,60,0.2);
+[data-theme="ink"] .wf-item {
+  background: #f5f0e8;
+  color: #b8453a;
+  border-color: rgba(184,69,58,0.2);
 }
 .wf-icon { margin-right: 4px; }
 
@@ -578,13 +579,34 @@ function particleStyle(n) {
   border-color: #409eff;
   box-shadow: 0 0 0 3px rgba(64,158,255,0.15);
 }
-.role-card.cashier:hover,
+.role-card.cashier:not(.disabled):hover,
 .role-card.cashier.selected {
   border-color: #e6a23c;
   box-shadow: 0 0 0 3px rgba(230,162,60,0.15);
 }
 .role-card.accountant.selected { background: rgba(64,158,255,0.06); border-color: #409eff; }
 .role-card.cashier.selected { background: rgba(230,162,60,0.06); border-color: #e6a23c; }
+.role-card.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  position: relative;
+  overflow: hidden;
+}
+.role-card.disabled:hover {
+  border-color: #dcdfe6;
+  box-shadow: none;
+}
+.role-locked-badge {
+  position: absolute;
+  top: 10px;
+  right: -28px;
+  background: #909399;
+  color: #fff;
+  font-size: 11px;
+  padding: 2px 32px;
+  transform: rotate(45deg);
+  letter-spacing: 1px;
+}
 .role-icon {
   font-size: 36px;
   margin-bottom: 8px;
@@ -683,7 +705,7 @@ function particleStyle(n) {
   transition: background 0.3s;
 }
 [data-theme="dark"] .overview-card { background: #2a2a2a; }
-[data-theme="warm"] .overview-card { background: #f8f4ee; }
+[data-theme="ink"] .overview-card { background: #faf7f2; }
 .overview-card-wide {
   grid-column: 1 / -1;
 }

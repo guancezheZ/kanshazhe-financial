@@ -345,7 +345,7 @@ onMounted(() => {
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s;
-  background: #fff;
+  background: var(--bg-card);
 }
 .warehouse-card:hover {
   border-color: #409eff;

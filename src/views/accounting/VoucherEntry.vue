@@ -1045,11 +1045,11 @@ watch(() => route.query, (query) => {
   gap: 16px;
   margin-bottom: 10px;
   padding: 6px 12px;
-  background: #f5f7fa;
-  border: 1px solid #e4e7ed;
+  background: var(--bg);
+  border: 1px solid var(--border-light);
   border-radius: 6px;
   font-size: 12px;
-  color: #909399;
+  color: var(--text-light);
 }
 .shortcut-item { display: flex; align-items: center; gap: 4px; }
 .shortcut-item kbd {
@@ -1057,8 +1057,8 @@ watch(() => route.query, (query) => {
   padding: 1px 5px;
   font-size: 11px;
   font-family: inherit;
-  background: #fff;
-  border: 1px solid #d9d9d9;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
   border-radius: 3px;
   box-shadow: 0 1px 0 #d9d9d9;
   line-height: 1.4;
@@ -1071,8 +1071,8 @@ watch(() => route.query, (query) => {
   gap: 12px;
   margin-bottom: 10px;
   padding: 8px 12px;
-  background: #f0f5ff;
-  border: 1px solid #d6e4ff;
+  background: var(--bg);
+  border: 1px solid var(--border-light);
   border-radius: 8px;
   font-size: 12px;
 }
@@ -1108,7 +1108,7 @@ watch(() => route.query, (query) => {
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: #d9d9d9;
+  background: var(--border-light);
   color: #fff;
   display: flex;
   align-items: center;
@@ -1117,7 +1117,7 @@ watch(() => route.query, (query) => {
   font-weight: 600;
   transition: background 0.3s;
 }
-.stepbar-step.active .step-num { background: #409eff; }
+.stepbar-step.active .step-num { background: var(--accent); }
 .step-text { font-size: 12px; color: #606266; white-space: nowrap; }
 .stepbar-arrow { color: #c0c4cc; font-size: 12px; }
 .stepbar-hint-bar {
@@ -1130,8 +1130,8 @@ watch(() => route.query, (query) => {
 .hint-panel {
   margin-bottom: 10px;
   padding: 10px 14px;
-  background: #fff8e6;
-  border: 1px solid #f0d78a;
+  background: var(--bg);
+  border: 1px solid var(--accent);
   border-radius: 6px;
   font-size: 12px;
   line-height: 1.7;
@@ -1157,15 +1157,15 @@ watch(() => route.query, (query) => {
 
 /* 凭证卡片（纸纹背景） */
 .voucher-card {
-  border: 2px solid #d9d9d9;
+  border: 2px solid var(--border, #d9d9d9);
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  box-shadow: var(--shadow-sm, 0 2px 8px rgba(0,0,0,0.06));
 }
 .voucher-paper {
   background-image:
-    repeating-linear-gradient(0deg, transparent, transparent 26px, #f0f0f0 26px, #f0f0f0 27px),
-    linear-gradient(135deg, #fafafa 0%, #fefefe 100%);
+    repeating-linear-gradient(0deg, transparent, transparent 26px, var(--border-light) 26px, var(--border-light) 27px),
+    linear-gradient(135deg, var(--bg-card) 0%, var(--bg) 100%);
   background-size: 100% 27px, 100%;
 }
 
@@ -1174,8 +1174,8 @@ watch(() => route.query, (query) => {
   justify-content: space-between;
   align-items: center;
   padding: 10px 16px;
-  background: rgba(248,249,251,0.9);
-  border-bottom: 1px solid #e8e8e8;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border-light);
 }
 .voucher-info {
   display: flex;
@@ -1207,15 +1207,15 @@ watch(() => route.query, (query) => {
   justify-content: space-between;
   align-items: center;
   padding: 8px 16px;
-  border-top: 1px solid #e8e8e8;
-  background: rgba(248,249,251,0.9);
+  border-top: 1px solid var(--border-light);
+  background: var(--bg);
   font-size: 12px;
 }
 .footer-left {
   display: flex;
   gap: 16px;
 }
-.footer-label { color: #909399; }
+.footer-label { color: var(--text-light); }
 .footer-right {
   display: flex;
   align-items: center;
@@ -1223,10 +1223,10 @@ watch(() => route.query, (query) => {
   font-family: monospace;
   font-weight: 600;
 }
-.footer-right.error { color: #f56c6c; }
-.footer-debit { color: #e6a23c; }
+.footer-right.error { color: var(--danger); }
+.footer-debit { color: var(--accent); }
 .footer-debit em { font-style: normal; }
-.footer-credit { color: #67c23a; }
+.footer-credit { color: var(--success); }
 .footer-credit em { font-style: normal; }
 .footer-badge {
   padding: 1px 6px;
@@ -1234,22 +1234,22 @@ watch(() => route.query, (query) => {
   font-size: 11px;
   font-family: inherit;
 }
-.footer-badge.ok { background: #f0f9eb; color: #67c23a; }
-.footer-badge.err { background: #fef0f0; color: #f56c6c; }
+.footer-badge.ok { background: var(--bg); color: var(--success); border: 1px solid var(--success); }
+.footer-badge.err { background: var(--bg); color: var(--danger); border: 1px solid var(--danger); }
 
 .error-messages {
   margin-top: 16px;
 }
 
 /* 答案弹窗样式 */
-:deep(.answer-entry) { background:#f8f9fb; border:1px solid #ebeef5; border-radius:6px; padding:10px 12px; }
+:deep(.answer-entry) { background:var(--bg-card); border:1px solid var(--border-light); border-radius:6px; padding:10px 12px; }
 :deep(.answer-header) { display:flex; align-items:center; gap:8px; flex-wrap:wrap; font-size:13px; }
-:deep(.answer-num) { background:#409eff; color:#fff; padding:0 6px; border-radius:3px; font-size:11px; font-weight:600; }
-:deep(.answer-subject) { font-family:monospace; font-weight:600; color:#303133; }
-:deep(.answer-summary) { color:#606266; font-size:12px; }
+:deep(.answer-num) { background:var(--accent); color:#fff; padding:0 6px; border-radius:3px; font-size:11px; font-weight:600; }
+:deep(.answer-subject) { font-family:monospace; font-weight:600; color:var(--text); }
+:deep(.answer-summary) { color:var(--text-secondary); font-size:12px; }
 :deep(.answer-amount) { margin-left:auto; display:flex; gap:6px; }
-:deep(.amount-debit) { color:#e6a23c; font-weight:600; font-family:monospace; }
-:deep(.amount-credit) { color:#67c23a; font-weight:600; font-family:monospace; }
+:deep(.amount-debit) { color:var(--accent); font-weight:600; font-family:monospace; }
+:deep(.amount-credit) { color:var(--success); font-weight:600; font-family:monospace; }
 
 /* ─── 案例原始凭证预览 ─── */
 .case-documents {
@@ -1300,11 +1300,11 @@ watch(() => route.query, (query) => {
 /* ─── 内联附件预览（展开式，非灯箱） ─── */
 .inline-preview {
   margin-top: 12px;
-  border: 1px solid #e4e7ed;
+  border: 1px solid var(--border);
   border-radius: 8px;
-  background: #fff;
+  background: var(--bg-card);
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  box-shadow: var(--shadow-sm);
 }
 .inline-preview-body {
   padding: 16px;
@@ -1317,13 +1317,13 @@ watch(() => route.query, (query) => {
   justify-content: center;
   gap: 12px;
   padding: 10px 16px;
-  border-top: 1px solid #e4e7ed;
-  background: #fafafa;
+  border-top: 1px solid var(--border-light);
+  background: var(--bg);
 }
-.preview-counter { font-size: 13px; color: #909399; }
+.preview-counter { font-size: 13px; color: var(--text-light); }
 .document-thumb.is-active {
-  border-color: #409eff;
-  background: #ecf5ff;
-  box-shadow: 0 0 0 1px #409eff;
+  border-color: var(--accent);
+  background: var(--bg);
+  box-shadow: 0 0 0 1px var(--accent);
 }
 </style>

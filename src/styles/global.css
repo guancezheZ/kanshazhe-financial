@@ -1,9 +1,24 @@
 /* ============================================
-   企业财务管理系统 - 全局样式
+   観測者企业财务模拟系统 - 全局样式 & 主题系统
    ============================================ */
 
-/* ----- 主题变量（默认：专业蓝） ----- */
-:root {
+/* ===== 主题系统 =====
+ *
+ * data-theme 属性控制色彩主题（classic/ink/dark）
+ * html.dark 类控制 Element Plus 暗色模式补丁
+ * 每个主题有 light/dark 两个变体
+ *
+ * 主题一览：
+ *   classic ─ 经典蓝白（原默认）
+ *   ink     ─ 水墨国风（默认，全新设计）
+ *   dark    ─ 经典暗色（classic 的暗色变体）
+ *
+ * 浮动教学面板固定使用 data-theme="light" 强制亮色
+ */
+
+/* ----- 主题变量：经典蓝白（classic，与旧 :root 兼容）----- */
+:root,
+[data-theme="classic"] {
   --primary: #1a3a5c;
   --primary-light: #2a5a8c;
   --primary-lighter: #3a7ab8;
@@ -17,7 +32,6 @@
   --border: #e4e7ed;
   --border-light: #ebeef5;
   --success: #67c23a;
-  --warning: #e6a23c;
   --danger: #f56c6c;
   --info: #909399;
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
@@ -30,7 +44,7 @@
   --header-height: 50px;
 }
 
-/* ----- 暗色主题（统一中性灰）----- */
+/* ----- 主题变量：经典暗色（classic dark）----- */
 [data-theme="dark"] {
   --primary: #2a2a2a;
   --primary-light: #333333;
@@ -44,25 +58,154 @@
   --text-light: #888888;
   --border: #3a3a3a;
   --border-light: #404040;
+  --success: #67c23a;
+  --danger: #f56c6c;
+  --info: #909399;
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
   --shadow-md: 0 2px 8px rgba(0,0,0,0.4);
   --shadow-lg: 0 4px 16px rgba(0,0,0,0.5);
 }
 
-/* ----- 暖色主题 ----- */
-[data-theme="warm"] {
-  --primary: #5c3a1a;
-  --primary-light: #8c5a2a;
-  --primary-lighter: #b87a3a;
-  --accent: #e6a23c;
-  --accent-dark: #d4922e;
-  --bg: #f8f4ee;
-  --bg-card: #fffdf9;
-  --text: #3d2e1a;
-  --text-secondary: #6b5d4a;
-  --text-light: #9a8e7a;
-  --border: #e8e0d4;
-  --border-light: #f0eae0;
+/* ===== 水墨·国风主题 =====
+ * 色板灵感：宣纸、墨、朱红、竹青
+ * 暖色系（橙黄）全部移除，以朱红为唯一强调色
+ */
+[data-theme="ink"] {
+  --primary: #2c2c2c;
+  --primary-light: #4a4a4a;
+  --primary-lighter: #6b6358;
+  --accent: #9a4a42;
+  --accent-dark: #7a3a32;
+  --bg: #f2ede4;
+  --bg-card: #faf7f2;
+  --text: #2c2c2c;
+  --text-secondary: #6b6358;
+  --text-light: #9a9185;
+  --border: #ddd4c8;
+  --border-light: #e8e0d4;
+  --success: #5a8a5a;
+  --danger: #9a4a42;
+  --info: #9a9185;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 2px 8px rgba(0,0,0,0.10);
+  --shadow-lg: 0 4px 16px rgba(0,0,0,0.14);
+  --radius: 6px;
+  --radius-sm: 3px;
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --sidebar-width: 220px;
+  --header-height: 50px;
+}
+
+/* ----- 水墨·暗色（ink dark）----- */
+[data-theme="ink"][data-theme="dark"] {
+  --primary: #d4cdc0;
+  --primary-light: #b0a898;
+  --primary-lighter: #8a8275;
+  --accent: #b06058;
+  --accent-dark: #c08078;
+  --bg: #1c1a16;
+  --bg-card: #252220;
+  --text: #d4cdc0;
+  --text-secondary: #9a9285;
+  --text-light: #7a7265;
+  --border: #3a3528;
+  --border-light: #454035;
+  --success: #5a8a5a;
+  --danger: #b06058;
+  --info: #7a7265;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
+  --shadow-md: 0 2px 8px rgba(0,0,0,0.5);
+  --shadow-lg: 0 4px 16px rgba(0,0,0,0.6);
+}
+
+/* ----- 水墨·Element Plus 变量覆盖（亮色）----- */
+[data-theme="ink"] {
+  /* Element Plus 基础色 */
+  --el-color-primary: #9a4a42;
+  --el-color-primary-light-3: #b06058;
+  --el-color-primary-light-5: #c88078;
+  --el-color-primary-light-7: #e0a098;
+  --el-color-primary-light-8: #f0c0b8;
+  --el-color-primary-light-9: #f8e0d8;
+  --el-color-primary-dark-2: #7a3a32;
+  --el-color-success: #5a8a5a;
+  --el-color-warning: #b8453a;
+  --el-color-danger: #b8453a;
+  --el-color-error: #b8453a;
+  --el-color-info: #9a9185;
+  --el-bg-color: #faf7f2;
+  --el-bg-color-overlay: #faf7f2;
+  --el-bg-color-page: #f2ede4;
+  --el-border-color: #ddd4c8;
+  --el-border-color-light: #e8e0d4;
+  --el-border-color-lighter: #ede6dc;
+  --el-text-color-primary: #2c2c2c;
+  --el-text-color-regular: #6b6358;
+  --el-text-color-secondary: #9a9185;
+  --el-text-color-placeholder: #b0a898;
+  --el-fill-color: #f5f0e8;
+  --el-fill-color-light: #f0ebe2;
+  --el-fill-color-lighter: #ede6dc;
+  --el-fill-color-blank: #faf7f2;
+  --el-mask-color: rgba(44, 44, 44, 0.5);
+}
+[data-theme="ink"] .el-table {
+  --el-table-bg-color: #faf7f2;
+  --el-table-tr-bg-color: #faf7f2;
+  --el-table-header-bg-color: #f5f0e8;
+  --el-table-row-hover-bg-color: #f0ebe2;
+  --el-table-border-color: #e8e0d4;
+  --el-table-text-color: #2c2c2c;
+}
+[data-theme="ink"] .el-card {
+  background: #faf7f2;
+  border-color: #e8e0d4;
+}
+[data-theme="ink"] .el-dialog {
+  --el-dialog-bg-color: #faf7f2;
+  --el-dialog-title-text-color: #2c2c2c;
+  --el-dialog-content-text-color: #6b6358;
+}
+[data-theme="ink"] .el-input__wrapper {
+  background: #faf7f2;
+  box-shadow: 0 0 0 1px #ddd4c8 inset;
+}
+[data-theme="ink"] .el-input__inner { color: #2c2c2c; }
+[data-theme="ink"] .el-select-dropdown,
+[data-theme="ink"] .el-dropdown-menu { background: #faf7f2; border-color: #ddd4c8; }
+[data-theme="ink"] .el-tree { background: #faf7f2; }
+[data-theme="ink"] .el-pagination { --el-pagination-bg-color: transparent; }
+[data-theme="ink"] .el-progress-bar__outer { background: #e8e0d4; }
+
+/* ----- 水墨·Element Plus 暗色覆盖 ----- */
+[data-theme="ink"][data-theme="dark"] {
+  --el-color-primary: #b06058;
+  --el-color-primary-light-3: #c08078;
+  --el-color-primary-light-5: #d0a098;
+  --el-color-primary-light-7: #e0c0b8;
+  --el-color-primary-light-8: #f0d8d0;
+  --el-color-primary-light-9: #f8e8e0;
+  --el-color-primary-dark-2: #9a4a42;
+  --el-color-success: #5a8a5a;
+  --el-color-warning: #d45050;
+  --el-color-danger: #d45050;
+  --el-color-error: #d45050;
+  --el-color-info: #7a7265;
+  --el-bg-color: #252220;
+  --el-bg-color-overlay: #2a2722;
+  --el-bg-color-page: #1c1a16;
+  --el-border-color: #3a3528;
+  --el-border-color-light: #454035;
+  --el-border-color-lighter: #4a4538;
+  --el-text-color-primary: #d4cdc0;
+  --el-text-color-regular: #b0a898;
+  --el-text-color-secondary: #8a8275;
+  --el-text-color-placeholder: #6a6255;
+  --el-fill-color: #2a2722;
+  --el-fill-color-light: #302c26;
+  --el-fill-color-lighter: #252220;
+  --el-fill-color-blank: #252220;
+  --el-mask-color: rgba(0, 0, 0, 0.6);
 }
 
 /* ----- 全局重置 ----- */
@@ -642,3 +785,86 @@ html.dark .el-tag--plain { background: transparent !important; }
 html.dark .page-title { color: #e0e0e0 !important; }
 html.dark .page-desc,
 html.dark .page-subtitle { color: #808090 !important; }
+
+/* ============================================
+   水墨主题视觉点缀（ink 专属）
+   ============================================ */
+
+/* 页面标题下划线（朱红细线） */
+[data-theme="ink"] .page-title::after {
+  content: ''; display: block;
+  width: 36px; height: 2px;
+  background: var(--accent);
+  margin-top: 6px; border-radius: 1px;
+  opacity: 0.6;
+}
+
+/* 文字选中色 */
+[data-theme="ink"] ::selection {
+  background: rgba(154, 74, 66, 0.2);
+  color: inherit;
+}
+
+/* 卡片悬浮 - 水墨晕染阴影 */
+[data-theme="ink"] .el-card:hover {
+  box-shadow: 0 4px 20px rgba(44, 44, 44, 0.08);
+  border-color: var(--border);
+}
+
+/* 水墨分隔线（用于 section 之间） */
+[data-theme="ink"] .section-divider {
+  border: none; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  margin: 16px 0;
+}
+
+/* Element Plus 按钮补丁 - ink 下 primary 按钮 */
+[data-theme="ink"] .el-button--primary {
+  --el-button-text-color: #fff;
+}
+[data-theme="ink"] .el-button--primary:hover {
+  --el-button-bg-color: var(--accent-dark);
+}
+[data-theme="ink"] .el-button--primary.is-plain {
+  --el-button-bg-color: transparent;
+  --el-button-text-color: var(--accent);
+  --el-button-border-color: var(--accent);
+}
+[data-theme="ink"] .el-button--primary.is-plain:hover {
+  --el-button-bg-color: var(--accent);
+  --el-button-text-color: #fff;
+}
+
+/* 水墨 - 标签颜色覆写（去暖色） */
+[data-theme="ink"] .el-tag--warning {
+  --el-tag-bg-color: rgba(154, 74, 66, 0.1);
+  --el-tag-border-color: rgba(154, 74, 66, 0.2);
+  --el-tag-text-color: var(--accent);
+}
+[data-theme="ink"] .el-tag--danger {
+  --el-tag-bg-color: rgba(154, 74, 66, 0.1);
+  --el-tag-border-color: rgba(154, 74, 66, 0.2);
+  --el-tag-text-color: var(--accent);
+}
+
+/* 水墨步骤条 - step 颜色 */
+[data-theme="ink"] .step-num,
+[data-theme="ink"] .stepbar-step .step-num {
+  background: var(--accent) !important;
+}
+
+/* 水墨全局链接色 */
+[data-theme="ink"] a { color: var(--accent); }
+[data-theme="ink"] a:hover { color: var(--accent-dark); }
+
+/* 水墨 - 表格表头风格统一 */
+[data-theme="ink"] .el-table__header th.el-table__cell {
+  background: var(--bg) !important;
+  color: var(--text-secondary) !important;
+  font-weight: 600;
+}
+
+/* 水墨 - Tab 标签页激活色 */
+[data-theme="ink"] .el-tabs__active-bar { background: var(--accent); }
+[data-theme="ink"] .el-tabs__item.is-active { color: var(--accent); }
+[data-theme="ink"] .el-tabs__item:hover { color: var(--accent); }

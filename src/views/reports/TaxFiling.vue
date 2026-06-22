@@ -276,10 +276,10 @@ onMounted(() => {
 .page-title { font-size:20px; color:#303133; }
 .page-actions { display:flex; gap:8px; }
 
-.tax-intro { font-size:13px; color:#909399; margin-bottom:16px; padding:8px 14px; background:#f8f9fb; border-radius:6px; display:flex; align-items:center; gap:8px; }
+.tax-intro { font-size:13px; color:var(--text-light); margin-bottom:16px; padding:8px 14px; background:var(--bg); border-radius:6px; display:flex; align-items:center; gap:8px; }
 .tax-done { font-size:12px; color:#67c23a; background:#f0f9eb; padding:2px 10px; border-radius:10px; }
 
-.tax-form { background:#fff; border:1px solid #e8e8e8; border-radius:8px; overflow:hidden; }
+.tax-form { background:var(--bg-card); border:1px solid var(--border); border-radius:8px; overflow:hidden; }
 
 .form-section { padding:14px 20px; border-bottom:1px solid #f0f0f0; }
 .form-section:last-child { border-bottom:none; }

@@ -3,14 +3,18 @@
     <el-aside :width="sidebarWidth" class="main-sidebar" :class="roleSidebarClass">
       <div class="sidebar-header">
         <div v-if="!isCollapsed" class="sidebar-brand">
-          <el-icon :size="28" :color="roleAccentColor"><Coin /></el-icon>
+          <div class="brand-seal">
+            <span class="seal-char">観</span>
+          </div>
           <div class="brand-wrapper">
             <span class="brand-text">観測者财务</span>
             <span class="brand-version">v2.0 教学演示</span>
           </div>
         </div>
         <div v-else class="sidebar-brand collapsed">
-          <el-icon :size="24" :color="roleAccentColor"><Coin /></el-icon>
+          <div class="brand-seal collapsed-seal">
+            <span class="seal-char">観</span>
+          </div>
         </div>
       </div>
       <el-menu
@@ -256,7 +260,7 @@
             <el-button text class="theme-btn" @click="cycleTheme">
               <el-icon :size="18">
                 <Moon v-if="currentTheme === 'dark'" />
-                <Sunny v-else-if="currentTheme === 'warm'" />
+                <Sunny v-else-if="currentTheme === 'ink'" />
                 <Monitor v-else />
               </el-icon>
             </el-button>
@@ -276,9 +280,10 @@
             </span>
             <template #dropdown>
               <el-dropdown-menu>
-                <el-dropdown-item v-for="r in store.ROLES" :key="r.id" @click="switchRole(r.id)">
+                <el-dropdown-item v-for="r in store.ROLES" :key="r.id" :disabled="r.id === 'cashier'" @click="r.id !== 'cashier' && switchRole(r.id)">
                   <span :style="{ fontWeight: currentRole === r.id ? 700 : 400 }">{{ r.name }}</span>
                   <span style="color:#909399;font-size:12px;margin-left:8px">{{ r.desc }}</span>
+                  <span v-if="r.id === 'cashier'" style="color:#c0c4cc;font-size:11px;margin-left:6px">暂未推出</span>
                 </el-dropdown-item>
               </el-dropdown-menu>
             </template>
@@ -572,10 +577,10 @@ function openNotifications() {
 }
 
 // ----- 主题切换 -----
-const THEMES = ['light', 'dark', 'warm']
-const currentTheme = ref(localStorage.getItem('jd_theme') || 'light')
+const THEMES = ['ink', 'classic', 'dark']
+const currentTheme = ref(localStorage.getItem('jd_theme') || 'ink')
 const themeTooltip = computed(() => {
-  const map = { light: '切换主题 (亮色)', dark: '切换主题 (暗色)', warm: '切换主题 (暖色)' }
+  const map = { ink: '水墨·国风', classic: '经典·蓝白', dark: '深邃·暗色' }
   return map[currentTheme.value] || '切换主题'
 })
 
@@ -668,8 +673,23 @@ function handleLogout() {
 .sidebar-brand { display: flex; align-items: center; gap: 10px; }
 .sidebar-brand.collapsed { justify-content: center; }
 .brand-wrapper { display: flex; flex-direction: column; line-height: 1.2; }
-.brand-text { font-size: 16px; font-weight: 600; color: #fff; letter-spacing: 1px; }
+.brand-text { font-size: 16px; font-weight: 700; color: #fff; letter-spacing: 2px; font-family: 'STKaiti', 'KaiTi', 'Microsoft YaHei', serif; }
 .brand-version { font-size: 10px; color: rgba(255,255,255,0.55); letter-spacing: 0.5px; }
+
+/* 水墨印章 */
+.brand-seal {
+  width: 32px; height: 32px; border: 2px solid var(--sidebar-accent, #b8453a);
+  border-radius: 4px; display: flex; align-items: center; justify-content: center;
+  background: transparent; transform: rotate(-3deg); flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+.brand-seal:hover { transform: rotate(0deg) scale(1.05); }
+.collapsed-seal { width: 28px; height: 28px; margin: 0 auto; }
+.seal-char {
+  font-family: 'STKaiti', 'KaiTi', serif; font-size: 16px; font-weight: 700;
+  color: var(--sidebar-accent, #b8453a); line-height: 1;
+}
+.collapsed-seal .seal-char { font-size: 14px; }
 .sidebar-menu { border-right: none; }
 .sidebar-menu:not(.el-menu--collapse) { width: 220px; }
 .main-right { display: flex; flex-direction: column; }

@@ -307,15 +307,15 @@ function emitUpdate() {
   font-weight: 600;
 }
 .amount-input.debit-amount :deep(.el-input__wrapper):focus-within {
-  box-shadow: 0 0 0 1px #e6a23c inset;
+  box-shadow: 0 0 0 1px var(--accent) inset;
 }
 .amount-input.credit-amount :deep(.el-input__wrapper):focus-within {
-  box-shadow: 0 0 0 1px #67c23a inset;
+  box-shadow: 0 0 0 1px var(--success) inset;
 }
 
 /* 红字（负数金额）样式 */
 .red-ink :deep(.el-input__inner) {
-  color: #f56c6c !important;
+  color: var(--danger) !important;
 }
 
 .entry-footer {
@@ -323,8 +323,8 @@ function emitUpdate() {
   justify-content: space-between;
   align-items: center;
   padding: 8px 12px;
-  background: #fafafa;
-  border: 1px solid #e8e8e8;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
   border-top: none;
   border-radius: 0 0 4px 4px;
 }
@@ -336,7 +336,7 @@ function emitUpdate() {
 }
 .summary-label {
   font-weight: 600;
-  color: #303133;
+  color: var(--text);
 }
 .summary-amount {
   font-family: monospace;
@@ -345,14 +345,14 @@ function emitUpdate() {
 .summary-amount em {
   font-style: normal;
 }
-.sum-debit { color: #e6a23c; }
-.sum-credit { color: #67c23a; }
+.sum-debit { color: var(--accent); }
+.sum-credit { color: var(--success); }
 .summary-diff {
   font-family: monospace;
   font-weight: 600;
 }
-.summary-diff.error { color: #f56c6c; }
-.summary-diff.balanced { color: #67c23a; }
+.summary-diff.error { color: var(--danger); }
+.summary-diff.balanced { color: var(--success); }
 .add-row-bar {
   display: flex;
   align-items: center;
@@ -360,6 +360,6 @@ function emitUpdate() {
 }
 .entry-count {
   font-size: 12px;
-  color: #909399;
+  color: var(--text-light);
 }
 </style>

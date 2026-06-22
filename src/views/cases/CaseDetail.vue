@@ -137,7 +137,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { ArrowLeft } from '@element-plus/icons-vue'
@@ -152,31 +152,8 @@ const caseConfig = ref(null)
 const data = ref({ subjects: [], events: [], companyInfo: {} })
 const currentEventId = ref(null)
 const inCase = ref(false)
-
-// 监听任务更新事件
-function onTaskUpdated() {
-  if (inCase.value && caseConfig.value) {
-    loadProgress()
-  }
-}
-
-onMounted(() => {
-  const caseId = route.params.caseId
-  const found = CASES.find(c => c.id === caseId)
-  if (!found) return
-  caseConfig.value = found
-  data.value = found.data || { subjects: [], events: [], companyInfo: {} }
-  inCase.value = store.getActiveCaseId() === caseId
-  loadProgress()
-  window.addEventListener('task-updated', onTaskUpdated)
-})
-
-onUnmounted(() => {
-  window.removeEventListener('task-updated', onTaskUpdated)
-})
-
-const totalEvents = computed(() => data.value.events.length || 0)
 const completedCount = ref(0)
+const totalEvents = computed(() => data.value.events.length || 0)
 const progressPercent = computed(() => {
   if (!totalEvents.value) return 0
   return Math.round(completedCount.value / totalEvents.value * 100)
@@ -197,6 +174,37 @@ function loadProgress() {
   }
   if (completedCount.value >= totalEvents.value) currentEventId.value = null
 }
+
+function loadCase(caseId) {
+  const found = CASES.find(c => c.id === caseId)
+  if (!found) {
+    caseConfig.value = null
+    return
+  }
+  caseConfig.value = found
+  data.value = found.data || { subjects: [], events: [], companyInfo: {} }
+  inCase.value = store.getActiveCaseId() === caseId
+  loadProgress()
+}
+
+function onTaskUpdated() {
+  if (inCase.value && caseConfig.value) {
+    loadProgress()
+  }
+}
+
+// 监听路由参数变化（immediate: true 确保首次加载）
+watch(() => route.params.caseId, (newId) => {
+  if (newId) loadCase(newId)
+}, { immediate: true })
+
+onMounted(() => {
+  window.addEventListener('task-updated', onTaskUpdated)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('task-updated', onTaskUpdated)
+})
 
 function enterCase() {
   const caseId = caseConfig.value.id
@@ -254,7 +262,8 @@ function isDone(eventId) {
 }
 
 function difficultyStars(d) {
-  return '★'.repeat(d || 1) + '☆'.repeat(3 - (d || 1))
+  const stars = Math.min(d || 1, 3)
+  return '★'.repeat(stars) + '☆'.repeat(3 - stars)
 }
 </script>
 

@@ -14,8 +14,8 @@
     <!-- 登录卡片 -->
     <div class="login-card">
       <div class="login-header">
-        <div class="login-logo-ring">
-          <el-icon :size="40" color="#409eff"><Coin /></el-icon>
+        <div class="login-seal">
+          <span class="login-seal-char">観</span>
         </div>
         <h1 class="login-title">観測者企业财务模拟系统</h1>
         <p class="login-subtitle">KANSHASHA · Enterprise Financial Simulation</p>
@@ -61,9 +61,13 @@
 
       <div class="login-footer">
         <span class="login-hint">试用账号：admin / admin123</span>
-        <span class="login-theme-toggle" @click="cycleLoginTheme" title="切换主题">
-          🌓
-        </span>
+        <el-button text class="login-theme-toggle" @click="cycleLoginTheme" title="切换主题">
+          <el-icon :size="18">
+            <Moon v-if="currentTheme === 'dark'" />
+            <Sunny v-else-if="currentTheme === 'ink'" />
+            <Monitor v-else />
+          </el-icon>
+        </el-button>
       </div>
     </div>
 
@@ -77,7 +81,7 @@
 <script setup>
 import { ref, reactive, onMounted, onBeforeUnmount } from 'vue'
 import { useRouter } from 'vue-router'
-import { User, Lock } from '@element-plus/icons-vue'
+import { User, Lock, Moon, Sunny, Monitor } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
 
 const router = useRouter()
@@ -97,7 +101,8 @@ const rules = {
 }
 
 // 主题
-const THEMES = ['light', 'dark', 'warm']
+const THEMES = ['ink', 'classic', 'dark']
+const currentTheme = ref(localStorage.getItem('jd_theme') || 'ink')
 function applyTheme(theme) {
   document.documentElement.setAttribute('data-theme', theme)
   if (theme === 'dark') {
@@ -105,15 +110,15 @@ function applyTheme(theme) {
   } else {
     document.documentElement.classList.remove('dark')
   }
+  currentTheme.value = theme
 }
 onMounted(() => {
-  const saved = localStorage.getItem('jd_theme') || 'light'
+  const saved = localStorage.getItem('jd_theme') || 'ink'
   applyTheme(saved)
 })
 
 function cycleLoginTheme() {
-  const current = localStorage.getItem('jd_theme') || 'light'
-  const idx = THEMES.indexOf(current)
+  const idx = THEMES.indexOf(currentTheme.value)
   const next = THEMES[(idx + 1) % THEMES.length]
   applyTheme(next)
   localStorage.setItem('jd_theme', next)
@@ -165,6 +170,12 @@ function particleStyle(n) {
   overflow: hidden;
   background: linear-gradient(135deg, #0a1628 0%, #1a2a4a 30%, #2a4a6a 60%, #1a2a4a 100%);
   transition: background 0.8s ease;
+}
+[data-theme="ink"] .login-page {
+  background: linear-gradient(135deg, #e8e0d4 0%, #f2ede4 30%, #e8ddd0 60%, #ddd4c8 100%);
+}
+[data-theme="ink"][data-theme="dark"] .login-page {
+  background: linear-gradient(135deg, #1c1a16 0%, #252220 30%, #1c1814 60%, #14120e 100%);
 }
 
 /* 粒子动画 */
@@ -218,8 +229,8 @@ function particleStyle(n) {
 [data-theme="dark"] .login-card {
   background: rgba(37,37,64,0.95);
 }
-[data-theme="warm"] .login-card {
-  background: rgba(255,253,249,0.95);
+[data-theme="ink"] .login-card {
+  background: rgba(250,247,242,0.95);
 }
 
 @keyframes cardIn {
@@ -231,28 +242,34 @@ function particleStyle(n) {
   text-align: center;
   margin-bottom: 28px;
 }
-.login-logo-ring {
-  width: 64px;
-  height: 64px;
-  margin: 0 auto 14px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #e6f0ff, #b3d4ff);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 12px rgba(64,158,255,0.3);
-  transition: background 0.3s;
+/* 登录页印章 */
+.login-seal {
+  width: 64px; height: 64px; margin: 0 auto 14px;
+  border: 3px solid var(--accent, #b8453a); border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  transform: rotate(-4deg); transition: transform 0.3s ease, border-color 0.3s;
+  background: transparent;
+}
+.login-seal:hover { transform: rotate(0deg) scale(1.05); }
+.login-seal-char {
+  font-family: 'STKaiti', 'KaiTi', serif; font-size: 28px; font-weight: 700;
+  color: var(--accent, #b8453a); line-height: 1;
+  transition: color 0.3s;
 }
 .login-title {
   font-size: 22px;
   color: #303133;
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   margin: 0;
   transition: color 0.3s ease;
 }
+[data-theme="ink"] .login-title {
+  font-family: 'STKaiti', 'KaiTi', 'Microsoft YaHei', serif;
+  letter-spacing: 3px;
+}
 [data-theme="dark"] .login-title { color: #e0e0e0; }
-[data-theme="warm"] .login-title { color: #3d2e1a; }
+[data-theme="ink"] .login-title { color: #2c2c2c; }
 
 .login-subtitle {
   font-size: 11px;
@@ -261,7 +278,7 @@ function particleStyle(n) {
   letter-spacing: 2px;
 }
 [data-theme="dark"] .login-subtitle { color: #808090; }
-[data-theme="warm"] .login-subtitle { color: #9a8e7a; }
+[data-theme="ink"] .login-subtitle { color: #6b6358; }
 
 .login-form { margin-bottom: 12px; }
 .login-btn {

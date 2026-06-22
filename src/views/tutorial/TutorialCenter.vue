@@ -559,16 +559,14 @@ function isCompleted(task) {
   return localStorage.getItem(key) === 'true'
 }
 
-// 判断当月内任务是否被前序任务锁定（月度模式 + 有分录任务才锁）
+// 判断当月内任务是否被前序任务锁定（月度模式）
 function isTaskLocked(task) {
   if (!monthlyMode.value || store.isPracticeMode()) return false
-  if (task.entries.length === 0) return false // 信息任务不锁
   const monthTasks = getMonthTasks(activeMonth.value)
-    .filter(t => t.entries.length > 0) // 只看有分录的任务
     .sort((a, b) => (a.date || '').localeCompare(b.date || ''))
   const idx = monthTasks.findIndex(t => t.date === task.date && t.title === task.title)
   if (idx <= 0) return false
-  // 前面任何一个有分录的任务没完成则锁定
+  // 前面任何一个任务没完成则锁定
   for (let i = 0; i < idx; i++) {
     if (!isCompleted(monthTasks[i])) return true
   }
@@ -811,6 +809,10 @@ function startTask(task) {
 }
 
 function showTip(row) {
+  if (isTaskLocked(row)) {
+    ElMessage.warning('该任务尚未解锁，请先完成前面的任务')
+    return
+  }
   tipTitle.value = row.title
   currentTipTask.value = row
   tipIsTaxTask.value = row.tags && row.tags.includes('申报')
@@ -938,33 +940,33 @@ onMounted(() => {
   margin-bottom: 16px;
 }
 .stat-card {
-  background: #fff;
-  border: 1px solid #ebeef5;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
   border-radius: 8px;
   padding: 16px 20px;
   text-align: center;
   transition: box-shadow 0.2s;
 }
 .stat-card:hover {
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  box-shadow: var(--shadow-md);
 }
-.stat-card--success { border-left: 3px solid #67c23a; }
-.stat-card--warning { border-left: 3px solid #e6a23c; }
-.stat-card--primary { border-left: 3px solid #409eff; }
-.stat-card--accent  { border-left: 3px solid #9b59b6; }
+.stat-card--success { border-left: 3px solid var(--success); }
+.stat-card--warning { border-left: 3px solid var(--accent); }
+.stat-card--primary { border-left: 3px solid var(--primary); }
+.stat-card--accent  { border-left: 3px solid var(--text-secondary); }
 .stat-value {
   font-size: 28px;
   font-weight: 700;
-  color: #303133;
+  color: var(--text);
   line-height: 1.2;
 }
-.stat-card--success .stat-value { color: #67c23a; }
-.stat-card--warning .stat-value { color: #e6a23c; }
-.stat-card--primary .stat-value { color: #409eff; }
-.stat-card--accent .stat-value  { color: #9b59b6; }
+.stat-card--success .stat-value { color: var(--success); }
+.stat-card--warning .stat-value { color: var(--accent); }
+.stat-card--primary .stat-value { color: var(--primary); }
+.stat-card--accent .stat-value  { color: var(--text-secondary); }
 .stat-label {
   font-size: 13px;
-  color: #909399;
+  color: var(--text-light);
   margin-top: 4px;
 }
 
@@ -979,16 +981,16 @@ onMounted(() => {
 .mode-label {
   font-size: 13px;
   font-weight: 600;
-  color: #303133;
+  color: var(--text);
 }
 .mode-info {
   font-size: 14px;
-  color: #909399;
+  color: var(--text-light);
   cursor: help;
 }
 .mode-warning {
   font-size: 12px;
-  color: #e6a23c;
+  color: var(--accent);
   margin-left: 4px;
 }
 
@@ -1023,8 +1025,8 @@ onMounted(() => {
 
 /* ─── 月度进度区 ─── */
 .month-progress-section {
-  background: #f8f9fb;
-  border: 1px solid #ebeef5;
+  background: var(--bg);
+  border: 1px solid var(--border-light);
   border-radius: 6px;
   padding: 12px 16px;
   margin-bottom: 4px;
@@ -1158,8 +1160,8 @@ onMounted(() => {
 
 /* ─── 搜索结果面板 ─── */
 .search-results-panel {
-  background: #fff;
-  border: 1px solid #d9ecff;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
   border-radius: 8px;
   padding: 16px;
   margin-bottom: 16px;
@@ -1197,12 +1199,12 @@ onMounted(() => {
   transition: all 0.2s ease;
 }
 .search-result-card:hover {
-  border-color: #409eff;
-  background: #ecf5ff;
+  border-color: var(--accent);
+  background: var(--bg);
   transform: translateX(3px);
 }
 .search-result-month {
-  background: #1a3a5c;
+  background: var(--primary);
   color: #fff;
   padding: 6px 10px;
   border-radius: 4px;
@@ -1269,8 +1271,8 @@ onMounted(() => {
   gap: 4px;
   margin-left: 10px;
   padding: 2px 10px 2px 6px;
-  background: linear-gradient(135deg, #f0f5ff, #e6f0ff);
-  border: 1px solid #d6e4ff;
+  background: var(--bg);
+  border: 1px solid var(--border-light);
   border-radius: 14px;
   line-height: 1;
   flex-shrink: 0;

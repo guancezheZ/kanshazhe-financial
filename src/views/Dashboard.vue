@@ -558,13 +558,13 @@ onBeforeUnmount(() => {
   cursor: pointer;
   transition: background 0.2s;
 }
-.todo-item:hover { background: #f5f7fa; }
+.todo-item:hover { background: var(--bg); }
 .todo-item.is-balanced { cursor: default; }
 .todo-count {
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  background: #f5f7fa;
+  background: var(--bg);
   display: flex;
   align-items: center;
   justify-content: center;

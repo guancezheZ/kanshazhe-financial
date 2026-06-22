@@ -1,5 +1,5 @@
 <template>
-  <div v-if="task && !minimized" class="tutorial-floater" data-theme="light" :style="floaterStyle" @mousedown="startDrag">
+  <div v-if="task && !minimized" class="tutorial-floater" :style="floaterStyle" @mousedown="startDrag">
     <div class="floater-header">
       <span class="floater-title">📋 教学任务</span>
       <el-input
@@ -490,13 +490,11 @@ function isTaskLocked(t) {
   if (!t) return false
   const monthlyMode = localStorage.getItem('jd_monthly_mode') !== 'false'
   if (!monthlyMode || store.isPracticeMode()) return false
-  if (t.entries.length === 0) return false // 信息任务不锁
-  // 全局所有有分录任务按日期排序，前面的没做完就锁定后面的
+  // 全局所有任务按日期排序，前面的没做完就锁定后面的
   const allEntryTasks = flatTasks.value
-    .filter(task => task.entries.length > 0)
     .sort((a, b) => (a.date || '').localeCompare(b.date || ''))
   const idx = allEntryTasks.findIndex(task => task.date === t.date && task.title === t.title)
-  if (idx <= 0) return false // 第一个分录任务始终可用
+  if (idx <= 0) return false // 第一个任务始终可用
   for (let i = 0; i < idx; i++) {
     if (!isTaskDone(allEntryTasks[i])) return true
   }
@@ -801,10 +799,10 @@ onUnmounted(() => {
 
 <style scoped>
 .tutorial-floater { position: relative; display: flex; flex-direction: column; font-size: clamp(11px, 1vw, 15px);
-  background: #fff;
-  border: 1px solid #d9d9d9;
+  background: var(--bg-card, #fff);
+  border: 1px solid var(--border, #d9d9d9);
   border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+  box-shadow: var(--shadow-md, 0 4px 20px rgba(0,0,0,0.12));
   font-size: 13px;
   overflow: hidden;
   user-select: none;
@@ -814,7 +812,7 @@ onUnmounted(() => {
   justify-content: space-between;
   align-items: center;
   padding: 8px 12px;
-  background: #409eff;
+  background: var(--accent, #409eff);
   color: #fff;
   cursor: grab;
 }
@@ -845,11 +843,16 @@ onUnmounted(() => {
   color: rgba(255,255,255,0.6) !important;
 }
 .floater-actions { display: flex; align-items: center; gap: 4px; }
+.floater-actions .el-button { color: rgba(255,255,255,0.9) !important; }
+.floater-actions .el-button:hover { color: #fff !important; }
+.floater-actions .el-button--danger { color: rgba(255,200,200,0.9) !important; }
+.floater-actions .el-button--danger:hover { color: #ffb0b0 !important; }
+.task-counter { color: rgba(255,255,255,0.85); font-size: 12px; min-width: 36px; text-align: center; }
 .task-counter { font-size: 11px; opacity: 0.8; }
 .floater-date { padding: 6px 12px; font-size: 12px; color: #606266; background: #f8f9fb; border-bottom: 1px solid #eee; display:flex; justify-content:space-between; align-items:center; gap:8px; }
-.month-bar { display:flex; align-items:center; gap:6px; padding:4px 12px; background:#fff; border-bottom:1px solid #f0f0f0; font-size:11px; }
-.month-badge { background:#409eff; color:#fff; padding:1px 8px; border-radius:10px; font-weight:600; letter-spacing:1px; }
-.current-role-badge { background:#e6a23c; color:#fff; padding:1px 6px; border-radius:10px; font-size:10px; font-weight:500; }
+.month-bar { display:flex; align-items:center; gap:6px; padding:4px 12px; background:var(--bg, #fff); border-bottom:1px solid var(--border-light, #f0f0f0); font-size:11px; }
+.month-badge { background:var(--accent, #409eff); color:#fff; padding:1px 8px; border-radius:10px; font-weight:600; letter-spacing:1px; }
+.current-role-badge { background:var(--accent, #e6a23c); color:#fff; padding:1px 6px; border-radius:10px; font-size:10px; font-weight:500; }
 .month-progress { color:#67c23a; font-weight:600; min-width:30px; text-align:right; }
 .month-remaining { color:#e6a23c; font-size:10px; background:#fdf6ec; padding:0 6px; border-radius:8px; line-height:16px; }
 .overall-progress { color:#909399; font-size:10px; min-width:36px; text-align:right; }
@@ -895,7 +898,7 @@ onUnmounted(() => {
 .tip-text { font-size: 12px; color: #909399; line-height: 1.5; padding: 6px; background: #f8f9fb; border-radius: 4px; }
 .floater-footer { display: flex; gap: 8px; padding: 8px 12px; border-top: 1px solid #eee; justify-content: flex-end; flex-shrink: 0; }
 .resize-handle { position: absolute; bottom: 0; right: 0; width: 20px; height: 20px; cursor: se-resize; font-size: 14px; line-height: 20px; text-align: center; color: #ccc; user-select: none; }
-.floater-badge { position: fixed; top: 80px; right: 10px; z-index: 9999; width: 40px; height: 40px; background: #409eff; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; cursor: pointer; box-shadow: 0 2px 12px rgba(64,158,255,0.4); }
+.floater-badge { position: fixed; top: 80px; right: 10px; z-index: 9999; width: 40px; height: 40px; background: var(--accent, #409eff); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; cursor: pointer; box-shadow: 0 2px 12px rgba(0,0,0,0.15); }
 .floater-badge:hover { transform: scale(1.1); }
 .resize-handle:hover { color: #409eff; }
 
