@@ -842,13 +842,13 @@ describe('教程数据 - 答案比对', () => {
 // 商业企业教学数据测试
 // ═══════════════════════════════════════════
 describe('商业企业教程数据', () => {
-  const COMMERCIAL_VALID_TAGS = ['商品采购','商品销售','仓存管理','往来管理','资金管理','费用管理','工资社保','税费','期末','出纳']
+  const COMMERCIAL_VALID_TAGS = ['商品采购','商品销售','仓存管理','往来管理','资金管理','费用管理','工资社保','税费','期末','出纳','资产']
   // 资金管理标签已精简为仅对真正资金筹措类任务使用（约7个），不再每月检查覆盖率
   const COMMERCIAL_COVERAGE_TAGS = COMMERCIAL_VALID_TAGS.filter(t => t !== '资金管理')
 
-  it('商业企业1月有44个教学任务（含19个出纳任务）', () => {
+  it('商业企业1月有33个教学任务', () => {
     const tasks = getScenarioTutorials('commercial', '01')
-    expect(tasks.length).toBe(42)
+    expect(tasks.length).toBe(33)
   })
 
   it('每个任务有完整字段', () => {
@@ -942,9 +942,9 @@ describe('商业企业教程数据', () => {
     }
   })
 
-  it('商业企业2月有45个教学任务（含19个出纳任务）', () => {
+  it('商业企业2月有31个教学任务', () => {
     const tasks = getScenarioTutorials('commercial', '02')
-    expect(tasks.length).toBe(43)
+    expect(tasks.length).toBe(31)
   })
 
   it('2月每个任务有完整字段', () => {

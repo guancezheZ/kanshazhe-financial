@@ -1,706 +1,461 @@
 /**
- * 商业企业（商品流通企业）4月教学任务
+ * 万悦超市 4月「会员月」
  *
- * 主题：销售与应收管理
- * 行业特征：纯进销存，无生产成本核算
- * 企业类型：一般纳税人（增值税13%）
+ * 月主题：会员积分体系上线 → 积分兑换 → 赠品活动 → 月末结转
+ * 特殊业务：🎯 会员积分系统（CAS 14第三十五条）、赠品视同销售
  *
- * 知识点标签：商品采购、商品销售、仓存管理、往来管理、资金管理、费用管理、工资社保、税费、期末、出纳
- *
- * 会计准则依据：
- * - 《企业会计准则第14号——收入》（财会[2017]22号）
- * - 《企业会计准则第22号——金融工具确认和计量》（财会[2017]7号）——坏账准备计提
- * - 《城市维护建设税暂行条例》国发[1985]19号
+ * 企业：万悦超市有限公司（综合零售）
+ * 核算：移动加权平均法 | 联营：净额法
  */
 
 const tasks = [
   // ═══════════════════════════════════════════
-  // 第一周（4/1-4/7）：销售专题——各种销售方式
+  // 第一周：积分系统上线（4/1 - 4/6）
   // ═══════════════════════════════════════════
   {
     date: '2026-04-01',
-    title: '现销商品（多品种）',
-    tags: ['商品销售'],
-    difficulty: 2,
-    role: 'accountant',
-    description: '销售A类商品300件、B类商品200件，不含税单价分别为160元和200元，价税合计99,440元已收存工商银行。',
-    tip: '现销是一手交钱一手交货的销售方式。分录：借：银行存款，贷：主营业务收入/应交税费-销项。多品种销售时分别列示数量单价，汇总确认收入。',
-    entries: [
-      { subjectCode: '100201', summary: '现销商品收款', debit: 99440, credit: 0, explanation: '银行存款增加记借方。现销商品收到款项，资产增加。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金（配对科目6001），属于经营活动现金流入——主营业务产生的现金收入。'},
-      { subjectCode: '6001', summary: '现销确认收入（A类300件×160）', debit: 0, credit: 48000, explanation: '主营业务收入增加记贷方。A类商品销售收入确认，收入=300件×160元=48,000元。' },
-      { subjectCode: '6001', summary: '现销确认收入（B类200件×200）', debit: 0, credit: 40000, explanation: '主营业务收入增加记贷方。B类商品销售收入确认，收入=200件×200元=40,000元。' },
-      { subjectCode: '222101', summary: '现销增值税销项税额', debit: 0, credit: 11440, explanation: '应交税费-应交增值税（销项税额）增加记贷方。销项税额=88,000×13%=11,440元。' }],
-    documents: [
-      { type: 'invoice', label: '增值税专用发票（销项）', region: '上海', invoiceNo: '3100456701', date: '2026-04-01', buyer: '永辉超市', seller: '本公司',
-        lineItems: [{ name: 'A类商品', spec: '标准', unit: '件', qty: 300, price: 160, amount: 48000 }, { name: 'B类商品', spec: '标准', unit: '件', qty: 200, price: 200, amount: 40000 }],
-        totalAmount: 99440, taxRate: '13%', taxAmount: 11440, totalInWords: '玖万玖仟肆佰肆拾元整' },
-      { type: 'bank', label: '收款回单', date: '2026-04-01', totalAmount: 99440, payer: '永辉超市', payeeName: '本公司', content: '货款（发票No.3100456701）', refNo: 'HD202604010001' }]},
-  // ══════ 出纳任务 ══════
-  {
-    date: '2026-04-01',
-    title: '月初现金清点与日记账启用',
-    tags: ['出纳'],
-    difficulty: 1,
-    description: '4月第一个工作日，出纳对库存现金进行清点，确认现金日记账期初余额为5,000元（3月末结转余额），账实相符后启用新账页，开始登记4月收支业务。',
-    tip: '月初是出纳必做工作：清点保险柜现金实有数，与现金日记账余额核对，确保账实相符后方可开始日常业务。坚持"日清月结"制度，做到每日盘点、每月核对。这是出纳岗位的基本职责。',
     role: 'cashier',
-    entries: [],
-    documents: [
-      { type: 'text', label: '现金日记账', docTitle: '现金日记账（2026年4月）', stampText: '现金日记账',
-        content: `现金日记账
-━━━━━━━━━━━━━━━━━━━━━━━━━
-4月期初余额：5,000.00
-（承3月末余额）
-
-日期    摘要        收入    支出    余额
-4/1     期初余额                     5,000.00
-━━━━━━━━━━━━━━━━━━━━━━━━━
-出纳核对：账实相符 ✓` },
-      { type: 'receipt', label: '现金盘点表', docTitle: '库存现金盘点表', date: '2026-04-01', totalAmount: 5000, stampText: '出纳专用章',
-        items: [{ name: '100元纸币', qty: 40, price: 100, amount: 4000 }, { name: '50元纸币', qty: 12, price: 50, amount: 600 }, { name: '20元及以下零钱', qty: 1, price: 400, amount: 400 }] }]},
-  {
-    date: '2026-04-02',
-    role: 'accountant',
-    title: '赊销商品（大额）',
-    tags: ['商品销售', '往来管理'],
-    difficulty: 2,
-    description: '向鑫源商贸有限公司赊销C类商品400件，不含税单价250元，增值税13,000元，价税合计113,000元，货款未收。',
-    tip: '赊销是常见的商业信用销售方式。确认收入时：借：应收账款，贷：主营业务收入/应交税费-销项。注意赊销虽未收到现金，但增值税纳税义务已发生。',
-    entries: [
-      { subjectCode: '112201', summary: '赊销商品款未收', debit: 113000, credit: 0, explanation: '应收账款-鑫源商贸增加记借方。赊销商品形成对客户的债权，需按合同约定账期催收。' },
-      { subjectCode: '6001', summary: '赊销确认收入（C类400件×250）', debit: 0, credit: 100000, explanation: '主营业务收入增加记贷方。商品已发出，所有权风险报酬已转移，收入条件满足。依据《企业会计准则第14号》第四条。' },
-      { subjectCode: '222101', summary: '赊销增值税销项税额', debit: 0, credit: 13000, explanation: '应交税费-应交增值税（销项税额）增加记贷方。赊销同样发生纳税义务，销项税额=100,000×13%=13,000元。' }],
-    documents: [
-      { type: 'invoice', label: '增值税专用发票（销项）', region: '上海', invoiceNo: '3100456702', date: '2026-04-02', buyer: '鑫源商贸有限公司', seller: '本公司',
-        lineItems: [{ name: 'C类商品', spec: '标准', unit: '件', qty: 400, price: 250, amount: 100000 }],
-        totalAmount: 113000, taxRate: '13%', taxAmount: 13000, totalInWords: '壹拾壹万叁仟元整' },
-      { type: 'text', label: '出库单', docTitle: '商品出库单', content: 'C类商品 400件 已出库并发货，承运人：顺丰物流。经手人：仓库管理员。', signature: '仓库管理员 王强' }]},
-  // ══════ 出纳任务 ══════
-  {
-    date: '2026-04-02',
-    role: 'accountant',
-    title: '提取备用金',
+    title: '出纳-月初日记账启用',
     tags: ['出纳'],
     difficulty: 1,
-    description: '根据公司日常零星开支需要，出纳从工商银行提取备用金5,000元，现金已由出纳清点入库。',
-    tip: '提取备用金是出纳最常见的付款业务之一。开具现金支票从银行提取现金，分录：借：库存现金，贷：银行存款。注意备用金金额需满足3-5天零星开支即可，不宜过大。出纳需在现金日记账和银行存款日记账上分别登记。',
-    entries: [
-      { subjectCode: '1001', summary: '提取备用金', debit: 5000, credit: 0, explanation: '库存现金增加记借方。提取备用金后保险柜现金增加，出纳需当面清点并登记现金日记账。' },
-      { subjectCode: '100201', summary: '提取备用金', debit: 0, credit: 5000, explanation: '银行存款减少记贷方。从工行提取现金后银行账户余额减少，出纳需登记银行存款日记账。' }],
-    documents: [
-      { type: 'receipt', label: '现金支票存根', docTitle: '中国工商银行现金支票存根', date: '2026-04-02', totalAmount: 5000, stampText: '中国工商银行\n业务专用章',
-        items: [{ name: '提取备用金', qty: 1, price: 5000, amount: 5000 }],
-        content: '支票号码：XX789012\n收款人：本公司\n用途：备用金' }]},
+    description: '启用4月日记账，登记期初余额。盘点库存现金无误后开始本月工作。',
+    entries: [],
+    documents: [{ type: 'text', label: '现金日记账', docTitle: '现金日记账（2026年4月）', stampText: '出纳专用章',
+      content: '2026年4月期初余额：约3,800.00元\n出纳员：王出纳' }]},
+  {
+    date: '2026-04-02',
+    role: 'accountant',
+    title: '🎯 会员积分系统上线',
+    tags: ['商品销售'],
+    difficulty: 3,
+    description: '万悦超市正式上线会员积分系统。规则：消费满1元积1分，每100积分可抵扣1元，有效期12个月。预计积分兑换率80%。今日启动会员注册，首批注册会员约200人。',
+    tip: '依据新收入准则，奖励积分构成"重大权利"，应作为单项履约义务。销售时需将交易价格在商品和积分之间按单独售价比例分摊，积分部分先确认为合同负债（预收账款），待客户兑换或积分失效时再确认收入。这是新收入准则中最复杂的处理之一。',
+    entries: [],
+    documents: [{ type: 'text', label: '会员积分规则', docTitle: '万悦超市会员积分计划规则', stampText: '会员服务中心',
+      content: '万悦超市会员积分计划\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n积分获取：消费每满1元=1积分（联营消费不积分）\n积分使用：100积分=抵扣1元，单次最高抵扣50%\n有效期：12个月\n\n会计处理依据：CAS 14第三十五条\n奖励积分作为单项履约义务，分摊交易价格。' }]},
   {
     date: '2026-04-03',
     role: 'accountant',
-    title: '结转已销商品成本（现销+赊销）',
-    tags: ['商品销售', '仓存管理'],
-    difficulty: 2,
-    description: '计算并结转4月1日-2日销售商品的成本。A类单位成本100元/件（300件），B类单位成本120元/件（200件），C类单位成本150元/件（400件），合计114,000元。',
-    tip: '确认收入的同时必须同步结转成本，遵循配比原则。借：主营业务成本，贷：库存商品。成本计价采用移动加权平均法。',
+    title: 'POS日常销售（含积分计提）',
+    tags: ['商品销售'],
+    difficulty: 3,
+    description: 'POS日常销售含税收入113,000元（不含税100,000元，增值税13,000元）。产生消费积分100,000分，预计兑换率80%，积分单独售价=100,000÷100×80%=800元。将交易价格分摊：商品收入99,200元，积分合同负债800元。',
+    tip: '积分分摊分录：借：银行存款113,000，贷：主营业务收入99,200、预收账款（积分）800、应交税费-销项13,000。增值税按全额计算，不受积分分摊影响。',
     entries: [
-      { subjectCode: '6401', summary: '结转已销商品成本', debit: 114000, credit: 0, explanation: '主营业务成本增加记借方。与销售收入配比的成本结转：A类300×100=30,000+B类200×120=24,000+C类400×150=60,000=114,000元。依据《企业会计准则第1号——存货》第十四条。' },
-      { subjectCode: '1405', summary: '结转已销商品成本（A类）', debit: 0, credit: 30000, explanation: '库存商品-A类减少记贷方。A类商品出库300件×100元=30,000元。' },
-      { subjectCode: '1405', summary: '结转已销商品成本（B类）', debit: 0, credit: 24000, explanation: '库存商品-B类减少记贷方。B类商品出库200件×120元=24,000元。' },
-      { subjectCode: '1405', summary: '结转已销商品成本（C类）', debit: 0, credit: 60000, explanation: '库存商品-C类减少记贷方。C类商品出库400件×150元=60,000元。' }],
-    documents: [
-      { type: 'text', label: '成本计算表', docTitle: '商品销售成本计算表（4月第一批）', content: 'A类商品：销售300件×单位成本100元=30,000元\nB类商品：销售200件×单位成本120元=24,000元\nC类商品：销售400件×单位成本150元=60,000元\n合计：114,000元\n计价方法：移动加权平均法', stampText: '财务专用章' }]},
-  // ══════ 出纳任务 ══════
-  {
-    date: '2026-04-03',
-    role: 'accountant',
-    title: '备用金借支（员工出差）',
-    tags: ['出纳', '费用管理'],
-    difficulty: 1,
-    description: '销售人员李明因下周赴广州拜访客户，预借差旅费2,000元，出纳审核借款审批单后以现金支付。',
-    tip: '员工预借差旅费是出纳日常备用金管理业务。借支时：借：其他应收款-员工，贷：库存现金。注意：借支必须有部门负责人和财务负责人签字审批，出差归来后凭发票报销，多退少补。',
-    entries: [
-      { subjectCode: '1221', summary: '预借差旅费', debit: 2000, credit: 0, explanation: '其他应收款增加记借方。员工预借差旅费形成对公司的暂借款，属于其他应收款，待出差归来后凭票报销冲抵。' },
-      { subjectCode: '1001', summary: '预借差旅费', debit: 0, credit: 2000, explanation: '库存现金减少记贷方。支付借款后保险柜现金减少，出纳需登记现金日记账并在借款单上签章。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目1221），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'receipt', label: '借款单', docTitle: '员工借款单', date: '2026-04-03', totalAmount: 2000, stampText: '财务审核专用章',
-        items: [{ name: '差旅费预借款（广州出差）', qty: 1, price: 2000, amount: 2000 }],
-        content: '借款人：李明（销售部）\n借款事由：广州客户拜访出差\n预计还款日：出差归来后3个工作日内\n审批人：销售经理 张伟\n财务审批：王芳' }]},
-  {
-    date: '2026-04-04',
-    role: 'accountant',
-    title: '销售退回（客户退货）',
-    tags: ['商品销售', '仓存管理'],
-    difficulty: 2,
-    description: '鑫源商贸有限公司反映4月2日购买的C类商品中有30件存在质量问题，经协商同意退货。该批商品原售价250元/件，成本150元/件。',
-    tip: '销售退回需同时冲减收入和成本。冲减收入：借：主营业务收入（红字或借方），应交税费-销项（红字或借方），贷：应收账款。同时冲减成本：借：库存商品，贷：主营业务成本。',
-    entries: [
-      { subjectCode: '6001', summary: '冲减退货收入（30件×250）', debit: 7500, credit: 0, explanation: '主营业务收入减少记借方（红字冲回）。退货30件冲减收入=30×250=7,500元。' },
-      { subjectCode: '222101', summary: '冲减退货增值税销项', debit: 975, credit: 0, explanation: '应交税费-应交增值税（销项税额）减少记借方。退货对应的销项税=7,500×13%=975元。' },
-      { subjectCode: '112201', summary: '冲减退货应收账款', debit: 0, credit: 8475, explanation: '应收账款-鑫源商贸减少记贷方。退货价税合计冲减客户欠款=7,500+975=8,475元。' },
-      { subjectCode: '1405', summary: '退货入库冲减成本', debit: 4500, credit: 0, explanation: '库存商品增加记借方。退货商品验收入库，存货增加30件×150元=4,500元。' },
-      { subjectCode: '6401', summary: '冲减退货成本', debit: 0, credit: 4500, explanation: '主营业务成本减少记贷方。退回商品的成本从当期成本中冲减=30件×150元=4,500元。' }],
-    documents: [
-      { type: 'invoice', label: '红字增值税专用发票', region: '上海', invoiceNo: '3100456703（红字）', date: '2026-04-04', buyer: '鑫源商贸有限公司', seller: '本公司',
-        lineItems: [{ name: 'C类商品退货', spec: '标准', unit: '件', qty: -30, price: 250, amount: -7500 }],
-        totalAmount: -8475, taxRate: '13%', taxAmount: -975, totalInWords: '负捌仟肆佰柒拾伍元整' },
-      { type: 'receipt', label: '退货单', docTitle: '商品退货单', date: '2026-04-04', totalAmount: 8475, stampText: '鑫源商贸有限公司 收货专用章',
-        items: [{ name: 'C类商品退货（质量问题）', qty: 30, price: 282.5, amount: 8475 }] }]},
+      { subjectCode: '100201', summary: 'POS销售收款（含积分）', debit: 113000, credit: 0, explanation: '银行存款增加记借方。含税收入113,000元全额收存银行。积分分摊不影响收款金额。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金，属于经营活动现金流入。'},
+      { subjectCode: '6001', summary: '商品销售收入（扣除积分分摊）', debit: 0, credit: 99200, explanation: '主营业务收入增加记贷方。按分摊后金额确认商品收入99,200元（全额100,000-积分分摊800元）。依据CAS 14第三十五条：奖励积分应作为单项履约义务分摊交易价格。' },
+      { subjectCode: '2203', summary: '积分分摊-合同负债', debit: 0, credit: 800, explanation: '预收账款增加记贷方。积分分摊金额800元确认为合同负债。积分单独售价=100,000分÷100×80%兑换率=800元。待客户兑换或失效时转入收入。' },
+      { subjectCode: '222101', summary: '增值税销项税额', debit: 0, credit: 13000, explanation: '应交税费-应交增值税（销项税额）增加。增值税按全额100,000×13%=13,000元计算，不受积分分摊影响。' }],
+    documents: [{ type: 'text', label: '积分计算表', docTitle: '会员积分-收入分摊计算表', stampText: '财务专用章',
+      content: 'POS含税收入：113,000.00元\n不含税收入：100,000.00元\n\n积分计算：产生积分100,000分\n预计兑换率：80%\n积分单独售价：100,000÷100×80%=800元\n\n分摊：商品收入99,200元 | 积分合同负债800元\n增值税：13,000元（全额计税）' }]},
   {
     date: '2026-04-05',
     role: 'accountant',
-    title: '销售折让（质量问题让步）',
-    tags: ['商品销售', '往来管理'],
-    difficulty: 2,
-    description: '永辉超市反馈上月采购的B类商品有轻微外观瑕疵，经协商不退货，给予价格折让2,000元（不含税），冲减应收账款。',
-    tip: '销售折让与销售退回不同——客户保留商品，但价格上给予让步。分录：借：主营业务收入，借：应交税费-销项，贷：应收账款（价税合计）。折让金额冲减当期收入。',
+    title: '支付联营专柜3月结算款',
+    tags: ['往来管理'],
+    difficulty: 3,
+    description: '结算美肌堂联营专柜3月（3月8日-31日）销售。含税销售额34,000元，按22%扣点，超市佣金7,480元（含税）。扣除佣金后应付美肌堂26,520元，以工商银行转账支付。',
+    tip: '联营结算时冲减此前确认的应付账款。同时取得供应商开具的佣金增值税专用发票（6%），确认进项税额。分录较多，注意借贷平衡。',
     entries: [
-      { subjectCode: '6001', summary: '给予销售折让', debit: 2000, credit: 0, explanation: '主营业务收入减少记借方。因质量问题给予客户价格折让，冲减当期收入2,000元。' },
-      { subjectCode: '222101', summary: '折让冲减增值税销项', debit: 260, credit: 0, explanation: '应交税费-应交增值税（销项税额）减少记借方。折让对应的销项税冲减=2,000×13%=260元。' },
-      { subjectCode: '112202', summary: '冲减折让应收账款', debit: 0, credit: 2260, explanation: '应收账款-永辉超市减少记贷方。折让价税合计冲减客户欠款=2,000+260=2,260元。' }],
+      { subjectCode: '222101', summary: '取得联营佣金进项发票', debit: 423.4, credit: 0, explanation: '应交税费-应交增值税（进项税额）增加。美肌堂开具佣金专票，7,480÷1.06×6%=423.40元。' },
+      { subjectCode: '6601', summary: '联营佣金费用', debit: 7056.6, credit: 0, explanation: '销售费用增加。联营扣点服务费不含税部分=7,480-423.40=7,056.60元。' },
+      { subjectCode: '220203', summary: '支付美肌堂货款净额', debit: 26520, credit: 0, explanation: '应付账款减少。支付联营供应商货款26,520元（34,000×78%）。' },
+      { subjectCode: '100201', summary: '支付联营供应商货款', debit: 0, credit: 34000, explanation: '银行存款减少。向美肌堂支付联营货款总额34,000元（含佣金7,480元）。' , cashFlowItem: 'cf-op2', cashFlowExplanation: '采购存货/商品支出，属于经营活动现金流出。'}],
     documents: [
-      { type: 'text', label: '销售折让协议', docTitle: '商品销售折让协议', content: '经友好协商，就永辉超市采购B类商品外观瑕疵问题，本公司同意给予价格折让2,000元（不含税），折让金额从应收账款中扣除，客户保留商品不作退货处理。', stampText: '本公司 合同专用章', signature: '双方代表签字' }]},
-  // ══════ 出纳任务 ══════
-  {
-    date: '2026-04-05',
-    role: 'accountant',
-    title: '现金报销快递费',
-    tags: ['出纳', '费用管理'],
-    difficulty: 1,
-    description: '销售部寄送商品样品及合同文件给外地客户，发生顺丰快递费580元，出纳审核快递单据后以备用金现金支付。',
-    tip: '零星快递费属于管理费用，使用备用金现金支付。分录：借：管理费用-办公费，贷：库存现金。注意：出纳需审核快递单的真实性和金额，确认无误后方可付款。大额费用必须走银行转账，不得使用现金。',
-    entries: [
-      { subjectCode: '660201', summary: '支付快递费', debit: 580, credit: 0, explanation: '管理费用-办公费增加记借方。快递费属于企业日常办公支出，金额较小直接计入当期费用。' },
-      { subjectCode: '1001', summary: '支付快递费', debit: 0, credit: 580, explanation: '库存现金减少记贷方。以备用金支付快递费后，出纳需登记现金日记账并保留快递单作为原始凭证。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目660201），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'receipt', label: '快递费发票', docTitle: '顺丰速运电子发票', date: '2026-04-05', totalAmount: 580, stampText: '顺丰速运\n发票专用章',
-        items: [{ name: '快递服务费（样品+合同）', qty: 1, price: 580, amount: 580 }] }]},
+      { type: 'text', label: '联营结算单', docTitle: '联营专柜结算单（2026年3月）', stampText: '联营结算专用章',
+        content: '供应商：美肌堂化妆品有限公司\n结算期间：2026年3月8日-3月31日\n含税销售额：34,000.00元\n扣点22%：7,480.00元\n应付供应商净额：26,520.00元' },
+      { type: 'bank', label: '转账回单', date: '2026-04-05', totalAmount: 34000, payer: '本公司', payeeName: '美肌堂化妆品有限公司', content: '联营专柜3月结算款', refNo: 'HD202604050001' }]},
   {
     date: '2026-04-06',
     role: 'accountant',
-    title: '收到前欠货款（多笔）',
-    tags: ['往来管理'],
+    title: 'POS日常销售',
+    tags: ['商品销售'],
     difficulty: 1,
-    description: '收到两笔前欠货款：鑫源商贸有限公司偿还30,000元，永辉超市偿还25,000元，均已存入工商银行账户。',
-    tip: '收到客户偿还的前欠货款时：借：银行存款，贷：应收账款。多笔回款应分别冲减对应客户明细，确保往来账清晰。',
+    description: '周末POS日常销售含税收入67,800元（不含税60,000元，增值税7,800元）。其中微信收款25,800元、支付宝17,500元、银行卡18,500元、现金6,000元，已通过POS系统统一收款。',
+    tip: 'POS日常销售按实际收款确认收入。借：银行存款/其他货币资金（微信/支付宝）/库存现金，贷：主营业务收入、应交税费-销项。微信支付宝余额暂存在第三方支付平台。',
     entries: [
-      { subjectCode: '100201', summary: '收到鑫源前欠货款', debit: 30000, credit: 0, explanation: '银行存款增加记借方。鑫源商贸偿还前欠货款，资金回笼30,000元。' },
-      { subjectCode: '100201', summary: '收到永辉前欠货款', debit: 25000, credit: 0, explanation: '银行存款增加记借方。永辉超市偿还前欠货款，资金回笼25,000元。' },
-      { subjectCode: '112201', summary: '鑫源还前欠货款', debit: 0, credit: 30000, explanation: '应收账款-鑫源商贸减少记贷方。客户欠款30,000元已收回，债权减少。' },
-      { subjectCode: '112202', summary: '永辉还前欠货款', debit: 0, credit: 25000, explanation: '应收账款-永辉超市减少记贷方。客户欠款25,000元已收回，债权减少。' }],
-    documents: [
-      { type: 'bank', label: '收款回单（鑫源）', date: '2026-04-06', totalAmount: 30000, payer: '鑫源商贸有限公司', payeeName: '本公司', content: '前欠货款', refNo: 'HD202604060001' },
-      { type: 'bank', label: '收款回单（永辉）', date: '2026-04-06', totalAmount: 25000, payer: '永辉超市', payeeName: '本公司', content: '前欠货款', refNo: 'HD202604060002' }]},
-  // ══════ 出纳任务 ══════
-  {
-    date: '2026-04-07',
-    role: 'accountant',
-    title: '支付销售运费',
-    tags: ['商品销售', '费用管理'],
-    difficulty: 1,
-    description: '支付本月销售商品发生的运输费3,000元，以工商银行转账支付。',
-    tip: '销售环节产生的运输费属于"销售费用"，是商业企业常见支出。借：销售费用，贷：银行存款。',
-    entries: [
-      { subjectCode: '6601', summary: '支付销售运费', debit: 3000, credit: 0, explanation: '销售费用增加记借方。销售商品发生的运输费属于销售环节费用，计入当期损益。' },
-      { subjectCode: '100201', summary: '支付销售运费', debit: 0, credit: 3000, explanation: '银行存款减少记贷方。支付运费，资产减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6601），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'receipt', label: '运费发票', docTitle: '运输业增值税普通发票', date: '2026-04-07', totalAmount: 3000, stampText: '顺丰物流 发票专用章',
-        items: [{ name: '商品销售运输费（4月）', qty: 1, price: 3000, amount: 3000 }] }]},
-  // ══════ 出纳任务 ══════
-  {
-    date: '2026-04-07',
-    role: 'accountant',
-    title: '银行转账支付仓储费',
-    tags: ['出纳', '费用管理'],
-    difficulty: 1,
-    description: '支付本月仓库租赁及仓储管理费2,500元给XX物流仓储公司，通过工商银行转账支付，出纳已核对仓储合同及收费明细。',
-    tip: '仓储费是商业企业常见的销售环节费用。分录：借：销售费用-仓储费，贷：银行存款。出纳办理转账时需核对收款方信息、金额与合同一致，付款后打印转账回单并登记银行日记账。',
-    entries: [
-      { subjectCode: '6601', summary: '支付仓储费', debit: 2500, credit: 0, explanation: '销售费用增加记借方。商业企业仓储费属于销售环节费用，计入当期损益。' },
-      { subjectCode: '100201', summary: '支付仓储费', debit: 0, credit: 2500, explanation: '银行存款减少记贷方。通过工行网银转账支付仓储费，出纳需打印回单并登记银行日记账。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6601），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'bank', label: '转账回单', date: '2026-04-07', totalAmount: 2500, payer: '本公司', payeeName: 'XX物流仓储有限公司', content: '4月仓库租赁及仓储管理费', refNo: 'HD202604070066' },
-      { type: 'receipt', label: '仓储费发票', docTitle: '仓储服务增值税发票', date: '2026-04-07', totalAmount: 2500, stampText: 'XX物流仓储\n发票专用章',
-        items: [{ name: '4月仓库租赁费', qty: 1, price: 1500, amount: 1500 }, { name: '4月仓储管理服务费', qty: 1, price: 1000, amount: 1000 }] }]},
+      { subjectCode: '101204', summary: 'POS-微信收款', debit: 25800, credit: 0, explanation: '其他货币资金-微信账户增加。微信收款25,800元，暂存在微信商户账户。' },
+      { subjectCode: '101205', summary: 'POS-支付宝收款', debit: 17500, credit: 0, explanation: '其他货币资金-支付宝账户增加。支付宝收款17,500元。' },
+      { subjectCode: '100201', summary: 'POS-银行卡收款', debit: 18500, credit: 0, explanation: '银行存款增加。银行卡收款18,500元直接到账。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金，属于经营活动现金流入。'},
+      { subjectCode: '1001', summary: 'POS-现金收款', debit: 6000, credit: 0, explanation: '库存现金增加。现金收款6,000元。' },
+      { subjectCode: '6001', summary: '主营业务收入', debit: 0, credit: 60000, explanation: '主营业务收入增加。商品已售出，收入确认条件满足。依据CAS 14。' },
+      { subjectCode: '222101', summary: '增值税销项税额', debit: 0, credit: 7800, explanation: '应交税费-应交增值税（销项税额）增加。销项税额=60,000×13%=7,800元。' }],
+    documents: [{ type: 'text', label: 'POS日结单', docTitle: 'POS收银系统日结单（2026年4月6日）', stampText: '收银专用章',
+      content: '日期：2026年4月6日（周末）\n交易笔数：约560笔  客单价：约121元\n\n微信支付：25,800.00\n支付宝：17,500.00\n银行卡：18,500.00\n现金：6,000.00\n━━━━━━━━━━━━━━━━━\n合计含税：67,800.00元\n不含税收入：60,000.00元\n增值税：7,800.00元' }]},
 
   // ═══════════════════════════════════════════
-  // 第二周（4/8-4/14）：应收管理——催收+坏账
+  // 第二周：积分兑换（4/8 - 4/12）
   // ═══════════════════════════════════════════
   {
     date: '2026-04-08',
     role: 'accountant',
-    title: '现销商品（多品种二批）',
+    title: '发放3月员工工资',
+    tags: ['工资社保'],
+    difficulty: 1,
+    description: '通过工商银行发放3月员工工资61,000元。',
+    tip: '发放工资时冲减应付职工薪酬。借：应付职工薪酬-工资，贷：银行存款。',
+    entries: [
+      { subjectCode: '221101', summary: '发放3月员工工资', debit: 61000, credit: 0, explanation: '应付职工薪酬-工资减少记借方。实际发放3月计提的工资61,000元，冲减负债。' },
+      { subjectCode: '100201', summary: '发放3月员工工资', debit: 0, credit: 61000, explanation: '银行存款减少记贷方。通过工商银行代发工资61,000元。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出，属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'}],
+    documents: [{ type: 'bank', label: '代发工资回单', date: '2026-04-08', totalAmount: 61000, payer: '本公司', payeeName: '员工代发工资户', content: '2026年3月工资', refNo: 'HD202604080001' }]},
+  {
+    date: '2026-04-09',
+    role: 'accountant',
+    title: '会员积分首次兑换',
     tags: ['商品销售'],
-    difficulty: 2,
-    description: '销售A类商品200件、C类商品100件，不含税单价分别为160元和250元，价税合计64,410元已收存工商银行。',
-    tip: '现销处理与第一批相同：借：银行存款，贷：主营业务收入/应交税费-销项。注意不同商品的单价不同，需分别计算金额。',
+    difficulty: 3,
+    description: '会员积分系统上线一周后，首批会员使用积分兑换商品。消耗积分60,000分，按100分=1元折算，抵扣消费金额600元。兑换商品成本约420元。',
+    tip: '积分兑换时分录两步：①确认积分收入：借：预收账款（合同负债），贷：主营业务收入②结转兑换商品成本：借：主营业务成本，贷：库存商品。注意积分兑换的商品不产生额外增值税（原销售时已全额计税）。',
     entries: [
-      { subjectCode: '100201', summary: '现销商品收款', debit: 64410, credit: 0, explanation: '银行存款增加记借方。第二批现销商品收到款项，资产增加。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金（配对科目6001），属于经营活动现金流入——主营业务产生的现金收入。'},
-      { subjectCode: '6001', summary: '现销确认收入（A类200件×160）', debit: 0, credit: 32000, explanation: '主营业务收入增加记贷方。A类商品收入=200件×160元=32,000元。' },
-      { subjectCode: '6001', summary: '现销确认收入（C类100件×250）', debit: 0, credit: 25000, explanation: '主营业务收入增加记贷方。C类商品收入=100件×250元=25,000元。' },
-      { subjectCode: '222101', summary: '现销增值税销项税额', debit: 0, credit: 7410, explanation: '应交税费-应交增值税（销项税额）增加记贷方。销项税额=57,000×13%=7,410元。' }],
-    documents: [
-      { type: 'invoice', label: '增值税专用发票（销项）', region: '上海', invoiceNo: '3100456704', date: '2026-04-08', buyer: '鑫源商贸有限公司', seller: '本公司',
-        lineItems: [{ name: 'A类商品', spec: '标准', unit: '件', qty: 200, price: 160, amount: 32000 }, { name: 'C类商品', spec: '标准', unit: '件', qty: 100, price: 250, amount: 25000 }],
-        totalAmount: 64410, taxRate: '13%', taxAmount: 7410, totalInWords: '陆万肆仟肆佰壹拾元整' },
-      { type: 'bank', label: '收款回单', date: '2026-04-08', totalAmount: 64410, payer: '鑫源商贸有限公司', payeeName: '本公司', content: '货款（发票No.3100456704）', refNo: 'HD202604080001' }]},
-  // ══════ 出纳任务 ══════
-  {
-    date: '2026-04-08',
-    role: 'accountant',
-    title: '微信收款确认（客户回款）',
-    tags: ['出纳'],
-    difficulty: 2,
-    description: '永辉超市通过微信扫码支付方式偿还前欠货款5,000元，款项已到公司微信商户账户（101204），出纳确认收款并登记。',
-    tip: '微信/支付宝收款属于第三方支付方式，通过"其他货币资金-微信账户"核算。分录：借：其他货币资金-微信账户，贷：应收账款。出纳需在微信商户后台查询收款记录，截图保存作为收款依据。',
-    entries: [
-      { subjectCode: '101204', summary: '微信收款-永辉超市还款', debit: 5000, credit: 0, explanation: '其他货币资金-微信账户增加记借方。客户通过微信扫码还款，资金进入企业微信商户账户。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金（配对科目112202），属于经营活动现金流入——主营业务产生的现金收入。'},
-      { subjectCode: '112202', summary: '微信收款-永辉超市还款', debit: 0, credit: 5000, explanation: '应收账款-永辉超市减少记贷方。客户还款后应收账款减少，出纳需将收款信息告知会计做账。' }],
-    documents: [
-      { type: 'receipt', label: '微信收款截图', docTitle: '微信商户收款记录', date: '2026-04-08', totalAmount: 5000, stampText: '微信支付',
-        items: [{ name: '永辉超市-前欠货款', qty: 1, price: 5000, amount: 5000 }],
-        content: '交易单号：WX202604080001\n付款方：永辉超市\n收款账户：本公司微信商户\n交易方式：扫码支付' }]},
-  {
-    date: '2026-04-09',
-    role: 'accountant',
-    title: '赊销商品（大额二批）',
-    tags: ['商品销售', '往来管理'],
-    difficulty: 2,
-    description: '向永辉超市赊销B类商品250件，不含税单价200元，增值税6,500元，价税合计56,500元，货款未收。',
-    tip: '赊销给不同客户的应收账款应分别核算。借：应收账款-永辉超市，贷：主营业务收入/应交税费-销项。',
-    entries: [
-      { subjectCode: '112202', summary: '赊销商品款未收', debit: 56500, credit: 0, explanation: '应收账款-永辉超市增加记借方。赊销B类商品给永辉超市，债权增加。' },
-      { subjectCode: '6001', summary: '赊销确认收入（B类250件×200）', debit: 0, credit: 50000, explanation: '主营业务收入增加记贷方。B类商品赊销收入=250件×200元=50,000元。' },
-      { subjectCode: '222101', summary: '赊销增值税销项税额', debit: 0, credit: 6500, explanation: '应交税费-应交增值税（销项税额）增加记贷方。销项税额=50,000×13%=6,500元。' }],
-    documents: [
-      { type: 'invoice', label: '增值税专用发票（销项）', region: '上海', invoiceNo: '3100456705', date: '2026-04-09', buyer: '永辉超市', seller: '本公司',
-        lineItems: [{ name: 'B类商品', spec: '标准', unit: '件', qty: 250, price: 200, amount: 50000 }],
-        totalAmount: 56500, taxRate: '13%', taxAmount: 6500, totalInWords: '伍万陆仟伍佰元整' },
-      { type: 'text', label: '出库单', docTitle: '商品出库单', content: 'B类商品 250件 已出库并发货，承运人：德邦物流。经手人：仓库管理员。', signature: '仓库管理员 王强' }]},
-  // ══════ 出纳任务 ══════
-  {
-    date: '2026-04-09',
-    role: 'accountant',
-    title: '支付宝提现至银行',
-    tags: ['出纳'],
-    difficulty: 2,
-    description: '将支付宝账户余额中的8,000元提现至工商银行账户，出纳在支付宝企业版操作提现并确认到账。',
-    tip: '第三方支付账户（支付宝）内的资金提现至银行账户时：借：银行存款，贷：其他货币资金-支付宝账户。注意：提现通常需要1-2个工作日到账，出纳需跟踪到账情况并核对金额。',
-    entries: [
-      { subjectCode: '100201', summary: '支付宝提现至工行', debit: 8000, credit: 0, explanation: '银行存款增加记借方。支付宝余额提现后资金进入公司银行账户，增加银行存款。' },
-      { subjectCode: '101205', summary: '支付宝提现至工行', debit: 0, credit: 8000, explanation: '其他货币资金-支付宝账户减少记贷方。支付宝余额减少，资金从第三方支付转入银行账户。' }],
-    documents: [
-      { type: 'bank', label: '提现到账回单', date: '2026-04-09', totalAmount: 8000, payer: '支付宝（中国）网络技术有限公司', payeeName: '本公司（工行账户）', content: '支付宝提现（单号：AL20260409001）', refNo: 'HD202604090099' },
-      { type: 'receipt', label: '支付宝提现记录', docTitle: '支付宝企业版提现记录', date: '2026-04-09', totalAmount: 8000, stampText: '支付宝',
-        items: [{ name: '支付宝余额提现', qty: 1, price: 8000, amount: 8000 }],
-        content: '提现单号：AL20260409001\n到账账户：工商银行\n提现金额：8,000.00元\n处理状态：已到账' }]},
+      { subjectCode: '2203', summary: '积分兑换冲减合同负债', debit: 600, credit: 0, explanation: '预收账款减少记借方。会员消耗60,000积分兑换抵扣600元，冲减此前计提的合同负债。积分兑换时确认收入。依据CAS 14第三十五条。' },
+      { subjectCode: '6001', summary: '积分兑换确认收入', debit: 0, credit: 600, explanation: '主营业务收入增加记贷方。积分兑换确认收入600元。积分兑换率的预估与实际差异需持续调整。' },
+      { subjectCode: '6401', summary: '结转积分兑换商品成本', debit: 420, credit: 0, explanation: '主营业务成本增加记借方。兑换商品采购成本420元，同步结转。' },
+      { subjectCode: '1405', summary: '积分兑换商品出库', debit: 0, credit: 420, explanation: '库存商品减少记贷方。兑换商品出库，存货减少。' }],
+    documents: [{ type: 'text', label: '积分兑换汇总表', docTitle: '会员积分兑换汇总表（首次兑换）', stampText: '会员服务中心',
+      content: '兑换日期：2026年4月9日\n消耗积分：60,000分\n兑换率：100积分=1元\n抵扣金额：600.00元\n商品成本：420.00元\n\n剩余合同负债：800-600=200元\n（积分分摊800元，已消耗600元）' }]},
   {
     date: '2026-04-10',
     role: 'accountant',
-    title: '结转已销商品成本（第二批）',
-    tags: ['商品销售', '仓存管理'],
-    difficulty: 2,
-    description: '结转4月8日-9日销售商品的成本。A类200件×100元=20,000元，C类100件×150元=15,000元，B类250件×120元=30,000元，合计65,000元。',
-    tip: '每批销售都需要独立结转成本，确保配比原则。使用移动加权平均法计算已售商品的单位成本。',
-    entries: [
-      { subjectCode: '6401', summary: '结转第二批销售成本', debit: 65000, credit: 0, explanation: '主营业务成本增加记借方。第二批销售成本=20,000+15,000+30,000=65,000元。' },
-      { subjectCode: '1405', summary: '结转成本（A类200件）', debit: 0, credit: 20000, explanation: '库存商品-A类减少记贷方。A类200件×100元=20,000元。' },
-      { subjectCode: '1405', summary: '结转成本（C类100件）', debit: 0, credit: 15000, explanation: '库存商品-C类减少记贷方。C类100件×150元=15,000元。' },
-      { subjectCode: '1405', summary: '结转成本（B类250件）', debit: 0, credit: 30000, explanation: '库存商品-B类减少记贷方。B类250件×120元=30,000元。' }],
-    documents: [
-      { type: 'text', label: '成本计算表', docTitle: '商品销售成本计算表（4月第二批）', content: 'A类商品：销售200件×单位成本100元=20,000元\nC类商品：销售100件×单位成本150元=15,000元\nB类商品：销售250件×单位成本120元=30,000元\n合计：65,000元', stampText: '财务专用章' }]},
-  // ══════ 出纳任务 ══════
-  {
-    date: '2026-04-11',
-    role: 'accountant',
-    title: '收到前欠货款',
-    tags: ['往来管理'],
-    difficulty: 1,
-    description: '收到鑫源商贸有限公司汇来前欠货款40,000元，已存入工商银行账户。',
-    tip: '及时催收应收账款是现金流管理的重要环节。收到欠款：借：银行存款，贷：应收账款-客户名。',
-    entries: [
-      { subjectCode: '100201', summary: '收到鑫源前欠货款', debit: 40000, credit: 0, explanation: '银行存款增加记借方。鑫源商贸偿还前欠货款40,000元。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金（配对科目112201），属于经营活动现金流入——主营业务产生的现金收入。'},
-      { subjectCode: '112201', summary: '鑫源还前欠货款', debit: 0, credit: 40000, explanation: '应收账款-鑫源商贸减少记贷方。应收账款收回，债权减少40,000元。' }],
-    documents: [
-      { type: 'bank', label: '收款回单', date: '2026-04-11', totalAmount: 40000, payer: '鑫源商贸有限公司', payeeName: '本公司', content: '前欠货款', refNo: 'HD202604110001' }]},
-  {
-    date: '2026-04-12',
-    role: 'accountant',
-    title: '计提坏账准备',
-    tags: ['往来管理', '期末'],
+    title: '买赠促销-满188元送购物袋',
+    tags: ['商品销售'],
     difficulty: 3,
-    description: '月末按应收账款余额百分比法计提坏账准备。当期应收账款（鑫源商贸）账面余额为100,000元，计提比例为5%，应计提坏账准备5,000元。',
-    tip: '坏账准备是应收账款的抵减科目，反映预期信用损失。借：资产减值损失，贷：坏账准备。计提比例按企业会计政策确定，此处为5%。依据《企业会计准则第22号》金融工具减值规定。',
+    description: '举办"购买满188元送环保购物袋一个"活动。活动期间：参与商品不含税收入65,000元，增值税8,450元。赠送购物袋500个（采购成本5元/个=2,500元，公允价值10元/个=5,000元）。赠品视同销售，确认收入并结转成本。',
+    tip: '赠品的会计处理：赠品按公允价值确认收入并计提销项税（视同销售），同时将等额市场价值确认为促销费用（销售费用）。分录：借：银行存款（主商品款）+销售费用（赠品公允价值），贷：主营业务收入（主商品+赠品）+应交税费-销项。再结转赠品成本。',
     entries: [
-      { subjectCode: '6701', summary: '计提坏账准备', debit: 5000, credit: 0, explanation: '资产减值损失增加记借方。按应收账款余额百分比法计提坏账=100,000×5%=5,000元。依据《企业会计准则第22号》第四十七条：企业应当以预期信用损失为基础进行减值会计处理。' },
-      { subjectCode: '1231', summary: '计提坏账准备', debit: 0, credit: 5000, explanation: '坏账准备增加记贷方。坏账准备是应收账款的备抵科目，贷方表示计提增加。应收账款账面价值=应收账款余额-坏账准备。' }],
-    documents: [
-      { type: 'text', label: '坏账计算表', docTitle: '坏账准备计提计算表（2026年4月）', content: '计提方法：应收账款余额百分比法\n计提比例：5%\n应收账款（鑫源商贸）余额：100,000元\n应计提坏账准备：100,000×5%=5,000元\n\n注：永辉超市应收账款账龄较短，暂不计提。', stampText: '财务专用章' }]},
-  // ══════ 出纳任务 ══════
+      { subjectCode: '100201', summary: '买赠活动主商品收款', debit: 73450, credit: 0, explanation: '银行存款增加记借方。主商品含税收入73,450元（65,000+8,450）已收存银行。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金，属于经营活动现金流入。'},
+      { subjectCode: '660101', summary: '赠品促销费用（公允价值）', debit: 5000, credit: 0, explanation: '销售费用-广告费增加记借方。赠品（购物袋500个×10元=5,000元）按市场公允价值确认为促销费用。赠品视同销售确认收入的同时确认等额促销费用。' },
+      { subjectCode: '6001', summary: '主商品确认收入', debit: 0, credit: 65000, explanation: '主营业务收入增加记贷方。主商品不含税收入65,000元。' },
+      { subjectCode: '6001', summary: '赠品视同销售确认收入', debit: 0, credit: 4424.78, explanation: '主营业务收入增加记贷方。赠品按公允价值确认收入=5,000÷1.13=4,424.78元。依据《增值税暂行条例实施细则》第四条。' },
+      { subjectCode: '222101', summary: '主商品增值税销项', debit: 0, credit: 8450, explanation: '应交税费-应交增值税（销项税额）增加。主商品销项税额=65,000×13%=8,450元。' },
+      { subjectCode: '222101', summary: '赠品增值税销项', debit: 0, credit: 575.22, explanation: '应交税费-应交增值税（销项税额）增加。赠品销项税额=5,000÷1.13×13%=575.22元。赠品视同销售，依据《增值税暂行条例实施细则》第四条。' },
+      { subjectCode: '6401', summary: '结转赠品成本', debit: 2500, credit: 0, explanation: '主营业务成本增加记借方。赠品采购成本500个×5元=2,500元。' },
+      { subjectCode: '1405', summary: '赠品出库', debit: 0, credit: 2500, explanation: '库存商品减少记贷方。赠品出库，存货减少。' }],
+    documents: [{ type: 'text', label: '买赠活动汇总表', docTitle: '买赠促销活动汇总表', stampText: '财务专用章',
+      content: '活动：满188元送环保购物袋\n\n主商品销售收入（不含税）：65,000.00元\n主商品增值税（13%）：8,450.00元\n\n赠品：环保购物袋500个\n公允价值：5,000.00元（10元/个）\n采购成本：2,500.00元（5元/个）\n赠品视同销售增值税：575.22元\n\n会计处理：\n主商品+赠品分别确认收入\n赠品成本同步结转\n赠品公允价值确认为销售费用' }]},
   {
     date: '2026-04-12',
-    title: '资金日报编制',
-    tags: ['出纳'],
-    difficulty: 1,
-    description: '出纳编制4月上旬（4/1-4/11）资金日报表，汇总本期现金及银行存款的收支情况，上报财务主管审阅。',
-    tip: '资金日报是出纳每日必做工作，向管理层反映当日资金动态。内容包括：当日现金/银行存款收支明细、余额、大额资金变动说明等。定期编制资金报表有助于企业掌握现金流状况，防范资金风险。',
-    role: 'cashier',
-    entries: [],
-    documents: [
-      { type: 'text', label: '资金日报表', docTitle: '资金日报表（2026年4月12日）', stampText: '出纳专用章',
-        content: `资金日报表（4月1日-11日）
-━━━━━━━━━━━━━━━━━━━━━━━━━━━
-项目         期初余额    本期收入    本期支出    期末余额
-库存现金       5,000       5,000      5,580       4,420
-工商银行     500,000     269,850     10,525     759,325
-━━━━━━━━━━━━━━━━━━━━━━━━━━━
-编制人：出纳 审核人：财务主管 王芳
-日期：2026年4月12日` }]},
-  {
-    date: '2026-04-13',
     role: 'accountant',
-    title: '支付广告推广费',
-    tags: ['费用管理'],
-    difficulty: 1,
-    description: '支付本月网络搜索引擎广告推广费6,000元，以工商银行转账支付。',
-    tip: '广告费属于销售费用，属于期间费用，计入当期损益。借：销售费用，贷：银行存款。',
+    title: '食品饮料补货（现购）',
+    tags: ['商品采购', '税费'],
+    difficulty: 2,
+    description: '向鑫鑫食品有限公司采购食品饮料30,000元（不含税），增值税3,900元，价税合计33,900元，以工商银行存款支付。',
+    tip: '商业企业采购商品直接入库待售，无需经过"原材料"或"生产成本"科目。借：库存商品/应交税费-进项，贷：银行存款。商业企业采购运费金额较小的可直接计入销售费用。',
     entries: [
-      { subjectCode: '6601', summary: '支付广告推广费', debit: 6000, credit: 0, explanation: '销售费用增加记借方。网络广告推广属于销售推广活动，费用计入当期损益。' },
-      { subjectCode: '100201', summary: '支付广告推广费', debit: 0, credit: 6000, explanation: '银行存款减少记贷方。支付广告费用，资金减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6601），属于"支付其他与经营活动有关的现金"。'}],
+      { subjectCode: '1405', summary: '食品饮料补货入库', debit: 30000, credit: 0, explanation: '库存商品增加记借方。食品饮料30,000元验收入库，商品资产增加。超市商品直接入库待售，无生产环节。' },
+      { subjectCode: '222101', summary: '采购进项税额', debit: 3900, credit: 0, explanation: '应交税费-应交增值税（进项税额）增加记借方。取得增值税专用发票，进项税额3,900元可以抵扣销项税。依据《增值税暂行条例》第八条。' },
+      { subjectCode: '100201', summary: '支付采购货款', debit: 0, credit: 33900, explanation: '银行存款减少记贷方。以工商银行转账支付采购款33,900元。' , cashFlowItem: 'cf-op2', cashFlowExplanation: '采购存货/商品支出，属于"购买商品、接受劳务支付的现金"——经营活动现金流出。'}],
     documents: [
-      { type: 'receipt', label: '广告费发票', docTitle: '增值税普通发票', date: '2026-04-13', totalAmount: 6000, stampText: 'XX网络科技有限公司 发票专用章',
-        items: [{ name: '搜索引擎推广服务（4月）', qty: 1, price: 6000, amount: 6000 }] }]},
-  {
-    date: '2026-04-14',
-    role: 'accountant',
-    title: '员工报销差旅费',
-    tags: ['费用管理'],
-    difficulty: 1,
-    description: '销售人员报销本月出差差旅费2,800元（含交通费1,600元、住宿费1,200元），以现金支付。',
-    tip: '差旅费根据员工所属部门计入费用：销售人员差旅费计入"销售费用"。借：销售费用，贷：库存现金。',
-    entries: [
-      { subjectCode: '6601', summary: '报销差旅费', debit: 2800, credit: 0, explanation: '销售费用增加记借方。销售人员出差差旅费属于销售环节支出，计入当期损益。' },
-      { subjectCode: '1001', summary: '报销差旅费', debit: 0, credit: 2800, explanation: '库存现金减少记贷方。现金支付员工差旅报销款。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6601），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'receipt', label: '差旅费报销单', docTitle: '差旅费报销单', date: '2026-04-14', totalAmount: 2800, stampText: '财务审核专用章',
-        items: [{ name: '高铁票（上海→杭州）', qty: 2, price: 280, amount: 560 }, { name: '高铁票（杭州→上海）', qty: 2, price: 280, amount: 560 }, { name: '住宿费', qty: 2, price: 600, amount: 1200 }, { name: '市内交通费', qty: 1, price: 480, amount: 480 }] }]},
-  // ══════ 出纳任务 ══════
-  {
-    date: '2026-04-14',
-    role: 'accountant',
-    title: '备用金补充',
-    tags: ['出纳'],
-    difficulty: 1,
-    description: '因近期零星支出较多，库存现金余额不足，出纳从工商银行提取3,000元补充备用金，已办理现金支票提现手续。',
-    tip: '当库存现金低于日常备用金限额时，需及时补充。分录：借：库存现金，贷：银行存款。出纳应合理预估现金需求，避免频繁提现或现金不足影响正常支付。',
-    entries: [
-      { subjectCode: '1001', summary: '补充备用金', debit: 3000, credit: 0, explanation: '库存现金增加记借方。备用金补充后现金余额回升，满足日常零星支付需求。' },
-      { subjectCode: '100201', summary: '补充备用金', debit: 0, credit: 3000, explanation: '银行存款减少记贷方。从工行提现补充备用金，银行账户余额相应减少。' }],
-    documents: [
-      { type: 'receipt', label: '现金支票存根', docTitle: '中国工商银行现金支票存根', date: '2026-04-14', totalAmount: 3000, stampText: '中国工商银行\n业务专用章',
-        items: [{ name: '补充备用金', qty: 1, price: 3000, amount: 3000 }],
-        content: '支票号码：XX789013\n收款人：本公司\n用途：补充备用金' }]},
+      { type: 'invoice', label: '增值税专用发票', region: '上海', invoiceNo: '3100567890', date: '2026-04-12', buyer: '本公司', seller: '鑫鑫食品有限公司',
+        lineItems: [{ name: '饼干糕点', unit: '箱', qty: 100, price: 100, amount: 10000 }, { name: '饮料矿泉水', unit: '箱', qty: 150, price: 80, amount: 12000 }, { name: '方便食品', unit: '箱', qty: 80, price: 100, amount: 8000 }],
+        totalAmount: 33900, taxRate: '13%', taxAmount: 3900, totalInWords: '叁万叁仟玖佰元整' },
+      { type: 'bank', label: '付款回单', date: '2026-04-12', totalAmount: 33900, payer: '本公司', payeeName: '鑫鑫食品有限公司', content: '食品补货', refNo: 'HD202604120001' }]},
 
   // ═══════════════════════════════════════════
-  // 第三周（4/15-4/21）：常规业务——采购+费用
+  // 第三周：日常运营（4/14 - 4/20）
   // ═══════════════════════════════════════════
+  {
+    date: '2026-04-14',
+    role: 'accountant',
+    title: '日用品补货（赊购）',
+    tags: ['商品采购', '往来管理'],
+    difficulty: 2,
+    description: '向洁宝日化有限公司赊购日用品15,000元（不含税），增值税1,950元，价税合计16,950元，货款未付。',
+    tip: '赊购时：借：库存商品/应交税费-进项，贷：应付账款。供应商账期一般为30-45天。赊购不涉及现金收支，不产生现金流量。',
+    entries: [
+      { subjectCode: '1405', summary: '日用品入库', debit: 15000, credit: 0, explanation: '库存商品增加。日用品15,000元验收入库。' },
+      { subjectCode: '222101', summary: '进项税额', debit: 1950, credit: 0, explanation: '应交税费-应交增值税（进项税额）增加。' },
+      { subjectCode: '220203', summary: '赊购款未付', debit: 0, credit: 16950, explanation: '应付账款增加。赊购商品尚未付款，形成对洁宝日化的债务。' }],
+    documents: [{ type: 'invoice', label: '增值税专用发票', region: '广东', invoiceNo: '4400901234', date: '2026-04-14', buyer: '本公司', seller: '洁宝日化有限公司',
+      lineItems: [{ name: '洗发水', unit: '箱', qty: 50, price: 150, amount: 7500 }, { name: '洗衣液', unit: '箱', qty: 60, price: 125, amount: 7500 }],
+      totalAmount: 16950, taxRate: '13%', taxAmount: 1950 }]},
   {
     date: '2026-04-15',
     role: 'accountant',
-    title: '采购商品（现购）',
-    tags: ['商品采购', '税费'],
+    title: '缴纳社保公积金单位部分',
+    tags: ['工资社保'],
     difficulty: 2,
-    description: '向华强供应链有限公司现购A类商品一批，不含税价40,000元，增值税5,200元，价税合计45,200元，以工商银行转账支付。',
-    tip: '现购商品：借：库存商品/应交税费-进项，贷：银行存款。作为一般纳税人，增值税专用发票的进项税额可以抵扣销项税。',
+    description: '以3月工资61,000元为基数，缴纳社保（27.2%计16,592元）和公积金（7%计4,270元），合计20,862元。',
     entries: [
-      { subjectCode: '1405', summary: '现购A类商品入库', debit: 40000, credit: 0, explanation: '库存商品增加记借方。现购A类商品验收入库，存货资产增加。' },
-      { subjectCode: '222101', summary: '采购进项税额', debit: 5200, credit: 0, explanation: '应交税费-应交增值税（进项税额）增加记借方。增值税专用发票注明的税额可抵扣销项税。依据《增值税暂行条例》第八条。' },
-      { subjectCode: '100201', summary: '支付采购货款', debit: 0, credit: 45200, explanation: '银行存款减少记贷方。支付采购货款及税款，资产减少。' , cashFlowItem: 'cf-op2', cashFlowExplanation: '采购存货/商品支出（配对科目1405），属于"购买商品、接受劳务支付的现金"——经营活动现金流出。'}],
+      { subjectCode: '221102', summary: '缴纳3月社保', debit: 16592, credit: 0, explanation: '应付职工薪酬-社保减少。缴纳社保单位部分16,592元（61,000×27.2%）。' },
+      { subjectCode: '221103', summary: '缴纳3月公积金', debit: 4270, credit: 0, explanation: '应付职工薪酬-公积金减少。缴纳公积金单位部分4,270元（61,000×7%）。' },
+      { subjectCode: '100201', summary: '缴纳社保公积金', debit: 0, credit: 20862, explanation: '银行存款减少。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出，属于经营活动现金流出。'}],
     documents: [
-      { type: 'invoice', label: '增值税专用发票（进项）', region: '广东', invoiceNo: '4400789012', date: '2026-04-15', buyer: '本公司', seller: '华强供应链有限公司',
-        lineItems: [{ name: 'A类商品', spec: '标准', unit: '件', qty: 400, price: 100, amount: 40000 }],
-        totalAmount: 45200, taxRate: '13%', taxAmount: 5200, totalInWords: '肆万伍仟贰佰元整' },
-      { type: 'bank', label: '付款回单', date: '2026-04-15', totalAmount: 45200, payer: '本公司', payeeName: '华强供应链有限公司', content: '货款（发票No.4400789012）', refNo: 'HD202604150001' }]},
+      { type: 'bank', label: '社保缴费回单', date: '2026-04-15', totalAmount: 16592, payer: '本公司', payeeName: '上海市社保中心', content: '2026年3月社保', refNo: 'HD202604150001' },
+      { type: 'bank', label: '公积金缴费回单', date: '2026-04-15', totalAmount: 4270, payer: '本公司', payeeName: '上海市公积金管理中心', content: '2026年3月公积金', refNo: 'HD202604150002' }]},
   {
     date: '2026-04-16',
-    role: 'accountant',
-    title: '采购商品（赊购）',
-    tags: ['商品采购', '往来管理'],
-    difficulty: 2,
-    description: '向鼎盛贸易有限公司赊购B类商品一批，不含税价35,000元，增值税4,550元，货款未付，商品已验收入库。',
-    tip: '赊购商品时暂不付款，形成应付账款。借：库存商品/应交税费-进项，贷：应付账款。注意区分不同供应商的应付账款明细。',
-    entries: [
-      { subjectCode: '1405', summary: '赊购B类商品入库', debit: 35000, credit: 0, explanation: '库存商品增加记借方。赊购商品验收入库，存货增加。' },
-      { subjectCode: '222101', summary: '赊购进项税额', debit: 4550, credit: 0, explanation: '进项税额增加记借方，可抵扣销项税。' },
-      { subjectCode: '220202', summary: '赊购货款未付', debit: 0, credit: 39550, explanation: '应付账款-鼎盛贸易增加记贷方。采购商品尚未付款，形成对供应商的债务。' }],
-    documents: [
-      { type: 'invoice', label: '增值税专用发票（进项）', region: '广东', invoiceNo: '4400789013', date: '2026-04-16', buyer: '本公司', seller: '鼎盛贸易有限公司',
-        lineItems: [{ name: 'B类商品', spec: '标准', unit: '件', qty: 350, price: 100, amount: 35000 }],
-        totalAmount: 39550, taxRate: '13%', taxAmount: 4550, totalInWords: '叁万玖仟伍佰伍拾元整' },
-      { type: 'text', label: '入库单', docTitle: '商品入库单', content: 'B类商品 350件 已验收入库，质量合格。经手人：仓库管理员 王强。', signature: '仓库管理员 王强' }]},
-  // ══════ 出纳任务 ══════
-  {
-    date: '2026-04-16',
-    role: 'accountant',
-    title: '银行转账支付供应商货款',
-    tags: ['出纳'],
-    difficulty: 2,
-    description: '向鼎盛贸易有限公司支付前欠采购货款20,000元，出纳通过工商银行网银办理转账，核对采购订单及入库单后付款。',
-    tip: '支付供应商货款是出纳的重要付款业务。分录：借：应付账款，贷：银行存款。出纳付款前必须核对：采购合同/订单、入库单、发票三单一致，并确认审批手续齐全后方可付款。付款后需及时登记银行日记账。',
-    entries: [
-      { subjectCode: '220202', summary: '支付鼎盛贸易货款', debit: 20000, credit: 0, explanation: '应付账款-鼎盛贸易减少记借方。偿还供应商货款后公司债务减少。' },
-      { subjectCode: '100201', summary: '支付鼎盛贸易货款', debit: 0, credit: 20000, explanation: '银行存款减少记贷方。通过工行网银转账付款，出纳需核对收款账户信息准确无误。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目220202），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'bank', label: '转账回单', date: '2026-04-16', totalAmount: 20000, payer: '本公司', payeeName: '鼎盛贸易有限公司', content: '支付采购货款（采购订单PO20260401）', refNo: 'HD202604160055' },
-      { type: 'text', label: '付款审批单', docTitle: '付款审批单', date: '2026-04-16', content: '收款单位：鼎盛贸易有限公司\n金额：20,000.00元\n付款事由：采购货款（B类商品）\n审批人：财务主管 王芳\n审批人：总经理 张伟', signature: '出纳签收' }]},
-  {
-    date: '2026-04-17',
-    role: 'accountant',
-    title: '支付采购运费',
-    tags: ['商品采购', '费用管理'],
-    difficulty: 1,
-    description: '支付本月采购商品发生的运输费1,500元，以现金支付。',
-    tip: '商业企业采购运费金额较小的可直接计入当期"销售费用"，无需计入库存商品成本。这是商业企业特有的简化处理方式。',
-    entries: [
-      { subjectCode: '6601', summary: '支付采购运费', debit: 1500, credit: 0, explanation: '销售费用增加记借方。商业企业采购运费金额较小，直接计入销售费用（当期损益），无需分摊到库存商品成本。依据《企业会计准则第1号——存货》应用指南。' },
-      { subjectCode: '1001', summary: '支付采购运费', debit: 0, credit: 1500, explanation: '库存现金减少记贷方。现金支付运费，资产减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6601），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'receipt', label: '运费收据', docTitle: '运输业增值税普通发票', date: '2026-04-17', totalAmount: 1500, stampText: 'XX物流公司 发票专用章',
-        items: [{ name: '采购商品运输费', qty: 1, price: 1500, amount: 1500 }] }]},
-  {
-    date: '2026-04-18',
-    role: 'accountant',
-    title: '银行存款利息收入',
-    tags: ['费用管理'],
-    difficulty: 1,
-    description: '收到工商银行第一季度存款利息2,300元，已划入公司账户。',
-    tip: '银行存款利息收入冲减财务费用。借：银行存款，贷：财务费用（利息收入在贷方表示冲减费用）。注意利息收入不是营业收入，不计入主营业务收入。',
-    entries: [
-      { subjectCode: '100201', summary: '收到存款利息', debit: 2300, credit: 0, explanation: '银行存款增加记借方。银行划入存款利息，资产增加。' , cashFlowItem: 'cf-op5', cashFlowExplanation: '其他经营活动现金流入（配对科目6603），属于"收到其他与经营活动有关的现金"。'},
-      { subjectCode: '6603', summary: '收到存款利息', debit: 0, credit: 2300, explanation: '财务费用减少记贷方。利息收入冲减财务费用，体现为费用的减少而非直接收入。' }],
-    documents: [
-      { type: 'bank', label: '利息回单', date: '2026-04-18', totalAmount: 2300, payer: '工商银行', payeeName: '本公司', content: '第一季度存款利息结息', refNo: 'HD202604180001' }]},
-  // ══════ 出纳任务 ══════
-  {
-    date: '2026-04-18',
-    title: '银行回单整理归档',
-    tags: ['出纳'],
-    difficulty: 1,
-    description: '出纳对4月中上旬各类银行回单进行整理、分类、粘贴，按日期顺序装订归档，确保每笔银行收支都有完整的原始凭证。',
-    tip: '银行回单是出纳编制银行日记账和会计记账的重要原始凭证。出纳需定期将银行回单按日期顺序整理，与银行日记账逐笔勾对，确保"单单相符、账证相符"。这是出纳档案管理的基础工作。',
-    role: 'cashier',
-    entries: [],
-    documents: [
-      { type: 'text', label: '回单整理清单', docTitle: '银行回单归档清单（2026年4月中上旬）', stampText: '出纳专用章',
-        content: `银行回单整理归档清单
-━━━━━━━━━━━━━━━━━━━━━━━━━━━
-日期      业务内容              金额        回单编号
-4/1       现销收款              99,440      HD202604010001
-4/6       现金缴款               3,000      HD202604060088
-4/6       鑫源回款              30,000      HD202604060001
-4/6       永辉回款              25,000      HD202604060002
-4/7       仓储费                 2,500      HD202604070066
-4/8       现销收款              64,410      HD202604080001
-4/10      支票工本费                25      HD202604100011
-4/11      鑫源回款              40,000      HD202604110001
-━━━━━━━━━━━━━━━━━━━━━━━━━━━
-整理人：出纳  日期：2026-04-18` }]},
-  // ══════ 出纳任务 ══════
-  {
-    date: '2026-04-20',
     role: 'accountant',
     title: '支付水电费',
     tags: ['费用管理'],
     difficulty: 1,
-    description: '支付本月公司办公用水电费3,200元，以工商银行转账支付。',
-    tip: '水电费属于企业管理费用中的日常运营支出。借：管理费用，贷：银行存款。',
+    description: '支付4月水电费9,200元（电费8,000+水费1,200），以工商银行转账支付。',
+    tip: '超市是商业用电大户，电费包括：卖场照明、冷藏展示柜、空调系统等。水电费统一计入管理费用。',
     entries: [
-      { subjectCode: '6602', summary: '支付水电费', debit: 3200, credit: 0, explanation: '管理费用增加记借方。办公用水电费属于企业日常管理运营支出，计入管理费用。' },
-      { subjectCode: '100201', summary: '支付水电费', debit: 0, credit: 3200, explanation: '银行存款减少记贷方。支付水电费用，资产减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6602），属于"支付其他与经营活动有关的现金"。'}],
+      { subjectCode: '6602', summary: '支付4月水电费', debit: 9200, credit: 0, explanation: '管理费用增加。超市4月水电费9,200元（电费8,000+水费1,200），属日常运营支出。' },
+      { subjectCode: '100201', summary: '支付4月水电费', debit: 0, credit: 9200, explanation: '银行存款减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出。'}],
     documents: [
-      { type: 'receipt', label: '电费账单', docTitle: '上海市电力公司缴费单', date: '2026-04-20', totalAmount: 2200,
-        items: [{ name: '4月电费', qty: 1, price: 2200, amount: 2200 }] },
-      { type: 'receipt', label: '水费账单', docTitle: '上海市自来水公司缴费单', date: '2026-04-20', totalAmount: 1000,
-        items: [{ name: '4月水费', qty: 1, price: 1000, amount: 1000 }] }]},
+      { type: 'receipt', label: '电费发票', docTitle: '电费缴费凭证（2026年4月）', date: '2026-04-16', totalAmount: 8000, items: [{ name: '4月电费', qty: 1, price: 8000, amount: 8000 }] },
+      { type: 'receipt', label: '水费发票', docTitle: '水费缴费凭证（2026年4月）', date: '2026-04-16', totalAmount: 1200, items: [{ name: '4月水费', qty: 1, price: 1200, amount: 1200 }] }]},
   {
-    date: '2026-04-21',
-    role: 'accountant',
-    title: '购买办公用品',
-    tags: ['费用管理'],
-    difficulty: 1,
-    description: '行政部购买办公用品一批，共计860元，以现金支付。',
-    tip: '办公用品金额较小的直接计入管理费用。借：管理费用，贷：库存现金。',
-    entries: [
-      { subjectCode: '6602', summary: '购买办公用品', debit: 860, credit: 0, explanation: '管理费用增加记借方。日常办公用品支出计入管理费用。' },
-      { subjectCode: '1001', summary: '购买办公用品', debit: 0, credit: 860, explanation: '库存现金减少记贷方。现金支付办公用品款。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6602），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'receipt', label: '购物发票', docTitle: '增值税普通发票', date: '2026-04-21', totalAmount: 860, stampText: 'XX办公用品店 发票专用章',
-        items: [{ name: '打印纸', qty: 5, price: 100, amount: 500 }, { name: '文件夹', qty: 12, price: 15, amount: 180 }, { name: '签字笔', qty: 30, price: 6, amount: 180 }] }]},
-  // ══════ 出纳任务 ══════
-  {
-    date: '2026-04-21',
-    title: '现金盘点',
-    tags: ['出纳'],
-    difficulty: 1,
-    description: '出纳对库存现金进行月中盘点，保险柜实有现金4,420元，现金日记账余额4,420元，账实相符。盘点表经财务主管签字确认。',
-    tip: '出纳应定期（至少每月一次）对库存现金进行盘点，确保账实相符。盘点时财务主管应在场监盘，盘点表由出纳和监盘人双签。如发现短缺或溢余，应立即查明原因并按规定处理。',
-    role: 'cashier',
-    entries: [],
-    documents: [
-      { type: 'receipt', label: '现金盘点表', docTitle: '库存现金盘点表（2026年4月21日）', totalAmount: 4420, stampText: '财务专用章',
-        items: [{ name: '100元纸币', qty: 34, price: 100, amount: 3400 }, { name: '50元纸币', qty: 14, price: 50, amount: 700 }, { name: '20元纸币', qty: 10, price: 20, amount: 200 }, { name: '10元及以下零钱', qty: 1, price: 120, amount: 120 }],
-        content: `盘点结果
-账面余额：4,420.00元
-实盘金额：4,420.00元
-差异：0.00元
-盘点人：出纳
-监盘人：财务主管 王芳
-盘点结论：账实相符` }]},
-
-  // ═══════════════════════════════════════════
-  // 第四周（4/22-4/30）：月末处理——期末+出纳
-  // ═══════════════════════════════════════════
-  {
-    date: '2026-04-22',
+    date: '2026-04-17',
     role: 'accountant',
     title: '计提固定资产折旧',
-    tags: ['费用管理'],
+    tags: ['资产'],
+    difficulty: 1,
+    description: '前往固定资产模块计提4月折旧1,350元（货架500+收银系统333.33+冷藏柜266.67+空调250），计入管理费用-折旧费。',
+    tip: '固定资产折旧按月计提，当月购入次月计提。通过固定资产模块操作，系统自动生成凭证。借：管理费用-折旧费，贷：累计折旧。',
+    entries: [],
+    nextAction: 'fixed-assets',
+    documents: [{ type: 'text', label: '折旧计算表', docTitle: '固定资产折旧计算表（2026年4月）', stampText: '财务专用章',
+      content: '货架20组：500.00元（剩余57月）\n收银系统4台：333.33元（剩余33月）\n冷藏展示柜2台：266.67元（剩余57月）\n空调3台：250.00元（剩余57月）\n合计：1,350.00元\n归属：管理费用-折旧费\n\n请前往「固定资产」模块操作。' }]},
+  {
+    date: '2026-04-18',
+    role: 'accountant',
+    title: '生鲜损耗处理',
+    tags: ['仓存管理'],
     difficulty: 2,
-    description: '计提本月固定资产折旧。房屋建筑物原值500,000元，月折旧率0.2%；办公设备原值80,000元，月折旧率0.8%；运输设备原值120,000元，月折旧率0.6%。',
-    tip: '固定资产折旧按月计提，按资产使用部门计入费用。管理部门使用的固定资产折旧计入"管理费用"。借：管理费用，贷：累计折旧。',
+    description: '本月生鲜正常损耗2,100元（蔬菜700+水果600+鲜肉500+水产品300），经店长批准计入管理费用。',
+    tip: '生鲜损耗是超市每天都会发生的业务。正常损耗（水分蒸发、轻微碰伤等）计入管理费用，不需要做进项税额转出。如属管理不善导致批量变质，则需进项转出并计入营业外支出。',
     entries: [
-      { subjectCode: '6602', summary: '计提折旧', debit: 2360, credit: 0, explanation: '管理费用增加记借方。本月折旧合计=房屋500,000×0.2%=1,000元+办公设备80,000×0.8%=640元+运输设备120,000×0.6%=720元=2,360元。' },
-      { subjectCode: '1602', summary: '计提折旧', debit: 0, credit: 2360, explanation: '累计折旧增加记贷方。累计折旧是固定资产的抵减科目，贷方表示折旧增加。固定资产账面价值=原值-累计折旧。' }],
-    documents: [
-      { type: 'text', label: '折旧计算表', docTitle: '固定资产折旧计算表（2026年4月）', content: '房屋建筑物：原值500,000×月折旧率0.2%=1,000元\n办公设备：原值80,000×月折旧率0.8%=640元\n运输设备：原值120,000×月折旧率0.6%=720元\n合计：2,360元\n折旧方法：直线法（年限平均法）', stampText: '财务专用章' }]},
-  // ══════ 出纳任务 ══════
+      { subjectCode: '6602', summary: '生鲜正常损耗', debit: 2100, credit: 0, explanation: '管理费用增加。生鲜正常损耗2,100元，损耗率在行业正常范围内。正常损耗无需进项税额转出。' },
+      { subjectCode: '1405', summary: '生鲜损耗出库', debit: 0, credit: 2100, explanation: '库存商品减少。生鲜损耗出库，库存减少。' }],
+    documents: [{ type: 'text', label: '生鲜损耗报告单', docTitle: '生鲜商品损耗报告（2026年4月）', stampText: '生鲜部专用章',
+      content: '生鲜损耗报告\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n品类     金额     损耗率\n蔬菜     700元      5%\n水果     600元      4%\n鲜肉     500元      3%\n水产品   300元      5%\n合计   2,100元      —\n\n损耗性质：正常合理损耗 ✓\n店长审批：同意 ☑' }]},
+  {
+    date: '2026-04-20',
+    role: 'accountant',
+    title: '联营专柜销售汇总入账（净额法）',
+    tags: ['商品销售'],
+    difficulty: 3,
+    description: '美肌堂联营专柜4月1日-20日含税销售额58,000元。按净额法确认收入：佣金=58,000×22%=12,760元（含税），不含税=12,760÷1.06=12,037.74元，增值税722.26元（6%）。应付美肌堂货款=58,000×78%=45,240元。',
+    tip: '联营专柜按净额法确认收入——超市只确认佣金部分。分录：借：银行存款（全额），贷：应付账款（货款净额）、主营业务收入（佣金）、应交税费-销项（佣金部分的增值税6%）。注意联营佣金适用6%税率（现代服务业），不是13%。',
+    entries: [
+      { subjectCode: '100201', summary: '联营销售全额收款', debit: 58000, credit: 0, explanation: '银行存款增加。联营专柜含税销售额58,000元通过超市POS统一收银。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金，属于经营活动现金流入。'},
+      { subjectCode: '220203', summary: '应付美肌堂货款净额', debit: 0, credit: 45240, explanation: '应付账款增加。应付美肌堂货款=58,000×78%=45,240元，待下月结算。' },
+      { subjectCode: '6001', summary: '联营佣金收入（净额法）', debit: 0, credit: 12037.74, explanation: '主营业务收入增加。联营佣金收入12,037.74元（不含税）。净额法确认，超市作为代理人只确认佣金部分。' },
+      { subjectCode: '222101', summary: '联营佣金增值税（6%）', debit: 0, credit: 722.26, explanation: '应交税费-应交增值税（销项税额）增加。佣金增值税=12,760÷1.06×6%=722.26元。联营佣金适用6%税率。' }],
+    documents: [{ type: 'text', label: '联营销售汇总表', docTitle: '联营专柜销售汇总（2026年4月上旬）', stampText: '联营结算专用章',
+      content: '联营专柜销售汇总\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n专柜：美肌堂化妆品专柜\n期间：2026年4月1日-20日\n\n含税销售额：58,000.00元\n扣点率：22%\n超市佣金（含税）：12,760.00元\n佣金增值税（6%）：722.26元\n佣金净收入：12,037.74元\n应付供应商（78%）：45,240.00元\n\n收入确认方式：净额法（代理人）' }]},
+
+  // ═══════════════════════════════════════════
+  // 第四周：月末（4/21 - 4/30）
+  // ═══════════════════════════════════════════
   {
     date: '2026-04-22',
-    title: '银行对账（月中核对）',
-    tags: ['出纳', '期末'],
-    difficulty: 1,
-    description: '出纳进行月中银行存款对账，将银行存款日记账与工商银行提供的对账单进行逐笔勾对。经核对，截至4月21日，银行存款日记账余额与银行对账单余额一致，无未达账项。',
-    tip: '银行对账是出纳的重要内控工作。定期（至少每月一次）与银行对账，发现差异需编制"银行存款余额调节表"，查找未达账项。月中对账可及早发现记账差错或异常交易，降低资金风险。',
-    role: 'cashier',
-    entries: [],
-    documents: [
-      { type: 'text', label: '银行对账单', docTitle: '中国工商银行对账单（截止2026年4月21日）', stampText: '中国工商银行 业务专用章',
-        content: `工商银行对账单（截至4月21日）
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-期初余额（4/1）：           500,000.00
-本期借方发生额：            269,850.00
-本期贷方发生额：             10,525.00
-期末余额：                  759,325.00
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-核对结果：日记账余额 759,325.00 ✓  银行对账单 759,325.00 ✓` }]},
-  {
-    date: '2026-04-23',
     role: 'accountant',
-    title: '计提本月工资',
-    tags: ['工资社保'],
-    difficulty: 2,
-    description: '计提本月员工工资：管理人员工资30,000元，销售人员工资20,000元，合计50,000元。',
-    tip: '月末计提当月工资，按部门计入不同费用科目。借：管理费用（管理岗）/销售费用（销售岗），贷：应付职工薪酬-工资。',
+    title: '结转已销商品成本（全月）',
+    tags: ['商品销售', '仓存管理'],
+    difficulty: 3,
+    description: '采用移动加权平均法结转4月自营商品成本。食品饮料类85,000元、日用品类42,000元、生鲜类68,000元、小家电类12,000元。另赠品成本2,500元、积分兑换成本420元。合计209,850元。',
     entries: [
-      { subjectCode: '6602', summary: '计提管理人员工资', debit: 30000, credit: 0, explanation: '管理费用增加记借方。行政管理人员的工资计入管理费用。' },
-      { subjectCode: '6601', summary: '计提销售人员工资', debit: 20000, credit: 0, explanation: '销售费用增加记借方。销售人员的工资计入销售费用。' },
-      { subjectCode: '221101', summary: '计提本月工资', debit: 0, credit: 50000, explanation: '应付职工薪酬-工资增加记贷方。计提工资形成对员工的负债，实际发放时冲减。' }],
-    documents: [
-      { type: 'text', label: '工资表', docTitle: '2026年4月工资汇总表', content: '管理人员：5人×6,000元=30,000元\n销售人员：4人×5,000元=20,000元\n合计：50,000元\n实发金额：50,000元（无社保公积金扣除）', stampText: '行政人事部章' }]},
-  // ══════ 出纳任务 ══════
-  {
-    date: '2026-04-23',
-    role: 'accountant',
-    title: '员工归还备用金借款',
-    tags: ['出纳', '费用管理'],
-    difficulty: 1,
-    description: '销售人员李明原计划赴广州出差因客户行程变更取消，将预借的2,000元差旅费全额归还出纳，出纳清点现金后开具收据。',
-    tip: '员工借款因故未使用需全额归还。分录：借：库存现金，贷：其他应收款。出纳收到还款后开具收款收据，并在借款单上注明"已归还"字样，注销借款记录。',
-    entries: [
-      { subjectCode: '1001', summary: '收回员工备用金借款', debit: 2000, credit: 0, explanation: '库存现金增加记借方。员工归还备用金借款后保险柜现金增加，出纳需开具收据并登记现金日记账。' , cashFlowItem: 'cf-op5', cashFlowExplanation: '其他经营活动现金流入（配对科目1221），属于"收到其他与经营活动有关的现金"。'},
-      { subjectCode: '1221', summary: '收回员工备用金借款', debit: 0, credit: 2000, explanation: '其他应收款减少记贷方。员工借款归还后，其他应收款余额减少，该笔借款结清。' }],
-    documents: [
-      { type: 'receipt', label: '收款收据', docTitle: '收款收据', date: '2026-04-23', totalAmount: 2000, stampText: '财务专用章',
-        items: [{ name: '收回预借差旅费（借款人：李明）', qty: 1, price: 2000, amount: 2000 }],
-        content: '借款日期：2026-04-03\n借款金额：2,000.00元\n归还日期：2026-04-23\n备注：客户行程变更，借款全额归还' }]},
-  {
-    date: '2026-04-24',
-    role: 'accountant',
-    title: '发放本月工资',
-    tags: ['工资社保'],
-    difficulty: 1,
-    description: '通过工商银行转账发放本月员工工资50,000元。',
-    tip: '实际发放工资时冲减计提的应付职工薪酬。借：应付职工薪酬，贷：银行存款。发放后"应付职工薪酬"余额归零。',
-    entries: [
-      { subjectCode: '221101', summary: '发放本月工资', debit: 50000, credit: 0, explanation: '应付职工薪酬-工资减少记借方。实际支付工资，负债减少。' },
-      { subjectCode: '100201', summary: '发放本月工资', debit: 0, credit: 50000, explanation: '银行存款减少记贷方。通过银行代发工资，资金划出。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221101），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'}],
-    documents: [
-      { type: 'bank', label: '代发工资回单', date: '2026-04-24', totalAmount: 50000, payer: '本公司', payeeName: '员工代发户', content: '2026年4月工资', refNo: 'HD202604240001' }]},
+      { subjectCode: '6401', summary: '结转4月自营商品成本', debit: 209850, credit: 0, explanation: '主营业务成本增加。4月总成本209,850元（含赠品2,500+积分兑换420）。' },
+      { subjectCode: '1405', summary: '各品类出库', debit: 0, credit: 209850, explanation: '库存商品减少。各品类销售出库。' }],
+    documents: [{ type: 'text', label: '成本计算表', docTitle: '商品销售成本计算表（2026年4月）', stampText: '财务专用章',
+      content: '商品销售成本计算表（移动加权平均法）\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n期间：2026年4月\n\n自营商品：207,000.00元\n赠品成本：2,500.00元\n积分兑换成本：420.00元\n合计：209,850.00元\n\n联营专柜：不结转成本（供应商承担）\n\n制表：李会计  审核：赵会计主管' }]},
   {
     date: '2026-04-25',
     role: 'accountant',
     title: '计提城建税及教育费附加',
-    tags: ['税费', '期末'],
+    tags: ['税费'],
     difficulty: 2,
-    description: '根据本月应交增值税计算并计提城市维护建设税（税率7%）和教育费附加（税率3%）。本月销项税额37,115元，进项税额9,750元，应交增值税27,365元。',
-    tip: '城建税和教育费附加以实际应交增值税为计税依据。借：税金及附加，贷：应交税费-城建税/教育费附加。税率：城建税7%，教育费附加3%。',
+    description: '计提4月城建税（7%）和教育费附加（3%）。本月应交增值税约24,500元，应交城建税1,715元，教育费附加735元，合计2,450元。',
     entries: [
-      { subjectCode: '6403', summary: '计提城建税及教育费附加', debit: 2736.5, credit: 0, explanation: '税金及附加增加记借方。城建税和教育费附加属于附加税费，计入税金及附加科目。应交增值税=销项37,115-进项9,750=27,365元。' },
-      { subjectCode: '222103', summary: '计提应交城建税', debit: 0, credit: 1915.55, explanation: '应交税费-应交城市维护建设税增加记贷方。城建税=27,365×7%=1,915.55元。依据《城市维护建设税暂行条例》第四条。' },
-      { subjectCode: '222104', summary: '计提应交教育费附加', debit: 0, credit: 820.95, explanation: '应交税费-应交教育费附加增加记贷方。教育费附加=27,365×3%=820.95元。' }],
-    documents: [
-      { type: 'text', label: '税金计算表', docTitle: '附加税费计算表（2026年4月）', content: '计税依据：应交增值税=销项税额37,115元-进项税额9,750元=27,365元\n城市维护建设税：27,365×7%=1,915.55元\n教育费附加：27,365×3%=820.95元\n合计：2,736.50元', stampText: '财务专用章' }]},
-  // ══════ 出纳任务 ══════
-  {
-    date: '2026-04-25',
-    title: '银行账户余额确认',
-    tags: ['出纳'],
-    difficulty: 1,
-    description: '出纳登录工商银行网银查询账户余额，确认银行存款日记账与银行实际余额一致。本月即将结束，出纳提前核对确保月末结账顺利进行。',
-    tip: '出纳应养成每日查询银行账户余额的习惯，确保资金安全。接近月末时，出纳需提前核对银行日记账与银行流水，为月末银行对账做好准备。发现异常交易需立即报告。',
-    role: 'cashier',
-    entries: [],
-    documents: [
-      { type: 'bank', label: '网银查询截图', date: '2026-04-25', totalAmount: 0, payer: '工商银行', payeeName: '本公司', content: '工行账户余额查询', refNo: 'HD202604250011' }]},
+      { subjectCode: '6403', summary: '计提附加税费', debit: 2450, credit: 0, explanation: '税金及附加增加。城建税1,715元+教育费附加735元=2,450元。依据《城市维护建设税暂行条例》。' },
+      { subjectCode: '222103', summary: '应交城建税', debit: 0, credit: 1715, explanation: '应交税费-应交城建税增加。24,500×7%=1,715元。' },
+      { subjectCode: '222104', summary: '应交教育费附加', debit: 0, credit: 735, explanation: '应交税费-应交教育费附加增加。24,500×3%=735元。' }],
+    documents: [{ type: 'text', label: '税金计算表', docTitle: '附加税费计算表（2026年4月）', stampText: '财务专用章',
+      content: '应交增值税：24,500.00元\n城建税（7%）：1,715.00元\n教育费附加（3%）：735.00元\n合计：2,450.00元\n\n制表：李会计  审核：赵会计主管' }]},
   {
     date: '2026-04-26',
+    role: 'accountant',
+    title: '缴纳增值税及附加税',
+    tags: ['税费'],
+    difficulty: 2,
+    description: '缴纳4月增值税24,500元、城建税1,715元、教育费附加735元，合计26,950元，通过工商银行转账缴纳。',
+    entries: [
+      { subjectCode: '222101', summary: '缴纳增值税', debit: 24500, credit: 0, explanation: '应交税费-应交增值税减少。缴纳4月增值税24,500元。' },
+      { subjectCode: '222103', summary: '缴纳城建税', debit: 1715, credit: 0, explanation: '应交税费-应交城建税减少。' },
+      { subjectCode: '222104', summary: '缴纳教育费附加', debit: 735, credit: 0, explanation: '应交税费-应交教育费附加减少。' },
+      { subjectCode: '100201', summary: '缴纳税款合计', debit: 0, credit: 26950, explanation: '银行存款减少。通过工商银行缴纳各项税费26,950元。' , cashFlowItem: 'cf-op4', cashFlowExplanation: '缴纳税费支出，属于"支付的各项税费"——经营活动现金流出。'}],
+    documents: [{ type: 'bank', label: '缴税回单', date: '2026-04-26', totalAmount: 26950, payer: '本公司', payeeName: '国家金库上海分库', content: '缴纳2026年4月增值税及附加税', refNo: 'HD202604260001' }]},
+  {
+    date: '2026-04-28',
     role: 'accountant',
     title: '期末结转损益',
     tags: ['期末'],
     difficulty: 3,
-    description: '月末结转所有损益类科目余额至"本年利润"，计算本月净利润。',
-    tip: '期末结转损益是每月必做的重要步骤。先将收入类科目结转至本年利润贷方，再将费用类科目结转至本年利润借方。差额即为本月净利润。注意财务费用如有贷方余额（利息收入>手续费），需作为收入结转。',
+    description: '月末结转所有损益类科目余额至本年利润，计算本月净利润。',
+    tip: '期末结转损益是每月最重要的结账步骤。收入类从借方转出至本年利润贷方，费用类从贷方转出至本年利润借方。结转后各损益科目余额归零。',
     entries: [
-      { subjectCode: '6001', debit: 285500, credit: 0, summary: '结转主营业务收入', explanation: '主营业务收入结转至本年利润。收入类科目期末余额转出，余额归零。本月收入合计=88,000+100,000+57,000+50,000-7,500-2,000=285,500元。' },
-      { subjectCode: '6603', debit: 2300, credit: 0, summary: '结转财务费用-利息收入', explanation: '财务费用结转至本年利润。利息收入2,300元扣除手续费350元后，净贷方余额1,950元作为收入结转。' },
-      { subjectCode: '6401', debit: 0, credit: 174500, summary: '结转主营业务成本', explanation: '主营业务成本转出，余额归零。已销商品成本=114,000+65,000-4,500=174,500元。' },
-      { subjectCode: '6403', debit: 0, credit: 2736.5, summary: '结转税金及附加', explanation: '税金及附加转出2,736.50元（计提的城建税及教育费附加）。' },
-      { subjectCode: '6601', debit: 0, credit: 35800, summary: '结转销售费用', explanation: '销售费用转出33,300元（含销售运费3,000+广告费6,000+差旅费2,800+采购运费1,500+销售人员工资20,000）。' },
-      { subjectCode: '6602', debit: 0, credit: 36420, summary: '结转管理费用', explanation: '管理费用转出36,420元（含水电费3,200+办公用品860+折旧2,360+管理人员工资30,000）。' },
-      { subjectCode: '660201', debit: 0, credit: 580, summary: '结转660201', explanation: '660201转出，余额归零。' },
-      { subjectCode: '6701', debit: 0, credit: 5000, summary: '结转资产减值损失', explanation: '资产减值损失转出5,000元（计提的坏账准备）。' },
-      { subjectCode: '4103', debit: 0, credit: 32763.5, summary: '结转各项费用支出', explanation: '本年利润减少记借方。将本期所有费用转入本年利润：主营业务成本174,500+税金及附加2,736.50+销售费用33,300+管理费用36,420+资产减值损失5,000=251,956.50元。本月净利润=287,450-251,956.50=35,493.50元。' }
+      { subjectCode: '6001', debit: 370000, credit: 0, summary: '结转主营业务收入', explanation: '含自营POS销售、联营佣金、积分兑换、赠品≈370,000元。' },
+      { subjectCode: '6401', debit: 0, credit: 209850, summary: '结转主营业务成本', explanation: '含赠品及积分兑换成本。' },
+      { subjectCode: '6403', debit: 0, credit: 2450, summary: '结转税金及附加', explanation: '' },
+      { subjectCode: '6601', debit: 0, credit: 53000, summary: '结转销售费用-工资', explanation: '一线员工工资53,000元。' },
+      { subjectCode: '660101', debit: 0, credit: 5000, summary: '结转销售费用-广告费', explanation: '赠品促销费用5,000元。' },
+      { subjectCode: '6602', debit: 0, credit: 11300, summary: '结转管理费用（水电+损耗）', explanation: '水电9,200+损耗2,100=11,300元。' },
+      { subjectCode: '6603', debit: 260, credit: 0, summary: '结转财务费用（净利息收入）', explanation: '净贷方余额260元作为收入转出。' },
+      { subjectCode: '4103', debit: 0, credit: 88660, summary: '结转净利润', explanation: '=370,260-282,600=87,660元。累计净利润≈225,692元。' }
     ],
-    documents: [
-      { type: 'text', label: '损益计算表', docTitle: '2026年4月损益计算表', content: '一、营业收入：285,500元\n减：营业成本：174,500元\n减：税金及附加：2,736.50元\n减：销售费用：33,300元\n减：管理费用：36,420元\n减：资产减值损失：5,000元\n加：利息收入（冲财务费用）：1,950元\n二、营业利润：35,493.50元\n三、净利润：35,493.50元', stampText: '财务专用章' }]},
-  {
-    date: '2026-04-27',
-    title: '月末银行存款余额核对',
-    tags: ['出纳', '期末'],
-    difficulty: 1,
-    description: '月末核对工商银行日记账余额与银行对账单是否一致，编制银行存款余额调节表。本月工行账户期初余额500,000元，本期借方发生额261,150元，本期贷方发生额107,750元，期末余额653,400元。',
-    tip: '月末出纳必须核对银行日记账与银行对账单余额，如有未达账项需编制余额调节表。这是出纳每月必做的基础工作，确保资金安全。',
-    role: 'cashier',
-    entries: [],
-    documents: [
-      { type: 'text', label: '银行对账单', docTitle: '中国工商银行对账单（2026年4月）', content: '账号：xxxxxxxxxxxx\n期初余额：500,000.00\n本期借方发生额：99,440+55,000+64,410+40,000+2,300=261,150.00\n本期贷方发生额：3,000+6,000+45,200+350+3,200+50,000=107,750.00\n期末余额：653,400.00\n\n请与银行存款日记账核对，如有差异编制余额调节表。', stampText: '中国工商银行 业务专用章' }]},
-
+    documents: [{ type: 'text', label: '损益计算表', docTitle: '2026年4月损益计算表（万悦超市）', stampText: '财务专用章',
+      content: '万悦超市 2026年4月损益计算表\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n营业收入：370,000.00元\n减：成本及费用\n  主营业务成本：209,850.00元\n  税金及附加：2,450.00元\n  销售费用：58,000.00元\n  管理费用：11,300.00元\n  财务费用（净）：-260.00元\n\n本月净利润：约87,660.00元\n累计净利润：约225,692.00元\n\n说明：本月上线会员积分系统，部分收入递延至后续月份确认。' }]},
   {
     date: '2026-04-30',
     role: 'accountant',
     title: '模拟纳税申报',
-    tags: ['期末', '税费'],
+    tags: ['期末', '申报'],
     difficulty: 1,
-    description: '根据本月已完成的账务处理，进行模拟纳税申报。系统已自动计算应缴税额（增值税和企业所得税），请前往纳税申报页面核对并提交。',
-    tip: '纳税申报是企业每月的法定义务。确认所有凭证已过账、期末结转已完成后，前往纳税申报页面核对各项税额后点击"提交申报"。',
+    description: '完成4月模拟纳税申报，前往纳税申报页面核对并提交。',
+    entries: [],
+    nextAction: 'tax-filing',
+    documents: [{ type: 'text', label: '纳税申报提醒', docTitle: '2026年4月纳税申报提醒', stampText: '财务专用章',
+      content: '申报期间：2026年4月\n增值税：24,500.00元\n城建税：1,715.00元  教育费附加：735.00元\n\n请前往纳税申报页面提交。' }]},
+  {
+    date: '2026-04-06',
+    role: 'accountant',
+    title: '微信/支付宝提现',
+    tags: ['资金管理'],
+    difficulty: 2,
+    description: '将微信商户余额32,000元及支付宝余额21,000元提现至工行。微信手续费32元，实际到账31,968元；支付宝免费全额到账21,000元。',
+    tip: '第三方支付提现手续费计入财务费用。借：银行存款/财务费用，贷：其他货币资金-微信/支付宝。',
+    entries: [
+      { subjectCode: '100201', summary: '微信提现到账', debit: 31968, credit: 0, explanation: '银行存款增加。微信32,000元提现，扣手续费32元后到账31,968元。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金。'},
+      { subjectCode: '6603', summary: '微信提现手续费', debit: 32, credit: 0, explanation: '财务费用增加。提现手续费=32,000×0.1%=32元。' },
+      { subjectCode: '101204', summary: '微信余额转出', debit: 0, credit: 32000, explanation: '其他货币资金-微信减少。' },
+      { subjectCode: '100201', summary: '支付宝提现到账', debit: 21000, credit: 0, explanation: '银行存款增加。支付宝21,000元全额到账。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金。'},
+      { subjectCode: '101205', summary: '支付宝余额转出', debit: 0, credit: 21000, explanation: '其他货币资金-支付宝减少。' }],
+    documents: [{ type: 'bank', label: '提现回单', date: '2026-04-06', totalAmount: 31968, payer: '财付通', payeeName: '本公司', content: '微信提现', refNo: 'TX20260406' }]},
+  {
+    date: '2026-04-07',
+    role: 'accountant',
+    title: '生鲜补货（现购）',
+    tags: ['商品采购', '税费'],
+    difficulty: 2,
+    description: '向绿源农业采购生鲜18,500元（不含税），增值税1,665元（9%），价税合计20,165元付讫。',
+    entries: [
+      { subjectCode: '1405', summary: '生鲜入库', debit: 18500, credit: 0, explanation: '库存商品增加。生鲜验收入库。' },
+      { subjectCode: '222101', summary: '进项税额（9%）', debit: 1665, credit: 0, explanation: '应交税费-应交增值税（进项税额）增加。农产品9%税率。' },
+      { subjectCode: '100201', summary: '支付货款', debit: 0, credit: 20165, explanation: '银行存款减少。' , cashFlowItem: 'cf-op2', cashFlowExplanation: '采购存货/商品支出。'}],
+    documents: [{ type: 'invoice', label: '增值税普通发票（农产品）', date: '2026-04-07', seller: '绿源农业有限公司', totalAmount: 20165,
+      lineItems: [{ name: '蔬菜', unit: '斤', qty: 600, price: 5, amount: 3000 }, { name: '水果', unit: '斤', qty: 500, price: 12, amount: 6000 }, { name: '鲜肉', unit: '斤', qty: 400, price: 20, amount: 8000 }] }]},
+  {
+    date: '2026-04-08',
+    role: 'accountant',
+    title: 'POS日常销售',
+    tags: ['商品销售'],
+    difficulty: 1,
+    description: 'POS日常销售含税收入56,500元（不含税50,000元，增值税6,500元），已收存银行。',
+    entries: [
+      { subjectCode: '100201', summary: 'POS销售收款', debit: 56500, credit: 0, explanation: '银行存款增加。POS收款含税56,500元。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金。'},
+      { subjectCode: '6001', summary: '主营业务收入', debit: 0, credit: 50000, explanation: '主营业务收入增加。依据CAS 14。' },
+      { subjectCode: '222101', summary: '增值税销项税额', debit: 0, credit: 6500, explanation: '应交税费-应交增值税（销项税额）增加。' }],
+    documents: [{ type: 'text', label: 'POS日结单', content: '含税：56,500元 | 不含税：50,000元 | 增值税：6,500元' }]},
+  {
+    date: '2026-04-11',
+    role: 'accountant',
+    title: 'POS日常销售',
+    tags: ['商品销售'],
+    difficulty: 1,
+    description: 'POS日常销售含税收入50,850元（不含税45,000元，增值税5,850元）。',
+    entries: [
+      { subjectCode: '100201', summary: 'POS收款', debit: 50850, credit: 0, explanation: '银行存款增加。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金。'},
+      { subjectCode: '6001', summary: '收入', debit: 0, credit: 45000, explanation: '' },
+      { subjectCode: '222101', summary: '销项税', debit: 0, credit: 5850, explanation: '' }],
+    documents: [{ type: 'text', label: 'POS日结单', content: '含税：50,850元 | 不含税：45,000元 | 增值税：5,850元' }]},
+  {
+    date: '2026-04-15',
+    role: 'accountant',
+    title: 'POS日常销售',
+    tags: ['商品销售'],
+    difficulty: 1,
+    description: 'POS日常销售含税收入39,550元（不含税35,000元，增值税4,550元）。',
+    entries: [
+      { subjectCode: '100201', summary: 'POS收款', debit: 39550, credit: 0, explanation: '银行存款增加。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金。'},
+      { subjectCode: '6001', summary: '收入', debit: 0, credit: 35000, explanation: '' },
+      { subjectCode: '222101', summary: '销项税', debit: 0, credit: 4550, explanation: '' }],
+    documents: [{ type: 'text', label: 'POS日结单', content: '含税：39,550元 | 不含税：35,000元 | 增值税：4,550元' }]},
+  {
+    date: '2026-04-19',
+    role: 'accountant',
+    title: '银行手续费',
+    tags: ['资金管理'],
+    difficulty: 1,
+    description: '工商银行扣收4月账户管理费及转账手续费190元。',
+    entries: [
+      { subjectCode: '6603', summary: '银行手续费', debit: 190, credit: 0, explanation: '财务费用增加。银行服务收费计入财务费用。' },
+      { subjectCode: '100201', summary: '银行扣费', debit: 0, credit: 190, explanation: '银行存款减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出。'}],
+    documents: [{ type: 'bank', label: '银行扣费回单', date: '2026-04-19', totalAmount: 190, payer: '本公司', payeeName: '工商银行', content: '4月账户管理费', refNo: 'HD202604190001' }]},
+  {
+    date: '2026-04-20',
+    role: 'accountant',
+    title: 'POS日常销售',
+    tags: ['商品销售'],
+    difficulty: 1,
+    description: 'POS日常销售含税收入67,800元（不含税60,000元，增值税7,800元）。',
+    entries: [
+      { subjectCode: '100201', summary: 'POS收款', debit: 67800, credit: 0, explanation: '银行存款增加。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金。'},
+      { subjectCode: '6001', summary: '收入', debit: 0, credit: 60000, explanation: '' },
+      { subjectCode: '222101', summary: '销项税', debit: 0, credit: 7800, explanation: '' }],
+    documents: [{ type: 'text', label: 'POS日结单', content: '含税：67,800元 | 不含税：60,000元 | 增值税：7,800元' }]},
+  {
+    date: '2026-04-23',
+    role: 'accountant',
+    title: '预付卡消费确认',
+    tags: ['商品销售'],
+    difficulty: 2,
+    description: '本月顾客持预付卡消费9,800元（含税），确认收入8,672.57元，增值税1,127.43元。',
+    entries: [
+      { subjectCode: '2203', summary: '预付卡消费冲减', debit: 9800, credit: 0, explanation: '预收账款减少。顾客持预付卡消费，冲减合同负债。' },
+      { subjectCode: '6001', summary: '预付卡消费收入', debit: 0, credit: 8672.57, explanation: '主营业务收入增加。' },
+      { subjectCode: '222101', summary: '增值税销项', debit: 0, credit: 1127.43, explanation: '应交税费-应交增值税（销项税额）增加。' }],
+    documents: [{ type: 'text', label: '预付卡消费汇总', docTitle: '预付卡消费汇总（2026年4月）', content: '含税：9,800元 | 不含税：8,672.57元 | 增值税：1,127.43元' }]},
+  {
+    date: '2026-04-27',
+    role: 'accountant',
+    title: '银行存款利息收入',
+    tags: ['资金管理'],
+    difficulty: 1,
+    description: '收到工商银行4月活期存款利息600元。',
+    entries: [
+      { subjectCode: '100201', summary: '利息收入', debit: 600, credit: 0, explanation: '银行存款增加。' , cashFlowItem: 'cf-op5', cashFlowExplanation: '其他经营活动现金流入。'},
+      { subjectCode: '6603', summary: '冲减财务费用', debit: 0, credit: 600, explanation: '财务费用减少。存款利息收入冲减财务费用。' }],
+    documents: [{ type: 'bank', label: '利息入账回单', date: '2026-04-27', totalAmount: 600, payer: '工商银行', payeeName: '本公司', content: '4月活期存款利息', refNo: 'HD202604270001' }]},
+  {
+    date: '2026-04-29',
+    role: 'accountant',
+    title: '食品补货',
+    tags: ['商品采购', '税费'],
+    difficulty: 2,
+    description: '向鑫鑫食品补货食品20,000元（不含税），增值税2,600元，价税合计22,600元付讫。',
+    entries: [
+      { subjectCode: '1405', summary: '食品入库', debit: 20000, credit: 0, explanation: '库存商品增加。' },
+      { subjectCode: '222101', summary: '进项税', debit: 2600, credit: 0, explanation: '' },
+      { subjectCode: '100201', summary: '支付货款', debit: 0, credit: 22600, explanation: '银行存款减少。' , cashFlowItem: 'cf-op2', cashFlowExplanation: '采购存货/商品支出。'}],
+    documents: [{ type: 'invoice', label: '增值税专用发票', date: '2026-04-29', seller: '鑫鑫食品有限公司', totalAmount: 22600,
+      lineItems: [{ name: '食品', unit: '箱', qty: 200, price: 100, amount: 20000 }] }]},
+  {
+    date: '2026-04-14',
+    role: 'accountant',
+    title: 'POS日常销售',
+    tags: ['商品销售'],
+    difficulty: 1,
+    description: 'POS日常销售含税收入39,550元（不含税35,000元，增值税4,550元），已收存银行。',
+    entries: [
+      { subjectCode: '100201', summary: 'POS收款', debit: 39550, credit: 0, explanation: '银行存款增加。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金。'},
+      { subjectCode: '6001', summary: '收入', debit: 0, credit: 35000, explanation: '主营业务收入增加。' },
+      { subjectCode: '222101', summary: '销项税', debit: 0, credit: 4550, explanation: '' }],
+    documents: [{ type: 'text', label: 'POS日结单', content: '含税：39,550元 | 不含税：35,000元 | 增值税：4,550元' }]},
+  {
+    date: '2026-04-30',
+    role: 'cashier',
+    title: '出纳-月末现金盘点及银行对账',
+    tags: ['出纳', '期末'],
+    difficulty: 1,
+    description: '月末盘点库存现金、核对银行存款余额，编制现金盘点表和余额调节表。',
     entries: [],
     documents: [
-      { type: 'text', label: '纳税申报提醒', docTitle: '4月纳税申报提醒', content: '申报期间：2026-04-30\n\n请前往纳税申报页面：\n1. 核对增值税申报表数据\n2. 核对企业所得税申报表数据\n3. 确认无误后点击"提交申报"\n\n纳税申报是企业每月必做的合规义务，请按时完成。', stampText: '财务专用章' }]},
+      { type: 'text', label: '现金盘点表', docTitle: '库存现金盘点表（2026年4月30日）', stampText: '财务专用章',
+        content: '账面余额：约4,000.00元\n实盘金额：4,000.00元\n盘点结果：✓ 账实相符\n盘点人：王出纳  监盘人：李会计' },
+      { type: 'text', label: '银行对账单', docTitle: '中国工商银行对账单（2026年4月）', stampText: '中国工商银行 业务专用章',
+        content: '账户：万悦超市有限公司\n账号：6222 0200 **** 8888\n\n期初余额：承3月末\n本期收入合计：约+\n本期支出合计：约+\n期末余额：待核对\n\n请逐笔勾对，编制余额调节表。' }]}
 ]
 export default tasks
