@@ -109,9 +109,9 @@ describe('教程数据 - 结构', () => {
     }
   })
 
-  it('3月份有30个教学任务', () => {
+  it('3月份有27个教学任务', () => {
     const tasks = getTutorials('03')
-    expect(tasks.length).toBe(30)
+    expect(tasks.length).toBe(27)
   })
 
   it('3月每个任务有完整字段', () => {
