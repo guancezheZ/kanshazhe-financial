@@ -338,13 +338,16 @@ const tasks = [
     description: '月末结转所有损益类科目余额至"本年利润"，计算本月净利润/亏损。',
     tip: '期末结转损益是每个月必须做的重要步骤。先将收入类科目结转至本年利润贷方，再将费用类科目结转至本年利润借方。差额即为本月利润（贷方余额）或亏损（借方余额）。',
     entries: [
-      { subjectCode: '6001', summary: '结转主营业务收入', debit: 180000, credit: 0, explanation: '主营业务收入结转至本年利润。收入类科目期末余额转出，余额归零。' },
-      { subjectCode: '4103', summary: '结转主营业务收入', debit: 0, credit: 180000, explanation: '本年利润增加记贷方。收入结转至本年利润，所有者权益增加。' },
-      { subjectCode: '4103', summary: '结转费用类科目', debit: 178495, credit: 0, explanation: '本年利润减少记借方。将本期所有费用转入本年利润：主营业务成本108,000+销售费用34,600+管理费用35,180+税金及附加715=178,495元。本月净利润=180,000-178,495=1,505元。' },
-      { subjectCode: '6401', summary: '结转主营业务成本', debit: 0, credit: 108000, explanation: '主营业务成本转出，余额归零。已销商品成本108,000元（60,000+48,000）。' },
-      { subjectCode: '6601', summary: '结转销售费用', debit: 0, credit: 34600, explanation: '销售费用转出34,600元（含采购运费1,000+销售运费2,000+工资20,000+广告8,000+差旅3,600）。' },
-      { subjectCode: '6602', summary: '结转管理费用', debit: 0, credit: 35180, explanation: '管理费用转出35,180元（含办公1,200+工资30,000+水电2,500+折旧1,480）。' },
-      { subjectCode: '6403', summary: '结转税金及附加', debit: 0, credit: 715, explanation: '税金及附加转出715元。' }],
+      { subjectCode: '6001', debit: 280000, credit: 0, summary: '结转主营业务收入', explanation: '主营业务收入结转至本年利润。收入类科目期末余额转出，余额归零。' },
+      { subjectCode: '6401', debit: 0, credit: 108000, summary: '结转主营业务成本', explanation: '主营业务成本转出，余额归零。已销商品成本108,000元（60,000+48,000）。' },
+      { subjectCode: '6403', debit: 0, credit: 715, summary: '结转税金及附加', explanation: '税金及附加转出715元。' },
+      { subjectCode: '6601', debit: 0, credit: 29600, summary: '结转销售费用', explanation: '销售费用转出34,600元（含采购运费1,000+销售运费2,000+工资20,000+广告8,000+差旅3,600）。' },
+      { subjectCode: '660101', debit: 0, credit: 16000, summary: '结转660101', explanation: '660101转出，余额归零。' },
+      { subjectCode: '6602', debit: 0, credit: 4030, summary: '结转管理费用', explanation: '管理费用转出35,180元（含办公1,200+工资30,000+水电2,500+折旧1,480）。' },
+      { subjectCode: '660201', debit: 0, credit: 1200, summary: '结转660201', explanation: '660201转出，余额归零。' },
+      { subjectCode: '660203', debit: 0, credit: 30000, summary: '结转660203', explanation: '660203转出，余额归零。' },
+      { subjectCode: '4103', debit: 0, credit: 90455, summary: '结转费用类科目', explanation: '本年利润减少记借方。将本期所有费用转入本年利润：主营业务成本108,000+销售费用34,600+管理费用35,180+税金及附加715=178,495元。本月净利润=180,000-178,495=1,505元。' }
+    ],
     documents: [
       { type: 'text', label: '损益计算表', docTitle: '2026年1月损益计算表', content: '一、营业收入：180,000元\n减：营业成本：108,000元\n减：销售费用：34,600元\n减：管理费用：35,180元\n减：税金及附加：715元\n二、营业利润：1,505元\n\n注：本月未计提借款利息（短期借款利息到期一次性支付）。', stampText: '财务专用章' }]},
   // ═══════════════════════════════════════════

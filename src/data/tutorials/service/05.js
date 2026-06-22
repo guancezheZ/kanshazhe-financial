@@ -779,55 +779,16 @@ const tasks = [
     ],
     "difficulty": 3,
     "entries": [
-      {
-        "subjectCode": "6051",
-        "summary": "结转其他业务收入",
-        "debit": 2000,
-        "credit": 0,
-        "explanation": "其他业务收入减少记借方。期末结转至本年利润。"
-      },
-      {
-        "subjectCode": "6001",
-        "summary": "结转主营业务收入",
-        "debit": 150000,
-        "credit": 0,
-        "explanation": "主营业务收入减少记借方。期末结转至本年利润。"
-      },
-      {
-        "subjectCode": "4103",
-        "summary": "收入转入",
-        "debit": 0,
-        "credit": 152000,
-        "explanation": "本年利润增加记贷方。收入结转至本年利润。"
-      },
-      {
-        "subjectCode": "4103",
-        "summary": "费用转入",
-        "debit": 109800,
-        "credit": 0,
-        "explanation": "本年利润减少记借方。费用结转至本年利润。"
-      },
-      {
-        "subjectCode": "6403",
-        "summary": "税金",
-        "debit": 0,
-        "credit": 1800,
-        "explanation": "税金及附加减少记贷方。期末结转至本年利润。"
-      },
-      {
-        "subjectCode": "660201",
-        "summary": "管理费用",
-        "debit": 0,
-        "credit": 102000,
-        "explanation": "管理费用减少记贷方。期末结转至本年利润。"
-      },
-      {
-        "subjectCode": "6701",
-        "summary": "资产减值损失",
-        "debit": 0,
-        "credit": 6000,
-        "explanation": "资产减值损失减少记贷方。期末结转至本年利润。"
-      }
+      { subjectCode: '6001', debit: 517000, credit: 0, summary: '结转主营业务收入', explanation: '主营业务收入减少记借方。期末结转至本年利润。' },
+      { subjectCode: '6051', debit: 2000, credit: 0, summary: '结转其他业务收入', explanation: '其他业务收入减少记借方。期末结转至本年利润。' },
+      { subjectCode: '660201', debit: 0, credit: 10130, summary: '管理费用', explanation: '管理费用减少记贷方。期末结转至本年利润。' },
+      { subjectCode: '660203', debit: 0, credit: 56250, summary: '结转660203', explanation: '660203转出，余额归零。' },
+      { subjectCode: '660204', debit: 0, credit: 3500, summary: '结转660204', explanation: '660204转出，余额归零。' },
+      { subjectCode: '660205', debit: 0, credit: 4085, summary: '结转660205', explanation: '660205转出，余额归零。' },
+      { subjectCode: '660206', debit: 0, credit: 42555.55, summary: '结转660206', explanation: '660206转出，余额归零。' },
+      { subjectCode: '6603', debit: 0, credit: 300, summary: '结转6603', explanation: '6603转出，余额归零。' },
+      { subjectCode: '6701', debit: 0, credit: 16000, summary: '资产减值损失', explanation: '资产减值损失减少记贷方。期末结转至本年利润。' },
+      { subjectCode: '4103', debit: 0, credit: 386179.45, summary: '费用转入', explanation: '本年利润减少记借方。费用结转至本年利润。' }
     ],
     "documents": [
       {

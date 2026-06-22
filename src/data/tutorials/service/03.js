@@ -306,15 +306,15 @@ const tasks = [
     difficulty: 3,
     description: '结转3月损益。收入：咨询300,000+培训90,000+软件120,000=510,000元。费用：主营业务成本77,500+税金及附加1,980+管理费用127,843.33+财务费用1,087.50=208,410.83元。所得税费用140,096.25元。',
     entries: [
-{ subjectCode: '6001', summary: '结转主营业务收入', debit: 510000, credit: 0 , explanation: '主营业务收入减少记借方。收入减少或结转。'},
-{ subjectCode: '4103', summary: '收入转入本年利润', debit: 0, credit: 510000 , explanation: '本年利润增加记贷方。权益变动。'},
-{ subjectCode: '4103', summary: '成本费用转入本年利润', debit: 208410.83, credit: 0 , explanation: '本年利润减少记借方。权益变动。'},
-{ subjectCode: '6401', summary: '结转主营业务成本', debit: 0, credit: 77500 , explanation: '主营业务成本减少记贷方。费用减少或结转。'},
-{ subjectCode: '6403', summary: '结转税金及附加', debit: 0, credit: 1980 , explanation: '税金及附加减少记贷方。费用减少或结转。'},
-{ subjectCode: '6602', summary: '结转管理费用', debit: 0, credit: 127843.33 , explanation: '管理费用减少记贷方。费用减少或结转。'},
-{ subjectCode: '6603', summary: '结转财务费用', debit: 0, credit: 1087.5 , explanation: '财务费用减少记贷方。费用减少或结转。'},
-{ subjectCode: '4103', summary: '所得税转入本年利润', debit: 140096.25, credit: 0 , explanation: '本年利润减少记借方。权益变动。'},
-{ subjectCode: '6801', summary: '结转所得税费用', debit: 0, credit: 140096.25 , explanation: '所得税费用减少记贷方。费用减少或结转。'}],
+      { subjectCode: '6001', debit: 923400, credit: 0, summary: '结转主营业务收入', explanation: '主营业务收入减少记借方。收入减少或结转。' },
+      { subjectCode: '6401', debit: 0, credit: 77500, summary: '结转主营业务成本', explanation: '主营业务成本减少记贷方。费用减少或结转。' },
+      { subjectCode: '6403', debit: 0, credit: 1980, summary: '结转税金及附加', explanation: '税金及附加减少记贷方。费用减少或结转。' },
+      { subjectCode: '660201', debit: 0, credit: 33643.33, summary: '结转660201', explanation: '660201转出，余额归零。' },
+      { subjectCode: '660203', debit: 0, credit: 56250, summary: '结转660203', explanation: '660203转出，余额归零。' },
+      { subjectCode: '6603', debit: 0, credit: 1087.5, summary: '结转财务费用', explanation: '财务费用减少记贷方。费用减少或结转。' },
+      { subjectCode: '6801', debit: 0, credit: 140096.25, summary: '结转所得税费用', explanation: '所得税费用减少记贷方。费用减少或结转。' },
+      { subjectCode: '4103', debit: 0, credit: 612842.92, summary: '所得税转入本年利润', explanation: '本年利润减少记借方。权益变动。' }
+    ],
     documents: [
       { type: 'text', label: '损益结转表', docTitle: '2026年3月损益结转', content: '收入510,000-费用208,410.83-所得税140,096.25=净利润161,492.92元。一季度合计净利润=66,182.50+187,202.50+161,492.92=414,877.92元。', signature: '财务部' }]},
 

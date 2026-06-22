@@ -342,13 +342,14 @@ const tasks = [
     description: '将本月损益类科目余额结转至本年利润。收入：主营业务收入200,000元。成本费用：主营业务成本44,500+税金及附加1,920+管理费用86,110+财务费用1,287.50=133,817.50元。',
     tip: '期末结转：①收入类贷方余额转入本年利润贷方；②成本费用类借方余额转入本年利润借方。结转后损益类科目余额为零。',
     entries: [
-      { subjectCode: '6001', summary: '结转主营业务收入', debit: 200000, credit: 0, explanation: '主营业务收入减少记借方。将收入余额结转至本年利润。' },
-      { subjectCode: '4103', summary: '收入转入本年利润', debit: 0, credit: 200000, explanation: '本年利润增加记贷方。收入转入本年利润。' },
-      { subjectCode: '4103', summary: '成本费用转入本年利润', debit: 133817.5, credit: 0, explanation: '本年利润减少记借方。将成本费用合计结转至本年利润。' },
-      { subjectCode: '6401', summary: '结转主营业务成本', debit: 0, credit: 44500, explanation: '主营业务成本减少记贷方。结转后余额为零。' },
-      { subjectCode: '6403', summary: '结转税金及附加', debit: 0, credit: 1920, explanation: '税金及附加减少记贷方。结转后余额为零。' },
-      { subjectCode: '6602', summary: '结转管理费用', debit: 0, credit: 86110, explanation: '管理费用减少记贷方。结转后余额为零。' },
-      { subjectCode: '6603', summary: '结转财务费用', debit: 0, credit: 1287.5, explanation: '财务费用减少记贷方。结转后余额为零。' }],
+      { subjectCode: '6001', debit: 306000, credit: 0, summary: '结转主营业务收入', explanation: '主营业务收入减少记借方。将收入余额结转至本年利润。' },
+      { subjectCode: '6401', debit: 0, credit: 44500, summary: '结转主营业务成本', explanation: '主营业务成本减少记贷方。结转后余额为零。' },
+      { subjectCode: '6403', debit: 0, credit: 1920, summary: '结转税金及附加', explanation: '税金及附加减少记贷方。结转后余额为零。' },
+      { subjectCode: '660201', debit: 0, credit: 35460, summary: '结转660201', explanation: '660201转出，余额归零。' },
+      { subjectCode: '660203', debit: 0, credit: 56250, summary: '结转660203', explanation: '660203转出，余额归零。' },
+      { subjectCode: '6603', debit: 0, credit: 1487.5, summary: '结转财务费用', explanation: '财务费用减少记贷方。结转后余额为零。' },
+      { subjectCode: '4103', debit: 0, credit: 166382.5, summary: '成本费用转入本年利润', explanation: '本年利润减少记借方。将成本费用合计结转至本年利润。' }
+    ],
     documents: [
       { type: 'text', label: '损益结转表', docTitle: '2026年1月损益结转计算表', content: '利润=200,000-44,500-1,920-86,110-1,287.50=66,182.50元。', signature: '财务部' }]},
 

@@ -472,7 +472,7 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
-.dashboard { max-width: 1400px; }
+.dashboard { max-width: 100%; }
 .page-header {
   display: flex;
   justify-content: space-between;

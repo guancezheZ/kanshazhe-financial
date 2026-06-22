@@ -63,8 +63,7 @@
         <span class="login-hint">试用账号：admin / admin123</span>
         <el-button text class="login-theme-toggle" @click="cycleLoginTheme" title="切换主题">
           <el-icon :size="18">
-            <Moon v-if="currentTheme === 'dark'" />
-            <Sunny v-else-if="currentTheme === 'ink'" />
+            <Sunny v-if="currentTheme === 'ink'" />
             <Monitor v-else />
           </el-icon>
         </el-button>
@@ -101,15 +100,11 @@ const rules = {
 }
 
 // 主题
-const THEMES = ['ink', 'classic', 'dark']
+const THEMES = ['ink', 'classic']
 const currentTheme = ref(localStorage.getItem('jd_theme') || 'ink')
 function applyTheme(theme) {
   document.documentElement.setAttribute('data-theme', theme)
-  if (theme === 'dark') {
-    document.documentElement.classList.add('dark')
-  } else {
-    document.documentElement.classList.remove('dark')
-  }
+  document.documentElement.classList.remove('dark')
   currentTheme.value = theme
 }
 onMounted(() => {

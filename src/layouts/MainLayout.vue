@@ -8,7 +8,6 @@
           </div>
           <div class="brand-wrapper">
             <span class="brand-text">観測者财务</span>
-            <span class="brand-version">v2.0 教学演示</span>
           </div>
         </div>
         <div v-else class="sidebar-brand collapsed">
@@ -161,9 +160,6 @@
         <el-menu-item v-if="fm('/system/accounts')" index="/system/accounts">
           <el-icon><Setting /></el-icon><template #title>账套管理</template>
         </el-menu-item>
-        <el-menu-item v-if="fm('/system/activation')" index="/system/activation">
-          <el-icon><Lock /></el-icon><template #title>激活管理</template>
-        </el-menu-item>
 
         <!-- 🚀 检查更新 -->
         <el-menu-item v-if="isTauri" @click="checkUpdate">
@@ -189,7 +185,7 @@
       </el-menu>
       <!-- 正版授权徽章 -->
       <div class="license-badge" :class="{ collapsed: isCollapsed, unauthorized: !activated }" @click="handleLicenseClick">
-        <el-icon :size="isCollapsed ? 18 : 16" :color="activated ? '#e6a23c' : '#909399'">
+        <el-icon :size="isCollapsed ? 18 : 16" :color="activated ? 'var(--accent, #e6a23c)' : 'var(--text-light)'">
           <Check v-if="activated" /><Close v-else />
         </el-icon>
         <span v-show="!isCollapsed" class="license-text">{{ activated ? '正版授权' : '未授权' }}</span>
@@ -227,40 +223,11 @@
           </el-breadcrumb>
         </div>
         <div class="header-right">
-          <!-- ➕ 快速新建 -->
-          <el-dropdown trigger="click" class="quick-new">
-            <el-button type="primary" size="small" class="quick-new-btn">
-              <el-icon :size="16"><Plus /></el-icon>
-              <span>新建</span>
-            </el-button>
-            <template #dropdown>
-              <el-dropdown-menu>
-                <el-dropdown-item @click="quickNew('voucher')">
-                  <el-icon><EditPen /></el-icon>记账凭证
-                </el-dropdown-item>
-                <el-dropdown-item @click="quickNew('subject')">
-                  <el-icon><List /></el-icon>会计科目
-                </el-dropdown-item>
-                <el-dropdown-item @click="quickNew('report')">
-                  <el-icon><Document /></el-icon>自定义报表
-                </el-dropdown-item>
-              </el-dropdown-menu>
-            </template>
-          </el-dropdown>
-          <!-- 🔔 通知铃铛 -->
-          <el-tooltip content="待办通知" placement="bottom">
-            <el-badge :value="pendingCount" :hidden="pendingCount === 0" class="notification-badge">
-              <el-button text class="notif-btn" @click="openNotifications">
-                <el-icon :size="20"><Bell /></el-icon>
-              </el-button>
-            </el-badge>
-          </el-tooltip>
           <!-- 主题切换 -->
           <el-tooltip :content="themeTooltip" placement="bottom">
             <el-button text class="theme-btn" @click="cycleTheme">
               <el-icon :size="18">
-                <Moon v-if="currentTheme === 'dark'" />
-                <Sunny v-else-if="currentTheme === 'ink'" />
+                <Sunny v-if="currentTheme === 'ink'" />
                 <Monitor v-else />
               </el-icon>
             </el-button>
@@ -344,7 +311,7 @@ import {
   Fold, HomeFilled, Reading, List, EditPen, Search,
   Document, DataAnalysis, Money, Setting, ArrowDown,
   UserFilled, SwitchButton, DataBoard, Coin, CopyDocument, SetUp,
-  Moon, Sunny, Monitor, Plus, Bell, Notebook, ChatLineRound, Lock, Close, Check, Download, Box, TrendCharts,
+  Moon, Sunny, Monitor, Notebook, ChatLineRound, Lock, Close, Check, Download, Box, TrendCharts,
 } from '@element-plus/icons-vue'
 import { useStore } from '@/stores/store.js'
 import { calcLevel } from '@/data/xp-system.js'
@@ -445,17 +412,8 @@ const showActivation = ref(false)
 const showIntegrity = ref(false)
 const activated = ref(isActivated())
 function refreshActivated() { activated.value = isActivated() }
-async function handleLicenseClick() {
-  if (activated.value) {
-    try {
-      await ElMessageBox.confirm(
-        '确定要更新激活码吗？更新后当前激活码将失效。',
-        '更新激活码',
-        { confirmButtonText: '确定', cancelButtonText: '取消', type: 'warning' }
-      )
-    } catch { return } // 取消操作
-  }
-  showActivation.value = true
+function handleLicenseClick() {
+  router.push('/system/activation')
 }
 function onActivated() {
   refreshActivated()
@@ -560,38 +518,27 @@ function handleKeydown(e) {
   }
 }
 
-// ----- 通知 & 快速新建 -----
-const pendingCount = computed(() => {
-  // 当前简单实现：检查是否有待审核凭证
-  try { return store.vouchers?.filter(v => v.status === 'draft')?.length || 0 }
-  catch { return 0 }
-})
-
+// ----- 快速新建 -----
 function quickNew(type) {
   const map = { voucher: '/accounting/voucher/entry', subject: '/accounting/subjects', report: '/reports/custom' }
   if (map[type]) router.push(map[type])
 }
 
 function openNotifications() {
-  router.push('/accounting/voucher/query')
+  router.push('/dashboard')
 }
 
 // ----- 主题切换 -----
-const THEMES = ['ink', 'classic', 'dark']
+const THEMES = ['ink', 'classic']
 const currentTheme = ref(localStorage.getItem('jd_theme') || 'ink')
 const themeTooltip = computed(() => {
-  const map = { ink: '水墨·国风', classic: '经典·蓝白', dark: '深邃·暗色' }
+  const map = { ink: '水墨·国风', classic: '经典·蓝白' }
   return map[currentTheme.value] || '切换主题'
 })
 
 function applyTheme(theme) {
   document.documentElement.setAttribute('data-theme', theme)
-  // Element Plus 暗色模式：dark class 驱动其组件变量
-  if (theme === 'dark') {
-    document.documentElement.classList.add('dark')
-  } else {
-    document.documentElement.classList.remove('dark')
-  }
+  document.documentElement.classList.remove('dark')
   localStorage.setItem('jd_theme', theme)
   currentTheme.value = theme
 }
@@ -673,7 +620,7 @@ function handleLogout() {
 .sidebar-brand { display: flex; align-items: center; gap: 10px; }
 .sidebar-brand.collapsed { justify-content: center; }
 .brand-wrapper { display: flex; flex-direction: column; line-height: 1.2; }
-.brand-text { font-size: 16px; font-weight: 700; color: #fff; letter-spacing: 2px; font-family: 'STKaiti', 'KaiTi', 'Microsoft YaHei', serif; }
+.brand-text { font-size: 18px; font-weight: 700; color: #fff; letter-spacing: 2px; font-family: 'STKaiti', 'KaiTi', 'Microsoft YaHei', serif; }
 .brand-version { font-size: 10px; color: rgba(255,255,255,0.55); letter-spacing: 0.5px; }
 
 /* 水墨印章 */
@@ -710,15 +657,14 @@ function handleLogout() {
 .header-breadcrumb { margin-left: 4px; }
 .header-breadcrumb :deep(.el-breadcrumb__inner) { font-size: 13px; color: var(--text-secondary); }
 .header-right { display: flex; align-items: center; gap: 12px; }
+.header-right .theme-btn,
+.header-right .feedback-btn { margin: 0 !important; padding: 2px !important; min-width: 0 !important; min-height: 0 !important; }
+.header-right .theme-btn .el-icon,
+.header-right .feedback-btn .el-icon { margin: 0 !important; }
 .role-switcher { cursor: pointer; }
 .role-badge { display: flex; align-items: center; }
 .user-info { display: flex; align-items: center; gap: 6px; cursor: pointer; padding: 4px 8px; border-radius: 4px; transition: background 0.2s; }
 .user-info:hover { background: var(--bg); }
-.quick-new-btn { font-weight: 500; }
-.quick-new-btn :deep(.el-icon) { margin-right: 2px; }
-.notification-badge { margin-top: 4px; }
-.notif-btn { color: var(--text-secondary) !important; font-size: 16px; padding: 4px; }
-.notif-btn:hover { color: var(--accent) !important; }
 .theme-btn { color: var(--text-secondary) !important; font-size: 16px; transition: transform 0.3s ease !important; }
 .theme-btn:hover { transform: rotate(15deg) scale(1.1); }
 .user-avatar { background-color: var(--accent); }
@@ -734,23 +680,23 @@ function handleLogout() {
   margin: 4px 12px;
   border: 1px solid var(--el-color-warning, #e6a23c);
   border-radius: 6px;
-  background: rgba(230, 162, 60, 0.08);
-  color: var(--el-color-warning, #e6a23c);
+  background: color-mix(in srgb, var(--accent, #e6a23c) 10%, transparent);
+  color: var(--accent, #e6a23c);
   font-size: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
   user-select: none;
 }
 .license-badge:hover {
-  background: rgba(230, 162, 60, 0.15);
+  background: color-mix(in srgb, var(--accent, #e6a23c) 20%, transparent);
 }
 .license-badge.unauthorized {
-  border-color: #909399;
-  background: rgba(144, 147, 153, 0.08);
-  color: #909399;
+  border-color: var(--text-light);
+  background: color-mix(in srgb, var(--text-light) 10%, transparent);
+  color: var(--text-light);
 }
 .license-badge.unauthorized:hover {
-  background: rgba(144, 147, 153, 0.15);
+  background: color-mix(in srgb, var(--text-light) 20%, transparent);
 }
 .license-badge.collapsed {
   padding: 6px 0;

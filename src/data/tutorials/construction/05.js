@@ -493,13 +493,13 @@ const tasks = [
     tip: '月末将各损益类科目余额转入本年利润。收入类科目余额从借方转出（余额结平），费用类科目余额从贷方转出（余额结平）。差额即为本月利润总额。',
     entries: [
       { subjectCode: '6001', debit: 1001000, credit: 0, summary: '结转主营业务收入', explanation: '收入类科目余额转入本年利润，增加本年利润。' },
-      { subjectCode: '4103', debit: 0, credit: 1001000, summary: '收入转入本年利润', explanation: '本年利润增加1,001,000元。' },
-      { subjectCode: '4103', debit: 972900, credit: 0, summary: '费用转入本年利润', explanation: '费用合计972,900元转入本年利润。' },
       { subjectCode: '6401', debit: 0, credit: 900000, summary: '结转主营业务成本', explanation: '主营业务成本900,000元结转至本年利润。' },
       { subjectCode: '6403', debit: 0, credit: 240, summary: '结转税金及附加', explanation: '税金及附加240元结转至本年利润。' },
-      { subjectCode: '660201', debit: 0, credit: 69510, summary: '结转管理费用', explanation: '管理费用69,510元结转至本年利润。' },
+      { subjectCode: '660201', debit: 0, credit: 71710, summary: '结转管理费用', explanation: '管理费用69,510元结转至本年利润。' },
       { subjectCode: '6603', debit: 0, credit: 450, summary: '结转财务费用', explanation: '财务费用450元结转至本年利润。' },
-      { subjectCode: '6701', debit: 0, credit: 2700, summary: '结转资产减值损失', explanation: '资产减值损失2,700元结转至本年利润。' }],
+      { subjectCode: '6701', debit: 0, credit: 2700, summary: '结转资产减值损失', explanation: '资产减值损失2,700元结转至本年利润。' },
+      { subjectCode: '4103', debit: 0, credit: 25900, summary: '费用转入本年利润', explanation: '费用合计972,900元转入本年利润。' }
+    ],
     documents: [
       { type: 'text', label: '损益结转计算表', docTitle: '2026年5月损益结转计算表', content: '收入1,001,000元；费用合计972,900元（主营成本900,000+税金240+管理费用69,510+财务费用450+资产减值损失2,700）；利润总额=1,001,000-972,900=28,100元。', signature: '赵会计' }]},
   {

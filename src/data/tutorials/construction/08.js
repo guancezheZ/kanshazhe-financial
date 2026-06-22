@@ -497,13 +497,12 @@ const tasks = [
     tip: '月末将各损益类科目余额转入本年利润。收入类余额从借方转出（余额归零），费用类余额从贷方转出（余额归零）。差额为税前利润。如有财务费用贷方余额（利息收入>手续费），应从借方转出增加利润。',
     entries: [
       { subjectCode: '6001', debit: 550000, credit: 0, summary: '结转主营业务收入', explanation: '主营业务收入余额转出，收入类科目结转后余额为零。' },
-      { subjectCode: '4103', debit: 0, credit: 550000, summary: '收入转入本年利润', explanation: '本年利润增加550,000元，为已实现工程收入。' },
-      { subjectCode: '6603', debit: 4850, credit: 0, summary: '结转财务费用（净利息收入）', explanation: '财务费用净贷方余额（利息收入5,200-手续费350=4,850）从借方转出，增加本年利润。' },
-      { subjectCode: '4103', debit: 0, credit: 4850, summary: '财务费用净收入转入利润', explanation: '本年利润增加4,850元。利息收入大于手续费支出，财务费用为净收入。' },
-      { subjectCode: '4103', debit: 423568, credit: 0, summary: '费用类科目转入本年利润', explanation: '管理费用39,500+税金及附加4,068+主营业务成本380,000=423,568元。' },
+      { subjectCode: '6603', debit: 5200, credit: 0, summary: '结转财务费用（净利息收入）', explanation: '财务费用净贷方余额（利息收入5,200-手续费350=4,850）从借方转出，增加本年利润。' },
       { subjectCode: '6401', debit: 0, credit: 380000, summary: '结转主营业务成本', explanation: '主营业务成本380,000元结转至本年利润，余额归零。' },
       { subjectCode: '6403', debit: 0, credit: 4068, summary: '结转税金及附加', explanation: '税金及附加4,068元结转至本年利润，余额归零。' },
-      { subjectCode: '660201', debit: 0, credit: 39500, summary: '结转管理费用', explanation: '管理费用39,500元结转至本年利润，余额归零。明细：工资22,000+社保公积金9,000+折旧2,000+水电办公3,500+支票工本费200+办公用品2,800=39,500元。' }],
+      { subjectCode: '660201', debit: 0, credit: 42000, summary: '结转管理费用', explanation: '管理费用39,500元结转至本年利润，余额归零。明细：工资22,000+社保公积金9,000+折旧2,000+水电办公3,500+支票工本费200+办公用品2,800=39,500元。' },
+      { subjectCode: '4103', debit: 0, credit: 129132, summary: '费用类科目转入本年利润', explanation: '管理费用39,500+税金及附加4,068+主营业务成本380,000=423,568元。' }
+    ],
     documents: [
       { type: 'text', label: '损益结转计算表', docTitle: '2026年8月损益结转计算表', signature: '赵会计', content: `收入类：
   主营业务收入：550,000元

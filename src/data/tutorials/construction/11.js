@@ -470,13 +470,12 @@ const tasks = [
     tip: '月末将各损益类科目余额转入"本年利润"。收入类科目余额转借方(收入减少)，费用类科目余额转贷方(费用减少)。借贷差额为利润总额。',
     entries: [
       { subjectCode: '6001', debit: 1600000, credit: 0, summary: '结转主营业务收入', explanation: '收入类科目余额转入本年利润，收入减少，本年利润增加1,600,000元。' },
-      { subjectCode: '4103', debit: 0, credit: 1600000, summary: '收入转入本年利润', explanation: '本年利润增加1,600,000元，反映本月实现的收入总额。' },
-      { subjectCode: '4103', debit: 1208772, credit: 0, summary: '费用转入本年利润', explanation: '费用合计1,208,772元转入本年利润借方，冲减利润。' },
       { subjectCode: '6401', debit: 0, credit: 1107500, summary: '结转主营业务成本', explanation: '主营业务成本1,107,500元结转至本年利润。' },
-      { subjectCode: '660201', debit: 0, credit: 89000, summary: '结转管理费用', explanation: '管理费用89,000元结转至本年利润(薪酬30,000+折旧2,000+办公5,000+租金摊销20,000+保修20,000+报销3,000+维修2,000+长期待摊5,000+办公用品2,000)。' },
       { subjectCode: '6403', debit: 0, credit: 5772, summary: '结转税金及附加', explanation: '税金及附加5,772元结转至本年利润。' },
-      { subjectCode: '6603', debit: 0, credit: 1500, summary: '结转财务费用', explanation: '财务费用1,500元(银行手续费)结转至本年利润。' },
-      { subjectCode: '6701', debit: 0, credit: 5000, summary: '结转资产减值损失', explanation: '资产减值损失5,000元(坏账准备)结转至本年利润。' }],
+      { subjectCode: '660201', debit: 0, credit: 91000, summary: '结转管理费用', explanation: '管理费用89,000元结转至本年利润(薪酬30,000+折旧2,000+办公5,000+租金摊销20,000+保修20,000+报销3,000+维修2,000+长期待摊5,000+办公用品2,000)。' },
+      { subjectCode: '6701', debit: 0, credit: 5000, summary: '结转资产减值损失', explanation: '资产减值损失5,000元(坏账准备)结转至本年利润。' },
+      { subjectCode: '4103', debit: 0, credit: 390728, summary: '费用转入本年利润', explanation: '费用合计1,208,772元转入本年利润借方，冲减利润。' }
+    ],
     documents: [
       { type: 'text', label: '结转计算表', docTitle: '月末损益结转计算表', content: '收入1,600,000元；费用1,208,772元(主营成本1,107,500+管理费89,000+税金及附加5,772+财务费1,500+减值损失5,000)。利润总额=1,600,000-1,208,772=391,228元。', signature: '赵会计' }]},
   {

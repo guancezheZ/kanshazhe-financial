@@ -67,9 +67,11 @@ const DEFAULT_SUBJECTS = [
   { id: 's-1221', code: '1221', name: '其他应收款', type: SUBJECT_TYPE.ASSET, parentId: null, isLeaf: true, opened: true },
   { id: 's-1231', code: '1231', name: '坏账准备', type: SUBJECT_TYPE.ASSET, parentId: null, isLeaf: true, opened: true },
   { id: 's-1401', code: '1401', name: '材料采购', type: SUBJECT_TYPE.ASSET, parentId: null, isLeaf: true, opened: true },
+  { id: 's-1402', code: '1402', name: '在途物资', type: SUBJECT_TYPE.ASSET, parentId: null, isLeaf: true, opened: true },
   { id: 's-1403', code: '1403', name: '原材料', type: SUBJECT_TYPE.ASSET, parentId: null, isLeaf: true, opened: true },
   { id: 's-1405', code: '1405', name: '库存商品', type: SUBJECT_TYPE.ASSET, parentId: null, isLeaf: true, opened: true },
   { id: 's-1406', code: '1406', name: '发出商品', type: SUBJECT_TYPE.ASSET, parentId: null, isLeaf: true, opened: true },
+  { id: 's-1407', code: '1407', name: '商品进销差价', type: SUBJECT_TYPE.ASSET, parentId: null, isLeaf: true, opened: true },
   { id: 's-1408', code: '1408', name: '委托加工物资', type: SUBJECT_TYPE.ASSET, parentId: null, isLeaf: true, opened: true },
   { id: 's-1411', code: '1411', name: '周转材料', type: SUBJECT_TYPE.ASSET, parentId: null, isLeaf: true, opened: true },
   { id: 's-1461', code: '1461', name: '存货跌价准备', type: SUBJECT_TYPE.ASSET, parentId: null, isLeaf: true, opened: true },
@@ -200,11 +202,7 @@ const COMMERCIAL_SUBJECTS = DEFAULT_SUBJECTS
     return { ...s }
   })
 
-// 添加商业特有科目：在途物资(1402)、商品进销差价(1407)
-COMMERCIAL_SUBJECTS.push(
-  { id: 's-1402', code: '1402', name: '在途物资', type: SUBJECT_TYPE.ASSET, parentId: null, isLeaf: true, opened: true },
-  { id: 's-1407', code: '1407', name: '商品进销差价', type: SUBJECT_TYPE.ASSET, parentId: null, isLeaf: true, opened: true },
-)
+// 注：在途物资(1402)、商品进销差价(1407) 已在 DEFAULT_SUBJECTS 中定义
 
 /**
  * 服务业（管理咨询/软件开发）科目表
@@ -216,7 +214,7 @@ COMMERCIAL_SUBJECTS.push(
 const SERVICE_SUBJECTS = DEFAULT_SUBJECTS
   .filter(s => {
     const exclude = [
-      's-1401', 's-1403', 's-1405', 's-1406', 's-1408', // 无存货科目
+      's-1401', 's-1402', 's-1403', 's-1405', 's-1406', 's-1407', 's-1408', // 无存货科目
       's-1461',                                           // 无存货跌价准备
       's-5001', 's-500101', 's-500102', 's-500103',       // 无生产成本
       's-5101',                                           // 无制造费用
@@ -256,7 +254,7 @@ SERVICE_SUBJECTS.push(
 const CONSTRUCTION_SUBJECTS = DEFAULT_SUBJECTS
   .filter(s => {
     const exclude = [
-      's-1401', 's-1403', 's-1405', 's-1406', 's-1408', 's-1411', 's-1461', // 无存货（材料直接入合同履约成本）
+      's-1401', 's-1402', 's-1403', 's-1405', 's-1406', 's-1407', 's-1408', 's-1411', 's-1461', // 无存货（材料直接入合同履约成本）
       's-5001', 's-500101', 's-500102', 's-500103', // 无生产成本
       's-5101',                                       // 无制造费用（用合同履约成本-间接费用替代）
       's-5201',                                       // 无劳务成本（用合同履约成本替代）

@@ -302,11 +302,10 @@ const tasks = [
     tip: '月末将各损益类科目余额转入本年利润。收入类余额转借方，费用类余额转贷方。',
     entries: [
       { subjectCode: '6001', debit: 455000, credit: 0, summary: '结转主营业务收入', explanation: '收入类科目余额转入本年利润，增加本年利润。' },
-      { subjectCode: '4103', debit: 0, credit: 455000, summary: '收入转入本年利润', explanation: '本年利润增加455,000元。' },
-      { subjectCode: '4103', debit: 410100, credit: 0, summary: '费用转入本年利润', explanation: '费用合计：355,000+51,500+3,600=410,100元。' },
       { subjectCode: '6401', debit: 0, credit: 355000, summary: '结转主营业务成本', explanation: '主营业务成本结转至本年利润。' },
       { subjectCode: '660201', debit: 0, credit: 51500, summary: '结转管理费用', explanation: '管理费用51,500元结转至本年利润。' },
-      { subjectCode: '6403', debit: 0, credit: 3600, summary: '结转税金及附加', explanation: '税金及附加3,600元结转至本年利润。' }],
+      { subjectCode: '4103', debit: 0, credit: 48500, summary: '费用转入本年利润', explanation: '费用合计：355,000+51,500+3,600=410,100元。' }
+    ],
     documents: [
       { type: 'text', label: '结转计算表', docTitle: '月末损益结转计算表', content: '收入455,000元；费用410,100元；利润总额=455,000-410,100=44,900元。', signature: '赵会计' }]},
   {
