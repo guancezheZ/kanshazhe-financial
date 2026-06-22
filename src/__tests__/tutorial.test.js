@@ -42,6 +42,27 @@ describe('教程数据 - 结构', () => {
     }
   })
 
+  it('1月有分录的任务都有原始凭证（数量正确）', () => {
+    // 预期附件数量映射（仅记录非1个的，默认1个）
+    const EXPECTED = {
+      '2026-01-03_购买办公用品': 2,
+      '2026-01-14_支付水电费': 2,
+      '2026-01-18_现销商品': 2,
+      '2026-01-28_现金折扣': 2,
+      '2026-01-29_缴纳社保公积金': 2,
+    }
+    const tasks = getTutorials('01')
+    for (const t of tasks) {
+      if (t.entries.length === 0 && t.nextAction) continue
+      if (t.entries.length === 0) continue
+      expect(t.documents).toBeDefined()
+      expect(Array.isArray(t.documents)).toBe(true)
+      const key = t.date + '_' + t.title.replace(/ .*/, '')
+      const expected = EXPECTED[key] || 1
+      expect(t.documents.length).toBe(expected)
+    }
+  })
+
   it('2月份有30个教学任务', () => {
     const tasks = getTutorials('02')
     expect(tasks.length).toBe(30)
