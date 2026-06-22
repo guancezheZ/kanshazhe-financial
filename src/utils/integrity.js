@@ -26,7 +26,7 @@ const MODULE_MAP = {
 const EXPECTED_HASHES = {
   "xp-system": "0435847d66102477badc0a8f017171396c76d6913baef41821ad72f931227a26",
   "scenarios": "6dd27583e14cd4a2704447aa605074e8989e4331c8cb77c53d678eff9f9a67f6",
-  "year1": "de4b46c630a07edecd4f0ba8a42f5a371749d8ef40adecf8f3b842d3290e5f71",
+  "year1": "新哈希",
   "commercial": "349b244ccb57659c754ae7974c87ae2f3831631c18f4fd57173a764f0d42a4fa",
   "service": "66919e8aab4a54be74f5591412482ae1c104426c1fde2204b070857ecdd7608e",
   "construction": "88fe5adc96c805395b6ccdfb4a221de34448796b0b27994d8509c4dfcbf6b523",
