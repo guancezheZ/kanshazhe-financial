@@ -12,7 +12,7 @@ import { getScenarioTutorials } from '@/data/scenarios.js'
 import { compareAnswers } from '@/data/tutorials/year1.js'
 
 const SCENARIOS = [
-  { id: 'manufacturing', name: '制造业', count: 356 },
+  { id: 'manufacturing', name: '制造业', count: 353 },
   { id: 'commercial', name: '商业企业', count: 521 },
   { id: 'service', name: '服务业', count: 502 },
   { id: 'construction', name: '建筑业', count: 501 },
