@@ -8,7 +8,37 @@ const aug = [
     entries: [{ subjectCode: '221101', summary: '发7月工资', debit: 213000, credit: 0 }, { subjectCode: '100201', summary: '实发', debit: 0, credit: 176000 }, { subjectCode: '224101', summary: '代扣社保', debit: 0, credit: 21000 }, { subjectCode: '224102', summary: '代扣公积金', debit: 0, credit: 11000 }, { subjectCode: '222110', summary: '代扣个税', debit: 0, credit: 5000 }],
     documents: [
       { type: 'bank', label: '代发工资回单', date: '2026-08-03', totalAmount: 176000, payer: '雲帆管理咨询有限公司', payeeName: '员工代发户', content: '7月工资代发（共52人）', refNo: 'HD202608030001' },
-      { type: 'text', label: '工资表', docTitle: '7 月 工 资 发 放 表', date: '2026-08-03', stampText: '人力资源部\n工资专用章', content: '期间：2026年7月\n应发工资总额：213,000.00元\n扣款：社保21,000+公积金11,000+个税5,000=37,000元\n实发合计：176,000.00元（银行代发）\n\n制表：王出纳\n审核：李会计' }] },
+      { type: 'text', label: '工资表', docTitle: '7 月 工 资 发 放 表', date: '2026-08-03', stampText: '人力资源部\n工资专用章', content: '期间：2026年7月\n应发工资总额：213,000.00元\n扣款：社保21,000+公积金11,000+个税5,000=37,000元\n实发合计：176,000.00元（银行代发）\n\n制表：王出纳\n审核：李会计' ,
+      headers: [
+        '项目',
+        '金额/说明'
+      ],
+      rows: [
+        [
+          '期间',
+          '2026年7月'
+        ],
+        [
+          '应发工资总额',
+          '213,000.00元'
+        ],
+        [
+          '扣款',
+          '社保21,000+公积金11,000+个税5,000=37,000元'
+        ],
+        [
+          '实发合计',
+          '176,000.00元（银行代发）'
+        ],
+        [
+          '制表',
+          '王出纳'
+        ],
+        [
+          '审核',
+          '李会计'
+        ],
+      ]}] },
   { date: '2026-08-04', role: 'accountant', title: '缴纳7月社保公积金', tags: ["工资社保"], difficulty: 1,
     entries: [{ subjectCode: '221102', summary: '企业社保', debit: 43000, credit: 0 }, { subjectCode: '224101', summary: '个人社保', debit: 21000, credit: 0 }, { subjectCode: '221102', summary: '企业公积金', debit: 22000, credit: 0 }, { subjectCode: '224102', summary: '个人公积金', debit: 11000, credit: 0 }, { subjectCode: '100201', summary: '支付', debit: 0, credit: 97000 }],
     documents: [
@@ -30,7 +60,45 @@ const aug = [
     description: '研发团队8月工资及费用。开发阶段条件判断：技术可行性已论证，符合资本化条件，转入资本化支出。',
     entries: [{ subjectCode: '530101', summary: '研发支出-资本化', debit: 65000, credit: 0, explanation: '研发支出——资本化支出增加。开发阶段符合资本化条件。' }, { subjectCode: '221101', summary: '应付研发工资', debit: 0, credit: 50000 }, { subjectCode: '100201', summary: '云资源费', debit: 0, credit: 15000 }],
     documents: [
-      { type: 'text', label: '研发支出归集表', docTitle: '研 发 支 出 归 集 表', date: '2026-08-08', stampText: '技术研发部\n财务专用章', content: '项目：雲帆智能管理分析平台 V1.0\n期间：2026年8月\n\n资本化支出：（开发阶段——技术可行性已论证）\n  研发人员工资：50,000元\n  云服务器及资源：15,000元\n  合计：65,000元\n\n开发阶段已满足资本化条件：\n1. 技术可行性已论证 ✓\n2. 有完成意图和能力 ✓\n3. 未来经济利益流入很可能 ✓\n4. 开发支出可可靠计量 ✓\n\n制表：李会计\n审核：赵会计主管' }] },
+      { type: 'text', label: '研发支出归集表', docTitle: '研 发 支 出 归 集 表', date: '2026-08-08', stampText: '技术研发部\n财务专用章', content: '项目：雲帆智能管理分析平台 V1.0\n期间：2026年8月\n\n资本化支出：（开发阶段——技术可行性已论证）\n  研发人员工资：50,000元\n  云服务器及资源：15,000元\n  合计：65,000元\n\n开发阶段已满足资本化条件：\n1. 技术可行性已论证 ✓\n2. 有完成意图和能力 ✓\n3. 未来经济利益流入很可能 ✓\n4. 开发支出可可靠计量 ✓\n\n制表：李会计\n审核：赵会计主管' ,
+      headers: [
+        '项目',
+        '金额/说明'
+      ],
+      rows: [
+        [
+          '项目',
+          '雲帆智能管理分析平台 V1.0'
+        ],
+        [
+          '期间',
+          '2026年8月'
+        ],
+        [
+          '资本化支出',
+          '（开发阶段——技术可行性已论证）'
+        ],
+        [
+          '研发人员工资',
+          '50,000元'
+        ],
+        [
+          '云服务器及资源',
+          '15,000元'
+        ],
+        [
+          '合计',
+          '65,000元'
+        ],
+        [
+          '制表',
+          '李会计'
+        ],
+        [
+          '审核',
+          '赵会计主管'
+        ],
+      ]}] },
   { date: '2026-08-09', role: 'accountant', title: '支付8月写字楼租金', tags: ["费用管理"], difficulty: 1,
     entries: [{ subjectCode: '660205', summary: '房租', debit: 22000, credit: 0 }, { subjectCode: '660205', summary: '物业费', debit: 3000, credit: 0 }, { subjectCode: '100201', summary: '付款', debit: 0, credit: 25000 }],
     documents: [
@@ -53,7 +121,37 @@ const aug = [
   { date: '2026-08-14', role: 'accountant', title: '摊销及折旧', tags: ["费用管理"], difficulty: 2, description: '摊销6800元+折旧5240元，合计12040元。',
     entries: [{ subjectCode: '6602', summary: '摊销', debit: 3400, credit: 0, explanation: '含SaaS3,000+无形资产400。' }, { subjectCode: '6602', summary: '折旧', debit: 2620, credit: 0 }, { subjectCode: '1208', summary: '摊销', debit: 0, credit: 3000 }, { subjectCode: '1702', summary: '累计摊销', debit: 0, credit: 400 }, { subjectCode: '1602', summary: '折旧', debit: 0, credit: 2620 }],
     documents: [
-      { type: 'text', label: '摊销折旧表', docTitle: '摊 销 折 旧 计 提 表', date: '2026-08-14', stampText: '财务专用章', content: '期间：2026年8月\n\nSaaS摊销：36,000÷12=3,000.00元\n无形资产摊销：400.00元\n折旧合计：2,620.00元\n\n合计：6,020.00元\n\n制表：李会计' }] },
+      { type: 'text', label: '摊销折旧表', docTitle: '摊 销 折 旧 计 提 表', date: '2026-08-14', stampText: '财务专用章', content: '期间：2026年8月\n\nSaaS摊销：36,000÷12=3,000.00元\n无形资产摊销：400.00元\n折旧合计：2,620.00元\n\n合计：6,020.00元\n\n制表：李会计' ,
+      headers: [
+        '项目',
+        '金额/说明'
+      ],
+      rows: [
+        [
+          '期间',
+          '2026年8月'
+        ],
+        [
+          'SaaS摊销',
+          '36,000÷12=3,000.00元'
+        ],
+        [
+          '无形资产摊销',
+          '400.00元'
+        ],
+        [
+          '折旧合计',
+          '2,620.00元'
+        ],
+        [
+          '合计',
+          '6,020.00元'
+        ],
+        [
+          '制表',
+          '李会计'
+        ],
+      ]}] },
   { date: '2026-08-15', role: 'accountant', title: '缴纳代扣个税', tags: ["税费"], difficulty: 1,
     entries: [{ subjectCode: '222110', summary: '个税', debit: 5000, credit: 0 }, { subjectCode: '100201', summary: '缴税', debit: 0, credit: 5000 }],
     documents: [
@@ -77,7 +175,45 @@ const aug = [
     entries: [{ subjectCode: '100201', summary: 'H公司SaaS订阅', debit: 180000, credit: 0 }, { subjectCode: '2232', summary: '预收H公司订阅', debit: 0, credit: 180000 }],
     documents: [
       { type: 'bank', label: '收款回单', date: '2026-08-21', totalAmount: 180000, payer: 'H科技有限公司', payerAccount: '6222 0100 **** 9999', payeeName: '雲帆管理咨询有限公司', payeeAccount: '6222 0200 **** 1234', content: 'SaaS订阅三年费用一次性付清', refNo: 'HD202608210008' },
-      { type: 'text', label: 'SaaS订阅合同', docTitle: 'SaaS 订 阅 服 务 合 同', date: '2026-08-21', stampText: '合同专用章', content: '甲方：H科技有限公司\n乙方：雲帆管理咨询有限公司\n\n产品：雲帆智能管理分析平台\n订阅期限：3年（2026年8月-2029年7月）\n年费：60,000元/年\n总金额：180,000元\n付款方式：签约日一次性付清三年\n收入确认：按月直线法确认，月收入15,000元' }] },
+      { type: 'text', label: 'SaaS订阅合同', docTitle: 'SaaS 订 阅 服 务 合 同', date: '2026-08-21', stampText: '合同专用章', content: '甲方：H科技有限公司\n乙方：雲帆管理咨询有限公司\n\n产品：雲帆智能管理分析平台\n订阅期限：3年（2026年8月-2029年7月）\n年费：60,000元/年\n总金额：180,000元\n付款方式：签约日一次性付清三年\n收入确认：按月直线法确认，月收入15,000元' ,
+      headers: [
+        '项目',
+        '金额/说明'
+      ],
+      rows: [
+        [
+          '甲方',
+          'H科技有限公司'
+        ],
+        [
+          '乙方',
+          '雲帆管理咨询有限公司'
+        ],
+        [
+          '产品',
+          '雲帆智能管理分析平台'
+        ],
+        [
+          '订阅期限',
+          '3年（2026年8月-2029年7月）'
+        ],
+        [
+          '年费',
+          '60,000元/年'
+        ],
+        [
+          '总金额',
+          '180,000元'
+        ],
+        [
+          '付款方式',
+          '签约日一次性付清三年'
+        ],
+        [
+          '收入确认',
+          '按月直线法确认，月收入15,000元'
+        ],
+      ]}] },
   { date: '2026-08-22', role: 'accountant', title: '确认H公司8月SaaS收入', tags: ["项目核算"], difficulty: 2,
     description: '按直线法确认H公司SaaS订阅8月收入15,000元。增值税6%=900元。',
     entries: [{ subjectCode: '2232', summary: 'H公司8月收入', debit: 15900, credit: 0 }, { subjectCode: '6051', summary: 'SaaS订阅收入', debit: 0, credit: 15000, explanation: '其他业务收入——SaaS订阅。' }, { subjectCode: '222101', summary: '销项税额', debit: 0, credit: 900 }],
@@ -87,22 +223,194 @@ const aug = [
     description: '计提8月工资。项目人员120,000+研发65,000+管理50,000=235,000元。',
     entries: [{ subjectCode: '520101', summary: '项目工资', debit: 120000, credit: 0 }, { subjectCode: '530101', summary: '研发资本化工资', debit: 50000, credit: 0 }, { subjectCode: '530102', summary: '研发费用化工', debit: 15000, credit: 0 }, { subjectCode: '6602', summary: '管理工资', debit: 50000, credit: 0 }, { subjectCode: '221101', summary: '应付工资', debit: 0, credit: 235000 }],
     documents: [
-      { type: 'text', label: '工资计算表', docTitle: '8 月 工 资 计 算 汇 总 表', date: '2026-08-23', stampText: '人力资源部\n工资专用章', content: '期间：2026年8月\n\n项目人员（在执项目E/G）：120,000元\n研发人员（资本化）：50,000元\n研发人员（费用化）：15,000元\n管理人员：50,000元\n\n应发合计：235,000元\n\n制表：王出纳\n审核：李会计' }] },
+      { type: 'text', label: '工资计算表', docTitle: '8 月 工 资 计 算 汇 总 表', date: '2026-08-23', stampText: '人力资源部\n工资专用章', content: '期间：2026年8月\n\n项目人员（在执项目E/G）：120,000元\n研发人员（资本化）：50,000元\n研发人员（费用化）：15,000元\n管理人员：50,000元\n\n应发合计：235,000元\n\n制表：王出纳\n审核：李会计' ,
+      headers: [
+        '项目',
+        '金额/说明'
+      ],
+      rows: [
+        [
+          '期间',
+          '2026年8月'
+        ],
+        [
+          '项目人员（在执项目E/G）',
+          '120,000元'
+        ],
+        [
+          '研发人员（资本化）',
+          '50,000元'
+        ],
+        [
+          '研发人员（费用化）',
+          '15,000元'
+        ],
+        [
+          '管理人员',
+          '50,000元'
+        ],
+        [
+          '应发合计',
+          '235,000元'
+        ],
+        [
+          '制表',
+          '王出纳'
+        ],
+        [
+          '审核',
+          '李会计'
+        ],
+      ]}] },
   { date: '2026-08-24', role: 'accountant', title: '计提社保公积金', tags: ["工资社保"], difficulty: 2, description: '计提企业社保及公积金，合计71,000元。',
     entries: [{ subjectCode: '520101', summary: '项目社保', debit: 24000, credit: 0 }, { subjectCode: '520101', summary: '项目公积金', debit: 12000, credit: 0 }, { subjectCode: '530101', summary: '研发资本化社保', debit: 10000, credit: 0 }, { subjectCode: '530101', summary: '研发资本化公积金', debit: 5000, credit: 0 }, { subjectCode: '530102', summary: '研发费用化社保', debit: 3000, credit: 0 }, { subjectCode: '530102', summary: '研发费用化公积金', debit: 1500, credit: 0 }, { subjectCode: '6602', summary: '管理社保', debit: 10500, credit: 0 }, { subjectCode: '6602', summary: '管理公积金', debit: 5000, credit: 0 }, { subjectCode: '221102', summary: '应付社保', debit: 0, credit: 47500 }, { subjectCode: '221102', summary: '应付公积金', debit: 0, credit: 23500 }],
     documents: [
-      { type: 'text', label: '社保公积金计提表', docTitle: '社 保 公 积 金 计 提 汇 总 表', date: '2026-08-24', stampText: '财务专用章', content: '期间：2026年8月\n\n社保（企业部分）：\n  项目人员：24,000元\n  研发资本化：10,000元\n  研发费用化：3,000元\n  管理人员：10,500元\n  小计：47,500元\n\n公积金（企业部分）：\n  项目人员：12,000元\n  研发资本化：5,000元\n  研发费用化：1,500元\n  管理人员：5,000元\n  小计：23,500元\n\n合计：71,000元\n\n制表：李会计' }] },
+      { type: 'text', label: '社保公积金计提表', docTitle: '社 保 公 积 金 计 提 汇 总 表', date: '2026-08-24', stampText: '财务专用章', content: '期间：2026年8月\n\n社保（企业部分）：\n  项目人员：24,000元\n  研发资本化：10,000元\n  研发费用化：3,000元\n  管理人员：10,500元\n  小计：47,500元\n\n公积金（企业部分）：\n  项目人员：12,000元\n  研发资本化：5,000元\n  研发费用化：1,500元\n  管理人员：5,000元\n  小计：23,500元\n\n合计：71,000元\n\n制表：李会计' ,
+      headers: [
+        '项目',
+        '金额/说明'
+      ],
+      rows: [
+        [
+          '期间',
+          '2026年8月'
+        ],
+        [
+          '项目人员',
+          '24,000元'
+        ],
+        [
+          '研发资本化',
+          '10,000元'
+        ],
+        [
+          '研发费用化',
+          '3,000元'
+        ],
+        [
+          '管理人员',
+          '10,500元'
+        ],
+        [
+          '小计',
+          '47,500元'
+        ],
+        [
+          '项目人员',
+          '12,000元'
+        ],
+        [
+          '研发资本化',
+          '5,000元'
+        ],
+        [
+          '研发费用化',
+          '1,500元'
+        ],
+        [
+          '管理人员',
+          '5,000元'
+        ],
+        [
+          '小计',
+          '23,500元'
+        ],
+        [
+          '合计',
+          '71,000元'
+        ],
+        [
+          '制表',
+          '李会计'
+        ],
+      ]}] },
   { date: '2026-08-25', role: 'accountant', title: '计提8月城建税及附加', tags: ["税费"], difficulty: 2,
     description: '销项税额=1,200(E)+900(G)+900(H)=3,000元。',
     entries: [{ subjectCode: '6403', summary: '城建税', debit: 210, credit: 0 }, { subjectCode: '6403', summary: '教育附加', debit: 90, credit: 0 }, { subjectCode: '6403', summary: '地方教育附加', debit: 60, credit: 0 }, { subjectCode: '222103', summary: '应交城建税', debit: 0, credit: 210 }, { subjectCode: '222104', summary: '应交附加', debit: 0, credit: 150 }],
     documents: [
-      { type: 'text', label: '税费计算表', docTitle: '城 建 税 及 教 育 附 加 计 提 表', date: '2026-08-25', stampText: '财务专用章', content: '期间：2026年8月\n计税依据：应纳增值税3,000.00元\n\n城建税（7%）：3,000×7%=210.00元\n教育附加（3%）：3,000×3%=90.00元\n地方教育附加（2%）：3,000×2%=60.00元\n\n合计：360.00元\n\n制表：李会计' }] },
+      { type: 'text', label: '税费计算表', docTitle: '城 建 税 及 教 育 附 加 计 提 表', date: '2026-08-25', stampText: '财务专用章', content: '期间：2026年8月\n计税依据：应纳增值税3,000.00元\n\n城建税（7%）：3,000×7%=210.00元\n教育附加（3%）：3,000×3%=90.00元\n地方教育附加（2%）：3,000×2%=60.00元\n\n合计：360.00元\n\n制表：李会计' ,
+      headers: [
+        '项目',
+        '金额/说明'
+      ],
+      rows: [
+        [
+          '期间',
+          '2026年8月'
+        ],
+        [
+          '计税依据',
+          '应纳增值税3,000.00元'
+        ],
+        [
+          '城建税（7%）',
+          '3,000×7%=210.00元'
+        ],
+        [
+          '教育附加（3%）',
+          '3,000×3%=90.00元'
+        ],
+        [
+          '地方教育附加（2%）',
+          '3,000×2%=60.00元'
+        ],
+        [
+          '合计',
+          '360.00元'
+        ],
+        [
+          '制表',
+          '李会计'
+        ],
+      ]}] },
   { date: '2026-08-26', role: 'accountant', title: '月末期间损益结转', tags: ["期末"], difficulty: 3,
     description: '收入：E年框20,000+G运维15,000+H订阅15,000=50,000。',
     entries: [{ subjectCode: '6001', summary: '转主营收入', debit: 35000, credit: 0 }, { subjectCode: '6051', summary: '转其他收入', debit: 15000, credit: 0 }, { subjectCode: '4103', summary: '收入转入', debit: 0, credit: 50000 },
       { subjectCode: '4103', summary: '费用转入', debit: 45000, credit: 0 }, { subjectCode: '6602', summary: '转管理费', debit: 0, credit: 30000 }, { subjectCode: '6601', summary: '转销售费', debit: 0, credit: 15000 }],
     documents: [
-      { type: 'text', label: '结转表', docTitle: '期 间 损 益 结 转 表', date: '2026-08-31', stampText: '已结转', content: '结转期间：2026年8月\n\n收入类→本年利润：\n  主营业务收入：35,000元（E年框20,000+G运维15,000）\n  其他业务收入：15,000元（H订阅）\n  合计：50,000元\n\n费用类→本年利润：\n  管理费用：30,000元\n  销售费用：15,000元（内测推广+展会）\n  合计：45,000元\n\n本月净利润：5,000元\n（SaaS收入模式初见成效）\n\n制表：李会计' }] },
+      { type: 'text', label: '结转表', docTitle: '期 间 损 益 结 转 表', date: '2026-08-31', stampText: '已结转', content: '结转期间：2026年8月\n\n收入类→本年利润：\n  主营业务收入：35,000元（E年框20,000+G运维15,000）\n  其他业务收入：15,000元（H订阅）\n  合计：50,000元\n\n费用类→本年利润：\n  管理费用：30,000元\n  销售费用：15,000元（内测推广+展会）\n  合计：45,000元\n\n本月净利润：5,000元\n（SaaS收入模式初见成效）\n\n制表：李会计' ,
+      headers: [
+        '项目',
+        '金额/说明'
+      ],
+      rows: [
+        [
+          '结转期间',
+          '2026年8月'
+        ],
+        [
+          '主营业务收入',
+          '35,000元（E年框20,000+G运维15,000）'
+        ],
+        [
+          '其他业务收入',
+          '15,000元（H订阅）'
+        ],
+        [
+          '合计',
+          '50,000元'
+        ],
+        [
+          '管理费用',
+          '30,000元'
+        ],
+        [
+          '销售费用',
+          '15,000元（内测推广+展会）'
+        ],
+        [
+          '合计',
+          '45,000元'
+        ],
+        [
+          '本月净利润',
+          '5,000元'
+        ],
+        [
+          '制表',
+          '李会计'
+        ],
+      ]}] },
   { date: '2026-08-28', role: 'accountant', title: '提取备用金', tags: ["资金管理"], difficulty: 1,
     entries: [{ subjectCode: '1001', summary: '备用金', debit: 2000, credit: 0 }, { subjectCode: '100201', summary: '提现', debit: 0, credit: 2000 }],
     documents: [
@@ -110,12 +418,72 @@ const aug = [
   { date: '2026-08-29', role: 'accountant', title: '计提无形资产摊销', tags: ["费用管理"], difficulty: 2, description: '计提无形资产摊销400元。',
     entries: [{ subjectCode: '6602', summary: '摊销', debit: 400, credit: 0 }, { subjectCode: '1702', summary: '累计摊销', debit: 0, credit: 400 }],
     documents: [
-      { type: 'text', label: '摊销计算表', docTitle: '无 形 资 产 摊 销 计 算 表', date: '2026-08-29', stampText: '财务专用章', content: '无形资产：软件项目管理工具（永久许可）\n原值：24,000.00元\n摊销期限：5年（60个月）\n月摊销额：24,000÷60=400.00元\n累计摊销：1,600.00元\n\n制表：李会计' }] },
+      { type: 'text', label: '摊销计算表', docTitle: '无 形 资 产 摊 销 计 算 表', date: '2026-08-29', stampText: '财务专用章', content: '无形资产：软件项目管理工具（永久许可）\n原值：24,000.00元\n摊销期限：5年（60个月）\n月摊销额：24,000÷60=400.00元\n累计摊销：1,600.00元\n\n制表：李会计' ,
+      headers: [
+        '项目',
+        '金额/说明'
+      ],
+      rows: [
+        [
+          '无形资产',
+          '软件项目管理工具（永久许可）'
+        ],
+        [
+          '原值',
+          '24,000.00元'
+        ],
+        [
+          '摊销期限',
+          '5年（60个月）'
+        ],
+        [
+          '月摊销额',
+          '24,000÷60=400.00元'
+        ],
+        [
+          '累计摊销',
+          '1,600.00元'
+        ],
+        [
+          '制表',
+          '李会计'
+        ],
+      ]}] },
   { date: '2026-08-30', role: 'accountant', title: '期末结转劳务成本', tags: ["项目核算", "期末"], difficulty: 3,
     description: '结转已确认收入对应的成本。E/G/H三个合同均为纯服务类，本月直接成本较少，主要为人工。预估成本20,000元。',
     entries: [{ subjectCode: '6401', summary: '结转人工', debit: 20000, credit: 0 }, { subjectCode: '520101', summary: '转人工', debit: 0, credit: 20000 }],
     documents: [
-      { type: 'text', label: '成本计算表', docTitle: '服 务 成 本 结 转 计 算 表', date: '2026-08-30', stampText: '财务专用章', content: '结转期间：2026年8月\n\nE公司年框人工成本：10,000元\nG公司运维人工成本：5,000元\nH公司SaaS人工成本：5,000元\n\n合计结转：20,000元\n\n制表：李会计' }] },
+      { type: 'text', label: '成本计算表', docTitle: '服 务 成 本 结 转 计 算 表', date: '2026-08-30', stampText: '财务专用章', content: '结转期间：2026年8月\n\nE公司年框人工成本：10,000元\nG公司运维人工成本：5,000元\nH公司SaaS人工成本：5,000元\n\n合计结转：20,000元\n\n制表：李会计' ,
+      headers: [
+        '项目',
+        '金额/说明'
+      ],
+      rows: [
+        [
+          '结转期间',
+          '2026年8月'
+        ],
+        [
+          'E公司年框人工成本',
+          '10,000元'
+        ],
+        [
+          'G公司运维人工成本',
+          '5,000元'
+        ],
+        [
+          'H公司SaaS人工成本',
+          '5,000元'
+        ],
+        [
+          '合计结转',
+          '20,000元'
+        ],
+        [
+          '制表',
+          '李会计'
+        ],
+      ]}] },
   { date: '2026-08-28', role: 'accountant', title: '参加行业展会·市场推广', tags: ["费用管理"], difficulty: 1,
     entries: [{ subjectCode: '6601', summary: '展会费', debit: 8000, credit: 0 }, { subjectCode: '100201', summary: '付款', debit: 0, credit: 8000 }],
     documents: [

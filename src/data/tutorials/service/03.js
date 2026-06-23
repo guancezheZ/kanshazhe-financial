@@ -27,7 +27,33 @@ const mar = [
       { subjectCode: '222110', summary: '代扣个税', debit: 0, credit: 4000, explanation: '应交个人所得税增加。' }],
     documents: [
       { type: 'bank', label: '代发工资回单', date: '2026-03-02', totalAmount: 149000, payer: '雲帆管理咨询有限公司', payeeName: '员工代发户', content: '2月工资代发（共48人）', refNo: 'HD202603020001' },
-      { type: 'text', label: '工资表', docTitle: '2 月 工 资 发 放 表', stampText: '人力资源部\n工资专用章', content: '应发：180,000\n扣款：社保18,000+公积金9,000+个税4,000=31,000\n实发：149,000\n\n制表：王出纳\n审核：李会计' }]
+      { type: 'text', label: '工资表', docTitle: '2 月 工 资 发 放 表', stampText: '人力资源部\n工资专用章', content: '应发：180,000\n扣款：社保18,000+公积金9,000+个税4,000=31,000\n实发：149,000\n\n制表：王出纳\n审核：李会计' ,
+      headers: [
+        '项目',
+        '内容'
+      ],
+      rows: [
+        [
+          '应发',
+          '180,000'
+        ],
+        [
+          '扣款',
+          '社保18,000+公积金9,000+个税4,000=31,000'
+        ],
+        [
+          '实发',
+          '149,000'
+        ],
+        [
+          '制表',
+          '王出纳'
+        ],
+        [
+          '审核',
+          '李会计'
+        ],
+      ]}]
   },
   {
     date: '2026-03-03', role: 'accountant', title: '缴纳2月社保及公积金', tags: ["工资社保"], difficulty: 1,
@@ -59,7 +85,29 @@ const mar = [
       { subjectCode: '222101', summary: '销项税额6%', debit: 0, credit: 7200, explanation: '应交增值税增加。120,000×6%=7,200。' }],
     documents: [
       { type: 'invoice', label: '增值税专用发票', region: '北京', invoiceType: '专用', invoiceNo: '1100432114', date: '2026年03月05日', buyer: 'B公司', seller: '雲帆管理咨询有限公司', lineItems: [{ name: '管理咨询服务（终验尾款）', unit: '项', qty: 1, price: 120000, amount: 120000, taxRate: '6%', tax: 7200 }], totalAmount: 127200 },
-      { type: 'text', label: '终验报告', docTitle: '项 目 终 验 确 认 书', date: '2026-03-05', stampText: 'B公司\n项目验收章', content: '项目：2026年度战略管理咨询\n终验结论：全部阶段通过 ✓\n交付物清单：战略规划方案、组织设计、流程优化、实施辅导记录\n\n甲方代表：张总   乙方：王顾问' }]
+      { type: 'text', label: '终验报告', docTitle: '项 目 终 验 确 认 书', date: '2026-03-05', stampText: 'B公司\n项目验收章', content: '项目：2026年度战略管理咨询\n终验结论：全部阶段通过 ✓\n交付物清单：战略规划方案、组织设计、流程优化、实施辅导记录\n\n甲方代表：张总   乙方：王顾问' ,
+      headers: [
+        '项目',
+        '内容'
+      ],
+      rows: [
+        [
+          '项目',
+          '2026年度战略管理咨询'
+        ],
+        [
+          '终验结论',
+          '全部阶段通过 ✓'
+        ],
+        [
+          '交付物清单',
+          '战略规划方案、组织设计、流程优化、实施辅导记录'
+        ],
+        [
+          '甲方代表',
+          '张总   乙方：王顾问'
+        ],
+      ]}]
   },
   {
     date: '2026-03-06', role: 'accountant', title: '收到B公司终验款及1月尾款', tags: ["往来管理"], difficulty: 1,
@@ -100,7 +148,33 @@ const mar = [
       { subjectCode: '222101', summary: '销项税额6%', debit: 0, credit: 4800, explanation: '应交增值税增加。80,000×6%=4,800。' }],
     documents: [
       { type: 'invoice', label: '增值税专用发票', region: '北京', invoiceType: '专用', invoiceNo: '1100432115', date: '2026年03月09日', buyer: 'C商业银行', seller: '雲帆管理咨询有限公司', lineItems: [{ name: 'IT咨询（需求分析阶段）', unit: '项', qty: 1, price: 80000, amount: 80000, taxRate: '6%', tax: 4800 }], totalAmount: 84800 },
-      { type: 'text', label: '阶段验收', docTitle: '阶 段 验 收 确 认 单', date: '2026-03-09', stampText: 'C银行\n项目章', content: '项目：核心银行系统升级咨询\n阶段：需求分析\n结论：通过 ✓\n\n甲方：张经理\n乙方：李顾问' }]
+      { type: 'text', label: '阶段验收', docTitle: '阶 段 验 收 确 认 单', date: '2026-03-09', stampText: 'C银行\n项目章', content: '项目：核心银行系统升级咨询\n阶段：需求分析\n结论：通过 ✓\n\n甲方：张经理\n乙方：李顾问' ,
+      headers: [
+        '项目',
+        '内容'
+      ],
+      rows: [
+        [
+          '项目',
+          '核心银行系统升级咨询'
+        ],
+        [
+          '阶段',
+          '需求分析'
+        ],
+        [
+          '结论',
+          '通过 ✓'
+        ],
+        [
+          '甲方',
+          '张经理'
+        ],
+        [
+          '乙方',
+          '李顾问'
+        ],
+      ]}]
   },
   {
     date: '2026-03-10', role: 'accountant', title: '项目C·供应商选型差旅', tags: ["项目核算"], difficulty: 2,
@@ -125,7 +199,29 @@ const mar = [
     entries: [
       { subjectCode: '6602', summary: '摊销SaaS费', debit: 3000, credit: 0 }, { subjectCode: '6602', summary: '折旧费', debit: 2343, credit: 0 },
       { subjectCode: '1208', summary: '摊销SaaS年费', debit: 0, credit: 3000 }, { subjectCode: '1602', summary: '累计折旧', debit: 0, credit: 2343 }],
-    documents: [{ type: 'text', label: '摊销折旧表', docTitle: '摊 销 折 旧 计 提 表', stampText: '财务专用章', content: 'SaaS摊销：3,000\n折旧：电脑1,583+桌椅760=2,343\n合计：5,343\n\n制表：李会计' }]
+    documents: [{ type: 'text', label: '摊销折旧表', docTitle: '摊 销 折 旧 计 提 表', stampText: '财务专用章', content: 'SaaS摊销：3,000\n折旧：电脑1,583+桌椅760=2,343\n合计：5,343\n\n制表：李会计' ,
+    headers: [
+      '项目',
+      '内容'
+    ],
+    rows: [
+      [
+        'SaaS摊销',
+        '3,000'
+      ],
+      [
+        '折旧',
+        '电脑1,583+桌椅760=2,343'
+      ],
+      [
+        '合计',
+        '5,343'
+      ],
+      [
+        '制表',
+        '李会计'
+      ],
+    ]}]
   },
   {
     date: '2026-03-13', role: 'accountant', title: '报销项目C资料及通讯费', tags: ["项目核算"], difficulty: 2,
@@ -149,7 +245,21 @@ const mar = [
     entries: [
       { subjectCode: '6603', summary: '3月借款利息', debit: 725, credit: 0, explanation: '财务费用增加。' },
       { subjectCode: '2231', summary: '应付利息', debit: 0, credit: 725 }],
-    documents: [{ type: 'text', label: '利息计算表', docTitle: '利 息 计 提 表', stampText: '财务专用章', content: '本金200,000×4.35%÷12=725\n累计1-3月：2,175\n\n制表：李会计' }]
+    documents: [{ type: 'text', label: '利息计算表', docTitle: '利 息 计 提 表', stampText: '财务专用章', content: '本金200,000×4.35%÷12=725\n累计1-3月：2,175\n\n制表：李会计' ,
+    headers: [
+      '项目',
+      '内容'
+    ],
+    rows: [
+      [
+        '累计1-3月',
+        '2,175'
+      ],
+      [
+        '制表',
+        '李会计'
+      ],
+    ]}]
   },
   // ═══════════════════════════════════════════
   // 第三周：B项目结算 + 新机会（3月16日~3月22日）
@@ -161,7 +271,45 @@ const mar = [
     entries: [
       { subjectCode: '6401', summary: '结转B项目人工', debit: 66000, credit: 0, explanation: '主营业务成本增加。' },
       { subjectCode: '520101', summary: '结转人工成本', debit: 0, credit: 66000, explanation: '劳务成本减少。B项目全部成本已结转完毕。' }],
-    documents: [{ type: 'text', label: '成本结算表', docTitle: 'B 项 目 成 本 结 算 表', date: '2026-03-16', stampText: '财务专用章', content: '项目B（已终验）\n1月已结转：88,000\n2月已结转：113,500\n3月人工：66,000\n累计总成本：267,500\n总收入：600,000\n项目毛利：332,500（55.4%）\n\n制表：李会计\n审核：赵主管' }]
+    documents: [{ type: 'text', label: '成本结算表', docTitle: 'B 项 目 成 本 结 算 表', date: '2026-03-16', stampText: '财务专用章', content: '项目B（已终验）\n1月已结转：88,000\n2月已结转：113,500\n3月人工：66,000\n累计总成本：267,500\n总收入：600,000\n项目毛利：332,500（55.4%）\n\n制表：李会计\n审核：赵主管' ,
+    headers: [
+      '项目',
+      '内容'
+    ],
+    rows: [
+      [
+        '1月已结转',
+        '88,000'
+      ],
+      [
+        '2月已结转',
+        '113,500'
+      ],
+      [
+        '3月人工',
+        '66,000'
+      ],
+      [
+        '累计总成本',
+        '267,500'
+      ],
+      [
+        '总收入',
+        '600,000'
+      ],
+      [
+        '项目毛利',
+        '332,500（55.4%）'
+      ],
+      [
+        '制表',
+        '李会计'
+      ],
+      [
+        '审核',
+        '赵主管'
+      ],
+    ]}]
   },
   {
     date: '2026-03-17', role: 'accountant', title: 'B项目利润核算·确认项目奖金', tags: ["项目核算"], difficulty: 2,
@@ -170,7 +318,37 @@ const mar = [
     entries: [
       { subjectCode: '6602', summary: 'B项目奖金', debit: 33250, credit: 0, explanation: '管理费用——奖金增加。项目利润332,500×10%。' },
       { subjectCode: '221101', summary: '应付项目奖金', debit: 0, credit: 33250, explanation: '应付职工薪酬——奖金增加。' }],
-    documents: [{ type: 'text', label: '项目奖金计算表', docTitle: '项 目 奖 金 计 提 表', date: '2026-03-17', stampText: '财务专用章', content: '项目：B公司战略咨询\n项目毛利：332,500\n计提比例：10%\n计提金额：33,250\n待年终考核后发放。\n\n制表：李会计\n审核：赵总' }]
+    documents: [{ type: 'text', label: '项目奖金计算表', docTitle: '项 目 奖 金 计 提 表', date: '2026-03-17', stampText: '财务专用章', content: '项目：B公司战略咨询\n项目毛利：332,500\n计提比例：10%\n计提金额：33,250\n待年终考核后发放。\n\n制表：李会计\n审核：赵总' ,
+    headers: [
+      '项目',
+      '金额/说明'
+    ],
+    rows: [
+      [
+        '项目',
+        'B公司战略咨询'
+      ],
+      [
+        '项目毛利',
+        '332,500'
+      ],
+      [
+        '计提比例',
+        '10%'
+      ],
+      [
+        '计提金额',
+        '33,250'
+      ],
+      [
+        '制表',
+        '李会计'
+      ],
+      [
+        '审核',
+        '赵总'
+      ],
+    ]}]
   },
   {
     date: '2026-03-18', role: 'accountant', title: '购买新办公桌椅（扩招）', tags: ["费用管理"], difficulty: 1,
@@ -187,7 +365,37 @@ const mar = [
     entries: [
       { subjectCode: '100201', summary: 'D公司培训预收款', debit: 45000, credit: 0 },
       { subjectCode: '2232', summary: '预收D公司培训费', debit: 0, credit: 45000 }],
-    documents: [{ type: 'bank', label: '收款回单', date: '2026-03-19', totalAmount: 45000, payer: 'D公司', payeeName: '雲帆管理咨询有限公司', content: '企业管理内训预付款（50%）', refNo: 'HD202603190008' }, { type: 'text', label: '培训合同', docTitle: '企 业 管 理 内 训 合 同', stampText: '合同专用章', content: '甲方：D公司\n乙方：雲帆管理咨询有限公司\n课程：《战略执行与绩效管理》\n课时：2天（16学时）\n费用：90,000元（含教材）\n培训日期：2026年3月25-26日' }]
+    documents: [{ type: 'bank', label: '收款回单', date: '2026-03-19', totalAmount: 45000, payer: 'D公司', payeeName: '雲帆管理咨询有限公司', content: '企业管理内训预付款（50%）', refNo: 'HD202603190008' }, { type: 'text', label: '培训合同', docTitle: '企 业 管 理 内 训 合 同', stampText: '合同专用章', content: '甲方：D公司\n乙方：雲帆管理咨询有限公司\n课程：《战略执行与绩效管理》\n课时：2天（16学时）\n费用：90,000元（含教材）\n培训日期：2026年3月25-26日' ,
+    headers: [
+      '项目',
+      '金额/说明'
+    ],
+    rows: [
+      [
+        '甲方',
+        'D公司'
+      ],
+      [
+        '乙方',
+        '雲帆管理咨询有限公司'
+      ],
+      [
+        '课程',
+        '《战略执行与绩效管理》'
+      ],
+      [
+        '课时',
+        '2天（16学时）'
+      ],
+      [
+        '费用',
+        '90,000元（含教材）'
+      ],
+      [
+        '培训日期',
+        '2026年3月25-26日'
+      ],
+    ]}]
   },
   {
     date: '2026-03-20', role: 'accountant', title: '购买办公用品及培训教材', tags: ["费用管理"], difficulty: 1,
@@ -214,7 +422,33 @@ const mar = [
       { subjectCode: '1122', summary: 'D公司培训尾款', debit: 50400, credit: 0, explanation: '应收账款增加。尾款50%待收。' },
       { subjectCode: '6001', summary: '培训收入', debit: 0, credit: 90000, explanation: '主营业务收入增加。D公司内训收入。' },
       { subjectCode: '222101', summary: '销项税额6%', debit: 0, credit: 5400, explanation: '应交增值税增加。' }],
-    documents: [{ type: 'invoice', label: '增值税专用发票', region: '北京', invoiceType: '专用', invoiceNo: '1100432116', date: '2026年03月25日', buyer: 'D公司', seller: '雲帆管理咨询有限公司', lineItems: [{ name: '企业管理内训服务', unit: '项', qty: 1, price: 90000, amount: 90000, taxRate: '6%', tax: 5400 }], totalAmount: 95400 }, { type: 'text', label: '培训签到表', docTitle: '培 训 签 到 及 评 估 表', stampText: 'D公司\n培训部', content: '课程：《战略执行与绩效管理》\n时间：2026.3.25-3.26\n参训：45人\n满意度：4.8/5.0\n\n培训部确认：✓' }]
+    documents: [{ type: 'invoice', label: '增值税专用发票', region: '北京', invoiceType: '专用', invoiceNo: '1100432116', date: '2026年03月25日', buyer: 'D公司', seller: '雲帆管理咨询有限公司', lineItems: [{ name: '企业管理内训服务', unit: '项', qty: 1, price: 90000, amount: 90000, taxRate: '6%', tax: 5400 }], totalAmount: 95400 }, { type: 'text', label: '培训签到表', docTitle: '培 训 签 到 及 评 估 表', stampText: 'D公司\n培训部', content: '课程：《战略执行与绩效管理》\n时间：2026.3.25-3.26\n参训：45人\n满意度：4.8/5.0\n\n培训部确认：✓' ,
+    headers: [
+      '项目',
+      '内容'
+    ],
+    rows: [
+      [
+        '课程',
+        '《战略执行与绩效管理》'
+      ],
+      [
+        '时间',
+        '2026.3.25-3.26'
+      ],
+      [
+        '参训',
+        '45人'
+      ],
+      [
+        '满意度',
+        '4.8/5.0'
+      ],
+      [
+        '培训部确认',
+        '✓'
+      ],
+    ]}]
   },
   // ═══════════════════════════════════════════
   // 第四周：月末计提 + Q1季末结转（3月23日~3月31日）
@@ -225,7 +459,33 @@ const mar = [
     entries: [
       { subjectCode: '520101', summary: '项目人员工资', debit: 142000, credit: 0 }, { subjectCode: '6602', summary: '管理工资', debit: 43000, credit: 0 },
       { subjectCode: '221101', summary: '应付3月工资', debit: 0, credit: 185000 }],
-    documents: [{ type: 'text', label: '工资表', docTitle: '3 月 工 资 汇 总 表', stampText: '人力资源部', content: '项目人员：142,000\n管理人员：43,000\n合计：185,000\n\n制表：王出纳\n审核：李会计' }]
+    documents: [{ type: 'text', label: '工资表', docTitle: '3 月 工 资 汇 总 表', stampText: '人力资源部', content: '项目人员：142,000\n管理人员：43,000\n合计：185,000\n\n制表：王出纳\n审核：李会计' ,
+    headers: [
+      '项目',
+      '内容'
+    ],
+    rows: [
+      [
+        '项目人员',
+        '142,000'
+      ],
+      [
+        '管理人员',
+        '43,000'
+      ],
+      [
+        '合计',
+        '185,000'
+      ],
+      [
+        '制表',
+        '王出纳'
+      ],
+      [
+        '审核',
+        '李会计'
+      ],
+    ]}]
   },
   {
     date: '2026-03-24', role: 'accountant', title: '计提企业社保及公积金', tags: ["工资社保"], difficulty: 2,
@@ -234,7 +494,29 @@ const mar = [
       { subjectCode: '520101', summary: '项目社保', debit: 28000, credit: 0 }, { subjectCode: '520101', summary: '项目公积金', debit: 14000, credit: 0 },
       { subjectCode: '6602', summary: '管理社保', debit: 9000, credit: 0 }, { subjectCode: '6602', summary: '管理公积金', debit: 4500, credit: 0 },
       { subjectCode: '221102', summary: '应付企业社保', debit: 0, credit: 37000 }, { subjectCode: '221102', summary: '应付企业公积金', debit: 0, credit: 18500 }],
-    documents: [{ type: 'text', label: '社保计提表', docTitle: '社 保 公 积 金 计 提 表', stampText: '财务专用章', content: '项目人员：社保28,000+公积金14,000=42,000\n管理人员：社保9,000+公积金4,500=13,500\n合计：55,500\n\n制表：李会计' }]
+    documents: [{ type: 'text', label: '社保计提表', docTitle: '社 保 公 积 金 计 提 表', stampText: '财务专用章', content: '项目人员：社保28,000+公积金14,000=42,000\n管理人员：社保9,000+公积金4,500=13,500\n合计：55,500\n\n制表：李会计' ,
+    headers: [
+      '项目',
+      '内容'
+    ],
+    rows: [
+      [
+        '项目人员',
+        '社保28,000+公积金14,000=42,000'
+      ],
+      [
+        '管理人员',
+        '社保9,000+公积金4,500=13,500'
+      ],
+      [
+        '合计',
+        '55,500'
+      ],
+      [
+        '制表',
+        '李会计'
+      ],
+    ]}]
   },
   {
     date: '2026-03-25', role: 'accountant', title: '计提3月城建税及教育附加', tags: ["税费"], difficulty: 2,
@@ -246,7 +528,37 @@ const mar = [
       { subjectCode: '222103', summary: '应交城建税', debit: 0, credit: 1218 },
       { subjectCode: '222104', summary: '应交教育附加', debit: 0, credit: 522 },
       { subjectCode: '222104', summary: '应交地方教育附加', debit: 0, credit: 348 }],
-    documents: [{ type: 'text', label: '税费计算表', docTitle: '附 加 税 计 提 表', stampText: '财务专用章', content: '应纳增值税：17,400\n城建税（7%）：1,218\n教育附加（3%）：522\n地方教育附加（2%）：348\n合计：2,088\n\n制表：李会计' }]
+    documents: [{ type: 'text', label: '税费计算表', docTitle: '附 加 税 计 提 表', stampText: '财务专用章', content: '应纳增值税：17,400\n城建税（7%）：1,218\n教育附加（3%）：522\n地方教育附加（2%）：348\n合计：2,088\n\n制表：李会计' ,
+    headers: [
+      '项目',
+      '金额/说明'
+    ],
+    rows: [
+      [
+        '应纳增值税',
+        '17,400'
+      ],
+      [
+        '城建税（7%）',
+        '1,218'
+      ],
+      [
+        '教育附加（3%）',
+        '522'
+      ],
+      [
+        '地方教育附加（2%）',
+        '348'
+      ],
+      [
+        '合计',
+        '2,088'
+      ],
+      [
+        '制表',
+        '李会计'
+      ],
+    ]}]
   },
   {
     date: '2026-03-26', role: 'accountant', title: '计提Q1企业所得税', tags: ["税费"], difficulty: 3,
@@ -255,7 +567,29 @@ const mar = [
     entries: [
       { subjectCode: '6801', summary: 'Q1所得税费用', debit: 12500, credit: 0, explanation: '所得税费用增加。' },
       { subjectCode: '222106', summary: '应交Q1所得税', debit: 0, credit: 12500, explanation: '应交企业所得税增加。' }],
-    documents: [{ type: 'text', label: '所得税计算表', docTitle: 'Q1 企 业 所 得 税 计 提 表', stampText: '财务专用章', content: 'Q1利润总额≈50,000\n税率：25%\n所得税费用：12,500\n\n备注：已在3月预缴15,000，本月计提12,500，差额2,500在4月申报时调整。\n\n制表：李会计' }]
+    documents: [{ type: 'text', label: '所得税计算表', docTitle: 'Q1 企 业 所 得 税 计 提 表', stampText: '财务专用章', content: 'Q1利润总额≈50,000\n税率：25%\n所得税费用：12,500\n\n备注：已在3月预缴15,000，本月计提12,500，差额2,500在4月申报时调整。\n\n制表：李会计' ,
+    headers: [
+      '项目',
+      '内容'
+    ],
+    rows: [
+      [
+        '税率',
+        '25%'
+      ],
+      [
+        '所得税费用',
+        '12,500'
+      ],
+      [
+        '备注',
+        '已在3月预缴15,000，本月计提12,500，差额2,500在4月申报时调整。'
+      ],
+      [
+        '制表',
+        '李会计'
+      ],
+    ]}]
   },
   {
     date: '2026-03-27', role: 'accountant', title: '期末结转劳务成本至主营业务成本', tags: ["项目核算", "期末"], difficulty: 3,
@@ -266,14 +600,74 @@ const mar = [
       { subjectCode: '6401', summary: '结转D培训成本', debit: 2500, credit: 0 },
       { subjectCode: '520101', summary: '结转B人工', debit: 0, credit: 66000 }, { subjectCode: '520101', summary: '结转C人工', debit: 0, credit: 50000 },
       { subjectCode: '520104', summary: '结转D培训成本', debit: 0, credit: 2500 }],
-    documents: [{ type: 'text', label: '成本结转表', docTitle: '3 月 成 本 结 转 表', stampText: '财务专用章', content: 'B项目（终验）人工：66,000\nC项目（阶段一）人工：50,000\nD培训（已完成）教材：2,500\n合计：118,500\n\n制表：李会计' }]
+    documents: [{ type: 'text', label: '成本结转表', docTitle: '3 月 成 本 结 转 表', stampText: '财务专用章', content: 'B项目（终验）人工：66,000\nC项目（阶段一）人工：50,000\nD培训（已完成）教材：2,500\n合计：118,500\n\n制表：李会计' ,
+    headers: [
+      '项目',
+      '内容'
+    ],
+    rows: [
+      [
+        'B项目（终验）人工',
+        '66,000'
+      ],
+      [
+        'C项目（阶段一）人工',
+        '50,000'
+      ],
+      [
+        'D培训（已完成）教材',
+        '2,500'
+      ],
+      [
+        '合计',
+        '118,500'
+      ],
+      [
+        '制表',
+        '李会计'
+      ],
+    ]}]
   },
   {
     date: '2026-03-28', role: 'accountant', title: '新增固定资产折旧计算', tags: ["费用管理"], difficulty: 2,
     tip: '新增次月起计提折旧。新购办公桌椅5套7,500元，从4月起计提折旧。',
     description: '本月新增办公桌椅7,500元，残值率5%，使用年限5年。月折旧=7,500×95%÷60=118.75元，下月起计提。',
     entries: [],
-    documents: [{ type: 'text', label: '资产卡片', docTitle: '固 定 资 产 卡 片', stampText: '财务专用章', content: '资产名称：办公桌椅×5套\n原值：7,500.00元\n残值率：5%\n折旧年限：5年\n月折旧额：118.75元\n开始计提：2026年4月\n\n制表：李会计' }]
+    documents: [{ type: 'text', label: '资产卡片', docTitle: '固 定 资 产 卡 片', stampText: '财务专用章', content: '资产名称：办公桌椅×5套\n原值：7,500.00元\n残值率：5%\n折旧年限：5年\n月折旧额：118.75元\n开始计提：2026年4月\n\n制表：李会计' ,
+    headers: [
+      '项目',
+      '金额/说明'
+    ],
+    rows: [
+      [
+        '资产名称',
+        '办公桌椅×5套'
+      ],
+      [
+        '原值',
+        '7,500.00元'
+      ],
+      [
+        '残值率',
+        '5%'
+      ],
+      [
+        '折旧年限',
+        '5年'
+      ],
+      [
+        '月折旧额',
+        '118.75元'
+      ],
+      [
+        '开始计提',
+        '2026年4月'
+      ],
+      [
+        '制表',
+        '李会计'
+      ],
+    ]}]
   },
   {
     date: '2026-03-29', role: 'accountant', title: '月末期间损益结转', tags: ["期末"], difficulty: 3,
@@ -285,7 +679,25 @@ const mar = [
       { subjectCode: '6401', summary: '结转成本', debit: 0, credit: 118500 }, { subjectCode: '6403', summary: '结转税金', debit: 0, credit: 2088 },
       { subjectCode: '6602', summary: '结转管理费', debit: 0, credit: 125900 }, { subjectCode: '6603', summary: '结转财务费', debit: 0, credit: 75 },
       { subjectCode: '6801', summary: '结转所得税', debit: 0, credit: 12500 }],
-    documents: [{ type: 'text', label: '结转表', docTitle: 'Q1 季 末 损 益 结 转 表', stampText: '已结转', content: 'Q1累计（简化）：\n收入：248,000+248,000+290,000=786,000\n成本费用：约732,000\n累计净利润≈54,000\n\n备注：B项目高毛利拉动了Q1整体盈利。' }]
+    documents: [{ type: 'text', label: '结转表', docTitle: 'Q1 季 末 损 益 结 转 表', stampText: '已结转', content: 'Q1累计（简化）：\n收入：248,000+248,000+290,000=786,000\n成本费用：约732,000\n累计净利润≈54,000\n\n备注：B项目高毛利拉动了Q1整体盈利。' ,
+    headers: [
+      '项目',
+      '内容'
+    ],
+    rows: [
+      [
+        '收入',
+        '248,000+248,000+290,000=786,000'
+      ],
+      [
+        '成本费用',
+        '约732,000'
+      ],
+      [
+        '备注',
+        'B项目高毛利拉动了Q1整体盈利。'
+      ],
+    ]}]
   },
   { date: '2026-03-30', role: 'accountant', title: '购买项目管理软件永久许可', tags: ["费用管理"], difficulty: 2,
     tip: '购买软件许可作为无形资产入账，按5年摊销。',
