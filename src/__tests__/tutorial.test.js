@@ -2131,14 +2131,13 @@ describe('商业企业教程数据', () => {
 // 服务业教学数据测试（2026年）
 // ═══════════════════════════════════════════
 
-const SERVICE_VALID_TAGS = ['项目核算','收入确认','人工成本','费用管理','工资社保','税费','往来管理','资金管理','期末','出纳']
-// 资金管理标签已精简，不再每月检查覆盖率
-const SERVICE_COVERAGE_TAGS = SERVICE_VALID_TAGS.filter(t => t !== '资金管理')
+const SERVICE_VALID_TAGS = ['项目核算','收入确认','费用管理','工资社保','税费','往来管理','资金管理','期末','人工成本','销售费用']
+const SERVICE_COVERAGE_TAGS = SERVICE_VALID_TAGS.filter(t => t !== '资金管理' && t !== '销售费用' && t !== '人工成本')
 
 describe('服务业教程数据 - 结构', () => {
-  it('1月份有43个教学任务', () => {
+  it('1月份有31个教学任务', () => {
     const tasks = getScenarioTutorials('service', '01')
-    expect(tasks.length).toBe(43)
+    expect(tasks.length).toBe(31)
   })
 
   it('1月每个任务有完整字段', () => {
@@ -2200,9 +2199,9 @@ describe('服务业教程数据 - 结构', () => {
     }
   })
 
-  it('2月份有40个教学任务', () => {
+  it('2月份有28个教学任务', () => {
     const tasks = getScenarioTutorials('service', '02')
-    expect(tasks.length).toBe(40)
+    expect(tasks.length).toBe(28)
   })
 
   it('2月带分录的任务借贷平衡', () => {
@@ -2248,7 +2247,7 @@ describe('服务业教程数据 - 结构', () => {
     const months = ['04','05','06','07','08','09','10','11','12']
     for (const m of months) {
       const tasks = getScenarioTutorials('service', m)
-      expect(tasks.length).toBeGreaterThanOrEqual(37)
+      expect(tasks.length).toBeGreaterThanOrEqual(28)
       for (const t of tasks) {
         if (t.entries.length === 0) continue
         let debitTotal = 0

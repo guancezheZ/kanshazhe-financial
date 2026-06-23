@@ -1,561 +1,352 @@
 /**
- * 服务业（管理咨询/软件开发）2月教学任务
+ * 服务业（管理咨询/IT咨询/软件开发）2月教学任务
  *
- * 行业特征：无存货、无生产核算、人工成本为主、项目制核算
- * 企业类型：一般纳税人（增值税6%）
- * 企业名称：雲帆管理咨询有限公司
+ * 企业：雲帆管理咨询有限公司
+ * 本月主题：📋 项目执行·人力归集
+ *   - 项目B持续执行，T&M收入确认（按工时）
+ *   - 社保公积金缴纳 + 1月工资发放
+ *   - 新顾问入职、人员成本归集
+ *   - 新签C公司IT咨询项目
+ *   - 日常费用报销 + 期末结转
  *
- * 知识点标签：项目核算、收入确认、人工成本、费用管理、工资社保、税费、往来管理、资金管理、期末、出纳
- *
- * 会计准则依据：
- * - 《企业会计准则第14号——收入》（财会[2017]22号）
+ * 知识点标签：项目核算、收入确认、人工成本、费用管理、工资社保、税费、往来管理、资金管理、期末
  */
 
-const tasks = [
+const feb = [
   // ═══════════════════════════════════════════
-  // 第一周：期初事务 + 社保税务（2月2日~2月7日）
-  // ═══════════════════════════════════════════
-  {
-    date: '2026-02-02',
-    role: 'accountant',
-    title: '缴纳上月增值税及附加税',
-    tags: ['税费'],
-    difficulty: 2,
-    description: '申报缴纳1月增值税19,200元、城建税1,344元、教育费附加576元，合计21,120元，通过银行转账缴纳。',
-    tip: '增值税及附加税应在次月申报期内缴纳。借：应交税费-各明细，贷：银行存款。注意区分不同税种。',
-    entries: [
-      { subjectCode: '222101', summary: '缴纳上月增值税', debit: 19200, credit: 0, explanation: '应交增值税减少记借方。缴纳增值税冲减应交税费。' },
-      { subjectCode: '222103', summary: '缴纳上月城建税', debit: 1344, credit: 0, explanation: '应交城建税减少记借方。' },
-      { subjectCode: '222104', summary: '缴纳上月教育费附加', debit: 576, credit: 0, explanation: '应交教育费附加减少记借方。' },
-      { subjectCode: '100201', summary: '缴纳税款', debit: 0, credit: 21120, explanation: '银行存款减少记贷方。通过银行转账缴纳税款。' , cashFlowItem: 'cf-op4', cashFlowExplanation: '缴纳税费支出（配对科目222101），属于"支付的各项税费"——经营活动现金流出。'}],
-    documents: [
-      { type: 'bank', label: '银行付款回单', date: '2026-02-02', totalAmount: 21120, payer: '雲帆管理咨询有限公司', payeeName: '国家金库北京市分库', content: '纳税', refNo: 'FK202602020001' },
-      { type: 'receipt', label: '完税证明', docTitle: '电子缴税付款凭证', items: [{ name: '增值税', amount: 19200 }, { name: '城建税', amount: 1344 }, { name: '教育费附加', amount: 576 }], totalAmount: 21120, stampText: '国家税务总局 电子印章' }]},
-  {
-    date: '2026-02-03',
-    role: 'accountant',
-    title: '缴纳上月社保费用',
-    tags: ['工资社保'],
-    difficulty: 1,
-    description: '缴纳1月单位+个人社保费用。单位承担25,750元，个人承担部分(工资×10.5%)：58,000×10.5%=6,090元，合计31,840元，银行转账。',
-    tip: '社保费包含单位部分(计入成本/费用)和个人部分(从工资中代扣)。缴纳时借：应付职工薪酬-社保（单位+个人），贷：银行存款。',
-    entries: [
-      { subjectCode: '221102', summary: '缴纳1月社保费', debit: 31840, credit: 0, explanation: '应付职工薪酬-社保减少记借方。缴纳后社保负债清空。' },
-      { subjectCode: '100201', summary: '缴纳1月社保费', debit: 0, credit: 31840, explanation: '银行存款减少记贷方。银行转账支付社保费。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221102），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'}],
-    documents: [
-      { type: 'bank', label: '银行付款回单', date: '2026-02-03', totalAmount: 31840, payer: '雲帆管理咨询有限公司', payeeName: '北京市社会保险基金管理中心', content: '社保缴纳', refNo: 'FK202602030001' },
-      { type: 'receipt', label: '社保缴费单', docTitle: '2026年1月社会保险缴费通知', items: [{ name: '养老保险', amount: 18560 }, { name: '医疗保险', amount: 9280 }, { name: '失业保险', amount: 1160 }, { name: '工伤保险', amount: 580 }, { name: '生育保险', amount: 580 }, { name: '个人部分代扣', amount: 1680 }], totalAmount: 31840, stampText: '北京市社保中心' }]},
-  {
-    date: '2026-02-04',
-    role: 'accountant',
-    title: '发放1月工资（代扣个税）',
-    tags: ['人工成本', '工资社保'],
-    difficulty: 3,
-    description: '发放1月工资。应发总额=项目人员58,000+管理人员45,000=103,000元。代扣个税3,090元（按工资薪金预扣率），实发99,910元，银行代发。',
-    tip: '工资发放涉及多个科目：借：应付职工薪酬-工资（应发额），贷：银行存款（实发额）、应交税费-应交个人所得税（代扣个税）。',
-    entries: [
-      { subjectCode: '221101', summary: '发放1月工资-应发额', debit: 103000, credit: 0, explanation: '应付职工薪酬-工资减少记借方。冲销此前计提的应付工资。' },
-      { subjectCode: '100201', summary: '发放1月工资-实发额', debit: 0, credit: 99910, explanation: '银行存款减少记贷方。银行代发工资至员工个人账户。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221101），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'},
-      { subjectCode: '222102', summary: '代扣个人所得税-工资薪金', debit: 0, credit: 3090, explanation: '应交所得税（个税）增加记贷方。企业代扣的员工个人所得税负债。' }],
-    documents: [
-      { type: 'bank', label: '银行付款回单', date: '2026-02-04', totalAmount: 99910, payer: '雲帆管理咨询有限公司', payeeName: '批量代发工资', content: '1月工资', refNo: 'FK202602040001' },
-      { type: 'receipt', label: '工资发放明细', docTitle: '2026年1月工资发放汇总', items: [{ name: '应发工资', amount: 103000 }, { name: '代扣个税', amount: -3090 }, { name: '实发工资', amount: 99910 }], totalAmount: 99910, stampText: '雲帆管理咨询有限公司 财务专用章' }]},
-  {
-    date: '2026-02-05',
-    role: 'accountant',
-    title: '签订新管理咨询合同',
-    tags: ['收入确认', '往来管理'],
-    difficulty: 2,
-    description: '公司与丙客户签订战略规划咨询合同，总额300,000元（不含税），增值税6%。丙客户预付40%作为定金，已到账。',
-    tip: '收到预收款时：借银行存款，贷合同负债（不含税部分）、应交税费（增值税部分）。',
-    entries: [
-      { subjectCode: '100201', summary: '收取新咨询合同定金', debit: 127200, credit: 0, explanation: '银行存款增加记借方。预付40%=300,000×40%=120,000，增值税7,200。' , cashFlowItem: 'cf-op5', cashFlowExplanation: '其他经营活动现金流入（配对科目2205），属于"收到其他与经营活动有关的现金"。'},
-      { subjectCode: '2205', summary: '收取新咨询合同定金', debit: 0, credit: 120000, explanation: '合同负债增加记贷方。收到预收款尚未履约。' },
-      { subjectCode: '222101', summary: '收取新咨询合同定金-增值税', debit: 0, credit: 7200, explanation: '应交增值税-销项税额增加记贷方。' }],
-    documents: [
-      { type: 'bank', label: '银行回单', date: '2026-02-05', totalAmount: 127200, payer: '丙客户', payeeName: '雲帆管理咨询有限公司', content: '战略咨询项目定金', refNo: 'HD202602050001' },
-      { type: 'text', label: '咨询合同', docTitle: '企业战略规划咨询合同', content: '雲帆管理咨询为丙客户提供三年战略规划咨询服务，总价300,000元（不含税），周期60天。付款：签约付40%，中期30%，终验30%。', signature: '双方盖章' }]},
-  {
-    date: '2026-02-06',
-    role: 'accountant',
-    title: '购买财务软件（无形资产）',
-    tags: ['费用管理'],
-    difficulty: 2,
-    description: '公司购买正版财务软件一套，价值12,000元，通过银行转账支付，预计使用3年。',
-    tip: '软件属于无形资产，按期摊销。购买时：借：无形资产，贷：银行存款。摊销时：借：管理费用，贷：累计摊销。',
-    entries: [
-      { subjectCode: '1701', summary: '购买财务软件', debit: 12000, credit: 0, explanation: '无形资产增加记借方。财务软件符合无形资产确认条件。' },
-      { subjectCode: '100201', summary: '购买财务软件', debit: 0, credit: 12000, explanation: '银行存款减少记贷方。' , cashFlowItem: 'cf-inv', cashFlowExplanation: '购建固定资产/无形资产支出（配对科目1701），属于投资活动现金流出——资本性支出，区别于日常经营支出。'}],
-    documents: [
-      { type: 'invoice', label: '增值税发票', region: '北京市', invoiceNo: '1100234567', date: '2026-02-06', buyer: '雲帆管理咨询有限公司', seller: '正通软件有限公司', lineItems: [{ name: '财务管理系统V3.0', qty: 1, price: 12000, amount: 12000 }], totalAmount: 12000 }]},
-  {
-    date: '2026-02-07',
-    role: 'accountant',
-    title: '摊销1月办公室租金',
-    tags: ['费用管理'],
-    difficulty: 1,
-    description: '摊销2月办公室租金20,000元（预付6个月中的第2个月）。',
-    tip: '每月摊销预付租金。借：管理费用-办公费，贷：预付账款。',
-    entries: [
-      { subjectCode: '660201', summary: '摊销2月办公室租金', debit: 20000, credit: 0, explanation: '管理费用-办公费增加记借方。本月应摊销的租金。' },
-      { subjectCode: '1123', summary: '摊销2月办公室租金', debit: 0, credit: 20000, explanation: '预付账款减少记贷方。预付租金逐月摊销。' }],
-    documents: [
-      { type: 'text', label: '费用摊销表', docTitle: '2026年2月租金摊销明细', content: '办公室预付租金第2次摊销，20,000元。剩余待摊：120,000-20,000=80,000元。', signature: '财务部' }]},
-
-  // ═══════════════════════════════════════════
-  // 第二周：项目执行 + 多业务线（2月9日~2月14日）
+  // 第一周：上月收尾 + 工资发放（2月2日~2月8日）
   // ═══════════════════════════════════════════
   {
-    date: '2026-02-09',
-    role: 'accountant',
-    title: '计提2月项目组上半月工资',
-    tags: ['项目核算', '人工成本'],
-    difficulty: 2,
-    description: '计提2月上半月项目人员工资。咨询组（甲客户+丙客户两个项目）4人共24,000元，开发组2人共22,000元，合计46,000元。',
-    tip: '项目人员工资持续归集到劳务成本。借：劳务成本-人工成本，贷：应付职工薪酬-工资。',
+    date: '2026-02-02', role: 'accountant', title: '发放1月员工工资', tags: ["工资社保"], difficulty: 1,
+    tip: '发放上月计提工资，冲减应付职工薪酬，代扣个人社保公积金和个税。',
+    description: '银行代发1月工资。应发160,000元，代扣个人社保16,000元、公积金8,000元、个税3,500元，实发132,500元。',
     entries: [
-      { subjectCode: '520101', summary: '计提项目组上半月工资', debit: 46000, credit: 0, explanation: '劳务成本-人工成本增加记借方。本月新增丙客户项目，项目人员增加。' },
-      { subjectCode: '221101', summary: '计提项目组上半月工资', debit: 0, credit: 46000, explanation: '应付职工薪酬-工资增加记贷方。' }],
+      { subjectCode: '221101', summary: '发放1月工资', debit: 160000, credit: 0, explanation: '应付职工薪酬减少。全额冲减上月计提的应付工资。' },
+      { subjectCode: '100201', summary: '实发工资', debit: 0, credit: 132500, explanation: '银行存款减少。实发=160,000-16,000-8,000-3,500=132,500。' },
+      { subjectCode: '224101', summary: '代扣个人社保', debit: 0, credit: 16000, explanation: '其他应付款——社保个人部分增加。' },
+      { subjectCode: '224102', summary: '代扣个人公积金', debit: 0, credit: 8000, explanation: '其他应付款——公积金个人部分增加。' },
+      { subjectCode: '222110', summary: '代扣个税', debit: 0, credit: 3500, explanation: '应交个人所得税增加。' }],
     documents: [
-      { type: 'text', label: '工资计提表', docTitle: '2026年2月上半月项目工资明细', content: '咨询组4人各6,000=24,000（甲+丙两项目），开发组2人各11,000=22,000。', signature: '人力资源部' }]},
+      { type: 'bank', label: '代发工资回单', date: '2026-02-02', totalAmount: 132500, payer: '雲帆管理咨询有限公司', payeeName: '员工代发户', content: '1月工资代发（共48人）', refNo: 'HD202602020001' },
+      { type: 'text', label: '工资表', docTitle: '1 月 工 资 发 放 表', date: '2026-02-02', stampText: '人力资源部\n工资专用章', content: '期间：2026年1月\n应发工资总额：160,000.00元\n扣款：社保16,000+公积金8,000+个税3,500=27,500元\n实发合计：132,500.00元\n\n制表：王出纳\n审核：李会计' }]
+  },
   {
-    date: '2026-02-10',
-    role: 'accountant',
-    title: '丙客户咨询项目人员出差',
-    tags: ['项目核算'],
-    difficulty: 2,
-    description: '丙客户项目组2人出差实地调研，预借差旅费6,000元（现金支付）。',
-    tip: '项目差旅费先通过劳务成本归集。借：其他应收款，贷：库存现金。报销时再转入劳务成本。',
+    date: '2026-02-03', role: 'accountant', title: '缴纳1月社保及公积金', tags: ["工资社保"], difficulty: 1,
+    tip: '缴纳企业+个人社保公积金，企业部分冲应付职工薪酬，个人部分冲其他应付款。',
+    description: '缴纳1月企业及个人社保公积金。企业社保33,000元、企业公积金17,000元，个人社保16,000元、个人公积金8,000元。合计74,000元。',
     entries: [
-      { subjectCode: '1221', summary: '预借差旅费-丙项目', debit: 6000, credit: 0, explanation: '其他应收款增加记借方。员工预借差旅费。' },
-      { subjectCode: '1001', summary: '预借差旅费-丙项目', debit: 0, credit: 6000, explanation: '库存现金减少记贷方。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目1221），属于"支付其他与经营活动有关的现金"。'}],
+      { subjectCode: '221102', summary: '缴纳企业社保', debit: 33000, credit: 0, explanation: '应付职工薪酬——社保（企业部分）减少。' },
+      { subjectCode: '224101', summary: '缴纳个人社保', debit: 16000, credit: 0, explanation: '其他应付款——个人社保减少。' },
+      { subjectCode: '221102', summary: '缴纳企业公积金', debit: 17000, credit: 0, explanation: '应付职工薪酬——公积金（企业部分）减少。' },
+      { subjectCode: '224102', summary: '缴纳个人公积金', debit: 8000, credit: 0, explanation: '其他应付款——个人公积金减少。' },
+      { subjectCode: '100201', summary: '支付社保公积金', debit: 0, credit: 74000, explanation: '银行存款减少。' }],
     documents: [
-      { type: 'text', label: '借款单', docTitle: '差旅费借款单', content: '丙项目2人赴客户现场调研，预借6,000元。', signature: '项目负责人 | 财务审批' }]},
+      { type: 'bank', label: '扣款回单', date: '2026-02-03', totalAmount: 74000, payer: '雲帆管理咨询有限公司', payeeName: '北京市社会保险基金管理中心', content: '1月社保+公积金缴纳', refNo: 'HD202602030002' }]
+  },
   {
-    date: '2026-02-11',
-    role: 'accountant',
-    title: '软件开发项目中期验收（确认收入）',
-    tags: ['收入确认', '项目核算'],
-    difficulty: 3,
-    description: '乙客户ERP软件开发项目完成中期目标，按合同约定中期验收付40%，具备收入确认条件。确认收入160,000元（400,000×40%），开具发票并收款。此前已收启动资金120,000元。',
-    tip: '时段法确认软件开发收入。按产出法（已达到里程碑）确认进度。借：合同负债（冲预收）+银行存款（新收款），贷：主营业务收入、应交税费。',
+    date: '2026-02-04', role: 'accountant', title: '缴纳1月增值税及附加税', tags: ["税费"], difficulty: 1,
+    tip: '上月增值税及附加税需在当月15日前申报缴纳。',
+    description: '缴纳1月增值税12,000元、城建税840元、教育附加360元、地方教育附加240元。合计13,440元。',
     entries: [
-      { subjectCode: '2205', summary: '合同负债转入收入-中期', debit: 120000, credit: 0, explanation: '合同负债减少记借方。冲销此前收取的启动资金。' },
-      { subjectCode: '100201', summary: '收取中期验收款', debit: 169600, credit: 0, explanation: '银行存款增加记借方。中期验收款=400,000×40%=160,000，增值税9,600。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金（配对科目6001），属于经营活动现金流入——主营业务产生的现金收入。'},
-      { subjectCode: '6001', summary: '确认软件开发收入-中期', debit: 0, credit: 280000, explanation: '主营业务收入增加记贷方。软件开发项目达到中期里程碑，确认收入70%即280,000元（含此前30%定金转收入和本次40%收入）。' },
-      { subjectCode: '222101', summary: '中期验收-增值税', debit: 0, credit: 9600, explanation: '应交增值税-销项税额增加记贷方。中期验收款对应的增值税。' }],
+      { subjectCode: '222101', summary: '缴纳1月增值税', debit: 12000, credit: 0, explanation: '应交增值税减少。' },
+      { subjectCode: '222103', summary: '缴纳城建税', debit: 840, credit: 0, explanation: '应交城建税减少。' },
+      { subjectCode: '222104', summary: '缴纳教育附加', debit: 360, credit: 0, explanation: '应交教育附加减少。' },
+      { subjectCode: '222104', summary: '缴纳地方教育附加', debit: 240, credit: 0, explanation: '应交地方教育附加减少。' },
+      { subjectCode: '100201', summary: '缴纳税款', debit: 0, credit: 13440, explanation: '银行存款减少。' }],
     documents: [
-      { type: 'bank', label: '银行回单', date: '2026-02-11', totalAmount: 169600, payer: '乙客户', payeeName: '雲帆管理咨询有限公司', content: '软件开发中期验收款', refNo: 'HD202602110001' },
-      { type: 'invoice', label: '增值税发票', region: '北京市', invoiceNo: '1100345678', date: '2026-02-11', buyer: '乙客户', seller: '雲帆管理咨询有限公司', lineItems: [{ name: 'ERP管理系统开发费（中期）', qty: 1, price: 160000, amount: 160000 }], totalAmount: 160000 },
-      { type: 'text', label: '中期验收报告', docTitle: 'ERP管理系统中期验收确认书', content: '经测试验证，项目已完成需求分析、系统设计和核心模块编码，达成中期目标。', signature: '乙客户（盖章） | 雲帆咨询（盖章）' }]},
+      { type: 'bank', label: '缴税回单', date: '2026-02-04', totalAmount: 13440, payer: '雲帆管理咨询有限公司', payeeName: '国家税务总局北京市税务局', content: '1月增值税及附加税', refNo: 'HD202602040003' }]
+  },
   {
-    date: '2026-02-12',
-    role: 'accountant',
-    title: '支付丙客户咨询项目外包调研费',
-    tags: ['项目核算'],
-    difficulty: 2,
-    description: '丙客户战略规划咨询项目需外部行业数据支持，支付第三方调研机构服务费25,000元，银行转账。',
-    tip: '为特定项目发生的外部服务费计入劳务成本-外包服务费。借：劳务成本-外包服务费，贷：银行存款。',
+    date: '2026-02-05', role: 'accountant', title: '项目B·按工时确认1月项目收入', tags: ["项目核算", "收入确认"], difficulty: 2,
+    tip: 'T&M合同采用"开票权"实用变通法，按实际工时开票确认收入。借：应收账款/合同负债，贷：主营业务收入、应交税费。',
+    description: '项目B（B公司战略咨询）1月顾问工时统计：高级顾问160小时×800元=128,000元，中级顾问240小时×500元=120,000元。按T&M费率确认1月项目收入248,000元。增值税6%=14,880元。预收款余额88,000元全额冲减后差额挂应收。',
     entries: [
-      { subjectCode: '520103', summary: '支付项目外包调研费', debit: 25000, credit: 0, explanation: '劳务成本-外包服务费增加记借方。丙客户项目发生的外部调研费用。' },
-      { subjectCode: '100201', summary: '支付项目外包调研费', debit: 0, credit: 25000, explanation: '银行存款减少记贷方。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目520103），属于"支付其他与经营活动有关的现金"。'}],
+      { subjectCode: '1122', summary: 'B公司1月咨询费', debit: 174880, credit: 0, explanation: '应收账款增加。262,880-88,000=174,880。' },
+      { subjectCode: '2232', summary: 'B公司预收款余额', debit: 88000, credit: 0, explanation: '合同负债减少。冲减剩余预收款88,000元。' },
+      { subjectCode: '6001', summary: '项目B1月T&M收入', debit: 0, credit: 248000, explanation: '主营业务收入增加。按实际工时费率确认。' },
+      { subjectCode: '222101', summary: '销项税额6%', debit: 0, credit: 14880, explanation: '应交增值税——销项税额增加。248,000×6%=14,880。' }],
     documents: [
-      { type: 'invoice', label: '增值税发票', region: '北京市', invoiceNo: '1100567890', date: '2026-02-12', buyer: '雲帆管理咨询有限公司', seller: '华信市场调研有限公司', lineItems: [{ name: '行业数据调研服务', qty: 1, price: 25000, amount: 25000 }], totalAmount: 25000 },
-      { type: 'bank', label: '付款回单', date: '2026-02-12', totalAmount: 25000, payer: '雲帆管理咨询有限公司', payeeName: '华信市场调研有限公司', content: '调研服务费', refNo: 'FK202602120001' }]},
+      { type: 'invoice', label: '增值税专用发票', region: '北京', invoiceType: '专用', copy: '发票联', invoiceNo: '1100432113', date: '2026年02月05日', buyer: 'B公司', buyerTaxId: '91110108MAXXXXXXXX', seller: '雲帆管理咨询有限公司', sellerTaxId: '91110108MA3XXXXXXXX', stampText: '发票专用章', payee: '李四', reviewer: '王五', drawer: '赵六', lineItems: [{ name: '管理咨询服务（1月T&M）', unit: '小时', qty: 400, price: 620, amount: 248000, taxRate: '6%', tax: 14880 }], totalAmount: 262880 },
+      { type: 'text', label: '工时确认单', docTitle: '项 目 工 时 确 认 单', date: '2026-02-05', stampText: 'B公司\n项目确认章', content: '客户：B公司\n期间：2026年1月\n高级顾问：160h×800=128,000\n中级顾问：240h×500=120,000\n合计：400小时/248,000元\n\n甲方确认：张总    乙方确认：王顾问' }]
+  },
   {
-    date: '2026-02-13',
-    role: 'accountant',
-    title: '丙项目组出差人员报销差旅费',
-    tags: ['项目核算', '费用管理'],
-    difficulty: 2,
-    description: '丙项目组出差归来报销差旅费5,500元（交通2,000+住宿2,500+补助1,000），此前预借6,000元，退回现金500元。',
-    tip: '项目差旅费归集至劳务成本-差旅费。借：劳务成本-差旅费，库存现金（退回余款），贷：其他应收款。',
+    date: '2026-02-06', role: 'accountant', title: '收到B公司1月咨询费回款', tags: ["往来管理", "资金管理"], difficulty: 1,
+    tip: '收到客户回款冲减应收账款。',
+    description: '收到B公司支付1月咨询费差额92,880元，已到账。',
     entries: [
-      { subjectCode: '520102', summary: '丙项目差旅费', debit: 5500, credit: 0, explanation: '劳务成本-差旅费增加记借方。丙项目直接差旅费用。' },
-      { subjectCode: '1001', summary: '退回多余差旅借款', debit: 500, credit: 0, explanation: '库存现金增加记借方。员工退回多余借款。' , cashFlowItem: 'cf-op5', cashFlowExplanation: '其他经营活动现金流入（配对科目1221），属于"收到其他与经营活动有关的现金"。'},
-      { subjectCode: '1221', summary: '冲销差旅费预借款', debit: 0, credit: 6000, explanation: '其他应收款减少记贷方。冲销预借款。' }],
+      { subjectCode: '100201', summary: '收到B公司回款', debit: 92880, credit: 0, explanation: '银行存款增加。' },
+      { subjectCode: '1122', summary: 'B公司回款', debit: 0, credit: 92880, explanation: '应收账款减少。' }],
     documents: [
-      { type: 'receipt', label: '差旅费报销单', docTitle: '差旅费报销审批单', items: [{ name: '交通费', amount: 2000 }, { name: '住宿费', amount: 2500 }, { name: '出差补助', amount: 1000 }], totalAmount: 5500, stampText: '财务审核章' }]},
+      { type: 'bank', label: '收款回单', date: '2026-02-06', totalAmount: 92880, payer: 'B公司', payeeName: '雲帆管理咨询有限公司', content: '支付1月咨询费差额', refNo: 'HD202602060004' }]
+  },
   {
-    date: '2026-02-14',
-    role: 'accountant',
-    title: '计提2月管理人员工资（上半月）',
-    tags: ['人工成本', '工资社保'],
-    difficulty: 2,
-    description: '计提2月上半月管理人员工资22,500元。',
-    tip: '管理人员工资全额计入管理费用-工资薪金。',
+    date: '2026-02-07', role: 'accountant', title: '新顾问入职·支付体检及培训费', tags: ["费用管理"], difficulty: 1,
+    tip: '新员工入职体检和培训费属于管理费用。',
+    description: '1月新招聘的3名高级顾问正式入职，支付入职体检费2,400元及岗前培训费6,000元。合计8,400元。',
     entries: [
-      { subjectCode: '660203', summary: '计提管理人员上半月工资', debit: 22500, credit: 0, explanation: '管理费用-工资薪金增加记借方。' },
-      { subjectCode: '221101', summary: '计提管理人员上半月工资', debit: 0, credit: 22500, explanation: '应付职工薪酬-工资增加记贷方。' }],
+      { subjectCode: '6602', summary: '体检费', debit: 2400, credit: 0, explanation: '管理费用增加。入职体检费。' },
+      { subjectCode: '6602', summary: '培训费', debit: 6000, credit: 0, explanation: '管理费用增加。岗前培训费。' },
+      { subjectCode: '100201', summary: '支付体检培训费', debit: 0, credit: 8400, explanation: '银行存款减少。' }],
     documents: [
-      { type: 'text', label: '工资计提表', docTitle: '2026年2月上半月管理人员工资明细', content: '管理人员7人上半月工资合计22,500元。', signature: '人力资源部' }]},
-
+      { type: 'receipt', label: '体检发票', docTitle: '医 疗 体 检 发 票', date: '2026-02-07', totalAmount: 2400, payer: '雲帆管理咨询有限公司', stampText: '慈铭体检\n发票专用章', items: [{ name: '入职体检（3人×800元）', qty: 3, price: 800, amount: 2400 }]},
+      { type: 'receipt', label: '培训发票', docTitle: '培 训 服 务 发 票', date: '2026-02-07', totalAmount: 6000, payer: '雲帆管理咨询有限公司', stampText: '北大商学院\n发票专用章', items: [{ name: '管理咨询顾问岗前培训（3人）', qty: 3, price: 2000, amount: 6000 }]}]
+  },
+  {
+    date: '2026-02-08', role: 'accountant', title: '支付2月写字楼租金', tags: ["费用管理"], difficulty: 1,
+    tip: '办公室租金计入管理费用-房租物业。',
+    description: '支付2月写字楼租金及物业费合计25,000元（房租22,000+物业3,000）。',
+    entries: [
+      { subjectCode: '660205', summary: '2月房租', debit: 22000, credit: 0, explanation: '管理费用——房租物业增加。' },
+      { subjectCode: '660205', summary: '2月物业费', debit: 3000, credit: 0, explanation: '管理费用——房租物业增加。' },
+      { subjectCode: '100201', summary: '支付租金', debit: 0, credit: 25000, explanation: '银行存款减少。' }],
+    documents: [
+      { type: 'receipt', label: '收据', docTitle: '房 屋 租 赁 专 用 收 据', date: '2026-02-08', totalAmount: 25000, payer: '雲帆管理咨询有限公司', paymentMethod: '银行转账', stampText: '北京XX物业管理有限公司\n财务专用章', items: [{ name: '望京大厦15层 2月租金', qty: 1, price: 22000, amount: 22000 }, { name: '2月物业管理费', qty: 1, price: 3000, amount: 3000 }]}]
+  },
   // ═══════════════════════════════════════════
-  // 第三周：日常运营 + 商务活动（2月16日~2月21日）
-  // ═══════════════════════════════════════════
-  {
-    date: '2026-02-16',
-    role: 'accountant',
-    title: '报销员工日常费用（交通+通讯）',
-    tags: ['费用管理'],
-    difficulty: 1,
-    description: '员工凭发票报销1月市内交通费800元、通讯费1,200元，合计2,000元，以现金支付。',
-    tip: '日常报销费用计入管理费用-办公费。借：管理费用，贷：库存现金。',
-    entries: [
-      { subjectCode: '660201', summary: '报销交通通讯费', debit: 2000, credit: 0, explanation: '管理费用-办公费增加记借方。日常费用报销。' },
-      { subjectCode: '1001', summary: '报销交通通讯费', debit: 0, credit: 2000, explanation: '库存现金减少记贷方。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目660201），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'receipt', label: '费用报销单', docTitle: '2026年2月日常费用报销单', items: [{ name: '市内交通费（1月）', amount: 800 }, { name: '通讯费（1月）', amount: 1200 }], totalAmount: 2000, stampText: '财务审核章' }]},
-  {
-    date: '2026-02-17',
-    role: 'accountant',
-    title: '支付法律顾问服务费',
-    tags: ['费用管理'],
-    difficulty: 1,
-    description: '公司聘请常年法律顾问，支付本月顾问服务费5,000元，银行转账。',
-    tip: '法律顾问费属于管理费用。借：管理费用-办公费，贷：银行存款。',
-    entries: [
-      { subjectCode: '660201', summary: '支付法律顾问费', debit: 5000, credit: 0, explanation: '管理费用-办公费增加记借方。' },
-      { subjectCode: '100201', summary: '支付法律顾问费', debit: 0, credit: 5000, explanation: '银行存款减少记贷方。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目660201），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'invoice', label: '增值税发票', region: '北京市', invoiceNo: '1100678901', date: '2026-02-17', buyer: '雲帆管理咨询有限公司', seller: '大成律师事务所', lineItems: [{ name: '常年法律顾问服务费', qty: 1, price: 5000, amount: 5000 }], totalAmount: 5000 }]},
-  {
-    date: '2026-02-18',
-    role: 'accountant',
-    title: '支付2月办公室水电费',
-    tags: ['费用管理'],
-    difficulty: 1,
-    description: '支付2月办公室水电费6,200元，银行转账。',
-    tip: '水电费计入管理费用-办公费。',
-    entries: [
-      { subjectCode: '660201', summary: '支付2月水电费', debit: 6200, credit: 0, explanation: '管理费用-办公费增加记借方。' },
-      { subjectCode: '100201', summary: '支付2月水电费', debit: 0, credit: 6200, explanation: '银行存款减少记贷方。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目660201），属于"支付其他与经营活动有关的现金"。'}],
-    documents: [
-      { type: 'receipt', label: '水电费账单', docTitle: '2026年2月水电费缴费通知', items: [{ name: '电费', amount: 4600 }, { name: '水费', amount: 1600 }], totalAmount: 6200 }]},
-  {
-    date: '2026-02-19',
-    role: 'accountant',
-    title: '咨询项目组下半月工资计提',
-    tags: ['项目核算', '人工成本'],
-    difficulty: 2,
-    description: '计提2月下半月项目人员工资。咨询组24,000元+开发组22,000元=46,000元。',
-    tip: '持续归集项目人工成本至劳务成本。',
-    entries: [
-      { subjectCode: '520101', summary: '计提项目组下半月工资', debit: 46000, credit: 0, explanation: '劳务成本-人工成本增加记借方。' },
-      { subjectCode: '221101', summary: '计提项目组下半月工资', debit: 0, credit: 46000, explanation: '应付职工薪酬-工资增加记贷方。' }],
-    documents: [
-      { type: 'text', label: '工资计提表', docTitle: '2026年2月下半月项目工资明细', content: '咨询组24,000+开发组22,000=46,000。', signature: '人力资源部' }]},
-  {
-    date: '2026-02-20',
-    role: 'accountant',
-    title: '计提管理人员下半月工资',
-    tags: ['人工成本', '工资社保'],
-    difficulty: 1,
-    description: '计提2月下半月管理人员工资22,500元。',
-    tip: '管理人员工资全额计入管理费用。',
-    entries: [
-      { subjectCode: '660203', summary: '计提管理人员下半月工资', debit: 22500, credit: 0, explanation: '管理费用-工资薪金增加记借方。' },
-      { subjectCode: '221101', summary: '计提管理人员下半月工资', debit: 0, credit: 22500, explanation: '应付职工薪酬-工资增加记贷方。' }],
-    documents: [
-      { type: 'text', label: '工资计提表', docTitle: '2026年2月下半月管理人员工资明细', content: '管理人员7人下半月工资合计22,500元。', signature: '人力资源部' }]},
-  {
-    date: '2026-02-21',
-    role: 'accountant',
-    title: '计提2月单位社保费用',
-    tags: ['人工成本', '工资社保'],
-    difficulty: 2,
-    description: '计提2月单位社保。项目人员工资92,000×25%=23,000元，管理人员45,000×25%=11,250元，合计34,250元。',
-    tip: '项目人员社保归集到劳务成本，管理人员的计入管理费用。',
-    entries: [
-      { subjectCode: '520101', summary: '项目组社保-单位部分', debit: 23000, credit: 0, explanation: '劳务成本-人工成本增加记借方。' },
-      { subjectCode: '660203', summary: '管理人员社保-单位部分', debit: 11250, credit: 0, explanation: '管理费用-工资薪金增加记借方。' },
-      { subjectCode: '221102', summary: '计提单位社保费用', debit: 0, credit: 34250, explanation: '应付职工薪酬-社保增加记贷方。' }],
-    documents: [
-      { type: 'text', label: '社保计提表', docTitle: '2026年2月社保费用计提明细', content: '项目92,000×25%=23,000，管理45,000×25%=11,250，合计34,250。', signature: '人力资源部' }]},
-
-  // ═══════════════════════════════════════════
-  // 第四周：结算 + 期末处理（2月23日~2月28日）
+  // 第二周：项目执行 + 成本归集（2月9日~2月15日）
   // ═══════════════════════════════════════════
   {
-    date: '2026-02-23',
-    role: 'accountant',
-    title: '甲客户咨询项目二期启动（差旅费支出）',
-    tags: ['项目核算'],
-    difficulty: 2,
-    description: '甲客户续签第二阶段优化咨询合同，合同金额150,000元（不含税）。项目组出差调研，发生差旅费6,000元，直接支付（非预借）。',
-    tip: '不通过预借方式，直接支付项目差旅费。借：劳务成本-差旅费，贷：银行存款/库存现金。',
+    date: '2026-02-09', role: 'accountant', title: '项目B·顾问2月上旬差旅支出', tags: ["项目核算"], difficulty: 2,
+    tip: '项目直接差旅费通过劳务成本-差旅费归集。',
+    description: '项目B顾问赴上海进行第二阶段方案汇报及管理层访谈，差旅费共计15,000元（机票8,000+住宿5,000+市内交通2,000）。',
     entries: [
-      { subjectCode: '520102', summary: '甲项目二期差旅费', debit: 6000, credit: 0, explanation: '劳务成本-差旅费增加记借方。甲客户续签项目直接发生的差旅费用。' },
-      { subjectCode: '100201', summary: '甲项目二期差旅费', debit: 0, credit: 6000, explanation: '银行存款减少记贷方。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目520102），属于"支付其他与经营活动有关的现金"。'}],
+      { subjectCode: '520102', summary: '项目B差旅费', debit: 15000, credit: 0, explanation: '劳务成本——差旅费增加。' },
+      { subjectCode: '100201', summary: '支付差旅费', debit: 0, credit: 15000, explanation: '银行存款减少。' }],
     documents: [
-      { type: 'receipt', label: '差旅费报销单', docTitle: '甲项目二期差旅费用明细', items: [{ name: '交通费', amount: 2500 }, { name: '住宿费', amount: 2500 }, { name: '补助', amount: 1000 }], totalAmount: 6000, stampText: '财务审核章' }]},
+      { type: 'receipt', label: '机票行程单', docTitle: '航 空 运 输 行 程 单', date: '2026-02-09', totalAmount: 8000, payer: '雲帆管理咨询有限公司', stampText: '中国国航', items: [{ name: '北京→上海 4×1,000', qty: 4, price: 1000, amount: 4000 }, { name: '上海→北京 4×1,000', qty: 4, price: 1000, amount: 4000 }]},
+      { type: 'receipt', label: '住宿发票', docTitle: '住 宿 费 发 票', date: '2026-02-09', totalAmount: 5000, payer: '雲帆管理咨询有限公司', stampText: '上海XX酒店', items: [{ name: '4间×3晚 住宿', qty: 12, price: 416.67, amount: 5000 }]},
+      { type: 'bank', label: '转账回单', date: '2026-02-09', totalAmount: 15000, payer: '雲帆管理咨询有限公司', payeeName: '各收款方', content: '项目B2月差旅费', refNo: 'HD202602090005' }]
+  },
   {
-    date: '2026-02-24',
-    role: 'accountant',
-    title: '计提2月固定资产折旧',
-    tags: ['费用管理'],
-    difficulty: 1,
-    description: '计提2月办公设备折旧760元。',
-    tip: '固定资产每月计提折旧。借：管理费用，贷：累计折旧。',
+    date: '2026-02-10', role: 'accountant', title: '支付项目B外聘专家尾款', tags: ["项目核算"], difficulty: 2,
+    tip: '外聘专家劳务费用通过劳务成本-外包服务费归集。',
+    description: '支付1月参与项目B的两名外部专家尾款15,000元（合同总额25,000，前期已付10,000元定金）。',
     entries: [
-      { subjectCode: '660201', summary: '计提办公设备折旧', debit: 760, credit: 0, explanation: '管理费用-办公费增加记借方。' },
-      { subjectCode: '1602', summary: '计提办公设备折旧', debit: 0, credit: 760, explanation: '累计折旧增加记贷方。' }],
+      { subjectCode: '520103', summary: '专家尾款-项目B', debit: 15000, credit: 0, explanation: '劳务成本——外包服务费增加。' },
+      { subjectCode: '100201', summary: '支付专家尾款', debit: 0, credit: 15000, explanation: '银行存款减少。' }],
     documents: [
-      { type: 'text', label: '折旧计算表', docTitle: '2026年2月折旧明细', content: '办公设备月折旧760元。', signature: '财务部' }]},
+      { type: 'bank', label: '转账回单', date: '2026-02-10', totalAmount: 15000, payer: '雲帆管理咨询有限公司', payeeName: '张XX、李XX（外部专家）', content: '项目B专家尾款', refNo: 'HD202602100006' }]
+  },
   {
-    date: '2026-02-25',
-    role: 'accountant',
-    title: '计提2月短期借款利息',
-    tags: ['期末'],
-    difficulty: 1,
-    description: '计提2月短期借款利息1,087.50元。',
+    date: '2026-02-11', role: 'accountant', title: '支付2月水电费及网络费', tags: ["费用管理"], difficulty: 1,
+    tip: '日常运营费用计入管理费用。',
+    description: '支付2月水电费4,000元、企业网络费2,000元。合计6,000元。',
     entries: [
-      { subjectCode: '6603', summary: '计提短期借款利息', debit: 1087.5, credit: 0, explanation: '财务费用增加记借方。' },
-      { subjectCode: '2232', summary: '计提短期借款利息', debit: 0, credit: 1087.5, explanation: '应付利息增加记贷方。' }],
+      { subjectCode: '6602', summary: '2月水电费', debit: 4000, credit: 0, explanation: '管理费用增加。' },
+      { subjectCode: '6602', summary: '2月网络费', debit: 2000, credit: 0, explanation: '管理费用增加。' },
+      { subjectCode: '100201', summary: '支付水电网络', debit: 0, credit: 6000, explanation: '银行存款减少。' }],
     documents: [
-      { type: 'text', label: '利息计算表', content: '短期借款300,000×4.35%÷12=1,087.50。', signature: '财务部' }]},
+      { type: 'receipt', label: '电费单', docTitle: '电 费 缴 费 凭 证', date: '2026-02-11', totalAmount: 4000, payer: '雲帆管理咨询有限公司', stampText: '国家电网\n电费收讫章', items: [{ name: '写字楼用电 4,000kWh', qty: 4000, price: 1, amount: 4000 }]},
+      { type: 'receipt', label: '通信费发票', docTitle: '通 信 服 务 发 票', date: '2026-02-11', totalAmount: 2000, payer: '雲帆管理咨询有限公司', stampText: '中国联通\n发票专用章', items: [{ name: '企业宽带及电话费（2月）', qty: 1, price: 2000, amount: 2000 }]}]
+  },
   {
-    date: '2026-02-26',
-    title: '结转完工项目成本（甲项目二期）',
-    tags: ['项目核算', '期末'],
-    difficulty: 3,
-    description: '甲客户二期咨询项目完成，收入尚未确认（按合同已完成但客户尚未验收）。但先将可归集的直接成本计入。',
-    tip: '项目完工但客户尚未验收时，成本先归集在劳务成本。待验收确认收入后再结转至主营业务成本。此处展示成本归集状态。',
-    role: 'cashier',
-    entries: [],
-    documents: [
-      { type: 'text', label: '项目成本汇总表', docTitle: '2026年2月项目成本状态', content: '甲项目二期差旅费6,000元（待验收后结转）。丙项目：人工24,000+外包25,000+差旅5,500=54,500元（在施）。开发项目：人工44,000元（资本化阶段）。', signature: '财务部' }]},
-  {
-    date: '2026-02-27',
-    role: 'accountant',
-    title: '计算并结转2月增值税',
-    tags: ['税费', '期末'],
-    difficulty: 2,
-    description: '计算2月应交增值税。销项税额：新项目定金7,200+软件中期收入9,600=16,800元。进项税额：外包调研费1,500（25,000×6%），法律顾问费300（5,000×6%）。应交增值税=16,800-1,800=15,000元。',
-    tip: '服务业也可取得增值税专用发票抵扣进项。应交增值税=销项-进项。',
+    date: '2026-02-12', role: 'accountant', title: '报销项目B资料购置费', tags: ["项目核算"], difficulty: 2,
+    tip: '项目专用资料购置费计入劳务成本-其他直接费用。',
+    description: '项目B顾问报销购买行业数据库访问权限及竞品分析报告费用合计8,000元。',
     entries: [
-      { subjectCode: '6403', summary: '计提城建税', debit: 1050, credit: 0, explanation: '税金及附加。城建税=15,000×7%=1,050元。' },
-      { subjectCode: '6403', summary: '计提教育费附加', debit: 450, credit: 0, explanation: '税金及附加。教育费附加=15,000×3%=450元。' },
-      { subjectCode: '222103', summary: '应交城建税', debit: 0, credit: 1050, explanation: '应交城建税增加。' },
-      { subjectCode: '222104', summary: '应交教育费附加', debit: 0, credit: 450, explanation: '应交教育费附加增加。' }],
+      { subjectCode: '520104', summary: '项目B资料购置', debit: 8000, credit: 0, explanation: '劳务成本——其他直接费用增加。' },
+      { subjectCode: '100201', summary: '报销付款', debit: 0, credit: 8000, explanation: '银行存款减少。' }],
     documents: [
-      { type: 'text', label: '增值税计算表', docTitle: '2026年2月增值税及附加计算', content: '销项16,800-进项1,800=应交15,000。附加税：城建税1,050+教育费450=1,500。', signature: '财务部' }]},
+      { type: 'receipt', label: '报销单', docTitle: '费 用 报 销 单', date: '2026-02-12', totalAmount: 8000, payer: '雲帆管理咨询有限公司', stampText: '财务\n审核专用章', items: [{ name: '行业数据库年费', qty: 1, price: 5000, amount: 5000 }, { name: '竞品分析报告×3份', qty: 3, price: 1000, amount: 3000 }]}]
+  },
   {
-    date: '2026-02-28',
-    role: 'accountant',
-    title: '期末结转损益',
-    tags: ['期末'],
-    difficulty: 3,
-    description: '结转2月损益类科目。收入：主营业务收入280,000元（软件开发中期含定金转入）。费用：管理费用90,210元，财务费用1,087.50元，税金及附加1,500元。合计92,797.50元。',
-    tip: '注意2月主营业务收入含合同负债转入+新收款部分。',
+    date: '2026-02-13', role: 'accountant', title: '购买办公用品', tags: ["费用管理"], difficulty: 1,
+    tip: '办公用品计入管理费用-办公费。',
+    description: '采购2月办公用品及桶装水共计2,500元。',
     entries: [
-      { subjectCode: '6001', debit: 449600, credit: 0, summary: '结转主营业务收入', explanation: '主营业务收入减少记借方。' },
-      { subjectCode: '6403', debit: 0, credit: 1500, summary: '结转税金及附加', explanation: '税金及附加减少记贷方。' },
-      { subjectCode: '660201', debit: 0, credit: 45160, summary: '结转660201', explanation: '660201转出，余额归零。' },
-      { subjectCode: '660203', debit: 0, credit: 56250, summary: '结转660203', explanation: '660203转出，余额归零。' },
-      { subjectCode: '6603', debit: 0, credit: 1087.5, summary: '结转财务费用', explanation: '财务费用减少记贷方。' },
-      { subjectCode: '4103', debit: 0, credit: 345602.5, summary: '成本费用转入本年利润', explanation: '本年利润减少。' }
-    ],
+      { subjectCode: '660201', summary: '办公用品', debit: 2500, credit: 0, explanation: '管理费用——办公费增加。' },
+      { subjectCode: '100201', summary: '付款', debit: 0, credit: 2500, explanation: '银行存款减少。' }],
     documents: [
-      { type: 'text', label: '损益结转表', docTitle: '2026年2月损益结转表', content: '收入280,000-费用92,797.50=利润187,202.50元。', signature: '财务部' }]},
-
+      { type: 'receipt', label: '收据', docTitle: '商 品 销 售 发 票', date: '2026-02-13', totalAmount: 2500, payer: '雲帆管理咨询有限公司', stampText: '京东办公\n发票专用章', items: [{ name: '打印纸、文具等', qty: 1, price: 2000, amount: 2000 }, { name: '桶装水（20桶）', qty: 20, price: 25, amount: 500 }]}]
+  },
+  {
+    date: '2026-02-14', role: 'accountant', title: '银行手续费及利息收入', tags: ["资金管理"], difficulty: 1,
+    tip: '手续费计入财务费用，利息收入冲减财务费用。',
+    description: '银行扣收2月账户管理费及转账手续费600元；活期存款结息900元。',
+    entries: [
+      { subjectCode: '6603', summary: '银行手续费', debit: 600, credit: 0, explanation: '财务费用增加。' },
+      { subjectCode: '100201', summary: '银行扣费', debit: 0, credit: 600, explanation: '银行存款减少。' },
+      { subjectCode: '100201', summary: '活期结息', debit: 900, credit: 0, explanation: '银行存款增加。' },
+      { subjectCode: '6603', summary: '利息收入（红字）', debit: 0, credit: 900, explanation: '财务费用减少。利息收入冲减财务费用。' }],
+    documents: [
+      { type: 'bank', label: '扣费回单', date: '2026-02-14', totalAmount: 600, payer: '雲帆管理咨询有限公司', payeeName: '工商银行北京分行', content: '2月手续费', refNo: 'HD202602140007' },
+      { type: 'bank', label: '结息回单', date: '2026-02-14', totalAmount: 900, payer: '工商银行北京分行', payeeName: '雲帆管理咨询有限公司', content: '2月活期结息', refNo: 'HD202602140008' }]
+  },
+  {
+    date: '2026-02-15', role: 'accountant', title: '摊销SaaS费及计提折旧', tags: ["费用管理"], difficulty: 2,
+    tip: '摊销和折旧属于非付现费用，按月计提。',
+    description: '摊销2月SaaS服务费3,000元；计提2月折旧2,343元（电脑1,583+办公桌椅760）。合计5,343元。',
+    entries: [
+      { subjectCode: '6602', summary: '摊销SaaS费', debit: 3000, credit: 0, explanation: '管理费用——摊销费增加。' },
+      { subjectCode: '6602', summary: '折旧费', debit: 2343, credit: 0, explanation: '管理费用——折旧费增加。' },
+      { subjectCode: '1208', summary: '摊销SaaS年费', debit: 0, credit: 3000, explanation: '长期待摊费用减少。' },
+      { subjectCode: '1602', summary: '累计折旧', debit: 0, credit: 2343, explanation: '累计折旧增加。' }],
+    documents: [
+      { type: 'text', label: '摊销计算表', docTitle: '摊 销 及 折 旧 计 提 表', date: '2026-02-15', stampText: '财务专用章', content: '期间：2026年2月\nSaaS摊销：3,000元\n折旧——电脑：1,583.33元\n折旧——桌椅：760.00元\n合计：5,343.33元\n\n制表：李会计' }]
+  },
   // ═══════════════════════════════════════════
-  // 出纳任务（15个）
+  // 第三周：新签项目 + 费用报销（2月16日~2月22日）
   // ═══════════════════════════════════════════
   {
-    date: '2026-02-02',
-    role: 'accountant',
-    title: '纳税申报银行转账',
-    tags: ['出纳', '税费'],
-    difficulty: 1,
-    description: '通过银行转账缴纳1月增值税及附加税合计21,120元。',
-    tip: '出纳需在申报期内及时办理税款缴纳，避免滞纳金。',
+    date: '2026-02-16', role: 'accountant', title: '新签C公司IT咨询项目·收到预付款', tags: ["项目核算", "收入确认"], difficulty: 2,
+    tip: '新项目预收款计入合同负债。借：银行存款，贷：合同负债。',
+    description: '与C公司（某商业银行）签订IT系统升级咨询合同，合同总额400,000元。签约时支付40%预付款160,000元，已到账。',
     entries: [
-      { subjectCode: '222101', summary: '缴纳增值税', debit: 19200, credit: 0, explanation: '应交增值税减少。' },
-      { subjectCode: '222103', summary: '缴纳城建税', debit: 1344, credit: 0, explanation: '应交城建税减少。' },
-      { subjectCode: '222104', summary: '缴纳教育费附加', debit: 576, credit: 0, explanation: '应交教育费附加减少。' },
-      { subjectCode: '100201', summary: '缴纳税款', debit: 0, credit: 21120, explanation: '银行存款减少。' , cashFlowItem: 'cf-op4', cashFlowExplanation: '缴纳税费支出（配对科目222101），属于"支付的各项税费"——经营活动现金流出。'}],
+      { subjectCode: '100201', summary: 'C公司预付款', debit: 160000, credit: 0, explanation: '银行存款增加。收到C公司项目预付款。' },
+      { subjectCode: '2232', summary: '预收C公司咨询费', debit: 0, credit: 160000, explanation: '合同负债增加。预收款待履约后分期转收入。' }],
     documents: [
-      { type: 'bank', label: '付款回单', date: '2026-02-02', totalAmount: 21120, payer: '雲帆管理咨询有限公司', payeeName: '国家金库', content: '纳税', refNo: 'FK202602020001' }]},
+      { type: 'bank', label: '收款回单', date: '2026-02-16', totalAmount: 160000, payer: 'C商业银行', payeeName: '雲帆管理咨询有限公司', content: 'IT系统升级咨询项目预付款（40%）', refNo: 'HD202602160009' },
+      { type: 'text', label: '咨询合同', docTitle: 'IT 系 统 升 级 咨 询 合 同', date: '2026-02-16', stampText: '合同专用章', content: '甲方：C商业银行\n乙方：雲帆管理咨询有限公司\n项目：核心银行系统升级咨询\n金额：400,000元\n付款：签约40%+中期40%+终验20%\n期限：2026.2-2026.5\n\n服务内容：系统需求分析、供应商选型、实施监理' }]
+  },
   {
-    date: '2026-02-03',
-    role: 'accountant',
-    title: '银行代缴社保操作',
-    tags: ['出纳', '工资社保'],
-    difficulty: 1,
-    description: '通过银行转账缴纳1月社保费31,840元。',
-    tip: '社保由银行自动代扣或手动转账，出纳需确保账户余额充足。',
+    date: '2026-02-17', role: 'accountant', title: '项目C启动·需求调研差旅', tags: ["项目核算"], difficulty: 2,
+    tip: '项目差旅费按项目归集到劳务成本-差旅费。',
+    description: 'C项目启动，3名IT顾问赴客户现场进行需求调研，预付差旅费18,000元（机票+住宿+交通）。',
     entries: [
-      { subjectCode: '221102', summary: '缴纳社保', debit: 31840, credit: 0, explanation: '应付职工薪酬减少。' },
-      { subjectCode: '100201', summary: '缴纳社保', debit: 0, credit: 31840, explanation: '银行存款减少。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221102），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'}],
+      { subjectCode: '520102', summary: '项目C调研差旅', debit: 18000, credit: 0, explanation: '劳务成本——差旅费增加。C项目直接差旅费用。' },
+      { subjectCode: '100201', summary: '支付差旅费', debit: 0, credit: 18000, explanation: '银行存款减少。' }],
     documents: [
-      { type: 'bank', label: '付款回单', date: '2026-02-03', totalAmount: 31840, payer: '雲帆管理咨询有限公司', payeeName: '社保中心', content: '社保缴纳', refNo: 'FK202602030001' }]},
+      { type: 'receipt', label: '报销单', docTitle: '差 旅 费 报 销 单', date: '2026-02-17', totalAmount: 18000, payer: '雲帆管理咨询有限公司', stampText: '财务\n审核专用章', items: [{ name: '北京→深圳 往返机票（3人）', qty: 3, price: 3000, amount: 9000 }, { name: '住宿费（7天）', qty: 21, price: 350, amount: 7350 }, { name: '市内交通费', qty: 1, price: 1650, amount: 1650 }]}]
+  },
   {
-    date: '2026-02-04',
-    role: 'accountant',
-    title: '银行代发工资操作',
-    tags: ['出纳', '工资社保'],
-    difficulty: 2,
-    description: '通过银行批量代发1月工资，实发合计99,910元至员工个人账户。',
-    tip: '工资代发需提前制作工资发放表，经审批后提交银行办理。',
+    date: '2026-02-18', role: 'accountant', title: '缴纳代扣个人所得税', tags: ["税费"], difficulty: 1,
+    tip: '上月代扣的个人所得税需在当月15日前缴纳。',
+    description: '缴纳1月代扣的个人所得税3,500元。',
     entries: [
-      { subjectCode: '221101', summary: '银行代发工资', debit: 103000, credit: 0, explanation: '应付职工薪酬减少。' },
-      { subjectCode: '100201', summary: '银行代发工资', debit: 0, credit: 99910, explanation: '银行存款减少。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出（配对科目221101），属于"支付给职工以及为职工支付的现金"——经营活动现金流出。'},
-      { subjectCode: '222102', summary: '代扣个税', debit: 0, credit: 3090, explanation: '应交所得税（个税）增加。' }],
+      { subjectCode: '222110', summary: '缴纳个税', debit: 3500, credit: 0, explanation: '应交个人所得税减少。' },
+      { subjectCode: '100201', summary: '缴纳税款', debit: 0, credit: 3500, explanation: '银行存款减少。' }],
     documents: [
-      { type: 'bank', label: '付款回单', date: '2026-02-04', totalAmount: 99910, payer: '雲帆管理咨询有限公司', payeeName: '批量代发', content: '1月工资', refNo: 'FK202602040001' }]},
+      { type: 'bank', label: '缴税回单', date: '2026-02-18', totalAmount: 3500, payer: '雲帆管理咨询有限公司', payeeName: '国家税务总局北京市税务局', content: '1月代扣个人所得税', refNo: 'HD202602180010' }]
+  },
   {
-    date: '2026-02-05',
-    role: 'accountant',
-    title: '新合同定金到账确认',
-    tags: ['出纳'],
-    difficulty: 1,
-    description: '确认丙客户战略咨询合同定金127,200元到账，登记日记账。',
+    date: '2026-02-19', role: 'accountant', title: '报销项目B加班餐费及交通', tags: ["项目核算"], difficulty: 2,
+    tip: '项目加班费用属于项目直接其他费用。借：劳务成本-其他直接费，贷：银行存款。',
+    description: '项目B冲刺阶段，顾问团队加班赶制战略报告，报销加班餐费及打车费合计3,500元。',
     entries: [
-      { subjectCode: '100201', summary: '定金到账', debit: 127200, credit: 0, explanation: '银行存款增加。' , cashFlowItem: 'cf-op5', cashFlowExplanation: '其他经营活动现金流入（配对科目2205），属于"收到其他与经营活动有关的现金"。'},
-      { subjectCode: '2205', summary: '定金到账', debit: 0, credit: 127200, explanation: '合同负债增加。' }],
+      { subjectCode: '520104', summary: '项目B加班费用', debit: 3500, credit: 0, explanation: '劳务成本——其他直接费用增加。' },
+      { subjectCode: '100201', summary: '报销付款', debit: 0, credit: 3500, explanation: '银行存款减少。' }],
     documents: [
-      { type: 'bank', label: '银行回单', date: '2026-02-05', totalAmount: 127200, payer: '丙客户', payeeName: '雲帆管理咨询有限公司', content: '合同定金', refNo: 'HD202602050001' }]},
+      { type: 'receipt', label: '报销单', docTitle: '加 班 费 用 报 销 单', date: '2026-02-19', totalAmount: 3500, payer: '雲帆管理咨询有限公司', stampText: '财务\n审核专用章', items: [{ name: '加班餐费', qty: 1, price: 2000, amount: 2000 }, { name: '加班打车费', qty: 1, price: 1500, amount: 1500 }]}]
+  },
   {
-    date: '2026-02-06',
-    role: 'accountant',
-    title: '财务软件采购转账支付',
-    tags: ['出纳', '费用管理'],
-    difficulty: 1,
-    description: '银行转账支付财务软件采购款12,000元。',
+    date: '2026-02-20', role: 'accountant', title: '业务招待费-客户午餐会', tags: ["费用管理"], difficulty: 1,
+    tip: '业务招待费计入管理费用，需留意税前扣除限额。',
+    description: '项目B举办阶段性成果汇报午餐会，邀请B公司项目负责人及团队成员，费用3,000元。',
     entries: [
-      { subjectCode: '1701', summary: '购买财务软件', debit: 12000, credit: 0, explanation: '无形资产增加。' },
-      { subjectCode: '100201', summary: '购买财务软件', debit: 0, credit: 12000, explanation: '银行存款减少。' , cashFlowItem: 'cf-inv', cashFlowExplanation: '购建固定资产/无形资产支出（配对科目1701），属于投资活动现金流出——资本性支出，区别于日常经营支出。'}],
+      { subjectCode: '660203', summary: '客户午餐会', debit: 3000, credit: 0, explanation: '管理费用——业务招待费增加。' },
+      { subjectCode: '100201', summary: '报销付款', debit: 0, credit: 3000, explanation: '银行存款减少。' }],
     documents: [
-      { type: 'bank', label: '付款回单', date: '2026-02-06', totalAmount: 12000, payer: '雲帆管理咨询有限公司', payeeName: '正通软件有限公司', content: '软件采购', refNo: 'FK202602060001' }]},
+      { type: 'receipt', label: '餐饮发票', docTitle: '餐 饮 服 务 发 票', date: '2026-02-20', totalAmount: 3000, payer: '雲帆管理咨询有限公司', stampText: 'XX酒店\n发票专用章', items: [{ name: 'B项目阶段性汇报午餐会', qty: 1, price: 3000, amount: 3000 }]}]
+  },
   {
-    date: '2026-02-10',
-    role: 'accountant',
-    title: '差旅费借款现金支付',
-    tags: ['出纳', '项目核算'],
-    difficulty: 1,
-    description: '现金支付丙项目组差旅费预借款6,000元。',
+    date: '2026-02-21', role: 'accountant', title: '参会行业研讨会·市场推广', tags: ["费用管理"], difficulty: 1,
+    tip: '市场推广费计入销售费用。',
+    description: '参加"2026中国管理咨询行业峰会"展位费及宣传材料费用合计12,000元。',
     entries: [
-      { subjectCode: '1221', summary: '差旅借款', debit: 6000, credit: 0, explanation: '其他应收款增加。' },
-      { subjectCode: '1001', summary: '差旅借款', debit: 0, credit: 6000, explanation: '库存现金减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目1221），属于"支付其他与经营活动有关的现金"。'}],
+      { subjectCode: '6601', summary: '行业峰会参展', debit: 12000, credit: 0, explanation: '销售费用增加。市场推广支出。' },
+      { subjectCode: '100201', summary: '支付参展费', debit: 0, credit: 12000, explanation: '银行存款减少。' }],
     documents: [
-      { type: 'text', label: '借款单', docTitle: '差旅借款单', content: '丙项目2人借支6,000元。', signature: '借款人 | 审批' }]},
+      { type: 'receipt', label: '服务发票', docTitle: '展 会 服 务 发 票', date: '2026-02-21', totalAmount: 12000, payer: '雲帆管理咨询有限公司', stampText: '中国管理咨询协会\n发票专用章', items: [{ name: '行业峰会标准展位', qty: 1, price: 8000, amount: 8000 }, { name: '宣传材料制作', qty: 1, price: 4000, amount: 4000 }]}]
+  },
   {
-    date: '2026-02-11',
-    role: 'accountant',
-    title: '软件开发中期验收款到账',
-    tags: ['出纳'],
-    difficulty: 1,
-    description: '确认乙客户支付的中期验收款169,600元到账。',
+    date: '2026-02-22', role: 'accountant', title: '提取备用金', tags: ["资金管理"], difficulty: 1,
+    tip: '提取备用金满足日常零星开支。',
+    description: '提取备用金3,000元。',
     entries: [
-      { subjectCode: '100201', summary: '中期验收款到账', debit: 169600, credit: 0, explanation: '银行存款增加。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金（配对科目6001），属于经营活动现金流入——主营业务产生的现金收入。'},
-      { subjectCode: '6001', summary: '中期验收款到账', debit: 0, credit: 169600, explanation: '主营业务收入增加。' }],
+      { subjectCode: '1001', summary: '提取备用金', debit: 3000, credit: 0, explanation: '库存现金增加。' },
+      { subjectCode: '100201', summary: '提取备用金', debit: 0, credit: 3000, explanation: '银行存款减少。' }],
     documents: [
-      { type: 'bank', label: '银行回单', date: '2026-02-11', totalAmount: 169600, payer: '乙客户', payeeName: '雲帆管理咨询有限公司', content: '软件开发中期款', refNo: 'HD202602110001' }]},
+      { type: 'bank', label: '现金支票回单', date: '2026-02-22', totalAmount: 3000, payer: '雲帆管理咨询有限公司', payeeName: '雲帆管理咨询有限公司（现金）', content: '提取备用金', refNo: 'HD202602220011' }]
+  },
+  // ═══════════════════════════════════════════
+  // 第四周：月末计提 + 期末结转（2月23日~2月28日）
+  // ═══════════════════════════════════════════
   {
-    date: '2026-02-12',
-    role: 'accountant',
-    title: '外包调研费银行转账支付',
-    tags: ['出纳', '项目核算'],
-    difficulty: 1,
-    description: '银行转账支付华信调研公司服务费25,000元。',
+    date: '2026-02-23', role: 'accountant', title: '计提2月员工工资', tags: ["工资社保"], difficulty: 2,
+    tip: '项目人员工资归集到劳务成本，管理人员工资计入管理费用。',
+    description: '计提2月员工工资。项目人员（含新入职3人）工资138,000元，管理人员工资42,000元。合计180,000元。',
     entries: [
-      { subjectCode: '520103', summary: '支付调研费', debit: 25000, credit: 0, explanation: '劳务成本增加。' },
-      { subjectCode: '100201', summary: '支付调研费', debit: 0, credit: 25000, explanation: '银行存款减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目520103），属于"支付其他与经营活动有关的现金"。'}],
+      { subjectCode: '520101', summary: '计提项目人员工资', debit: 138000, credit: 0, explanation: '劳务成本——人工成本增加。' },
+      { subjectCode: '6602', summary: '计提管理工资', debit: 42000, credit: 0, explanation: '管理费用——工资薪金增加。' },
+      { subjectCode: '221101', summary: '应付2月工资', debit: 0, credit: 180000, explanation: '应付职工薪酬——工资增加。' }],
     documents: [
-      { type: 'bank', label: '付款回单', date: '2026-02-12', totalAmount: 25000, payer: '雲帆管理咨询有限公司', payeeName: '华信市场调研有限公司', content: '调研服务费', refNo: 'FK202602120001' }]},
+      { type: 'text', label: '工资计算表', docTitle: '2 月 工 资 计 算 汇 总 表', date: '2026-02-23', stampText: '人力资源部\n工资专用章', content: '期间：2026年2月\n项目人员（48人）：138,000元\n管理人员（5人）：42,000元\n应发合计：180,000元\n\n制表：王出纳\n审核：李会计' }]
+  },
   {
-    date: '2026-02-13',
-    role: 'accountant',
-    title: '出差报销退回现金处理',
-    tags: ['出纳', '费用管理'],
-    difficulty: 1,
-    description: '丙项目组报销差旅费5,500元，退回现金500元，清点入账。',
+    date: '2026-02-24', role: 'accountant', title: '计提企业社保及公积金', tags: ["工资社保"], difficulty: 2,
+    tip: '按人员归属分别计入劳务成本和管理费用。',
+    description: '计提2月企业社保及公积金。项目人员社保27,000元、公积金14,000元；管理人员社保8,500元、公积金4,500元。合计54,000元。',
     entries: [
-      { subjectCode: '520102', summary: '差旅费报销', debit: 5500, credit: 0, explanation: '劳务成本增加。' },
-      { subjectCode: '1001', summary: '退回现金', debit: 500, credit: 0, explanation: '库存现金增加。' , cashFlowItem: 'cf-op5', cashFlowExplanation: '其他经营活动现金流入（配对科目1221），属于"收到其他与经营活动有关的现金"。'},
-      { subjectCode: '1221', summary: '冲销借款', debit: 0, credit: 6000, explanation: '其他应收款减少。' }],
+      { subjectCode: '520101', summary: '项目人员社保', debit: 27000, credit: 0, explanation: '劳务成本——人工成本增加。' },
+      { subjectCode: '520101', summary: '项目人员公积金', debit: 14000, credit: 0, explanation: '劳务成本——人工成本增加。' },
+      { subjectCode: '6602', summary: '管理社保', debit: 8500, credit: 0, explanation: '管理费用增加。' },
+      { subjectCode: '6602', summary: '管理公积金', debit: 4500, credit: 0, explanation: '管理费用增加。' },
+      { subjectCode: '221102', summary: '应付企业社保', debit: 0, credit: 35500, explanation: '应付职工薪酬——社保增加。' },
+      { subjectCode: '221102', summary: '应付企业公积金', debit: 0, credit: 18500, explanation: '应付职工薪酬——公积金增加。' }],
     documents: [
-      { type: 'receipt', label: '收款收据', docTitle: '现金收款收据', items: [{ name: '退回差旅借款余款', amount: 500 }], totalAmount: 500, stampText: '财务专用章' }]},
+      { type: 'text', label: '社保计提表', docTitle: '社 保 公 积 金 计 提 表', date: '2026-02-24', stampText: '财务专用章', content: '期间：2026年2月\n社保（企业）：项目35,500+管理8,500=44,000\n公积金（企业）：项目18,500+管理4,500=23,000\n合计：67,000\n\n制表：李会计' }]
+  },
   {
-    date: '2026-02-17',
-    role: 'accountant',
-    title: '法律顾问费银行转账',
-    tags: ['出纳', '费用管理'],
-    difficulty: 1,
-    description: '银行转账支付本月法律顾问费5,000元。',
+    date: '2026-02-25', role: 'accountant', title: '计提短期借款利息', tags: ["资金管理"], difficulty: 2,
+    tip: '按月计提短期借款利息，到期一次性还本付息。',
+    description: '计提2月短期借款利息。本金200,000元，年利率4.35%。月利息=200,000×4.35%÷12=725元。',
     entries: [
-      { subjectCode: '660201', summary: '法律顾问费', debit: 5000, credit: 0, explanation: '管理费用增加。' },
-      { subjectCode: '100201', summary: '法律顾问费', debit: 0, credit: 5000, explanation: '银行存款减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目660201），属于"支付其他与经营活动有关的现金"。'}],
+      { subjectCode: '6603', summary: '2月借款利息', debit: 725, credit: 0, explanation: '财务费用增加。' },
+      { subjectCode: '2231', summary: '应付利息', debit: 0, credit: 725, explanation: '应付利息增加。累计1-2月1,450元。' }],
     documents: [
-      { type: 'bank', label: '付款回单', date: '2026-02-17', totalAmount: 5000, payer: '雲帆管理咨询有限公司', payeeName: '大成律师事务所', content: '法律顾问费', refNo: 'FK202602170001' }]},
+      { type: 'text', label: '利息计算表', docTitle: '借 款 利 息 计 算 表', date: '2026-02-25', stampText: '财务专用章', content: '本金：200,000×4.35%÷12=725.00元\n累计应付利息：1,450.00元\n\n制表：李会计' }]
+  },
   {
-    date: '2026-02-18',
-    role: 'accountant',
-    title: '水电费银行转账支付',
-    tags: ['出纳', '费用管理'],
-    difficulty: 1,
-    description: '银行转账支付2月水电费6,200元。',
+    date: '2026-02-26', role: 'accountant', title: '计提2月城建税及教育附加', tags: ["税费"], difficulty: 2,
+    tip: '以当月应纳增值税为基数计算附加税。服务业进项较少，附加税以销项为基数。',
+    description: '计提2月附加税。本月销项税额14,880元，应纳增值税14,880元。',
     entries: [
-      { subjectCode: '660201', summary: '水电费', debit: 6200, credit: 0, explanation: '管理费用增加。' },
-      { subjectCode: '100201', summary: '水电费', debit: 0, credit: 6200, explanation: '银行存款减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目660201），属于"支付其他与经营活动有关的现金"。'}],
+      { subjectCode: '6403', summary: '城建税（7%）', debit: 1042, credit: 0, explanation: '税金及附加增加。14,880×7%=1,041.60。' },
+      { subjectCode: '6403', summary: '教育附加（3%）', debit: 446, credit: 0, explanation: '税金及附加增加。14,880×3%=446.40。' },
+      { subjectCode: '6403', summary: '地方教育附加（2%）', debit: 298, credit: 0, explanation: '税金及附加增加。14,880×2%=297.60。' },
+      { subjectCode: '222103', summary: '应交城建税', debit: 0, credit: 1042, explanation: '应交城建税增加。' },
+      { subjectCode: '222104', summary: '应交教育附加', debit: 0, credit: 446, explanation: '应交教育附加增加。' },
+      { subjectCode: '222104', summary: '应交地方教育附加', debit: 0, credit: 298, explanation: '应交地方教育附加增加。' }],
     documents: [
-      { type: 'bank', label: '付款回单', date: '2026-02-18', totalAmount: 6200, payer: '雲帆管理咨询有限公司', payeeName: '供电公司', content: '水电费', refNo: 'FK202602180001' }]},
+      { type: 'text', label: '税费计算表', docTitle: '附 加 税 计 提 计 算 表', date: '2026-02-26', stampText: '财务专用章', content: '期间：2026年2月\n应纳增值税：14,880.00元\n城建税（7%）：1,041.60\n教育附加（3%）：446.40\n地方教育附加（2%）：297.60\n合计：1,785.60\n\n制表：李会计' }]
+  },
   {
-    date: '2026-02-23',
-    role: 'accountant',
-    title: '项目差旅费直接支付',
-    tags: ['出纳', '项目核算'],
-    difficulty: 1,
-    description: '银行转账支付甲项目二期差旅费6,000元。',
+    date: '2026-02-27', role: 'accountant', title: '期末结转劳务成本至主营业务成本', tags: ["项目核算", "期末"], difficulty: 3,
+    tip: '已完成收入确认的项目结转劳务成本。项目B成本结转，项目C尚未确认收入暂不结转。',
+    description: '结转2月劳务成本。项目B人工72,000元+差旅15,000元+外包尾款15,000元+其他11,500元=113,500元。项目C成本暂留劳务成本余额。',
     entries: [
-      { subjectCode: '520102', summary: '差旅费', debit: 6000, credit: 0, explanation: '劳务成本增加。' },
-      { subjectCode: '100201', summary: '差旅费', debit: 0, credit: 6000, explanation: '银行存款减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目520102），属于"支付其他与经营活动有关的现金"。'}],
+      { subjectCode: '6401', summary: '结转项目B人工', debit: 72000, credit: 0, explanation: '主营业务成本增加。' },
+      { subjectCode: '6401', summary: '结转项目B差旅', debit: 15000, credit: 0, explanation: '主营业务成本增加。' },
+      { subjectCode: '6401', summary: '结转项目B外包', debit: 15000, credit: 0, explanation: '主营业务成本增加。' },
+      { subjectCode: '6401', summary: '结转项目B其他', debit: 11500, credit: 0, explanation: '主营业务成本增加。' },
+      { subjectCode: '520101', summary: '结转人工成本', debit: 0, credit: 72000, explanation: '劳务成本减少。' },
+      { subjectCode: '520102', summary: '结转差旅费', debit: 0, credit: 15000, explanation: '劳务成本减少。' },
+      { subjectCode: '520103', summary: '结转外包费', debit: 0, credit: 15000, explanation: '劳务成本减少。' },
+      { subjectCode: '520104', summary: '结转其他直接费', debit: 0, credit: 11500, explanation: '劳务成本减少。' }],
     documents: [
-      { type: 'bank', label: '付款回单', date: '2026-02-23', totalAmount: 6000, payer: '雲帆管理咨询有限公司', payeeName: '员工差旅', content: '差旅费', refNo: 'FK202602230001' }]},
+      { type: 'text', label: '成本结转表', docTitle: '项 目 成 本 结 转 表', date: '2026-02-27', stampText: '财务专用章', content: '项目B成本结转：\n人工：72,000\n差旅：15,000\n外包：15,000\n其他：11,500\n合计：113,500\n\n项目C成本留待后续结转。\n\n制表：李会计\n审核：赵会计主管' }]
+  },
   {
-    date: '2026-02-26',
-    title: '库存现金盘点',
-    tags: ['出纳', '期末'],
-    difficulty: 1,
-    description: '月末库存现金盘点。账面余额=8,000（1月末）-6,000（预借差旅）+500（退回）-2,000（日常报销）=500元。实存相符。',
-    tip: '每月末现金盘点不可遗漏。',
-    role: 'cashier',
-    entries: [],
+    date: '2026-02-28', role: 'accountant', title: '月末期间损益结转', tags: ["期末"], difficulty: 3,
+    tip: '结转所有损益类科目余额至本年利润。',
+    description: '结转2月损益科目。收入248,000元，成本113,500元，税金1,786元，管理费用158,743元，销售费用12,000元，财务费用425元。',
+    entries: [
+      { subjectCode: '6001', summary: '结转收入', debit: 248000, credit: 0, explanation: '主营业务收入结转。' },
+      { subjectCode: '4103', summary: '收入转入', debit: 0, credit: 248000, explanation: '本年利润增加。' },
+      { subjectCode: '4103', summary: '成本费用转入', debit: 286454, credit: 0, explanation: '本年利润减少。' },
+      { subjectCode: '6401', summary: '结转成本', debit: 0, credit: 113500, explanation: '主营业务成本结转。' },
+      { subjectCode: '6403', summary: '结转税金', debit: 0, credit: 1786, explanation: '税金及附加结转。' },
+      { subjectCode: '6602', summary: '结转管理费', debit: 0, credit: 158743, explanation: '管理费用结转。' },
+      { subjectCode: '6601', summary: '结转销售费', debit: 0, credit: 12000, explanation: '销售费用结转。' },
+      { subjectCode: '6603', summary: '结转财务费', debit: 0, credit: 425, explanation: '财务费用结转。（600+725-900=425）' }],
     documents: [
-      { type: 'text', label: '现金盘点表', docTitle: '2026年2月库存现金盘点表', content: '账面余额500元，实存500元，账实相符。', signature: '出纳 | 监盘人' }]},
+      { type: 'text', label: '结转表', docTitle: '期 间 损 益 结 转 表', date: '2026-02-28', stampText: '已结转', content: '2026年2月损益结转\n收入：248,000\n成本：113,500\n税金：1,786\n管理费：158,743\n销售费：12,000\n财务费：425\n净利润：-38,454\n\n说明：2月仍属项目前期投入阶段。' }]
+  },
   {
-    date: '2026-02-27',
-    title: '银行对账单核对',
-    tags: ['出纳', '期末'],
-    difficulty: 1,
-    description: '核对2月工商银行对账单与银行存款日记账。',
-    tip: '逐笔核对银行流水与日记账，编制余额调节表。',
-    role: 'cashier',
-    entries: [],
-    documents: [
-      { type: 'text', label: '银行对账单', docTitle: '工商银行2月对账单', content: '核对：2月收入合计296,800元，支出合计142,160元。', stampText: '中国工商银行' }]},
-  {
-    date: '2026-02-28',
-    title: '月末票据整理归档',
-    tags: ['出纳', '期末'],
-    difficulty: 1,
-    description: '整理2月所有收付款凭证归档。',
-    role: 'cashier',
-    entries: [],
-    documents: [
-      { type: 'text', label: '归档清单', docTitle: '2月出纳票据归档', content: '银行回单8份，付款单7份，其他5份，共20份。', signature: '出纳 | 财务主管' }]},
-  {
-    date: "2026-02-28",
-    role: 'accountant',
-    title: "模拟纳税申报",
-    tags: ["期末", "税费"],
-    difficulty: 1,
-    description: "根据本月已完成的账务处理，进行模拟纳税申报。系统已自动计算应缴税额（增值税和企业所得税），请前往纳税申报页面核对并提交。",
-    tip: "纳税申报是企业每月的法定义务。确认所有凭证已过账、期末结转已完成后，前往纳税申报页面核对各项税额后点击「提交申报」。",
-    entries: [],
-    documents: [
-      { type: "text", label: "纳税申报提醒", docTitle: "2月纳税申报提醒", content: "申报期间：2026-02-28\n\n请前往纳税申报页面：\n1. 核对增值税申报表数据\n2. 核对企业所得税申报表数据\n3. 确认无误后点击「提交申报」\n\n纳税申报是企业每月必做的合规义务，请按时完成。", stampText: "财务专用章" }]},
+    date: '2026-02-28', role: 'accountant', title: '模拟纳税申报', tags: ["税费", "期末"], difficulty: 1, tip: '每月15日前完成申报。',
+    description: '完成2月账务处理后进行模拟纳税申报。', entries: [], nextAction: 'tax-filing',
+    documents: [{ type: 'text', label: '申报提醒', docTitle: '2 月 纳 税 申 报 提 醒', stampText: '财务专用章', content: '申报期间：2026年2月\n截止日期：2026年3月15日\n\n申报税种：\n1. 增值税（6%，销项税额14,880元）\n2. 城市维护建设税（7%）\n3. 教育费附加（3%+2%）\n4. 代扣代缴个人所得税\n\n请前往纳税申报页面核对后提交。' }]
+  },
 ]
 
-export default tasks
+export default feb
