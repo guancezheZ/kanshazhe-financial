@@ -1,4 +1,4 @@
-/**
+﻿/**
  * 万悦超市 6月「半年结」
  *
  * 月主题：库存盘点 → 供应商返利 → 积分重估 → 半年财务总结
@@ -50,7 +50,7 @@ const tasks = [
       { subjectCode: '1901', summary: '结转非正常损耗', debit: 0, credit: 150, explanation: '待处理财产损溢减少150元。' },
       { subjectCode: '222101', summary: '非正常损耗进项税额转出', debit: 0, credit: 17.26, explanation: '应交税费-应交增值税（进项税额转出）增加。非正常损耗对应进项=150÷1.13×13%≈17.26元。' }],
     documents: [{ type: 'text', label: '盘点差异处理审批单', docTitle: '盘点差异处理审批单', stampText: '财务专用章',
-      content: '盘亏总额700元\n处理：正常损耗550→管理费用 | 非正常损耗150→营业外支出+进项转出\n审批：赵店长 ✓  财务主管 ✓' }]},
+      content: '盘点差异处理审批单\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n盘点日期：2026年6月3日\n\n盘点结果：\n  账面库存：324,500.00元\n  实际盘点：323,800.00元\n  盘亏总额：700.00元\n\n差异分析：\n┌──────────┬────────┬──────────┬──────────┐\n│  原因    │  金额  │  处理方式  │  依据    │\n├──────────┼────────┼──────────┼──────────┤\n│自然损耗  │ 550元  │管理费用   │正常合理  │\n│管理不善  │ 150元  │营业外支出 │需进项转出│\n└──────────┴────────┴──────────┴──────────┘\n\n审批意见：同意处理方案\n赵店长 ✓  财务主管 ✓  2026-06-03' }]},
   {
     date: '2026-06-05',
     role: 'accountant',
@@ -79,9 +79,9 @@ const tasks = [
       { subjectCode: '1405', summary: '食品入库', debit: 32000, credit: 0, explanation: '库存商品增加。' },
       { subjectCode: '222101', summary: '进项税额', debit: 4160, credit: 0, explanation: '增值税进项税额增加记借方。取得专用发票可抵扣。' },
       { subjectCode: '100201', summary: '支付货款', debit: 0, credit: 36160, explanation: '银行存款减少。' , cashFlowItem: 'cf-op2', cashFlowExplanation: '采购存货/商品支出。'}],
-    documents: [{ type: 'invoice', label: '增值税专用发票', region: '上海', invoiceNo: '3100789012', date: '2026-06-06', seller: '鑫鑫食品有限公司',
+    documents: [{ type: 'invoice', label: '增值税专用发票', region: '上海', invoiceNo: '3100789012', date: '2026-06-06', buyer: '万悦超市有限公司', seller: '鑫鑫食品有限公司',
       lineItems: [{ name: '食品饮料', unit: '箱', qty: 320, price: 100, amount: 32000 }], totalAmount: 36160, taxRate: '13%', taxAmount: 4160 },
-      { type: 'text', label: '商品入库验收单', docTitle: '商品入库验收单', content: '供应商：鑫鑫食品有限公司\n入库日期：2026-06-06\n\n商品明细：\n1. 食品饮料 320箱 ✓\n\n验收结论：全部合格 ✓\n\n入库保管：赵保管  验收：钱验收', signature: '仓库验收专用章' }]},
+      { type: 'text', label: '商品入库验收单', docTitle: '商品入库验收单', content: '商品入库验收单\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n供应商：鑫鑫食品有限公司\n入库日期：2026-06-06\n订单号：CG20260606012\n\n验收明细：\n1. 食品饮料  320箱 × 100.00元 = 32,000.00元 ✓\n─────────────────────────────────\n合计金额：32,000.00元（不含税）\n进项税额（13%）：4,160.00元\n价税合计：36,160.00元\n\n验收结论：全部合格 ✓\n入库保管：赵保管  验收：钱验收', signature: '仓库验收专用章' }]},
   {
     date: '2026-06-08',
     role: 'accountant',
@@ -106,7 +106,7 @@ const tasks = [
       { subjectCode: '2203', summary: '积分兑换率调整冲回', debit: 1400, credit: 0, explanation: '预收账款减少。预计兑换率80%→75%，冲回多计提的合同负债1,400元。' },
       { subjectCode: '6001', summary: '积分调整确认收入', debit: 0, credit: 1400, explanation: '主营业务收入增加。兑换率下调释放部分合同负债转为收入。' }],
     documents: [{ type: 'text', label: '积分评估报告', docTitle: '会员积分半年度评估报告', stampText: '财务专用章',
-      content: '累计积分约350万分 | 已兑换约80万分（23%）\n原预计兑换率80%→调整为75%\n调整金额：冲回合同负债1,400元' }]},
+      content: '会员积分兑换率重新评估报告\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n评估日期：2026年6月10日\n\n一、积分数据统计（截至2026年5月末）\n  累计发放积分：约3,500,000分\n  已兑换积分：约800,000分（兑换率23%）\n  已过期积分：约50,000分\n  剩余有效积分：约2,650,000分\n\n二、兑换率重新评估\n  原预计兑换率：80%\n  实际兑换率（运营数据）：约70%\n  调整后预计兑换率：75%\n  调整依据：运营3个月后的实际兑换数据\n\n三、会计调整（CAS 14第三十五条）\n  原合同负债余额：22,700元\n  按75%重算应为：21,300元\n  差额（冲回）：1,400元\n\n制表：李会计  审核：赵会计主管' }]},
   {
     date: '2026-06-12',
     role: 'accountant',
@@ -120,7 +120,7 @@ const tasks = [
       { subjectCode: '6601', summary: '一线员工6月工资', debit: 53000, credit: 0, explanation: '销售费用增加。' },
       { subjectCode: '221101', summary: '计提6月工资', debit: 0, credit: 61000, explanation: '应付职工薪酬-工资增加。' }],
     documents: [{ type: 'text', label: '工资计算表', docTitle: '2026年6月工资计算表', stampText: '人力资源部',
-      content: '合计：61,000元\n管理费用（店长）：8,000元 | 销售费用（一线）：53,000元' }]},
+      content: '工资计算表\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n期间：2026年6月\n\n管理人员（2人）：\n  店长：8,000.00元\n  副店长：4,800.00元 → 计入管理费用\n\n销售人员（12人）：\n  收银员4人：18,000.00元\n  理货员6人：24,000.00元\n  促销员2人：6,000.00元\n  生鲜技工：5,000.00元 → 计入销售费用\n\n合计：61,000.00元\n  其中管理费用：8,000.00元\n  其中销售费用：53,000.00元' }]},
   {
     date: '2026-06-14',
     role: 'accountant',
@@ -135,7 +135,7 @@ const tasks = [
       { subjectCode: '220203', summary: '支付美肌堂货款', debit: 40560, credit: 0, explanation: '应付账款减少。' },
       { subjectCode: '100201', summary: '结算联营货款', debit: 0, credit: 52000, explanation: '银行存款减少。' , cashFlowItem: 'cf-op2', cashFlowExplanation: '采购存货/商品支出。'}],
     documents: [{ type: 'text', label: '联营结算单', docTitle: '联营专柜结算单（2026年5月）', stampText: '联营结算专用章',
-      content: '含税52,000元 | 扣点22%：11,440元 | 应付供应商：40,560元' }]},
+      content: '联营专柜结算单\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n供应商：美肌堂化妆品有限公司\n结算期间：2026年5月\n\n含税销售额：52,000.00元\n扣点率：22%\n超市佣金（含税）：11,440.00元\n佣金的增值税（6%）：647.55元\n佣金净收入：10,792.45元\n\n应付供应商净额：40,560.00元（52,000×78%）\n\n制表：李会计  审核：赵会计主管' }]},
   {
     date: '2026-06-15',
     role: 'accountant',
@@ -160,7 +160,7 @@ const tasks = [
       { subjectCode: '6602', summary: '生鲜正常损耗', debit: 1800, credit: 0, explanation: '管理费用增加。正常损耗无需进项转出。' },
       { subjectCode: '1405', summary: '损耗出库', debit: 0, credit: 1800, explanation: '库存商品减少。' }],
     documents: [{ type: 'text', label: '生鲜损耗报告单', docTitle: '生鲜商品损耗报告（2026年6月）', stampText: '生鲜部',
-      content: '合计：1,800.00元\n损耗性质：正常合理损耗 ✓' }]},
+      content: '生鲜商品损耗报告\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n期间：2026年6月\n\n品类       金额     损耗率\n────────  ───────  ──────\n蔬菜       600元      4%\n水果       500元      3%\n鲜肉       400元      2.5%\n水产品     300元      5%\n────────  ───────  ──────\n合计     1,800.00元    —\n\n损耗性质：正常合理损耗 ✓\n无需进项转出 ✓\n\n店长审批：同意 ☑' }]},
   {
     date: '2026-06-20',
     role: 'accountant',
@@ -173,9 +173,9 @@ const tasks = [
       { subjectCode: '1405', summary: '日用品入库', debit: 22000, credit: 0, explanation: '库存商品增加。' },
       { subjectCode: '222101', summary: '进项税额', debit: 2860, credit: 0, explanation: '增值税进项税额增加记借方。取得专用发票可抵扣。' },
       { subjectCode: '220203', summary: '赊购款未付', debit: 0, credit: 24860, explanation: '应付账款增加。' }],
-    documents: [{ type: 'invoice', label: '增值税专用发票', region: '广东', invoiceNo: '4400890124', date: '2026-06-20', seller: '洁宝日化有限公司',
+    documents: [{ type: 'invoice', label: '增值税专用发票', region: '广东', invoiceNo: '4400890124', date: '2026-06-20', buyer: '万悦超市有限公司', seller: '洁宝日化有限公司',
       lineItems: [{ name: '日用品', unit: '箱', qty: 180, price: 122.22, amount: 22000 }], totalAmount: 24860, taxRate: '13%', taxAmount: 2860 },
-      { type: 'text', label: '商品入库验收单', docTitle: '商品入库验收单', content: '供应商：洁宝日化有限公司\n入库日期：2026-06-20\n\n商品明细：\n1. 日用品 180箱 ✓\n\n验收结论：全部合格 ✓\n\n入库保管：赵保管  验收：钱验收', signature: '仓库验收专用章' }]},
+      { type: 'text', label: '商品入库验收单', docTitle: '商品入库验收单', content: '商品入库验收单\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n供应商：洁宝日化有限公司\n入库日期：2026-06-20\n订单号：CG20260620015\n\n验收明细：\n1. 日用品  180箱 × 125.00元 = 22,500.00元 ✓\n─────────────────────────────────\n合计金额：22,500.00元（不含税）\n进项税额（13%）：2,925.00元\n价税合计：25,425.00元\n\n验收结论：全部合格 ✓\n入库保管：赵保管  验收：钱验收', signature: '仓库验收专用章' }]},
 
   // ═══════════════════════════════════════════
   // 月末（6/22 - 6/30）
@@ -194,7 +194,7 @@ const tasks = [
       { subjectCode: '6001', summary: '联营佣金收入', debit: 0, credit: 9962.26, explanation: '主营业务收入增加。净额法确认。' },
       { subjectCode: '222101', summary: '佣金增值税', debit: 0, credit: 597.74, explanation: '应交税费-应交增值税（销项税额）增加。' }],
     documents: [{ type: 'text', label: '联营销售汇总', docTitle: '联营专柜销售汇总（2026年6月）', stampText: '联营结算专用章',
-      content: '含税48,000元 | 扣点22%：10,560元 | 应付供应商：37,440元' }]},
+      content: '联营专柜销售汇总\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n专柜：美肌堂化妆品专柜\n期间：2026年6月1日-6月30日\n\n含税销售额：48,000.00元\n扣点率：22%\n超市佣金（含税）：10,560.00元\n佣金增值税（6%）：597.74元\n佣金净收入：9,962.26元\n\n应付供应商（78%）：37,440.00元\n\n收入确认方式：净额法（代理人）' }]},
   {
     date: '2026-06-25',
     role: 'accountant',
@@ -207,7 +207,7 @@ const tasks = [
       { subjectCode: '6401', summary: '结转6月成本', debit: 173000, credit: 0, explanation: '主营业务成本增加。' },
       { subjectCode: '1405', summary: '各品类出库', debit: 0, credit: 173000, explanation: '库存商品减少。' }],
     documents: [{ type: 'text', label: '成本计算表', docTitle: '商品销售成本计算表（2026年6月）', stampText: '财务专用章',
-      content: '6月成本：173,000元\n减返利：3,200元\n净成本：169,800元' }]},
+      content: '商品销售成本计算表（2026年6月）\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n一、自营商品成本\n  商品销售出库：173,000.00元\n\n二、供应商返利冲减\n  鑫鑫食品返利：-3,200.00元\n  ─────────────────────────────\n  净成本：169,800.00元\n\n计算方式：移动加权平均法\n\n制表：李会计  审核：赵会计主管' }]},
   {
     date: '2026-06-28',
     role: 'accountant',
@@ -340,9 +340,9 @@ const tasks = [
       { subjectCode: '1405', summary: '入库', debit: 20000, credit: 0, explanation: '库存商品增加记借方。采购商品验收入库。' },
       { subjectCode: '222101', summary: '进项税', debit: 2600, credit: 0, explanation: '增值税进项税额增加记借方。取得专用发票可抵扣。' },
       { subjectCode: '220203', summary: '赊购', debit: 0, credit: 22600, explanation: '应付账款增加记贷方。赊购商品形成应付供应商款项。' }],
-    documents: [{ type: 'invoice', label: '增值税专用发票', date: '2026-06-09', seller: '洁宝日化有限公司', totalAmount: 22600,
+    documents: [{ type: 'invoice', label: '增值税专用发票', region: '广东', invoiceNo: '4400890125', date: '2026-06-09', buyer: '万悦超市有限公司', seller: '洁宝日化有限公司', totalAmount: 22600, taxRate: '13%', taxAmount: 2600,
       lineItems: [{ name: '日用品', unit: '箱', qty: 160, price: 125, amount: 20000 }] },
-      { type: 'text', label: '商品入库验收单', docTitle: '商品入库验收单', content: '供应商：洁宝日化有限公司\n入库日期：2026-06-09\n\n商品明细：\n1. 日用品 160箱 ✓\n\n验收结论：全部合格 ✓\n\n入库保管：赵保管  验收：钱验收', signature: '仓库验收专用章' }]},
+      { type: 'text', label: '商品入库验收单', docTitle: '商品入库验收单', content: '商品入库验收单\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n供应商：洁宝日化有限公司\n入库日期：2026-06-09\n订单号：CG20260609013\n\n验收明细：\n1. 日用品  160箱 × 125.00元 = 20,000.00元 ✓\n─────────────────────────────────\n合计金额：20,000.00元（不含税）\n进项税额（13%）：2,600.00元\n价税合计：22,600.00元\n\n验收结论：全部合格 ✓\n入库保管：赵保管  验收：钱验收', signature: '仓库验收专用章' }]},
   {
     date: '2026-06-11',
     role: 'accountant',
@@ -355,9 +355,9 @@ const tasks = [
       { subjectCode: '1405', summary: '入库', debit: 14500, credit: 0, explanation: '库存商品增加记借方。采购商品验收入库。' },
       { subjectCode: '222101', summary: '进项税', debit: 1305, credit: 0, explanation: '增值税进项税额增加记借方。取得专用发票可抵扣。' },
       { subjectCode: '100201', summary: '付款', debit: 0, credit: 15805, explanation: '银行存款减少记贷方。支付采购货款。' , cashFlowItem: 'cf-op2', cashFlowExplanation: '采购存货/商品支出，属于经营活动现金流出。'}],
-    documents: [{ type: 'invoice', label: '增值税普通发票', date: '2026-06-11', seller: '绿源农业有限公司', totalAmount: 15805,
+    documents: [{ type: 'invoice', label: '增值税普通发票', region: '上海', invoiceNo: '3100567803', date: '2026-06-11', buyer: '万悦超市有限公司', seller: '绿源农业有限公司', totalAmount: 15805, taxRate: '9%', taxAmount: 1305,
       lineItems: [{ name: '蔬菜', unit: '斤', qty: 600, price: 5, amount: 3000 }, { name: '水果', unit: '斤', qty: 500, price: 12, amount: 6000 }, { name: '鲜肉', unit: '斤', qty: 275, price: 20, amount: 5500 }] },
-      { type: 'text', label: '生鲜验收单', docTitle: '生鲜商品验收单', content: '供应商：绿源农业有限公司\n入库日期：2026-06-11\n\n验收情况：\n1. 蔬菜 600斤 ✓\n2. 水果 500斤 ✓\n3. 鲜肉 275斤 ✓\n\n验收结论：全部合格 ✓\n验收人：钱验收', signature: '生鲜验收专用章' }]},
+      { type: 'text', label: '生鲜验收单', docTitle: '生鲜商品验收单', content: '生鲜商品验收单\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n供应商：绿源农业有限公司\n入库日期：2026-06-11\n订单号：CG20260611014\n\n验收明细：\n1. 蔬菜  600斤 × 5.00元  = 3,000.00元 ✓\n2. 水果  500斤 × 12.00元 = 6,000.00元 ✓\n3. 鲜肉  275斤 × 20.00元 = 5,500.00元 ✓\n───────────────────────────────\n合计金额：13,500.00元（不含税）\n进项税额（9%）：1,215.00元\n价税合计：14,715.00元\n\n验收结论：全部合格 ✓\n验收人：钱验收  保管员：赵保管', signature: '生鲜验收专用章' }]},
   {
     date: '2026-06-16',
     role: 'accountant',
@@ -458,9 +458,9 @@ const tasks = [
       { subjectCode: '1405', summary: '入库', debit: 25000, credit: 0, explanation: '库存商品增加记借方。采购商品验收入库。' },
       { subjectCode: '222101', summary: '进项税', debit: 3250, credit: 0, explanation: '增值税进项税额增加记借方。取得专用发票可抵扣。' },
       { subjectCode: '100201', summary: '付款', debit: 0, credit: 28250, explanation: '银行存款减少记贷方。支付采购货款。' , cashFlowItem: 'cf-op2', cashFlowExplanation: '采购存货/商品支出，属于经营活动现金流出。'}],
-    documents: [{ type: 'invoice', label: '增值税专用发票', date: '2026-06-21', seller: '鑫鑫食品有限公司', totalAmount: 28250,
+    documents: [{ type: 'invoice', label: '增值税专用发票', region: '上海', invoiceNo: '3100789014', date: '2026-06-21', buyer: '万悦超市有限公司', seller: '鑫鑫食品有限公司', totalAmount: 28250, taxRate: '13%', taxAmount: 3250,
       lineItems: [{ name: '食品', unit: '箱', qty: 250, price: 100, amount: 25000 }] },
-      { type: 'text', label: '商品入库验收单', docTitle: '商品入库验收单', content: '供应商：鑫鑫食品有限公司\n入库日期：2026-06-21\n\n商品明细：\n1. 食品 250箱 ✓\n\n验收结论：全部合格 ✓\n\n入库保管：赵保管  验收：钱验收', signature: '仓库验收专用章' }]},
+      { type: 'text', label: '商品入库验收单', docTitle: '商品入库验收单', content: '商品入库验收单\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n供应商：鑫鑫食品有限公司\n入库日期：2026-06-21\n订单号：CG20260621016\n\n验收明细：\n1. 食品  250箱 × 100.00元 = 25,000.00元 ✓\n─────────────────────────────────\n合计金额：25,000.00元（不含税）\n进项税额（13%）：3,250.00元\n价税合计：28,250.00元\n\n验收结论：全部合格 ✓\n入库保管：赵保管  验收：钱验收', signature: '仓库验收专用章' }]},
   {
     date: '2026-06-23',
     role: 'accountant',

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * 万悦超市 3月「春季调整」
  *
  * 月主题：日常运营 → 引入联营专柜 → 预付卡消费 → 供应商结算 → 月末结转
@@ -597,7 +597,7 @@ const tasks = [
       { subjectCode: '1405', summary: '生鲜入库', debit: 12000, credit: 0, explanation: '库存商品增加。' },
       { subjectCode: '222101', summary: '进项税额', debit: 1080, credit: 0, explanation: '应交税费-应交增值税（进项税额）增加。' },
       { subjectCode: '100201', summary: '支付货款', debit: 0, credit: 13080, explanation: '银行存款减少。' , cashFlowItem: 'cf-op2', cashFlowExplanation: '采购存货/商品支出，属于经营活动现金流出。'}],
-    documents: [{ type: 'invoice', label: '增值税普通发票（农产品）', date: '2026-03-22', seller: '绿源农业有限公司', totalAmount: 13080, taxRate: '9%', taxAmount: 1080,
+    documents: [{ type: 'invoice', label: '增值税普通发票（农产品）', region: '上海', invoiceNo: '3100789011', date: '2026-03-22', buyer: '万悦超市有限公司', seller: '绿源农业有限公司', totalAmount: 13080, taxRate: '9%', taxAmount: 1080,
       lineItems: [{ name: '蔬菜', unit: '斤', qty: 600, price: 5, amount: 3000 }, { name: '水果', unit: '斤', qty: 500, price: 12, amount: 6000 }, { name: '鲜肉', unit: '斤', qty: 150, price: 20, amount: 3000 }] },
       { type: 'text', label: '生鲜验收单', docTitle: '生鲜商品验收单', content: '供应商：绿源农业有限公司\n入库日期：2026-03-22\n\n验收情况：\n1. 蔬菜 600斤 ✓ 新鲜度合格\n2. 水果 500斤 ✓ 成熟度适中\n3. 鲜肉 150斤 ✓ 检疫合格\n\n验收人：钱验收', signature: '生鲜验收专用章' }]},
   {
@@ -612,7 +612,7 @@ const tasks = [
       { subjectCode: '1405', summary: '日用品入库', debit: 18000, credit: 0, explanation: '库存商品增加记借方。采购商品验收入库。' },
       { subjectCode: '222101', summary: '进项税额', debit: 2340, credit: 0, explanation: '增值税进项税额增加记借方。取得专用发票可抵扣。' },
       { subjectCode: '220203', summary: '赊购款未付', debit: 0, credit: 20340, explanation: '应付账款增加。' }],
-    documents: [{ type: 'invoice', label: '增值税专用发票', date: '2026-03-26', seller: '洁宝日化有限公司', totalAmount: 20340, taxRate: '13%', taxAmount: 2340,
+    documents: [{ type: 'invoice', label: '增值税专用发票', region: '广东', invoiceNo: '4400789123', date: '2026-03-26', buyer: '万悦超市有限公司', seller: '洁宝日化有限公司', totalAmount: 20340, taxRate: '13%', taxAmount: 2340,
       lineItems: [{ name: '日用品', unit: '箱', qty: 100, price: 180, amount: 18000 }] },
       { type: 'text', label: '商品入库验收单', docTitle: '商品入库验收单', content: '供应商：洁宝日化有限公司\n入库日期：2026-03-26\n\n商品明细：\n1. 日用品 100箱 ✓\n\n验收结论：全部合格 ✓\n\n入库保管：赵保管\n验收：钱验收', signature: '仓库验收专用章' }]}
 ]

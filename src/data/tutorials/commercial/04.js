@@ -1,4 +1,4 @@
-/**
+﻿/**
  * 万悦超市 4月「会员月」
  *
  * 月主题：会员积分体系上线 → 积分兑换 → 赠品活动 → 月末结转
@@ -64,7 +64,7 @@ const tasks = [
       { subjectCode: '100201', summary: '支付联营供应商货款', debit: 0, credit: 34000, explanation: '银行存款减少。向美肌堂支付联营货款总额34,000元（含佣金7,480元）。' , cashFlowItem: 'cf-op2', cashFlowExplanation: '采购存货/商品支出，属于经营活动现金流出。'}],
     documents: [
       { type: 'text', label: '联营结算单', docTitle: '联营专柜结算单（2026年3月）', stampText: '联营结算专用章',
-        content: '供应商：美肌堂化妆品有限公司\n结算期间：2026年3月8日-3月31日\n含税销售额：34,000.00元\n扣点22%：7,480.00元\n应付供应商净额：26,520.00元' },
+        content: '联营专柜结算单\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n供应商：美肌堂化妆品有限公司\n结算期间：2026年3月8日-3月31日（开业首月下半月）\n\n含税销售额：34,000.00元\n扣点率：22%\n超市佣金（含税）：7,480.00元\n佣金的增值税（6%）：423.40元\n佣金净收入：7,056.60元\n\n应付供应商净额：26,520.00元（34,000×78%）\n\n制表：李会计  审核：赵会计主管  联营商确认：美肌堂（盖章）' },
       { type: 'bank', label: '转账回单', date: '2026-04-05', totalAmount: 34000, payer: '本公司', payeeName: '美肌堂化妆品有限公司', content: '联营专柜3月结算款', refNo: 'HD202604050001' }]},
   {
     date: '2026-04-06',
@@ -170,7 +170,7 @@ const tasks = [
     documents: [{ type: 'invoice', label: '增值税专用发票', region: '广东', invoiceNo: '4400901234', date: '2026-04-14', buyer: '本公司', seller: '洁宝日化有限公司',
       lineItems: [{ name: '洗发水', unit: '箱', qty: 50, price: 150, amount: 7500 }, { name: '洗衣液', unit: '箱', qty: 60, price: 125, amount: 7500 }],
       totalAmount: 16950, taxRate: '13%', taxAmount: 1950 },
-      { type: 'text', label: '商品入库验收单', docTitle: '商品入库验收单', content: '供应商：洁宝日化有限公司\n入库日期：2026-04-14\n\n商品明细：\n1. 洗发水 50箱 ✓\n2. 洗衣液 60箱 ✓\n\n验收结论：全部合格 ✓\n\n入库保管：赵保管  验收：钱验收', signature: '仓库验收专用章' }]},
+      { type: 'text', label: '商品入库验收单', docTitle: '商品入库验收单', content: '商品入库验收单\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n供应商：洁宝日化有限公司\n入库日期：2026-04-14\n订单号：CG20260414002\n\n商品验收明细：\n1. 洗发水（500ml）  50箱 × 150.00元 = 7,500.00元 ✓\n2. 洗衣液（2.5kg）  60箱 × 125.00元 = 7,500.00元 ✓\n─────────────────────────────────\n合计金额：15,000.00元（不含税）\n进项税额（13%）：1,950.00元\n价税合计：16,950.00元\n\n质量检验：包装完好、生产日期均在保质期内 ≥10个月 ✓\n验收结论：全部合格 ✓\n\n入库保管：赵保管  验收：钱验收', signature: '仓库验收专用章' }]},
   {
     date: '2026-04-15',
     role: 'accountant',
@@ -270,7 +270,7 @@ const tasks = [
       { subjectCode: '222103', summary: '应交城建税', debit: 0, credit: 1715, explanation: '应交税费-应交城建税增加。24,500×7%=1,715元。' },
       { subjectCode: '222104', summary: '应交教育费附加', debit: 0, credit: 735, explanation: '应交税费-应交教育费附加增加。24,500×3%=735元。' }],
     documents: [{ type: 'text', label: '税金计算表', docTitle: '附加税费计算表（2026年4月）', stampText: '财务专用章',
-      content: '应交增值税：24,500.00元\n城建税（7%）：1,715.00元\n教育费附加（3%）：735.00元\n合计：2,450.00元\n\n制表：李会计  审核：赵会计主管' }]},
+      content: '附加税费计算表\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n计税期间：2026年4月\n\n一、增值税计算\n  销项税额汇总：约 60,000.00元\n  进项税额汇总：约 35,500.00元\n  应交增值税：24,500.00元\n\n二、附加税费计算（以增值税为计税依据）\n  城市维护建设税（7%）：24,500×7%=1,715.00元\n  教育费附加（3%）：24,500×3%=735.00元\n  ─────────────────────────────\n  附加税费合计：2,450.00元\n\n制表：李会计  审核：赵会计主管  批准：赵总' }]},
   {
     date: '2026-04-26',
     role: 'accountant',
@@ -344,9 +344,9 @@ const tasks = [
       { subjectCode: '1405', summary: '生鲜入库', debit: 18500, credit: 0, explanation: '库存商品增加。生鲜验收入库。' },
       { subjectCode: '222101', summary: '进项税额（9%）', debit: 1665, credit: 0, explanation: '应交税费-应交增值税（进项税额）增加。农产品9%税率。' },
       { subjectCode: '100201', summary: '支付货款', debit: 0, credit: 20165, explanation: '银行存款减少。' , cashFlowItem: 'cf-op2', cashFlowExplanation: '采购存货/商品支出。'}],
-    documents: [{ type: 'invoice', label: '增值税普通发票（农产品）', date: '2026-04-07', seller: '绿源农业有限公司', totalAmount: 20165,
+    documents: [{ type: 'invoice', label: '增值税普通发票（农产品）', region: '上海', invoiceNo: '3100789012', date: '2026-04-07', buyer: '万悦超市有限公司', seller: '绿源农业有限公司', totalAmount: 20165, taxRate: '9%', taxAmount: 1665,
       lineItems: [{ name: '蔬菜', unit: '斤', qty: 600, price: 5, amount: 3000 }, { name: '水果', unit: '斤', qty: 500, price: 12, amount: 6000 }, { name: '鲜肉', unit: '斤', qty: 400, price: 20, amount: 8000 }] },
-      { type: 'text', label: '生鲜验收单', docTitle: '生鲜商品验收单', content: '供应商：绿源农业有限公司\n入库日期：2026-04-07\n\n验收情况：\n1. 蔬菜 600斤 ✓\n2. 水果 500斤 ✓\n3. 鲜肉 400斤 ✓\n\n验收结论：全部合格 ✓\n验收人：钱验收', signature: '生鲜验收专用章' }]},
+      { type: 'text', label: '生鲜验收单', docTitle: '生鲜商品验收单', content: '生鲜商品验收单\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n供应商：绿源农业有限公司\n入库日期：2026-04-07\n订单号：CG20260407001\n\n验收明细：\n1. 蔬菜   600斤 × 5.00元 = 3,000.00元 ✓\n2. 水果   500斤 × 12.00元 = 6,000.00元 ✓\n3. 鲜肉   400斤 × 20.00元 = 8,000.00元 ✓\n─────────────────────────────\n合计金额：17,000.00元（不含税）\n进项税额（9%）：1,665.00元\n价税合计：20,165.00元\n\n验收结论：全部合格 ✓\n验收标准：感官检验+重量核实\n\n验收人：钱验收  送货人：绿源农业 张师傅  保管员：赵保管', signature: '生鲜验收专用章' }]},
   {
     date: '2026-04-08',
     role: 'accountant',
@@ -519,9 +519,9 @@ const tasks = [
       { subjectCode: '1405', summary: '食品入库', debit: 20000, credit: 0, explanation: '库存商品增加。' },
       { subjectCode: '222101', summary: '进项税', debit: 2600, credit: 0, explanation: '增值税进项税额增加记借方。取得专用发票可抵扣。' },
       { subjectCode: '100201', summary: '支付货款', debit: 0, credit: 22600, explanation: '银行存款减少。' , cashFlowItem: 'cf-op2', cashFlowExplanation: '采购存货/商品支出。'}],
-    documents: [{ type: 'invoice', label: '增值税专用发票', date: '2026-04-29', seller: '鑫鑫食品有限公司', totalAmount: 22600,
+    documents: [{ type: 'invoice', label: '增值税专用发票', region: '上海', invoiceNo: '3100789123', date: '2026-04-29', buyer: '万悦超市有限公司', seller: '鑫鑫食品有限公司', totalAmount: 22600, taxRate: '13%', taxAmount: 2600,
       lineItems: [{ name: '食品', unit: '箱', qty: 200, price: 100, amount: 20000 }] },
-      { type: 'text', label: '商品入库验收单', docTitle: '商品入库验收单', content: '供应商：鑫鑫食品有限公司\n入库日期：2026-04-29\n\n商品明细：\n1. 食品 200箱 ✓\n\n验收结论：全部合格 ✓\n\n入库保管：赵保管  验收：钱验收', signature: '仓库验收专用章' }]},
+      { type: 'text', label: '商品入库验收单', docTitle: '商品入库验收单', content: '商品入库验收单\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n供应商：鑫鑫食品有限公司\n入库日期：2026-04-29\n订单号：CG20260429003\n\n商品验收明细：\n1. 休闲食品（混合装）  200箱 × 100.00元 = 20,000.00元 ✓\n─────────────────────────────────\n合计金额：20,000.00元（不含税）\n进项税额（13%）：2,600.00元\n价税合计：22,600.00元\n\n质量检验：包装完好、生产日期均在保质期内 ✓\n验收结论：全部合格 ✓\n\n入库保管：赵保管  验收：钱验收', signature: '仓库验收专用章' }]},
   {
     date: '2026-04-14',
     role: 'accountant',
