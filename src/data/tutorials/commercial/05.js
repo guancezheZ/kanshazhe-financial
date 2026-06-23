@@ -48,7 +48,8 @@ const tasks = [
       { subjectCode: '222101', summary: '进项税额', debit: 3640, credit: 0, explanation: '应交税费-应交增值税（进项税额）增加。取得专票可抵扣。' },
       { subjectCode: '100201', summary: '支付货款', debit: 0, credit: 31640, explanation: '银行存款减少。' , cashFlowItem: 'cf-op2', cashFlowExplanation: '采购存货/商品支出。'}],
     documents: [{ type: 'invoice', label: '增值税专用发票', region: '上海', invoiceNo: '3100678901', date: '2026-05-06', buyer: '本公司', seller: '鑫鑫食品有限公司',
-      lineItems: [{ name: '食品', unit: '箱', qty: 280, price: 100, amount: 28000 }], totalAmount: 31640, taxRate: '13%', taxAmount: 3640 }]},
+      lineItems: [{ name: '食品', unit: '箱', qty: 280, price: 100, amount: 28000 }], totalAmount: 31640, taxRate: '13%', taxAmount: 3640 },
+      { type: 'text', label: '商品入库验收单', docTitle: '商品入库验收单', content: '供应商：鑫鑫食品有限公司\n入库日期：2026-05-06\n\n商品明细：\n1. 食品 280箱 ✓\n\n验收结论：全部合格 ✓\n\n入库保管：赵保管  验收：钱验收', signature: '仓库验收专用章' }]},
   {
     date: '2026-05-07',
     role: 'accountant',
@@ -96,7 +97,8 @@ const tasks = [
       { subjectCode: '222101', summary: '进项税额', debit: 3250, credit: 0, explanation: '应交税费-应交增值税（进项税额）增加。' },
       { subjectCode: '220203', summary: '赊购款未付', debit: 0, credit: 28250, explanation: '应付账款增加。' }],
     documents: [{ type: 'invoice', label: '增值税专用发票', region: '广东', invoiceNo: '4400789013', date: '2026-05-09', seller: '洁宝日化有限公司',
-      lineItems: [{ name: '日用品', unit: '箱', qty: 200, price: 125, amount: 25000 }], totalAmount: 28250, taxRate: '13%', taxAmount: 3250 }]},
+      lineItems: [{ name: '日用品', unit: '箱', qty: 200, price: 125, amount: 25000 }], totalAmount: 28250, taxRate: '13%', taxAmount: 3250 },
+      { type: 'text', label: '商品入库验收单', docTitle: '商品入库验收单', content: '供应商：洁宝日化有限公司\n入库日期：2026-05-09\n\n商品明细：\n1. 日用品 200箱 ✓\n\n验收结论：全部合格 ✓\n\n入库保管：赵保管  验收：钱验收', signature: '仓库验收专用章' }]},
   {
     date: '2026-05-10',
     role: 'accountant',
@@ -128,7 +130,8 @@ const tasks = [
       { subjectCode: '100201', summary: '支付货款', debit: 0, credit: 23980, explanation: '银行存款减少。' , cashFlowItem: 'cf-op2', cashFlowExplanation: '采购存货/商品支出。'}],
     documents: [{ type: 'invoice', label: '增值税普通发票（农产品）', region: '上海', invoiceNo: '3101012345', date: '2026-05-12', seller: '绿源农业有限公司',
       lineItems: [{ name: '蔬菜', unit: '斤', qty: 800, price: 5, amount: 4000 }, { name: '水果', unit: '斤', qty: 600, price: 12, amount: 7200 }, { name: '鲜肉', unit: '斤', qty: 500, price: 20, amount: 10000 }],
-      totalAmount: 23980, taxRate: '9%', taxAmount: 1980 }]},
+      totalAmount: 23980, taxRate: '9%', taxAmount: 1980 },
+      { type: 'text', label: '生鲜验收单', docTitle: '生鲜商品验收单', content: '供应商：绿源农业有限公司\n入库日期：2026-05-12\n\n验收情况：\n1. 蔬菜 800斤 ✓\n2. 水果 600斤 ✓\n3. 鲜肉 500斤 ✓\n\n验收结论：全部合格 ✓\n验收人：钱验收', signature: '生鲜验收专用章' }]},
   {
     date: '2026-05-15',
     role: 'accountant',
@@ -185,8 +188,20 @@ const tasks = [
     entries: [
       { subjectCode: '6602', summary: '生鲜正常损耗', debit: 1950, credit: 0, explanation: '管理费用增加。正常损耗无需进项转出。' },
       { subjectCode: '1405', summary: '损耗出库', debit: 0, credit: 1950, explanation: '库存商品减少。' }],
-    documents: [{ type: 'text', label: '生鲜损耗报告单', docTitle: '生鲜商品损耗报告（2026年5月）', stampText: '生鲜部',
-      content: '合计：1,950.00元\n损耗性质：正常合理损耗 ✓' }]},
+    documents: [{ type: 'text', label: '生鲜损耗报告单', docTitle: '生鲜商品损耗报告（2026年5月）', stampText: '生鲜部专用章',
+      content: `生鲜商品损耗报告
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+期间：2026年5月
+
+品类       金额     损耗率    原因
+──────────────────────────────
+蔬菜       800元     5%      自然损耗
+水果       650元     4%      轻微碰伤
+鲜肉       500元     3%      水分流失
+──────────────────────────────
+合计     1,950.00元   —
+损耗性质：正常合理损耗 ✓
+店长审批：同意 ☑` }]},
   {
     date: '2026-05-22',
     role: 'accountant',
@@ -272,7 +287,22 @@ const tasks = [
       { subjectCode: '100201', summary: 'POS收款', debit: 45200, credit: 0, explanation: '银行存款增加。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金。'},
       { subjectCode: '6001', summary: '销售收入', debit: 0, credit: 40000, explanation: '主营业务收入增加。' },
       { subjectCode: '222101', summary: '销项税', debit: 0, credit: 5200, explanation: '应交税费-应交增值税（销项税额）增加。' }],
-    documents: [{ type: 'text', label: 'POS日结单', content: '含税：45,200元 | 不含税：40,000元 | 增值税：5,200元' }]},
+    documents: [{ type: 'text', label: 'POS日结单', docTitle: 'POS收银系统日结单（2026年5月3日·劳动节假期）', stampText: '收银专用章',
+      content: `万悦超市 POS日结单
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+日期：2026年5月3日（劳动节假期）
+
+交易统计：约380笔  客单价：约119元
+
+支付方式明细：
+  微信支付：  17,600.00元（38.9%）
+  支付宝：     9,900.00元（21.9%）
+  银行卡：    12,700.00元（28.1%）
+  现金：       5,000.00元（11.1%）
+  ─────────────────────────────
+  合计含税：  45,200.00元
+  不含税收入： 40,000.00元
+  增值税：      5,200.00元` }]},
   {
     date: '2026-05-05',
     role: 'accountant',
@@ -286,7 +316,8 @@ const tasks = [
       { subjectCode: '222101', summary: '进项税额', debit: 1440, credit: 0, explanation: '增值税进项税额增加记借方。取得专用发票可抵扣。' },
       { subjectCode: '100201', summary: '支付货款', debit: 0, credit: 17440, explanation: '银行存款减少记贷方。支付采购货款。' , cashFlowItem: 'cf-op2', cashFlowExplanation: '采购存货/商品支出。'}],
     documents: [{ type: 'invoice', label: '增值税普通发票', date: '2026-05-05', seller: '绿源农业有限公司', totalAmount: 17440,
-      lineItems: [{ name: '蔬菜', unit: '斤', qty: 600, price: 5, amount: 3000 }, { name: '水果', unit: '斤', qty: 500, price: 12, amount: 6000 }, { name: '鲜肉', unit: '斤', qty: 350, price: 20, amount: 7000 }] }]},
+      lineItems: [{ name: '蔬菜', unit: '斤', qty: 600, price: 5, amount: 3000 }, { name: '水果', unit: '斤', qty: 500, price: 12, amount: 6000 }, { name: '鲜肉', unit: '斤', qty: 350, price: 20, amount: 7000 }] },
+      { type: 'text', label: '生鲜验收单', docTitle: '生鲜商品验收单', content: '供应商：绿源农业有限公司\n入库日期：2026-05-05\n\n验收情况：\n1. 蔬菜 600斤 ✓\n2. 水果 500斤 ✓\n3. 鲜肉 350斤 ✓\n\n验收结论：全部合格 ✓\n验收人：钱验收', signature: '生鲜验收专用章' }]},
   {
     date: '2026-05-06',
     role: 'accountant',
@@ -299,7 +330,22 @@ const tasks = [
       { subjectCode: '100201', summary: 'POS收款', debit: 50850, credit: 0, explanation: '银行存款增加。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金。'},
       { subjectCode: '6001', summary: '收入', debit: 0, credit: 45000, explanation: '销售收入增加记贷方。不含税金额贷记主营业务收入。' },
       { subjectCode: '222101', summary: '销项税', debit: 0, credit: 5850, explanation: '增值税销项税额增加记贷方。销售商品适用13%税率。' }],
-    documents: [{ type: 'text', label: 'POS日结单', content: '含税：50,850元 | 不含税：45,000元 | 增值税：5,850元' }]},
+    documents: [{ type: 'text', label: 'POS日结单', docTitle: 'POS收银系统日结单（2026年5月6日）', stampText: '收银专用章',
+      content: `万悦超市 POS日结单
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+日期：2026年5月6日
+
+交易统计：约420笔  客单价：约121元
+
+支付方式明细：
+  微信支付：  19,800.00元（38.9%）
+  支付宝：    11,150.00元（21.9%）
+  银行卡：    14,250.00元（28.0%）
+  现金：       5,650.00元（11.1%）
+  ─────────────────────────────
+  合计含税：  50,850.00元
+  不含税收入： 45,000.00元
+  增值税：      5,850.00元` }]},
   {
     date: '2026-05-11',
     role: 'accountant',
@@ -324,7 +370,22 @@ const tasks = [
       { subjectCode: '100201', summary: 'POS收款', debit: 67800, credit: 0, explanation: '银行存款增加。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金。'},
       { subjectCode: '6001', summary: '收入', debit: 0, credit: 60000, explanation: '销售收入增加记贷方。不含税金额贷记主营业务收入。' },
       { subjectCode: '222101', summary: '销项税', debit: 0, credit: 7800, explanation: '增值税销项税额增加记贷方。销售商品适用13%税率。' }],
-    documents: [{ type: 'text', label: 'POS日结单', content: '含税：67,800元 | 不含税：60,000元 | 增值税：7,800元' }]},
+    documents: [{ type: 'text', label: 'POS日结单', docTitle: 'POS收银系统日结单（2026年5月13日）', stampText: '收银专用章',
+      content: `万悦超市 POS日结单
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+日期：2026年5月13日
+
+交易统计：约560笔  客单价：约121元
+
+支付方式明细：
+  微信支付：  26,400.00元（38.9%）
+  支付宝：    14,900.00元（22.0%）
+  银行卡：    19,000.00元（28.0%）
+  现金：       7,500.00元（11.1%）
+  ─────────────────────────────
+  合计含税：  67,800.00元
+  不含税收入： 60,000.00元
+  增值税：      7,800.00元` }]},
   {
     date: '2026-05-14',
     role: 'accountant',
@@ -337,7 +398,18 @@ const tasks = [
       { subjectCode: '2203', summary: '预付卡消费', debit: 7200, credit: 0, explanation: '预收账款减少。' },
       { subjectCode: '6001', summary: '预付卡收入', debit: 0, credit: 6371.68, explanation: '主营业务收入增加。' },
       { subjectCode: '222101', summary: '销项税', debit: 0, credit: 828.32, explanation: '增值税销项税额增加记贷方。销售商品适用13%税率。' }],
-    documents: [{ type: 'text', label: '预付卡汇总', content: '含税：7,200元 | 不含税：6,371.68元 | 增值税：828.32元' }]},
+    documents: [{ type: 'text', label: '预付卡消费汇总', docTitle: '预付卡消费汇总（2026年5月）', stampText: '财务专用章',
+      content: `预付卡消费汇总
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+期间：2026年5月
+
+本月消费（含税）：7,200.00元
+不含税收入：6,371.68元  增值税：828.32元
+
+预付卡余额追踪：
+  期初（4月末）：38,795.00元
+  本月消费：-7,200.00元
+  期末余额：31,595.00元` }]},
   {
     date: '2026-05-19',
     role: 'accountant',
@@ -351,7 +423,8 @@ const tasks = [
       { subjectCode: '222101', summary: '进项税', debit: 1950, credit: 0, explanation: '增值税进项税额增加记借方。取得专用发票可抵扣。' },
       { subjectCode: '100201', summary: '付款', debit: 0, credit: 16950, explanation: '银行存款减少记贷方。支付采购货款。' , cashFlowItem: 'cf-op2', cashFlowExplanation: '采购存货/商品支出。'}],
     documents: [{ type: 'invoice', label: '增值税专用发票', date: '2026-05-19', seller: '鑫鑫食品有限公司', totalAmount: 16950,
-      lineItems: [{ name: '食品', unit: '箱', qty: 150, price: 100, amount: 15000 }] }]},
+      lineItems: [{ name: '食品', unit: '箱', qty: 150, price: 100, amount: 15000 }] },
+      { type: 'text', label: '商品入库验收单', docTitle: '商品入库验收单', content: '供应商：鑫鑫食品有限公司\n入库日期：2026-05-19\n\n商品明细：\n1. 食品 150箱 ✓\n\n验收结论：全部合格 ✓\n\n入库保管：赵保管  验收：钱验收', signature: '仓库验收专用章' }]},
   {
     date: '2026-05-21',
     role: 'accountant',
@@ -364,7 +437,22 @@ const tasks = [
       { subjectCode: '100201', summary: 'POS收款', debit: 56500, credit: 0, explanation: '银行存款增加记借方。POS收款T+1到账。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金（配对科目6001），属于经营活动现金流入。'},
       { subjectCode: '6001', summary: '收入', debit: 0, credit: 50000, explanation: '销售收入增加记贷方。不含税金额贷记主营业务收入。' },
       { subjectCode: '222101', summary: '销项税', debit: 0, credit: 6500, explanation: '增值税销项税额增加记贷方。销售商品适用13%税率。' }],
-    documents: [{ type: 'text', label: 'POS日结单', content: '含税：56,500元' }]},
+    documents: [{ type: 'text', label: 'POS日结单', docTitle: 'POS收银系统日结单（2026年5月21日）', stampText: '收银专用章',
+      content: `万悦超市 POS日结单
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+日期：2026年5月21日
+
+交易统计：约470笔  客单价：约120元
+
+支付方式明细：
+  微信支付：  22,000.00元（38.9%）
+  支付宝：    12,400.00元（21.9%）
+  银行卡：    15,850.00元（28.1%）
+  现金：       6,250.00元（11.1%）
+  ─────────────────────────────
+  合计含税：  56,500.00元
+  不含税收入： 50,000.00元
+  增值税：      6,500.00元` }]},
   {
     date: '2026-05-23',
     role: 'accountant',
@@ -402,7 +490,22 @@ const tasks = [
       { subjectCode: '100201', summary: 'POS收款', debit: 45200, credit: 0, explanation: '银行存款增加。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金。'},
       { subjectCode: '6001', summary: '收入', debit: 0, credit: 40000, explanation: '销售收入增加记贷方。不含税金额贷记主营业务收入。' },
       { subjectCode: '222101', summary: '销项税', debit: 0, credit: 5200, explanation: '增值税销项税额增加记贷方。销售商品适用13%税率。' }],
-    documents: [{ type: 'text', label: 'POS日结单', content: '含税：45,200元 | 不含税：40,000元 | 增值税：5,200元' }]},
+    documents: [{ type: 'text', label: 'POS日结单', docTitle: 'POS收银系统日结单（2026年5月2日）', stampText: '收银专用章',
+      content: `万悦超市 POS日结单
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+日期：2026年5月2日
+
+交易统计：约380笔  客单价：约119元
+
+支付方式明细：
+  微信支付：  17,600.00元（38.9%）
+  支付宝：     9,900.00元（21.9%）
+  银行卡：    12,700.00元（28.1%）
+  现金：       5,000.00元（11.1%）
+  ─────────────────────────────
+  合计含税：  45,200.00元
+  不含税收入： 40,000.00元
+  增值税：      5,200.00元` }]},
   {
     date: '2026-05-22',
     role: 'accountant',
@@ -416,7 +519,8 @@ const tasks = [
       { subjectCode: '222101', summary: '进项税', debit: 1260, credit: 0, explanation: '增值税进项税额增加记借方。取得专用发票可抵扣。' },
       { subjectCode: '100201', summary: '付款', debit: 0, credit: 15260, explanation: '银行存款减少记贷方。支付采购货款。' , cashFlowItem: 'cf-op2', cashFlowExplanation: '采购存货/商品支出，属于经营活动现金流出。' }],
     documents: [{ type: 'invoice', label: '增值税普通发票', date: '2026-05-22', seller: '绿源农业有限公司', totalAmount: 15260,
-      lineItems: [{ name: '蔬菜', unit: '斤', qty: 400, price: 5, amount: 2000 }, { name: '水果', unit: '斤', qty: 500, price: 12, amount: 6000 }, { name: '鲜肉', unit: '斤', qty: 300, price: 20, amount: 6000 }] }]},
+      lineItems: [{ name: '蔬菜', unit: '斤', qty: 400, price: 5, amount: 2000 }, { name: '水果', unit: '斤', qty: 500, price: 12, amount: 6000 }, { name: '鲜肉', unit: '斤', qty: 300, price: 20, amount: 6000 }] },
+      { type: 'text', label: '生鲜验收单', docTitle: '生鲜商品验收单', content: '供应商：绿源农业有限公司\n入库日期：2026-05-22\n\n验收情况：\n1. 蔬菜 400斤 ✓\n2. 水果 500斤 ✓\n3. 鲜肉 300斤 ✓\n\n验收结论：全部合格 ✓\n验收人：钱验收', signature: '生鲜验收专用章' }]},
   {
     date: '2026-05-24',
     role: 'accountant',
