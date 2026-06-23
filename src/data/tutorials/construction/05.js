@@ -1337,6 +1337,48 @@ const tasks = [
     ]
   },
   {
+    date: '2026-05-10',
+    role: 'accountant',
+    title: '市政项目部临时设施搭建费',
+    tags: [
+      '工程成本'
+    ],
+    difficulty: 1,
+    description: '市政道路工程新项目部搭建临时办公板房、材料仓库等，费用15,000元，转账支付。',
+    tip: '临时设施搭建费计入"合同履约成本-其他直接费用"。',
+    entries: [
+      {
+        subjectCode: '540105',
+        debit: 15000,
+        credit: 0,
+        summary: '临时设施搭建费',
+        explanation: '合同履约成本-其他直接费用增加。'
+      },
+      {
+        subjectCode: '100201',
+        debit: 0,
+        credit: 15000,
+        summary: '支付临时设施费',
+        explanation: '银行存款减少15,000元。',
+        cashFlowItem: 'cf-op6',
+        cashFlowExplanation: '其他经营活动现金支出。'
+      }
+    ],
+    documents: [
+      {
+        type: 'receipt',
+        label: '临时设施费发票',
+        date: '2026-05-10',
+        totalAmount: 15000,
+        items: [
+          { name: '临时办公板房搭建', amount: 10000 },
+          { name: '材料仓库搭建', amount: 5000 }
+        ],
+        stampText: '已付款'
+      }
+    ]
+  },
+  {
     date: '2026-05-28',
     role: 'accountant',
     title: '月末结转损益',

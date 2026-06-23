@@ -1105,6 +1105,126 @@ const tasks = [
     ]
   },
   {
+    date: '2026-07-05',
+    role: 'accountant',
+    title: '设计变更增加材料费',
+    tags: [
+      '工程成本'
+    ],
+    difficulty: 1,
+    description: '幕墙设计变更导致增加钢结构材料用量，补充采购钢材12,000元，转账支付。',
+    tip: '变更增加的材料费计入"合同履约成本-材料成本"。',
+    entries: [
+      {
+        subjectCode: '540102',
+        debit: 12000,
+        credit: 0,
+        summary: '变更增加材料费',
+        explanation: '合同履约成本-材料成本增加。'
+      },
+      {
+        subjectCode: '100201',
+        debit: 0,
+        credit: 12000,
+        summary: '支付材料款',
+        explanation: '银行存款减少12,000元。',
+        cashFlowItem: 'cf-op2',
+        cashFlowExplanation: '购买商品接受劳务支付的现金。'
+      }
+    ],
+    documents: [
+      {
+        type: 'receipt',
+        label: '材料采购发票',
+        date: '2026-07-05',
+        totalAmount: 12000,
+        items: [
+          { name: '变更用钢结构材料', amount: 12000 }
+        ]
+      }
+    ]
+  },
+  {
+    date: '2026-07-12',
+    role: 'accountant',
+    title: '签证索赔咨询费',
+    tags: [
+      '工程成本'
+    ],
+    difficulty: 1,
+    description: '因设计变更及停工损失，委托咨询公司编制索赔文件，费用7,000元，转账支付。',
+    tip: '索赔咨询费计入"合同履约成本-其他直接费用"。',
+    entries: [
+      {
+        subjectCode: '540105',
+        debit: 7000,
+        credit: 0,
+        summary: '签证索赔咨询费',
+        explanation: '合同履约成本-其他直接费用增加。'
+      },
+      {
+        subjectCode: '100201',
+        debit: 0,
+        credit: 7000,
+        summary: '支付咨询费',
+        explanation: '银行存款减少7,000元。',
+        cashFlowItem: 'cf-op6',
+        cashFlowExplanation: '其他经营活动现金支出。'
+      }
+    ],
+    documents: [
+      {
+        type: 'receipt',
+        label: '咨询费发票',
+        date: '2026-07-12',
+        totalAmount: 7000,
+        items: [
+          { name: '索赔文件编制服务', amount: 7000 }
+        ]
+      }
+    ]
+  },
+  {
+    date: '2026-07-18',
+    role: 'accountant',
+    title: '变更后图纸审查费',
+    tags: [
+      '工程成本'
+    ],
+    difficulty: 1,
+    description: '设计变更后施工图需重新审查，支付图纸审查费4,000元，转账支付。',
+    tip: '图纸审查费计入"合同履约成本-合同成本"。',
+    entries: [
+      {
+        subjectCode: '540101',
+        debit: 4000,
+        credit: 0,
+        summary: '图纸审查费',
+        explanation: '合同履约成本-合同成本增加。'
+      },
+      {
+        subjectCode: '100201',
+        debit: 0,
+        credit: 4000,
+        summary: '支付审查费',
+        explanation: '银行存款减少4,000元。',
+        cashFlowItem: 'cf-op6',
+        cashFlowExplanation: '其他经营活动现金支出。'
+      }
+    ],
+    documents: [
+      {
+        type: 'receipt',
+        label: '审查费发票',
+        date: '2026-07-18',
+        totalAmount: 4000,
+        items: [
+          { name: '施工图审查服务', amount: 4000 }
+        ]
+      }
+    ]
+  },
+  {
     date: '2026-07-28',
     role: 'accountant',
     title: '月末结转损益',

@@ -1287,6 +1287,48 @@ const tasks = [
     ]
   },
   {
+    date: '2026-02-13',
+    role: 'accountant',
+    title: '施工现场围挡及安全设施费',
+    tags: [
+      '工程成本'
+    ],
+    difficulty: 1,
+    description: '基础施工阶段搭建施工现场围挡1,200米，费用10,000元；采购安全警示牌等安全设施2,000元，合计12,000元，转账支付。',
+    tip: '施工现场安全设施费用计入"合同履约成本-其他直接费用"。',
+    entries: [
+      {
+        subjectCode: '540105',
+        debit: 12000,
+        credit: 0,
+        summary: '围挡及安全设施费',
+        explanation: '合同履约成本-其他直接费用增加。'
+      },
+      {
+        subjectCode: '100201',
+        debit: 0,
+        credit: 12000,
+        summary: '支付费用',
+        explanation: '银行存款减少12,000元。',
+        cashFlowItem: 'cf-op6',
+        cashFlowExplanation: '其他经营活动现金支出。'
+      }
+    ],
+    documents: [
+      {
+        type: 'receipt',
+        label: '收款收据',
+        date: '2026-02-13',
+        totalAmount: 12000,
+        items: [
+          { name: '工地围挡搭建', amount: 10000 },
+          { name: '安全警示牌等', amount: 2000 }
+        ],
+        stampText: '已付款'
+      }
+    ]
+  },
+  {
     date: '2026-02-28',
     role: 'accountant',
     title: '月末结转损益',

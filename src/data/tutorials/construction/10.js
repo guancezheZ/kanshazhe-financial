@@ -1204,6 +1204,128 @@ const tasks = [
     ]
   },
   {
+    date: '2026-10-08',
+    role: 'accountant',
+    title: '科创园项目场地平整费',
+    tags: [
+      '工程成本'
+    ],
+    difficulty: 1,
+    description: '科创园项目开工前进行场地平整，费用25,000元，转账支付。',
+    tip: '场地平整费计入"合同履约成本-其他直接费用"。',
+    entries: [
+      {
+        subjectCode: '540105',
+        debit: 25000,
+        credit: 0,
+        summary: '场地平整费',
+        explanation: '合同履约成本-其他直接费用增加。'
+      },
+      {
+        subjectCode: '100201',
+        debit: 0,
+        credit: 25000,
+        summary: '支付场地平整费',
+        explanation: '银行存款减少25,000元。',
+        cashFlowItem: 'cf-op6',
+        cashFlowExplanation: '其他经营活动现金支出。'
+      }
+    ],
+    documents: [
+      {
+        type: 'receipt',
+        label: '机械作业发票',
+        date: '2026-10-08',
+        totalAmount: 25000,
+        items: [
+          { name: '场地平整机械作业', amount: 25000 }
+        ]
+      }
+    ]
+  },
+  {
+    date: '2026-10-15',
+    role: 'accountant',
+    title: '科创园项目图纸会审费',
+    tags: [
+      '工程成本'
+    ],
+    difficulty: 1,
+    description: '组织专家对科创园项目施工图纸进行会审，费用6,000元，转账支付。',
+    tip: '图纸会审费计入"合同履约成本-其他直接费用"。',
+    entries: [
+      {
+        subjectCode: '540105',
+        debit: 6000,
+        credit: 0,
+        summary: '图纸会审费',
+        explanation: '合同履约成本-其他直接费用增加。'
+      },
+      {
+        subjectCode: '100201',
+        debit: 0,
+        credit: 6000,
+        summary: '支付会审费',
+        explanation: '银行存款减少6,000元。',
+        cashFlowItem: 'cf-op6',
+        cashFlowExplanation: '其他经营活动现金支出。'
+      }
+    ],
+    documents: [
+      {
+        type: 'receipt',
+        label: '专家服务费发票',
+        date: '2026-10-15',
+        totalAmount: 6000,
+        items: [
+          { name: '图纸会审专家费', amount: 6000 }
+        ]
+      }
+    ]
+  },
+  {
+    date: '2026-10-22',
+    role: 'accountant',
+    title: '新项目部办公设备购置',
+    tags: [
+      '工程成本'
+    ],
+    difficulty: 1,
+    description: '科创园项目部新购办公桌椅、文件柜、电脑等办公设备，费用12,000元，转账支付。',
+    tip: '项目部办公设备购置计入"合同履约成本-合同成本"。',
+    entries: [
+      {
+        subjectCode: '540101',
+        debit: 12000,
+        credit: 0,
+        summary: '项目部办公设备',
+        explanation: '合同履约成本-合同成本增加。'
+      },
+      {
+        subjectCode: '100201',
+        debit: 0,
+        credit: 12000,
+        summary: '支付办公设备款',
+        explanation: '银行存款减少12,000元。',
+        cashFlowItem: 'cf-op6',
+        cashFlowExplanation: '其他经营活动现金支出。'
+      }
+    ],
+    documents: [
+      {
+        type: 'receipt',
+        label: '办公设备发票',
+        date: '2026-10-22',
+        totalAmount: 12000,
+        items: [
+          { name: '办公桌椅', amount: 5000 },
+          { name: '文件柜', amount: 3000 },
+          { name: '电脑及配件', amount: 4000 }
+        ]
+      }
+    ]
+  },
+  {
     date: '2026-10-28',
     role: 'accountant',
     title: '月末结转损益',

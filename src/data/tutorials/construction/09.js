@@ -1075,6 +1075,198 @@ const tasks = [
     ]
   },
   {
+    date: '2026-09-03',
+    role: 'accountant',
+    title: '竣工资料整理归档费',
+    tags: [
+      '工程成本'
+    ],
+    difficulty: 1,
+    description: '恒达项目竣工资料整理、装订、归档，费用3,000元，转账支付。',
+    tip: '竣工资料整理费计入"合同履约成本-其他直接费用"。',
+    entries: [
+      {
+        subjectCode: '540105',
+        debit: 3000,
+        credit: 0,
+        summary: '竣工资料整理费',
+        explanation: '合同履约成本-其他直接费用增加。'
+      },
+      {
+        subjectCode: '100201',
+        debit: 0,
+        credit: 3000,
+        summary: '支付资料整理费',
+        explanation: '银行存款减少3,000元。',
+        cashFlowItem: 'cf-op6',
+        cashFlowExplanation: '其他经营活动现金支出。'
+      }
+    ],
+    documents: [
+      {
+        type: 'receipt',
+        label: '服务发票',
+        date: '2026-09-03',
+        totalAmount: 3000,
+        items: [
+          { name: '竣工资料整理装订', amount: 3000 }
+        ]
+      }
+    ]
+  },
+  {
+    date: '2026-09-06',
+    role: 'accountant',
+    title: '工程结算审核费',
+    tags: [
+      '工程成本'
+    ],
+    difficulty: 1,
+    description: '委托造价咨询公司对恒达项目进行竣工结算审核，审核费18,000元，转账支付。',
+    tip: '结算审核费计入"合同履约成本-合同成本"。',
+    entries: [
+      {
+        subjectCode: '540101',
+        debit: 18000,
+        credit: 0,
+        summary: '工程结算审核费',
+        explanation: '合同履约成本-合同成本增加。'
+      },
+      {
+        subjectCode: '100201',
+        debit: 0,
+        credit: 18000,
+        summary: '支付审核费',
+        explanation: '银行存款减少18,000元。',
+        cashFlowItem: 'cf-op6',
+        cashFlowExplanation: '其他经营活动现金支出。'
+      }
+    ],
+    documents: [
+      {
+        type: 'receipt',
+        label: '咨询费发票',
+        date: '2026-09-06',
+        totalAmount: 18000,
+        items: [
+          { name: '竣工结算审核服务', amount: 18000 }
+        ]
+      }
+    ]
+  },
+  {
+    date: '2026-09-10',
+    role: 'accountant',
+    title: '项目部临设拆除费',
+    tags: [
+      '工程成本'
+    ],
+    difficulty: 1,
+    description: '恒达项目竣工后，拆除项目部临时办公板房等临时设施，费用8,000元，转账支付。',
+    tip: '临设拆除费计入"合同履约成本-其他直接费用"。',
+    entries: [
+      {
+        subjectCode: '540105',
+        debit: 8000,
+        credit: 0,
+        summary: '临设拆除费',
+        explanation: '合同履约成本-其他直接费用增加。'
+      },
+      {
+        subjectCode: '100201',
+        debit: 0,
+        credit: 8000,
+        summary: '支付拆除费',
+        explanation: '银行存款减少8,000元。',
+        cashFlowItem: 'cf-op6',
+        cashFlowExplanation: '其他经营活动现金支出。'
+      }
+    ],
+    documents: [
+      {
+        type: 'receipt',
+        label: '拆除费发票',
+        date: '2026-09-10',
+        totalAmount: 8000,
+        items: [
+          { name: '临时设施拆除清理', amount: 8000 }
+        ]
+      }
+    ]
+  },
+  {
+    date: '2026-09-15',
+    role: 'accountant',
+    title: '项目剩余材料退库',
+    tags: [
+      '工程成本'
+    ],
+    difficulty: 2,
+    description: '恒达项目竣工后，剩余钢材5,000元退回公司材料库，办理退库手续。',
+    tip: '剩余材料退库，借记"原材料"，贷记"合同履约成本-材料成本"。',
+    entries: [
+      {
+        subjectCode: '1403',
+        debit: 5000,
+        credit: 0,
+        summary: '剩余材料退库',
+        explanation: '原材料增加。'
+      },
+      {
+        subjectCode: '540102',
+        debit: 0,
+        credit: 5000,
+        summary: '冲减材料成本',
+        explanation: '合同履约成本-材料成本减少。'
+      }
+    ],
+    documents: [
+      {
+        type: 'text',
+        label: '退库单',
+        date: '2026-09-15',
+        content: '恒达项目剩余材料退库清单：\n钢筋 2吨 3,000元\n零星材料 2,000元\n合计：5,000元',
+        signature: '陈质检/王保管'
+      }
+    ]
+  },
+  {
+    date: '2026-09-20',
+    role: 'accountant',
+    title: '工程质量保修金预提',
+    tags: [
+      '工程成本'
+    ],
+    difficulty: 2,
+    description: '按合同约定，恒达项目预留质量保修金20,000元，用于竣工后保修期内可能发生的维修支出。',
+    tip: '质量保修金预提计入"合同履约成本-合同成本"，贷记"其他应付款-质保金"。',
+    entries: [
+      {
+        subjectCode: '540101',
+        debit: 20000,
+        credit: 0,
+        summary: '预提质量保修金',
+        explanation: '合同履约成本-合同成本增加。'
+      },
+      {
+        subjectCode: '2241',
+        debit: 0,
+        credit: 20000,
+        summary: '应付质量保修金',
+        explanation: '其他应付款-质保金增加。'
+      }
+    ],
+    documents: [
+      {
+        type: 'text',
+        label: '质量保修金计提表',
+        date: '2026-09-20',
+        content: '恒达项目合同价400万元×0.5%=20,000元\n保修期：竣工验收后2年',
+        signature: '李会计'
+      }
+    ]
+  },
+  {
     date: '2026-09-28',
     role: 'accountant',
     title: '月末结转损益',

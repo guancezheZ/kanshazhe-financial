@@ -1165,6 +1165,89 @@ const tasks = [
     ]
   },
   {
+    date: '2026-04-05',
+    role: 'accountant',
+    title: '脚手架租赁及搭设费',
+    tags: [
+      '工程成本'
+    ],
+    difficulty: 1,
+    description: '主体施工需搭设外脚手架，租赁钢管、扣件、脚手板等，本月租赁费22,000元，转账支付。',
+    tip: '脚手架租赁费计入"合同履约成本-其他直接费用"。',
+    entries: [
+      {
+        subjectCode: '540105',
+        debit: 22000,
+        credit: 0,
+        summary: '脚手架租赁及搭设费',
+        explanation: '合同履约成本-其他直接费用增加。'
+      },
+      {
+        subjectCode: '100201',
+        debit: 0,
+        credit: 22000,
+        summary: '支付脚手架费',
+        explanation: '银行存款减少22,000元。',
+        cashFlowItem: 'cf-op6',
+        cashFlowExplanation: '其他经营活动现金支出。'
+      }
+    ],
+    documents: [
+      {
+        type: 'receipt',
+        label: '租赁费发票',
+        date: '2026-04-05',
+        totalAmount: 22000,
+        items: [
+          { name: '钢管扣件租赁', amount: 18000 },
+          { name: '脚手板租赁', amount: 4000 }
+        ],
+        stampText: '已开票'
+      }
+    ]
+  },
+  {
+    date: '2026-04-12',
+    role: 'accountant',
+    title: '主体结构检测费',
+    tags: [
+      '工程成本'
+    ],
+    difficulty: 1,
+    description: '委托检测机构对主体结构混凝土强度、钢筋保护层等进行检测，费用8,000元，转账支付。',
+    tip: '结构检测费计入"合同履约成本-材料成本"。',
+    entries: [
+      {
+        subjectCode: '540102',
+        debit: 8000,
+        credit: 0,
+        summary: '结构检测费',
+        explanation: '合同履约成本-材料成本增加。'
+      },
+      {
+        subjectCode: '100201',
+        debit: 0,
+        credit: 8000,
+        summary: '支付检测费',
+        explanation: '银行存款减少8,000元。',
+        cashFlowItem: 'cf-op2',
+        cashFlowExplanation: '购买商品接受劳务支付的现金。'
+      }
+    ],
+    documents: [
+      {
+        type: 'receipt',
+        label: '检测费发票',
+        date: '2026-04-12',
+        totalAmount: 8000,
+        items: [
+          { name: '混凝土强度检测', amount: 5000 },
+          { name: '钢筋保护层检测', amount: 3000 }
+        ]
+      }
+    ]
+  },
+  {
     date: '2026-04-28',
     role: 'accountant',
     title: '月末结转损益',

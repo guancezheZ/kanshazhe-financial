@@ -1208,6 +1208,87 @@ const tasks = [
     ]
   },
   {
+    date: '2026-06-12',
+    role: 'accountant',
+    title: '半年工程资料整理及归档费',
+    tags: [
+      '工程成本'
+    ],
+    difficulty: 1,
+    description: '半年末整理恒达项目及市政项目工程技术资料、财务资料，聘请专业机构整理归档，费用5,000元，转账支付。',
+    tip: '资料整理费计入"合同履约成本-合同成本"。',
+    entries: [
+      {
+        subjectCode: '540101',
+        debit: 5000,
+        credit: 0,
+        summary: '工程资料整理归档费',
+        explanation: '合同履约成本-合同成本增加。'
+      },
+      {
+        subjectCode: '100201',
+        debit: 0,
+        credit: 5000,
+        summary: '支付资料整理费',
+        explanation: '银行存款减少5,000元。',
+        cashFlowItem: 'cf-op6',
+        cashFlowExplanation: '其他经营活动现金支出。'
+      }
+    ],
+    documents: [
+      {
+        type: 'receipt',
+        label: '服务费发票',
+        date: '2026-06-12',
+        totalAmount: 5000,
+        items: [
+          { name: '工程资料整理归档服务', amount: 5000 }
+        ]
+      }
+    ]
+  },
+  {
+    date: '2026-06-18',
+    role: 'accountant',
+    title: '环保降尘整治费',
+    tags: [
+      '工程成本'
+    ],
+    difficulty: 1,
+    description: '环保部门检查要求工地降尘整改，购置防尘网、租赁雾炮机等，费用8,000元，转账支付。',
+    tip: '环保降尘费计入"合同履约成本-其他直接费用"。',
+    entries: [
+      {
+        subjectCode: '540105',
+        debit: 8000,
+        credit: 0,
+        summary: '环保降尘整治费',
+        explanation: '合同履约成本-其他直接费用增加。'
+      },
+      {
+        subjectCode: '100201',
+        debit: 0,
+        credit: 8000,
+        summary: '支付环保整治费',
+        explanation: '银行存款减少8,000元。',
+        cashFlowItem: 'cf-op6',
+        cashFlowExplanation: '其他经营活动现金支出。'
+      }
+    ],
+    documents: [
+      {
+        type: 'receipt',
+        label: '环保材料及租赁发票',
+        date: '2026-06-18',
+        totalAmount: 8000,
+        items: [
+          { name: '防尘网采购', amount: 3500 },
+          { name: '雾炮机租赁', amount: 4500 }
+        ]
+      }
+    ]
+  },
+  {
     date: '2026-06-28',
     role: 'accountant',
     title: '月末结转损益',

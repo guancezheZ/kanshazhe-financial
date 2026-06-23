@@ -1164,6 +1164,144 @@ const tasks = [
     ]
   },
   {
+    date: '2026-11-06',
+    role: 'accountant',
+    title: '科创园-材料检测费',
+    tags: [
+      '工程成本'
+    ],
+    difficulty: 1,
+    description: '科创园项目进场材料进行质量检测，费用5,000元，转账支付。',
+    tip: '材料检测费计入"合同履约成本-其他直接费用"。',
+    entries: [
+      {
+        subjectCode: '540105',
+        debit: 5000,
+        credit: 0,
+        summary: '材料检测费',
+        explanation: '合同履约成本-其他直接费用增加。'
+      },
+      {
+        subjectCode: '100201',
+        debit: 0,
+        credit: 5000,
+        summary: '支付检测费',
+        explanation: '银行存款减少5,000元。',
+        cashFlowItem: 'cf-op6',
+        cashFlowExplanation: '其他经营活动现金支出。'
+      }
+    ],
+    documents: [
+      {
+        type: 'receipt',
+        label: '检测费发票',
+        date: '2026-11-06',
+        totalAmount: 5000,
+        items: [
+          { name: '材料质量检测', amount: 5000 }
+        ]
+      }
+    ]
+  },
+  {
+    date: '2026-11-12',
+    role: 'accountant',
+    title: '科创园-安全文明施工费',
+    tags: [
+      '工程成本'
+    ],
+    difficulty: 1,
+    description: '科创园项目现场安全文明施工措施投入，购置安全标语、警示牌、消防器材等，费用8,000元，转账支付。',
+    tip: '安全文明施工费计入"合同履约成本-其他直接费用"。',
+    entries: [
+      {
+        subjectCode: '540105',
+        debit: 8000,
+        credit: 0,
+        summary: '安全文明施工费',
+        explanation: '合同履约成本-其他直接费用增加。'
+      },
+      {
+        subjectCode: '100201',
+        debit: 0,
+        credit: 8000,
+        summary: '支付安全文明施工费',
+        explanation: '银行存款减少8,000元。',
+        cashFlowItem: 'cf-op6',
+        cashFlowExplanation: '其他经营活动现金支出。'
+      }
+    ],
+    documents: [
+      {
+        type: 'receipt',
+        label: '安全物资发票',
+        date: '2026-11-12',
+        totalAmount: 8000,
+        items: [
+          { name: '安全标语及警示牌', amount: 3000 },
+          { name: '消防器材', amount: 5000 }
+        ]
+      }
+    ]
+  },
+  {
+    date: '2026-11-18',
+    role: 'accountant',
+    title: '供应商年终对账确认',
+    tags: [
+      '材料管理'
+    ],
+    difficulty: 1,
+    description: '年末与各材料供应商进行往来对账，余额相符，双方签字确认。',
+    tip: '对账确认不需做账务处理，只需在确认单上签字。点击"✅ 标记完成"即可。',
+    entries: [],
+    documents: [
+      {
+        type: 'text',
+        label: '供应商对账确认表',
+        date: '2026-11-18',
+        content: '华强建材：应付余额128,000元 ✓\n大地商砼：应付余额95,000元 ✓\n鑫达钢材：应付余额45,000元 ✓',
+        signature: '李会计/各供应商财务'
+      }
+    ]
+  },
+  {
+    date: '2026-11-22',
+    role: 'accountant',
+    title: '计提应收账款坏账准备',
+    tags: [
+      '往来管理'
+    ],
+    difficulty: 2,
+    description: '年末对应收账款进行信用风险评估，按应收账款余额的5%计提坏账准备。科创园项目应收进度款300,000元，计提坏账准备15,000元。',
+    tip: '借记"信用减值损失"，贷记"坏账准备"。坏账准备是应收账款的抵减科目。',
+    entries: [
+      {
+        subjectCode: '6701',
+        debit: 15000,
+        credit: 0,
+        summary: '计提坏账准备',
+        explanation: '信用减值损失增加15,000元。'
+      },
+      {
+        subjectCode: '1231',
+        debit: 0,
+        credit: 15000,
+        summary: '应收账款坏账准备',
+        explanation: '坏账准备增加15,000元。'
+      }
+    ],
+    documents: [
+      {
+        type: 'text',
+        label: '坏账准备计提表',
+        date: '2026-11-22',
+        content: '应收账款余额：300,000元\n计提比例：5%\n计提金额：15,000元',
+        signature: '李会计'
+      }
+    ]
+  },
+  {
     date: '2026-11-28',
     role: 'accountant',
     title: '月末结转损益',

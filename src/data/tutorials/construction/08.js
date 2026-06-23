@@ -1167,6 +1167,128 @@ const tasks = [
     ]
   },
   {
+    date: '2026-08-05',
+    role: 'accountant',
+    title: '防暑降温物资采购',
+    tags: [
+      '工程成本'
+    ],
+    difficulty: 1,
+    description: '8月高温天气，采购矿泉水、藿香正气液、凉茶等防暑物资5,000元，发放给施工现场工人，转账支付。',
+    tip: '防暑降温费计入"合同履约成本-其他直接费用"。',
+    entries: [
+      {
+        subjectCode: '540105',
+        debit: 5000,
+        credit: 0,
+        summary: '防暑降温物资',
+        explanation: '合同履约成本-其他直接费用增加。'
+      },
+      {
+        subjectCode: '100201',
+        debit: 0,
+        credit: 5000,
+        summary: '支付防暑物资款',
+        explanation: '银行存款减少5,000元。',
+        cashFlowItem: 'cf-op6',
+        cashFlowExplanation: '其他经营活动现金支出。'
+      }
+    ],
+    documents: [
+      {
+        type: 'receipt',
+        label: '采购发票',
+        date: '2026-08-05',
+        totalAmount: 5000,
+        items: [
+          { name: '矿泉水及凉茶', amount: 3000 },
+          { name: '防暑药品', amount: 2000 }
+        ]
+      }
+    ]
+  },
+  {
+    date: '2026-08-12',
+    role: 'accountant',
+    title: '基坑排水及防汛费',
+    tags: [
+      '工程成本'
+    ],
+    difficulty: 1,
+    description: '雨季基坑排水用电及水泵租赁费，合计11,000元，转账支付。',
+    tip: '基坑排水及防汛费计入"合同履约成本-其他直接费用"。',
+    entries: [
+      {
+        subjectCode: '540105',
+        debit: 11000,
+        credit: 0,
+        summary: '基坑排水及防汛费',
+        explanation: '合同履约成本-其他直接费用增加。'
+      },
+      {
+        subjectCode: '100201',
+        debit: 0,
+        credit: 11000,
+        summary: '支付排水防汛费',
+        explanation: '银行存款减少11,000元。',
+        cashFlowItem: 'cf-op6',
+        cashFlowExplanation: '其他经营活动现金支出。'
+      }
+    ],
+    documents: [
+      {
+        type: 'receipt',
+        label: '排水及租赁费发票',
+        date: '2026-08-12',
+        totalAmount: 11000,
+        items: [
+          { name: '基坑排水用电', amount: 7000 },
+          { name: '水泵租赁费', amount: 4000 }
+        ]
+      }
+    ]
+  },
+  {
+    date: '2026-08-20',
+    role: 'accountant',
+    title: '施工道路修复费',
+    tags: [
+      '工程成本'
+    ],
+    difficulty: 1,
+    description: '雨季导致工地临时道路损毁，进行修复，费用6,000元，转账支付。',
+    tip: '道路修复费计入"合同履约成本-其他直接费用"。',
+    entries: [
+      {
+        subjectCode: '540105',
+        debit: 6000,
+        credit: 0,
+        summary: '施工道路修复费',
+        explanation: '合同履约成本-其他直接费用增加。'
+      },
+      {
+        subjectCode: '100201',
+        debit: 0,
+        credit: 6000,
+        summary: '支付道路修复费',
+        explanation: '银行存款减少6,000元。',
+        cashFlowItem: 'cf-op6',
+        cashFlowExplanation: '其他经营活动现金支出。'
+      }
+    ],
+    documents: [
+      {
+        type: 'receipt',
+        label: '工程维修发票',
+        date: '2026-08-20',
+        totalAmount: 6000,
+        items: [
+          { name: '临时道路修复', amount: 6000 }
+        ]
+      }
+    ]
+  },
+  {
     date: '2026-08-28',
     role: 'accountant',
     title: '月末结转损益',

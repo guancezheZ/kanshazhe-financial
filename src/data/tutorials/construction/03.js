@@ -1199,6 +1199,128 @@ const tasks = [
     ]
   },
   {
+    date: '2026-03-06',
+    role: 'accountant',
+    title: '主体结构钢筋加工费',
+    tags: [
+      '工程成本'
+    ],
+    difficulty: 1,
+    description: '主体结构施工中，将部分钢筋委托外部加工成箍筋、弯钩等，加工费18,000元，转账支付。',
+    tip: '钢筋加工费计入"合同履约成本-材料成本"。',
+    entries: [
+      {
+        subjectCode: '540102',
+        debit: 18000,
+        credit: 0,
+        summary: '钢筋加工费',
+        explanation: '合同履约成本-材料成本增加。'
+      },
+      {
+        subjectCode: '100201',
+        debit: 0,
+        credit: 18000,
+        summary: '支付加工费',
+        explanation: '银行存款减少18,000元。',
+        cashFlowItem: 'cf-op2',
+        cashFlowExplanation: '购买商品接受劳务支付的现金。'
+      }
+    ],
+    documents: [
+      {
+        type: 'receipt',
+        label: '加工费发票',
+        date: '2026-03-06',
+        totalAmount: 18000,
+        items: [
+          { name: '钢筋加工费', amount: 18000 }
+        ],
+        stampText: '已开票'
+      }
+    ]
+  },
+  {
+    date: '2026-03-14',
+    role: 'accountant',
+    title: '施工测量放线费',
+    tags: [
+      '工程成本'
+    ],
+    difficulty: 1,
+    description: '委托测绘公司对主体结构进行施工测量放线，确保定位准确，费用6,000元，转账支付。',
+    tip: '测量放线费计入"合同履约成本-其他直接费用"。',
+    entries: [
+      {
+        subjectCode: '540105',
+        debit: 6000,
+        credit: 0,
+        summary: '施工测量放线费',
+        explanation: '合同履约成本-其他直接费用增加。'
+      },
+      {
+        subjectCode: '100201',
+        debit: 0,
+        credit: 6000,
+        summary: '支付测量费',
+        explanation: '银行存款减少6,000元。',
+        cashFlowItem: 'cf-op6',
+        cashFlowExplanation: '其他经营活动现金支出。'
+      }
+    ],
+    documents: [
+      {
+        type: 'receipt',
+        label: '测绘服务发票',
+        date: '2026-03-14',
+        totalAmount: 6000,
+        items: [
+          { name: '施工测量放线服务', amount: 6000 }
+        ]
+      }
+    ]
+  },
+  {
+    date: '2026-03-20',
+    role: 'accountant',
+    title: '项目部办公设备维修费',
+    tags: [
+      '工程成本'
+    ],
+    difficulty: 1,
+    description: '项目部复印机、空调等办公设备维修，费用4,000元，转账支付。',
+    tip: '项目办公设备维修费计入"合同履约成本-合同成本"。',
+    entries: [
+      {
+        subjectCode: '540101',
+        debit: 4000,
+        credit: 0,
+        summary: '办公设备维修费',
+        explanation: '合同履约成本-合同成本增加。'
+      },
+      {
+        subjectCode: '100201',
+        debit: 0,
+        credit: 4000,
+        summary: '支付维修费',
+        explanation: '银行存款减少4,000元。',
+        cashFlowItem: 'cf-op6',
+        cashFlowExplanation: '其他经营活动现金支出。'
+      }
+    ],
+    documents: [
+      {
+        type: 'receipt',
+        label: '维修费发票',
+        date: '2026-03-20',
+        totalAmount: 4000,
+        items: [
+          { name: '复印机维修', amount: 2500 },
+          { name: '空调维修', amount: 1500 }
+        ]
+      }
+    ]
+  },
+  {
     date: '2026-03-28',
     role: 'accountant',
     title: '月末结转损益',
