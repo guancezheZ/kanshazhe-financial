@@ -14,7 +14,7 @@ import { compareAnswers } from '@/data/tutorials/year1.js'
 const SCENARIOS = [
   { id: 'manufacturing', name: '制造业', count: 356 },
   { id: 'commercial', name: '商业企业', count: 375 },
-  { id: 'service', name: '服务业', count: 356 },
+  { id: 'service', name: '服务业', count: 355 },
   { id: 'construction', name: '建筑业', count: 501 },
 ]
 const MONTHS = ['01','02','03','04','05','06','07','08','09','10','11','12']

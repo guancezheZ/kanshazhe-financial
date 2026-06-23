@@ -21,15 +21,15 @@ const sep = [
     entries: [{ subjectCode: '222110', summary: '个税', debit: 6000, credit: 0 }, { subjectCode: '100201', summary: '缴税', debit: 0, credit: 6000 }],
     documents: [
       { type: 'bank', label: '缴税回单', date: '2026-09-05', totalAmount: 6000, payer: '雲帆管理咨询有限公司', payeeName: '国家税务总局北京市税务局', content: '8月代扣代缴个人所得税', refNo: 'HD202609050004' }] },
-  { date: '2026-09-07', role: 'accountant', title: '确认E年框9月收入', tags: ["项目核算"], difficulty: 2,
+  { date: '2026-09-07', role: 'accountant', title: '确认E年框9月收入', tags: ["项目核算"], difficulty: 2, description: '确认E公司年框收入20,000元，增值税6%=1,200元。',
     entries: [{ subjectCode: '2232', summary: 'E公司9月', debit: 21200, credit: 0 }, { subjectCode: '6001', summary: '年框收入', debit: 0, credit: 20000 }, { subjectCode: '222101', summary: '销项税额', debit: 0, credit: 1200 }],
     documents: [
       { type: 'invoice', label: '增值税专用发票', region: '北京', invoiceType: '专用', copy: '发票联', invoiceNo: '1100432128', date: '2026年09月07日', buyer: 'E集团公司', buyerTaxId: '91110108MAZZZZZZZ', seller: '雲帆管理咨询有限公司', sellerTaxId: '91110108MA3XXXXXXXX', stampText: '发票专用章', payee: '李四', reviewer: '王五', drawer: '赵六', lineItems: [{ name: '年度管理咨询服务（9月）', unit: '月', qty: 1, price: 20000, amount: 20000, taxRate: '6%', tax: 1200 }], totalAmount: 21200 }] },
-  { date: '2026-09-08', role: 'accountant', title: '确认G运维9月收入', tags: ["项目核算"], difficulty: 2,
+  { date: '2026-09-08', role: 'accountant', title: '确认G运维9月收入', tags: ["项目核算"], difficulty: 2, description: '确认G公司运维收入15,000元，增值税6%=900元。',
     entries: [{ subjectCode: '2232', summary: 'G公司9月', debit: 15900, credit: 0 }, { subjectCode: '6001', summary: '运维收入', debit: 0, credit: 15000 }, { subjectCode: '222101', summary: '销项税额', debit: 0, credit: 900 }],
     documents: [
       { type: 'invoice', label: '增值税专用发票', region: '北京', invoiceType: '专用', copy: '发票联', invoiceNo: '1100432129', date: '2026年09月08日', buyer: 'G集团有限公司', buyerTaxId: '91110108MAKKKKKKK', seller: '雲帆管理咨询有限公司', sellerTaxId: '91110108MA3XXXXXXXX', stampText: '发票专用章', payee: '李四', reviewer: '王五', drawer: '赵六', lineItems: [{ name: 'IT运维服务（9月）', unit: '月', qty: 1, price: 15000, amount: 15000, taxRate: '6%', tax: 900 }], totalAmount: 15900 }] },
-  { date: '2026-09-09', role: 'accountant', title: '确认H订阅9月收入', tags: ["项目核算"], difficulty: 2,
+  { date: '2026-09-09', role: 'accountant', title: '确认H订阅9月收入', tags: ["项目核算"], difficulty: 2, description: '确认H公司SaaS订阅收入15,000元，增值税6%=900元。',
     entries: [{ subjectCode: '2232', summary: 'H公司9月', debit: 15900, credit: 0 }, { subjectCode: '6051', summary: 'SaaS收入', debit: 0, credit: 15000 }, { subjectCode: '222101', summary: '销项税额', debit: 0, credit: 900 }],
     documents: [
       { type: 'invoice', label: '增值税专用发票', region: '北京', invoiceType: '专用', copy: '发票联', invoiceNo: '1100432130', date: '2026年09月09日', buyer: 'H科技有限公司', buyerTaxId: '91110108MAHHHHHHH', seller: '雲帆管理咨询有限公司', sellerTaxId: '91110108MA3XXXXXXXX', stampText: '发票专用章', payee: '李四', reviewer: '王五', drawer: '赵六', lineItems: [{ name: '雲帆智能平台SaaS订阅（9月）', unit: '月', qty: 1, price: 15000, amount: 15000, taxRate: '6%', tax: 900 }], totalAmount: 15900 }] },
@@ -47,7 +47,7 @@ const sep = [
     documents: [
       { type: 'receipt', label: '电费凭证', docTitle: '电 费 缴 费 凭 证', date: '2026-09-12', totalAmount: 5000, payer: '雲帆管理咨询有限公司', stampText: '国家电网\n电费收讫章', items: [{ name: '写字楼用电 5,000kWh×1.00元', qty: 5000, price: 1, amount: 5000 }]},
       { type: 'receipt', label: '通信费发票', docTitle: '通 信 服 务 发 票', date: '2026-09-12', totalAmount: 2000, payer: '雲帆管理咨询有限公司', stampText: '中国联通\n发票专用章', items: [{ name: '企业宽带+电话（9月）', qty: 1, price: 2000, amount: 2000 }]}] },
-  { date: '2026-09-14', role: 'accountant', title: '摊销及折旧', tags: ["费用管理"], difficulty: 2,
+  { date: '2026-09-14', role: 'accountant', title: '摊销及折旧', tags: ["费用管理"], difficulty: 2, description: '摊销6800元+折旧5240元，合计12040元。',
     entries: [{ subjectCode: '6602', summary: '摊销', debit: 3400, credit: 0 }, { subjectCode: '6602', summary: '折旧', debit: 2620, credit: 0 }, { subjectCode: '1208', summary: '摊销', debit: 0, credit: 3000 }, { subjectCode: '1702', summary: '累计摊销', debit: 0, credit: 400 }, { subjectCode: '1602', summary: '折旧', debit: 0, credit: 2620 }],
     documents: [
       { type: 'text', label: '摊销折旧表', docTitle: '摊 销 折 旧 计 提 表', date: '2026-09-14', stampText: '财务专用章', content: '期间：2026年9月\n\nSaaS摊销：36,000÷12=3,000.00元\n无形资产摊销：400.00元\n折旧合计：2,620.00元\n\n合计：6,020.00元\n\n制表：李会计' }] },
@@ -56,7 +56,7 @@ const sep = [
     documents: [
       { type: 'bank', label: '扣费回单', date: '2026-09-15', totalAmount: 600, payer: '雲帆管理咨询有限公司', payeeName: '中国工商银行北京分行', content: '9月账户服务费及转账手续费', refNo: 'HD202609150005' },
       { type: 'bank', label: '结息回单', date: '2026-09-15', totalAmount: 3200, payer: '中国工商银行北京分行', payeeName: '雲帆管理咨询有限公司', content: '活期存款2026年9月结息', refNo: 'HD202609150006' }] },
-  { date: '2026-09-16', role: 'accountant', title: '报销研发测试费', tags: ["项目核算"], difficulty: 2,
+  { date: '2026-09-16', role: 'accountant', title: '报销研发测试费', tags: ["项目核算"], difficulty: 2, description: '报销研发测试费用5,000元。',
     entries: [{ subjectCode: '530101', summary: '研发测试费', debit: 5000, credit: 0 }, { subjectCode: '100201', summary: '付款', debit: 0, credit: 5000 }],
     documents: [
       { type: 'receipt', label: '测试服务发票', docTitle: '软 件 测 试 服 务 发 票', date: '2026-09-16', totalAmount: 5000, payer: '雲帆管理咨询有限公司', stampText: 'XX软件评测中心\n发票专用章', items: [{ name: '智能分析平台V1.0 性能测试及安全评测', qty: 1, price: 5000, amount: 5000 }]}] },
@@ -85,7 +85,7 @@ const sep = [
     entries: [{ subjectCode: '520101', summary: '项目工资', debit: 125000, credit: 0 }, { subjectCode: '530101', summary: '研发资本化工资', debit: 50000, credit: 0 }, { subjectCode: '530102', summary: '研发费用化工', debit: 15000, credit: 0 }, { subjectCode: '6602', summary: '管理工资', debit: 52000, credit: 0 }, { subjectCode: '221101', summary: '应付工资', debit: 0, credit: 242000 }],
     documents: [
       { type: 'text', label: '工资计算表', docTitle: '9 月 工 资 计 算 汇 总 表', date: '2026-09-23', stampText: '人力资源部\n工资专用章', content: '期间：2026年9月\n\n项目人员：125,000元（E/G/I三项目并行）\n研发人员（资本化）：50,000元\n研发人员（费用化）：15,000元\n管理人员：52,000元\n\n应发合计：242,000元\n\n制表：王出纳\n审核：李会计' }] },
-  { date: '2026-09-24', role: 'accountant', title: '计提社保公积金', tags: ["工资社保"], difficulty: 2,
+  { date: '2026-09-24', role: 'accountant', title: '计提社保公积金', tags: ["工资社保"], difficulty: 2, description: '计提企业社保及公积金，合计73,500元。',
     entries: [{ subjectCode: '520101', summary: '项目社保', debit: 25000, credit: 0 }, { subjectCode: '520101', summary: '项目公积金', debit: 12500, credit: 0 }, { subjectCode: '530101', summary: '研发资本化社保', debit: 10000, credit: 0 }, { subjectCode: '530101', summary: '研发资本化公积金', debit: 5000, credit: 0 }, { subjectCode: '530102', summary: '研发费用化社保', debit: 3000, credit: 0 }, { subjectCode: '530102', summary: '研发费用化公积金', debit: 1500, credit: 0 }, { subjectCode: '6602', summary: '管理社保', debit: 11000, credit: 0 }, { subjectCode: '6602', summary: '管理公积金', debit: 5500, credit: 0 }, { subjectCode: '221102', summary: '应付社保', debit: 0, credit: 49000 }, { subjectCode: '221102', summary: '应付公积金', debit: 0, credit: 24500 }],
     documents: [
       { type: 'text', label: '社保公积金计提表', docTitle: '社 保 公 积 金 计 提 汇 总 表', date: '2026-09-24', stampText: '财务专用章', content: '期间：2026年9月\n\n社保（企业部分）：\n  项目人员：25,000元\n  研发资本化：10,000元\n  研发费用化：3,000元\n  管理人员：11,000元\n  小计：49,000元\n\n公积金（企业部分）：\n  项目人员：12,500元\n  研发资本化：5,000元\n  研发费用化：1,500元\n  管理人员：5,500元\n  小计：24,500元\n\n合计：73,500元\n\n制表：李会计' }] },
@@ -109,11 +109,11 @@ const sep = [
     entries: [{ subjectCode: '1001', summary: '备用金', debit: 2000, credit: 0 }, { subjectCode: '100201', summary: '提现', debit: 0, credit: 2000 }],
     documents: [
       { type: 'bank', label: '现金支票回单', date: '2026-09-28', totalAmount: 2000, payer: '雲帆管理咨询有限公司', payeeName: '雲帆管理咨询有限公司（现金）', content: '提取备用金', refNo: 'HD202609280008' }] },
-  { date: '2026-09-29', role: 'accountant', title: '计提无形资产摊销', tags: ["费用管理"], difficulty: 2,
+  { date: '2026-09-29', role: 'accountant', title: '计提无形资产摊销', tags: ["费用管理"], difficulty: 2, description: '计提无形资产摊销400元。',
     entries: [{ subjectCode: '6602', summary: '摊销', debit: 400, credit: 0 }, { subjectCode: '1702', summary: '累计摊销', debit: 0, credit: 400 }],
     documents: [
       { type: 'text', label: '摊销计算表', docTitle: '无 形 资 产 摊 销 计 算 表', date: '2026-09-29', stampText: '财务专用章', content: '无形资产：软件项目管理工具（永久许可）\n原值：24,000.00元\n摊销期限：5年（60个月）\n月摊销额：400.00元\n累计摊销：2,000.00元\n\n制表：李会计' }] },
-  { date: '2026-09-30', role: 'accountant', title: '期末结转劳务成本', tags: ["项目核算", "期末"], difficulty: 3,
+  { date: '2026-09-30', role: 'accountant', title: '期末结转劳务成本', tags: ["项目核算", "期末"], difficulty: 3, description: '期末结转劳务成本至主营业务成本。',
     entries: [{ subjectCode: '6401', summary: '结转人工', debit: 25000, credit: 0 }, { subjectCode: '520101', summary: '转人工', debit: 0, credit: 25000 }],
     documents: [
       { type: 'text', label: '成本计算表', docTitle: '服 务 成 本 结 转 计 算 表', date: '2026-09-30', stampText: '财务专用章', content: '结转期间：2026年9月\n\nE公司年框人工：12,000元\nG公司运维人工：6,000元\nH公司SaaS人工：7,000元\n\n合计结转：25,000元\n\n制表：李会计' }] },

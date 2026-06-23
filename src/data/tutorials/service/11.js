@@ -17,15 +17,15 @@ const nov = [
     entries: [{ subjectCode: '222101', summary: '增值税', debit: 7800, credit: 0 }, { subjectCode: '222103', summary: '城建税', debit: 546, credit: 0 }, { subjectCode: '222104', summary: '附加', debit: 390, credit: 0 }, { subjectCode: '100201', summary: '缴税', debit: 0, credit: 8736 }],
     documents: [
       { type: 'bank', label: '缴税回单', date: '2026-11-05', totalAmount: 8736, payer: '雲帆管理咨询有限公司', payeeName: '国家税务总局北京市税务局', content: '10月增值税及附加税缴纳', refNo: 'HD202611050003' }] },
-  { date: '2026-11-06', role: 'accountant', title: '确认E年框11月收入', tags: ["项目核算"], difficulty: 2,
+  { date: '2026-11-06', role: 'accountant', title: '确认E年框11月收入', tags: ["项目核算"], difficulty: 2, description: '确认E公司年框收入20,000元，增值税6%=1,200元。',
     entries: [{ subjectCode: '2232', summary: 'E公司11月', debit: 21200, credit: 0 }, { subjectCode: '6001', summary: '年框收入', debit: 0, credit: 20000 }, { subjectCode: '222101', summary: '销项税额', debit: 0, credit: 1200 }],
     documents: [
       { type: 'invoice', label: '增值税专用发票', region: '北京', invoiceType: '专用', copy: '发票联', invoiceNo: '1100432135', date: '2026年11月06日', buyer: 'E集团公司', buyerTaxId: '91110108MAZZZZZZZ', seller: '雲帆管理咨询有限公司', sellerTaxId: '91110108MA3XXXXXXXX', stampText: '发票专用章', payee: '李四', reviewer: '王五', drawer: '赵六', lineItems: [{ name: '年度管理咨询服务（11月）', unit: '月', qty: 1, price: 20000, amount: 20000, taxRate: '6%', tax: 1200 }], totalAmount: 21200 }] },
-  { date: '2026-11-07', role: 'accountant', title: '确认G运维11月收入', tags: ["项目核算"], difficulty: 2,
+  { date: '2026-11-07', role: 'accountant', title: '确认G运维11月收入', tags: ["项目核算"], difficulty: 2, description: '确认G公司运维收入15,000元，增值税6%=900元。',
     entries: [{ subjectCode: '2232', summary: 'G公司11月', debit: 15900, credit: 0 }, { subjectCode: '6001', summary: '运维收入', debit: 0, credit: 15000 }, { subjectCode: '222101', summary: '销项税额', debit: 0, credit: 900 }],
     documents: [
       { type: 'invoice', label: '增值税专用发票', region: '北京', invoiceType: '专用', copy: '发票联', invoiceNo: '1100432136', date: '2026年11月07日', buyer: 'G集团有限公司', buyerTaxId: '91110108MAKKKKKKK', seller: '雲帆管理咨询有限公司', sellerTaxId: '91110108MA3XXXXXXXX', stampText: '发票专用章', payee: '李四', reviewer: '王五', drawer: '赵六', lineItems: [{ name: 'IT运维服务（11月）', unit: '月', qty: 1, price: 15000, amount: 15000, taxRate: '6%', tax: 900 }], totalAmount: 15900 }] },
-  { date: '2026-11-08', role: 'accountant', title: '确认H订阅11月收入', tags: ["项目核算"], difficulty: 2,
+  { date: '2026-11-08', role: 'accountant', title: '确认H订阅11月收入', tags: ["项目核算"], difficulty: 2, description: '确认H公司SaaS订阅收入15,000元，增值税6%=900元。',
     entries: [{ subjectCode: '2232', summary: 'H公司11月', debit: 15900, credit: 0 }, { subjectCode: '6051', summary: 'SaaS收入', debit: 0, credit: 15000 }, { subjectCode: '222101', summary: '销项税额', debit: 0, credit: 900 }],
     documents: [
       { type: 'invoice', label: '增值税专用发票', region: '北京', invoiceType: '专用', copy: '发票联', invoiceNo: '1100432137', date: '2026年11月08日', buyer: 'H科技有限公司', buyerTaxId: '91110108MAHHHHHHH', seller: '雲帆管理咨询有限公司', sellerTaxId: '91110108MA3XXXXXXXX', stampText: '发票专用章', payee: '李四', reviewer: '王五', drawer: '赵六', lineItems: [{ name: '雲帆智能平台SaaS订阅（11月）', unit: '月', qty: 1, price: 15000, amount: 15000, taxRate: '6%', tax: 900 }], totalAmount: 15900 }] },
@@ -102,7 +102,7 @@ const nov = [
     entries: [{ subjectCode: '520101', summary: '项目工资', debit: 140000, credit: 0 }, { subjectCode: '6602', summary: '管理工资', debit: 55000, credit: 0 }, { subjectCode: '221101', summary: '应付工资', debit: 0, credit: 195000 }],
     documents: [
       { type: 'text', label: '工资计算表', docTitle: '11 月 工 资 计 算 汇 总 表', date: '2026-11-22', stampText: '人力资源部\n工资专用章', content: '期间：2026年11月\n\n项目人员：140,000元（E/G/J项目并行）\n管理人员：55,000元\n（研发已全部转无形资产，不再计提研发工资）\n\n应发合计：195,000元\n\n制表：王出纳\n审核：李会计' }] },
-  { date: '2026-11-24', role: 'accountant', title: '计提社保公积金', tags: ["工资社保"], difficulty: 2,
+  { date: '2026-11-24', role: 'accountant', title: '计提社保公积金', tags: ["工资社保"], difficulty: 2, description: '计提企业社保及公积金，合计59,000元。',
     entries: [{ subjectCode: '520101', summary: '项目社保', debit: 28000, credit: 0 }, { subjectCode: '520101', summary: '项目公积金', debit: 14000, credit: 0 }, { subjectCode: '6602', summary: '管理社保', debit: 11500, credit: 0 }, { subjectCode: '6602', summary: '管理公积金', debit: 5500, credit: 0 }, { subjectCode: '221102', summary: '应付社保', debit: 0, credit: 39500 }, { subjectCode: '221102', summary: '应付公积金', debit: 0, credit: 19500 }],
     documents: [
       { type: 'text', label: '社保公积金计提表', docTitle: '社 保 公 积 金 计 提 汇 总 表', date: '2026-11-24', stampText: '财务专用章', content: '期间：2026年11月\n\n社保（企业部分）：\n  项目人员：28,000元\n  管理人员：11,500元\n  小计：39,500元\n\n公积金（企业部分）：\n  项目人员：14,000元\n  管理人员：5,500元\n  小计：19,500元\n\n合计：59,000元\n\n制表：李会计' }] },
@@ -117,7 +117,7 @@ const nov = [
       { subjectCode: '4103', summary: '费用转入', debit: 210304, credit: 0 }, { subjectCode: '6401', summary: '转成本', debit: 0, credit: 70000 }, { subjectCode: '6403', summary: '转税金', debit: 0, credit: 2304 }, { subjectCode: '6602', summary: '转管理费', debit: 0, credit: 120000 }, { subjectCode: '6601', summary: '转销售费', debit: 0, credit: 18000 }],
     documents: [
       { type: 'text', label: '结转表', docTitle: '期 间 损 益 结 转 表', date: '2026-11-30', stampText: '已结转', content: '结转期间：2026年11月\n\n收入类→本年利润：\n  主营业务收入：305,000元（E20,000+G15,000+I120,000+J150,000）\n  其他业务收入：15,000元（H订阅）\n  合计：320,000元\n\n费用类→本年利润：\n  主营业务成本：70,000元\n  税金及附加：2,304元\n  管理费用（含年终奖）：120,000元\n  销售费用：18,000元\n  合计：210,304元\n\n本月净利润：109,696元\n\n制表：李会计' }] },
-  { date: '2026-11-28', role: 'accountant', title: '计提无形资产摊销', tags: ["费用管理"], difficulty: 2,
+  { date: '2026-11-28', role: 'accountant', title: '计提无形资产摊销', tags: ["费用管理"], difficulty: 2, description: '计提无形资产摊销400元。',
     entries: [{ subjectCode: '6602', summary: '摊销', debit: 400, credit: 0 }, { subjectCode: '1702', summary: '累计摊销', debit: 0, credit: 400 }],
     documents: [
       { type: 'text', label: '摊销计算表', docTitle: '无 形 资 产 摊 销 计 算 表', date: '2026-11-28', stampText: '财务专用章', content: '无形资产：软件项目管理工具（永久许可）\n原值：24,000.00元\n累计摊销：2,800.00元\n月摊销额：400.00元\n\n制表：李会计' }] },
@@ -137,10 +137,6 @@ const nov = [
     entries: [{ subjectCode: '660203', summary: '招待费', debit: 3000, credit: 0 }, { subjectCode: '100201', summary: '付款', debit: 0, credit: 3000 }],
     documents: [
       { type: 'receipt', label: '餐饮发票', docTitle: '北 京 市 餐 饮 服 务 发 票', date: '2026-11-29', totalAmount: 3000, payer: '雲帆管理咨询有限公司', stampText: 'XX酒店\n发票专用章', items: [{ name: '年终客户答谢', qty: 1, price: 3000, amount: 3000 }]}] },
-  { date: '2026-11-29', role: 'accountant', title: '提取备用金', tags: ["资金管理"], difficulty: 1,
-    entries: [{ subjectCode: '1001', summary: '备用金', debit: 3000, credit: 0 }, { subjectCode: '100201', summary: '提现', debit: 0, credit: 3000 }],
-    documents: [
-      { type: 'bank', label: '现金支票回单', date: '2026-11-29', totalAmount: 3000, payer: '雲帆管理咨询有限公司', payeeName: '雲帆管理咨询有限公司（现金）', content: '提取备用金', refNo: 'HD202611290009' }] },
   { date: '2026-11-30', role: 'accountant', title: '模拟纳税申报', tags: ["税费", "期末"], difficulty: 1, entries: [], nextAction: 'tax-filing',
     documents: [{ type: 'text', label: '申报提醒', docTitle: '11 月 纳 税 申 报 提 醒', stampText: '财务专用章', content: '申报期间：2026年11月\n截止日期：2026年12月15日\n\n申报税种：\n1. 增值税（6%，销项税额19,200元）\n2. 城市维护建设税（7%）\n3. 教育费附加（3%+2%）\n4. 代扣代缴个人所得税\n\n请前往纳税申报页面核对后提交。' }] },
 ]

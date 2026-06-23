@@ -45,7 +45,7 @@ const apr = [
     entries: [{ subjectCode: '100201', summary: 'C公司中期款', debit: 120000, credit: 0 }, { subjectCode: '1122', summary: 'C公司', debit: 0, credit: 120000 }],
     documents: [
       { type: 'bank', label: '收款回单', date: '2026-04-10', totalAmount: 120000, payer: 'C商业银行', payerAccount: '6222 0100 **** 2222', payeeName: '雲帆管理咨询有限公司', payeeAccount: '6222 0200 **** 1234', content: 'IT咨询项目中期款', refNo: 'HD202604100006' }] },
-  { date: '2026-04-11', role: 'accountant', title: '项目C·实施监理阶段差旅', tags: ["项目核算"], difficulty: 2,
+  { date: '2026-04-11', role: 'accountant', title: '项目C·实施监理阶段差旅', tags: ["项目核算"], difficulty: 2, description: 'C项目实施监理阶段差旅费用。',
     entries: [{ subjectCode: '520102', summary: '项目C差旅', debit: 14000, credit: 0, explanation: '供应商实施现场监理差旅。' }, { subjectCode: '100201', summary: '付款', debit: 0, credit: 14000 }],
     documents: [
       { type: 'receipt', label: '差旅报销单', docTitle: '差 旅 费 报 销 单', date: '2026-04-11', totalAmount: 14000, payer: '雲帆管理咨询有限公司', stampText: '财务\n审核专用章', items: [{ name: '往返深圳机票×4', qty: 8, price: 1250, amount: 10000 }, { name: '住宿×5天×4间', qty: 20, price: 200, amount: 4000 }]}] },
@@ -63,7 +63,7 @@ const apr = [
     documents: [
       { type: 'receipt', label: '电费凭证', docTitle: '电 费 缴 费 凭 证', date: '2026-04-14', totalAmount: 4200, payer: '雲帆管理咨询有限公司', stampText: '国家电网\n电费收讫章', items: [{ name: '写字楼用电 4,200kWh×1.00元', qty: 4200, price: 1, amount: 4200 }]},
       { type: 'receipt', label: '通信费发票', docTitle: '通 信 服 务 发 票', date: '2026-04-14', totalAmount: 2000, payer: '雲帆管理咨询有限公司', stampText: '中国联通\n发票专用章', items: [{ name: '企业宽带（4月）', qty: 1, price: 2000, amount: 2000 }]}] },
-  { date: '2026-04-15', role: 'accountant', title: '摊销SaaS费及计提折旧', tags: ["费用管理"], difficulty: 2,
+  { date: '2026-04-15', role: 'accountant', title: '摊销SaaS费及计提折旧', tags: ["费用管理"], difficulty: 2, description: '摊销SaaS服务费3,000元及计提固定资产折旧2,620元。',
     entries: [{ subjectCode: '6602', summary: '摊销SaaS', debit: 3000, credit: 0 }, { subjectCode: '6602', summary: '折旧', debit: 2462, credit: 0, explanation: '含新增桌椅118.75元。' }, { subjectCode: '1208', summary: '摊销', debit: 0, credit: 3000 }, { subjectCode: '1602', summary: '折旧', debit: 0, credit: 2462 }],
     documents: [
       { type: 'text', label: '摊销折旧表', docTitle: '摊 销 折 旧 计 提 表', date: '2026-04-15', stampText: '财务专用章', content: '期间：2026年4月\n\nSaaS摊销：36,000÷12=3,000.00元\n折旧合计：2,461.68元（含3月新增桌椅118.75元）\n\n合计：5,461.68元\n\n制表：李会计' }] },
@@ -76,7 +76,7 @@ const apr = [
       { subjectCode: '222101', summary: '销项税额', debit: 0, credit: 1200 }],
     documents: [
       { type: 'invoice', label: '增值税专用发票', region: '北京', invoiceType: '专用', copy: '发票联', invoiceNo: '1100432118', date: '2026年04月16日', buyer: 'E集团公司', buyerTaxId: '91110108MAZZZZZZZ', seller: '雲帆管理咨询有限公司', sellerTaxId: '91110108MA3XXXXXXXX', stampText: '发票专用章', payee: '李四', reviewer: '王五', drawer: '赵六', lineItems: [{ name: '年度管理咨询（4月）', unit: '月', qty: 1, price: 20000, amount: 20000, taxRate: '6%', tax: 1200 }], totalAmount: 21200 }] },
-  { date: '2026-04-17', role: 'accountant', title: '报销项目C资料费及通讯费', tags: ["项目核算"], difficulty: 2,
+  { date: '2026-04-17', role: 'accountant', title: '报销项目C资料费及通讯费', tags: ["项目核算"], difficulty: 2, description: '报销项目资料费及通讯费，合计3,800元。',
     entries: [{ subjectCode: '520104', summary: '项目C资料通讯', debit: 3800, credit: 0 }, { subjectCode: '100201', summary: '付款', debit: 0, credit: 3800 }],
     documents: [
       { type: 'receipt', label: '费用报销单', docTitle: '费 用 报 销 单', date: '2026-04-17', totalAmount: 3800, payer: '雲帆管理咨询有限公司', stampText: '财务\n审核专用章', items: [{ name: '技术文档购买（C项目）', qty: 1, price: 2000, amount: 2000 }, { name: '国际长途话费（C项目）', qty: 1, price: 1800, amount: 1800 }]}] },
@@ -93,15 +93,15 @@ const apr = [
     entries: [{ subjectCode: '660203', summary: '招待费', debit: 2800, credit: 0 }, { subjectCode: '100201', summary: '付款', debit: 0, credit: 2800 }],
     documents: [
       { type: 'receipt', label: '餐饮发票', docTitle: '北 京 市 餐 饮 服 务 发 票', date: '2026-04-21', totalAmount: 2800, payer: '雲帆管理咨询有限公司', stampText: 'XX酒店\n发票专用章', items: [{ name: 'E公司客户接待', qty: 1, price: 2800, amount: 2800 }]}] },
-  { date: '2026-04-22', role: 'accountant', title: '计提短期借款利息', tags: ["资金管理"], difficulty: 2,
+  { date: '2026-04-22', role: 'accountant', title: '计提短期借款利息', tags: ["资金管理"], difficulty: 2, description: '计提短期借款利息。',
     entries: [{ subjectCode: '6603', summary: '4月利息', debit: 725, credit: 0 }, { subjectCode: '2231', summary: '应付利息', debit: 0, credit: 725 }],
     documents: [
       { type: 'text', label: '利息计算表', docTitle: '短 期 借 款 利 息 计 算 表', date: '2026-04-22', stampText: '财务专用章', content: '借款本金：200,000.00元\n年利率：4.35%\n4月利息：200,000×4.35%÷12=725.00元\n累计应付利息：2,900.00元\n\n制表：李会计' }] },
-  { date: '2026-04-23', role: 'accountant', title: '计提4月员工工资', tags: ["工资社保"], difficulty: 2,
+  { date: '2026-04-23', role: 'accountant', title: '计提4月员工工资', tags: ["工资社保"], difficulty: 2, description: '计提4月员工工资，应发工资合计193,000元。',
     entries: [{ subjectCode: '520101', summary: '项目人员工资', debit: 148000, credit: 0 }, { subjectCode: '6602', summary: '管理工资', debit: 45000, credit: 0 }, { subjectCode: '221101', summary: '应付工资', debit: 0, credit: 193000 }],
     documents: [
       { type: 'text', label: '工资计算表', docTitle: '4 月 工 资 计 算 汇 总 表', date: '2026-04-23', stampText: '人力资源部\n工资专用章', content: '期间：2026年4月\n\n项目人员：148,000元（C/E项目并行）\n管理人员：45,000元\n\n应发合计：193,000元\n\n制表：王出纳\n审核：李会计' }] },
-  { date: '2026-04-24', role: 'accountant', title: '计提企业社保及公积金', tags: ["工资社保"], difficulty: 2,
+  { date: '2026-04-24', role: 'accountant', title: '计提企业社保及公积金', tags: ["工资社保"], difficulty: 2, description: '计提企业社保及公积金，合计58,000元。',
     entries: [
       { subjectCode: '520101', summary: '项目社保', debit: 29000, credit: 0 }, { subjectCode: '520101', summary: '项目公积金', debit: 15000, credit: 0 },
       { subjectCode: '6602', summary: '管理社保', debit: 9500, credit: 0 }, { subjectCode: '6602', summary: '管理公积金', debit: 4500, credit: 0 },

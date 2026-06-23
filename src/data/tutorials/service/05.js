@@ -17,7 +17,7 @@ const may = [
     entries: [{ subjectCode: '222101', summary: '增值税', debit: 13200, credit: 0 }, { subjectCode: '222103', summary: '城建税', debit: 924, credit: 0 }, { subjectCode: '222104', summary: '教育附加', debit: 396, credit: 0 }, { subjectCode: '222104', summary: '地方教育附加', debit: 264, credit: 0 }, { subjectCode: '100201', summary: '缴税', debit: 0, credit: 14784 }],
     documents: [
       { type: 'bank', label: '缴税回单', date: '2026-05-06', totalAmount: 14784, payer: '雲帆管理咨询有限公司', payeeName: '国家税务总局北京市税务局', content: '4月增值税及附加税缴纳', refNo: 'HD202605060003' }] },
-  { date: '2026-05-07', role: 'accountant', title: 'C项目终验交付·确认终验收入', tags: ["项目核算"], difficulty: 2,
+  { date: '2026-05-07', role: 'accountant', title: 'C项目终验交付·确认终验收入', tags: ["项目核算"], difficulty: 2, description: 'C项目完成终验，确认终验收入。',
     entries: [
       { subjectCode: '1122', summary: 'C公司终验款', debit: 127200, credit: 0 }, { subjectCode: '6001', summary: '终验收入', debit: 0, credit: 120000 },
       { subjectCode: '222101', summary: '销项税额', debit: 0, credit: 7200 }],
@@ -32,7 +32,7 @@ const may = [
     entries: [{ subjectCode: '660205', summary: '房租', debit: 22000, credit: 0 }, { subjectCode: '660205', summary: '物业费', debit: 3000, credit: 0 }, { subjectCode: '100201', summary: '付款', debit: 0, credit: 25000 }],
     documents: [
       { type: 'receipt', label: '房屋租赁收据', docTitle: '房 屋 租 赁 专 用 收 据', date: '2026-05-09', totalAmount: 25000, payer: '雲帆管理咨询有限公司', stampText: '北京XX物业管理有限公司\n财务专用章', items: [{ name: '望京XX大厦15层 5月租金', qty: 1, price: 22000, amount: 22000 }, { name: '5月物业管理费', qty: 1, price: 3000, amount: 3000 }]}] },
-  { date: '2026-05-10', role: 'accountant', title: '确认E公司年框5月收入', tags: ["项目核算"], difficulty: 2,
+  { date: '2026-05-10', role: 'accountant', title: '确认E公司年框5月收入', tags: ["项目核算"], difficulty: 2, description: '确认E公司年框5月收入。金额合计21,200元。',
     entries: [{ subjectCode: '2232', summary: 'E公司5月', debit: 21200, credit: 0 }, { subjectCode: '6001', summary: '年框5月收入', debit: 0, credit: 20000 }, { subjectCode: '222101', summary: '销项税额', debit: 0, credit: 1200 }],
     documents: [
       { type: 'invoice', label: '增值税专用发票', region: '北京', invoiceType: '专用', copy: '发票联', invoiceNo: '1100432120', date: '2026年05月10日', buyer: 'E集团公司', buyerTaxId: '91110108MAZZZZZZZ', seller: '雲帆管理咨询有限公司', sellerTaxId: '91110108MA3XXXXXXXX', stampText: '发票专用章', payee: '李四', reviewer: '王五', drawer: '赵六', lineItems: [{ name: '年度管理咨询服务（5月）', unit: '月', qty: 1, price: 20000, amount: 20000, taxRate: '6%', tax: 1200 }], totalAmount: 21200 }] },
@@ -42,7 +42,7 @@ const may = [
     documents: [
       { type: 'bank', label: '收款回单', date: '2026-05-12', totalAmount: 140000, payer: 'F新零售有限公司', payerAccount: '6222 0100 **** 5555', payeeName: '雲帆管理咨询有限公司', payeeAccount: '6222 0200 **** 1234', content: '数字化转型项目预付款40%', refNo: 'HD202605120005' },
       { type: 'text', label: '合同', docTitle: '数 字 化 转 型 咨 询 合 同', date: '2026-05-12', stampText: '合同专用章', content: '甲方：F新零售有限公司\n乙方：雲帆管理咨询有限公司\n\n项目名称：数字化转型咨询\n合同金额：350,000元\n付款方式：签约付40%（140,000），中期付34.3%（120,000），终验付25.7%（90,000）\n服务期限：2026.5-2026.7\n\n服务内容：数字化战略规划、ERP选型、实施监理' }] },
-  { date: '2026-05-13', role: 'accountant', title: 'F项目启动·外包大数据分析', tags: ["项目核算"], difficulty: 2,
+  { date: '2026-05-13', role: 'accountant', title: 'F项目启动·外包大数据分析', tags: ["项目核算"], difficulty: 2, description: 'F项目启动，支付外包大数据分析服务17,500元。',
     tip: '外包给专业数据分析公司，费用计入劳务成本——外包服务费。',
     entries: [{ subjectCode: '520103', summary: '大数据外包首付', debit: 17500, credit: 0, explanation: 'F项目外包数据分析费首付50%。' }, { subjectCode: '100201', summary: '付款', debit: 0, credit: 17500 }],
     documents: [
@@ -53,11 +53,11 @@ const may = [
     documents: [
       { type: 'receipt', label: '电费凭证', docTitle: '电 费 缴 费 凭 证', date: '2026-05-14', totalAmount: 4800, payer: '雲帆管理咨询有限公司', stampText: '国家电网\n电费收讫章', items: [{ name: '写字楼用电 4,800kWh×1.00元', qty: 4800, price: 1, amount: 4800 }]},
       { type: 'receipt', label: '通信费发票', docTitle: '通 信 服 务 发 票', date: '2026-05-14', totalAmount: 2000, payer: '雲帆管理咨询有限公司', stampText: '中国联通\n发票专用章', items: [{ name: '企业宽带（5月）', qty: 1, price: 2000, amount: 2000 }]}] },
-  { date: '2026-05-15', role: 'accountant', title: 'F项目启动·顾问差旅', tags: ["项目核算"], difficulty: 2,
+  { date: '2026-05-15', role: 'accountant', title: 'F项目启动·顾问差旅', tags: ["项目核算"], difficulty: 2, description: 'F项目启动，顾问差旅费用11,000元。',
     entries: [{ subjectCode: '520102', summary: 'F项目差旅', debit: 11000, credit: 0 }, { subjectCode: '100201', summary: '付款', debit: 0, credit: 11000 }],
     documents: [
       { type: 'receipt', label: '差旅报销单', docTitle: '差 旅 费 报 销 单', date: '2026-05-15', totalAmount: 11000, payer: '雲帆管理咨询有限公司', stampText: '财务\n审核专用章', items: [{ name: '杭州出差 高铁3人×2程', qty: 6, price: 550, amount: 3300 }, { name: '住宿 3人×4晚×400元', qty: 12, price: 400, amount: 4800 }, { name: '市内交通及补贴', qty: 1, price: 2900, amount: 2900 }]}] },
-  { date: '2026-05-16', role: 'accountant', title: '摊销SaaS费及计提折旧', tags: ["费用管理"], difficulty: 2,
+  { date: '2026-05-16', role: 'accountant', title: '摊销SaaS费及计提折旧', tags: ["费用管理"], difficulty: 2, description: '摊销SaaS服务费3,000元及计提固定资产折旧2,620元。',
     entries: [{ subjectCode: '6602', summary: '摊销', debit: 3000, credit: 0 }, { subjectCode: '6602', summary: '折旧', debit: 2462, credit: 0 }, { subjectCode: '1208', summary: '摊销', debit: 0, credit: 3000 }, { subjectCode: '1602', summary: '折旧', debit: 0, credit: 2462 }],
     documents: [
       { type: 'text', label: '摊销折旧表', docTitle: '摊 销 折 旧 计 提 表', date: '2026-05-16', stampText: '财务专用章', content: '期间：2026年5月\n\nSaaS摊销：36,000÷12=3,000.00元\n折旧合计：2,461.68元（含3月新增桌椅）\n\n合计：5,461.68元\n\n制表：李会计' }] },
@@ -78,15 +78,15 @@ const may = [
     documents: [
       { type: 'bank', label: '扣费回单', date: '2026-05-21', totalAmount: 550, payer: '雲帆管理咨询有限公司', payeeName: '中国工商银行北京分行', content: '5月账户服务费及转账手续费', refNo: 'HD202605210008' },
       { type: 'bank', label: '结息回单', date: '2026-05-21', totalAmount: 1800, payer: '中国工商银行北京分行', payeeName: '雲帆管理咨询有限公司', content: '活期存款2026年5月结息', refNo: 'HD202605210009' }] },
-  { date: '2026-05-22', role: 'accountant', title: '计提短期借款利息', tags: ["资金管理"], difficulty: 2,
+  { date: '2026-05-22', role: 'accountant', title: '计提短期借款利息', tags: ["资金管理"], difficulty: 2, description: '计提短期借款利息。',
     entries: [{ subjectCode: '6603', summary: '5月利息', debit: 725, credit: 0 }, { subjectCode: '2231', summary: '应付利息', debit: 0, credit: 725 }],
     documents: [
       { type: 'text', label: '利息计算表', docTitle: '短 期 借 款 利 息 计 算 表', date: '2026-05-22', stampText: '财务专用章', content: '借款本金：200,000.00元\n年利率：4.35%\n5月利息：200,000×4.35%÷12=725.00元\n累计应付利息：2,175.00元\n\n制表：李会计' }] },
-  { date: '2026-05-23', role: 'accountant', title: '计提5月员工工资', tags: ["工资社保"], difficulty: 2,
+  { date: '2026-05-23', role: 'accountant', title: '计提5月员工工资', tags: ["工资社保"], difficulty: 2, description: '计提5月员工工资，应发工资合计201,000元。',
     entries: [{ subjectCode: '520101', summary: '项目工资', debit: 155000, credit: 0 }, { subjectCode: '6602', summary: '管理工资', debit: 46000, credit: 0 }, { subjectCode: '221101', summary: '应付工资', debit: 0, credit: 201000 }],
     documents: [
       { type: 'text', label: '工资计算表', docTitle: '5 月 工 资 计 算 汇 总 表', date: '2026-05-23', stampText: '人力资源部\n工资专用章', content: '期间：2026年5月\n\n项目人员：155,000元（C终验+F新签并行）\n管理人员：46,000元\n\n应发合计：201,000元\n\n制表：王出纳\n审核：李会计' }] },
-  { date: '2026-05-24', role: 'accountant', title: '计提企业社保及公积金', tags: ["工资社保"], difficulty: 2,
+  { date: '2026-05-24', role: 'accountant', title: '计提企业社保及公积金', tags: ["工资社保"], difficulty: 2, description: '计提企业社保及公积金，合计61,000元。',
     entries: [{ subjectCode: '520101', summary: '项目社保', debit: 31000, credit: 0 }, { subjectCode: '520101', summary: '项目公积金', debit: 15500, credit: 0 }, { subjectCode: '6602', summary: '管理社保', debit: 9500, credit: 0 }, { subjectCode: '6602', summary: '管理公积金', debit: 5000, credit: 0 }, { subjectCode: '221102', summary: '应付社保', debit: 0, credit: 40500 }, { subjectCode: '221102', summary: '应付公积金', debit: 0, credit: 20500 }],
     documents: [
       { type: 'text', label: '社保公积金计提表', docTitle: '社 保 公 积 金 计 提 汇 总 表', date: '2026-05-24', stampText: '财务专用章', content: '期间：2026年5月\n\n社保（企业部分）：\n  项目人员：31,000元\n  管理人员：9,500元\n  小计：40,500元\n\n公积金（企业部分）：\n  项目人员：15,500元\n  管理人员：5,000元\n  小计：20,500元\n\n合计：61,000元\n\n制表：李会计' }] },
