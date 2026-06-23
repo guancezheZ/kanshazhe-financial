@@ -16,6 +16,7 @@ const tasks = [
     tags: ['出纳'],
     difficulty: 1,
     description: '启用6月日记账，登记期初余额。',
+    tip: '月初出纳清点库存现金，与现金日记账余额核对，确保账实相符后开始本月工作。无需制作凭证。',
     entries: [],
     documents: [{ type: 'text', label: '现金日记账', docTitle: '现金日记账（2026年6月）', stampText: '出纳专用章',
       content: '2026年6月期初余额：约3,500元\n出纳员：王出纳' }]},
@@ -57,6 +58,7 @@ const tasks = [
     tags: ['工资社保'],
     difficulty: 1,
     description: '发放5月员工工资65,487.36元（含劳动节加班费4,487.36元）。',
+    tip: '通过银行代发上月工资（含劳动节加班费）。借：应付职工薪酬-工资，贷：银行存款。发放后冲减计提的应付职工薪酬。',
     entries: [
       { subjectCode: '221101', summary: '发放5月工资', debit: 65487.36, credit: 0, explanation: '应付职工薪酬-工资减少。' },
       { subjectCode: '100201', summary: '发放5月工资', debit: 0, credit: 65487.36, explanation: '银行存款减少。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出。'}],
@@ -72,9 +74,10 @@ const tasks = [
     tags: ['商品采购', '税费'],
     difficulty: 2,
     description: '向鑫鑫食品采购食品32,000元（不含税），增值税4,160元，价税合计36,160元付讫。',
+    tip: '现购商品：借：库存商品/应交税费-进项税额，贷：银行存款。注意取得增值税专用发票方可抵扣进项税。',
     entries: [
       { subjectCode: '1405', summary: '食品入库', debit: 32000, credit: 0, explanation: '库存商品增加。' },
-      { subjectCode: '222101', summary: '进项税额', debit: 4160, credit: 0, explanation: '' },
+      { subjectCode: '222101', summary: '进项税额', debit: 4160, credit: 0, explanation: '增值税进项税额增加记借方。取得专用发票可抵扣。' },
       { subjectCode: '100201', summary: '支付货款', debit: 0, credit: 36160, explanation: '银行存款减少。' , cashFlowItem: 'cf-op2', cashFlowExplanation: '采购存货/商品支出。'}],
     documents: [{ type: 'invoice', label: '增值税专用发票', region: '上海', invoiceNo: '3100789012', date: '2026-06-06', seller: '鑫鑫食品有限公司',
       lineItems: [{ name: '食品饮料', unit: '箱', qty: 320, price: 100, amount: 32000 }], totalAmount: 36160, taxRate: '13%', taxAmount: 4160 }]},
@@ -85,6 +88,7 @@ const tasks = [
     tags: ['商品采购'],
     difficulty: 3,
     description: '收到洁宝日化上半年采购返利3,200元（采购金额约160,000元×2%），银行转账已到账。冲减主营业务成本。',
+    tip: '供应商返利冲减主营业务成本，不计入营业外收入。根据CAS 14，返利属于可变对价的调整。收到返利时：借：银行存款，贷：主营业务成本（红字/负数）。',
     entries: [
       { subjectCode: '100201', summary: '洁宝日化返利', debit: 3200, credit: 0, explanation: '银行存款增加。收到采购返利3,200元。' , cashFlowItem: 'cf-op5', cashFlowExplanation: '其他经营活动现金流入。'},
       { subjectCode: '6401', summary: '冲减主营业务成本', debit: 0, credit: 3200, explanation: '主营业务成本减少。采购返利冲减成本。' }],
@@ -109,6 +113,7 @@ const tasks = [
     tags: ['工资社保'],
     difficulty: 2,
     description: '计提6月员工工资61,000元。管理岗（店长）8,000元计入管理费用，一线员工53,000元计入销售费用。',
+    tip: '月末计提当月工资。管理岗计入管理费用，一线员工计入销售费用。借：管理费用/销售费用，贷：应付职工薪酬-工资。',
     entries: [
       { subjectCode: '660203', summary: '店长6月工资', debit: 8000, credit: 0, explanation: '管理费用-工资薪金增加。' },
       { subjectCode: '6601', summary: '一线员工6月工资', debit: 53000, credit: 0, explanation: '销售费用增加。' },
@@ -122,6 +127,7 @@ const tasks = [
     tags: ['往来管理'],
     difficulty: 3,
     description: '结算美肌堂5月联营销售。含税52,000元，佣金11,440元，应付40,560元。以工商银行转账支付。',
+    tip: '联营专柜月结时支付供应商货款净额（含税销售额减去佣金）。借：应付账款-美肌堂，贷：银行存款。',
     entries: [
       { subjectCode: '222101', summary: '佣金进项', debit: 647.55, credit: 0, explanation: '应交税费-应交增值税（进项税额）增加。' },
       { subjectCode: '6601', summary: '联营佣金费用', debit: 10792.45, credit: 0, explanation: '销售费用增加。' },
@@ -136,6 +142,7 @@ const tasks = [
     tags: ['费用管理'],
     difficulty: 1,
     description: '支付6月水电费8,500元（电费7,300+水费1,200）。',
+    tip: '水电费计入销售费用。借：销售费用-水电费，贷：银行存款。注意取得增值税专用发票。',
     entries: [
       { subjectCode: '6602', summary: '6月水电费', debit: 8500, credit: 0, explanation: '管理费用增加。' },
       { subjectCode: '100201', summary: '支付水电费', debit: 0, credit: 8500, explanation: '银行存款减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出。'}],
@@ -147,6 +154,7 @@ const tasks = [
     tags: ['仓存管理'],
     difficulty: 2,
     description: '本月生鲜正常损耗1,800元，计入管理费用。',
+    tip: '生鲜自然损耗计入管理费用。正常损耗小金额无需进项转出。借：管理费用，贷：库存商品。',
     entries: [
       { subjectCode: '6602', summary: '生鲜正常损耗', debit: 1800, credit: 0, explanation: '管理费用增加。正常损耗无需进项转出。' },
       { subjectCode: '1405', summary: '损耗出库', debit: 0, credit: 1800, explanation: '库存商品减少。' }],
@@ -159,9 +167,10 @@ const tasks = [
     tags: ['商品采购', '往来管理'],
     difficulty: 2,
     description: '向洁宝日化赊购日用品22,000元（不含税），增值税2,860元，价税合计24,860元，货款未付。',
+    tip: '赊购商品形成应付账款。借：库存商品/应交税费-进项税额，贷：应付账款-供应商。',
     entries: [
       { subjectCode: '1405', summary: '日用品入库', debit: 22000, credit: 0, explanation: '库存商品增加。' },
-      { subjectCode: '222101', summary: '进项税额', debit: 2860, credit: 0, explanation: '' },
+      { subjectCode: '222101', summary: '进项税额', debit: 2860, credit: 0, explanation: '增值税进项税额增加记借方。取得专用发票可抵扣。' },
       { subjectCode: '220203', summary: '赊购款未付', debit: 0, credit: 24860, explanation: '应付账款增加。' }],
     documents: [{ type: 'invoice', label: '增值税专用发票', region: '广东', invoiceNo: '4400890124', date: '2026-06-20', seller: '洁宝日化有限公司',
       lineItems: [{ name: '日用品', unit: '箱', qty: 180, price: 122.22, amount: 22000 }], totalAmount: 24860, taxRate: '13%', taxAmount: 2860 }]},
@@ -176,6 +185,7 @@ const tasks = [
     tags: ['商品销售'],
     difficulty: 3,
     description: '美肌堂6月含税销售额48,000元。按净额法确认：佣金10,560元（含税），不含税9,962.26元，增值税597.74元（6%）。',
+    tip: '联营专柜按净额法确认收入。借：银行存款（全额），贷：应付账款-美肌堂（货款净额）、主营业务收入-佣金（扣点）、应交税费-销项（扣点部分6%）。',
     entries: [
       { subjectCode: '100201', summary: '联营销售收款', debit: 48000, credit: 0, explanation: '银行存款增加。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金。'},
       { subjectCode: '220203', summary: '应付美肌堂货款', debit: 0, credit: 37440, explanation: '应付账款增加。48,000×78%=37,440元。' },
@@ -190,6 +200,7 @@ const tasks = [
     tags: ['商品销售', '仓存管理'],
     difficulty: 3,
     description: '采用移动加权平均法结转6月自营商品成本。食品饮料75,000元、日用品35,000元、生鲜55,000元、小家电8,000元。合计173,000元。扣除返利3,200元后净成本169,800元。',
+    tip: '月末汇总结转自营商品成本。移动加权平均法计算。借：主营业务成本，贷：库存商品。',
     entries: [
       { subjectCode: '6401', summary: '结转6月成本', debit: 173000, credit: 0, explanation: '主营业务成本增加。' },
       { subjectCode: '1405', summary: '各品类出库', debit: 0, credit: 173000, explanation: '库存商品减少。' }],
@@ -202,15 +213,16 @@ const tasks = [
     tags: ['期末'],
     difficulty: 3,
     description: '结转损益至本年利润，编制半年度财务分析。',
+    tip: '月末结转损益科目至本年利润。收入类转入贷方，费用类转入借方。半年度需做财务分析总结。',
     entries: [
       { subjectCode: '6001', debit: 356000, credit: 0, summary: '结转主营业务收入', explanation: '含自营、联营佣金、积分调整≈356,000元。' },
       { subjectCode: '6401', debit: 0, credit: 169800, summary: '结转主营业务成本', explanation: '已扣返利3,200元。' },
-      { subjectCode: '6403', debit: 0, credit: 2450, summary: '结转税金及附加', explanation: '' },
+      { subjectCode: '6403', debit: 0, credit: 2450, summary: '结转税金及附加', explanation: '税金及附加结转至本年利润。借：本年利润，贷：税金及附加。' },
       { subjectCode: '6601', debit: 0, credit: 63792, summary: '结转销售费用', explanation: '一线工资53,000+联营佣金10,792。' },
       { subjectCode: '6602', debit: 0, credit: 10850, summary: '结转管理费用（水电+损耗+盘点）', explanation: '水电8,500+损耗1,800+盘点正常损耗550=10,850。' },
       { subjectCode: '660203', debit: 0, credit: 8000, summary: '结转管理费用-工资薪金', explanation: '店长工资8,000元。' },
       { subjectCode: '6711', debit: 0, credit: 167.26, summary: '结转营业外支出', explanation: '非正常损耗及进项转出。' },
-      { subjectCode: '6603', debit: 220, credit: 0, summary: '结转财务费用（净利息收入）', explanation: '' },
+      { subjectCode: '6603', debit: 220, credit: 0, summary: '结转财务费用（净利息收入）', explanation: '财务费用结转至本年利润。借：本年利润，贷：财务费用。' },
       { subjectCode: '4103', debit: 0, credit: 101160.74, summary: '结转净利润', explanation: '=356,220-255,059.26=101,160.74元。上半年累计净利润约415,062元。' }
     ],
     documents: [
@@ -225,6 +237,7 @@ const tasks = [
     tags: ['期末', '申报'],
     difficulty: 1,
     description: '完成6月模拟纳税申报。',
+    tip: '前往纳税申报页面核对数据后完成申报。半年末注意检查增值税累计数据。',
     entries: [],
     nextAction: 'tax-filing',
     documents: [{ type: 'text', label: '纳税申报提醒', docTitle: '2026年6月纳税申报提醒', stampText: '财务专用章',
@@ -236,10 +249,11 @@ const tasks = [
     tags: ['商品销售'],
     difficulty: 1,
     description: 'POS日常销售含税收入56,500元（不含税50,000元，增值税6,500元），已收存银行。',
+    tip: 'POS日常销售收入按支付方式分别入账。微信/支付宝计入"其他货币资金"，银行卡计入"银行存款"，现金计入"库存现金"。每日POS日结单汇总入账。借记各收款科目，贷记主营业务收入和应交税费-销项税额。',
     entries: [
       { subjectCode: '100201', summary: 'POS收款', debit: 56500, credit: 0, explanation: '银行存款增加。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金。'},
       { subjectCode: '6001', summary: '收入', debit: 0, credit: 50000, explanation: '主营业务收入增加。' },
-      { subjectCode: '222101', summary: '销项税', debit: 0, credit: 6500, explanation: '' }],
+      { subjectCode: '222101', summary: '销项税', debit: 0, credit: 6500, explanation: '增值税销项税额增加记贷方。销售商品适用13%税率。' }],
     documents: [{ type: 'text', label: 'POS日结单', content: '含税：56,500元 | 不含税：50,000元 | 增值税：6,500元' }]},
   {
     date: '2026-06-04',
@@ -248,10 +262,11 @@ const tasks = [
     tags: ['商品销售'],
     difficulty: 1,
     description: 'POS日常销售含税收入67,800元（不含税60,000元，增值税7,800元）。',
+    tip: 'POS日常销售收入按支付方式分别入账。微信/支付宝计入"其他货币资金"，银行卡计入"银行存款"，现金计入"库存现金"。每日POS日结单汇总入账。借记各收款科目，贷记主营业务收入和应交税费-销项税额。',
     entries: [
-      { subjectCode: '100201', summary: 'POS收款', debit: 67800, credit: 0, explanation: '' , cashFlowItem: 'cf-op', cashFlowExplanation: ''},
-      { subjectCode: '6001', summary: '收入', debit: 0, credit: 60000, explanation: '' },
-      { subjectCode: '222101', summary: '销项税', debit: 0, credit: 7800, explanation: '' }],
+      { subjectCode: '100201', summary: 'POS收款', debit: 67800, credit: 0, explanation: '银行存款增加记借方。POS收款T+1到账。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金（配对科目6001），属于经营活动现金流入。'},
+      { subjectCode: '6001', summary: '收入', debit: 0, credit: 60000, explanation: '销售收入增加记贷方。不含税金额贷记主营业务收入。' },
+      { subjectCode: '222101', summary: '销项税', debit: 0, credit: 7800, explanation: '增值税销项税额增加记贷方。销售商品适用13%税率。' }],
     documents: [{ type: 'text', label: 'POS日结单', content: '含税：67,800元' }]},
   {
     date: '2026-06-07',
@@ -260,10 +275,11 @@ const tasks = [
     tags: ['商品销售'],
     difficulty: 1,
     description: 'POS日常销售含税收入50,850元（不含税45,000元，增值税5,850元）。',
+    tip: 'POS日常销售收入按支付方式分别入账。微信/支付宝计入"其他货币资金"，银行卡计入"银行存款"，现金计入"库存现金"。每日POS日结单汇总入账。借记各收款科目，贷记主营业务收入和应交税费-销项税额。',
     entries: [
-      { subjectCode: '100201', summary: 'POS收款', debit: 50850, credit: 0, explanation: '' , cashFlowItem: 'cf-op', cashFlowExplanation: ''},
-      { subjectCode: '6001', summary: '收入', debit: 0, credit: 45000, explanation: '' },
-      { subjectCode: '222101', summary: '销项税', debit: 0, credit: 5850, explanation: '' }],
+      { subjectCode: '100201', summary: 'POS收款', debit: 50850, credit: 0, explanation: '银行存款增加记借方。POS收款T+1到账。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金（配对科目6001），属于经营活动现金流入。'},
+      { subjectCode: '6001', summary: '收入', debit: 0, credit: 45000, explanation: '销售收入增加记贷方。不含税金额贷记主营业务收入。' },
+      { subjectCode: '222101', summary: '销项税', debit: 0, credit: 5850, explanation: '增值税销项税额增加记贷方。销售商品适用13%税率。' }],
     documents: [{ type: 'text', label: 'POS日结单', content: '含税：50,850元' }]},
   {
     date: '2026-06-09',
@@ -272,10 +288,11 @@ const tasks = [
     tags: ['商品采购', '往来管理'],
     difficulty: 2,
     description: '向洁宝日化补货日用品20,000元（不含税），增值税2,600元，价税合计22,600元赊购。',
+    tip: '赊购商品形成应付账款。借：库存商品/应交税费-进项税额，贷：应付账款-供应商。',
     entries: [
-      { subjectCode: '1405', summary: '入库', debit: 20000, credit: 0, explanation: '' },
-      { subjectCode: '222101', summary: '进项税', debit: 2600, credit: 0, explanation: '' },
-      { subjectCode: '220203', summary: '赊购', debit: 0, credit: 22600, explanation: '' }],
+      { subjectCode: '1405', summary: '入库', debit: 20000, credit: 0, explanation: '库存商品增加记借方。采购商品验收入库。' },
+      { subjectCode: '222101', summary: '进项税', debit: 2600, credit: 0, explanation: '增值税进项税额增加记借方。取得专用发票可抵扣。' },
+      { subjectCode: '220203', summary: '赊购', debit: 0, credit: 22600, explanation: '应付账款增加记贷方。赊购商品形成应付供应商款项。' }],
     documents: [{ type: 'invoice', label: '增值税专用发票', date: '2026-06-09', seller: '洁宝日化有限公司', totalAmount: 22600,
       lineItems: [{ name: '日用品', unit: '箱', qty: 160, price: 125, amount: 20000 }] }]},
   {
@@ -285,10 +302,11 @@ const tasks = [
     tags: ['商品采购', '税费'],
     difficulty: 2,
     description: '向绿源农业采购生鲜14,500元（不含税），增值税1,305元（9%），价税合计15,805元付讫。',
+    tip: '生鲜商品增值税税率9%。采购时注意税率。借：库存商品/应交税费-进项（9%），贷：银行存款。',
     entries: [
-      { subjectCode: '1405', summary: '入库', debit: 14500, credit: 0, explanation: '' },
-      { subjectCode: '222101', summary: '进项税', debit: 1305, credit: 0, explanation: '' },
-      { subjectCode: '100201', summary: '付款', debit: 0, credit: 15805, explanation: '' , cashFlowItem: 'cf-op2', cashFlowExplanation: ''}],
+      { subjectCode: '1405', summary: '入库', debit: 14500, credit: 0, explanation: '库存商品增加记借方。采购商品验收入库。' },
+      { subjectCode: '222101', summary: '进项税', debit: 1305, credit: 0, explanation: '增值税进项税额增加记借方。取得专用发票可抵扣。' },
+      { subjectCode: '100201', summary: '付款', debit: 0, credit: 15805, explanation: '银行存款减少记贷方。支付采购货款。' , cashFlowItem: 'cf-op2', cashFlowExplanation: '采购存货/商品支出，属于经营活动现金流出。'}],
     documents: [{ type: 'invoice', label: '增值税普通发票', date: '2026-06-11', seller: '绿源农业有限公司', totalAmount: 15805,
       lineItems: [{ name: '蔬菜', unit: '斤', qty: 600, price: 5, amount: 3000 }, { name: '水果', unit: '斤', qty: 500, price: 12, amount: 6000 }, { name: '鲜肉', unit: '斤', qty: 275, price: 20, amount: 5500 }] }]},
   {
@@ -298,6 +316,7 @@ const tasks = [
     tags: ['资产'],
     difficulty: 1,
     description: '前往固定资产模块计提6月折旧1,350元。',
+    tip: '固定资产按月计提折旧。超市固定资产按使用部门分配折旧费用。借：销售费用/管理费用-折旧费，贷：累计折旧。',
     entries: [],
     nextAction: 'fixed-assets',
     documents: [{ type: 'text', label: '折旧计算表', content: '合计：1,350元。请前往固定资产模块操作。' }]},
@@ -308,10 +327,11 @@ const tasks = [
     tags: ['商品销售'],
     difficulty: 1,
     description: 'POS日常销售含税收入45,200元（不含税40,000元，增值税5,200元）。',
+    tip: 'POS日常销售收入按支付方式分别入账。微信/支付宝计入"其他货币资金"，银行卡计入"银行存款"，现金计入"库存现金"。每日POS日结单汇总入账。借记各收款科目，贷记主营业务收入和应交税费-销项税额。',
     entries: [
-      { subjectCode: '100201', summary: 'POS收款', debit: 45200, credit: 0, explanation: '' , cashFlowItem: 'cf-op', cashFlowExplanation: ''},
-      { subjectCode: '6001', summary: '收入', debit: 0, credit: 40000, explanation: '' },
-      { subjectCode: '222101', summary: '销项税', debit: 0, credit: 5200, explanation: '' }],
+      { subjectCode: '100201', summary: 'POS收款', debit: 45200, credit: 0, explanation: '银行存款增加记借方。POS收款T+1到账。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金（配对科目6001），属于经营活动现金流入。'},
+      { subjectCode: '6001', summary: '收入', debit: 0, credit: 40000, explanation: '销售收入增加记贷方。不含税金额贷记主营业务收入。' },
+      { subjectCode: '222101', summary: '销项税', debit: 0, credit: 5200, explanation: '增值税销项税额增加记贷方。销售商品适用13%税率。' }],
     documents: [{ type: 'text', label: 'POS日结单', content: '含税：45,200元' }]},
   {
     date: '2026-06-18',
@@ -320,9 +340,10 @@ const tasks = [
     tags: ['资金管理'],
     difficulty: 1,
     description: '工商银行扣收6月账户管理费及手续费195元。',
+    tip: '银行手续费计入财务费用。借：财务费用-手续费，贷：银行存款。',
     entries: [
       { subjectCode: '6603', summary: '手续费', debit: 195, credit: 0, explanation: '财务费用增加。' },
-      { subjectCode: '100201', summary: '银行扣费', debit: 0, credit: 195, explanation: '' , cashFlowItem: 'cf-op6', cashFlowExplanation: ''}],
+      { subjectCode: '100201', summary: '银行扣费', debit: 0, credit: 195, explanation: '银行存款减少记贷方。银行扣收费用。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（银行手续费），属于经营活动现金流出。'}],
     documents: [{ type: 'bank', label: '银行扣费回单', date: '2026-06-18', totalAmount: 195, payer: '本公司', payeeName: '工商银行', content: '6月手续费', refNo: 'HD202606180001' }]},
   {
     date: '2026-06-19',
@@ -331,10 +352,11 @@ const tasks = [
     tags: ['商品销售'],
     difficulty: 2,
     description: '本月顾客持预付卡消费6,500元（含税），确认收入5,752.21元，增值税747.79元。',
+    tip: '顾客持卡消费时从预收账款转入主营业务收入。借：预收账款/合同负债，贷：主营业务收入、应交税费-销项税额。',
     entries: [
       { subjectCode: '2203', summary: '预付卡消费', debit: 6500, credit: 0, explanation: '预收账款减少。' },
-      { subjectCode: '6001', summary: '预付卡收入', debit: 0, credit: 5752.21, explanation: '' },
-      { subjectCode: '222101', summary: '销项税', debit: 0, credit: 747.79, explanation: '' }],
+      { subjectCode: '6001', summary: '预付卡收入', debit: 0, credit: 5752.21, explanation: '销售收入增加记贷方。不含税金额贷记主营业务收入。' },
+      { subjectCode: '222101', summary: '销项税', debit: 0, credit: 747.79, explanation: '增值税销项税额增加记贷方。销售商品适用13%税率。' }],
     documents: [{ type: 'text', label: '预付卡消费汇总', content: '含税：6,500元 | 不含税：5,752.21元 | 增值税：747.79元' }]},
   {
     date: '2026-06-21',
@@ -343,10 +365,11 @@ const tasks = [
     tags: ['商品采购', '税费'],
     difficulty: 2,
     description: '向鑫鑫食品采购食品25,000元（不含税），增值税3,250元，价税合计28,250元付讫。',
+    tip: '现购食品：借：库存商品/应交税费-进项税额，贷：银行存款。增值税率13%。',
     entries: [
-      { subjectCode: '1405', summary: '入库', debit: 25000, credit: 0, explanation: '' },
-      { subjectCode: '222101', summary: '进项税', debit: 3250, credit: 0, explanation: '' },
-      { subjectCode: '100201', summary: '付款', debit: 0, credit: 28250, explanation: '' , cashFlowItem: 'cf-op2', cashFlowExplanation: ''}],
+      { subjectCode: '1405', summary: '入库', debit: 25000, credit: 0, explanation: '库存商品增加记借方。采购商品验收入库。' },
+      { subjectCode: '222101', summary: '进项税', debit: 3250, credit: 0, explanation: '增值税进项税额增加记借方。取得专用发票可抵扣。' },
+      { subjectCode: '100201', summary: '付款', debit: 0, credit: 28250, explanation: '银行存款减少记贷方。支付采购货款。' , cashFlowItem: 'cf-op2', cashFlowExplanation: '采购存货/商品支出，属于经营活动现金流出。'}],
     documents: [{ type: 'invoice', label: '增值税专用发票', date: '2026-06-21', seller: '鑫鑫食品有限公司', totalAmount: 28250,
       lineItems: [{ name: '食品', unit: '箱', qty: 250, price: 100, amount: 25000 }] }]},
   {
@@ -356,10 +379,11 @@ const tasks = [
     tags: ['资金管理'],
     difficulty: 1,
     description: '将微信商户余额35,000元提现至工行，手续费35元，实际到账34,965元。',
+    tip: '微信商户资金提现至银行账户。借：银行存款/财务费用-手续费，贷：其他货币资金-微信账户。',
     entries: [
-      { subjectCode: '100201', summary: '到账', debit: 34965, credit: 0, explanation: '' , cashFlowItem: 'cf-op', cashFlowExplanation: ''},
-      { subjectCode: '6603', summary: '手续费', debit: 35, credit: 0, explanation: '' },
-      { subjectCode: '101204', summary: '微信转出', debit: 0, credit: 35000, explanation: '' }],
+      { subjectCode: '100201', summary: '到账', debit: 34965, credit: 0, explanation: '银行存款增加记借方。第三方支付资金提现到账。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金（配对科目6001），属于经营活动现金流入。'},
+      { subjectCode: '6603', summary: '手续费', debit: 35, credit: 0, explanation: '手续费计入财务费用。' },
+      { subjectCode: '101204', summary: '微信转出', debit: 0, credit: 35000, explanation: '其他货币资金减少记贷方。第三方支付资金转出。' }],
     documents: [{ type: 'bank', label: '提现回单', date: '2026-06-23', totalAmount: 34965, payer: '财付通', payeeName: '本公司', content: '微信提现', refNo: 'TX20260623' }]},
   {
     date: '2026-06-26',
@@ -368,9 +392,10 @@ const tasks = [
     tags: ['资金管理'],
     difficulty: 1,
     description: '收到6月活期存款利息500元。',
+    tip: '银行存款利息收入冲减财务费用。借：银行存款，贷：财务费用-利息收入。',
     entries: [
-      { subjectCode: '100201', summary: '利息', debit: 500, credit: 0, explanation: '' , cashFlowItem: 'cf-op5', cashFlowExplanation: ''},
-      { subjectCode: '6603', summary: '冲减费用', debit: 0, credit: 500, explanation: '' }],
+      { subjectCode: '100201', summary: '利息', debit: 500, credit: 0, explanation: '银行存款利息收入增加。' , cashFlowItem: 'cf-op5', cashFlowExplanation: '收到银行存款利息，属于经营活动现金流入（收到其他与经营活动有关的现金）。'},
+      { subjectCode: '6603', summary: '冲减费用', debit: 0, credit: 500, explanation: '利息收入冲减财务费用（贷方红字）。' }],
     documents: [{ type: 'bank', label: '利息回单', date: '2026-06-26', totalAmount: 500, payer: '工商银行', payeeName: '本公司', content: '6月存款利息', refNo: 'HD202606260001' }]},
   {
     date: '2026-06-27',
@@ -379,10 +404,11 @@ const tasks = [
     tags: ['商品销售'],
     difficulty: 1,
     description: 'POS日常销售含税收入39,550元（不含税35,000元，增值税4,550元）。',
+    tip: 'POS日常销售收入按支付方式分别入账。微信/支付宝计入"其他货币资金"，银行卡计入"银行存款"，现金计入"库存现金"。每日POS日结单汇总入账。借记各收款科目，贷记主营业务收入和应交税费-销项税额。',
     entries: [
-      { subjectCode: '100201', summary: 'POS收款', debit: 39550, credit: 0, explanation: '' , cashFlowItem: 'cf-op', cashFlowExplanation: ''},
-      { subjectCode: '6001', summary: '收入', debit: 0, credit: 35000, explanation: '' },
-      { subjectCode: '222101', summary: '销项税', debit: 0, credit: 4550, explanation: '' }],
+      { subjectCode: '100201', summary: 'POS收款', debit: 39550, credit: 0, explanation: '银行存款增加记借方。POS收款T+1到账。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金（配对科目6001），属于经营活动现金流入。'},
+      { subjectCode: '6001', summary: '收入', debit: 0, credit: 35000, explanation: '销售收入增加记贷方。不含税金额贷记主营业务收入。' },
+      { subjectCode: '222101', summary: '销项税', debit: 0, credit: 4550, explanation: '增值税销项税额增加记贷方。销售商品适用13%税率。' }],
     documents: [{ type: 'text', label: 'POS日结单', content: '含税：39,550元' }]},
   {
     date: '2026-06-29',
@@ -391,9 +417,10 @@ const tasks = [
     tags: ['仓存管理'],
     difficulty: 2,
     description: '月末生鲜正常损耗1,200元，计入管理费用。',
+    tip: '生鲜自然损耗计入管理费用。正常损耗小金额无需进项转出。借：管理费用，贷：库存商品。',
     entries: [
       { subjectCode: '6602', summary: '损耗', debit: 1200, credit: 0, explanation: '管理费用增加。' },
-      { subjectCode: '1405', summary: '出库', debit: 0, credit: 1200, explanation: '' }],
+      { subjectCode: '1405', summary: '出库', debit: 0, credit: 1200, explanation: '库存商品减少记贷方。存货出库。' }],
     documents: [{ type: 'text', label: '损耗报告', content: '合计：1,200元 | 正常损耗 ✓' }]},
   {
     date: '2026-06-24',
@@ -402,10 +429,11 @@ const tasks = [
     tags: ['商品销售'],
     difficulty: 1,
     description: 'POS日常销售含税收入56,500元（不含税50,000元，增值税6,500元），已收存银行。',
+    tip: 'POS日常销售收入按支付方式分别入账。微信/支付宝计入"其他货币资金"，银行卡计入"银行存款"，现金计入"库存现金"。每日POS日结单汇总入账。借记各收款科目，贷记主营业务收入和应交税费-销项税额。',
     entries: [
       { subjectCode: '100201', summary: 'POS收款', debit: 56500, credit: 0, explanation: '银行存款增加。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金。'},
-      { subjectCode: '6001', summary: '收入', debit: 0, credit: 50000, explanation: '' },
-      { subjectCode: '222101', summary: '销项税', debit: 0, credit: 6500, explanation: '' }],
+      { subjectCode: '6001', summary: '收入', debit: 0, credit: 50000, explanation: '销售收入增加记贷方。不含税金额贷记主营业务收入。' },
+      { subjectCode: '222101', summary: '销项税', debit: 0, credit: 6500, explanation: '增值税销项税额增加记贷方。销售商品适用13%税率。' }],
     documents: [{ type: 'text', label: 'POS日结单', content: '含税：56,500元 | 不含税：50,000元 | 增值税：6,500元' }]},
   {
     date: '2026-06-30',
@@ -414,6 +442,7 @@ const tasks = [
     tags: ['出纳', '期末'],
     difficulty: 1,
     description: '月末现金盘点及银行对账，编制半年度资金总结。',
+    tip: '月末出纳盘点现金、核对银行余额，确保账实相符。无需制作凭证。',
     entries: [],
     documents: [
       { type: 'text', label: '现金盘点表', docTitle: '库存现金盘点表（2026年6月30日）', stampText: '财务专用章',

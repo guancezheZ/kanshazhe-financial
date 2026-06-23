@@ -795,6 +795,7 @@ const tasks = [
     tags: ['费用管理'],
     difficulty: 1,
     description: '支付微信商户平台年服务费300元，以银行存款支付。',
+    tip: '微信商户账户开通时支付的服务费计入财务费用。分录：借：财务费用-手续费，贷：银行存款。开通后微信商户账户可通过"其他货币资金-微信账户"科目核算。',
     entries: [
       { subjectCode: '6602', summary: '微信商户服务费', debit: 300, credit: 0, explanation: '管理费用增加。' },
       { subjectCode: '100201', summary: '支付服务费', debit: 0, credit: 300, explanation: '银行存款减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出。'}],

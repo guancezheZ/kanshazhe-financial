@@ -68,6 +68,7 @@ const tasks = [
     tags: ['往来管理'],
     difficulty: 1,
     description: '偿还2月欠洁宝日化有限公司的春节装饰采购款28,250元（发票No.4400567891），以工商银行转账支付。',
+    tip: '偿还应付账款时：借：应付账款-供应商，贷：银行存款。及时付款有助于维护良好的供应商关系。付款后需与供应商对账确认。',
     entries: [
       { subjectCode: '220203', summary: '偿还洁宝日化2月货款', debit: 28250, credit: 0, explanation: '应付账款减少记借方。偿还2月春节装饰品采购欠款28,250元。' },
       { subjectCode: '100201', summary: '偿还洁宝日化2月货款', debit: 0, credit: 28250, explanation: '银行存款减少记贷方。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出。'}],
@@ -98,6 +99,7 @@ const tasks = [
     tags: ['工资社保'],
     difficulty: 2,
     description: '通过工商银行代发2月员工工资77,827.60元（含春节加班费16,827.60元）。其中：店长9,122元、收银员约20,500元、理货员约26,700元、生鲜技工约12,800元、保洁约8,700元。',
+    tip: '通过银行代发工资时：借：应付职工薪酬-工资，贷：银行存款。春节加班费按300%计算，需在工资单中单独列示。发放后冲减计提的应付职工薪酬负债。',
     entries: [
       { subjectCode: '221101', summary: '发放2月员工工资', debit: 77827.6, credit: 0, explanation: '应付职工薪酬-工资减少记借方。发放2月应发工资77,827.60元，含春节法定节假日加班费16,827.60元。' },
       { subjectCode: '100201', summary: '发放2月员工工资', debit: 0, credit: 77827.6, explanation: '银行存款减少记贷方。通过工商银行代发工资78,827.60元。' , cashFlowItem: 'cf-op3', cashFlowExplanation: '支付职工薪酬相关支出，属于经营活动现金流出。'}],
@@ -144,6 +146,7 @@ const tasks = [
     tags: ['商品销售'],
     difficulty: 2,
     description: '周末日常POS销售。自营商品不含税收入85,000元，增值税11,050元（13%），含税96,050元。其中微信35,000元、支付宝28,000元、银行卡25,050元、现金8,000元。',
+    tip: '自营商品POS销售收入按支付方式分别入账：微信/支付宝计入"其他货币资金"，银行卡计入"银行存款"，现金计入"库存现金"。每日POS日结单汇总入账。',
     entries: [
       { subjectCode: '101204', summary: '自营微信收款', debit: 35000, credit: 0, explanation: '其他货币资金-微信账户增加记借方。' },
       { subjectCode: '101205', summary: '自营支付宝收款', debit: 28000, credit: 0, explanation: '其他货币资金-支付宝账户增加记借方。' },
@@ -179,6 +182,7 @@ const tasks = [
     tags: ['商品销售'],
     difficulty: 3,
     description: '美肌堂联营专柜3月9日-11日累计含税销售额26,000元。超市按净额法确认收入：佣金收入=26,000×22%=5,720元（含税），不含税佣金=5,720÷1.06=5,396.23元，增值税323.77元（6%）。应付美肌堂货款=26,000×78%=20,280元。',
+    tip: '联营专柜按净额法确认收入（CAS 14代理人模式）。超市仅按扣点佣金确认收入。借：银行存款（全额），贷：应付账款-供应商（货款净额）、主营业务收入-佣金（扣点部分）、应交税费-销项（佣金部分的6%增值税）。',
     entries: [
       { subjectCode: '100201', summary: '联营专柜3天销售收款', debit: 26000, credit: 0, explanation: '银行存款增加记借方。联营专柜3天含税销售额26,000元统一收银。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金，属于经营活动现金流入。'},
       { subjectCode: '220203', summary: '应付美肌堂货款净额', debit: 0, credit: 20280, explanation: '应付账款增加记贷方。应付美肌堂货款=26,000×78%=20,280元，待次月结算。' },
@@ -215,6 +219,7 @@ const tasks = [
     tags: ['工资社保'],
     difficulty: 2,
     description: '计提3月员工工资。本月无节假日加班，基础工资61,000元（同1月标准）。管理岗（店长）8,000元计入管理费用，一线员工53,000元计入销售费用。',
+    tip: '月末计提当月工资，体现权责发生制原则。管理岗人员工资计入管理费用，一线员工工资计入销售费用。借：管理费用/销售费用，贷：应付职工薪酬-工资。',
     entries: [
       { subjectCode: '660203', summary: '计提店长3月工资', debit: 8000, credit: 0, explanation: '管理费用-工资薪金增加记借方。店长3月工资8,000元。' },
       { subjectCode: '6601', summary: '计提一线员工3月工资', debit: 53000, credit: 0, explanation: '销售费用增加记借方。一线员工3月工资53,000元。本月无节假日加班，恢复正常工资水平。' },
@@ -229,6 +234,7 @@ const tasks = [
     tags: ['工资社保'],
     difficulty: 2,
     description: '以2月工资总额77,827.60元为基数，缴纳社保（27.2%计21,169.11元）和公积金（7%计5,447.93元），合计26,617.04元。通过工商银行缴纳。',
+    tip: '社保费由单位和个人共同承担。单位部分按工资基数×单位缴费比例计算。分录：借：管理费用/销售费用-社保费，贷：应付职工薪酬-社保；实际缴纳时冲减应付职工薪酬。',
     entries: [
       { subjectCode: '221102', summary: '缴纳2月社保单位部分', debit: 21169.11, credit: 0, explanation: '应付职工薪酬-社保减少记借方。2月社保单位部分，基数77,827.60×27.2%=21,169.11元。' },
       { subjectCode: '221103', summary: '缴纳2月公积金单位部分', debit: 5447.93, credit: 0, explanation: '应付职工薪酬-公积金减少记借方。2月公积金单位部分77,827.60×7%=5,447.93元。' },
@@ -243,6 +249,7 @@ const tasks = [
     tags: ['费用管理'],
     difficulty: 1,
     description: '支付3月水电费。春节后恢复正常运营，电费8,800元、水费1,100元，合计9,900元，以银行存款支付。',
+    tip: '水电费计入销售费用。借：销售费用-水电费，贷：银行存款。注意取得增值税专用发票。',
     entries: [
       { subjectCode: '6602', summary: '支付3月水电费', debit: 9900, credit: 0, explanation: '管理费用增加记借方。3月水电费9,900元（电费8,800+水费1,100），恢复至正常水平。' },
       { subjectCode: '100201', summary: '支付3月水电费', debit: 0, credit: 9900, explanation: '银行存款减少记贷方。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出。'}],
@@ -256,6 +263,7 @@ const tasks = [
     tags: ['资产'],
     difficulty: 2,
     description: '前往固定资产模块计提3月折旧。月折旧额1,350元（货架500+收银系统333.33+冷藏柜266.67+空调250），计入管理费用-折旧费。',
+    tip: '固定资产按月计提折旧。超市固定资产按使用部门分配折旧费用。借：销售费用/管理费用-折旧费，贷：累计折旧。',
     entries: [],
     nextAction: 'fixed-assets',
     documents: [
@@ -268,6 +276,7 @@ const tasks = [
     tags: ['仓存管理'],
     difficulty: 2,
     description: '本月生鲜正常损耗：蔬菜5%（750元）、水果4%（600元）、鲜肉3%（500元）、水产品5%（600元），合计2,450元。经店长批准计入管理费用。',
+    tip: '生鲜商品因水分蒸发、变质等产生自然损耗，属于正常经营损失。小金额的正常损耗计入管理费用，无需进项转出。分录：借：管理费用，贷：库存商品。',
     entries: [
       { subjectCode: '6602', summary: '生鲜正常损耗', debit: 2450, credit: 0, explanation: '管理费用增加记借方。3月生鲜正常损耗2,450元，损耗率已恢复至正常水平（春节后不再大量备货）。' },
       { subjectCode: '1405', summary: '生鲜损耗出库', debit: 0, credit: 2450, explanation: '库存商品减少记贷方。正常损耗，无需进项转出。' }],
@@ -318,6 +327,7 @@ const tasks = [
     tags: ['商品销售', '仓存管理'],
     difficulty: 3,
     description: '汇总全月自营商品销售成本。食品饮料类98,000元、日用品类48,000元、生鲜类72,000元、小家电类15,000元。合计233,000元。',
+    tip: '月末汇总结转自营商品成本。移动加权平均法计算。借：主营业务成本，贷：库存商品。',
     entries: [
       { subjectCode: '6401', summary: '结转3月自营商品成本', debit: 233000, credit: 0, explanation: '主营业务成本增加记借方。3月自营商品成本合计233,000元（不含联营专柜，联营成本由供应商承担）。' },
       { subjectCode: '1405', summary: '食品饮料成本', debit: 0, credit: 98000, explanation: '库存商品减少记贷方。' },
@@ -334,6 +344,7 @@ const tasks = [
     tags: ['税费'],
     difficulty: 2,
     description: '根据本月应交增值税计算并计提城建税（7%）和教育费附加（3%）。本月销项税额=自营约34,790元+联营佣金约324元+预付卡消费1,105元=约36,219元。进项税额=食品4,550+日用品3,900+生鲜2,394+其他=约11,844元。应交增值税24,375元。应交城建税=24,375×7%=1,706.25元，教育费附加=24,375×3%=731.25元。',
+    tip: '城建税和教育费附加以实际应缴纳的增值税为计税依据。城建税税率7%，教育费附加3%。借：税金及附加，贷：应交税费-城建税/教育费附加。',
     entries: [
       { subjectCode: '6403', summary: '计提城建税及教育费附加', debit: 2437.5, credit: 0, explanation: '税金及附加增加记借方。城建税1,706.25+教育费附加731.25=2,437.50元。' },
       { subjectCode: '222103', summary: '计提应交城建税', debit: 0, credit: 1706.25, explanation: '应交税费-应交城市维护建设税增加记贷方。' },
@@ -348,6 +359,7 @@ const tasks = [
     tags: ['税费'],
     difficulty: 2,
     description: '缴纳3月应交增值税24,375元、城建税1,706.25元、教育费附加731.25元，合计26,812.50元，通过工商银行转账缴纳。',
+    tip: '缴纳增值税及附加税时：借：应交税费-未交增值税/城建税/教育费附加，贷：银行存款。注意缴纳税款后需取得银行缴款回单作为原始凭证。',
     entries: [
       { subjectCode: '222101', summary: '缴纳3月增值税', debit: 24375, credit: 0, explanation: '应交税费-应交增值税减少记借方。' },
       { subjectCode: '222103', summary: '缴纳3月城建税', debit: 1706.25, credit: 0, explanation: '应交税费-应交城建税减少记借方。' },
@@ -370,7 +382,7 @@ const tasks = [
       { subjectCode: '6603', debit: 295, credit: 0, summary: '结转财务费用（净利息收入）', explanation: '财务费用净贷方余额295元，作为收入转出。' },
       // 费用类（原借方余额→贷方转出）
       { subjectCode: '6401', debit: 0, credit: 233000, summary: '结转主营业务成本', explanation: '自营商品成本233,000元。' },
-      { subjectCode: '6403', debit: 0, credit: 2437.5, summary: '结转税金及附加', explanation: '' },
+      { subjectCode: '6403', debit: 0, credit: 2437.5, summary: '结转税金及附加', explanation: '税金及附加结转至本年利润。借：本年利润，贷：税金及附加。' },
       { subjectCode: '6601', debit: 0, credit: 53000, summary: '结转销售费用', explanation: '一线员工工资53,000元。' },
       { subjectCode: '6602', debit: 0, credit: 12350, summary: '结转管理费用（水电+损耗）', explanation: '水电9,900+生鲜损耗2,450=12,350元。' },
       { subjectCode: '660203', debit: 0, credit: 8000, summary: '结转管理费用-工资薪金', explanation: '店长工资8,000元。' },
@@ -388,6 +400,7 @@ const tasks = [
     tags: ['期末', '申报'],
     difficulty: 1,
     description: '根据本月已完成的账务处理，进行模拟纳税申报。前往纳税申报页面核对并提交。',
+    tip: '前往纳税申报页面核对数据后完成申报。半年末注意检查增值税累计数据。',
     entries: [],
     nextAction: 'tax-filing',
     documents: [
@@ -416,6 +429,7 @@ const tasks = [
     tags: ['出纳', '期末'],
     difficulty: 1,
     description: '月末盘点库存现金、核对银行存款余额，编制月末现金盘点表和银行存款余额调节表。',
+    tip: '月末出纳盘点库存现金、核对银行存款余额，编制余额调节表，确保账实相符。这是内部核对工作，无需制作凭证。',
     entries: [],
     documents: [
       { type: 'text', label: '现金盘点表', docTitle: '库存现金盘点表（2026年3月31日）', stampText: '财务专用章',
@@ -456,6 +470,7 @@ const tasks = [
     tags: ['商品销售'],
     difficulty: 2,
     description: '本月顾客持预付卡累计消费6,800元（含税），确认收入。不含税6,017.70元，增值税782.30元。',
+    tip: '顾客持卡消费时从预收账款转入主营业务收入。借：预收账款/合同负债，贷：主营业务收入、应交税费-销项税额。',
     entries: [
       { subjectCode: '2203', summary: '预付卡消费冲减', debit: 6800, credit: 0, explanation: '预收账款减少。' },
       { subjectCode: '6001', summary: '预付卡消费收入', debit: 0, credit: 6017.7, explanation: '主营业务收入增加。' },
@@ -469,6 +484,7 @@ const tasks = [
     tags: ['出纳'],
     difficulty: 1,
     description: '库存现金超过核定限额，将5,000元现金送存工商银行。',
+    tip: '库存现金超过核定限额时，出纳应将超额现金送存银行。填写现金缴款单，银行盖章后退回一联作为回单。分录：借：银行存款，贷：库存现金。',
     entries: [
       { subjectCode: '100201', summary: '现金送存银行', debit: 5000, credit: 0, explanation: '银行存款增加。' },
       { subjectCode: '1001', summary: '现金送存银行', debit: 0, credit: 5000, explanation: '库存现金减少。' }],
@@ -497,8 +513,8 @@ const tasks = [
     description: 'POS日常销售含税收入33,900元（不含税30,000元，增值税3,900元）。',
     entries: [
       { subjectCode: '100201', summary: 'POS收款', debit: 33900, credit: 0, explanation: '银行存款增加。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金，属于经营活动现金流入。'},
-      { subjectCode: '6001', summary: '销售收入', debit: 0, credit: 30000, explanation: '' },
-      { subjectCode: '222101', summary: '增值税销项', debit: 0, credit: 3900, explanation: '' }],
+      { subjectCode: '6001', summary: '销售收入', debit: 0, credit: 30000, explanation: '销售收入增加记贷方。不含税金额贷记主营业务收入。' },
+      { subjectCode: '222101', summary: '增值税销项', debit: 0, credit: 3900, explanation: '增值税销项税额增加记贷方。销售商品适用13%税率。' }],
     documents: [{ type: 'text', label: 'POS日结单', content: '含税：33,900元' }]},
   {
     date: '2026-03-22',
@@ -523,8 +539,8 @@ const tasks = [
     difficulty: 2,
     description: '向洁宝日化赊购日用品18,000元（不含税），增值税2,340元，价税合计20,340元。',
     entries: [
-      { subjectCode: '1405', summary: '日用品入库', debit: 18000, credit: 0, explanation: '' },
-      { subjectCode: '222101', summary: '进项税额', debit: 2340, credit: 0, explanation: '' },
+      { subjectCode: '1405', summary: '日用品入库', debit: 18000, credit: 0, explanation: '库存商品增加记借方。采购商品验收入库。' },
+      { subjectCode: '222101', summary: '进项税额', debit: 2340, credit: 0, explanation: '增值税进项税额增加记借方。取得专用发票可抵扣。' },
       { subjectCode: '220203', summary: '赊购款未付', debit: 0, credit: 20340, explanation: '应付账款增加。' }],
     documents: [{ type: 'invoice', label: '增值税专用发票', date: '2026-03-26', seller: '洁宝日化有限公司', totalAmount: 20340, taxRate: '13%', taxAmount: 2340,
       lineItems: [{ name: '日用品', unit: '箱', qty: 100, price: 180, amount: 18000 }] }]}

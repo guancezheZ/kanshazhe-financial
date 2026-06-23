@@ -19,6 +19,7 @@ const tasks = [
     tags: ['出纳'],
     difficulty: 1,
     description: '启用4月日记账，登记期初余额。盘点库存现金无误后开始本月工作。',
+    tip: '月初出纳清点库存现金，与现金日记账余额核对，确保账实相符后开始本月工作。无需制作凭证。',
     entries: [],
     documents: [{ type: 'text', label: '现金日记账', docTitle: '现金日记账（2026年4月）', stampText: '出纳专用章',
       content: '2026年4月期初余额：约3,800.00元\n出纳员：王出纳' }]},
@@ -175,6 +176,7 @@ const tasks = [
     tags: ['工资社保'],
     difficulty: 2,
     description: '以3月工资61,000元为基数，缴纳社保（27.2%计16,592元）和公积金（7%计4,270元），合计20,862元。',
+    tip: '社保费由单位和个人共同承担。单位部分按工资基数×缴费比例（社保约27.2%+公积金7%）计算。分录：借：销售费用/管理费用-社保费/公积金，贷：应付职工薪酬；缴纳时冲减应付职工薪酬。',
     entries: [
       { subjectCode: '221102', summary: '缴纳3月社保', debit: 16592, credit: 0, explanation: '应付职工薪酬-社保减少。缴纳社保单位部分16,592元（61,000×27.2%）。' },
       { subjectCode: '221103', summary: '缴纳3月公积金', debit: 4270, credit: 0, explanation: '应付职工薪酬-公积金减少。缴纳公积金单位部分4,270元（61,000×7%）。' },
@@ -247,6 +249,7 @@ const tasks = [
     tags: ['商品销售', '仓存管理'],
     difficulty: 3,
     description: '采用移动加权平均法结转4月自营商品成本。食品饮料类85,000元、日用品类42,000元、生鲜类68,000元、小家电类12,000元。另赠品成本2,500元、积分兑换成本420元。合计209,850元。',
+    tip: '月末汇总结转自营商品成本。移动加权平均法计算。借：主营业务成本，贷：库存商品。',
     entries: [
       { subjectCode: '6401', summary: '结转4月自营商品成本', debit: 209850, credit: 0, explanation: '主营业务成本增加。4月总成本209,850元（含赠品2,500+积分兑换420）。' },
       { subjectCode: '1405', summary: '各品类出库', debit: 0, credit: 209850, explanation: '库存商品减少。各品类销售出库。' }],
@@ -259,6 +262,7 @@ const tasks = [
     tags: ['税费'],
     difficulty: 2,
     description: '计提4月城建税（7%）和教育费附加（3%）。本月应交增值税约24,500元，应交城建税1,715元，教育费附加735元，合计2,450元。',
+    tip: '城建税和教育费附加以实际应缴纳的增值税为计税依据。城建税税率7%，教育费附加3%。借：税金及附加，贷：应交税费-城建税/教育费附加。',
     entries: [
       { subjectCode: '6403', summary: '计提附加税费', debit: 2450, credit: 0, explanation: '税金及附加增加。城建税1,715元+教育费附加735元=2,450元。依据《城市维护建设税暂行条例》。' },
       { subjectCode: '222103', summary: '应交城建税', debit: 0, credit: 1715, explanation: '应交税费-应交城建税增加。24,500×7%=1,715元。' },
@@ -272,6 +276,7 @@ const tasks = [
     tags: ['税费'],
     difficulty: 2,
     description: '缴纳4月增值税24,500元、城建税1,715元、教育费附加735元，合计26,950元，通过工商银行转账缴纳。',
+    tip: '缴纳增值税及附加税时：借：应交税费-未交增值税/城建税/教育费附加，贷：银行存款。注意缴纳税款后需取得银行缴款回单作为原始凭证。',
     entries: [
       { subjectCode: '222101', summary: '缴纳增值税', debit: 24500, credit: 0, explanation: '应交税费-应交增值税减少。缴纳4月增值税24,500元。' },
       { subjectCode: '222103', summary: '缴纳城建税', debit: 1715, credit: 0, explanation: '应交税费-应交城建税减少。' },
@@ -289,7 +294,7 @@ const tasks = [
     entries: [
       { subjectCode: '6001', debit: 370000, credit: 0, summary: '结转主营业务收入', explanation: '含自营POS销售、联营佣金、积分兑换、赠品≈370,000元。' },
       { subjectCode: '6401', debit: 0, credit: 209850, summary: '结转主营业务成本', explanation: '含赠品及积分兑换成本。' },
-      { subjectCode: '6403', debit: 0, credit: 2450, summary: '结转税金及附加', explanation: '' },
+      { subjectCode: '6403', debit: 0, credit: 2450, summary: '结转税金及附加', explanation: '税金及附加结转至本年利润。借：本年利润，贷：税金及附加。' },
       { subjectCode: '6601', debit: 0, credit: 53000, summary: '结转销售费用-工资', explanation: '一线员工工资53,000元。' },
       { subjectCode: '660101', debit: 0, credit: 5000, summary: '结转销售费用-广告费', explanation: '赠品促销费用5,000元。' },
       { subjectCode: '6602', debit: 0, credit: 11300, summary: '结转管理费用（水电+损耗）', explanation: '水电9,200+损耗2,100=11,300元。' },
@@ -305,6 +310,7 @@ const tasks = [
     tags: ['期末', '申报'],
     difficulty: 1,
     description: '完成4月模拟纳税申报，前往纳税申报页面核对并提交。',
+    tip: '前往纳税申报页面核对数据后完成申报。半年末注意检查增值税累计数据。',
     entries: [],
     nextAction: 'tax-filing',
     documents: [{ type: 'text', label: '纳税申报提醒', docTitle: '2026年4月纳税申报提醒', stampText: '财务专用章',
@@ -331,6 +337,7 @@ const tasks = [
     tags: ['商品采购', '税费'],
     difficulty: 2,
     description: '向绿源农业采购生鲜18,500元（不含税），增值税1,665元（9%），价税合计20,165元付讫。',
+    tip: '生鲜商品增值税税率9%（低税率）。现购时：借：库存商品/应交税费-进项税额（9%），贷：银行存款。',
     entries: [
       { subjectCode: '1405', summary: '生鲜入库', debit: 18500, credit: 0, explanation: '库存商品增加。生鲜验收入库。' },
       { subjectCode: '222101', summary: '进项税额（9%）', debit: 1665, credit: 0, explanation: '应交税费-应交增值税（进项税额）增加。农产品9%税率。' },
@@ -344,6 +351,7 @@ const tasks = [
     tags: ['商品销售'],
     difficulty: 1,
     description: 'POS日常销售含税收入56,500元（不含税50,000元，增值税6,500元），已收存银行。',
+    tip: 'POS日常销售收入按支付方式分别入账。微信/支付宝计入"其他货币资金"，银行卡计入"银行存款"，现金计入"库存现金"。每日POS日结单汇总入账。借记各收款科目，贷记主营业务收入和应交税费-销项税额。',
     entries: [
       { subjectCode: '100201', summary: 'POS销售收款', debit: 56500, credit: 0, explanation: '银行存款增加。POS收款含税56,500元。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金。'},
       { subjectCode: '6001', summary: '主营业务收入', debit: 0, credit: 50000, explanation: '主营业务收入增加。依据CAS 14。' },
@@ -356,10 +364,11 @@ const tasks = [
     tags: ['商品销售'],
     difficulty: 1,
     description: 'POS日常销售含税收入50,850元（不含税45,000元，增值税5,850元）。',
+    tip: 'POS日常销售收入按支付方式分别入账。微信/支付宝计入"其他货币资金"，银行卡计入"银行存款"，现金计入"库存现金"。每日POS日结单汇总入账。借记各收款科目，贷记主营业务收入和应交税费-销项税额。',
     entries: [
       { subjectCode: '100201', summary: 'POS收款', debit: 50850, credit: 0, explanation: '银行存款增加。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金。'},
-      { subjectCode: '6001', summary: '收入', debit: 0, credit: 45000, explanation: '' },
-      { subjectCode: '222101', summary: '销项税', debit: 0, credit: 5850, explanation: '' }],
+      { subjectCode: '6001', summary: '收入', debit: 0, credit: 45000, explanation: '销售收入增加记贷方。不含税金额贷记主营业务收入。' },
+      { subjectCode: '222101', summary: '销项税', debit: 0, credit: 5850, explanation: '增值税销项税额增加记贷方。销售商品适用13%税率。' }],
     documents: [{ type: 'text', label: 'POS日结单', content: '含税：50,850元 | 不含税：45,000元 | 增值税：5,850元' }]},
   {
     date: '2026-04-15',
@@ -368,10 +377,11 @@ const tasks = [
     tags: ['商品销售'],
     difficulty: 1,
     description: 'POS日常销售含税收入39,550元（不含税35,000元，增值税4,550元）。',
+    tip: 'POS日常销售收入按支付方式分别入账。微信/支付宝计入"其他货币资金"，银行卡计入"银行存款"，现金计入"库存现金"。每日POS日结单汇总入账。借记各收款科目，贷记主营业务收入和应交税费-销项税额。',
     entries: [
       { subjectCode: '100201', summary: 'POS收款', debit: 39550, credit: 0, explanation: '银行存款增加。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金。'},
-      { subjectCode: '6001', summary: '收入', debit: 0, credit: 35000, explanation: '' },
-      { subjectCode: '222101', summary: '销项税', debit: 0, credit: 4550, explanation: '' }],
+      { subjectCode: '6001', summary: '收入', debit: 0, credit: 35000, explanation: '销售收入增加记贷方。不含税金额贷记主营业务收入。' },
+      { subjectCode: '222101', summary: '销项税', debit: 0, credit: 4550, explanation: '增值税销项税额增加记贷方。销售商品适用13%税率。' }],
     documents: [{ type: 'text', label: 'POS日结单', content: '含税：39,550元 | 不含税：35,000元 | 增值税：4,550元' }]},
   {
     date: '2026-04-19',
@@ -380,6 +390,7 @@ const tasks = [
     tags: ['资金管理'],
     difficulty: 1,
     description: '工商银行扣收4月账户管理费及转账手续费190元。',
+    tip: '银行手续费计入财务费用。借：财务费用-手续费，贷：银行存款。',
     entries: [
       { subjectCode: '6603', summary: '银行手续费', debit: 190, credit: 0, explanation: '财务费用增加。银行服务收费计入财务费用。' },
       { subjectCode: '100201', summary: '银行扣费', debit: 0, credit: 190, explanation: '银行存款减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出。'}],
@@ -391,10 +402,11 @@ const tasks = [
     tags: ['商品销售'],
     difficulty: 1,
     description: 'POS日常销售含税收入67,800元（不含税60,000元，增值税7,800元）。',
+    tip: 'POS日常销售收入按支付方式分别入账。微信/支付宝计入"其他货币资金"，银行卡计入"银行存款"，现金计入"库存现金"。每日POS日结单汇总入账。借记各收款科目，贷记主营业务收入和应交税费-销项税额。',
     entries: [
       { subjectCode: '100201', summary: 'POS收款', debit: 67800, credit: 0, explanation: '银行存款增加。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金。'},
-      { subjectCode: '6001', summary: '收入', debit: 0, credit: 60000, explanation: '' },
-      { subjectCode: '222101', summary: '销项税', debit: 0, credit: 7800, explanation: '' }],
+      { subjectCode: '6001', summary: '收入', debit: 0, credit: 60000, explanation: '销售收入增加记贷方。不含税金额贷记主营业务收入。' },
+      { subjectCode: '222101', summary: '销项税', debit: 0, credit: 7800, explanation: '增值税销项税额增加记贷方。销售商品适用13%税率。' }],
     documents: [{ type: 'text', label: 'POS日结单', content: '含税：67,800元 | 不含税：60,000元 | 增值税：7,800元' }]},
   {
     date: '2026-04-23',
@@ -403,6 +415,7 @@ const tasks = [
     tags: ['商品销售'],
     difficulty: 2,
     description: '本月顾客持预付卡消费9,800元（含税），确认收入8,672.57元，增值税1,127.43元。',
+    tip: '顾客持卡消费时从预收账款转入主营业务收入。借：预收账款/合同负债，贷：主营业务收入、应交税费-销项税额。',
     entries: [
       { subjectCode: '2203', summary: '预付卡消费冲减', debit: 9800, credit: 0, explanation: '预收账款减少。顾客持预付卡消费，冲减合同负债。' },
       { subjectCode: '6001', summary: '预付卡消费收入', debit: 0, credit: 8672.57, explanation: '主营业务收入增加。' },
@@ -415,6 +428,7 @@ const tasks = [
     tags: ['资金管理'],
     difficulty: 1,
     description: '收到工商银行4月活期存款利息600元。',
+    tip: '银行存款利息收入冲减财务费用。借：银行存款，贷：财务费用-利息收入。',
     entries: [
       { subjectCode: '100201', summary: '利息收入', debit: 600, credit: 0, explanation: '银行存款增加。' , cashFlowItem: 'cf-op5', cashFlowExplanation: '其他经营活动现金流入。'},
       { subjectCode: '6603', summary: '冲减财务费用', debit: 0, credit: 600, explanation: '财务费用减少。存款利息收入冲减财务费用。' }],
@@ -426,9 +440,10 @@ const tasks = [
     tags: ['商品采购', '税费'],
     difficulty: 2,
     description: '向鑫鑫食品补货食品20,000元（不含税），增值税2,600元，价税合计22,600元付讫。',
+    tip: '采购商品按不含税价入库存商品，进项税单独核算。借：库存商品/应交税费-进项，贷：银行存款/应付账款。',
     entries: [
       { subjectCode: '1405', summary: '食品入库', debit: 20000, credit: 0, explanation: '库存商品增加。' },
-      { subjectCode: '222101', summary: '进项税', debit: 2600, credit: 0, explanation: '' },
+      { subjectCode: '222101', summary: '进项税', debit: 2600, credit: 0, explanation: '增值税进项税额增加记借方。取得专用发票可抵扣。' },
       { subjectCode: '100201', summary: '支付货款', debit: 0, credit: 22600, explanation: '银行存款减少。' , cashFlowItem: 'cf-op2', cashFlowExplanation: '采购存货/商品支出。'}],
     documents: [{ type: 'invoice', label: '增值税专用发票', date: '2026-04-29', seller: '鑫鑫食品有限公司', totalAmount: 22600,
       lineItems: [{ name: '食品', unit: '箱', qty: 200, price: 100, amount: 20000 }] }]},
@@ -439,10 +454,11 @@ const tasks = [
     tags: ['商品销售'],
     difficulty: 1,
     description: 'POS日常销售含税收入39,550元（不含税35,000元，增值税4,550元），已收存银行。',
+    tip: 'POS日常销售收入按支付方式分别入账。微信/支付宝计入"其他货币资金"，银行卡计入"银行存款"，现金计入"库存现金"。每日POS日结单汇总入账。借记各收款科目，贷记主营业务收入和应交税费-销项税额。',
     entries: [
       { subjectCode: '100201', summary: 'POS收款', debit: 39550, credit: 0, explanation: '银行存款增加。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金。'},
       { subjectCode: '6001', summary: '收入', debit: 0, credit: 35000, explanation: '主营业务收入增加。' },
-      { subjectCode: '222101', summary: '销项税', debit: 0, credit: 4550, explanation: '' }],
+      { subjectCode: '222101', summary: '销项税', debit: 0, credit: 4550, explanation: '增值税销项税额增加记贷方。销售商品适用13%税率。' }],
     documents: [{ type: 'text', label: 'POS日结单', content: '含税：39,550元 | 不含税：35,000元 | 增值税：4,550元' }]},
   {
     date: '2026-04-30',
@@ -451,6 +467,7 @@ const tasks = [
     tags: ['出纳', '期末'],
     difficulty: 1,
     description: '月末盘点库存现金、核对银行存款余额，编制现金盘点表和余额调节表。',
+    tip: '月末出纳盘点库存现金、核对银行存款余额，编制余额调节表，确保账实相符。这是内部核对工作，无需制作凭证。',
     entries: [],
     documents: [
       { type: 'text', label: '现金盘点表', docTitle: '库存现金盘点表（2026年4月30日）', stampText: '财务专用章',
