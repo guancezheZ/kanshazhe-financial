@@ -66,7 +66,7 @@ const aug = [
   { date: '2026-08-17', role: 'accountant', title: '结转销售成本', tags: ["生产","成本"], difficulty: 3, tip: '先进先出法。',
     description: '结转销售成本。',
     entries: [{ subjectCode: '6401', summary: '结转成本', debit: 201700, credit: 0 , explanation: '主营业务成本增加。' }, { subjectCode: '1405', summary: '转成本', debit: 0, credit: 201700 , explanation: '库存商品减少。' }],
-    documents: [{ type: 'text', label: '成本计算表', docTitle: '销 售 成 本 计 算 表', date: '2026-08-17', stampText: '财务专用章', content: '销售成本计算\n期间：2026年8月\n\n可售库存：期初结余+本月完工\n本期结转：201,700.00元\n\n制表：李会计\n审核：赵会计主管' }]},
+    documents: [{ type: 'text', label: '成本计算表', docTitle: '销 售 成 本 计 算 表', date: '2026-08-17', stampText: '财务专用章', content: '销售成本计算（先进先出法）\n期间：2026年8月\n\n库存明细：\n  7月结余：104,600.00元\n  8月完工：100台×1,340.00=134,000.00元\n  可售合计：238,600.00元\n\n本期结转（FIFO）：\n  优先发出7月库存：104,600.00元\n  再发8月新品：97,100.00元\n  合计：201,700.00元\n\n期末结余：36,900.00元\n\n制表：李会计\n审核：赵会计主管' }]},
   { date: '2026-08-18', role: 'accountant', title: '混合销售-兼营不同税率', tags: ["销售"], difficulty: 3, tip: '不同税率分别核算。',
     description: '销售A产品80,000（13%），同时提供安装服务20,000（6%）。',
     entries: [{ subjectCode: '100201', summary: '混合销售收款', debit: 111600, credit: 0 , explanation: '银行存款增加。' }, { subjectCode: '6001', summary: '销售收入', debit: 0, credit: 80000 , explanation: '主营业务收入增加。' }, { subjectCode: '6051', summary: '服务收入', debit: 0, credit: 20000 , explanation: '其他业务收入增加。' }, { subjectCode: '222101', summary: '销项税13%', debit: 0, credit: 10400 , explanation: '应交税费增加。' }, { subjectCode: '222101', summary: '销项税6%', debit: 0, credit: 1200 , explanation: '应交税费增加。' }],
@@ -109,7 +109,7 @@ const aug = [
   { date: '2026-08-30', role: 'accountant', title: '计提附加税', tags: ["税费"], difficulty: 2, tip: '以增值税为基数。',
     description: '应纳增值税26,000+15,600-19,500=22,100，城建税1,547，教育附加663。',
     entries: [{ subjectCode: '6403', summary: '城建税', debit: 1547, credit: 0 , explanation: '税金及附加增加。' }, { subjectCode: '222103', summary: '城建税', debit: 0, credit: 1547 , explanation: '应交税费增加。' }, { subjectCode: '6403', summary: '教育附加', debit: 663, credit: 0 , explanation: '税金及附加增加。' }, { subjectCode: '222104', summary: '教育附加', debit: 0, credit: 663 , explanation: '应交税费增加。' }],
-    documents: [{ type: 'text', label: '税费计算表', docTitle: '附加税计提表', date: '2026-08-30', stampText: '财务专用章', content: '应纳增值税：22,100.00元\n城建税（7%）：1,547.00元\n教育附加（3%）：663.00元\n合计：2,210.00元' }]},
+    documents: [{ type: 'text', label: '税费计算表', docTitle: '附加税计提表', date: '2026-08-30', stampText: '财务专用章', content: '附加税计提计算\n期间：2026年8月\n\n计税依据：\n  应纳增值税：22,100.00元\n\n计提明细：\n  城市维护建设税（7%）：22,100×7%=1,547.00元\n  教育费附加（3%）：22,100×3%=663.00元\n  合计：2,210.00元\n\n制表：李会计\n审核：赵会计主管' }]},
   { date: '2026-08-31', role: 'accountant', title: '月末期间损益结转', tags: ["期末"], difficulty: 3, tip: '收入借转，费用贷转。',
     description: '结转各损益科目至本年利润。',
     entries: [
