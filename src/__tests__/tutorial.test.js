@@ -2331,7 +2331,7 @@ describe('建筑业教程数据', () => {
   })
 
   it('2-12月均有教学任务', () => {
-    const monthCounts = { '01': 32, '02': 29, '03': 27, '04': 28, '05': 29, '06': 28, '07': 27, '08': 27, '09': 25, '10': 27, '11': 26, '12': 30 }
+    const monthCounts = { '01': 32, '02': 30, '03': 30, '04': 30, '05': 30, '06': 30, '07': 30, '08': 30, '09': 30, '10': 30, '11': 30, '12': 30 }
     for (const [m, count] of Object.entries(monthCounts)) {
       const tasks = getScenarioTutorials('construction', m)
       expect(tasks.length).toBe(count)

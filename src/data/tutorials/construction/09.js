@@ -52,9 +52,17 @@ const tasks = [
     documents: [
       {
         type: 'bank',
-        label: '缴税凭证',
+        label: '电子缴税付款凭证',
         date: '2026-09-01',
-        totalAmount: 96320
+        totalAmount: 96320,
+        payer: '鼎立建筑工程有限公司',
+        payeeName: '国家金库南京代理支库',
+        content: '8月增值税86,000元、城建税6,020元、教育费附加4,300元',
+        refNo: 'JS202609010001',
+        payerBank: '工商银行南京分行营业部',
+        payerAccount: '3200 0123 4567 8901 234',
+        payeeBank: '工商银行南京分行营业部',
+        payeeAccount: '3200 9876 5432 1098 765'
       }
     ]
   },
@@ -95,9 +103,17 @@ const tasks = [
     documents: [
       {
         type: 'bank',
-        label: '社保公积金回单',
+        label: '社保公积金缴费回单',
         date: '2026-09-01',
-        totalAmount: 45875
+        totalAmount: 45875,
+        payer: '鼎立建筑工程有限公司',
+        payeeName: '社会保险费征收机构/住房公积金管理中心',
+        content: '8月社保30,875元、公积金15,000元',
+        refNo: 'SB202609010001',
+        payerBank: '工商银行南京分行营业部',
+        payerAccount: '3200 0123 4567 8901 234',
+        payeeBank: '社会保险费征收专户',
+        payeeAccount: '3201 6500 0123 4567'
       }
     ]
   },
@@ -131,9 +147,17 @@ const tasks = [
     documents: [
       {
         type: 'bank',
-        label: '代发回单',
+        label: '银行代发工资回单',
         date: '2026-09-02',
-        totalAmount: 125000
+        totalAmount: 125000,
+        payer: '鼎立建筑工程有限公司',
+        payeeName: '职工个人工资账户',
+        content: '8月职工工资代发',
+        refNo: 'WF202609020001',
+        payerBank: '工商银行南京分行营业部',
+        payerAccount: '3200 0123 4567 8901 234',
+        payeeBank: '工商银行南京分行营业部',
+        payeeAccount: '3200 9876 5432 1098 765'
       }
     ]
   },
@@ -230,7 +254,16 @@ const tasks = [
         label: '还款回单',
         date: '2026-09-04',
         totalAmount: 1003625,
-        content: '偿还短期借款本息'
+        payer: '鼎立建筑工程有限公司',
+        payeeName: '贷款银行',
+        content: '偿还短期借款本金100万元及最后一期利息3,625元',
+        refNo: 'HK202609040001',
+        payerBank: '工商银行南京分行营业部',
+
+      payerBank: '工商银行南京分行营业部',
+        payerAccount: '3200 0123 4567 8901 234',
+        payeeBank: '工商银行南京分行营业部',
+        payeeAccount: '3200 9876 5432 1098 765'
       }
     ]
   },
@@ -289,7 +322,10 @@ const tasks = [
             price: 1500,
             amount: 30000
           }
-        ]
+        ],
+      taxRate: 0.09,
+        taxAmount: 7464,
+        amountCN: '玖万零肆佰元整'
       }
     ]
   },
@@ -322,9 +358,17 @@ const tasks = [
     documents: [
       {
         type: 'bank',
-        label: '现金支票',
+        label: '现金支票存根',
         date: '2026-09-06',
-        totalAmount: 15000
+        totalAmount: 15000,
+        payer: '鼎立建筑工程有限公司',
+        payeeName: '备用金',
+        content: '提取备用金',
+        refNo: 'XJ202609060001',
+        payerBank: '工商银行南京分行营业部',
+        payerAccount: '3200 0123 4567 8901 234',
+        payeeBank: '工商银行南京分行营业部',
+        payeeAccount: '3200 9876 5432 1098 765'
       }
     ]
   },
@@ -377,7 +421,8 @@ const tasks = [
             name: '水电费',
             amount: 10000
           }
-        ]
+        ],
+      stampText: '已收款'
       }
     ]
   },
@@ -434,7 +479,8 @@ const tasks = [
         type: 'receipt',
         label: '费用',
         date: '2026-09-10',
-        totalAmount: 8500
+        totalAmount: 8500,
+      stampText: '已收款'
       }
     ]
   },
@@ -476,7 +522,8 @@ const tasks = [
             name: '屋面防水维修',
             amount: 8000
           }
-        ]
+        ],
+      stampText: '已收款'
       }
     ]
   },
@@ -527,7 +574,10 @@ const tasks = [
             amount: 450000
           }
         ],
-        totalAmount: 490500
+        totalAmount: 490500,
+      taxRate: 0.09,
+        taxAmount: 40500,
+        amountCN: '肆拾玖万零伍佰元整'
       }
     ]
   },
@@ -576,7 +626,10 @@ const tasks = [
         type: 'text',
         label: '成本表',
         date: '2026-09-14',
-        content: '暂估100,000元'
+        content: '暂估100,000元',
+
+      docTitle: '成本表',
+        signature: '李会计'
       }
     ]
   },
@@ -610,9 +663,17 @@ const tasks = [
     documents: [
       {
         type: 'bank',
-        label: '回单',
+        label: '收款回单',
         date: '2026-09-16',
-        totalAmount: 163500
+        totalAmount: 163500,
+        payer: '恒达地产',
+        payeeName: '鼎立建筑工程有限公司',
+        content: '恒达项目7月进度款',
+        refNo: 'SK202609160001',
+        payerBank: '工商银行南京分行营业部',
+        payerAccount: '恒达地产专户',
+        payeeBank: '工商银行南京分行营业部',
+        payeeAccount: '3200 0123 4567 8901 234'
       }
     ]
   },
@@ -677,7 +738,10 @@ const tasks = [
         type: 'invoice',
         label: '发票',
         date: '2026-09-18',
-        totalAmount: 45200
+        totalAmount: 45200,
+      taxRate: 0.09,
+        taxAmount: 3732,
+        amountCN: '肆万伍仟贰佰元整'
       }
     ]
   },
@@ -711,9 +775,17 @@ const tasks = [
     documents: [
       {
         type: 'bank',
-        label: '回单',
+        label: '收款回单',
         date: '2026-09-19',
-        totalAmount: 454000
+        totalAmount: 454000,
+        payer: '南京市市政工程管理处',
+        payeeName: '鼎立建筑工程有限公司',
+        content: '市政项目7月进度款',
+        refNo: 'SK202609190001',
+        payerBank: '工商银行南京分行营业部',
+        payerAccount: '市政工程管理处专户',
+        payeeBank: '工商银行南京分行营业部',
+        payeeAccount: '3200 0123 4567 8901 234'
       }
     ]
   },
@@ -762,7 +834,10 @@ const tasks = [
         type: 'text',
         label: '工资表',
         date: '2026-09-20',
-        content: '120,000元'
+        content: '120,000元',
+
+      docTitle: '工资表',
+        signature: '李会计'
       }
     ]
   },
@@ -818,7 +893,10 @@ const tasks = [
         type: 'text',
         label: '计提表',
         date: '2026-09-20',
-        content: '44,040元'
+        content: '44,040元',
+
+      docTitle: '计提表',
+        signature: '李会计'
       }
     ]
   },
@@ -888,7 +966,10 @@ const tasks = [
         type: 'text',
         label: '折旧摊销',
         date: '2026-09-21',
-        content: '16,850元'
+        content: '16,850元',
+
+      docTitle: '折旧摊销',
+        signature: '李会计'
       }
     ]
   },
@@ -923,7 +1004,10 @@ const tasks = [
         type: 'text',
         label: '间接费表',
         date: '2026-09-24',
-        content: '42,510元'
+        content: '42,510元',
+
+      docTitle: '间接费表',
+        signature: '李会计'
       }
     ]
   },
@@ -979,7 +1063,10 @@ const tasks = [
         type: 'text',
         label: '成本表',
         date: '2026-09-25',
-        content: '273,865元\n收入450,000元\n毛利176,135元'
+        content: '273,865元\n收入450,000元\n毛利176,135元',
+
+      docTitle: '成本表',
+        signature: '李会计'
       }
     ]
   },
@@ -1021,7 +1108,10 @@ const tasks = [
         type: 'text',
         label: '税费表',
         date: '2026-09-26',
-        content: '24,900×12%=2,988元'
+        content: '24,900×12%=2,988元',
+
+      docTitle: '税费表',
+        signature: '李会计'
       }
     ]
   },
@@ -1069,8 +1159,15 @@ const tasks = [
     documents: [
       {
         type: 'bank',
-        label: '回单',
-        date: '2026-09-27'
+        label: '银行回单',
+        date: '2026-09-27',
+        totalAmount: 4000,
+        payer: '鼎立建筑工程有限公司',
+        payeeName: '工商银行南京分行',
+        content: '9月手续费700元、存款利息?元',
+        refNo: 'YW202609270001',
+        payerBank: '工商银行南京分行营业部',
+        payerAccount: '3200 0123 4567 8901 234'
       }
     ]
   },
@@ -1110,7 +1207,8 @@ const tasks = [
         totalAmount: 3000,
         items: [
           { name: '竣工资料整理装订', amount: 3000 }
-        ]
+        ],
+      stampText: '已收款'
       }
     ]
   },
@@ -1150,7 +1248,8 @@ const tasks = [
         totalAmount: 18000,
         items: [
           { name: '竣工结算审核服务', amount: 18000 }
-        ]
+        ],
+      stampText: '已收款'
       }
     ]
   },
@@ -1190,7 +1289,8 @@ const tasks = [
         totalAmount: 8000,
         items: [
           { name: '临时设施拆除清理', amount: 8000 }
-        ]
+        ],
+      stampText: '已收款'
       }
     ]
   },
@@ -1202,30 +1302,15 @@ const tasks = [
       '工程成本'
     ],
     difficulty: 2,
-    description: '恒达项目竣工后，剩余钢材5,000元退回公司材料库，办理退库手续。',
-    tip: '剩余材料退库，借记"原材料"，贷记"合同履约成本-材料成本"。',
-    entries: [
-      {
-        subjectCode: '1403',
-        debit: 5000,
-        credit: 0,
-        summary: '剩余材料退库',
-        explanation: '原材料增加。'
-      },
-      {
-        subjectCode: '540102',
-        debit: 0,
-        credit: 5000,
-        summary: '冲减材料成本',
-        explanation: '合同履约成本-材料成本减少。'
-      }
-    ],
+    description: '恒达项目竣工后，剩余钢材5,000元退回公司材料库，办理退库手续。施工企业材料已直接计入合同履约成本，退库时冲减材料成本。',
+    tip: '施工企业无"原材料"科目，退库通过"合同履约成本-材料成本"冲减即可。点击"✅ 标记完成"确认。',
+    entries: [],
     documents: [
       {
         type: 'text',
         label: '退库单',
         date: '2026-09-15',
-        content: '恒达项目剩余材料退库清单：\n钢筋 2吨 3,000元\n零星材料 2,000元\n合计：5,000元',
+        content: '恒达项目剩余材料退库清单：\n钢筋 2吨 3,000元\n零星材料 2,000元\n合计：5,000元\n处理意见：已退库，冲减合同履约成本',
         signature: '陈质检/王保管'
       }
     ]
@@ -1332,7 +1417,10 @@ const tasks = [
         type: 'text',
         label: '结转表',
         date: '2026-09-28',
-        content: '利润-42,528元（项目收尾阶段费用较多）'
+        content: '利润-42,528元（项目收尾阶段费用较多）',
+
+      docTitle: '结转表',
+        signature: '李会计'
       }
     ]
   },
@@ -1353,7 +1441,10 @@ const tasks = [
         type: 'text',
         label: '申报提醒',
         date: '2026-09-30',
-        content: '增值税24,900+附加2,988=27,888元'
+        content: '增值税24,900+附加2,988=27,888元',
+
+      docTitle: '申报提醒',
+        signature: '李会计'
       }
     ],
     nextAction: 'tax-filing'
