@@ -10,17 +10,6 @@ const tasks = [
   // 月初：盘点（6/1 - 6/5）
   // ═══════════════════════════════════════════
   {
-    date: '2026-06-01',
-    role: 'cashier',
-    title: '出纳-月初日记账启用',
-    tags: ['出纳'],
-    difficulty: 1,
-    description: '启用6月日记账，登记期初余额。',
-    tip: '月初出纳清点库存现金，与现金日记账余额核对，确保账实相符后开始本月工作。无需制作凭证。',
-    entries: [],
-    documents: [{ type: 'text', label: '现金日记账', docTitle: '现金日记账（2026年6月）', stampText: '出纳专用章',
-      content: '2026年6月期初余额：约3,500元\n出纳员：王出纳' }]},
-  {
     date: '2026-06-02',
     role: 'accountant',
     title: '📋 半年度库存全面盘点',
@@ -236,7 +225,7 @@ const tasks = [
     date: '2026-06-30',
     role: 'accountant',
     title: '模拟纳税申报',
-    tags: ['期末', '申报'],
+    tags: ['期末', '申报', "info"],
     difficulty: 1,
     description: '完成6月模拟纳税申报。',
     tip: '前往纳税申报页面核对数据后完成申报。半年末注意检查增值税累计数据。',
@@ -362,7 +351,7 @@ const tasks = [
     date: '2026-06-16',
     role: 'accountant',
     title: '计提固定资产折旧',
-    tags: ['资产'],
+    tags: ['资产', "info"],
     difficulty: 1,
     description: '前往固定资产模块计提6月折旧1,350元。',
     tip: '固定资产按月计提折旧。超市固定资产按使用部门分配折旧费用。借：销售费用/管理费用-折旧费，贷：累计折旧。',
@@ -566,19 +555,5 @@ const tasks = [
   合计含税：  56,500.00元
   不含税收入： 50,000.00元
   增值税：      6,500.00元` }]},
-  {
-    date: '2026-06-30',
-    role: 'cashier',
-    title: '出纳-月末盘点及对账',
-    tags: ['出纳', '期末'],
-    difficulty: 1,
-    description: '月末现金盘点及银行对账，编制半年度资金总结。',
-    tip: '月末出纳盘点现金、核对银行余额，确保账实相符。无需制作凭证。',
-    entries: [],
-    documents: [
-      { type: 'text', label: '现金盘点表', docTitle: '库存现金盘点表（2026年6月30日）', stampText: '财务专用章',
-        content: '账面约4,000元 | 实盘4,000元 | ✓ 账实相符' },
-      { type: 'text', label: '半年资金总结', docTitle: '2026年上半年资金运行总结', stampText: '财务专用章',
-        content: '期初银行存款：800,000元 | 期末：+\n资金状况：✓ 正常运营' }]}
 ]
 export default tasks

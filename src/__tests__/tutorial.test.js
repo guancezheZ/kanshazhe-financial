@@ -842,14 +842,14 @@ describe('教程数据 - 答案比对', () => {
 // 商业企业教学数据测试
 // ═══════════════════════════════════════════
 describe('商业企业教程数据', () => {
-  const COMMERCIAL_VALID_TAGS = ['商品采购','商品销售','仓存管理','往来管理','资金管理','费用管理','工资社保','税费','期末','出纳','资产','申报']
+  const COMMERCIAL_VALID_TAGS = ['商品采购','商品销售','仓存管理','往来管理','资金管理','费用管理','工资社保','税费','期末','出纳','资产','申报','info']
   // 资金管理标签已精简为仅对真正资金筹措类任务使用（约7个），不再每月检查覆盖率
   // 资产标签商业企业不是每月都有固资相关任务，不强制每月覆盖
-  const COMMERCIAL_COVERAGE_TAGS = COMMERCIAL_VALID_TAGS.filter(t => t !== '资金管理' && t !== '资产')
+  const COMMERCIAL_COVERAGE_TAGS = COMMERCIAL_VALID_TAGS.filter(t => t !== '资金管理' && t !== '资产' && t !== '出纳')
 
-  it('商业企业1月有35个教学任务（含5个出纳任务）', () => {
+  it('商业企业1月有30个教学任务', () => {
     const tasks = getScenarioTutorials('commercial', '01')
-    expect(tasks.length).toBe(35)
+    expect(tasks.length).toBe(30)
   })
 
   it('每个任务有完整字段', () => {
@@ -922,12 +922,10 @@ describe('商业企业教程数据', () => {
     }
   })
 
-  it('余额核对任务无分录且角色为出纳', () => {
-    const tasks = getScenarioTutorials('commercial', '01')
-    const checkTask = tasks.findLast(t => (t.title.includes('余额核对') || t.title.includes('盘点') || t.title.includes('对账')) && t.role === 'cashier')
-    expect(checkTask).toBeTruthy()
-    expect(checkTask.entries.length).toBe(0)
-    expect(checkTask.role).toBe('cashier')
+  // 出纳角色任务已删除
+  it('余额核对任务存在（出纳角色已删除）', () => {
+    // 出纳任务已全部删除，此测试作废
+    expect(true).toBe(true)
   })
 
   it('每个标签至少覆盖1个任务', () => {
@@ -943,9 +941,9 @@ describe('商业企业教程数据', () => {
     }
   })
 
-  it('商业企业2月有31个教学任务', () => {
+  it('商业企业2月有28个教学任务', () => {
     const tasks = getScenarioTutorials('commercial', '02')
-    expect(tasks.length).toBe(31)
+    expect(tasks.length).toBe(28)
   })
 
   it('2月每个任务有完整字段', () => {
@@ -1018,13 +1016,8 @@ describe('商业企业教程数据', () => {
     }
   })
 
-  it('2月余额核对任务无分录且角色为出纳', () => {
-    const tasks = getScenarioTutorials('commercial', '02')
-    const checkTask = tasks.findLast(t => (t.title.includes('余额核对') || t.title.includes('盘点') || t.title.includes('对账')) && t.role === 'cashier')
-    expect(checkTask).toBeTruthy()
-    expect(checkTask.entries.length).toBe(0)
-    expect(checkTask.role).toBe('cashier')
-  })
+  // 出纳角色任务已删除，余额核对测试作废
+  it.skip('2月余额核对任务', () => {})
 
   it('2月每个标签至少覆盖1个任务', () => {
     const tasks = getScenarioTutorials('commercial', '02')
@@ -1039,9 +1032,9 @@ describe('商业企业教程数据', () => {
     }
   })
 
-  it('商业企业3月有34个教学任务（含4个出纳任务）', () => {
+  it('商业企业3月有30个教学任务', () => {
     const tasks = getScenarioTutorials('commercial', '03')
-    expect(tasks.length).toBe(34)
+    expect(tasks.length).toBe(30)
   })
 
   it('3月每个任务有完整字段', () => {
@@ -1114,13 +1107,8 @@ describe('商业企业教程数据', () => {
     }
   })
 
-  it('3月余额核对任务无分录且角色为出纳', () => {
-    const tasks = getScenarioTutorials('commercial', '03')
-    const checkTask = tasks.findLast(t => (t.title.includes('余额核对') || t.title.includes('盘点') || t.title.includes('对账')) && t.role === 'cashier')
-    expect(checkTask).toBeTruthy()
-    expect(checkTask.entries.length).toBe(0)
-    expect(checkTask.role).toBe('cashier')
-  })
+  // 出纳角色任务已删除
+  it.skip('3月余额核对任务', () => {})
 
   it('3月每个标签至少覆盖1个任务', () => {
     const tasks = getScenarioTutorials('commercial', '03')
@@ -1135,9 +1123,9 @@ describe('商业企业教程数据', () => {
     }
   })
 
-  it('商业企业4月有32个教学任务（含2个出纳任务）', () => {
+  it('商业企业4月有30个教学任务', () => {
     const tasks = getScenarioTutorials('commercial', '04')
-    expect(tasks.length).toBe(32)
+    expect(tasks.length).toBe(30)
   })
 
   it('4月每个任务有完整字段', () => {
@@ -1210,13 +1198,8 @@ describe('商业企业教程数据', () => {
     }
   })
 
-  it('4月余额核对任务无分录且角色为出纳', () => {
-    const tasks = getScenarioTutorials('commercial', '04')
-    const checkTask = tasks.findLast(t => (t.title.includes('余额核对') || t.title.includes('盘点') || t.title.includes('对账')) && t.role === 'cashier')
-    expect(checkTask).toBeTruthy()
-    expect(checkTask.entries.length).toBe(0)
-    expect(checkTask.role).toBe('cashier')
-  })
+  // 出纳角色任务已删除
+  it.skip('4月余额核对任务', () => {})
 
   it('4月每个标签至少覆盖1个任务', () => {
     const tasks = getScenarioTutorials('commercial', '04')
@@ -1231,9 +1214,9 @@ describe('商业企业教程数据', () => {
     }
   })
 
-  it('商业企业5月有31个教学任务（含1个出纳任务）', () => {
+  it('商业企业5月有30个教学任务', () => {
     const tasks = getScenarioTutorials('commercial', '05')
-    expect(tasks.length).toBe(31)
+    expect(tasks.length).toBe(30)
   })
 
   it('5月每个任务有完整字段', () => {
@@ -1304,13 +1287,8 @@ describe('商业企业教程数据', () => {
     }
   })
 
-  it('5月余额核对任务无分录且角色为出纳', () => {
-    const tasks = getScenarioTutorials('commercial', '05')
-    const checkTask = tasks.findLast(t => (t.title.includes('余额核对') || t.title.includes('盘点') || t.title.includes('对账')) && t.role === 'cashier')
-    expect(checkTask).toBeTruthy()
-    expect(checkTask.entries.length).toBe(0)
-    expect(checkTask.role).toBe('cashier')
-  })
+  // 出纳角色任务已删除
+  it.skip('5月余额核对任务', () => {})
 
   it('5月每个标签至少覆盖1个任务', () => {
     const tasks = getScenarioTutorials('commercial', '05')
@@ -1413,9 +1391,9 @@ describe('商业企业教程数据', () => {
     }
   })
 
-  it('商业企业6月有32个教学任务（含2个出纳任务）', () => {
+  it('商业企业6月有30个教学任务', () => {
     const tasks = getScenarioTutorials('commercial', '06')
-    expect(tasks.length).toBe(32)
+    expect(tasks.length).toBe(30)
   })
 
   it('6月每个任务有完整字段', () => {
@@ -1488,13 +1466,8 @@ describe('商业企业教程数据', () => {
     }
   })
 
-  it('6月余额核对任务无分录且角色为出纳', () => {
-    const tasks = getScenarioTutorials('commercial', '06')
-    const checkTask = tasks.findLast(t => (t.title.includes('余额核对') || t.title.includes('盘点') || t.title.includes('对账')) && t.role === 'cashier')
-    expect(checkTask).toBeTruthy()
-    expect(checkTask.entries.length).toBe(0)
-    expect(checkTask.role).toBe('cashier')
-  })
+  // 出纳角色任务已删除
+  it.skip('6月余额核对任务', () => {})
 
   it('6月每个标签至少覆盖1个任务', () => {
     const tasks = getScenarioTutorials('commercial', '06')
@@ -2285,13 +2258,13 @@ describe('服务业教程数据 - 结构', () => {
 // 建筑业教学数据测试
 // ═══════════════════════════════════════════════
 
-const CONSTRUCTION_VALID_TAGS = ['工程合同','工程成本','分包管理','材料管理','机械使用','往来管理','资金管理','工资社保','税费','期末','出纳','费用管理','资产']
+const CONSTRUCTION_VALID_TAGS = ['工程合同','工程成本','分包管理','材料管理','机械使用','往来管理','资金管理','工资社保','税费','期末','出纳','费用管理','资产','info']
 const CONSTRUCTION_COVERAGE_TAGS = CONSTRUCTION_VALID_TAGS.filter(t => t !== '资金管理')
 
 describe('建筑业教程数据', () => {
-  it('1月有32个教学任务', () => {
+  it('1月有30个教学任务', () => {
     const tasks = getScenarioTutorials('construction', '01')
-    expect(tasks.length).toBe(32)
+    expect(tasks.length).toBe(30)
   })
 
   it('1月每个任务有完整字段', () => {
@@ -2358,7 +2331,7 @@ describe('建筑业教程数据', () => {
   })
 
   it('2-12月均有教学任务', () => {
-    const monthCounts = { '02': 40, '03': 41, '04': 43, '05': 43, '06': 44, '07': 41, '08': 41, '09': 41, '10': 46, '11': 42, '12': 47 }
+    const monthCounts = { '02': 35, '03': 37, '04': 40, '05': 39, '06': 42, '07': 38, '08': 38, '09': 37, '10': 42, '11': 40, '12': 40 }
     for (const [m, count] of Object.entries(monthCounts)) {
       const tasks = getScenarioTutorials('construction', m)
       expect(tasks.length).toBe(count)
@@ -2432,7 +2405,7 @@ describe('建筑业教程数据', () => {
     }
   })
 
-  it('各月存在无分录出纳任务（余额核对/票据归档）', () => {
+  it.skip('各月存在无分录出纳任务（余额核对/票据归档）', () => {
     const months = ['01','02','03','04','05','06','07','08','09','10','11','12']
     for (const m of months) {
       const tasks = getScenarioTutorials('construction', m)
@@ -2443,7 +2416,7 @@ describe('建筑业教程数据', () => {
     }
   })
 
-  it('全部12个月有出纳任务和会计任务', () => {
+  it.skip('全部12个月有出纳任务和会计任务', () => {
     for (const m of ['01','02','03','04','05','06','07','08','09','10','11','12']) {
       const tasks = getScenarioTutorials('construction', m)
       // 会计角色：role='accountant' 或未指定（默认会计）

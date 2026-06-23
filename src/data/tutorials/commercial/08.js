@@ -710,7 +710,7 @@ const tasks = [
     role: 'accountant',
     title: '模拟纳税申报',
     nextAction: 'tax-filing',
-    tags: ['期末', '税费', '申报'],
+    tags: ['期末', '税费', '申报', "info"],
     difficulty: 1,
     description: '根据本月已完成的账务处理，进行模拟纳税申报。系统已自动计算应缴税额，请前往纳税申报页面核对并提交。',
     tip: '纳税申报在次月15日前完成。确认凭证已过账、期末结转已完成后再申报。',

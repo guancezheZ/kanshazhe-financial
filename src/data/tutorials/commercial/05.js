@@ -13,7 +13,7 @@ const tasks = [
     date: '2026-05-01',
     role: 'accountant',
     title: '劳动节加班工资计提',
-    tags: ['工资社保'],
+    tags: ['工资社保', "info"],
     difficulty: 3,
     description: '5月1日劳动节法定节假日，超市正常营业。收银员4人、理货员4人共8人加班，按300%计算加班费。日工资率=61,000÷21.75=2,804.60元/天，加班费=2,804.60÷15×8×1×300%=4,487.36元。月底随5月工资一并计提。',
     tip: '劳动节法定节假日加班按300%支付工资。依据《劳动法》第四十四条第三款。本日仅记录，月底随工资一并计提。',
@@ -267,7 +267,7 @@ const tasks = [
     date: '2026-05-31',
     role: 'accountant',
     title: '模拟纳税申报',
-    tags: ['期末', '申报'],
+    tags: ['期末', '申报', "info"],
     difficulty: 1,
     description: '完成5月模拟纳税申报。',
     tip: '前往纳税申报页面核对数据后完成申报。半年末注意检查增值税累计数据。',
@@ -533,16 +533,5 @@ const tasks = [
       { subjectCode: '100201', summary: '到账', debit: 18000, credit: 0, explanation: '银行存款增加记借方。第三方支付资金提现到账。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金（配对科目6001），属于经营活动现金流入。'},
       { subjectCode: '101205', summary: '支付宝转出', debit: 0, credit: 18000, explanation: '其他货币资金减少记贷方。第三方支付资金转出。' }],
     documents: [{ type: 'bank', label: '提现回单', date: '2026-05-24', totalAmount: 18000, payer: '支付宝', payeeName: '本公司', content: '支付宝提现', refNo: 'TX20260524' }]},
-  {
-    date: '2026-05-31',
-    role: 'cashier',
-    title: '出纳-月末盘点及对账',
-    tags: ['出纳', '期末'],
-    difficulty: 1,
-    description: '月末现金盘点及银行对账。',
-    tip: '月末出纳盘点现金、核对银行余额，确保账实相符。无需制作凭证。',
-    entries: [],
-    documents: [{ type: 'text', label: '现金盘点表', docTitle: '库存现金盘点表（2026年5月31日）', stampText: '财务专用章',
-      content: '账面约3,500元 | 实盘3,500元 | ✓ 账实相符' }]}
 ]
 export default tasks
