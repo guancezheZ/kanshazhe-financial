@@ -109,8 +109,27 @@
           <div v-if="doc.stampText" v-html="squareStamp(doc.stampText, 15, 15)" class="stamp-overlay"></div>
           <div class="doc-title-bar">{{ doc.docTitle || '原始凭证' }}</div>
           <div class="doc-body">
+            <!-- 结构化表格（headers/rows 优先于标题检测） -->
+            <template v-if="doc.headers && doc.rows">
+              <div class="doc-table-wrapper">
+                <table class="doc-structured-table">
+                  <thead>
+                    <tr>
+                      <th v-for="(h, hi) in doc.headers" :key="hi">{{ h }}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="(row, ri) in doc.rows" :key="ri">
+                      <td v-for="(cell, ci) in row" :key="ci"><pre class="doc-td-pre">{{ cell }}</pre></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="doc-signature" v-if="doc.signature">{{ doc.signature }}</div>
+            </template>
+
             <!-- 合同类 -->
-            <template v-if="isContract(doc.docTitle)">
+            <template v-else-if="isContract(doc.docTitle)">
               <div class="doc-contract-header">{{ doc.docTitle }}</div>
               <div class="doc-contract-seal" v-if="doc.signature">签约方：{{ doc.signature }}</div>
               <div class="doc-contract-body">
@@ -441,6 +460,15 @@ function parseLines(content) {
 .doc-calc-formula { padding:3px 0; font-size:12px; line-height:1.8; }
 .doc-calc-line { color:#303133; font-weight:500; }
 .doc-calc-label { color:#909399; font-size:11px; }
+
+/* 结构化表格样式 */
+.doc-table-wrapper { overflow-x:auto; margin:8px 0; }
+.doc-structured-table { width:100%; border-collapse:collapse; font-size:12px; }
+.doc-structured-table th { background:#f0ebe1; border:1px solid #b0a898; padding:6px 10px; font-weight:700; text-align:center; white-space:nowrap; }
+.doc-structured-table td { border:1px solid #d0c8b8; padding:5px 10px; vertical-align:top; }
+.doc-structured-table tr:nth-child(even) td { background:#faf8f4; }
+.doc-structured-table tr:hover td { background:#f5f0e8; }
+.doc-td-pre { font-family:'Noto Sans SC','Microsoft YaHei','SimHei',sans-serif; font-size:12px; line-height:1.6; margin:0; white-space:pre-wrap; word-break:break-all; }
 
 /* 入库单/出库单样式 */
 .doc-wh-header { text-align:center; font-size:14px; font-weight:700; padding:6px 0 10px; border-bottom:2px solid #67c23a; margin-bottom:8px; color:#529b2e; }
