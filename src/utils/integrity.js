@@ -29,7 +29,7 @@ const EXPECTED_HASHES = {
   "year1": "506edb30984895a225b982a5a0acb5d3cbca3f3666cd4e4ac755caea19e546e1",
   "commercial": "0dd1a8683b941e2eb3319dffe194e0f1905e4f0e3de0b401d31596fa93adf2d0",
   "service": "92b3eb62456428edb96fb4d69ec2c47f50d63d1a46e5f5e201b3bc014cef9e7c",
-  "construction": "1c2dba41cb1748b233e280d4acad7455662acec868e9296c0a31d45b638a7722",
+  "construction": "e3dcfab2b084f4d46620ff166bec42ff3fe20de3f397ae6130f7ec1c2e10ad66",
   "cases": "30fcf4849c1f1f026e9c11976d74db393b16465821f0d85cd51487443d29bd7d",
 }
 
