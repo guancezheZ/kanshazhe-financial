@@ -42,6 +42,9 @@ const SCREENSHOT_CONFIG = [
   { name: '26-achievements', route: '/#/tutorial/achievements',                      description: '成就系统' },
   { name: '27-custom-report',route: '/#/reports/custom',                             description: '自定义报表' },
   { name: '28-voucher-display-invoice', route: '/#/accounting/voucher/query',        description: '凭证展示-发票' },
+  { name: '29-inventory',     route: '/#/accounting/inventory',                      description: '存货管理' },
+  { name: '34-financial-trend',route: '/#/reports/financial-trend',                  description: '财务分析趋势' },
+  { name: '35-system-settings',route: '/#/system/settings',                         description: '系统设置' },
 ]
 
 function startDevServer() {
@@ -107,24 +110,26 @@ async function takeScreenshots() {
     })
     const page = await context.newPage()
 
+    const TOTAL = SCREENSHOT_CONFIG.length + 1 // +1 for voucher detail
+
     // ===== 1. 登录页截图 =====
-    console.log('📸 截图 1/28: 登录页面')
+    console.log(`📸 截图 1/${TOTAL}: 登录页面`)
     await waitForApp(page, `${BASE_URL}/#/login`)
     await page.screenshot({ path: path.join(SCREENSHOTS_DIR, '01-login.png') })
 
     // ===== 2. 登录 =====
-    console.log('🔑 登录...')
+    console.log(`🔑 登录...`)
     await page.fill('input[placeholder="用户名"]', 'admin')
     await page.fill('input[placeholder="密码"]', 'admin123')
     await page.click('button:has-text("登 录")')
     await page.waitForTimeout(3000)
 
     // ===== 3. 工作台 =====
-    console.log('📸 截图 2/28: 工作台')
+    console.log(`📸 截图 2/${TOTAL}: 工作台`)
     await page.screenshot({ path: path.join(SCREENSHOTS_DIR, '02-dashboard.png') })
 
     // ===== 4. 教学中心 =====
-    console.log('📸 截图 3/28: 教学中心')
+    console.log(`📸 截图 3/${TOTAL}: 教学中心`)
     await waitForApp(page, `${BASE_URL}/#/tutorial`)
     // 处理"进入教学"弹窗
     const dialogBtn = page.locator('.el-dialog button:has-text("进入教学"), .el-button--primary:has-text("进入教学")')
@@ -134,10 +139,10 @@ async function takeScreenshots() {
     }
     await page.screenshot({ path: path.join(SCREENSHOTS_DIR, '03-tutorial.png') })
 
-    // ===== 5-28: 其余页面 =====
+    // ===== 5-N: 其余页面 =====
     for (let i = 4; i < SCREENSHOT_CONFIG.length; i++) {
       const cfg = SCREENSHOT_CONFIG[i]
-      console.log(`📸 截图 ${i}/28: ${cfg.description} (${cfg.name})`)
+      console.log(`📸 截图 ${i}/${TOTAL}: ${cfg.description} (${cfg.name})`)
       try {
         await waitForApp(page, `${BASE_URL}${cfg.route}`)
         await page.screenshot({ path: path.join(SCREENSHOTS_DIR, `${cfg.name}.png`) })
@@ -148,19 +153,18 @@ async function takeScreenshots() {
       }
     }
 
-    // ===== 额外：凭证展示的发票预览 =====
-    // 在凭证查询页找到一个凭证点进去看详情
-    console.log('📸 额外: 凭证详情')
+    // ===== 额外：凭证详情弹窗 =====
+    console.log(`📸 额外 ${TOTAL}/${TOTAL}: 凭证详情弹窗`)
     try {
       const firstView = page.locator('.el-table__row .el-button:has-text("查看"), .el-table__row .el-button:has-text("详情")').first()
       if (await firstView.isVisible({ timeout: 2000 }).catch(() => false)) {
         await firstView.click()
         await page.waitForTimeout(1500)
-        await page.screenshot({ path: path.join(SCREENSHOTS_DIR, '28-voucher-detail.png') })
+        await page.screenshot({ path: path.join(SCREENSHOTS_DIR, '30-voucher-detail-dialog.png') })
       }
     } catch (_) {}
 
-    console.log('\n✅ 所有截图完成! 共 ' + SCREENSHOT_CONFIG.length + ' 张')
+    console.log(`\n✅ 所有截图完成! 共 ${TOTAL} 张`)
   } catch (err) {
     console.error('❌ 截图失败:', err.message)
   } finally {

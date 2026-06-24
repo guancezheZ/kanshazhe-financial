@@ -6,10 +6,10 @@
 <title>系统使用说明书（零基础版） — 観測者企业财务模拟系统</title>
 <style>
   :root {
-    --primary: #1a3a5c; --primary-light: #2a5a8c; --accent: #409eff;
-    --bg: #f5f7fa; --card: #fff; --text: #303133;
-    --text-light: #909399; --border: #e8e8e8;
-    --success: #67c23a; --warning: #e6a23c; --danger: #f56c6c;
+    --primary: #3a3028; --primary-light: #5a4a3a; --accent: #9a4a42;
+    --bg: #f0ebe0; --card: #faf5ed; --text: #3a2a1a;
+    --text-light: #8a7a6a; --border: #d8d0c4;
+    --success: #5a8a5a; --warning: #b08a30; --danger: #9a4a42;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -36,7 +36,7 @@
   #toc .toc-h2 { padding-left: 18px; font-weight: 500; }
   #toc .toc-h3 { padding-left: 32px; font-size: 12px; }
 
-  #content { margin-left: 280px; max-width: 920px; }
+  #content { margin-left: 280px; max-width: none; padding-right: 20px; }
   .content-inner { padding: 40px 48px 80px; }
 
   #menu-toggle {
@@ -59,21 +59,21 @@
 
   table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px; }
   th, td { border: 1px solid var(--border); padding: 7px 10px; text-align: left; }
-  th { background: #ecf5ff; font-weight: 600; color: var(--primary-light); }
-  tr:nth-child(even) { background: #fafafa; }
+  th { background: #e0d8cc; font-weight: 700; color: #3a2a1a; }
+  tr:nth-child(even) { background: #f5f0e8; }
 
   .tag { display: inline-block; padding: 1px 7px; border-radius: 3px; font-size: 12px; font-weight: 500; }
-  .tag-success { background: #e1f3d8; color: #529b2e; }
-  .tag-warning { background: #faecd8; color: #b88230; }
-  .tag-info { background: #e9e9eb; color: #73767a; }
-  .tag-danger { background: #fde2e2; color: #c45656; }
-  .tag-primary { background: #d9ecff; color: #337ecc; }
+  .tag-success { background: #dce8d0; color: #4a7a3a; }
+  .tag-warning { background: #f5e6c8; color: #8a6a30; }
+  .tag-info { background: #e0d8cc; color: #6a5a4a; }
+  .tag-danger { background: #f0d8d0; color: #8a3a32; }
+  .tag-primary { background: #e0d8cc; color: #5a4a3a; }
 
   .alert { padding: 14px 18px; border-radius: 6px; margin: 14px 0; font-size: 14px; border-left: 4px solid; }
-  .alert-info { background: #ecf5ff; border-color: var(--accent); color: #2c6aa0; }
-  .alert-success { background: #f0f9eb; border-color: var(--success); color: #486b2a; }
-  .alert-warning { background: #fdf6ec; border-color: var(--warning); color: #996b22; }
-  .alert-danger { background: #fef0f0; border-color: var(--danger); color: #b04545; }
+  .alert-info { background: #f5f0e8; border-color: var(--accent); color: #5a4a2a; }
+  .alert-success { background: #e8f0e0; border-color: var(--success); color: #3a5a2a; }
+  .alert-warning { background: #faf0d8; border-color: var(--warning); color: #7a5a20; }
+  .alert-danger { background: #f5e8e4; border-color: var(--danger); color: #7a3a32; }
 
   code.inline { background: #f0f2f5; padding: 2px 6px; border-radius: 3px; font-size: 13px; color: #d14; font-family: "SF Mono", "Fira Code", Consolas, monospace; }
 
@@ -83,25 +83,26 @@
     counter-increment: step-counter;
     position: relative;
   }
-  .step-card .step-num {
-    display: inline-block; width: 26px; height: 26px; line-height: 26px;
-    background: var(--accent); color: #fff; border-radius: 50%;
-    text-align: center; font-weight: 600; font-size: 13px;
-    margin-right: 8px; flex-shrink: 0;
-  }
+	  .step-card .step-num {
+	    display: inline-flex; align-items: center; justify-content: center;
+	    width: 26px; height: 26px;
+	    background: var(--accent); color: #fff; border-radius: 50%;
+	    text-align: center; font-weight: 600; font-size: 13px;
+	    margin-right: 8px; flex-shrink: 0;
+	  }
   .step-card .step-title { font-weight: 600; font-size: 14px; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
   .step-card .step-desc { font-size: 14px; }
-  .step-card .step-result { background: #f0f9eb; padding: 8px 12px; border-radius: 4px; margin-top: 6px; font-size: 13px; }
+  .step-card .step-result { background: #f0ece4; padding: 8px 12px; border-radius: 4px; margin-top: 6px; font-size: 13px; }
 
-  .tip-box { background: #fff7e6; border: 1px solid #ffe58f; border-radius: 6px; padding: 10px 14px; margin: 8px 0; font-size: 13px; }
-  .tip-box strong { color: #b88230; }
+  .tip-box { background: #faf0d8; border: 1px solid #d8c08a; border-radius: 6px; padding: 10px 14px; margin: 8px 0; font-size: 13px; }
+  .tip-box strong { color: #7a5a20; }
 
   .ui-guide {
-    background: #f0f5ff; border: 1px solid #d6e4ff; border-radius: 6px;
+    background: #f5f0e8; border: 1px solid #d8ccc0; border-radius: 6px;
     padding: 10px 14px; margin: 8px 0; font-size: 13px;
   }
   .ui-guide strong { color: var(--accent); }
-  .ui-guide code { background: #e8f0fe; padding: 1px 5px; border-radius: 3px; font-size: 12px; }
+  .ui-guide code { background: #e0d8cc; padding: 1px 5px; border-radius: 3px; font-size: 12px; }
 
   .screendesc {
     background: #f8f8f8; border: 1px dashed #d0d0d0; border-radius: 6px;
@@ -109,7 +110,7 @@
     line-height: 1.6; color: #555;
   }
   .screendesc .arrow { color: var(--accent); font-weight: 600; }
-  .screendesc .highlight { background: #fff3cd; padding: 0 3px; border-radius: 2px; }
+  .screendesc .highlight { background: #f0e0b8; padding: 0 3px; border-radius: 2px; }
 
   .screenshot-img {
     max-width: 100%; height: auto; border: 1px solid var(--border);
@@ -122,12 +123,12 @@
   .screenshot-row .screenshot-img { flex: 1; min-width: 200px; }
 
   .feature-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin: 12px 0; }
-  .feature-item { background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 12px; text-align: center; font-size: 14px; }
+  .feature-item { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 14px; text-align: center; font-size: 14px; }
   .feature-item .icon { font-size: 22px; display: block; margin-bottom: 4px; }
   .feature-item .label { color: var(--text-light); font-size: 12px; }
 
   .top-bar {
-    background: var(--primary); color: #fff; padding: 12px 24px;
+    background: var(--primary); color: #f0e8dc; padding: 12px 24px;
     display: none; align-items: center; gap: 12px; font-size: 15px; font-weight: 600;
   }
 
@@ -151,42 +152,6 @@
   }
 
   /* ── 暗色模式 ── */
-  [data-theme="dark"] {
-    --primary: #1a2744; --primary-light: #4a7db5; --accent: #5b8ec9;
-    --bg: #0f0f1a; --card: #1a1a2e; --text: #d0d0e0;
-    --text-light: #808098; --border: #2a2a40;
-  }
-  [data-theme="dark"] body { background: var(--bg); }
-  [data-theme="dark"] th { background: #1a2540; color: var(--text); }
-  [data-theme="dark"] tr:nth-child(even) { background: #151520; }
-  [data-theme="dark"] .step-card { background: var(--card); border-color: var(--border); }
-  [data-theme="dark"] .step-result { background: #0a2a1a; }
-  [data-theme="dark"] .alert-info { background: #1a2540; border-color: #2a3a5c; color: #8ab4f8; }
-  [data-theme="dark"] .alert-warning { background: #2a2510; border-color: #5a4a10; color: #d4b020; }
-  [data-theme="dark"] .alert-success { background: #0a2a1a; border-color: #1a4a2a; color: #52c48a; }
-  [data-theme="dark"] .alert-danger { background: #2a1010; border-color: #5a1a1a; color: #f56c6c; }
-  [data-theme="dark"] .tip-box { background: #2a2510; border-color: #5a4a10; }
-  [data-theme="dark"] .tip-box strong { color: #d4b020; }
-  [data-theme="dark"] .ui-guide { background: #1a2540; border-color: #2a3a5c; }
-  [data-theme="dark"] .ui-guide code { background: #2a3a5c; }
-  [data-theme="dark"] .ui-guide strong { color: #5b8ec9; }
-  [data-theme="dark"] .screendesc { background: #1a1a2e; border-color: #2a2a40; color: #808098; }
-  [data-theme="dark"] .screendesc .highlight { background: #3a2a10; }
-  [data-theme="dark"] .card { background: var(--card); }
-  [data-theme="dark"] code.inline { background: #2a2a3e; color: #f5a6a6; }
-  [data-theme="dark"] .sidebar-header { border-bottom-color: rgba(255,255,255,0.05); }
-  [data-theme="dark"] #sidebar { background: var(--primary); }
-  [data-theme="dark"] .feature-item { background: var(--card); border-color: var(--border); }
-  [data-theme="dark"] .tag-success { background: #0a2a1a; color: #52c48a; }
-  [data-theme="dark"] .tag-warning { background: #2a2510; color: #d4b020; }
-  [data-theme="dark"] .tag-info { background: #1a1a2e; color: #808098; }
-  [data-theme="dark"] .tag-danger { background: #2a1010; color: #f56c6c; }
-  [data-theme="dark"] .tag-primary { background: #1a2540; color: #5b8ec9; }
-  [data-theme="dark"] .screenshot-caption { color: #808098; }
-  [data-theme="dark"] .search-bar { background: var(--card); border-color: var(--border); }
-  [data-theme="dark"] .search-bar input { color: var(--text); }
-  [data-theme="dark"] .search-bar input::placeholder { color: #555; }
-  [data-theme="dark"] .search-highlight { background: #5a4a10; color: #e0d0a0; }
 
   /* ── 暗色切换按钮 ── */
   .theme-btn {
@@ -230,7 +195,33 @@
   }
   #back-to-top:hover { transform: translateY(-3px); box-shadow: 0 4px 16px rgba(0,0,0,0.35); }
   #back-to-top.show { display: flex; }
-  [data-theme="dark"] #back-to-top { background: var(--primary-light); }
+
+
+  /* ── 国风 UI 增强 ── */
+  .sitelogo {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px; flex-shrink: 0;
+    border: 2px solid rgba(255,255,255,0.85);
+    color: #f0e8dc;
+    font-size: 17px;
+    font-weight: 500;
+    font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+    border-radius: 3px;
+    background: rgba(255,255,255,0.08);
+    letter-spacing: -1px;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+  .step-card:hover { border-color: var(--accent); transition: border-color .2s; }
+  .screenshot-img { border-radius: 10px; }
+  h2 { font-size: 22px; padding-left: 14px; border-left: 4px solid var(--accent); }
+  h3 { color: var(--primary); }
+  table { border-radius: 10px; overflow: hidden; box-shadow: 0 1px 4px rgba(58,42,26,0.04); }
+  th { padding: 10px 12px; }
+  td { padding: 9px 12px; }
+  tr:hover td { background: #e8e0d4 !important; }
+  /* width handled by #content */
+  blockquote { border-left: 4px solid var(--accent); padding-left: 12px; margin: 10px 0; color: #5a4a3a; }
 </style>
 </head>
 <body>
@@ -239,14 +230,15 @@
 <div id="sidebar-overlay" onclick="toggleSidebar()"></div>
 
 <aside id="sidebar">
-  <div class="sidebar-header">
-    <h1>📘 観測者 使用说明书</h1>
-    <div class="sub">企业财务模拟系统 · 零基础手把手教程</div>
+  <div class="sidebar-header" style="display:flex;align-items:center;gap:8px;">
+    <span class="sitelogo" style="border-color:rgba(255,255,255,0.7);color:#f0e8dc;width:38px;height:38px;font-size:18px;flex-shrink:0;margin:0;">観</span>
+    <div>
+      <h1 style="font-size:16px;margin:0;">観測者 使用说明书</h1>
+      <div class="sub" style="font-size:11px;margin-top:2px;">企业财务模拟系统 · 零基础教程</div>
+    </div>
   </div>
   <nav id="toc"></nav>
-  <div style="padding: 12px 18px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 8px;">
-    <span class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙 暗色模式</span>
-  </div>
+
 </aside>
 
 <div class="top-bar">
@@ -264,7 +256,7 @@
 </div>
 <div class="search-count" id="searchCount"></div>
 
-<h1 class="page-title">📘 観測者企业财务模拟系统 — 使用说明书（零基础版）</h1>
+<h1 class="page-title" style="display:flex;align-items:center;gap:8px;"><span class="sitelogo" style="position:static;border-color:var(--primary);color:var(--primary);width:40px;height:40px;font-size:19px;">観</span> 観測者企业财务模拟系统 — 使用说明书（零基础版）</h1>
 <div class="page-meta">不需要任何财务软件使用经验 · 手把手教你操作每一步</div>
 
 <!-- ================================================================ -->
@@ -274,23 +266,37 @@
 <strong>👋 欢迎！</strong> 登录后你会看到这样的界面布局（记住这几个区域的名称，后面会一直用到）：
 </div>
 
-<div class="screendesc">
-┌──────────────────────────────────────────────────────┐
-│ <span class="highlight">左侧菜单栏</span>  │ 顶部导航栏（面包屑+角色标签+用户头像）      │
-│（深蓝色背景）│                                          │
-│              │  <span class="highlight">中央工作区</span>（主要操作都在这块区域）          │
-│  总账        │                                          │
-│  报表        │                                          │
-│  教学中心    │                                          │
-│  系统管理    │                                          │
-│              │                                          │
-│              │                   右下角浮动窗（教学时才出现）│
-└──────────────────────────────────────────────────────┘
+<div style="background:var(--card);border:2px solid var(--border);border-radius:12px;overflow:hidden;margin:12px 0;font-size:14px;">
+  <div style="display:flex;border-bottom:1px solid var(--border);">
+    <div style="flex:0 0 140px;background:var(--primary);color:rgba(255,255,255,0.85);padding:12px;font-weight:600;font-size:13px;">
+      📋 左侧菜单栏
+      <div style="font-weight:400;font-size:11px;opacity:0.7;margin-top:4px;">凭证 · 账簿 · 报表 · 教学 · 系统</div>
+    </div>
+    <div style="flex:1;background:var(--card);padding:12px 16px;font-size:13px;">
+      🧭 顶部导航栏 <span style="color:var(--text-light);font-weight:400;">（当前位置 · 角色标签 · 用户头像）</span>
+    </div>
+  </div>
+  <div style="display:flex;">
+    <div style="flex:0 0 140px;background:var(--primary);color:rgba(255,255,255,0.4);padding:12px;font-size:12px;line-height:1.8;">
+      <div style="margin-top:20px;">凭证管理</div>
+      <div>账簿管理</div>
+      <div>报表分析</div>
+      <div>教学中心</div>
+      <div>系统管理</div>
+    </div>
+    <div style="flex:1;background:var(--card);padding:20px 16px;text-align:center;">
+      <div style="font-weight:600;font-size:15px;color:var(--primary);">📊 中央工作区</div>
+      <div style="font-size:13px;color:var(--text-light);margin-top:4px;">主要操作都在这块区域</div>
+    </div>
+  </div>
+  <div style="text-align:right;padding:6px 12px;background:#f5f0e8;font-size:12px;color:var(--text-light);border-top:1px dashed var(--border);">
+    右下角浮动窗（教学时才出现）
+  </div>
 </div>
 
 <table>
   <tr><th>区域</th><th>位置</th><th>用途</th></tr>
-  <tr><td>左侧菜单栏</td><td>深蓝色竖条</td><td>点击进入各个功能页面（总账/报表/教学/系统）</td></tr>
+  <tr><td>左侧菜单栏</td><td>深色侧边栏</td><td>点击进入各功能页面（凭证管理/账簿管理/报表分析/教学中心等）</td></tr>
   <tr><td>顶部导航栏</td><td>页面最上方白色条</td><td>左侧显示当前位置，右侧是角色标签和退出按钮</td></tr>
   <tr><td>中央工作区</td><td>页面中间白色区域</td><td>这是你工作的地方——所有操作都在这完成</td></tr>
   <tr><td>浮动窗</td><td>右下角小窗（教学时）</td><td>做教学任务时出现的导航小窗口</td></tr>
@@ -304,13 +310,10 @@
 <h2 id="sec-1">1. 第一次使用——登录和准备工作</h2>
 
 <h3>1.1 打开系统</h3>
-<p>启动方式有两种：</p>
-<table>
-  <tr><th>方式</th><th>操作</th></tr>
-  <tr><td>一键启动</td><td>在项目文件夹里双击 <code>start.bat</code> → 等待黑窗口跑完 → 浏览器自动打开</td></tr>
-  <tr><td>手动启动</td><td>打开终端/命令提示符 → 输入 <code>npm run dev</code> → 浏览器访问 <code>http://localhost:3000</code></td></tr>
-  <tr><td>关闭系统</td><td>双击 <code>stop.bat</code> 或按 Ctrl+C 关闭终端</td></tr>
-</table>
+<div class="alert alert-info">
+  双击桌面上的"観測者财务模拟系统"图标，等待几秒即可打开。
+</div>
+<p>系统打开后会自动进入登录页面，不需要额外配置。</p>
 
 <h3>1.2 登录系统</h3>
 <div class="ui-guide"><strong>你会看到什么：</strong>一个居中显示的大白框，上面写着"観測者企业财务模拟系统"，中间有用户名和密码输入框。</div>
@@ -331,7 +334,7 @@
 
 <div class="step-card">
   <div class="step-title"><span class="step-num">3</span> 点击登录</div>
-  <div class="step-desc">点击蓝色"登 录"按钮（也可以直接按键盘上的 Enter 键）</div>
+  <div class="step-desc">点击"登 录"按钮（也可以直接按键盘上的 Enter 键）</div>
   <div class="step-result">✅ 登录成功！你会自动跳转到"工作台"页面。</div>
 </div>
 
@@ -379,30 +382,29 @@
   <li><strong>当前账套</strong>：你正在使用的账套信息（名称、年度、本位币等）</li>
 </ul>
 
-<h3>1.5 切换角色</h3>
-<p>这个系统有三种角色——<strong>会计、出纳、主管</strong>。不同的角色能做的事情不一样。登录后默认是"会计"。</p>
+<h3>1.5 选择视角</h3>
+<p>系统目前提供 <strong>会计视角</strong>（默认），涵盖完整的凭证→账簿→报表流程。如有需要可切换到其他视角。</p>
 
 <div class="step-card">
   <div class="step-title"><span class="step-num">1</span> 找到角色标签</div>
-  <div class="step-desc">看页面<strong>右上角</strong>，有一个蓝色的小标签，上面写着"会计"或"👤 会计"——这就是你的当前角色</div>
+  <div class="step-desc">看页面<strong>右上角</strong>，有一个角色标签，上面写着"👤 会计"——这就是你当前的视角</div>
 </div>
 
 <div class="step-card">
   <div class="step-title"><span class="step-num">2</span> 点击切换</div>
-  <div class="step-desc">点击"会计"标签 → 弹出一个下拉菜单 → 里面有"会计""出纳""主管"三个选项</div>
+  <div class="step-desc">点击"会计"标签 → 弹出一个下拉菜单 → 可选择其他视角</div>
 </div>
 
 <div class="step-card">
   <div class="step-title"><span class="step-num">3</span> 选择角色</div>
-  <div class="step-desc">点击你想切换的角色（比如"出纳"）→ 页面会自动刷新 → 左上角菜单会变成对应角色能用的功能</div>
-  <div class="step-result">✅ 切换成功！比如切到"出纳"后，左侧菜单的"出纳管理"就能用了。</div>
+  <div class="step-desc">选择目标视角 → 页面自动刷新 → 菜单随之变化</div>
+  <div class="step-result">✅ 切换成功！</div>
 </div>
 
 <table>
   <tr><th>角色</th><th>主要能做什么</th></tr>
-  <tr><td>👤 会计</td><td>做凭证、查账簿、出报表、管理科目、成本核算——日常做账的主力</td></tr>
-  <tr><td>💰 出纳</td><td>登记现金日记账和银行日记账、银行对账、给凭证签字——管钱的</td></tr>
-  <tr><td>👑 主管</td><td>审核凭证、管理期间、审计追踪——管人的</td></tr>
+  <tr><td>👤 会计（当前）</td><td>做凭证、查账簿、出报表、管理科目、成本核算——日常做账的主力</td></tr>
+  <tr><td>🔒 其他角色</td><td>出纳、主管等角色暂未推出，后续版本开放</td></tr>
 </table>
 
 <div class="tip-box">
@@ -412,7 +414,7 @@
 <!-- ================================================================ -->
 <h2 id="sec-2">2. 科目管理——会计的"文件夹"</h2>
 
-<p><strong>路径</strong>：左侧菜单栏 → 总账 → 科目表</p>
+<p><strong>路径</strong>：左侧菜单栏 → 账簿管理 → 科目表</p>
 <p><strong>科目是什么？</strong> 就像电脑里的文件夹——把类似的经济业务放到一个类别里。系统已经预置了 60 多个常用科目，你也可以自己添加。</p>
 
 <h3>2.1 认识科目表界面</h3>
@@ -460,7 +462,7 @@
 <p>凭证是财务核算的<strong>基础</strong>——每一笔业务都要先做成凭证，然后数据才能流入账簿和报表。</p>
 
 <h3>3.1 新增一张凭证（完整步骤演示）</h3>
-<p><strong>路径</strong>：左侧菜单 → 总账 → 凭证录入</p>
+<p><strong>路径</strong>：左侧菜单 → 凭证管理 → 凭证录入</p>
 <div class="ui-guide"><strong>你会看到什么：</strong>一个空白的凭证表格——上面是"凭证头"（凭证号、日期、附件数），下面是"分录表格"（摘要、科目、借方金额、贷方金额）。</div>
 
 <img src="screenshots/05-voucher-entry.png" alt="凭证录入界面" class="screenshot-img" loading="lazy"
@@ -514,34 +516,33 @@
 
 <h3>3.2 如何选择会计科目（一个详细的教程）</h3>
 <p>点开"科目"列时，你会看到一个<strong>科目选择窗口</strong>，长这样：</p>
-<div class="screendesc">
-┌─ 选择科目 ────────────────────────┐
-│ [输入科目编码或名称搜索...]         │
-│                                    │
-│ ├ 1001 库存现金                    │
-│ ├ 1002 银行存款                    │
-│ │ ├ 01 工商银行                    │
-│ │ ├ 02 建设银行                    │
-│ │ └ 03 招商银行                    │
-│ ├ 1122 应收账款                    │
-│ │ ├ 01 甲公司                      │
-│ │ └ 02 乙公司                      │
-│ ...                                │
-└────────────────────────────────────┘
+<div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:16px;margin:10px 0;font-family:monospace;font-size:13px;line-height:1.8;">
+  <div style="color:var(--text-light);margin-bottom:8px;">🔍 输入科目编码或名称搜索...</div>
+  <div style="border-top:1px solid var(--border);padding-top:8px;">
+    ├ 1001 库存现金<br>
+    ├ 1002 银行存款<br>
+    │&nbsp;&nbsp;├ 01 工商银行<br>
+    │&nbsp;&nbsp;├ 02 建设银行<br>
+    │&nbsp;&nbsp;└ 03 招商银行<br>
+    ├ 1122 应收账款<br>
+    │&nbsp;&nbsp;├ 01 甲公司<br>
+    │&nbsp;&nbsp;└ 02 乙公司<br>
+    ┊ ...<br>
+  </div>
 </div>
 <p><strong>使用技巧</strong>：可以直接输入编码快速定位——比如输入 <code>100201</code> 就会直接跳到"工商银行"。</p>
 
 <h3>3.3 凭证的四种状态——理解凭证的"生命旅程"</h3>
 <table>
   <tr><th>状态</th><th>含义</th><th>能做什么</th></tr>
-  <tr><td>📄 草稿 (DRAFT)</td><td>刚创建，还没人检查过</td><td>可修改、可删除。出纳可以签字，主管可以审核</td></tr>
-  <tr><td>✍️ 已签字 (SIGNED)</td><td>出纳确认了（涉及现金/银行的凭证）</td><td>主管可以审核。出纳可以取消签字</td></tr>
-  <tr><td>✅ 已审核 (APPROVED)</td><td>主管复核通过了</td><td>可以过账。主管可以取消审核</td></tr>
-  <tr><td>📊 已过账 (POSTED)</td><td>数据已进入账簿和报表</td><td><strong>不可修改</strong>。可以先反过账，再修改</td></tr>
+  <tr><td>📄 草稿 (DRAFT)</td><td>刚创建，还没人检查过</td><td>可修改、可删除</td></tr>
+  <tr><td>✍️ 已签字 (SIGNED)</td><td>出纳签字确认 <span class="tag tag-warning" style="margin-left:4px">暂未推出</span></td><td>可取消签字。目前跳过此环节</td></tr>
+  <tr><td>✅ 已审核 (APPROVED)</td><td>复核通过</td><td>可以过账。可以取消审核</td></tr>
+  <tr><td>📊 已过账 (POSTED)</td><td>数据已进入账簿和报表</td><td><strong>不可修改</strong>。可先反过账，再修改</td></tr>
 </table>
 
 <h3>3.4 签字、审核、过账操作</h3>
-<p><strong>路径</strong>：左侧菜单 → 总账 → 凭证查询</p>
+<p><strong>路径</strong>：左侧菜单 → 凭证管理 → 凭证查询</p>
 
 <div class="ui-guide">
   <strong>你会看到什么：</strong>上面有一排筛选条件（期间、日期、状态、关键词），下面是凭证列表表格。列表中的每一行代表一张凭证。
@@ -561,40 +562,26 @@
 </div>
 <div class="step-card">
   <div class="step-title"><span class="step-num">2</span> 点击查询</div>
-  <div class="step-desc">点击蓝色"查询"按钮 → 下面表格会显示符合条件的凭证</div>
+  <div class="step-desc">点击"查询"按钮 → 下面表格会显示符合条件的凭证</div>
 </div>
 
-<h4>操作二：出纳签字</h4>
-<div class="alert alert-warning"><strong>需要角色</strong>：登录后右上角角色标签必须是"出纳"（不会切换？看 1.4 节）<br>
-<strong>适用场景</strong>：凭证里有"库存现金"或"银行存款"科目时</div>
-<div class="step-card">
-  <div class="step-title"><span class="step-num">1</span> 找到草稿状态的凭证</div>
-  <div class="step-desc">在凭证列表中找到状态为"草稿"的凭证（看表格中的"状态"列）</div>
-</div>
-<div class="step-card">
-  <div class="step-title"><span class="step-num">2</span> 点击"签字"</div>
-  <div class="step-desc">选中该行 → 点击凭证列表上方的"签字"按钮（如果没有看到，确认你的角色是"出纳"）</div>
-  <div class="step-result">✅ 状态变为"已签字"！如果签错了，选中后点"取消签字"可以撤回。</div>
-</div>
+<h4>操作二：出纳签字 <span class="tag tag-warning">暂未推出</span></h4>
+<div class="alert alert-warning">出纳角色目前暂未推出，签字功能暂时不可用。目前完整的凭证流程为 <strong>草稿 → 审核 → 过账</strong>，跳过签字环节。</div>
 
-<h4>操作三：主管审核</h4>
-<div class="alert alert-danger"><strong>需要角色</strong>：必须是"主管"</div>
+<h4>操作三：审核凭证</h4>
+<div class="alert alert-info">审核凭证由具有审核权限的账户操作。如果当前账户是会计角色，可以联系管理员赋予审核权限。</div>
 <div class="step-card">
-  <div class="step-title"><span class="step-num">1</span> 切换到主管角色</div>
-  <div class="step-desc">点击右上角角色标签 → 切换为"主管"</div>
+  <div class="step-title"><span class="step-num">1</span> 找到待审核的凭证</div>
+  <div class="step-desc">在凭证列表中筛选状态为"草稿"的凭证</div>
 </div>
 <div class="step-card">
-  <div class="step-title"><span class="step-num">2</span> 找到已签字的凭证</div>
-  <div class="step-desc">在凭证列表中筛选状态为"已签字"的凭证</div>
-</div>
-<div class="step-card">
-  <div class="step-title"><span class="step-num">3</span> 点击"审核"</div>
+  <div class="step-title"><span class="step-num">2</span> 点击"审核"</div>
   <div class="step-desc">选中该凭证 → 点击"审核"按钮</div>
   <div class="step-result">✅ 状态变为"已审核"！反审核可以取消。</div>
 </div>
 
 <h4>操作四：过账</h4>
-<div class="alert alert-success"><strong>需要角色</strong>：会计或主管</div>
+<div class="alert alert-info">过账需要具有过账权限。教学模式下答对题目后系统自动过账。</div>
 <div class="step-card">
   <div class="step-title"><span class="step-num">1</span> 找到已审核的凭证</div>
   <div class="step-desc">筛选状态为"已审核"的凭证</div>
@@ -630,7 +617,7 @@
 </div>
 
 <h3>3.6 凭证模板——快速录入常用业务</h3>
-<p><strong>路径</strong>：总账 → 凭证模板</p>
+<p><strong>路径</strong>：凭证管理 → 凭证模板</p>
 <p>对于每月都会发生的固定业务（如计提折旧、结转工资），可以使用凭证模板——一次设置，每月调用。</p>
 
 <img src="screenshots/17-voucher-tpl.png" alt="凭证模板" class="screenshot-img" loading="lazy"
@@ -752,7 +739,7 @@
 <div class="screenshot-caption">📌 上图：现金流量表——经营活动/投资活动/筹资活动</div>
 
 <h3>5.3 试算平衡表——检查账是否做平</h3>
-<p><strong>路径</strong>：总账 → 试算平衡</p>
+<p><strong>路径</strong>：账簿管理 → 试算平衡表</p>
 <p>试算平衡表列出所有科目截至当前期间的借方发生额、贷方发生额和余额。如果 <strong>借方合计 = 贷方合计</strong>，说明账是平的。</p>
 
 <img src="screenshots/08-trial-bal.png" alt="试算平衡表" class="screenshot-img" loading="lazy"
@@ -764,7 +751,7 @@
 </div>
 
 <h3>5.4 科目余额表——查看各科目余额</h3>
-<p><strong>路径</strong>：总账 → 科目余额</p>
+<p><strong>路径</strong>：账簿管理 → 科目余额表</p>
 <p>科目余额表显示每个科目的期初余额、本期发生额和期末余额。可以按月份筛选，也可以展开查看明细科目的余额。</p>
 
 <img src="screenshots/07-subject-bal.png" alt="科目余额表" class="screenshot-img" loading="lazy"
@@ -793,17 +780,17 @@
 
 <!-- ================================================================ -->
 <h2 id="sec-6">6. 教学系统——跟着学做账</h2>
-<p>如果你是会计新手，强烈建议使用教学系统——它有 <strong>2,122 个任务</strong>，覆盖 <strong>4 大行业</strong>，每个行业全年 12 个月的企业真实业务。</p>
+<p>如果你是会计新手，强烈建议使用教学系统——它有 <strong>1,431 个任务</strong>，覆盖 <strong>4 大行业</strong>，每个行业全年 12 个月的企业真实业务。</p>
 
 <h3>6.1 选择行业——从哪个行业开始学</h3>
 <div class="alert alert-info"><strong>刚登录时默认是"制造业"。</strong> 进入教学中心前，你可以在右上角切换行业（点击当前行业名称→选择其他行业）。每个行业的任务相互独立，可以随时切换。</div>
 
 <table>
   <tr><th>行业</th><th>任务数</th><th>特色</th></tr>
-  <tr><td>🏭 制造业</td><td>586 个</td><td>采购→生产→销售→成本核算，覆盖完整工业链条</td></tr>
-  <tr><td>🏬 商业企业</td><td>531 个</td><td>商品流通（采购→仓储→销售），无生产成本</td></tr>
-  <tr><td>💼 服务业</td><td>504 个</td><td>管理咨询/软件开发，项目制核算</td></tr>
-  <tr><td>🏗️ 建筑业</td><td>501 个</td><td>建筑工程，按进度确认收入</td></tr>
+  <tr><td>🏭 制造业</td><td>356 个</td><td>采购→生产→销售→成本核算，覆盖完整工业链条</td></tr>
+  <tr><td>🏬 商业企业</td><td>358 个</td><td>商品流通（采购→仓储→销售），无生产成本</td></tr>
+  <tr><td>💼 服务业</td><td>355 个</td><td>管理咨询/软件开发，项目制核算</td></tr>
+  <tr><td>🏗️ 建筑业</td><td>362 个</td><td>建筑工程，按进度确认收入</td></tr>
 </table>
 
 <div class="tip-box">
@@ -827,11 +814,10 @@
 <div class="step-card">
   <div class="step-title"><span class="step-num">2</span> 选择角色路线（可选）</div>
   <div class="step-desc">
-    在页面左上角有三个单选按钮——<strong>"📋 全部"</strong>、<strong>"👤 会计路线"</strong>、<strong>"💰 出纳路线"</strong>。<br>
+    在页面左上角有两个单选按钮——<strong>"📋 全部"</strong> 和 <strong>"👤 会计路线"</strong>。<br>
     <ul>
       <li>想学完整的企业财务 → 选"全部"</li>
       <li>只想学做账（凭证、报表）→ 选"会计路线"</li>
-      <li>只想学管钱（日记账、对账）→ 选"出纳路线"</li>
     </ul>
   </div>
 </div>
@@ -854,7 +840,7 @@
 │                                      │
 │ 📖 出纳从工商银行提取现金 2,000元…    │
 │                                      │
-│ [🟢 引导模式] [🟡 练习模式] [🔴 考试] │
+│ [✏️ 练习] [📝 考试] [🔍 纠错]         │
 │                                      │
 │ 📄 附件：现金支票 | 银行回单          │
 │                                      │
@@ -871,10 +857,10 @@
   <tr><th>区域</th><th>用途</th></tr>
   <tr><td>标题栏</td><td>显示"第 X/Y 个任务"和任务名称。右边[−]是最小化，[×]是关闭</td></tr>
   <tr><td>任务描述</td><td>业务场景说明——告诉你这家公司发生了什么</td></tr>
-  <tr><td>模式切换</td><td>引导/练习/考试/自由练习四种模式（见下节）</td></tr>
+  <tr><td>模式切换</td><td>练习/考试/纠错三种模式（见下节）</td></tr>
   <tr><td>附件区</td><td>点击可以查看原始凭证（发票/回单/收据）——和真实的一模一样</td></tr>
   <tr><td>进度条</td><td>该月的完成进度 + 全部任务的完成进度</td></tr>
-  <tr><td>底部按钮</td><td>"◀ 上一个"退回，"🧾 去录入"跳转到凭证录入页答题，"下一个 ▶"跳到下一题</td></tr>
+  <tr><td>底部按钮</td><td>"◀ 上一个"退回，主体按钮为"✏️ 开始练习"或"📝 开始答题"（视模式而定），"下一个 ▶"跳到下一题。练习模式下还有"查看答案"按钮</td></tr>
 </table>
 
 <div class="tip-box">
@@ -884,26 +870,25 @@
 <h3>6.4 三种学习模式怎么选</h3>
 <table>
   <tr><th>模式</th><th>适合谁</th><th>怎么学</th></tr>
-  <tr><td>🟢 引导模式</td><td><strong>完全零基础（推荐）</strong></td>
+  <tr><td>✏️ 练习模式</td><td><strong>从零开始（推荐）</strong></td>
     <td>
-      系统分三步教你：<br>
-      ① 理解业务 → 阅读描述和凭证<br>
-      ② 逐笔分析 → 系统给提示，你看答案和讲解<br>
-      ③ 检查确认 → 确认后自动填入正确分录<br>
-      你只需看→理解→确认。最适合第一次接触。
-    </td>
-  </tr>
-  <tr><td>🟡 练习模式</td><td>有点基础了</td>
-    <td>
-      空白凭证你来自行填写 → 卡住了点"💡 我要提示"→ <br>
+      空白凭证你来填写 → 卡住了点"💡 我要提示"→ <br>
       提示会从"方向→科目→金额"逐级给出<br>
-      填好后点"检查答案"→ 系统自动评对错
+      填好后点"检查答案"→ 系统自动评对错并讲解
     </td>
   </tr>
-  <tr><td>🔴 考试模式</td><td>想检验自己</td>
+  <tr><td>📝 考试模式</td><td>想检验自己</td>
     <td>
       完全独立完成，没有任何提示 → 提交后系统判分。<br>
       适合做完一轮复习时使用。
+    </td>
+  </tr>
+  <tr><td>🔍 纠错模式</td><td>查错能力训练</td>
+    <td>
+      系统故意设置 1~3 处错误（科目/方向/金额等），<br>
+      你要像审计师一样找出并修正。<br>
+      4 种错误类型：科目错误、方向反了、金额不对、多余分录。<br>
+      适合检验自己的真正理解水平。
     </td>
   </tr>
   <tr><td>🟣 自由练习</td><td>只想随意操作</td>
@@ -915,24 +900,24 @@
   </tr>
 </table>
 
-<h3>6.5 如何答题（以引导模式为例）</h3>
+<h3>6.5 如何答题（以练习模式为例）</h3>
 <div class="step-card">
   <div class="step-title"><span class="step-num">1</span> 点击"🧾 去录入"</div>
   <div class="step-desc">在浮动窗中点击"🧾 去录入"按钮 → 页面跳转到"凭证录入"页，任务信息显示在页面顶部</div>
 </div>
 <div class="step-card">
-  <div class="step-title"><span class="step-num">2</span> 跟随引导操作</div>
+  <div class="step-title"><span class="step-num">2</span> 填写分录</div>
   <div class="step-desc">
-    引导模式下，系统会弹出一个"分步引导"窗口，引导你按步骤分析业务：<br>
+    根据任务描述和原始凭证分析业务，在凭证表格中填写分录：<br>
     <ul>
-      <li>先读场景描述和原始凭证</li>
-      <li>系统提问"这笔业务会涉及哪些科目？"——你想一想后点"查看答案"</li>
-      <li>系统揭示答案+会计讲解——你理解了再点"下一步"</li>
+      <li>先读场景描述和原始凭证，确定涉及哪些科目</li>
+      <li>选择科目（支持编码快速搜索）→ 填写借方/贷方金额</li>
+      <li>卡住了可以点浮动窗的"💡 我要提示"——提示从"方向→科目→金额"逐级给出</li>
     </ul>
   </div>
 </div>
 <div class="step-card">
-  <div class="step-title"><span class="step-num">3</span> 保存并检查</div>
+  <div class="step-title"><span class="step-num">3</span> 提交检查</div>
   <div class="step-desc">所有分录填好后 → 点"保存" → 系统自动比对答案 → 如果正确直接过账，数据流入报表</div>
   <div class="step-result">✅ 答对了！系统弹窗告诉你做对了，并提供"查看报表"的链接。<br>❌ 答错了：系统会显示正确答案，并给出每笔分录的会计逻辑讲解。该任务自动记入"错题本"。</div>
 </div>
@@ -990,9 +975,9 @@
 <p>每完成一个教学任务都会获得经验值（XP），累计经验值可以提升等级称号：</p>
 <table>
   <tr><th>获取方式</th><th>XP</th><th>说明</th></tr>
-  <tr><td>引导模式答对</td><td>+10</td><td>跟随引导完成，系统自动填入</td></tr>
-  <tr><td>练习模式答对</td><td>+15</td><td>自己填写并答对</td></tr>
-  <tr><td>考试模式答对</td><td>+20</td><td>独立完成且正确</td></tr>
+  <tr><td>✏️ 练习模式答对</td><td>+15</td><td>自主填写并答对，标准奖励</td></tr>
+  <tr><td>📝 考试模式答对</td><td>+25</td><td>无提示独立完成，最高奖励</td></tr>
+  <tr><td>🔍 纠错模式完成</td><td>+15</td><td>找出并修正所有错误</td></tr>
   <tr><td>首次完成</td><td>额外+5</td><td>每个任务第一次答对时额外奖励</td></tr>
   <tr><td>解锁成就</td><td>+30~500</td><td>每项成就附送经验值</td></tr>
 </table>
@@ -1061,18 +1046,13 @@
 </div>
 
 <h3>8.2 数据加密保护</h3>
-<p>系统对敏感数据进行了<strong>双轨加密</strong>保护：</p>
-<ul>
-  <li><strong>明文同步写入</strong>：确保读取速度最快</li>
-  <li><strong>AES-GCM 异步加密</strong>：同时保存一份加密版本（2 秒防抖），防止数据被篡改</li>
-  <li>加密范围包括：激活码、设备指纹、场景数据、XP 数据等所有敏感信息</li>
-</ul>
+<p>系统对敏感数据进行了<strong>加密保护</strong>：激活码、设备信息、学习进度等关键数据都会加密存储在本地，防止被篡改或泄露。加密和读取都是自动完成的，你不需要做任何额外操作。</p>
 
 <h3>8.3 激活码安全机制</h3>
 <ul>
   <li>激活码为 <strong>16 位</strong>大写 hex 格式（例如 <code>AB12-CD34-EF56-7890</code>）</li>
   <li>同一激活码绑定 <strong>1 台设备</strong>（设备指纹固定，更换电脑需重新激活）</li>
-  <li>激活验证首选在线验证，Worker 不可达时自动回退到本地校验</li>
+  <li>激活验证首选在线验证，验证不可达时自动回退到本地校验</li>
   <li>连续 20 次激活失败会临时封禁 1 小时（防暴力破解）</li>
 </ul>
 
@@ -1083,7 +1063,7 @@
   <li>商业企业教学数据（12个月）</li>
   <li>服务业教学数据（12个月）</li>
   <li>建筑业教学数据（12个月）</li>
-  <li>案例库数据（9个案例）</li>
+  <li>案例库数据（9个真实企业案例）</li>
 </ul>
 <p>如果检测到数据被篡改或损坏，弹窗提醒你重新安装。这个检查完全静默运行，不影响正常使用。</p>
 
@@ -1092,120 +1072,7 @@
 </div>
 
 <!-- ================================================================ -->
-<h2 id="sec-9">9. 其他常用功能简介</h2>
-
-<h3>9.1 出纳管理</h3>
-<p><strong>路径</strong>：总账 → 出纳管理 &nbsp;|&nbsp; <strong>需要角色</strong>：出纳</p>
-
-<img src="screenshots/13-cashier.png" alt="出纳管理" class="screenshot-img" loading="lazy"
-  onclick="window.open(this.src)">
-<div class="screenshot-caption">📌 上图：出纳管理——现金日记账 + 银行对账</div>
-
-<ul>
-  <li><strong>现金日记账</strong>：查看库存现金的日常收支流水（自动从凭证取数，不用手动登记）</li>
-  <li><strong>银行日记账</strong>：查看银行存款的流水</li>
-  <li><strong>银行对账</strong>：把公司记的银行账和银行发来的对账单进行核对 → 点"新增对账单"录入银行数据 → 点"自动勾对"让系统匹配</li>
-</ul>
-
-<h3>9.2 固定资产</h3>
-<p><strong>路径</strong>：总账 → 固定资产</p>
-
-<img src="screenshots/14-fixed-assets.png" alt="固定资产管理" class="screenshot-img" loading="lazy"
-  onclick="window.open(this.src)">
-<div class="screenshot-caption">📌 上图：固定资产——列表 + 新增资产表单</div>
-
-<ul>
-  <li>管理公司的大件资产（设备、房屋、车辆等）</li>
-  <li>新增资产时需要填写：名称、类别、原值、残值、使用年限、<strong>折旧方法</strong>（推荐用"直线法"——最简单）</li>
-  <li>系统会自动计算每月折旧额</li>
-</ul>
-
-<h3>9.3 辅助核算</h3>
-<p><strong>路径</strong>：总账 → 辅助核算</p>
-
-<img src="screenshots/16-auxiliary.png" alt="辅助核算" class="screenshot-img" loading="lazy"
-  onclick="window.open(this.src)">
-<div class="screenshot-caption">📌 上图：辅助核算——部门/员工/客户/供应商/项目五维度</div>
-
-<p>当你需要按"部门"来统计费用时：比如想知道"销售部这个月花了多少办公费"，就可以用辅助核算。</p>
-<ul>
-  <li>系统预置了 5 个维度：部门、员工、客户、供应商、项目</li>
-  <li>先在"辅助核算"里添加部门 → 然后在科目管理中给"管理费用"关联"部门"维度 → 做凭证时选择对应的部门</li>
-</ul>
-
-<h3>9.4 审计轨迹</h3>
-<p><strong>路径</strong>：系统管理 → 审计轨迹</p>
-
-<img src="screenshots/23-audit-log.png" alt="审计轨迹" class="screenshot-img" loading="lazy"
-  onclick="window.open(this.src)">
-<div class="screenshot-caption">📌 上图：审计轨迹——操作时间/用户/类型/详情全记录</div>
-
-<p>这里记录了谁在什么时间做了什么操作——比如"张三 2026-06-15 10:30 审核了凭证 记-202606-001"。</p>
-<p><strong>不可删除，不可修改</strong>——这是为了保证财务数据的可追溯性。</p>
-
-<h3>9.5 应收应付管理</h3>
-<p><strong>路径</strong>：总账 → 应收应付</p>
-
-<img src="screenshots/18-arap.png" alt="应收应付管理" class="screenshot-img" loading="lazy"
-  onclick="window.open(this.src)">
-<div class="screenshot-caption">📌 上图：应收应付——客户/供应商往来款管理</div>
-
-<ul>
-  <li><strong>应收</strong>：管理客户的欠款——查看应收余额、账龄分析、收款核销</li>
-  <li><strong>应付</strong>：管理供应商的应付款——查看应付余额、付款计划</li>
-  <li>应收应付数据自动从凭证取数，无需手动登记</li>
-</ul>
-
-<h3>9.6 工资核算</h3>
-<p><strong>路径</strong>：总账 → 工资核算</p>
-
-<img src="screenshots/19-payroll.png" alt="工资核算" class="screenshot-img" loading="lazy"
-  onclick="window.open(this.src)">
-<div class="screenshot-caption">📌 上图：工资核算——员工工资表 + 费用分配</div>
-
-<ul>
-  <li>录入员工工资数据（基本工资、社保、个税等）</li>
-  <li>系统自动计算应发、实发金额</li>
-  <li>一键生成工资计提和发放凭证</li>
-</ul>
-
-<h3>9.7 外币核算</h3>
-<p><strong>路径</strong>：总账 → 外币核算</p>
-
-<img src="screenshots/20-forex.png" alt="外币核算" class="screenshot-img" loading="lazy"
-  onclick="window.open(this.src)">
-<div class="screenshot-caption">📌 上图：外币核算——汇率管理 + 外币余额</div>
-
-<ul>
-  <li>管理外币账户和汇率</li>
-  <li>期末自动计算汇兑损益</li>
-  <li>适用于有进出口业务的企业</li>
-</ul>
-
-<h3>9.8 总账查询——按科目查看流水</h3>
-<p><strong>路径</strong>：总账 → 总账查询</p>
-
-<img src="screenshots/15-ledger.png" alt="总账查询" class="screenshot-img" loading="lazy"
-  onclick="window.open(this.src)">
-<div class="screenshot-caption">📌 上图：总账查询——选择科目查看逐笔流水</div>
-
-<p>总账查询可以按科目查看其下所有分录的逐笔流水，支持按月份、按金额范围筛选，是查账的重要工具。</p>
-
-<h3>9.9 账户管理</h3>
-<p><strong>路径</strong>：系统管理 → 账户管理</p>
-
-<img src="screenshots/24-account-mgmt.png" alt="账户管理" class="screenshot-img" loading="lazy"
-  onclick="window.open(this.src)">
-<div class="screenshot-caption">📌 上图：账户管理——企业信息 + 系统参数配置</div>
-
-<ul>
-  <li>查看和修改企业基本信息（名称、税号、地址等）</li>
-  <li>配置系统参数（小数位数、启用辅助核算等）</li>
-  <li>修改登录密码</li>
-</ul>
-
-<!-- ================================================================ -->
-<h2 id="sec-10">10. 常见问题</h2>
+<h2 id="sec-9">9. 常见问题</h2>
 
 <div class="card" style="padding:16px 20px;margin:12px 0">
 <p><strong>❓ 保存凭证时提示"借贷不平衡"怎么办？</strong><br>
@@ -1218,13 +1085,13 @@
 ✅ 需要先"反过账"（在凭证查询中找到该凭证 → 点"反过账"）→ 然后就可以修改了 → 改完重新过账。</p>
 
 <p><strong>❓ 为什么看不到"出纳管理"这个菜单？</strong><br>
-✅ 因为当前角色不是出纳。看页面右上角→点角色标签→切换到"出纳"即可。</p>
+✅ 出纳角色目前暂未推出。如果你是会计专业的学习者，目前用不到这个模块。后续版本会开放。</p>
 
 <p><strong>❓ 资产负债表不平衡怎么办？</strong><br>
 ✅ 常见原因：① 损益类科目没有结转 ② 还有凭证是草稿状态没有过账 ③ 做凭证时借贷方向搞反了。先去检查这三个方面。</p>
 
 <p><strong>❓ 教学中想切换模式但不知道怎么操作？</strong><br>
-✅ 打开浮动窗 → 顶部有"引导模式""练习模式""考试模式""自由练习"四个按钮 → 点击切换。切换后重新进入任务会按新模式处理。</p>
+✅ 打开浮动窗 → 顶部有"✏️ 练习""📝 考试""🔍 纠错"三个模式按钮 → 点击切换。切换后重新进入任务会按新模式处理。</p>
 
 <p><strong>❓ 怎么切换行业（制造业/商业/服务业/建筑业）？</strong><br>
 ✅ 在页面右上角找到行业名称标签（默认显示"制造业"）→ 点击 → 弹出行业列表 → 选择你想学的行业 → 系统自动加载该行业的教学数据。</p>
@@ -1242,15 +1109,27 @@
 ✅ 教学任务是按月份循序渐进的引导式学习；案例库是独立的真实企业账套，需要你独立完成从凭证到报表的全流程。建议先学完至少一个月教学，再挑战案例。</p>
 
 <p><strong>❓ 有没有系统的会计知识点教材？</strong><br>
-✅ 有！系统赠送了完整的教学知识点文档（<code>docs/教学知识点介绍.html</code>），包含会计 12 章 + 出纳 8 章，共 65 节内容。支持搜索、书签、暗色模式，在软件目录的 <code>docs/</code> 文件夹里可以打开。</p>
+✅ 有！系统赠送了完整的教学知识点文档（<code>docs/教学知识点介绍.html</code>），包含会计 12 章 + 出纳 8 章（共20章），共 69 节内容。支持搜索、书签，在软件目录的 <code>docs/</code> 文件夹里可以打开。</p>
 
 <p><strong>❓ 报错信息看不懂怎么办？</strong><br>
 ✅ 可以截图发给我（Claude）看。常见的错误大多是因为科目没选对、金额填反了、或者借贷不平衡。</p>
+
+<p><strong>❓ 存货管理页面显示没有数据？</strong><br>
+✅ 存货数据从已过账的凭证中自动提取。请先确保这个月已经有涉及存货科目的凭证<strong>过账</strong>了（原材料/库存商品/周转材料）。如果没有做过相关业务，页面自然为空。</p>
+
+<p><strong>❓ 财务分析趋势图没有数据？</strong><br>
+✅ 趋势图需要至少<strong>两个月份</strong>的已过账数据才能显示趋势线。如果只有一个月的数据，图表只会显示一个数据点。先把前面几个月的教学任务做完，趋势就出来了。</p>
+
+<p><strong>❓ 怎么切换主题颜色？</strong><br>
+✅ 进入<strong>系统管理 → 系统设置 → 外观设置</strong>标签页，可以看到"水墨国风"和"经典蓝白"两个主题选项，点击即切换，无需刷新页面。</p>
+
+<p><strong>❓ 怎么备份数据？</strong><br>
+✅ 进入<strong>系统管理 → 系统设置 → 存储管理</strong>标签页，点击"导出备份"可以将所有数据保存为一个 JSON 文件。需要恢复时在同一个页面点击"导入恢复"即可。</p>
 </div>
 
 <hr style="margin:48px 0 16px;border:none;border-top:1px solid var(--border)">
 <p style="text-align:center;color:var(--text-light);font-size:13px">
-  文档版本 v2.2 · 2026 年 6 月 · 観測者企业财务模拟系统<br>
+  文档版本 v2.4 · 2026 年 6 月 · 観測者企业财务模拟系统<br>
   喵~
 </p>
 
@@ -1298,26 +1177,6 @@
 function toggleSidebar() {
   document.getElementById('sidebar').classList.toggle('open');
   document.getElementById('sidebar-overlay').classList.toggle('open');
-}
-
-// ── 暗色模式 ──
-(function() {
-  const saved = localStorage.getItem('docs_theme');
-  if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
-  updateThemeBtn();
-})();
-function toggleTheme() {
-  const html = document.documentElement;
-  const isDark = html.getAttribute('data-theme') === 'dark';
-  if (isDark) { html.removeAttribute('data-theme'); localStorage.setItem('docs_theme', 'light'); }
-  else { html.setAttribute('data-theme', 'dark'); localStorage.setItem('docs_theme', 'dark'); }
-  updateThemeBtn();
-}
-function updateThemeBtn() {
-  const btn = document.getElementById('themeBtn');
-  if (!btn) return;
-  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-  btn.textContent = isDark ? '☀️ 亮色模式' : '🌙 暗色模式';
 }
 
 // ── 搜索 ──
