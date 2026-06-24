@@ -113,6 +113,41 @@ describe('完整性校验 - checkIntegrity 执行', () => {
 })
 
 describe('完整性校验 - 突变检测', () => {
+  it('checkModuleConsistency 对空数据返回空数组', async () => {
+    const mod = await import('@/utils/integrity.js')
+    const result = mod.checkModuleConsistency(null)
+    expect(result).toEqual([])
+    const result2 = mod.checkModuleConsistency({})
+    expect(result2).toEqual([])
+  })
+
+  it('checkModuleConsistency 对含凭证的store返回信息条目', () => {
+    const mockStore = {
+      state: {
+        subjects: [{ id: 's1', code: '1002', name: '银行存款' }],
+        vouchers: [
+          { status: 'posted', period: '202602', entries: [
+            { subjectCode: '660205', debit: 125, credit: 0, explanation: '折旧' },
+            { subjectCode: '1602', debit: 0, credit: 125, explanation: '累计折旧' },
+          ]},
+          { status: 'posted', period: '202602', entries: [
+            { subjectCode: '660203', debit: 25000, credit: 0, explanation: '工资' },
+            { subjectCode: '221101', debit: 0, credit: 25000, explanation: '应付工资' },
+          ]},
+        ],
+      },
+    }
+    import('@/utils/integrity.js').then(mod => {
+      const issues = mod.checkModuleConsistency(mockStore)
+      expect(Array.isArray(issues)).toBe(true)
+      expect(issues.length).toBeGreaterThan(0)
+      const deprMsg = issues.find(i => i.message.includes('累计折旧'))
+      expect(deprMsg).toBeDefined()
+      const payrollMsg = issues.find(i => i.message.includes('应付职工薪酬'))
+      expect(payrollMsg).toBeDefined()
+    })
+  })
+
   it('篡改数据后哈希应不匹配', async () => {
     // 模拟数据被修改的场景：通过修改 localStorage 中的场景数据
     const backup = localStorage.getItem('jd_scenario_data_manufacturing_accountant')

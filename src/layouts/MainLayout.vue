@@ -226,10 +226,10 @@
             </span>
             <template #dropdown>
               <el-dropdown-menu>
-                <el-dropdown-item v-for="r in store.ROLES" :key="r.id" :disabled="r.id === 'cashier'" @click="r.id !== 'cashier' && switchRole(r.id)">
+                <el-dropdown-item v-for="r in store.ROLES" :key="r.id" :disabled="r.id === 'cashier' || r.id === 'supervisor'" @click="(r.id !== 'cashier' && r.id !== 'supervisor') && switchRole(r.id)">
                   <span :style="{ fontWeight: currentRole === r.id ? 700 : 400 }">{{ r.name }}</span>
                   <span style="color:#909399;font-size:12px;margin-left:8px">{{ r.desc }}</span>
-                  <span v-if="r.id === 'cashier'" style="color:#c0c4cc;font-size:11px;margin-left:6px">暂未推出</span>
+                  <span v-if="r.id === 'cashier' || r.id === 'supervisor'" style="color:#c0c4cc;font-size:11px;margin-left:6px">暂未推出</span>
                 </el-dropdown-item>
               </el-dropdown-menu>
             </template>

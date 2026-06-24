@@ -477,42 +477,10 @@ const apr = [
     documents: [
       { type: 'receipt', label: '法律费发票', docTitle: '法 律 顾 问 服 务 发 票', date: '2026-04-29', totalAmount: 12000, payer: '雲帆管理咨询有限公司', stampText: 'XX律师事务所\n发票专用章', items: [{ name: '2026年常年法律顾问费（半年）', qty: 1, price: 12000, amount: 12000 }]},
       { type: 'bank', label: '转账回单', date: '2026-04-29', totalAmount: 12000, payer: '雲帆管理咨询有限公司', payeeName: 'XX律师事务所', content: '常年法律顾问费上半年', refNo: 'HD202604290011' }] },
-  { date: '2026-04-29', role: 'accountant', title: '计提无形资产摊销', tags: ["费用管理"], difficulty: 2,
+  { date: '2026-04-29', role: 'accountant', title: '购入项目管理软件', tags: ["费用管理"], difficulty: 2,
     tip: '无形资产当月购入次月摊销。项目管理软件24,000元÷5年÷12月=400元/月。下月起计提。',
-    description: '本月购入项目管理软件24,000元，5年摊销。月摊销额=400元，自5月起计提。',
-    entries: [],
-    documents: [
-      { type: 'text', label: '无形资产入账通知', docTitle: '无 形 资 产 入 账 通 知', date: '2026-04-29', stampText: '财务专用章', content: '资产名称：项目管理软件（永久许可）\n原值：24,000.00元\n摊销年限：5年\n月摊销额：24,000÷5÷12=400.00元\n起摊销月：2026年5月\n\n制表：李会计' ,
-      headers: [
-        '项目',
-        '金额/说明'
-      ],
-      rows: [
-        [
-          '资产名称',
-          '项目管理软件（永久许可）'
-        ],
-        [
-          '原值',
-          '24,000.00元'
-        ],
-        [
-          '摊销年限',
-          '5年'
-        ],
-        [
-          '月摊销额',
-          '24,000÷5÷12=400.00元'
-        ],
-        [
-          '起摊销月',
-          '2026年5月'
-        ],
-        [
-          '制表',
-          '李会计'
-        ],
-      ]}] },
+    description: '购入项目管理软件（永久许可）24,000元，5年摊销。次月起计提摊销，月摊销额400元。',
+    entries: [{ subjectCode: '1701', summary: '购入项目管理软件', debit: 24000, credit: 0, explanation: '无形资产增加。购入项目管理软件（永久许可），按购入成本入账。' }, { subjectCode: '100201', summary: '支付软件款', debit: 0, credit: 24000, cashFlowItem: 'cf-inv', cashFlowExplanation: '购买无形资产支付的现金（配对科目1701），属于投资活动现金流出。', explanation: '银行存款减少。支付项目管理软件采购款，次月起开始摊销。' }], documents: [{ type: 'text', label: '增值税发票', docTitle: '增 值 税 发 票', date: '2026-04-29', stampText: '发票专用章', content: '发票代码：110024****\n开票日期：2026年04月29日\n\n购买方：雲帆管理咨询有限公司\n\n销售方：XX软件科技有限公司\n\n商品信息：\n  项目管理软件（永久许可） × 1套\n  金额：24,000.00元\n  税率：6%\n  税额：1,440.00元\n\n价税合计：贰万肆仟元整\n（小写）¥24,000.00' }, { type: 'bank', label: '付款回单', date: '2026-04-29', totalAmount: 24000, payer: '雲帆管理咨询有限公司', payerAccount: '6222 0200 **** 5678', payeeName: 'XX软件科技有限公司', content: '购入项目管理软件（永久许可）', refNo: 'HD202604290012' }]},
   { date: '2026-04-30', role: 'accountant', title: '模拟纳税申报', tags: ["税费", "期末"], difficulty: 1, entries: [], nextAction: 'tax-filing',
     documents: [{ type: 'text', label: '申报提醒', docTitle: '4 月 纳 税 申 报 提 醒', stampText: '财务专用章', content: '申报期间：2026年4月\n截止日期：2026年5月15日\n\n申报税种：\n1. 增值税（6%，销项税额13,200元）\n2. 城市维护建设税（7%）\n3. 教育费附加（3%+2%）\n4. 代扣代缴个人所得税\n\n请前往纳税申报页面核对后提交。' }] },
 ]

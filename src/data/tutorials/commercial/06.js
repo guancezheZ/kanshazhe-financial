@@ -800,10 +800,9 @@ const tasks = [
     title: '计提固定资产折旧',
     tags: ['资产', "info"],
     difficulty: 1,
-    description: '前往固定资产模块计提6月折旧1,350元。',
-    tip: '固定资产按月计提折旧。超市固定资产按使用部门分配折旧费用。借：销售费用/管理费用-折旧费，贷：累计折旧。',
-    entries: [],
-    nextAction: 'fixed-assets',
+    description: '计提6月折旧1,350元（货架500+收银系统333.33+冷藏柜266.67+空调250）。',
+    tip: '固定资产按月计提折旧。借：管理费用-折旧费，贷：累计折旧。',
+    entries: [{ subjectCode: '660205', summary: '计提6月折旧', debit: 1350, credit: 0, explanation: '管理费用-折旧费增加。月折旧额1,350元。' }, { subjectCode: '1602', summary: '计提6月折旧', debit: 0, credit: 1350, explanation: '累计折旧增加。' }],
     documents: [{ type: 'text', label: '折旧计算表', docTitle: '固定资产折旧计算表（2026年6月）', stampText: '财务专用章',
       content: `固定资产折旧计算表
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

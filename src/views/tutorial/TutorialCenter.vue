@@ -46,10 +46,7 @@
         <el-button size="small" type="warning" plain @click="router.push({ name: 'AchievementSystem' })">
           🏅 成就
         </el-button>
-        <el-button size="small" type="danger" plain @click="router.push({ name: 'TaxFiling' })">
-          🧾 报税
-        </el-button>
-        <el-tooltip content="自由练习：不记进度、不给XP、不过账、可重复做" placement="bottom" :show-after="300">
+        <el-tooltip content="自由模式：不记进度、不给XP、不过账、可重复做" placement="bottom" :show-after="300">
           <el-button
             size="small"
             :type="store.isPracticeMode() ? 'warning' : 'default'"
@@ -57,7 +54,7 @@
             plain
             @click="store.togglePracticeMode()"
           >
-            {{ store.isPracticeMode() ? '🎯 自由练习中' : '📚 按课程学' }}
+            {{ store.isPracticeMode() ? '🎯 自由模式' : '📅 月度模式' }}
           </el-button>
         </el-tooltip>
         <el-button size="small" type="danger" plain @click="resetProgress">
@@ -203,23 +200,6 @@
       </el-scrollbar>
     </div>
 
-    <!-- 月度模式开关 -->
-    <div class="monthly-mode-bar">
-      <el-switch
-        :model-value="monthlyMode"
-        @update:model-value="toggleMonthlyMode"
-        size="small"
-        :disabled="store.isPracticeMode()"
-      />
-      <span class="mode-label">📅 月度模式</span>
-      <el-tooltip content="开启后，必须完成当前月的所有任务才能解锁下一个月" placement="top" :show-after="300">
-        <span class="mode-info">ⓘ</span>
-      </el-tooltip>
-      <span v-if="monthlyMode && store.isPracticeMode()" class="mode-warning">
-        ⚠️ 自由练习中，月度锁定已暂停
-      </span>
-    </div>
-
     <!-- 月份学习进度 -->
     <el-card shadow="never">
       <el-tabs v-model="activeMonth" @tab-change="onTabChange" :before-leave="handleBeforeLeaveTab">
@@ -351,16 +331,11 @@
                   >🔒 已锁定</el-button>
                 </el-tooltip>
                 <el-button
-                  v-else-if="row.entries.length > 0 || row.nextAction"
+                  v-else
                   size="small"
                   type="primary"
                   @click="startTask(row)"
                 >开始做</el-button>
-                <el-button
-                  v-else
-                  size="small"
-                  @click="showTip(row)"
-                >查看提示</el-button>
               </template>
             </el-table-column>
           </el-table>
@@ -970,19 +945,6 @@ onMounted(() => {
   margin-top: 4px;
 }
 
-/* ─── 月度模式开关 ─── */
-.monthly-mode-bar {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 0;
-  margin-bottom: 8px;
-}
-.mode-label {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text);
-}
 .mode-info {
   font-size: 14px;
   color: var(--text-light);

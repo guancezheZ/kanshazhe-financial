@@ -67,6 +67,10 @@ describe('教程数据 - 结构', () => {
       '2026-06-20_国债利息收入确认': 2,
       '2026-06-25_银行利息及手续费': 2,
       '2026-07-04_预付采购定金': 2,
+      '2026-01-23_购买办公电脑': 2,
+      '2026-02-27_计提工资及折旧': 2,
+      '2026-03-17_购买生产设备': 2,
+      '2026-04-27_计提工资及折旧': 2,
       '2026-07-07_收到政府稳岗补贴': 2,
       '2026-07-10_现销商品': 2,
       '2026-07-25_支付水电费': 2,
@@ -835,6 +839,26 @@ describe('教程数据 - 答案比对', () => {
   it('空答案正确比对', () => {
     const result = compareAnswers([], [])
     expect(result.every(r => r.type === 'success')).toBe(true)
+  })
+
+  it('所有nextAction任务不含fixed-assets/payroll（已转换）', () => {
+    const allTasks = []
+    for (const mn of ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']) {
+      allTasks.push(...getTutorials(mn))
+    }
+    const bad = allTasks.filter(t => t.nextAction === 'fixed-assets' || t.nextAction === 'payroll')
+    expect(bad).toEqual([])
+  })
+
+  it('原有nextAction任务已拥有entries', () => {
+    const allTasks = []
+    for (const mn of ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']) {
+      allTasks.push(...getTutorials(mn))
+    }
+    const previousNextAction = allTasks.filter(t => !t.nextAction && t.entries && t.entries.length > 0)
+    // 至少部分任务有多个分录（原来nextAction合并的）
+    const multiEntry = previousNextAction.filter(t => t.entries.length >= 3)
+    expect(multiEntry.length).toBeGreaterThan(10)
   })
 })
 
@@ -1918,6 +1942,7 @@ describe('商业企业教程数据', () => {
 
   it('各月任务附件数量正确', () => {
     const COMMERCIAL_EXPECTED = {
+      '2026-01-04_购买超市设备': 2,
       '2026-01-08_采购食品饮料（现购）': 3,
       '2026-01-10_采购生鲜果蔬': 3,
       '2026-01-18_小家电到货验收及尾款支付': 3,

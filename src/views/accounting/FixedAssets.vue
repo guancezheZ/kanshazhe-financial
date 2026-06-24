@@ -3,19 +3,17 @@
     <div class="page-header">
       <h2 class="page-title">固定资产</h2>
       <div class="page-actions">
-        <el-button type="primary" size="small" @click="showForm=true;editId=null;resetForm()"
-          :disabled="teachingLocked" :title="teachingLocked ? '🔒 请到教学中心选择相关任务' : ''">
+        <el-button type="primary" size="small" @click="handleAddAssetClick">
           ➕ 新增资产
         </el-button>
-        <el-button v-if="isTeachingMode" type="success" size="small" @click="handleDepreciation"
-          :disabled="deprLocked" :title="deprLocked ? '🔒 请到教学中心选择相关任务' : ''">
+        <el-button type="success" size="small" @click="handleDepreciationClick">
           📆 计提本月折旧
         </el-button>
       </div>
     </div>
 
     <el-card shadow="never">
-      <el-table :data="assets" border stripe size="small" empty-text="暂无固定资产，请点击「新增资产」录入">
+      <el-table :data="assets" border stripe size="small" empty-text="暂无固定资产，请通过凭证录入完成购入">
         <el-table-column label="编码" prop="code" width="90" />
         <el-table-column label="名称" prop="name" min-width="140" />
         <el-table-column label="类别" prop="category" width="100" />
@@ -35,7 +33,7 @@
         <el-table-column label="净值" width="120" align="right">
           <template #default="{ row }">{{ fmt(row.netValue) }}</template>
         </el-table-column>
-        <el-table-column label="操作" width="100">
+        <el-table-column label="操作" width="100" v-if="!isTeachingMode">
           <template #default="{ row }">
             <el-button text size="small" type="danger" @click="delAsset(row)">删除</el-button>
           </template>
@@ -44,7 +42,7 @@
     </el-card>
 
     <!-- 新增资产弹窗 -->
-    <el-dialog v-model="showForm" :title="isTeachingMode ? '新增资产（教学模式下将自动生成凭证）' : '新增资产'" width="520">
+    <el-dialog v-model="showForm" title="新增资产" width="520">
       <el-form :model="af" label-width="90px">
         <el-form-item label="编码"><el-input v-model="af.code" placeholder="如 ZC-001" /></el-form-item>
         <el-form-item label="名称"><el-input v-model="af.name" placeholder="如 联想台式电脑" /></el-form-item>
@@ -90,19 +88,41 @@ const af = ref({ code: '', name: '', category: '', originalValue: 0, salvageValu
 
 const isTeachingMode = computed(() => localStorage.getItem('teaching_active') === 'true')
 
-// 教学任务锁：从教学中心跳转过来时解锁，任务完成后重新锁定
 const period = getCurrentPeriod()
-const purchaseDoneKey = `jd_module_fa_purchase_${period}`
-const deprDoneKey = `jd_module_fa_depr_${period}`
+function getAssetsKey() {
+  const sid = localStorage.getItem('jd_scenario') || 'manufacturing'
+  return `jd_fixed_assets_${sid}`
+}
 
-const moduleUnlocked = computed(() => {
-  if (!isTeachingMode.value) return true
-  return sessionStorage.getItem('jd_module_task') === 'fixed-assets'
-})
-const purchaseDone = computed(() => localStorage.getItem(purchaseDoneKey) === 'done')
-const deprDone = computed(() => localStorage.getItem(deprDoneKey) === 'done')
-const teachingLocked = computed(() => isTeachingMode.value && (!moduleUnlocked.value || purchaseDone.value))
-const deprLocked = computed(() => isTeachingMode.value && (!moduleUnlocked.value || deprDone.value))
+// ─── 教学提示文案 ──────────────────────────────
+const TEACHING_HINTS = {
+  addAsset: {
+    title: '教学模式下无法直接新增资产',
+    msg: '请通过【凭证录入】填制分录完成。\n\n📋 分录示例：\n  借：固定资产（1601）\n  贷：银行存款（1002）\n\n💡 真实企业做法：\n填写资产卡片（名称、类别、原值、残值率、\n折旧年限、折旧方法），系统自动生成凭证，\n次月起自动计提折旧。',
+  },
+  depreciation: {
+    title: '教学模式下无法直接计提折旧',
+    msg: '请通过【凭证录入】填制分录完成。\n\n📋 分录示例：\n  借：管理费用-折旧费（660205）\n  贷：累计折旧（1602）\n\n💡 真实企业做法：\n系统根据资产卡片自动计算月折旧额，\n点击「计提折旧」自动生成凭证，\n无需手动录入分录。',
+  },
+}
+
+function handleAddAssetClick() {
+  if (isTeachingMode.value) {
+    ElMessage.info({ message: TEACHING_HINTS.addAsset.msg, title: TEACHING_HINTS.addAsset.title, duration: 8000 })
+    return
+  }
+  showForm.value = true
+  editId.value = null
+  resetForm()
+}
+
+function handleDepreciationClick() {
+  if (isTeachingMode.value) {
+    ElMessage.info({ message: TEACHING_HINTS.depreciation.msg, title: TEACHING_HINTS.depreciation.title, duration: 8000 })
+    return
+  }
+  handleDepreciation()
+}
 
 function fmt(v) { return formatAmount(v) }
 function resetForm() { af.value = { code: '', name: '', category: '', originalValue: 0, salvageValue: 0, usefulLife: 60, deprMethod: 'straight_line', monthsCharged: 0 } }
@@ -131,7 +151,7 @@ const CATEGORY_SUBJECT = {
 }
 
 function loadAssets() {
-  try { assets.value = JSON.parse(localStorage.getItem('jd_fixed_assets') || '[]').map(a => {
+  try { assets.value = JSON.parse(localStorage.getItem(getAssetsKey()) || '[]').map(a => {
     a.monthlyDepr = calcMonthlyDepreciation(a.originalValue, a.salvageValue, a.usefulLife, a.deprMethod, a.monthsCharged || 0)
     a.accumDepr = (a.monthsCharged || 0) * a.monthlyDepr
     a.netValue = Math.max(a.originalValue - a.accumDepr, 0)
@@ -140,79 +160,29 @@ function loadAssets() {
 }
 
 function saveAsset() {
-  if (teachingLocked.value) {
-    return ElMessage.warning('🔒 请先到教学中心选择相关任务')
-  }
   if (!af.value.name) return ElMessage.warning('请输入资产名称')
   if (!af.value.category) return ElMessage.warning('请选择资产类别')
 
   // 保存到本地
-  const list = JSON.parse(localStorage.getItem('jd_fixed_assets') || '[]')
+  const list = JSON.parse(localStorage.getItem(getAssetsKey()) || '[]')
   const assetId = Date.now()
   list.push({ id: assetId, ...af.value, monthsCharged: af.value.monthsCharged || 0, createdAt: new Date().toISOString() })
-  localStorage.setItem('jd_fixed_assets', JSON.stringify(list))
+  localStorage.setItem(getAssetsKey(), JSON.stringify(list))
   showForm.value = false
   resetForm()
   loadAssets()
-
-  // 教学模式下：自动生成购买固定资产凭证
-  if (isTeachingMode.value) {
-    const assetSubject = CATEGORY_SUBJECT[af.value.category] || '160103'
-    const subjAsset = findSubject(assetSubject)
-    const subjBank = findSubject('100201')
-
-    const result = store.addTeachingVoucher({
-      date: todayStr(),
-      entries: [
-        {
-          summary: `购入${af.value.name}`,
-          subjectCode: assetSubject,
-          subjectId: subjAsset ? subjAsset.id : '',
-          subjectName: subjAsset ? subjAsset.name : '',
-          debit: af.value.originalValue,
-          credit: 0,
-          cashFlowItem: 'cf-inv',
-          explanation: `固定资产增加。"购入${af.value.name}"按购入成本入账，次月开始计提折旧。`,
-        },
-        {
-          summary: `支付${af.value.name}款`,
-          subjectCode: '100201',
-          subjectId: subjBank ? subjBank.id : '',
-          subjectName: subjBank ? subjBank.name : '',
-          debit: 0,
-          credit: af.value.originalValue,
-          cashFlowItem: 'cf-inv',
-          explanation: '银行存款减少。支付资产购置款，该支出属于投资活动现金流出。',
-        },
-      ],
-    })
-
-    if (result.success) {
-      localStorage.setItem(purchaseDoneKey, 'done')
-      sessionStorage.removeItem('jd_module_task')
-      ElMessage.success('✅ 凭证已自动生成！购入固定资产已过账')
-      window.dispatchEvent(new CustomEvent('task-updated'))
-    } else {
-      ElMessage.warning('凭证自动生成失败：' + (result.errors || []).join('；'))
-    }
-  } else {
-    ElMessage.success('资产已添加（非教学模式下不自动生成凭证）')
-  }
+  ElMessage.success('资产已添加')
 }
 
-// 计提本月折旧
+// 计提本月折旧（非教学模式下手动操作）
 function handleDepreciation() {
-  if (deprLocked.value) {
-    return ElMessage.warning('🔒 请先到教学中心选择相关任务')
-  }
   if (!assets.value.length) {
     return ElMessage.warning('没有固定资产，无需计提折旧')
   }
 
-  // 检查是否已计提本月折旧
-  const deprCheckKey = `jd_fa_depr_${period}`
-  if (localStorage.getItem(deprCheckKey)) {
-    return ElMessage.info('本月折旧已计提，无需重复操作')
+  // 检查是否已计提本月折旧（查凭证而非仅localStorage，防止用户清数据后重复计提）
+  if (store.state.vouchers.some(v => v.period === period && v.entries.some(e => e.subjectCode === '660205' && e.debit > 0))) {
+    return ElMessage.info('本月折旧已计提（凭证记录存在），无需重复操作')
   }
 
   // 按类别汇总折旧
@@ -294,19 +264,15 @@ function handleDepreciation() {
     })
 
     if (result.success) {
-      // 标记本月已计提
-      localStorage.setItem(deprCheckKey, 'true')
-      localStorage.setItem(deprDoneKey, 'done')
-      sessionStorage.removeItem('jd_module_task')
       // 更新各资产的已计提月数
-      const list = JSON.parse(localStorage.getItem('jd_fixed_assets') || '[]')
+      const list = JSON.parse(localStorage.getItem(getAssetsKey()) || '[]')
       for (const a of list) {
         // 确保不超过使用寿命
         if ((a.monthsCharged || 0) < a.usefulLife) {
           a.monthsCharged = (a.monthsCharged || 0) + 1
         }
       }
-      localStorage.setItem('jd_fixed_assets', JSON.stringify(list))
+      localStorage.setItem(getAssetsKey(), JSON.stringify(list))
       loadAssets()
       ElMessage.success(`✅ 折旧凭证已自动生成！本月折旧合计：${formatAmount(totalDepr)}元`)
       window.dispatchEvent(new CustomEvent('task-updated'))
@@ -318,8 +284,8 @@ function handleDepreciation() {
 
 function delAsset(row) {
   ElMessageBox.confirm('确定删除此项资产吗？').then(() => {
-    const list = JSON.parse(localStorage.getItem('jd_fixed_assets') || '[]').filter(a => a.id !== row.id)
-    localStorage.setItem('jd_fixed_assets', JSON.stringify(list)); loadAssets()
+    const list = JSON.parse(localStorage.getItem(getAssetsKey()) || '[]').filter(a => a.id !== row.id)
+    localStorage.setItem(getAssetsKey(), JSON.stringify(list)); loadAssets()
     ElMessage.success('已删除')
   }).catch(() => {})
 }

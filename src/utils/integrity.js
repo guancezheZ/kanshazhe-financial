@@ -26,9 +26,9 @@ const MODULE_MAP = {
 const EXPECTED_HASHES = {
   "xp-system": "0435847d66102477badc0a8f017171396c76d6913baef41821ad72f931227a26",
   "scenarios": "6dd27583e14cd4a2704447aa605074e8989e4331c8cb77c53d678eff9f9a67f6",
-  "year1": "4cc0f8febc3ad365882b5c2b36c42b11fa2e9aaf65d124f7334b292d254b477d",
-  "commercial": "56d5822b4c832a59adedf12cd79c76cedd7a734c78b52dba7b32527a22fc33d7",
-  "service": "53344fa2843642fead33a9aeb804b432086c5d086b41c536b4692503b42d0949",
+  "year1": "1a0ab45bf3b5946398c96849ef56b72522ef9105a58f4026706efcc8a2eabdd4",
+  "commercial": "7cd2250bcf2fbe207f83b0f8d1ab053616813e5885155c8e171542b68e4156de",
+  "service": "31f12138b9891b44ef36227bd356a534cc34f106f441b7d031d9df8ca8cc5a03",
   "construction": "614cdbd1a6038b12ce5246421e1cddebd3580ecfb06ce7bd58858d18a06b1bc7",
   "cases": "30fcf4849c1f1f026e9c11976d74db393b16465821f0d85cd51487443d29bd7d",
 }
@@ -341,6 +341,68 @@ function scanDataHealth(data, name) {
       issues.push(...checkEntryBalance(group.entries, group.path))
     }
   }
+
+  return issues
+}
+
+/**
+ * 检查业务模块数据与科目余额的一致性
+ * @param {object} store - Vue store 实例（需有 state.vouchers / state.subjects）
+ * @returns {Array<{type, severity, message, suggestion?}>}
+ */
+export function checkModuleConsistency(store) {
+  if (!store || !store.state) return []
+  const issues = []
+  const vouchers = store.state.vouchers
+  const subjects = store.state.subjects
+  if (!vouchers || !subjects) return issues
+
+  // 1. 存货模块 ↔ 1405 库存商品
+  const inventoryBalance = vouchers
+    .filter(v => v.status === 'posted')
+    .reduce((sum, v) => {
+      for (const e of v.entries) {
+        if (e.subjectCode === '1405') sum += (e.debit || 0) - (e.credit || 0)
+      }
+      return sum
+    }, 0)
+  // 用 subjectBalance 查更准，但这里用全量过账凭证简化算法
+  if (Math.abs(inventoryBalance) < 0.01) {
+    issues.push({ type: 'module-sync', severity: 'info', message: '暂无库存商品（1405）余额', suggestion: '-' })
+  }
+
+  // 2. 累计折旧模块 ↔ 1602 累计折旧
+  const deprBalance = vouchers
+    .filter(v => v.status === 'posted')
+    .reduce((sum, v) => {
+      for (const e of v.entries) {
+        if (e.subjectCode === '1602') sum += (e.credit || 0) - (e.debit || 0)
+      }
+      return sum
+    }, 0)
+  issues.push({ type: 'module-sync', severity: 'info', message: `累计折旧（1602）余额：${Math.round(deprBalance * 100) / 100}`, suggestion: '请与固定资产模块累计折旧核对' })
+
+  // 3. 固定资产原值 ↔ 1601 固定资产
+  const faBalance = vouchers
+    .filter(v => v.status === 'posted')
+    .reduce((sum, v) => {
+      for (const e of v.entries) {
+        if (e.subjectCode === '1601') sum += (e.debit || 0) - (e.credit || 0)
+      }
+      return sum
+    }, 0)
+  issues.push({ type: 'module-sync', severity: 'info', message: `固定资产原值（1601）余额：${Math.round(faBalance * 100) / 100}`, suggestion: '请与固定资产管理模块核对' })
+
+  // 4. 工资模块 ↔ 221101 应付职工薪酬-工资
+  const payrollCredit = vouchers
+    .filter(v => v.status === 'posted')
+    .reduce((sum, v) => {
+      for (const e of v.entries) {
+        if (e.subjectCode === '221101') sum += (e.credit || 0)
+      }
+      return sum
+    }, 0)
+  issues.push({ type: 'module-sync', severity: 'info', message: `应付职工薪酬-工资（221101）贷方累计：${Math.round(payrollCredit * 100) / 100}`, suggestion: '请与工资管理模块应发工资合计核对' })
 
   return issues
 }

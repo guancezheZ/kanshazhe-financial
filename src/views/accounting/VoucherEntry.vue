@@ -25,7 +25,7 @@
     <div v-if="isCompletedTask" class="completed-banner" style="background:#f0f9eb;border:1px solid #b7eb8f;border-radius:6px;padding:10px 14px;margin-bottom:10px;display:flex;align-items:center;gap:8px">
       <span style="font-size:16px">✅</span>
       <span style="flex:1;font-size:13px;color:#333">
-        <strong>此任务已完成</strong> — 按课程学模式下已完成任务不可修改。如需重新练习请切换至 🎯 自由练习模式。
+        <strong>此任务已完成</strong> — 月度模式下已完成任务不可修改。如需重新练习请切换至自由模式。
       </span>
     </div>
 
@@ -578,7 +578,7 @@ function loadTutorialTask() {
       const t = tutorialTask.value
       if (t.date) voucherDate.value = t.date
 
-      // ⭐ 检查是否已完成（按课程学模式下锁定，防止重复提交）
+      // ⭐ 检查是否已完成（月度模式下锁定，防止重复提交）
       if (!t.caseEventId && localStorage.getItem('teaching_active') === 'true' && !store.isPracticeMode()) {
         const doneKey = 'tutorial_done_' + t.date + '_' + t.title
         if (localStorage.getItem(doneKey) === 'true') {
@@ -691,10 +691,10 @@ function checkAnswer() {
       window.dispatchEvent(new CustomEvent('task-updated'))
       ElMessageBox.alert(h('div', [
         h('div', { style: 'background:#fdf6ec;border-radius:6px;padding:8px 12px;margin-bottom:10px;display:flex;align-items:center;gap:8px' },
-          '🎯 自由练习 · 答案正确',
+          '🎯 自由模式 · 答案正确',
         ),
         h('p', { style: 'font-size:13px;color:#606266;margin-top:8px' },
-          '自由模式下不记录进度、不发放XP、不过账。可随时切换回"按课程学"模式继续正式学习。'),
+          '自由模式下不记录进度、不发放XP、不过账。可随时切换回月度模式继续正式学习。'),
         h('div', { style: 'margin-top:10px;display:flex;gap:6px;flex-wrap:wrap' }, result.map(function(r) {
           const icon = r.type === 'success' ? '✅' : '⚠️'
           return h('div', { style: 'font-size:12px;color:#606266' }, icon + ' ' + r.message)

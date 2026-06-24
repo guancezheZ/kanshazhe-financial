@@ -12,6 +12,20 @@
       </div>
     </div>
 
+    <el-alert
+      title="本页面仅供查看"
+      type="info"
+      show-icon
+      :closable="false"
+      style="margin-bottom:12px"
+    >
+      <template #default>
+        入库/出库/盘点操作请通过
+        <router-link to="/accounting/voucher-entry" style="color:#409eff">凭证录入</router-link>
+        完成，系统自动更新库存台账。
+      </template>
+    </el-alert>
+
     <div class="inventory-layout">
       <!-- 左侧：仓库列表 -->
       <div class="warehouse-sidebar">

@@ -1279,6 +1279,8 @@ export function useStore() {
   function switchRole(roleId) {
     // 出纳角色锁定
     if (roleId === 'cashier') return
+    // 会计主管角色锁定
+    if (roleId === 'supervisor') return
     // 保存当前角色的数据
     persist()
     state.currentRole = roleId
@@ -1513,6 +1515,77 @@ export function useStore() {
    * 初始化教学账套 — 重置数据并预置期初余额
    * 用户进入教学模式时调用，自动带出上年末结转数据
    */
+  /**
+   * 按行业预设模块数据（工资/资产/往来）
+   */
+  function seedModuleData(scenarioId) {
+    // 清理旧版固定資産数据（可能残留自上个版本的 seedModuleData）
+    localStorage.removeItem('jd_fixed_assets')
+    localStorage.removeItem(`jd_fixed_assets_${scenarioId}`)
+    const payrollKey = `jd_payroll_employees_${scenarioId}`
+    const custKey = `jd_arap_customers_${scenarioId}`
+    const vendKey = `jd_arap_vendors_${scenarioId}`
+
+    if (scenarioId === 'manufacturing') {
+      localStorage.setItem(payrollKey, JSON.stringify([
+        { id: 1, name: '张管理', dept: '行政部', basicSalary: 15000, socialInsurance: 1500, housingFund: 750 },
+        { id: 2, name: '李行政', dept: '行政部', basicSalary: 10000, socialInsurance: 1000, housingFund: 500 },
+        { id: 3, name: '王销售', dept: '销售部', basicSalary: 20000, socialInsurance: 2000, housingFund: 1000 },
+        { id: 4, name: '赵销售', dept: '销售部', basicSalary: 15000, socialInsurance: 1500, housingFund: 750 },
+        { id: 5, name: '刘生产', dept: '生产部', basicSalary: 18000, socialInsurance: 1800, housingFund: 900 },
+        { id: 6, name: '陈生产', dept: '生产部', basicSalary: 12000, socialInsurance: 1200, housingFund: 600 },
+      ]))
+      localStorage.setItem(custKey, JSON.stringify([]))
+      localStorage.setItem(vendKey, JSON.stringify([]))
+    } else if (scenarioId === 'commercial') {
+      localStorage.setItem(payrollKey, JSON.stringify([
+        { id: 1, name: '王店长', dept: '管理部', basicSalary: 18000, socialInsurance: 1800, housingFund: 900 },
+        { id: 2, name: '李会计', dept: '管理部', basicSalary: 12000, socialInsurance: 1200, housingFund: 600 },
+        { id: 3, name: '张收银', dept: '收银部', basicSalary: 8000, socialInsurance: 800, housingFund: 400 },
+        { id: 4, name: '赵收银', dept: '收银部', basicSalary: 8000, socialInsurance: 800, housingFund: 400 },
+        { id: 5, name: '刘理货', dept: '理货部', basicSalary: 7000, socialInsurance: 700, housingFund: 350 },
+        { id: 6, name: '陈理货', dept: '理货部', basicSalary: 7000, socialInsurance: 700, housingFund: 350 },
+        { id: 7, name: '周促销', dept: '促销部', basicSalary: 6000, socialInsurance: 600, housingFund: 300 },
+      ]))
+      localStorage.setItem(custKey, JSON.stringify([
+        { id: 1, code: 'KH-001', name: '万悦超市会员个人客户', contact: '-', phone: '-' },
+      ]))
+      localStorage.setItem(vendKey, JSON.stringify([
+        { id: 1, code: 'GYS-001', name: '鑫鑫食品有限公司', contact: '李经理', phone: '138****1234' },
+        { id: 2, code: 'GYS-002', name: '绿源农业有限公司', contact: '王经理', phone: '139****5678' },
+        { id: 3, code: 'GYS-003', name: '万用电器有限公司', contact: '张经理', phone: '137****9012' },
+        { id: 4, code: 'GYS-004', name: '美肌堂化妆品有限公司', contact: '陈经理', phone: '136****3456' },
+      ]))
+    } else if (scenarioId === 'service') {
+      localStorage.setItem(payrollKey, JSON.stringify([
+        { id: 1, name: '王经理', dept: '管理部', basicSalary: 25000, socialInsurance: 2500, housingFund: 1250 },
+        { id: 2, name: '李财务', dept: '管理部', basicSalary: 15000, socialInsurance: 1500, housingFund: 750 },
+        { id: 3, name: '张开发', dept: '研发部', basicSalary: 22000, socialInsurance: 2200, housingFund: 1100 },
+        { id: 4, name: '赵开发', dept: '研发部', basicSalary: 20000, socialInsurance: 2000, housingFund: 1000 },
+        { id: 5, name: '刘顾问', dept: '咨询部', basicSalary: 18000, socialInsurance: 1800, housingFund: 900 },
+        { id: 6, name: '陈顾问', dept: '咨询部', basicSalary: 18000, socialInsurance: 1800, housingFund: 900 },
+      ]))
+      localStorage.setItem(custKey, JSON.stringify([]))
+      localStorage.setItem(vendKey, JSON.stringify([]))
+    } else if (scenarioId === 'construction') {
+      localStorage.setItem(payrollKey, JSON.stringify([
+        { id: 1, name: '赵总工', dept: '管理部', basicSalary: 30000, socialInsurance: 3000, housingFund: 1500 },
+        { id: 2, name: '钱会计', dept: '管理部', basicSalary: 15000, socialInsurance: 1500, housingFund: 750 },
+        { id: 3, name: '孙工长', dept: '工程部', basicSalary: 20000, socialInsurance: 2000, housingFund: 1000 },
+        { id: 4, name: '李工长', dept: '工程部', basicSalary: 20000, socialInsurance: 2000, housingFund: 1000 },
+        { id: 5, name: '周工人', dept: '施工部', basicSalary: 12000, socialInsurance: 1200, housingFund: 600 },
+        { id: 6, name: '吴工人', dept: '施工部', basicSalary: 12000, socialInsurance: 1200, housingFund: 600 },
+        { id: 7, name: '郑工人', dept: '施工部', basicSalary: 12000, socialInsurance: 1200, housingFund: 600 },
+        { id: 8, name: '冯工人', dept: '施工部', basicSalary: 12000, socialInsurance: 1200, housingFund: 600 },
+      ]))
+      localStorage.setItem(custKey, JSON.stringify([]))
+      localStorage.setItem(vendKey, JSON.stringify([
+        { id: 1, code: 'GYS-001', name: '鑫鑫建材有限公司', contact: '刘经理', phone: '138****5678' },
+        { id: 2, code: 'GYS-002', name: '宏达水泥有限公司', contact: '王经理', phone: '139****9012' },
+      ]))
+    }
+  }
+
   function initTeachingAccount() {
     resetToDefaults()
 
@@ -1544,6 +1617,8 @@ export function useStore() {
 
     // 标记教学模式已激活
     localStorage.setItem('teaching_active', 'true')
+    // 写入模块预设数据
+    seedModuleData('manufacturing')
     persist()
     return { success: true }
   }
@@ -1585,6 +1660,7 @@ export function useStore() {
 
     // 标记教学模式已激活
     localStorage.setItem('teaching_active', 'true')
+    seedModuleData('commercial')
     persist()
     return { success: true }
   }
@@ -1627,6 +1703,7 @@ export function useStore() {
 
     // 标记教学模式已激活
     localStorage.setItem('teaching_active', 'true')
+    seedModuleData('service')
     persist()
     return { success: true }
   }
@@ -1668,6 +1745,7 @@ export function useStore() {
 
     // 标记教学模式已激活
     localStorage.setItem('teaching_active', 'true')
+    seedModuleData('construction')
     persist()
     return { success: true }
   }

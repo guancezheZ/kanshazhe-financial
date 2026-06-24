@@ -530,6 +530,58 @@ describe('Store - 全面试算平衡测试', () => {
     expect(bs.assets.total).toBeGreaterThan(0)
   })
 
+  it('每个行业init后预设模块数据', () => {
+    const store = resetStore()
+    const industries = [
+      { init: 'initTeachingAccount', sid: 'manufacturing', payrollExpected: 6 },
+      { init: 'initCommercialAccount', sid: 'commercial', payrollExpected: 7 },
+      { init: 'initServiceAccount', sid: 'service', payrollExpected: 6 },
+      { init: 'initConstructionAccount', sid: 'construction', payrollExpected: 8 },
+    ]
+    for (const ind of industries) {
+      localStorage.clear()
+      store[ind.init]()
+      const payroll = JSON.parse(localStorage.getItem(`jd_payroll_employees_${ind.sid}`) || '[]')
+      expect(payroll.length).toBe(ind.payrollExpected)
+      // 固定资产不再预设（随教学进度通过凭证录入逐步积累）
+      const assets = JSON.parse(localStorage.getItem(`jd_fixed_assets_${ind.sid}`) || '[]')
+      expect(assets.length).toBe(0)
+    }
+  })
+
+  it('不同行业预设工资数据不同', () => {
+    const store = resetStore()
+    store.initTeachingAccount()
+    const mfg = JSON.parse(localStorage.getItem('jd_payroll_employees_manufacturing') || '[]')
+    store.initCommercialAccount()
+    const com = JSON.parse(localStorage.getItem('jd_payroll_employees_commercial') || '[]')
+    // 行业不同，员工组成不同
+    const mfgDepts = mfg.map(e => e.dept)
+    const comDepts = com.map(e => e.dept)
+    expect(mfgDepts).toContain('生产部')
+    expect(comDepts).not.toContain('生产部')
+    expect(comDepts).toContain('收银部')
+  })
+
+  it('自由模式切换行业后模块数据隔离', () => {
+    const store = resetStore()
+    // 初始化制造业
+    store.initTeachingAccount()
+    const mfgPayroll = JSON.parse(localStorage.getItem('jd_payroll_employees_manufacturing') || '[]')
+    // 切换到商业企业
+    store.switchScenarioState('commercial')
+    store.initCommercialAccount()
+    const comPayroll = JSON.parse(localStorage.getItem('jd_payroll_employees_commercial') || '[]')
+    // 制造业数据应该还存在（未被覆盖）
+    const mfgPayrollAfter = JSON.parse(localStorage.getItem('jd_payroll_employees_manufacturing') || '[]')
+    expect(mfgPayrollAfter.length).toBe(mfgPayroll.length)
+    // 两个行业数据不同
+    expect(mfgPayrollAfter[0].dept).not.toBe(comPayroll[0].dept)
+    // 固定資産键应始终为空（不再预设）
+    expect(localStorage.getItem('jd_fixed_assets_manufacturing')).toBeNull()
+    expect(localStorage.getItem('jd_fixed_assets_commercial')).toBeNull()
+  })
+
   it('全部科目展示测试', () => {
     const tb = store.getTrialBalance('202506')
     // 即使没有过账，也应显示所有末级科目

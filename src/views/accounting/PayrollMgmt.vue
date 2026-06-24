@@ -3,7 +3,7 @@
     <div class="page-header">
       <h2 class="page-title">工资管理</h2>
       <div class="page-actions">
-        <el-button size="small" @click="loadPresetData" :disabled="isTeachingMode && hasData">
+        <el-button size="small" @click="handleLoadPresetData">
           {{ isTeachingMode ? '📋 载入教学示例数据' : '载入示例数据' }}
         </el-button>
       </div>
@@ -16,9 +16,8 @@
           <template #header>
             <div class="card-h">
               <span>👤 员工工资明细</span>
-              <el-button size="small" type="primary" @click="showForm=true;resetForm()"
-                :disabled="teachingLocked" :title="teachingLocked ? '🔒 请到教学中心选择相关任务' : ''">
-                {{ teachingLocked ? '🔒 已锁定' : '新增员工' }}
+              <el-button size="small" type="primary" @click="handleAddEmployeeClick">
+                {{ isTeachingMode ? '👤 新增员工' : '新增员工' }}
               </el-button>
             </div>
           </template>
@@ -82,14 +81,12 @@
 
             <el-divider />
             <div class="voucher-actions">
-              <el-button type="primary" size="small" @click="genAccrualVoucher"
-                :disabled="summary.total <= 0 || teachingLocked"
-                :title="teachingLocked ? '🔒 请到教学中心选择相关任务' : ''">
+              <el-button type="primary" size="small" @click="handleTeachingAction('accrual')"
+                :disabled="summary.total <= 0 && !isTeachingMode">
                 📝 生成计提工资凭证
               </el-button>
-              <el-button size="small" @click="genPaymentVoucher"
-                :disabled="summary.total <= 0 || teachingLocked"
-                :title="teachingLocked ? '🔒 请到教学中心选择相关任务' : ''">
+              <el-button size="small" @click="handleTeachingAction('payment')"
+                :disabled="summary.total <= 0 && !isTeachingMode">
                 💳 生成发放工资凭证
               </el-button>
             </div>
@@ -111,7 +108,8 @@
             <span class="sv">{{ fmt(round(summary.total * 0.05)) }}</span>
           </div>
           <el-divider />
-          <el-button size="small" type="warning" @click="genSocialVoucher" :disabled="summary.total <= 0">
+          <el-button size="small" type="warning" @click="handleTeachingAction('social')"
+            :disabled="summary.total <= 0 && !isTeachingMode">
             🏛️ 生成单位社保/公积金计提凭证
           </el-button>
         </el-card>
@@ -156,17 +154,62 @@ const lastVoucherMsg = ref('')
 
 const isTeachingMode = computed(() => localStorage.getItem('teaching_active') === 'true')
 const hasData = computed(() => employees.value.length > 0)
-
-// 教学任务锁
 const period = getCurrentPeriod()
-const payrollDoneKey = `jd_module_payroll_${period}`
-const moduleUnlocked = computed(() => {
-  if (!isTeachingMode.value) return true
-  return sessionStorage.getItem('jd_module_task') === 'payroll'
-})
-const payrollDone = computed(() => localStorage.getItem(payrollDoneKey) === 'done')
-const teachingLocked = computed(() => isTeachingMode.value && (!moduleUnlocked.value || payrollDone.value))
-const STORAGE_KEY = 'jd_payroll_employees'
+
+// ─── 教学提示文案 ──────────────────────────────
+const TEACHING_HINTS = {
+  addEmployee: {
+    title: '教学模式下无法新增员工',
+    msg: '请通过【凭证录入】填制分录反映工资数据。\n\n💡 真实企业做法：\n在工资模块录入员工信息（姓名、部门、基本工资、\n社保基数等），系统自动计算应发工资、代扣代缴，\n生成计提/发放凭证。',
+  },
+  accrual: {
+    title: '教学模式下无法自动生成计提凭证',
+    msg: '请通过【凭证录入】手动填制分录完成工资计提。\n\n📋 分录示例：\n  借：管理费用-工资（660203）\n      销售费用（6601）\n      生产成本-直接人工（500102）\n  贷：应付职工薪酬-工资（221101）\n\n💡 真实企业做法：\n系统根据员工工资明细自动汇总，\n点击「生成计提工资凭证」自动生成分录。',
+  },
+  payment: {
+    title: '教学模式下无法自动生成发放凭证',
+    msg: '请通过【凭证录入】手动填制分录完成工资发放。\n\n📋 分录示例：\n  借：应付职工薪酬-工资（221101）\n  贷：银行存款（1002）\n\n💡 真实企业做法：\n系统根据实发工资总额自动生成发放凭证，\n同步更新银行代发数据。',
+  },
+  social: {
+    title: '教学模式下无法自动生成社保凭证',
+    msg: '请通过【凭证录入】手动填制分录完成社保计提。\n\n📋 分录示例：\n  借：管理费用-社保费（660208）\n  贷：应付职工薪酬-社保（221102）\n\n💡 真实企业做法：\n系统根据社保基数自动计算单位部分，\n点击生成按钮自动计提。',
+  },
+}
+// ─── 教学模式按钮点击处理 ──────────────────────
+function handleTeachingAction(action) {
+  if (!isTeachingMode.value) {
+    // 非教学模式：执行原操作
+    if (action === 'accrual') genAccrualVoucher()
+    else if (action === 'payment') genPaymentVoucher()
+    else if (action === 'social') genSocialVoucher()
+    return
+  }
+  const hint = TEACHING_HINTS[action]
+  if (hint) ElMessage.info({ message: hint.msg, title: hint.title, duration: 8000 })
+}
+
+function handleAddEmployeeClick() {
+  if (isTeachingMode.value) {
+    ElMessage.info({ message: TEACHING_HINTS.addEmployee.msg, title: TEACHING_HINTS.addEmployee.title, duration: 8000 })
+    return
+  }
+  showForm.value = true
+  resetForm()
+}
+
+function handleLoadPresetData() {
+  if (isTeachingMode.value && hasData.value) {
+    // 已有数据时教学模式下也弹出教育提示
+    ElMessage.info({ message: '教学模式下员工数据已预设，无需重复载入。\n\n💡 真实企业做法：在工资模块录入员工信息后，系统自动保存至工资台账。', title: '教学模式下无法重新载入', duration: 6000 })
+    return
+  }
+  loadPresetData()
+}
+
+function getPayrollKey() {
+  const sid = localStorage.getItem('jd_scenario') || 'manufacturing'
+  return `jd_payroll_employees_${sid}`
+}
 
 function fmt(v) { return formatAmount(v) }
 function resetForm() { form.value = { name: '', dept: '行政部', basicSalary: 0, socialInsurance: 0, housingFund: 0 } }
@@ -194,11 +237,11 @@ const DEPT_SUBJECT = {
 }
 
 function loadEmployees() {
-  try { employees.value = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]') } catch { employees.value = [] }
+  try { employees.value = JSON.parse(localStorage.getItem(getPayrollKey()) || '[]') } catch { employees.value = [] }
 }
 
 function saveEmployees() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(employees.value))
+  localStorage.setItem(getPayrollKey(), JSON.stringify(employees.value))
 }
 
 function saveEmployee() {
@@ -265,9 +308,8 @@ function loadPresetData() {
   ElMessage.success('已载入教学示例数据（6名员工）')
 }
 
-// 生成计提工资凭证
+// 生成计提工资凭证（非教学模式）
 function genAccrualVoucher() {
-  if (teachingLocked.value) return ElMessage.warning('🔒 请先到教学中心选择相关任务')
   if (summary.total <= 0) return ElMessage.warning('请先计算工资汇总')
 
   const entries = []
@@ -303,9 +345,8 @@ function genAccrualVoucher() {
   doGenVoucher(entries, '✅ 计提工资凭证已自动生成！')
 }
 
-// 生成发放工资凭证
+// 生成发放工资凭证（非教学模式）
 function genPaymentVoucher() {
-  if (teachingLocked.value) return ElMessage.warning('🔒 请先到教学中心选择相关任务')
   if (summary.total <= 0) return ElMessage.warning('请先计算工资汇总')
   const netPay = summary.netPay
 
@@ -362,7 +403,6 @@ function genPaymentVoucher() {
 
 // 生成单位社保/公积金计提凭证
 function genSocialVoucher() {
-  if (teachingLocked.value) return ElMessage.warning('🔒 请先到教学中心选择相关任务')
   const totalSocialEmployer = round(summary.total * 0.30)
   const totalFundEmployer = round(summary.total * 0.05)
   if (totalSocialEmployer <= 0 && totalFundEmployer <= 0) return ElMessage.warning('计算数据异常')
@@ -423,7 +463,7 @@ function genSocialVoucher() {
   doGenVoucher(entries, `✅ 单位社保公积金计提凭证已自动生成！合计：${formatAmount(total)}元`)
 }
 
-// 通用：自动生成凭证
+// 通用：自动生成凭证（非教学模式）
 function doGenVoucher(entries, successMsg) {
   try {
     const result = store.addTeachingVoucher({
@@ -431,8 +471,6 @@ function doGenVoucher(entries, successMsg) {
       entries,
     })
     if (result.success) {
-      localStorage.setItem(payrollDoneKey, 'done')
-      sessionStorage.removeItem('jd_module_task')
       lastVoucherMsg.value = successMsg
       ElMessage.success(successMsg)
       window.dispatchEvent(new CustomEvent('task-updated'))

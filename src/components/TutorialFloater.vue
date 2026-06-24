@@ -38,17 +38,17 @@
       </div>
     </div>
 
-    <!-- 按课程学 / 自由练习 切换 -->
+    <!-- 月度模式 / 自由模式 切换 -->
     <div class="course-mode-bar" style="padding:2px 10px;display:flex;align-items:center;gap:4px;background:var(--el-fill-color-light);border-radius:4px;margin:2px 8px">
       <el-switch
         :model-value="store.isPracticeMode()"
         @update:model-value="store.togglePracticeMode()"
         size="small"
-        active-text="🎯 自由练习"
-        inactive-text="📚 按课程学"
+        inactive-text="📅 月度模式"
+        active-text="自由模式"
         style="--el-switch-on-color: #e6a23c;"
       />
-      <span style="font-size:13px;cursor:help;color:#909399" title="自由练习：不记进度、不给XP、不过账、可重复做；适合复习和查漏补缺">ⓘ</span>
+      <span style="font-size:13px;cursor:help;color:#909399" title="自由模式：不记进度、不给XP、不过账、可重复做；适合复习和查漏补缺">ⓘ</span>
     </div>
 
     <!-- 教学模式（引导/练习/考试/纠错） -->
@@ -261,7 +261,7 @@ import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStore } from '@/stores/store.js'
 import { ElMessageBox, ElMessage } from 'element-plus'
-import { formatAmount } from '@/utils/accounting.js'
+import { formatAmount, getCurrentPeriod } from '@/utils/accounting.js'
 import VoucherDisplay from '@/components/VoucherDisplay.vue'
 import ErrorCorrectionGame from '@/components/ErrorCorrectionGame.vue'
 import { getScenarioConfig, getScenarioTutorials, getProgressKey, getScenarioTags, getDoneKeyPrefix, getTagStatsKey, getWrongAnswersKey, getStreakKey } from '@/data/scenarios.js'
@@ -376,6 +376,10 @@ const weakTags = computed(() => {
 
 function markReadDone() {
   if (!task.value) return
+  if (store.isPracticeMode()) {
+    ElMessage.info('自由模式下不记录进度，无需标记完成。切换到月度模式后可正常记录。')
+    return
+  }
   const key = getProgressKey(floaterScenarioId.value, task.value.date, task.value.title)
   localStorage.setItem(key, 'true')
   tick.value++  // 触发进度刷新
@@ -793,7 +797,45 @@ function stopResize() {
 }
 
 const storageListener = () => loadTask()
-const taskUpdatedListener = () => loadTask()
+
+// 自动完成 nextAction 任务：模块生成凭证后标记教学任务完成
+function autoCompleteNextActionTask() {
+  const t = task.value
+  if (!t || !t.nextAction || (t.entries && t.entries.length > 0)) return
+  // sessionStorage 标记已移除 → 模块已处理完毕
+  const modKey = t.nextAction === 'fixed-assets' ? 'fixed-assets'
+    : t.nextAction === 'payroll' ? 'payroll'
+    : null
+  if (!modKey || sessionStorage.getItem('jd_module_task') === modKey) return
+
+  // 检查对应模块的凭证是否已生成
+  const period = getCurrentPeriod()
+  const hasVoucher = store.state.vouchers.some(v => {
+    if (v.period !== period) return false
+    if (modKey === 'fixed-assets') return v.entries.some(e => e.subjectCode === '660205' && e.debit > 0)
+    if (modKey === 'payroll') return v.entries.some(e => ['660203', '6601', '500102'].includes(e.subjectCode) && e.credit > 0)
+    return false
+  })
+  if (!hasVoucher) return
+
+  // 已通过模块完成 → 自动标记教学任务完成
+  const key = getProgressKey(floaterScenarioId.value, t.date, t.title)
+  if (localStorage.getItem(key) === 'true') return // 已标记过
+  localStorage.setItem(key, 'true')
+  tick.value++
+  ElMessage.success('✅ ' + (t.title || '模块任务') + ' 已完成，自动标记完成！')
+  setTimeout(() => {
+    if (currentIdx.value < flatTasks.value.length - 1) {
+      currentIdx.value++
+      updateTask()
+    }
+  }, 800)
+}
+
+const taskUpdatedListener = () => {
+  loadTask()
+  autoCompleteNextActionTask()
+}
 onMounted(() => {
   loadTask()
   window.addEventListener('storage', storageListener)

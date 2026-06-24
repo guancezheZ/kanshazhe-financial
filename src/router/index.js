@@ -3,6 +3,8 @@ import { isActivated } from '@/utils/activation.js'
 
 /** 出纳角色锁定：设为 true 后出纳路由、角色切换全部拦截 */
 const CASHIER_LOCKED = true
+/** 会计主管角色锁定：主管功能暂不开放，未来解锁 */
+const SUPERVISOR_LOCKED = true
 
 const routes = [
   {

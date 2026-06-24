@@ -69,9 +69,6 @@
           <el-button size="small" type="primary" class="action-btn" @click="goToEntry">
             <el-icon><EditPen /></el-icon> 去录入
           </el-button>
-          <el-button size="small" class="action-btn" @click="openTutorial">
-            <el-icon><Reading /></el-icon> 教学中心
-          </el-button>
         </div>
       </template>
 
