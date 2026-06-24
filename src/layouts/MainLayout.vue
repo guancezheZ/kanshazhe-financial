@@ -282,7 +282,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { ElMessageBox } from 'element-plus'
 import {
@@ -396,6 +396,11 @@ function onActivated() {
   refreshActivated()
 }
 const currentPageTitle = computed(() => route.meta?.title || '')
+
+// 路由切换时更新浏览器标签页标题（修复跨浏览器测试标题为空的问题）
+watch(() => route.path, () => {
+  document.title = currentPageTitle.value ? `观测者财务 - ${currentPageTitle.value}` : '观测者企业财务模拟系统'
+}, { immediate: true })
 
 const currentRole = computed(() => store.getCurrentRole())
 const roleLabel = computed(() => { const r = store.ROLES.find(x => x.id === currentRole.value); return r ? r.name : '' })
