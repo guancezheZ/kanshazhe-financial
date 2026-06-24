@@ -24,6 +24,8 @@ function getMasterKey(env) {
 const LANZOU_URL = 'https://wwapf.lanzouw.com/iztaD3sfr8qd'
 const LANZOU_PWD = 'fyr3'
 
+
+
 // 🌐 单设备配置：同一激活码绑定 1 台设备（固定指纹，平台版专用）
 const MAX_DEVICES = 1
 
@@ -60,6 +62,10 @@ export default {
     if (path === '/dl') {
       return Response.redirect('https://jiaqinw.xyz/download', 302)
     }
+    // 🔐 管理员 API（仅 admin.html 调用，无网页界面）
+    if (path === '/kapi') {
+      return handleAdmin(url, env, request)
+    }
     // 🔄 版本检查 API（App自动更新用）
     if (path === '/version') {
       return handleVersionCheck(env)
@@ -82,6 +88,7 @@ export default {
       switch (action) {
         case 'verify':   return await handleVerify(url, env, request)
         case 'activate': return await handleActivate(url, env, request)
+        case 'heartbeat': return await handleHeartbeat(url, env, request)
         case 'admin':    return await handleAdmin(url, env, request)
         default:         return json({ error: '未知操作' })
       }
@@ -229,6 +236,27 @@ async function handleActivate(url, env, request) {
   return json({ success: false, message: '此激活码未在服务器注册，请联系管理员上传', block: true })
 }
 
+// ─── 心跳：记录用户在线状态 ───
+async function handleHeartbeat(url, env, request) {
+  const code = (url.searchParams.get('code') || '').toUpperCase()
+  const fp = url.searchParams.get('fp') || ''
+  if (!code || !fp) return json({ error: '参数不足' })
+
+  const db = await getDB(env)
+  const record = db[code]
+  if (!record || record.revoked) return json({ error: '无效' })
+
+  // 更新最后在线时间
+  if (!record.fps) record.fps = []
+  const existing = record.fps.find(d => d.fp === fp)
+  if (existing) {
+    existing.lastSeen = new Date().toISOString()
+    await saveDB(env, db)
+    return json({ success: true, status: 'updated' })
+  }
+  return json({ error: '未绑定' })
+}
+
 // ─── 管理员操作 ───
 async function handleAdmin(url, env, request) {
   const adminToken = env?.ADMIN_TOKEN || ''
@@ -253,8 +281,11 @@ async function handleAdmin(url, env, request) {
     }
 
     case 'revoke': {
-      const code = (url.searchParams.get('code') || '').toUpperCase()
-      if (!db[code]) return json({ error: '密钥不存在' })
+      let code = (url.searchParams.get('code') || '').toUpperCase()
+      if (!code && request.method === 'POST') {
+        try { const b = await request.json(); code = (b.code || '').toUpperCase() } catch(e) {}
+      }
+      if (!code || !db[code]) return json({ error: '密钥不存在' })
       delete db[code]        // 直接删掉，不出现在列表里
       await saveDB(env, db)
       return json({ success: true, message: '已吊销并从列表清除' })
