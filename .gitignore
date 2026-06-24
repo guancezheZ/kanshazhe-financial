@@ -46,6 +46,7 @@ scripts/fix-*.cjs
 scripts/convert-*.cjs
 scripts/core-flow-*.mjs
 scripts/edge-case-*.mjs
+scripts/parse-*.cjs
 
 # 🛠 本地开发快捷方式
 start.bat
@@ -75,3 +76,4 @@ scripts/边缘截图/
 *.bak2
 *.bak3
 backup/
+backup-*/
