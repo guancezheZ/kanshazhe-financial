@@ -71,6 +71,11 @@ test-reports/
 scripts/流程截图/
 scripts/边缘截图/
 
+# 🔐 密钥管理后台（本地工具，不提交）
+admin.html
+scripts/test-admin.cjs
+admin-tauri/
+
 # 🗑 备份文件
 *.bak
 *.bak2
