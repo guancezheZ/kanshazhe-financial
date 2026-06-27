@@ -197,7 +197,7 @@ const dec = [
       { type: 'receipt', label: '房屋租赁收据', docTitle: '房 屋 租 赁 专 用 收 据', date: '2026-12-12', totalAmount: 25000, payer: '雲帆管理咨询有限公司', stampText: '北京XX物业管理有限公司\n财务专用章', items: [{ name: '望京XX大厦15层 12月租金', qty: 1, price: 22000, amount: 22000 }, { name: '12月物业管理费', qty: 1, price: 3000, amount: 3000 }]}] },
   { date: '2026-12-14', role: 'accountant', title: '自研平台摊销', tags: ["费用管理"], difficulty: 2,
     description: '首次计提自研平台无形资产摊销。原值185,000÷5年÷12月=3,083.33元。',
-    entries: [{ subjectCode: '6602', summary: '自研平台摊销', debit: 3083, credit: 0 }, { subjectCode: '6602', summary: '其他摊销折旧', debit: 6020, credit: 0, explanation: '原SaaS3,000+外购软件400+其他折旧2,620。' }, { subjectCode: '1702', summary: '自研平台摊销', debit: 0, credit: 3083 }, { subjectCode: '1208', summary: '摊销', debit: 0, credit: 3000 }, { subjectCode: '1702', summary: '累计摊销', debit: 0, credit: 400 }, { subjectCode: '1602', summary: '折旧', debit: 0, credit: 2620 }],
+    entries: [{ subjectCode: '660205', summary: '自研平台摊销', debit: 3083, credit: 0 }, { subjectCode: '660205', summary: '其他摊销折旧', debit: 6020, credit: 0, explanation: '原SaaS3,000+外购软件400+其他折旧2,620。' }, { subjectCode: '1702', summary: '自研平台摊销', debit: 0, credit: 3083 }, { subjectCode: '1208', summary: '摊销', debit: 0, credit: 3000 }, { subjectCode: '1702', summary: '累计摊销', debit: 0, credit: 400 }, { subjectCode: '1602', summary: '折旧', debit: 0, credit: 2620 }],
     documents: [
       { type: 'text', label: '摊销折旧表', docTitle: '摊 销 折 旧 计 提 表', date: '2026-12-14', stampText: '财务专用章', content: '期间：2026年12月\n\n无形资产摊销：\n  自研智能平台：185,000÷5÷12=3,083.33元（首次计提）\n  外购软件：400.00元\n  小计：3,483.33元\nSaaS摊销：3,000.00元\n折旧合计：2,620.00元\n\n合计：9,103.33元\n\n制表：李会计' ,
       headers: [
@@ -239,7 +239,7 @@ const dec = [
         ],
       ]}] },
   { date: '2026-12-15', role: 'accountant', title: '支付12月水电及网络', tags: ["费用管理"], difficulty: 1,
-    entries: [{ subjectCode: '6602', summary: '水电费', debit: 5200, credit: 0 }, { subjectCode: '6602', summary: '网络费', debit: 2000, credit: 0 }, { subjectCode: '100201', summary: '付款', debit: 0, credit: 7200 }],
+    entries: [{ subjectCode: '660205', summary: '水电费', debit: 5200, credit: 0 }, { subjectCode: '660205', summary: '网络费', debit: 2000, credit: 0 }, { subjectCode: '100201', summary: '付款', debit: 0, credit: 7200 }],
     documents: [
       { type: 'receipt', label: '电费凭证', docTitle: '电 费 缴 费 凭 证', date: '2026-12-15', totalAmount: 5200, payer: '雲帆管理咨询有限公司', stampText: '国家电网\n电费收讫章', items: [{ name: '写字楼用电 5,200kWh×1.00元', qty: 5200, price: 1, amount: 5200 }]},
       { type: 'receipt', label: '通信费发票', docTitle: '通 信 服 务 发 票', date: '2026-12-15', totalAmount: 2000, payer: '雲帆管理咨询有限公司', stampText: '中国联通\n发票专用章', items: [{ name: '企业宽带+电话（12月）', qty: 1, price: 2000, amount: 2000 }]}] },
@@ -258,7 +258,7 @@ const dec = [
       { type: 'receipt', label: '办公用品发票', docTitle: '办 公 用 品 发 票', date: '2026-12-18', totalAmount: 2000, payer: '雲帆管理咨询有限公司', stampText: '晨光文具\n发票专用章', items: [{ name: '年度办公用品补充采购', qty: 1, price: 2000, amount: 2000 }]}] },
   { date: '2026-12-19', role: 'accountant', title: '计提12月员工工资', tags: ["工资社保"], difficulty: 2,
     description: '计提12月工资。项目130,000+管理55,000=185,000元。',
-    entries: [{ subjectCode: '520101', summary: '项目工资', debit: 130000, credit: 0 }, { subjectCode: '6602', summary: '管理工资', debit: 55000, credit: 0 }, { subjectCode: '221101', summary: '应付工资', debit: 0, credit: 185000 }],
+    entries: [{ subjectCode: '520101', summary: '项目工资', debit: 130000, credit: 0 }, { subjectCode: '660205', summary: '管理工资', debit: 55000, credit: 0 }, { subjectCode: '221101', summary: '应付工资', debit: 0, credit: 185000 }],
     documents: [
       { type: 'text', label: '工资计算表', docTitle: '12 月 工 资 计 算 汇 总 表', date: '2026-12-19', stampText: '人力资源部\n工资专用章', content: '期间：2026年12月\n\n项目人员：130,000元（J项目收尾+E/G维护）\n管理人员：55,000元\n\n应发合计：185,000元\n\n制表：王出纳\n审核：李会计' ,
       headers: [
@@ -292,7 +292,7 @@ const dec = [
         ],
       ]}] },
   { date: '2026-12-20', role: 'accountant', title: '计提社保公积金', tags: ["工资社保"], difficulty: 2, description: '计提企业社保及公积金，合计56,000元。',
-    entries: [{ subjectCode: '520101', summary: '项目社保', debit: 26000, credit: 0 }, { subjectCode: '520101', summary: '项目公积金', debit: 13000, credit: 0 }, { subjectCode: '6602', summary: '管理社保', debit: 11500, credit: 0 }, { subjectCode: '6602', summary: '管理公积金', debit: 5500, credit: 0 }, { subjectCode: '221102', summary: '应付社保', debit: 0, credit: 37500 }, { subjectCode: '221102', summary: '应付公积金', debit: 0, credit: 18500 }],
+    entries: [{ subjectCode: '520101', summary: '项目社保', debit: 26000, credit: 0 }, { subjectCode: '520101', summary: '项目公积金', debit: 13000, credit: 0 }, { subjectCode: '660205', summary: '管理社保', debit: 11500, credit: 0 }, { subjectCode: '660205', summary: '管理公积金', debit: 5500, credit: 0 }, { subjectCode: '221102', summary: '应付社保', debit: 0, credit: 37500 }, { subjectCode: '221102', summary: '应付公积金', debit: 0, credit: 18500 }],
     documents: [
       { type: 'text', label: '社保公积金计提表', docTitle: '社 保 公 积 金 计 提 汇 总 表', date: '2026-12-20', stampText: '财务专用章', content: '期间：2026年12月\n\n社保（企业部分）：\n  项目人员：26,000元\n  管理人员：11,500元\n  小计：37,500元\n\n公积金（企业部分）：\n  项目人员：13,000元\n  管理人员：5,500元\n  小计：18,500元\n\n合计：56,000元\n\n制表：李会计' ,
       headers: [
@@ -565,7 +565,7 @@ const dec = [
   { date: '2026-12-26', role: 'accountant', title: '提取法定盈余公积', tags: ["期末"], difficulty: 3,
     tip: '按净利润的10%提取法定盈余公积。借：利润分配-提取法定盈余公积，贷：盈余公积。',
     description: '按净利润600,000元的10%提取法定盈余公积60,000元。',
-    entries: [{ subjectCode: '4104', summary: '提取法定盈余公积', debit: 60000, credit: 0, explanation: '利润分配减少。' }, { subjectCode: '4101', summary: '法定盈余公积', debit: 0, credit: 60000, explanation: '盈余公积——法定盈余公积增加。' }],
+    entries: [{ subjectCode: '410402', summary: '提取法定盈余公积', debit: 60000, credit: 0, explanation: '利润分配减少。' }, { subjectCode: '410101', summary: '法定盈余公积', debit: 0, credit: 60000, explanation: '盈余公积——法定盈余公积增加。' }],
     documents: [
       { type: 'text', label: '盈余公积提取表', docTitle: '法 定 盈 余 公 积 提 取 表', date: '2026-12-26', stampText: '财务专用章\n股东会决议附件', content: '年度：2026年\n计提基础：全年净利润600,000.00元\n提取比例：10%（公司法规定）\n提取金额：600,000×10%=60,000.00元\n\n法律依据：《公司法》第166条\n\n制表：李会计\n审核：赵会计主管' ,
       headers: [
@@ -605,7 +605,7 @@ const dec = [
   { date: '2026-12-27', role: 'accountant', title: '提取任意盈余公积', tags: ["期末"], difficulty: 3,
     tip: '按净利润的5%提取任意盈余公积（股东会决议）。',
     description: '按净利润600,000元的5%提取任意盈余公积30,000元。',
-    entries: [{ subjectCode: '4104', summary: '提取任意盈余公积', debit: 30000, credit: 0 }, { subjectCode: '4101', summary: '任意盈余公积', debit: 0, credit: 30000 }],
+    entries: [{ subjectCode: '410402', summary: '提取任意盈余公积', debit: 30000, credit: 0 }, { subjectCode: '410102', summary: '任意盈余公积', debit: 0, credit: 30000 }],
     documents: [
       { type: 'text', label: '任意盈余公积提取表', docTitle: '任 意 盈 余 公 积 提 取 表', date: '2026-12-27', stampText: '财务专用章\n股东会决议附件', content: '年度：2026年\n计提基础：全年净利润600,000.00元\n提取比例：5%（股东会决议通过）\n提取金额：600,000×5%=30,000.00元\n\n股东会决议：2026年12月27日临时股东会通过。\n\n制表：李会计\n审核：赵会计主管' ,
       headers: [
@@ -645,7 +645,7 @@ const dec = [
   { date: '2026-12-28', role: 'accountant', title: '计提应付股利', tags: ["期末"], difficulty: 3,
     tip: '根据股东会决议，计提应分配给股东的股利。借：利润分配，贷：应付股利。',
     description: '经股东会决议，计提应付投资者股利200,000元。',
-    entries: [{ subjectCode: '4104', summary: '计提应付股利', debit: 200000, credit: 0 }, { subjectCode: '2232', summary: '应付股利', debit: 0, credit: 200000, explanation: '注意：2232原为合同负债，此处暂用。实际应用中可用"应付股利"科目。' }],
+    entries: [{ subjectCode: '410403', summary: '计提应付股利', debit: 200000, credit: 0 }, { subjectCode: '2232', summary: '应付股利', debit: 0, credit: 200000, explanation: '注意：2232原为合同负债，此处暂用。实际应用中可用"应付股利"科目。' }],
     documents: [
       { type: 'text', label: '股利分配方案', docTitle: '2026 年 度 股 利 分 配 方 案', date: '2026-12-28', stampText: '股东会决议\n专用章', content: '年度：2026年\n全年净利润：600,000.00元\n\n分配方案（经2026年12月28日股东会决议通过）：\n1. 提取法定盈余公积（10%）：60,000元\n2. 提取任意盈余公积（5%）：30,000元\n3. 计提应付股利：200,000元\n4. 剩余未分配利润：310,000元（留作企业发展）\n\n股东签字：王某、李某、张某' ,
       headers: [

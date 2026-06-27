@@ -27,8 +27,8 @@ const tasks = [
     description: '国庆促销活动结束后，结算活动期间产生的额外费用：临时促销人员工资3,000元、活动物资（赠品/包装）2,000元，合计5,000元，以工商银行转账支付。',
     tip: '促销活动结束后的费用结算是确保当期损益准确的重要步骤。临时促销人员工资计入销售费用，活动物资计入销售费用或销售费用-广告费。借：销售费用，贷：银行存款。',
     entries: [
-      { subjectCode: '6601', summary: '国庆促销临时人员工资', debit: 3000, credit: 0, explanation: '销售费用增加记借方。国庆促销期间临时聘请的促销人员工资3,000元，属销售人工成本。' },
-      { subjectCode: '6601', summary: '国庆促销活动物资费', debit: 2000, credit: 0, explanation: '销售费用增加记借方。国庆促销活动物资（赠品包装/活动道具等）费用2,000元。' },
+      { subjectCode: '660103', summary: '国庆促销临时人员工资', debit: 3000, credit: 0, explanation: '销售费用增加记借方。国庆促销期间临时聘请的促销人员工资3,000元，属销售人工成本。' },
+      { subjectCode: '660103', summary: '国庆促销活动物资费', debit: 2000, credit: 0, explanation: '销售费用增加记借方。国庆促销活动物资（赠品包装/活动道具等）费用2,000元。' },
       { subjectCode: '100201', summary: '支付促销活动费用', debit: 0, credit: 5000, explanation: '银行存款减少记贷方。支付国庆促销活动各项费用5,000元，资金划出。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6601），属于"支付其他与经营活动有关的现金"。'}],
     documents: [
       { type: 'receipt', label: '促销费用发票', docTitle: '国庆促销活动费用明细', date: '2026-10-01', totalAmount: 5000, stampText: '财务专用章',
@@ -67,7 +67,7 @@ const tasks = [
     description: '万悦超市对联营专柜进行第三季度（7-9月）运营评估，发生评估费用8,000元（含市场调研费5,000元、评估人员劳务费3,000元），以工商银行转账支付。',
     tip: '联营专柜的评估费用属于管理费用——超市为优化联营结构而发生的管理支出。借：管理费用-评估费，贷：银行存款。季度评估有助于了解各联营商经营状况，为后续合同调整提供依据。',
     entries: [
-      { subjectCode: '6602', summary: '联营专柜季度评估费', debit: 8000, credit: 0, explanation: '管理费用增加记借方。对联营专柜进行Q3运营评估，发生调研费5,000元+劳务费3,000元=8,000元。定期评估联营商有助于优化专柜结构。' },
+      { subjectCode: '660203', summary: '联营专柜季度评估费', debit: 8000, credit: 0, explanation: '管理费用增加记借方。对联营专柜进行Q3运营评估，发生调研费5,000元+劳务费3,000元=8,000元。定期评估联营商有助于优化专柜结构。' },
       { subjectCode: '100201', summary: '支付季度评估费', debit: 0, credit: 8000, explanation: '银行存款减少记贷方。支付联营专柜评估相关费用8,000元。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6602），属于"支付其他与经营活动有关的现金"。'}],
     documents: [
       { type: 'receipt', label: '评估费发票', docTitle: '市场调研及评估服务发票', date: '2026-10-03', totalAmount: 8000, stampText: 'XX市场咨询有限公司 发票专用章',
@@ -172,7 +172,7 @@ const tasks = [
     tip: '联营保证金是超市向联营商收取的履约保证，属于其他应付款（负债），不是收入。借：银行存款，贷：其他应付款-联营保证金。合同到期退还时冲减该负债。保证金不计入损益，仅作为信用保证。',
     entries: [
       { subjectCode: '100201', summary: '收到周大福联营保证金', debit: 50000, credit: 0, explanation: '银行存款增加记借方。收到周大福珠宝联营合同保证金50,000元，资金到账。保证金是确保联营商履行合同义务的信用保证。' , cashFlowItem: 'cf-op5', cashFlowExplanation: '其他经营活动现金流入（配对科目2241），属于"收到其他与经营活动有关的现金"——保证金在退还前属于企业的暂收款项。'},
-      { subjectCode: '2241', summary: '联营保证金（周大福珠宝）', debit: 0, credit: 50000, explanation: '其他应付款增加记贷方。收取联营保证金形成对周大福的负债，合同到期无违约时退还。保证金不计入收入。' }],
+      { subjectCode: '224106', summary: '联营保证金（周大福珠宝）', debit: 0, credit: 50000, explanation: '其他应付款增加记贷方。收取联营保证金形成对周大福的负债，合同到期无违约时退还。保证金不计入收入。' }],
     documents: [
       { type: 'bank', label: '收款回单', date: '2026-10-09', totalAmount: 50000, payer: '周大福珠宝（深圳）有限公司', payeeName: '万悦超市', content: '联营合同保证金', refNo: 'HD202610090001' },
       { type: 'text', label: '联营合同', docTitle: '联营专柜入驻合同（周大福珠宝）', stampText: '合同专用章',
@@ -195,7 +195,7 @@ const tasks = [
     tip: '进场费是超市向新联营商收取的一次性入场费用，应在合同期限内分期确认收入，而非一次性确认。借：银行存款，贷：合同负债（递延收益）/主营业务收入（当期分摊部分）。依据《企业会计准则第14号——收入》，进场费属于在某一时段内履行的履约义务，应按合同期限平均确认。',
     entries: [
       { subjectCode: '100201', summary: '收取周大福进场费', debit: 60000, credit: 0, explanation: '银行存款增加记借方。收到周大福珠宝入驻进场费60,000元（含税），资金到账。进场费是联营商为获得专柜经营权的入场费用。' , cashFlowItem: 'cf-op5', cashFlowExplanation: '其他经营活动现金流入（配对科目2241），属于"收到其他与经营活动有关的现金"。'},
-      { subjectCode: '2241', summary: '进场费递延收益（未摊销部分）', debit: 0, credit: 57500, explanation: '其他应付款（递延收益）增加记贷方。进场费60,000元按24个月分期确认收入，本月确认2,500元。剩余未确认部分57,500元暂挂递延收益。依据CAS 14号准则，进场费属于时段内履行的履约义务。' },
+      { subjectCode: '224105', summary: '进场费递延收益（未摊销部分）', debit: 0, credit: 57500, explanation: '其他应付款（递延收益）增加记贷方。进场费60,000元按24个月分期确认收入，本月确认2,500元。剩余未确认部分57,500元暂挂递延收益。依据CAS 14号准则，进场费属于时段内履行的履约义务。' },
       { subjectCode: '6001', summary: '进场费分期确认收入（本月）', debit: 0, credit: 2500, explanation: '主营业务收入增加记贷方。本月确认进场费收入=60,000÷24=2,500元。进场费按合同期限平均分摊确认收入。' }],
     documents: [
       { type: 'bank', label: '收款回单', date: '2026-10-10', totalAmount: 60000, payer: '周大福珠宝（深圳）有限公司', payeeName: '万悦超市', content: '联营专柜进场费', refNo: 'HD202610100001' },
@@ -245,7 +245,7 @@ const tasks = [
     description: '计提本月周大福珠宝专柜装修费摊销2,000元。借：管理费用，贷：长期待摊费用。',
     tip: '长期待摊费用按月摊销时，将费用分摊到各期。借：管理费用-装修费摊销，贷：长期待摊费用。装修费在合同期内均匀摊销，体现配比原则。',
     entries: [
-      { subjectCode: '6602', summary: '专柜装修费本月摊销', debit: 2000, credit: 0, explanation: '管理费用增加记借方。周大福专柜装修费本月摊销2,000元。长期待摊费用按直线法在24个月内均匀摊销，体现配比原则。' },
+      { subjectCode: '660206', summary: '专柜装修费本月摊销', debit: 2000, credit: 0, explanation: '管理费用增加记借方。周大福专柜装修费本月摊销2,000元。长期待摊费用按直线法在24个月内均匀摊销，体现配比原则。' },
       { subjectCode: '1801', summary: '装修费本月摊销', debit: 0, credit: 2000, explanation: '长期待摊费用减少记贷方。本月摊销2,000元后，长期待摊费用余额为46,000元。' }],
     documents: [
       { type: 'text', label: '摊销计算表', docTitle: '长期待摊费用摊销明细表（10月）', stampText: '财务专用章',
@@ -365,7 +365,7 @@ const tasks = [
     tip: '联营模式下，联营商品的所有权属于联营商，超市仅代为保管和销售。收到联营商品时进行备查登记：借：受托代销商品，贷：受托代销商品款。待售出后按净额法确认扣点收入。联营商品不属于超市存货，不占用超市资金。',
     entries: [
       { subjectCode: '1405', summary: '周大福联营商品入库（备查）', debit: 200000, credit: 0, explanation: '库存商品（备查）增加记借方。周大福珠宝联营商品入库200,000元，作为受托代销商品登记。联营商品所有权属于联营商，超市仅代管代销，不入正式存货账。' },
-      { subjectCode: '2241', summary: '周大福联营商品代管登记', debit: 0, credit: 200000, explanation: '其他应付款（受托代销商品款）增加记贷方。联营商品按保底协议价备查登记，对应联营商的代销款义务。' }],
+      { subjectCode: '224103', summary: '周大福联营商品代管登记', debit: 0, credit: 200000, explanation: '其他应付款（受托代销商品款）增加记贷方。联营商品按保底协议价备查登记，对应联营商的代销款义务。' }],
     documents: [
       { type: 'text', label: '联营商品入库单', docTitle: '联营专柜商品入库验收单（周大福珠宝）', stampText: '仓库验收专用章',
         content: `联营商：周大福珠宝（深圳）有限公司
@@ -489,7 +489,7 @@ const tasks = [
     tip: '月末计提当月工资体现权责发生制。借：管理费用/销售费用（按部门），贷：应付职工薪酬-工资。国庆后销售回归常态，人员工资恢复正常水平。',
     entries: [
       { subjectCode: '660203', summary: '计提管理人员工资', debit: 30000, credit: 0, explanation: '管理费用-工资薪金增加记借方。行政管理人员工资30,000元计入管理费用。' },
-      { subjectCode: '6601', summary: '计提销售人员工资', debit: 25000, credit: 0, explanation: '销售费用增加记借方。销售人员工资25,000元计入销售费用。' },
+      { subjectCode: '660103', summary: '计提销售人员工资', debit: 25000, credit: 0, explanation: '销售费用增加记借方。销售人员工资25,000元计入销售费用。' },
       { subjectCode: '221101', summary: '计提本月工资', debit: 0, credit: 55000, explanation: '应付职工薪酬-工资增加记贷方。计提形成对员工的负债55,000元，发放时冲减。' }],
     documents: [
       { type: 'text', label: '工资表', docTitle: '2026年10月工资汇总表', stampText: '行政人事部章',
@@ -527,7 +527,7 @@ const tasks = [
     description: '计提本月固定资产折旧。房屋建筑物原值500,000×0.2%=1,000元，办公设备60,000×0.8%=480元，运输设备200,000×0.6%=1,200元，货架冷链100,000×0.7%=700元，合计3,380元。',
     tip: '固定资产折旧每月计提，金额稳定。借：管理费用，贷：累计折旧。全部资产为管理部门使用。',
     entries: [
-      { subjectCode: '6602', summary: '计提本月折旧', debit: 3380, credit: 0, explanation: '管理费用增加记借方。本月折旧合计：房屋1,000+办公设备480+运输设备1,200+货架冷链700=3,380元。' },
+      { subjectCode: '660205', summary: '计提本月折旧', debit: 3380, credit: 0, explanation: '管理费用增加记借方。本月折旧合计：房屋1,000+办公设备480+运输设备1,200+货架冷链700=3,380元。' },
       { subjectCode: '1602', summary: '计提本月折旧', debit: 0, credit: 3380, explanation: '累计折旧增加记贷方。各项资产按原值×月折旧率计算折旧。' }],
     documents: [
       { type: 'text', label: '折旧计算表', docTitle: '固定资产折旧计算表（2026年10月）', stampText: '财务专用章',
@@ -546,7 +546,7 @@ const tasks = [
     tip: '短期借款利息按月计提计入财务费用。借：财务费用，贷：其他应付款。借款利息是稳定的月度费用。',
     entries: [
       { subjectCode: '6603', summary: '计提10月短期借款利息', debit: 2175, credit: 0, explanation: '财务费用增加记借方。短期贷款600,000×4.35%÷12=2,175元。' },
-      { subjectCode: '2241', summary: '计提10月利息', debit: 0, credit: 2175, explanation: '其他应付款增加记贷方。利息暂挂，到期还本付息时冲减。' }],
+      { subjectCode: '224104', summary: '计提10月利息', debit: 0, credit: 2175, explanation: '其他应付款增加记贷方。利息暂挂，到期还本付息时冲减。' }],
     documents: [
       { type: 'text', label: '利息计算表', docTitle: '短期借款利息计算表（2026年10月）', stampText: '财务专用章',
         content: `短期借款利息计算表
@@ -572,7 +572,7 @@ const tasks = [
     description: '支付秋季商品物流配送费2,500元，以工商银行转账支付。',
     tip: '物流配送费计入销售费用。借：销售费用-运杂费，贷：银行存款。换季商品物流量增加，运杂费略高于上月。',
     entries: [
-      { subjectCode: '6601', summary: '支付秋季物流配送费', debit: 2500, credit: 0, explanation: '销售费用增加记借方。秋季换季商品物流配送费2,500元。换季期间商品调配量增加。' },
+      { subjectCode: '660102', summary: '支付秋季物流配送费', debit: 2500, credit: 0, explanation: '销售费用增加记借方。秋季换季商品物流配送费2,500元。换季期间商品调配量增加。' },
       { subjectCode: '100201', summary: '支付物流费', debit: 0, credit: 2500, explanation: '银行存款减少记贷方。支付物流配送费2,500元。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6601），属于"支付其他与经营活动有关的现金"。'}],
     documents: [
       { type: 'receipt', label: '运费发票', docTitle: '运输业增值税普通发票', date: '2026-10-26', totalAmount: 2500, stampText: 'XX物流有限公司 发票专用章',
@@ -620,9 +620,9 @@ const tasks = [
       { subjectCode: '6001', debit: 195871.68, credit: 0, summary: '结转主营业务收入', explanation: '主营业务收入结转至本年利润。收入合计：联营扣点（美肌堂）12,743.36+进场费分摊2,500+保底补差17,699.12+秋季商品55,000+日常零售50,000+9月下半月联营15,929.20+其他≈195,871.68元。收入类科目期末归零。' },
       { subjectCode: '6401', debit: 0, credit: 85500, summary: '结转主营业务成本', explanation: '主营业务成本结转至本年利润。成本合计：秋季商品27,500+日常零售30,000+其他28,000≈85,500元（含返利冲减4,500元）。' },
       { subjectCode: '6403', debit: 0, credit: 1195.25, summary: '结转税金及附加', explanation: '税金及附加转出1,195.25元（城建税836.68+教育费附加358.57）。' },
-      { subjectCode: '6601', debit: 0, credit: 32500, summary: '结转销售费用', explanation: '销售费用转出32,500元：促销临时工3,000+促销物资2,000+销售工资25,000+物流费2,500。' },
+      { subjectCode: '660102', debit: 0, credit: 32500, summary: '结转销售费用', explanation: '销售费用转出32,500元：促销临时工3,000+促销物资2,000+销售工资25,000+物流费2,500。' },
       { subjectCode: '660101', debit: 0, credit: 10000, summary: '结转销售费用-广告费', explanation: '广告费10,000元转出（秋季新品推广），余额归零。' },
-      { subjectCode: '6602', debit: 0, credit: 13380, summary: '结转管理费用', explanation: '管理费用转出13,380元：评估费8,000+装修摊销2,000+折旧3,380。' },
+      { subjectCode: '660205', debit: 0, credit: 13380, summary: '结转管理费用', explanation: '管理费用转出13,380元：评估费8,000+装修摊销2,000+折旧3,380。' },
       { subjectCode: '660203', debit: 0, credit: 30000, summary: '结转管理费用-工资', explanation: '管理人员工资30,000元转出，余额归零。' },
       { subjectCode: '6603', debit: 0, credit: 2175, summary: '结转财务费用', explanation: '财务费用转出2,175元（短期借款利息）。' },
       { subjectCode: '4103', debit: 0, credit: 21121.43, summary: '结转净利润至本年利润', explanation: '本年利润增加记贷方。本月净利润=主营业务收入195,871.68-（成本85,500+税金1,195.25+销售费用42,500+管理费用43,380+财务费用2,175）=195,871.68-174,750.25≈21,121.43元。10月为节后淡季，利润较9月回落，但联营收入的稳定贡献平滑了季节性波动。' }

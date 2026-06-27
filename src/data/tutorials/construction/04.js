@@ -655,7 +655,7 @@ const tasks = [
     tip: '',
     entries: [
       {
-        subjectCode: '6602',
+        subjectCode: '660201',
         debit: 4800,
         credit: 0,
         summary: '办公费',
@@ -942,7 +942,7 @@ const tasks = [
         explanation: '项目部管理人员工资。借35000元。'
       },
       {
-        subjectCode: '6602',
+        subjectCode: '660203',
         debit: 25000,
         credit: 0,
         summary: '公司管理人员工资',
@@ -1025,7 +1025,7 @@ const tasks = [
         explanation: '项目部社保公积金。借12845元。'
       },
       {
-        subjectCode: '6602',
+        subjectCode: '660212',
         debit: 9175,
         credit: 0,
         summary: '管理社保公积金',
@@ -1120,7 +1120,7 @@ const tasks = [
         explanation: '施工机械折旧。借1250元。'
       },
       {
-        subjectCode: '6602',
+        subjectCode: '660205',
         debit: 600,
         credit: 0,
         summary: '办公设备折旧',
@@ -1201,7 +1201,7 @@ const tasks = [
         explanation: '临时设施摊销。借5000元。'
       },
       {
-        subjectCode: '6602',
+        subjectCode: '660206',
         debit: 10000,
         credit: 0,
         summary: '办公租金摊销',

@@ -187,7 +187,7 @@ const tasks = [
         explanation: '应收账款减少。'
       },
       {
-        subjectCode: '6602',
+        subjectCode: '660210',
         debit: 8000,
         credit: 0,
         summary: '承担审计费',
@@ -485,7 +485,7 @@ const tasks = [
         explanation: '办公。借1500元。'
       },
       {
-        subjectCode: '6602',
+        subjectCode: '660201',
         debit: 4500,
         credit: 0,
         summary: '公司办公',
@@ -533,7 +533,7 @@ const tasks = [
     tip: '质保期内维修费计入"销售费用"或冲减质保金。',
     entries: [
       {
-        subjectCode: '6601',
+        subjectCode: '660106',
         debit: 8000,
         credit: 0,
         summary: '质保期维修费',
@@ -924,7 +924,7 @@ const tasks = [
         explanation: '项目部工资。借30000元。'
       },
       {
-        subjectCode: '6602',
+        subjectCode: '660203',
         debit: 25000,
         credit: 0,
         summary: '管理工资',
@@ -1007,7 +1007,7 @@ const tasks = [
         explanation: '项目部社公。借11010元。'
       },
       {
-        subjectCode: '6602',
+        subjectCode: '660217',
         debit: 9175,
         credit: 0,
         summary: '管理社公',
@@ -1112,14 +1112,14 @@ const tasks = [
         explanation: '临设摊销。借5000元。'
       },
       {
-        subjectCode: '6602',
+        subjectCode: '660205',
         debit: 600,
         credit: 0,
         summary: '办公折旧',
         explanation: '办公折旧。借600元。'
       },
       {
-        subjectCode: '6602',
+        subjectCode: '660205',
         debit: 10000,
         credit: 0,
         summary: '房租摊销',
@@ -1704,7 +1704,7 @@ const tasks = [
         explanation: '合同履约成本-合同成本增加。'
       },
       {
-        subjectCode: '2241',
+        subjectCode: '224199',
         debit: 0,
         credit: 20000,
         summary: '应付质量保修金',

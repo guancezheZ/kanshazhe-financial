@@ -728,7 +728,7 @@ const tasks = [
     tip: '',
     entries: [
       {
-        subjectCode: '6602',
+        subjectCode: '660201',
         debit: 5000,
         credit: 0,
         summary: '办公费',
@@ -877,7 +877,7 @@ const tasks = [
         explanation: '间接费用增加。'
       },
       {
-        subjectCode: '6602',
+        subjectCode: '660203',
         debit: 25000,
         credit: 0,
         summary: '公司管理人员工资',
@@ -973,7 +973,7 @@ const tasks = [
         explanation: '间接费用增加。'
       },
       {
-        subjectCode: '6602',
+        subjectCode: '660212',
         debit: 9175,
         credit: 0,
         summary: '公司管理社保公积金',
@@ -1077,7 +1077,7 @@ const tasks = [
         explanation: '机械使用费增加。'
       },
       {
-        subjectCode: '6602',
+        subjectCode: '660205',
         debit: 600,
         credit: 0,
         summary: '办公设备折旧',
@@ -1166,7 +1166,7 @@ const tasks = [
         explanation: '其他直接费增加。'
       },
       {
-        subjectCode: '6602',
+        subjectCode: '660206',
         debit: 10000,
         credit: 0,
         summary: '办公租金摊销',

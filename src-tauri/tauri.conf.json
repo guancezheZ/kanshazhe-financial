@@ -1,7 +1,7 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
   "productName": "观测者财务模拟系统",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "identifier": "com.kanshazhe.financial",
   "build": {
     "frontendDist": "../dist",
@@ -40,7 +40,7 @@
     "resources": {
       "../docs/系统使用说明书.html": "系统使用说明书.html",
       "../docs/教学知识点介绍.html": "教学知识点介绍.html",
-      "../观测者财务_系统介绍.html": "观测者财务_系统介绍.html"
+      "../观测者财务_配套资料包/观测者财务_系统介绍.html": "观测者财务_系统介绍.html"
     },
     "windows": {
       "nsis": {

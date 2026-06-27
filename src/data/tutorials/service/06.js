@@ -188,12 +188,12 @@ const jun = [
         ],
       ]}] },
   { date: '2026-06-14', role: 'accountant', title: '支付6月水电及网络费', tags: ["费用管理"], difficulty: 1,
-    entries: [{ subjectCode: '6602', summary: '水电费', debit: 5000, credit: 0 }, { subjectCode: '6602', summary: '网络费', debit: 2000, credit: 0 }, { subjectCode: '100201', summary: '付款', debit: 0, credit: 7000 }],
+    entries: [{ subjectCode: '660203', summary: '水电费', debit: 5000, credit: 0 }, { subjectCode: '660203', summary: '网络费', debit: 2000, credit: 0 }, { subjectCode: '100201', summary: '付款', debit: 0, credit: 7000 }],
     documents: [
       { type: 'receipt', label: '电费凭证', docTitle: '电 费 缴 费 凭 证', date: '2026-06-14', totalAmount: 5000, payer: '雲帆管理咨询有限公司', stampText: '国家电网\n电费收讫章', items: [{ name: '写字楼用电 5,000kWh×1.00元', qty: 5000, price: 1, amount: 5000 }]},
       { type: 'receipt', label: '通信费发票', docTitle: '通 信 服 务 发 票', date: '2026-06-14', totalAmount: 2000, payer: '雲帆管理咨询有限公司', stampText: '中国联通\n发票专用章', items: [{ name: '企业宽带（6月）', qty: 1, price: 2000, amount: 2000 }]}] },
   { date: '2026-06-15', role: 'accountant', title: '摊销SaaS费及计提折旧', tags: ["费用管理"], difficulty: 2, description: '摊销SaaS服务费3,000元及计提固定资产折旧2,620元。',
-    entries: [{ subjectCode: '6602', summary: '摊销', debit: 3000, credit: 0 }, { subjectCode: '6602', summary: '折旧', debit: 2462, credit: 0 }, { subjectCode: '1208', summary: '摊销', debit: 0, credit: 3000 }, { subjectCode: '1602', summary: '折旧', debit: 0, credit: 2462 }],
+    entries: [{ subjectCode: '660206', summary: '摊销', debit: 3000, credit: 0 }, { subjectCode: '660205', summary: '折旧', debit: 2462, credit: 0 }, { subjectCode: '1208', summary: '摊销', debit: 0, credit: 3000 }, { subjectCode: '1602', summary: '折旧', debit: 0, credit: 2462 }],
     documents: [
       { type: 'text', label: '摊销折旧表', docTitle: '摊 销 折 旧 计 提 表', date: '2026-06-15', stampText: '财务专用章', content: '期间：2026年6月\n\nSaaS摊销：36,000÷12=3,000.00元\n折旧合计：2,461.68元（含3月新增桌椅）\n\n合计：5,461.68元\n\n制表：李会计' ,
       headers: [
@@ -268,7 +268,7 @@ const jun = [
     documents: [
       { type: 'receipt', label: '餐饮发票', docTitle: '北 京 市 餐 饮 服 务 发 票', date: '2026-06-20', totalAmount: 2500, payer: '雲帆管理咨询有限公司', stampText: 'XX餐厅\n发票专用章', items: [{ name: 'F项目客户宴请', qty: 1, price: 2500, amount: 2500 }]}] },
   { date: '2026-06-21', role: 'accountant', title: '计提6月员工工资', tags: ["工资社保"], difficulty: 2, description: '计提6月员工工资，应发工资合计208,000元。',
-    entries: [{ subjectCode: '520101', summary: '项目工资', debit: 160000, credit: 0 }, { subjectCode: '6602', summary: '管理工资', debit: 48000, credit: 0 }, { subjectCode: '221101', summary: '应付工资', debit: 0, credit: 208000 }],
+    entries: [{ subjectCode: '520101', summary: '项目工资', debit: 160000, credit: 0 }, { subjectCode: '660203', summary: '管理工资', debit: 48000, credit: 0 }, { subjectCode: '221101', summary: '应付工资', debit: 0, credit: 208000 }],
     documents: [
       { type: 'text', label: '工资计算表', docTitle: '6 月 工 资 计 算 汇 总 表', date: '2026-06-21', stampText: '人力资源部\n工资专用章', content: '期间：2026年6月\n\n项目人员：160,000元（F项目冲刺+E年框）\n管理人员：48,000元\n\n应发合计：208,000元\n\n制表：王出纳\n审核：李会计' ,
       headers: [
@@ -302,7 +302,7 @@ const jun = [
         ],
       ]}] },
   { date: '2026-06-22', role: 'accountant', title: '计提企业社保及公积金', tags: ["工资社保"], difficulty: 2, description: '计提企业社保及公积金，合计63,000元。',
-    entries: [{ subjectCode: '520101', summary: '项目社保', debit: 32000, credit: 0 }, { subjectCode: '520101', summary: '项目公积金', debit: 16000, credit: 0 }, { subjectCode: '6602', summary: '管理社保', debit: 10000, credit: 0 }, { subjectCode: '6602', summary: '管理公积金', debit: 5000, credit: 0 }, { subjectCode: '221102', summary: '应付社保', debit: 0, credit: 42000 }, { subjectCode: '221102', summary: '应付公积金', debit: 0, credit: 21000 }],
+    entries: [{ subjectCode: '520101', summary: '项目社保', debit: 32000, credit: 0 }, { subjectCode: '520101', summary: '项目公积金', debit: 16000, credit: 0 }, { subjectCode: '660203', summary: '管理社保', debit: 10000, credit: 0 }, { subjectCode: '660203', summary: '管理公积金', debit: 5000, credit: 0 }, { subjectCode: '221102', summary: '应付社保', debit: 0, credit: 42000 }, { subjectCode: '221102', summary: '应付公积金', debit: 0, credit: 21000 }],
     documents: [
       { type: 'text', label: '社保公积金计提表', docTitle: '社 保 公 积 金 计 提 汇 总 表', date: '2026-06-22', stampText: '财务专用章', content: '期间：2026年6月\n\n社保（企业部分）：\n  项目人员：32,000元\n  管理人员：10,000元\n  小计：42,000元\n\n公积金（企业部分）：\n  项目人员：16,000元\n  管理人员：5,000元\n  小计：21,000元\n\n合计：63,000元\n\n制表：李会计' ,
       headers: [
@@ -456,7 +456,7 @@ const jun = [
     description: '收入：F项目120,000+E年框20,000=140,000。半年累计回顾。',
     entries: [{ subjectCode: '6001', summary: '结转收入', debit: 140000, credit: 0 }, { subjectCode: '4103', summary: '收入转入', debit: 0, credit: 140000 },
       { subjectCode: '4103', summary: '费用转入', debit: 135608, credit: 0, explanation: '80,500+1,008+44,000+100+8,000+2,000=135,608。' }, { subjectCode: '6401', summary: '转成本', debit: 0, credit: 80500 },
-      { subjectCode: '6403', summary: '转税金', debit: 0, credit: 1008 }, { subjectCode: '6602', summary: '转管理费', debit: 0, credit: 44000 },
+      { subjectCode: '6403', summary: '转税金', debit: 0, credit: 1008 }, { subjectCode: '660203', summary: '转管理费', debit: 0, credit: 44000 },
       { subjectCode: '6603', summary: '转财务费', debit: 0, credit: 100 }, { subjectCode: '6701', summary: '转减值损失', debit: 0, credit: 8000 },
       { subjectCode: '6801', summary: '转所得税', debit: 0, credit: 2000 }],
     documents: [
@@ -564,7 +564,7 @@ const jun = [
       ]}] },
   { date: '2026-06-28', role: 'accountant', title: '计提无形资产摊销', tags: ["费用管理"], difficulty: 2,
     description: '计提6月无形资产摊销400元。',
-    entries: [{ subjectCode: '6602', summary: '无形资产摊销', debit: 400, credit: 0 }, { subjectCode: '1702', summary: '累计摊销', debit: 0, credit: 400 }],
+    entries: [{ subjectCode: '660206', summary: '无形资产摊销', debit: 400, credit: 0 }, { subjectCode: '1702', summary: '累计摊销', debit: 0, credit: 400 }],
     documents: [
       { type: 'text', label: '摊销计算表', docTitle: '无 形 资 产 摊 销 计 算 表', date: '2026-06-28', stampText: '财务专用章', content: '无形资产：软件项目管理工具（永久许可）\n原值：24,000.00元\n摊销期限：5年（60个月）\n月摊销额：400.00元\n累计摊销：1,600.00元\n\n制表：李会计' ,
       headers: [
@@ -599,13 +599,13 @@ const jun = [
       ]}] },
   { date: '2026-06-28', role: 'accountant', title: '支付员工年度体检费', tags: ["费用管理"], difficulty: 1,
     description: '组织全体员工年度体检，费用12,000元。',
-    entries: [{ subjectCode: '6602', summary: '体检费', debit: 12000, credit: 0 }, { subjectCode: '100201', summary: '付款', debit: 0, credit: 12000 }],
+    entries: [{ subjectCode: '660203', summary: '体检费', debit: 12000, credit: 0 }, { subjectCode: '100201', summary: '付款', debit: 0, credit: 12000 }],
     documents: [
       { type: 'receipt', label: '体检费发票', docTitle: '体 检 服 务 发 票', date: '2026-06-28', totalAmount: 12000, payer: '雲帆管理咨询有限公司', stampText: 'XX体检中心\n发票专用章', items: [{ name: '2026年度员工健康体检（52人）', qty: 52, price: 230.77, amount: 12000 }]},
       { type: 'bank', label: '转账回单', date: '2026-06-28', totalAmount: 12000, payer: '雲帆管理咨询有限公司', payeeName: 'XX爱康体检中心', content: '员工年度体检费', refNo: 'HD202606280011' }] },
   { date: '2026-06-29', role: 'accountant', title: '支付H1审计费', tags: ["费用管理"], difficulty: 1,
     description: '支付半年度财务报表审计费15,000元。',
-    entries: [{ subjectCode: '6602', summary: '审计费', debit: 15000, credit: 0 }, { subjectCode: '100201', summary: '付款', debit: 0, credit: 15000 }],
+    entries: [{ subjectCode: '660203', summary: '审计费', debit: 15000, credit: 0 }, { subjectCode: '100201', summary: '付款', debit: 0, credit: 15000 }],
     documents: [
       { type: 'receipt', label: '审计费发票', docTitle: '审 计 服 务 发 票', date: '2026-06-29', totalAmount: 15000, payer: '雲帆管理咨询有限公司', stampText: 'XX会计师事务所\n发票专用章', items: [{ name: '2026年H1半年度财务报表审计', qty: 1, price: 15000, amount: 15000 }]},
       { type: 'bank', label: '转账回单', date: '2026-06-29', totalAmount: 15000, payer: '雲帆管理咨询有限公司', payeeName: 'XX会计师事务所', content: 'H1半年度审计费', refNo: 'HD202606290012' }] },

@@ -44,7 +44,7 @@
         @node-click="handleSelect"
       >
         <template #default="{ data }">
-          <span class="tree-item" :class="{ disabled: !data.isLeaf || !data.opened }">
+          <span class="tree-item" :class="{ disabled: !data.opened }">
             <span class="tree-code">{{ data.code }}</span>
             <span class="tree-name">{{ data.name }}</span>
             <el-tag v-if="!data.isLeaf" size="small" type="info">非末级</el-tag>
@@ -117,9 +117,6 @@ function filterNode(value, data) {
 }
 
 function handleSelect(data) {
-  if (!data.isLeaf) {
-    return // 非末级不可选
-  }
   emit('update:modelValue', data.id)
   emit('change', data)
   visible.value = false

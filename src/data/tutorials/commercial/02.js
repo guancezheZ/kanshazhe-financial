@@ -596,7 +596,7 @@ const tasks = [
     tip: '春节法定节假日加班费按300%计算。分录：借：管理费用-工资薪金/销售费用，贷：应付职工薪酬-工资。依据《劳动法》第四十四条第三款：法定休假日安排工作的，支付不低于工资300%的报酬。',
     entries: [
       { subjectCode: '660203', summary: '计提店长2月工资及加班费', debit: 9122, credit: 0, explanation: '管理费用-工资薪金增加记借方。店长2月基础工资8,000元+春节加班费分摊约1,122元=9,122元。' },
-      { subjectCode: '6601', summary: '计提一线员工2月工资及加班费', debit: 68705.6, credit: 0, explanation: '销售费用增加记借方。一线员工2月基础工资53,000元+春节加班费约15,705.60元=68,705.60元。' },
+      { subjectCode: '660103', summary: '计提一线员工2月工资及加班费', debit: 68705.6, credit: 0, explanation: '销售费用增加记借方。一线员工2月基础工资53,000元+春节加班费约15,705.60元=68,705.60元。' },
       { subjectCode: '221101', summary: '计提2月工资及加班费', debit: 0, credit: 77827.6, explanation: '应付职工薪酬-工资增加记贷方。2月应付工资总额77,827.60元（基础61,000+春节加班16,827.60）。' }],
     documents: [
       { type: 'text', label: '工资计算表', docTitle: '2026年2月工资及春节加班费计算表', stampText: '人力资源部 工资专用章',
@@ -950,7 +950,7 @@ const tasks = [
     description: '支付2月水电费。春节期间营业时间长、用电量大，电费11,200元；水费1,500元。合计12,700元，以工商银行转账支付。',
     tip: '春节旺季水电费高于平时。超市的冷藏柜、空调、照明是主要用电设备，电费是每月固定的重大运营支出。',
     entries: [
-      { subjectCode: '6602', summary: '支付2月水电费', debit: 12700, credit: 0, explanation: '管理费用增加记借方。2月水电费12,700元（电费11,200+水费1,500），比1月（8,500元）高出约30%。' },
+      { subjectCode: '660208', summary: '支付2月水电费', debit: 12700, credit: 0, explanation: '管理费用增加记借方。2月水电费12,700元（电费11,200+水费1,500），比1月（8,500元）高出约30%。' },
       { subjectCode: '100201', summary: '支付2月水电费', debit: 0, credit: 12700, explanation: '银行存款减少记贷方。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6602），属于"支付其他与经营活动有关的现金"。'}],
     documents: [
       { type: 'receipt', label: '电费发票', docTitle: '国网上海市电力公司 电费缴费凭证（2026年2月）', date: '2026-02-23', totalAmount: 11200,
@@ -982,7 +982,7 @@ const tasks = [
     description: '春节期间生鲜备货量大，节后盘点发现正常损耗：蔬菜损耗约10%（2,200元）、水果损耗约8%（1,920元）、鲜肉损耗约5%（1,600元）、水产品损耗约12%（2,400元）。合计8,120元，经店长批准计入管理费用。',
     tip: '春节期间生鲜备货量大，损耗率通常高于平时。正常损耗计入"管理费用-生鲜损耗"，不需要进项税额转出。损耗控制是超市盈利能力的关键指标。',
     entries: [
-      { subjectCode: '6602', summary: '春节期间生鲜正常损耗', debit: 8120, credit: 0, explanation: '管理费用增加记借方。春节期间生鲜正常损耗合计8,120元：蔬菜2,200元（10%）+水果1,920元（8%）+鲜肉1,600元（5%）+水产品2,400元（12%）。' },
+      { subjectCode: '660214', summary: '春节期间生鲜正常损耗', debit: 8120, credit: 0, explanation: '管理费用增加记借方。春节期间生鲜正常损耗合计8,120元：蔬菜2,200元（10%）+水果1,920元（8%）+鲜肉1,600元（5%）+水产品2,400元（12%）。' },
       { subjectCode: '1405', summary: '生鲜损耗出库', debit: 0, credit: 8120, explanation: '库存商品减少记贷方。生鲜正常损耗出库，库存减少。正常损耗不需要进项税额转出。' }],
     documents: [
       { type: 'text', label: '生鲜损耗报告单', docTitle: '生鲜商品损耗报告（2026年2月·春节期间）', stampText: '生鲜部专用章',
@@ -1176,10 +1176,10 @@ const tasks = [
       // 费用类（原借方余额→贷方转出）
       { subjectCode: '6401', debit: 0, credit: 280000, summary: '结转主营业务成本', explanation: '主营业务成本结转至本年利润。借：本年利润，贷：主营业务成本。' },
       { subjectCode: '6403', debit: 0, credit: 3469.8, summary: '结转税金及附加', explanation: '税金及附加结转至本年利润。借：本年利润，贷：税金及附加。' },
-      { subjectCode: '6601', debit: 0, credit: 68705.6, summary: '结转销售费用-工资', explanation: '一线员工工资含加班费。' },
+      { subjectCode: '660103', debit: 0, credit: 68705.6, summary: '结转销售费用-工资', explanation: '一线员工工资含加班费。' },
       { subjectCode: '660101', debit: 0, credit: 6000, summary: '结转销售费用-广告费', explanation: '销售费用结转至本年利润。借：本年利润，贷：销售费用。' },
       { subjectCode: '660102', debit: 0, credit: 4300, summary: '结转销售费用-运输费', explanation: '销售费用结转至本年利润。借：本年利润，贷：销售费用。' },
-      { subjectCode: '6602', debit: 0, credit: 20820, summary: '结转管理费用（水电+损耗）', explanation: '水电12,700+生鲜损耗8,120=20,820元。' },
+      { subjectCode: '660208', debit: 0, credit: 20820, summary: '结转管理费用（水电+损耗）', explanation: '水电12,700+生鲜损耗8,120=20,820元。' },
       { subjectCode: '660203', debit: 0, credit: 9122, summary: '结转管理费用-工资薪金', explanation: '店长工资及加班费9,122元。' },
       { subjectCode: '660205', debit: 0, credit: 1350, summary: '结转管理费用-折旧费', explanation: '首次计提折旧1,350元。' },
       // 净利润→本年利润贷方

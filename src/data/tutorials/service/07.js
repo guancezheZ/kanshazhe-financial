@@ -163,12 +163,12 @@ const jul = [
       { type: 'receipt', label: '云服务发票', docTitle: '云 计 算 服 务 发 票', date: '2026-07-12', totalAmount: 10000, payer: '雲帆管理咨询有限公司', stampText: '阿里云计算有限公司\n发票专用章', items: [{ name: 'ECS云服务器 4台×2月', qty: 8, price: 1250, amount: 10000 }]},
       { type: 'receipt', label: '开发工具发票', docTitle: '软 件 开 发 工 具 发 票', date: '2026-07-12', totalAmount: 5000, payer: '雲帆管理咨询有限公司', stampText: 'JetBrains中国\n发票专用章', items: [{ name: 'All Products Pack 年度授权', qty: 1, price: 5000, amount: 5000 }]}] },
   { date: '2026-07-14', role: 'accountant', title: '支付7月水电及网络费', tags: ["费用管理"], difficulty: 1,
-    entries: [{ subjectCode: '6602', summary: '水电费', debit: 4800, credit: 0 }, { subjectCode: '6602', summary: '网络费', debit: 2000, credit: 0 }, { subjectCode: '100201', summary: '付款', debit: 0, credit: 6800 }],
+    entries: [{ subjectCode: '660205', summary: '水电费', debit: 4800, credit: 0 }, { subjectCode: '660205', summary: '网络费', debit: 2000, credit: 0 }, { subjectCode: '100201', summary: '付款', debit: 0, credit: 6800 }],
     documents: [
       { type: 'receipt', label: '电费凭证', docTitle: '电 费 缴 费 凭 证', date: '2026-07-14', totalAmount: 4800, payer: '雲帆管理咨询有限公司', stampText: '国家电网\n电费收讫章', items: [{ name: '写字楼用电 4,800kWh×1.00元', qty: 4800, price: 1, amount: 4800 }]},
       { type: 'receipt', label: '通信费发票', docTitle: '通 信 服 务 发 票', date: '2026-07-14', totalAmount: 2000, payer: '雲帆管理咨询有限公司', stampText: '中国联通\n发票专用章', items: [{ name: '企业宽带（7月）', qty: 1, price: 2000, amount: 2000 }]}] },
   { date: '2026-07-15', role: 'accountant', title: '摊销及折旧', tags: ["费用管理"], difficulty: 2, description: '摊销6000元+折旧5240元，合计11240元。',
-    entries: [{ subjectCode: '6602', summary: '摊销', debit: 3000, credit: 0 }, { subjectCode: '6602', summary: '折旧', debit: 2620, credit: 0, explanation: '含新增电脑折旧' }, { subjectCode: '1208', summary: '摊销', debit: 0, credit: 3000 }, { subjectCode: '1602', summary: '折旧', debit: 0, credit: 2620 }],
+    entries: [{ subjectCode: '660205', summary: '摊销', debit: 3000, credit: 0 }, { subjectCode: '660205', summary: '折旧', debit: 2620, credit: 0, explanation: '含新增电脑折旧' }, { subjectCode: '1208', summary: '摊销', debit: 0, credit: 3000 }, { subjectCode: '1602', summary: '折旧', debit: 0, credit: 2620 }],
     documents: [
       { type: 'text', label: '摊销折旧表', docTitle: '摊 销 折 旧 计 提 表', date: '2026-07-15', stampText: '财务专用章', content: '期间：2026年7月\n\nSaaS摊销：36,000÷12=3,000.00元\n折旧合计：2,620.00元（含3月新购办公桌椅及5月新电脑）\n\n合计：5,620.00元\n\n制表：李会计' ,
       headers: [
@@ -199,7 +199,7 @@ const jul = [
       ]}] },
   { date: '2026-07-16', role: 'accountant', title: 'F公司项目奖金计提', tags: ["项目核算"], difficulty: 2,
     description: 'F项目结束，利润=350,000-约150,000=200,000。计提10%奖金20,000元。',
-    entries: [{ subjectCode: '6602', summary: 'F项目奖金', debit: 20000, credit: 0 }, { subjectCode: '221101', summary: '应付F项目奖金', debit: 0, credit: 20000 }],
+    entries: [{ subjectCode: '660203', summary: 'F项目奖金', debit: 20000, credit: 0 }, { subjectCode: '221101', summary: '应付F项目奖金', debit: 0, credit: 20000 }],
     documents: [
       { type: 'text', label: '项目奖金计提表', docTitle: '项 目 奖 金 计 提 审 批 表', date: '2026-07-16', stampText: '人力资源部\n奖金审批专用章', content: '项目：F新零售数字化转型咨询\n项目利润：350,000-150,000≈200,000.00元\n计提比例：10%\n奖金总额：20,000.00元\n\n分配方案：\n  项目经理：8,000元\n  高级顾问×2：各3,500元=7,000元\n  初级顾问×2：各2,500元=5,000元\n\n审批：总经理 ✓' ,
       headers: [
@@ -264,7 +264,7 @@ const jul = [
       { type: 'bank', label: '结息回单', date: '2026-07-22', totalAmount: 2500, payer: '中国工商银行北京分行', payeeName: '雲帆管理咨询有限公司', content: '活期存款2026年7月结息', refNo: 'HD202607220008' }] },
   { date: '2026-07-23', role: 'accountant', title: '计提7月员工工资', tags: ["工资社保"], difficulty: 2,
     description: '计提7月工资。项目/研发人员165,000+管理人员48,000=213,000元。',
-    entries: [{ subjectCode: '520101', summary: '项目工资', debit: 115000, credit: 0 }, { subjectCode: '530102', summary: '研发工资', debit: 50000, credit: 0 }, { subjectCode: '6602', summary: '管理工资', debit: 48000, credit: 0 }, { subjectCode: '221101', summary: '应付工资', debit: 0, credit: 213000 }],
+    entries: [{ subjectCode: '520101', summary: '项目工资', debit: 115000, credit: 0 }, { subjectCode: '530102', summary: '研发工资', debit: 50000, credit: 0 }, { subjectCode: '660203', summary: '管理工资', debit: 48000, credit: 0 }, { subjectCode: '221101', summary: '应付工资', debit: 0, credit: 213000 }],
     documents: [
       { type: 'text', label: '工资计算表', docTitle: '7 月 工 资 计 算 汇 总 表', date: '2026-07-23', stampText: '人力资源部\n工资专用章', content: '期间：2026年7月\n\n项目人员：115,000元\n  咨询顾问（3个在执项目）：85,000元\n  项目助理：30,000元\n\n研发人员：50,000元\n  研发工程师3人：50,000元\n\n管理人员：48,000元\n  行政人事：18,000元\n  财务人员：18,000元\n  管理层：12,000元\n\n应发合计：213,000元\n\n制表：王出纳\n审核：李会计' ,
       headers: [
@@ -326,7 +326,7 @@ const jul = [
         ],
       ]}] },
   { date: '2026-07-24', role: 'accountant', title: '计提企业社保及公积金', tags: ["工资社保"], difficulty: 2, description: '计提企业社保及公积金，合计65,000元。',
-    entries: [{ subjectCode: '520101', summary: '项目社保', debit: 23000, credit: 0 }, { subjectCode: '520101', summary: '项目公积金', debit: 12000, credit: 0 }, { subjectCode: '530102', summary: '研发社保', debit: 10000, credit: 0 }, { subjectCode: '530102', summary: '研发公积金', debit: 5000, credit: 0 }, { subjectCode: '6602', summary: '管理社保', debit: 10000, credit: 0 }, { subjectCode: '6602', summary: '管理公积金', debit: 5000, credit: 0 }, { subjectCode: '221102', summary: '应付社保', debit: 0, credit: 43000 }, { subjectCode: '221102', summary: '应付公积金', debit: 0, credit: 22000 }],
+    entries: [{ subjectCode: '520101', summary: '项目社保', debit: 23000, credit: 0 }, { subjectCode: '520101', summary: '项目公积金', debit: 12000, credit: 0 }, { subjectCode: '530102', summary: '研发社保', debit: 10000, credit: 0 }, { subjectCode: '530102', summary: '研发公积金', debit: 5000, credit: 0 }, { subjectCode: '660203', summary: '管理社保', debit: 10000, credit: 0 }, { subjectCode: '660203', summary: '管理公积金', debit: 5000, credit: 0 }, { subjectCode: '221102', summary: '应付社保', debit: 0, credit: 43000 }, { subjectCode: '221102', summary: '应付公积金', debit: 0, credit: 22000 }],
     documents: [
       { type: 'text', label: '社保公积金计提表', docTitle: '社 保 公 积 金 计 提 汇 总 表', date: '2026-07-24', stampText: '财务专用章', content: '期间：2026年7月\n\n社保（企业部分）：\n  项目人员：23,000元\n  研发人员：10,000元\n  管理人员：10,000元\n  小计：43,000元\n\n公积金（企业部分）：\n  项目人员：12,000元\n  研发人员：5,000元\n  管理人员：5,000元\n  小计：22,000元\n\n合计：65,000元\n\n制表：李会计' ,
       headers: [
@@ -481,7 +481,7 @@ const jul = [
     description: '收入：F终验130,000+E年框20,000=150,000。',
     entries: [{ subjectCode: '6001', summary: '结转收入', debit: 150000, credit: 0 }, { subjectCode: '4103', summary: '收入转入', debit: 0, credit: 150000 },
       { subjectCode: '4103', summary: '费用转入', debit: 165080, credit: 0 }, { subjectCode: '6401', summary: '转成本', debit: 0, credit: 118000 },
-      { subjectCode: '6403', summary: '转税金', debit: 0, credit: 1080 }, { subjectCode: '6602', summary: '转管理费', debit: 0, credit: 46000 }],
+      { subjectCode: '6403', summary: '转税金', debit: 0, credit: 1080 }, { subjectCode: '660204', summary: '转管理费', debit: 0, credit: 46000 }],
     documents: [
       { type: 'text', label: '结转表', docTitle: '期 间 损 益 结 转 表', date: '2026-07-31', stampText: '已结转', content: '结转期间：2026年7月\n\n收入类→本年利润：\n  主营业务收入：150,000.00元（F终验130,000+E年框20,000）\n\n费用类→本年利润：\n  主营业务成本：118,000.00元\n  税金及附加：1,080.00元\n  管理费用（含研发费用化）：46,000.00元（注：含研发费用化结转73,000已在管理费用中）\n\n本月净利润：150,000-118,000-1,080-46,000=-15,080元\n（研发投入73,000元全部费用化导致阶段性亏损）\n\n制表：李会计' ,
       headers: [
@@ -563,7 +563,7 @@ const jul = [
         ],
       ]}] },
   { date: '2026-07-30', role: 'accountant', title: '计提无形资产摊销', tags: ["费用管理"], difficulty: 2, description: '计提无形资产摊销400元。',
-    entries: [{ subjectCode: '6602', summary: '无形资产摊销', debit: 400, credit: 0 }, { subjectCode: '1702', summary: '累计摊销', debit: 0, credit: 400 }],
+    entries: [{ subjectCode: '660206', summary: '无形资产摊销', debit: 400, credit: 0 }, { subjectCode: '1702', summary: '累计摊销', debit: 0, credit: 400 }],
     documents: [
       { type: 'text', label: '摊销计算表', docTitle: '无 形 资 产 摊 销 计 算 表', date: '2026-07-30', stampText: '财务专用章', content: '无形资产：软件项目管理工具（永久许可）\n原值：24,000.00元\n摊销期限：5年（60个月）\n月摊销额：24,000÷60=400.00元\n\n制表：李会计' ,
       headers: [
@@ -593,7 +593,7 @@ const jul = [
         ],
       ]}] },
   { date: '2026-07-28', role: 'accountant', title: '支付员工补充医疗保险', tags: ["费用管理"], difficulty: 1,
-    entries: [{ subjectCode: '6602', summary: '补充医保', debit: 6000, credit: 0 }, { subjectCode: '100201', summary: '付款', debit: 0, credit: 6000 }],
+    entries: [{ subjectCode: '660212', summary: '补充医保', debit: 6000, credit: 0 }, { subjectCode: '100201', summary: '付款', debit: 0, credit: 6000 }],
     documents: [
       { type: 'receipt', label: '保费发票', docTitle: '补 充 医 疗 保 险 发 票', date: '2026-07-28', totalAmount: 6000, payer: '雲帆管理咨询有限公司', stampText: '中国人寿\n发票专用章', items: [{ name: '2026年度员工补充医疗保险（全员）', qty: 1, price: 6000, amount: 6000 }]},
       { type: 'bank', label: '转账回单', date: '2026-07-28', totalAmount: 6000, payer: '雲帆管理咨询有限公司', payeeName: '中国人寿保险股份有限公司', content: '员工补充医疗保险费', refNo: 'HD202607280011' }] },

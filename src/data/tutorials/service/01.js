@@ -290,7 +290,7 @@ const jan = [
     tip: '招聘费用属于管理费用。借：管理费用-招聘费，贷：银行存款。',
     description: '因业务扩张，委托猎头公司招聘3名高级顾问，支付猎头服务费15,000元。',
     entries: [
-      { subjectCode: '6602', summary: '猎头招聘费', debit: 15000, credit: 0, explanation: '管理费用增加。招聘费属于行政管理支出。' },
+      { subjectCode: '660203', summary: '猎头招聘费', debit: 15000, credit: 0, explanation: '管理费用增加。招聘费属于行政管理支出。' },
       { subjectCode: '100201', summary: '支付招聘费', debit: 0, credit: 15000, explanation: '银行存款减少。' }],
     documents: [
       { type: 'receipt', label: '服务发票', docTitle: '猎头服务费发票', date: '2026-01-12', totalAmount: 15000, payer: '雲帆管理咨询有限公司', stampText: '锐仕猎头\n发票专用章', items: [{ name: '高级管理顾问招聘服务（3名）', qty: 3, price: 5000, amount: 15000 }]}]
@@ -358,8 +358,8 @@ const jan = [
     tip: '固定资产次月起计提折旧。笔记本电脑按3年、办公桌椅按5年，残值率5%。借：管理费用，贷：累计折旧。',
     description: '计提1月固定资产折旧。笔记本电脑原值60,000元（残值率5%，3年）、办公桌椅原值48,000元（残值率5%，5年）。',
     entries: [
-      { subjectCode: '6602', summary: '折旧-电脑', debit: 1583, credit: 0, explanation: '管理费用增加。笔记本电脑月折旧=60,000×95%÷36=1,583.33。' },
-      { subjectCode: '6602', summary: '折旧-办公桌椅', debit: 760, credit: 0, explanation: '管理费用增加。办公桌椅月折旧=48,000×95%÷60=760.00。' },
+      { subjectCode: '660205', summary: '折旧-电脑', debit: 1583, credit: 0, explanation: '管理费用增加。笔记本电脑月折旧=60,000×95%÷36=1,583.33。' },
+      { subjectCode: '660205', summary: '折旧-办公桌椅', debit: 760, credit: 0, explanation: '管理费用增加。办公桌椅月折旧=48,000×95%÷60=760.00。' },
       { subjectCode: '1602', summary: '累计折旧', debit: 0, credit: 2343, explanation: '累计折旧增加。合计1,583.33+760.00=2,343.33。' }],
     documents: [
       { type: 'text', label: '折旧计算表', docTitle: '固 定 资 产 折 旧 计 算 表', date: '2026-01-15', stampText: '财务专用章', content: '折旧期间：2026年1月\n\n1. 笔记本电脑（原值60,000，残值率5%，年限3年）\n   月折旧=60,000×95%÷36=1,583.33元\n\n2. 办公桌椅（原值48,000，残值率5%，年限5年）\n   月折旧=48,000×95%÷60=760.00元\n\n合计：2,343.33元\n\n制表：李会计' ,
@@ -387,7 +387,7 @@ const jan = [
     tip: '长期待摊费用按受益期平均摊销。借：管理费用，贷：长期待摊费用。',
     description: '摊销1月项目管理软件SaaS服务费。全年费用36,000元，分12个月摊销，月均3,000元。',
     entries: [
-      { subjectCode: '6602', summary: '摊销SaaS费', debit: 3000, credit: 0, explanation: '管理费用增加。本月应摊销3,000元。' },
+      { subjectCode: '660206', summary: '摊销SaaS费', debit: 3000, credit: 0, explanation: '管理费用增加。本月应摊销3,000元。' },
       { subjectCode: '1208', summary: '摊销SaaS年费', debit: 0, credit: 3000, explanation: '长期待摊费用减少。' }],
     documents: [
       { type: 'text', label: '摊销计算表', docTitle: '长 期 待 摊 费 用 摊 销 表', date: '2026-01-16', stampText: '财务专用章', content: '费用项目：项目管理SaaS年费\n原值：36,000.00元\n摊销期限：12个月（2026.1-2026.12）\n本月摊销：36,000÷12=3,000.00元\n累计摊销：3,000.00元\n剩余待摊：33,000.00元' ,
@@ -438,8 +438,8 @@ const jan = [
     tip: '水电网络等日常运营费用计入管理费用。借：管理费用，贷：银行存款。',
     description: '支付1月办公水电费3,500元、企业宽带及电话费2,000元，合计5,500元。',
     entries: [
-      { subjectCode: '6602', summary: '1月水电费', debit: 3500, credit: 0, explanation: '管理费用增加。办公用水电。' },
-      { subjectCode: '6602', summary: '1月网络通信', debit: 2000, credit: 0, explanation: '管理费用增加。企业宽带及电话费。' },
+      { subjectCode: '660203', summary: '1月水电费', debit: 3500, credit: 0, explanation: '管理费用增加。办公用水电。' },
+      { subjectCode: '660203', summary: '1月网络通信', debit: 2000, credit: 0, explanation: '管理费用增加。企业宽带及电话费。' },
       { subjectCode: '100201', summary: '支付水电网络', debit: 0, credit: 5500, explanation: '银行存款减少。' }],
     documents: [
       { type: 'receipt', label: '电费单', docTitle: '电 费 缴 费 凭 证', date: '2026-01-18', totalAmount: 3500, payer: '雲帆管理咨询有限公司', stampText: '国家电网\n电费收讫章', items: [{ name: '写字楼用电 3,500kWh×1.00元', qty: 3500, price: 1, amount: 3500 }]},
@@ -536,7 +536,7 @@ const jan = [
     description: '计提1月员工工资。项目人员（咨询顾问+开发人员）工资120,000元，管理人员（行政+财务）工资40,000元，合计160,000元。（注：新招聘3人未满月，按实际到岗天数计算）',
     entries: [
       { subjectCode: '520101', summary: '计提项目人员工资', debit: 120000, credit: 0, explanation: '劳务成本——人工成本增加。项目顾问薪酬，应直接归集到项目成本。' },
-      { subjectCode: '6602', summary: '计提管理人员工资', debit: 40000, credit: 0, explanation: '管理费用——工资薪金增加。行政及财务人员薪酬。' },
+      { subjectCode: '660203', summary: '计提管理人员工资', debit: 40000, credit: 0, explanation: '管理费用——工资薪金增加。行政及财务人员薪酬。' },
       { subjectCode: '221101', summary: '应付1月工资', debit: 0, credit: 160000, explanation: '应付职工薪酬——工资增加。合计120,000+40,000=160,000。' }],
     documents: [
       { type: 'text', label: '工资计算表', docTitle: '1 月 工 资 计 算 汇 总 表', date: '2026-01-24', stampText: '人力资源部\n工资专用章', content: '期间：2026年1月\n\n项目人员（45人）：\n  咨询顾问：85,000元\n  开发工程师：35,000元\n  小计：120,000元\n\n管理人员（5人）：\n  行政人事：20,000元\n  财务人员：20,000元\n  小计：40,000元\n\n应发合计：160,000元\n\n制表：王出纳\n审核：李会计' ,
@@ -594,8 +594,8 @@ const jan = [
     entries: [
       { subjectCode: '520101', summary: '计提项目社保', debit: 25000, credit: 0, explanation: '劳务成本——人工成本增加。项目人员企业部分社保费用。' },
       { subjectCode: '520101', summary: '计提项目公积金', debit: 13000, credit: 0, explanation: '劳务成本——人工成本增加。项目人员企业部分公积金。' },
-      { subjectCode: '6602', summary: '计提管理社保', debit: 8000, credit: 0, explanation: '管理费用增加。管理人员企业部分社保费用。' },
-      { subjectCode: '6602', summary: '计提管理公积金', debit: 4000, credit: 0, explanation: '管理费用增加。管理人员企业部分公积金。' },
+      { subjectCode: '660203', summary: '计提管理社保', debit: 8000, credit: 0, explanation: '管理费用增加。管理人员企业部分社保费用。' },
+      { subjectCode: '660203', summary: '计提管理公积金', debit: 4000, credit: 0, explanation: '管理费用增加。管理人员企业部分公积金。' },
       { subjectCode: '221102', summary: '应付企业社保', debit: 0, credit: 33000, explanation: '应付职工薪酬——社保（企业部分）增加。25,000+8,000=33,000。' },
       { subjectCode: '221102', summary: '应付企业公积金', debit: 0, credit: 17000, explanation: '应付职工薪酬——公积金（企业部分）增加。13,000+4,000=17,000。' }],
     documents: [
@@ -786,7 +786,7 @@ const jan = [
       { subjectCode: '4103', summary: '成本费用转入', debit: 220208, credit: 0, explanation: '本年利润减少。成本费用转至本年利润借方。' },
       { subjectCode: '6401', summary: '结转成本', debit: 0, credit: 88000, explanation: '主营业务成本结转至本年利润。' },
       { subjectCode: '6403', summary: '结转税金', debit: 0, credit: 1440, explanation: '税金及附加结转至本年利润。' },
-      { subjectCode: '6602', summary: '结转管理费', debit: 0, credit: 130343, explanation: '管理费用结转至本年利润。（明细：15,000猎头+2,343折旧+3,000摊销+25,000房租+5,500水电+2,000招待+40,000管理工资+12,000+4,000管理社保+4,000管理公积金+等）' },
+      { subjectCode: '660205', summary: '结转管理费', debit: 0, credit: 130343, explanation: '管理费用结转至本年利润。（明细：15,000猎头+2,343折旧+3,000摊销+25,000房租+5,500水电+2,000招待+40,000管理工资+12,000+4,000管理社保+4,000管理公积金+等）' },
       { subjectCode: '6603', summary: '结转财务费', debit: 0, credit: 425, explanation: '财务费用结转至本年利润。（手续费500+利息725-结息800=425）' }],
     documents: [
       { type: 'text', label: '结转表', docTitle: '期 间 损 益 结 转 表', date: '2026-01-31', stampText: '已结转', content: '结转期间：2026年1月\n\n收入类→本年利润：\n  主营业务收入：200,000.00元\n\n费用类→本年利润：\n  主营业务成本：88,000.00元\n  税金及附加：1,440.00元\n  管理费用：130,343.00元\n  财务费用：425.00元（手续费500+利息725-结息800）\n\n净利润：200,000-88,000-1,440-130,343-425=（-20,208）元\n\n1月为新签项目启动期，项目收入200,000元尚不足以覆盖全部运营成本，略有亏损属正常业务拓展阶段。' ,
@@ -830,7 +830,7 @@ const jan = [
     tip: '市场推广费计入销售费用。借：销售费用，贷：银行存款。',
     description: '支付1月百度SEM竞价排名及行业垂直媒体广告费8,000元。',
     entries: [
-      { subjectCode: '6601', summary: '1月网络推广费', debit: 8000, credit: 0, explanation: '销售费用增加。市场推广支出。' },
+      { subjectCode: '660101', summary: '1月网络推广费', debit: 8000, credit: 0, explanation: '销售费用增加。市场推广支出。' },
       { subjectCode: '100201', summary: '支付推广费', debit: 0, credit: 8000, explanation: '银行存款减少。' }],
     documents: [
       { type: 'receipt', label: '服务发票', docTitle: '网 络 推 广 服 务 发 票', date: '2026-01-30', totalAmount: 8000, payer: '雲帆管理咨询有限公司', stampText: '百度在线网络技术有限公司\n发票专用章', items: [{ name: 'SEM竞价排名服务费（1月）', qty: 1, price: 8000, amount: 8000 }]}]

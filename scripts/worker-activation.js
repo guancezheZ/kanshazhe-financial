@@ -21,8 +21,8 @@ function getMasterKey(env) {
 }
 
 // 🌐 蓝奏云下载链接（国内用户通道，发新版时更新这里）
-const LANZOU_URL = 'https://wwapf.lanzouw.com/iztaD3sfr8qd'
-const LANZOU_PWD = 'fyr3'
+const LANZOU_URL = 'https://wwapf.lanzouw.com/iYPyV3t955mj'
+const LANZOU_PWD = 'h2we'
 
 
 

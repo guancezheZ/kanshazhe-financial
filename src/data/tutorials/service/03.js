@@ -189,7 +189,7 @@ const mar = [
     date: '2026-03-11', role: 'accountant', title: '支付3月水电费及通信费', tags: ["费用管理"], difficulty: 1,
     description: '支付3月水电费4,500元、网络通信费2,000元。合计6,500元。',
     entries: [
-      { subjectCode: '6602', summary: '3月水电费', debit: 4500, credit: 0 }, { subjectCode: '6602', summary: '3月网络费', debit: 2000, credit: 0 },
+      { subjectCode: '660203', summary: '3月水电费', debit: 4500, credit: 0 }, { subjectCode: '660203', summary: '3月网络费', debit: 2000, credit: 0 },
       { subjectCode: '100201', summary: '支付费用', debit: 0, credit: 6500 }],
     documents: [{ type: 'receipt', label: '电费单', docTitle: '电 费 缴 费 凭 证', date: '2026-03-11', totalAmount: 4500, payer: '雲帆管理咨询有限公司', stampText: '国家电网', items: [{ name: '3月用电 4,500kWh', qty: 4500, price: 1, amount: 4500 }]}, { type: 'receipt', label: '通信费', docTitle: '通 信 服 务 发 票', date: '2026-03-11', totalAmount: 2000, payer: '雲帆管理咨询有限公司', stampText: '中国联通', items: [{ name: '企业宽带及电话费（3月）', qty: 1, price: 2000, amount: 2000 }]}]
   },
@@ -197,7 +197,7 @@ const mar = [
     date: '2026-03-12', role: 'accountant', title: '摊销SaaS费及计提折旧', tags: ["费用管理"], difficulty: 2,
     description: '摊销3月SaaS费3,000元；计提3月折旧2,343元。合计5,343元。',
     entries: [
-      { subjectCode: '6602', summary: '摊销SaaS费', debit: 3000, credit: 0 }, { subjectCode: '6602', summary: '折旧费', debit: 2343, credit: 0 },
+      { subjectCode: '660206', summary: '摊销SaaS费', debit: 3000, credit: 0 }, { subjectCode: '660205', summary: '折旧费', debit: 2343, credit: 0 },
       { subjectCode: '1208', summary: '摊销SaaS年费', debit: 0, credit: 3000 }, { subjectCode: '1602', summary: '累计折旧', debit: 0, credit: 2343 }],
     documents: [{ type: 'text', label: '摊销折旧表', docTitle: '摊 销 折 旧 计 提 表', stampText: '财务专用章', content: 'SaaS摊销：3,000\n折旧：电脑1,583+桌椅760=2,343\n合计：5,343\n\n制表：李会计' ,
     headers: [
@@ -316,7 +316,7 @@ const mar = [
     tip: '项目完成后按净利润的一定比例计提项目奖金，计入管理费用。',
     description: 'B项目圆满结束，按项目利润的10%计提项目奖金33,250元，计入管理费用（待年终统一发放）。',
     entries: [
-      { subjectCode: '6602', summary: 'B项目奖金', debit: 33250, credit: 0, explanation: '管理费用——奖金增加。项目利润332,500×10%。' },
+      { subjectCode: '660203', summary: 'B项目奖金', debit: 33250, credit: 0, explanation: '管理费用——奖金增加。项目利润332,500×10%。' },
       { subjectCode: '221101', summary: '应付项目奖金', debit: 0, credit: 33250, explanation: '应付职工薪酬——奖金增加。' }],
     documents: [{ type: 'text', label: '项目奖金计算表', docTitle: '项 目 奖 金 计 提 表', date: '2026-03-17', stampText: '财务专用章', content: '项目：B公司战略咨询\n项目毛利：332,500\n计提比例：10%\n计提金额：33,250\n待年终考核后发放。\n\n制表：李会计\n审核：赵总' ,
     headers: [
@@ -457,7 +457,7 @@ const mar = [
     date: '2026-03-23', role: 'accountant', title: '计提3月员工工资', tags: ["工资社保"], difficulty: 2,
     description: '计提3月工资。项目人员142,000元+管理人员43,000元=185,000元。',
     entries: [
-      { subjectCode: '520101', summary: '项目人员工资', debit: 142000, credit: 0 }, { subjectCode: '6602', summary: '管理工资', debit: 43000, credit: 0 },
+      { subjectCode: '520101', summary: '项目人员工资', debit: 142000, credit: 0 }, { subjectCode: '660203', summary: '管理工资', debit: 43000, credit: 0 },
       { subjectCode: '221101', summary: '应付3月工资', debit: 0, credit: 185000 }],
     documents: [{ type: 'text', label: '工资表', docTitle: '3 月 工 资 汇 总 表', stampText: '人力资源部', content: '项目人员：142,000\n管理人员：43,000\n合计：185,000\n\n制表：王出纳\n审核：李会计' ,
     headers: [
@@ -492,7 +492,7 @@ const mar = [
     description: '计提3月企业社保公积金。项目社保28,000+公积金14,000；管理社保9,000+公积金4,500。合计55,500元。',
     entries: [
       { subjectCode: '520101', summary: '项目社保', debit: 28000, credit: 0 }, { subjectCode: '520101', summary: '项目公积金', debit: 14000, credit: 0 },
-      { subjectCode: '6602', summary: '管理社保', debit: 9000, credit: 0 }, { subjectCode: '6602', summary: '管理公积金', debit: 4500, credit: 0 },
+      { subjectCode: '660203', summary: '管理社保', debit: 9000, credit: 0 }, { subjectCode: '660203', summary: '管理公积金', debit: 4500, credit: 0 },
       { subjectCode: '221102', summary: '应付企业社保', debit: 0, credit: 37000 }, { subjectCode: '221102', summary: '应付企业公积金', debit: 0, credit: 18500 }],
     documents: [{ type: 'text', label: '社保计提表', docTitle: '社 保 公 积 金 计 提 表', stampText: '财务专用章', content: '项目人员：社保28,000+公积金14,000=42,000\n管理人员：社保9,000+公积金4,500=13,500\n合计：55,500\n\n制表：李会计' ,
     headers: [
@@ -677,7 +677,7 @@ const mar = [
       { subjectCode: '4103', summary: '收入转入', debit: 0, credit: 290000, explanation: '本年利润增加。' },
       { subjectCode: '4103', summary: '成本费用转入', debit: 259063, credit: 0, explanation: '本年利润减少。118,500+2,088+125,900+75+12,500=259,063。' },
       { subjectCode: '6401', summary: '结转成本', debit: 0, credit: 118500 }, { subjectCode: '6403', summary: '结转税金', debit: 0, credit: 2088 },
-      { subjectCode: '6602', summary: '结转管理费', debit: 0, credit: 125900 }, { subjectCode: '6603', summary: '结转财务费', debit: 0, credit: 75 },
+      { subjectCode: '660203', summary: '结转管理费', debit: 0, credit: 125900 }, { subjectCode: '6603', summary: '结转财务费', debit: 0, credit: 75 },
       { subjectCode: '6801', summary: '结转所得税', debit: 0, credit: 12500 }],
     documents: [{ type: 'text', label: '结转表', docTitle: 'Q1 季 末 损 益 结 转 表', stampText: '已结转', content: 'Q1累计（简化）：\n收入：248,000+248,000+290,000=786,000\n成本费用：约732,000\n累计净利润≈54,000\n\n备注：B项目高毛利拉动了Q1整体盈利。' ,
     headers: [

@@ -24,6 +24,19 @@
           maxlength="2000"
           show-word-limit
         />
+
+        <div class="contact-field">
+          <label class="detail-label">
+            联系方式（选填）
+          </label>
+          <el-input
+            v-model="contactText"
+            placeholder="邮箱或手机号，方便我们与您联系"
+            maxlength="100"
+            clearable
+          />
+          <p class="contact-hint">填写后可收到反馈处理回复，不填不影响提交</p>
+        </div>
       </div>
     </div>
 
@@ -44,6 +57,7 @@ import { FEEDBACK_TYPES, submitFeedback } from '@/utils/feedback.js'
 const visible = defineModel({ type: Boolean, default: false })
 const selectedType = ref('bug')
 const detailText = ref('')
+const contactText = ref('')
 const submitting = ref(false)
 
 const canSubmit = computed(() => {
@@ -58,7 +72,8 @@ async function handleSubmit() {
     const typeLabel = typeItem ? typeItem.label : selectedType.value
     await submitFeedback({
       type: typeLabel,
-      content: detailText.value.trim() || '(未填写补充说明)'
+      content: detailText.value.trim() || '(未填写补充说明)',
+      contact: contactText.value.trim() || ''
     })
     ElMessage.success('✅ 感谢您的反馈！我们会认真对待每一条建议。')
     visible.value = false
@@ -126,5 +141,13 @@ async function handleSubmit() {
   font-size: 13px;
   color: #606266;
   margin-bottom: 8px;
+}
+.contact-field {
+  margin-top: 14px;
+}
+.contact-hint {
+  font-size: 12px;
+  color: #c0c4cc;
+  margin: 4px 0 0 0;
 }
 </style>

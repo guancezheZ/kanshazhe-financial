@@ -172,7 +172,7 @@ const tasks = [
     tip: '筹建期间发生的开办费，直接计入"管理费用-开办费"。',
     entries: [
       {
-        subjectCode: '6602',
+        subjectCode: '660217',
         debit: 8500,
         credit: 0,
         summary: '支付开办费用',
@@ -314,7 +314,7 @@ const tasks = [
     tip: '购买招标文件费用计入"管理费用-投标费"。',
     entries: [
       {
-        subjectCode: '6602',
+        subjectCode: '660217',
         debit: 1000,
         credit: 0,
         summary: '购买恒达项目招标文件',
@@ -406,7 +406,7 @@ const tasks = [
     tip: '中标后支付的招标代理服务费计入管理费用。投标保证金转为履约保证金的，继续挂在其他应收款。',
     entries: [
       {
-        subjectCode: '6602',
+        subjectCode: '660215',
         debit: 15000,
         credit: 0,
         summary: '支付招标代理服务费',
@@ -1115,7 +1115,7 @@ const tasks = [
         explanation: '项目部管理工资属于间接费用，先归集再分配。'
       },
       {
-        subjectCode: '6602',
+        subjectCode: '660203',
         debit: 25000,
         credit: 0,
         summary: '公司管理人员工资',
@@ -1211,7 +1211,7 @@ const tasks = [
         explanation: '30,000×(24.7%+12%)=11,010元。'
       },
       {
-        subjectCode: '6602',
+        subjectCode: '660212',
         debit: 9175,
         credit: 0,
         summary: '公司管理社保6,175+公积金3,000',
@@ -1327,7 +1327,7 @@ const tasks = [
         explanation: '合同履约成本-机械使用费增加。'
       },
       {
-        subjectCode: '6602',
+        subjectCode: '660205',
         debit: 600,
         credit: 0,
         summary: '办公设备折旧',
@@ -1507,7 +1507,7 @@ const tasks = [
     tip: '预付租金摊销计入"管理费用"。',
     entries: [
       {
-        subjectCode: '6602',
+        subjectCode: '660206',
         debit: 10000,
         credit: 0,
         summary: '摊销1月办公房租',

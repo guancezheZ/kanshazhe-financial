@@ -16,6 +16,7 @@ src-tauri/target/
 
 # 🔒 敏感文件——不应提交到 Git
 keys-database.json
+*.apk
 updater-key.pem
 release/
 .claude/
@@ -35,7 +36,7 @@ CLAUDE.md
 # 🏪 商品介绍/营销材料（不上传 GitHub）
 商品介绍截图/
 商品截图_b64.json
-观测者财务_系统介绍.html
+docs/系统介绍.html
 観測者财务宣传.html
 观测者财务_操作指南与出售流程.md
 观测者财务_配套资料包/

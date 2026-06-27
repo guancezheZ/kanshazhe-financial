@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>观测者财务模拟系统 - 商品宣传图</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #d9d2c4; font-family: 'Microsoft YaHei', 'PingFang SC', 'SimSun', sans-serif;
+  display: flex; flex-direction: column; align-items: center; padding: 30px 20px; gap: 40px;
+}
+.slide {
+  width: 800px; height: 1060px; background: #f5f0e8;
+  position: relative; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+}
+.slide::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    radial-gradient(ellipse at 15% 30%, rgba(160,140,110,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse at 85% 70%, rgba(160,140,110,0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* ====== 图1 封面+行业 ====== */
+.s1 { background: linear-gradient(170deg, #f5f0e8 0%, #faf6ef 50%, #f0e8da 100%); }
+.s1 .in { padding: 24px 34px; height: 100%; display: flex; flex-direction: column; position: relative; z-index: 1; }
+.s1 .bar { height: 5px; background: linear-gradient(90deg, #9a4a42, #c4766e, #9a4a42); position: absolute; top: 0; left: 0; right: 0; }
+.s1 .head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.s1 .seal {
+  width: 44px; height: 44px; border: 3px solid #9a4a42; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; color: #9a4a42; font-family: 'SimSun',serif; font-weight: 900;
+  transform: rotate(-8deg); flex-shrink: 0;
+}
+.s1 .sysname { font-size: 12px; color: #9a4a42; letter-spacing: 2px; }
+.s1 .sysname strong { font-size: 17px; color: #3a3a3a; letter-spacing: 4px; display: block; }
+.s1 h1 { font-size: 44px; font-weight: 900; color: #2a2a2a; line-height: 1.2; margin-bottom: 3px; }
+.s1 h1 .hl { color: #9a4a42; }
+.s1 .sub1 { font-size: 17px; color: #999; margin-bottom: 14px; letter-spacing: 1px; }
+.s1 .nums { display: flex; gap: 8px; margin-bottom: 14px; }
+.s1 .nums .n {
+  flex: 1; text-align: center; padding: 10px 6px; background: rgba(255,255,255,0.6);
+  border: 1px solid #e0d5c0; border-radius: 8px;
+}
+.s1 .nums .n .v { font-size: 32px; font-weight: 900; color: #9a4a42; line-height: 1; }
+.s1 .nums .n .l { font-size: 13px; color: #999; margin-top: 2px; }
+.s1 .ft { text-align: center; padding: 10px; border-top: 1px solid #e0d5c0; margin-top: 10px; }
+.s1 .ft span { font-size: 14px; color: #bbb; letter-spacing: 2px; margin: 0 10px; }
+
+/* 行业卡片 */
+.s1 .ind { flex: 1; display: flex; flex-direction: column; }
+.s1 .ind .it { font-size: 32px; font-weight: 800; color: #2a2a2a; text-align: center; }
+.s1 .ind .is { font-size: 22px; color: #bbb; text-align: center; margin-bottom: 6px; }
+.s1 .ind .g { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; flex: 1; }
+.s1 .ind .g .c {
+  background: rgba(255,255,255,0.6); border: 1px solid #e0d5c0; border-radius: 8px;
+  padding: 7px 10px; display: flex; flex-direction: column;
+}
+.s1 .ind .g .c .h {
+  display: flex; align-items: baseline; gap: 4px; margin-bottom: 1px; flex-wrap: wrap;
+}
+.s1 .ind .g .c .h .ci {
+  width: 24px; height: 24px; background: rgba(154,74,66,0.08); border-radius: 5px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0;
+}
+.s1 .ind .g .c .h .nm { font-size: 18px; font-weight: 700; color: #2a2a2a; }
+.s1 .ind .g .c .h .cnt { font-size: 16px; font-weight: 700; color: #9a4a42; margin-left: auto; }
+.s1 .ind .g .c .h .cnt small { font-size: 13px; font-weight: 400; color: #aaa; }
+.s1 .ind .g .c .tags { display: flex; flex-wrap: wrap; gap: 3px; margin: 3px 0; }
+.s1 .ind .g .c .tags span {
+  font-size: 12px; background: rgba(180,170,155,0.15); color: #999;
+  padding: 1px 7px; border-radius: 3px;
+}
+.s1 .ind .g .c .d { font-size: 14px; color: #999; line-height: 1.4; flex: 1; }
+.s1 .ind .g .c .hi {
+  font-size: 13px; color: #9a4a42; background: rgba(154,74,66,0.05);
+  margin-top: 3px; padding: 3px 8px; border-radius: 4px;
+}
+.s1 .ind .sum {
+  margin-top: 6px; background: rgba(255,255,255,0.5); border: 1px solid #e0d5c0;
+  border-radius: 6px; padding: 7px; text-align: center; font-size: 16px; color: #999;
+}
+.s1 .ind .sum b { color: #9a4a42; }
+
+/* ====== 图2 教学+功能 合并 ====== */
+.s2 .in { padding: 20px 30px; height: 100%; display: flex; flex-direction: column; position: relative; z-index: 1; }
+/* 上半：教学系统 */
+.s2 .teach-t { font-size: 26px; font-weight: 800; color: #2a2a2a; }
+.s2 .teach-s { font-size: 15px; color: #bbb; margin-bottom: 10px; }
+.s2 .modes { display: flex; gap: 10px; }
+.s2 .modes .mc {
+  flex: 1; background: rgba(255,255,255,0.6); border: 1px solid #e0d5c0; border-radius: 8px;
+  padding: 14px 14px; display: flex; flex-direction: column;
+}
+.s2 .modes .mc .mi {
+  width: 38px; height: 38px; background: rgba(154,74,66,0.1); border-radius: 7px;
+  display: flex; align-items: center; justify-content: center; font-size: 18px; margin-bottom: 6px;
+}
+.s2 .modes .mc h3 { font-size: 17px; font-weight: 700; color: #2a2a2a; margin-bottom: 4px; }
+.s2 .modes .mc p { font-size: 14px; color: #888; line-height: 1.5; flex: 1; }
+.s2 .modes .mc .fl {
+  font-size: 13px; color: #bbb; margin-top: 6px; padding-top: 6px; border-top: 1px solid #e0d5c0;
+}
+.s2 .teach-bot { display: flex; gap: 10px; margin: 10px 0; }
+.s2 .teach-bot .xp {
+  flex: 1.6; background: rgba(255,255,255,0.6); border: 1px solid #e0d5c0;
+  border-radius: 8px; padding: 12px 16px; display: flex; align-items: center; gap: 12px;
+}
+.s2 .teach-bot .xp .xi { font-size: 28px; }
+.s2 .teach-bot .xp .xt h4 { font-size: 15px; font-weight: 700; color: #2a2a2a; }
+.s2 .teach-bot .xp .xt p { font-size: 13px; color: #999; }
+.s2 .teach-bot .xp .xb { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 3px; }
+.s2 .teach-bot .xp .xb span {
+  background: rgba(154,74,66,0.07); padding: 3px 9px; border-radius: 3px;
+  font-size: 12px; color: #9a4a42;
+}
+.s2 .teach-bot .xp .xb .hl { background: #9a4a42; color: #f0e8da; }
+.s2 .teach-bot .mm {
+  flex: 1; background: rgba(255,255,255,0.6); border: 1px solid #e0d5c0;
+  border-radius: 8px; padding: 12px 16px; display: flex; align-items: center; gap: 12px;
+}
+.s2 .teach-bot .mm .mi { font-size: 24px; }
+.s2 .teach-bot .mm p { font-size: 14px; color: #999; line-height: 1.5; }
+.s2 .teach-bot .mm p b { color: #2a2a2a; }
+
+/* 分割线 */
+.s2 .divider { height: 2px; background: #e0d5c0; margin: 0 0 8px 0; }
+
+/* 下半：系统功能 — 撑满底部 */
+.s2 .func-area { flex: 1; display: flex; flex-direction: column; }
+.s2 .func-t { font-size: 26px; font-weight: 800; color: #2a2a2a; text-align: center; }
+.s2 .func-s { font-size: 17px; color: #bbb; text-align: center; margin-bottom: 6px; }
+.s2 .func-area .g {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; flex: 1;
+}
+.s2 .func-area .g .c {
+  background: rgba(255,255,255,0.5); border: 1px solid #e0d5c0; border-radius: 6px;
+  padding: 10px 10px; display: flex; flex-direction: column;
+}
+.s2 .func-area .g .c .tag {
+  font-size: 12px; color: #9a4a42; background: rgba(154,74,66,0.07);
+  display: inline-block; padding: 2px 8px; border-radius: 3px; margin-bottom: 3px; width: fit-content;
+}
+.s2 .func-area .g .c h4 { font-size: 17px; font-weight: 700; color: #2a2a2a; margin-bottom: 3px; }
+.s2 .func-area .g .c ul { list-style: none; flex: 1; display: flex; flex-direction: column; justify-content: center; }
+.s2 .func-area .g .c ul li {
+  font-size: 15px; color: #888; padding: 2px 0 2px 16px; position: relative; line-height: 1.5;
+}
+.s2 .func-area .g .c ul li::before { content: '◆'; position: absolute; left: 0; color: #9a4a42; font-size: 8px; top: 7px; }
+.s2 .flow-bar {
+  margin-top: 6px; background: rgba(255,255,255,0.5); border: 1px solid #e0d5c0;
+  border-radius: 6px; padding: 8px 14px; display: flex; align-items: center; justify-content: center; gap: 4px;
+}
+.s2 .flow-bar span {
+  font-size: 15px; color: #888; background: rgba(255,255,255,0.6); padding: 4px 14px; border-radius: 4px; border: 1px solid #e0d5c0;
+}
+.s2 .flow-bar .ar { color: #ccc; background: none; border: none; padding: 0; }
+
+/* ====== 图3 了解更多+FAQ+扩展 ====== */
+.s3 .in { padding: 18px 30px; height: 100%; display: flex; flex-direction: column; position: relative; z-index: 1; }
+.s3 .t { font-size: 28px; font-weight: 800; color: #2a2a2a; text-align: center; margin-bottom: 10px; }
+.s3 .row3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; flex: 1; }
+.s3 .row3 .cb {
+  background: rgba(255,255,255,0.6); border: 1px solid #e0d5c0; border-radius: 8px;
+  padding: 14px 16px; display: flex; flex-direction: column;
+}
+.s3 .row3 .cb h4 { font-size: 16px; font-weight: 700; color: #9a4a42; margin-bottom: 6px; }
+.s3 .row3 .cb ul { list-style: none; flex: 1; display: flex; flex-direction: column; justify-content: center; }
+.s3 .row3 .cb ul li {
+  font-size: 14px; color: #888; padding: 3px 0 3px 16px; position: relative; line-height: 1.6;
+}
+.s3 .row3 .cb ul li::before { content: '◆'; position: absolute; left: 0; color: #9a4a42; font-size: 7px; top: 8px; }
+/* FAQ 3列网格 */
+.s3 .faq-row { margin-top: 10px; }
+.s3 .faq-row .faq-t { font-size: 16px; font-weight: 700; color: #9a4a42; margin-bottom: 6px; }
+.s3 .faq-row .grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+.s3 .faq-row .grid .fi {
+  background: rgba(255,255,255,0.5); border: 1px solid #e0d5c0; border-radius: 6px;
+  padding: 8px 12px;
+}
+.s3 .faq-row .grid .fi .q { font-size: 14px; font-weight: 700; color: #2a2a2a; }
+.s3 .faq-row .grid .fi .q::before { content: 'Q: '; color: #9a4a42; font-weight: 900; }
+.s3 .faq-row .grid .fi .a { font-size: 13px; color: #999; line-height: 1.5; }
+/* 未来扩展 */
+.s3 .future-row {
+  margin-top: 10px; background: rgba(255,255,255,0.6); border: 1px solid #e0d5c0;
+  border-radius: 8px; padding: 12px 18px;
+}
+.s3 .future-row .fut-t { font-size: 16px; font-weight: 700; color: #9a4a42; margin-bottom: 6px; }
+.s3 .future-row .fut-g { display: flex; gap: 12px; }
+.s3 .future-row .fut-g .fi {
+  flex: 1; text-align: center; padding: 10px; border-radius: 8px; background: rgba(255,255,255,0.5);
+}
+.s3 .future-row .fut-g .fi .fi-i { font-size: 26px; }
+.s3 .future-row .fut-g .fi .fi-t { font-size: 14px; font-weight: 700; color: #2a2a2a; }
+.s3 .future-row .fut-g .fi .fi-d { font-size: 12px; color: #999; }
+
+.s3 .stat-bot { margin-top: 8px; display: flex; gap: 8px; }
+.s3 .stat-bot .sb {
+  flex: 1; text-align: center; background: rgba(255,255,255,0.5); border: 1px solid #e0d5c0;
+  border-radius: 8px; padding: 10px;
+}
+.s3 .stat-bot .sb .sbv { font-size: 24px; font-weight: 900; color: #9a4a42; }
+.s3 .stat-bot .sb .sbl { font-size: 12px; color: #aaa; margin-top: 1px; }
+</style>
+</head>
+<body>
+
+<!-- ===== 图1 封面+行业 ===== -->
+<div class="slide s1">
+  <div class="bar"></div>
+  <div class="in">
+    <div class="head">
+      <div class="seal">観</div>
+      <div class="sysname"><strong>观测者财务模拟系统</strong>会计实操训练</div>
+    </div>
+    <h1><span class="hl">1431</span>个会计实操任务 · <span class="hl">四大行业</span>全年账务训练</h1>
+    <div class="sub1">从第一张凭证到年度决算 · 亲手做完一整年的账</div>
+
+    <div class="nums">
+      <div class="n"><div class="v">4</div><div class="l">大行业全覆盖</div></div>
+      <div class="n"><div class="v">1,431</div><div class="l">个实操任务</div></div>
+      <div class="n"><div class="v">9</div><div class="l">企业案例库</div></div>
+      <div class="n"><div class="v">341</div><div class="l">案例事件</div></div>
+    </div>
+
+    <div class="ind">
+      <div class="it">四大行业 · 真实企业账务</div>
+      <div class="is">每个行业一整年的账，从开业到年终决算完整走一遍</div>
+      <div class="g">
+        <div class="c">
+          <div class="h"><div class="ci">🏭</div><div class="nm">制造业</div><div class="cnt">356 <small>项任务</small></div></div>
+          <div class="tags"><span>采购入库</span><span>领料生产</span><span>成本归集分配</span><span>制造费用分摊</span><span>完工产品入库</span><span>销售成本结转</span></div>
+          <div class="d">完整工业账务循环：原材料采购入库→生产领料出库→直接材料/人工/制造费用归集分配→完工产品入库→销售收入确认与成本结转→期末结转损益。固定资产按月计提折旧、工资计提与发放、社保公积金等业务模块自动生成教学凭证。</div>
+          <div class="hi">★ 含固定资产模块（新增/折旧/处置）+工资管理模块（计提/发放/社保）自动生成凭证</div>
+        </div>
+        <div class="c">
+          <div class="h"><div class="ci">🏪</div><div class="nm">商业企业 · 万悦超市</div><div class="cnt">358 <small>项任务</small></div></div>
+          <div class="tags"><span>联营专柜净额法</span><span>CAS14会员积分</span><span>预付卡发售消费</span><span>折扣券合同负债</span><span>买赠收入分摊</span><span>供应商返利</span></div>
+          <div class="d">综合零售超市全年账务。联营专柜按净额法仅确认佣金收入（CAS 14代理人模式）、会员积分作为单项履约义务分摊交易价格（CAS 14第三十五条）、预付卡发售与消费分次确认收入、折扣券构成重大权利确认合同负债、买赠按公允价值分摊收入、供应商返利冲减主营业务成本。覆盖超市进销存全流程。</div>
+          <div class="hi">★ 双十一满减买赠复合促销+年终决算全流程（所得税→结转→盈余公积→应付股利）</div>
+        </div>
+        <div class="c">
+          <div class="h"><div class="ci">💼</div><div class="nm">服务业 · B-I科技</div><div class="cnt">355 <small>项任务</small></div></div>
+          <div class="tags"><span>项目制独立核算</span><span>SaaS订阅收入</span><span>研发支出资本化</span><span>年框合同分摊</span><span>联合履约核算</span><span>人工成本归集</span></div>
+          <div class="d">现代服务业年度故事线（B-I科技公司）。自主研发支出资本化与费用化划分（研究阶段费用化/开发阶段资本化）、SaaS订阅收入按履约进度分期确认、年框合同分摊至各单项履约义务、联合履约按比例分摊成本与收入。人工成本占比高，项目独立核算精细到每个合同。</div>
+          <div class="hi">★ 原始凭证已全面丰富（服务合同/项目结算单/工时统计表/银行回单）</div>
+        </div>
+        <div class="c">
+          <div class="h"><div class="ci">🏗️</div><div class="nm">建筑业 · 筑远建设</div><div class="cnt">362 <small>项任务</small></div></div>
+          <div class="tags"><span>完工百分比法</span><span>分包工程核算</span><span>进度款结算</span><span>甲方对账</span><span>竣工决算</span><span>质保金处理</span></div>
+          <div class="d">建筑施工企业全流程（筑远建设）。完工百分比法（投入法）按累计实际发生成本占预计总成本比例确认收入、分包工程独立核算成本与对账、工程进度款按月申请经甲方审批后结算、竣工决算后质保金挂账。涉及甲方乙方往来对账、预收备料款、履约保证金等多环节。</div>
+          <div class="hi">★ 原始凭证已全面丰富（工程合同/进度款申请单/分包结算单/质保金凭证）</div>
+        </div>
+      </div>
+      <div class="sum">总计 <b>1,431</b> 个教学任务 · <b>9</b> 个企业案例库 · 四大行业全部开放</div>
+    </div>
+
+    <div class="ft">
+      <span>Windows 练习终端</span> · <span>一账号一设备</span> · <span>长期免费更新</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 图2 教学+功能 合并 ===== -->
+<div class="slide s2">
+  <div class="in">
+    <!-- 上半：教学系统（紧凑） -->
+    <div class="teach-t">教学系统 · 三种学习模式</div>
+    <div class="teach-s">阶梯式学习路径，每一步都有反馈</div>
+
+    <div class="modes">
+      <div class="mc">
+        <div class="mi">📝</div>
+        <h3>练习模式</h3>
+        <p>填空作答，系统自动比对。答错有详细会计分录讲解，零基础跟做掌握借贷逻辑。</p>
+        <div class="fl">流程：有提示 → 作答 → 比对 → 讲解</div>
+      </div>
+      <div class="mc">
+        <div class="mi">📖</div>
+        <h3>考试模式</h3>
+        <p>独立完成整套凭证，无提示无干扰。做完自动评分，检验真实水平。</p>
+        <div class="fl">流程：独立作答 → 自动评分 → 成绩查看</div>
+      </div>
+      <div class="mc">
+        <div class="mi">🔍</div>
+        <h3>纠错模式</h3>
+        <p>系统故意设4类错误（金额/科目/方向/借贷不平），学生找茬修正，培养审计思维。</p>
+        <div class="fl">流程：发现错误 → 修正 → 验证 → 得分</div>
+      </div>
+    </div>
+
+    <div class="teach-bot">
+      <div class="xp">
+        <div class="xi">🏆</div>
+        <div class="xt">
+          <h4>13级称号 · 16项成就 · XP等级系统</h4>
+          <p>完成任务得经验，从见习生到财务传说晋升。</p>
+          <div class="xb">
+            <span>见习生</span> <span>账房学徒</span> <span>初级会计</span>
+            <span>中级会计</span> <span>高级会计</span> <span>财务主管</span>
+            <span class="hl">财务传说</span>
+          </div>
+        </div>
+      </div>
+      <div class="mm">
+        <div class="mi">📅</div>
+        <p><b>月度模式</b><br>按月锁定，当月100%完成才能解锁下月。</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 下半：系统功能 — 撑满底部 -->
+    <div class="func-area">
+      <div class="func-t">系统功能架构</div>
+      <div class="func-s">分录做对 → 数据自动进入报表 → 实时反馈</div>
+      <div class="g">
+        <div class="c">
+          <div class="tag">科目</div>
+          <h4>60+专业科目</h4>
+          <ul><li>四大行业独立账套</li><li>4位一级+2位明细</li><li>微信/支付宝独立</li></ul>
+        </div>
+        <div class="c">
+          <div class="tag">凭证</div>
+          <h4>录入与审批</h4>
+          <ul><li>手工+教学自动双通道</li><li>签字→审核→过账</li><li>原始凭证嵌入式查看</li></ul>
+        </div>
+        <div class="c">
+          <div class="tag">报表</div>
+          <h4>四大财务报表</h4>
+          <ul><li>资产/利润/现金流</li><li>科目余额/试算平衡</li><li>实时更新</li></ul>
+        </div>
+        <div class="c">
+          <div class="tag">分析</div>
+          <h4>指标趋势</h4>
+          <ul><li>8项核心指标</li><li>行业参考线</li><li>偿债/营运/盈利</li></ul>
+        </div>
+        <div class="c">
+          <div class="tag">业务</div>
+          <h4>模块联动</h4>
+          <ul><li>固定资产/工资/往来</li><li>存货台账</li><li>自动生成凭证</li></ul>
+        </div>
+        <div class="c">
+          <div class="tag">案例</div>
+          <h4>9个案例库</h4>
+          <ul><li>小便利店到大型集团</li><li>341笔商业事件</li><li>数据自由切换</li></ul>
+        </div>
+        <div class="c">
+          <div class="tag">教学</div>
+          <h4>管理机制</h4>
+          <ul><li>教学保护拦截误操作</li><li>三层防重复提交</li><li>进度追踪</li></ul>
+        </div>
+        <div class="c">
+          <div class="tag">资料</div>
+          <h4>学习资料</h4>
+          <ul><li>说明书76页带截图</li><li>教材20章65节</li><li>全景图/解读面板</li></ul>
+        </div>
+        <div class="c">
+          <div class="tag">技术</div>
+          <h4>Tauri桌面</h4>
+          <ul><li>Rust原生构建</li><li>硬件指纹绑定</li><li>AES-256-GCM加密</li></ul>
+        </div>
+      </div>
+      <div class="flow-bar">
+        <span>📝 录入凭证</span><span class="ar">→</span><span>📋 科目余额更新</span><span class="ar">→</span><span>📊 试算平衡</span><span class="ar">→</span><span>📈 报表生成</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 图3 了解更多+FAQ+扩展 ===== -->
+<div class="slide s3">
+  <div class="in">
+    <div class="t">了解更多 · 常见问题</div>
+
+    <!-- 第一行：6个信息框，2行×3列 -->
+    <div class="row3">
+      <div class="cb">
+        <h4>📦 包含内容</h4>
+        <ul>
+          <li>Windows练习工具（一键安装，含配套资料）</li>
+          <li>学习权限（一账号一设备，可迁移）</li>
+          <li>系统使用说明书（76页带截图）</li>
+          <li>配套知识点教材（20章65节）</li>
+          <li>9个企业案例库（341个事件）</li>
+          <li>版本迭代免费升级</li>
+        </ul>
+      </div>
+      <div class="cb">
+        <h4>🔐 安全体系</h4>
+        <ul>
+          <li>16位XOR校验学习码</li>
+          <li>在线+离线双模式验证</li>
+          <li>硬件设备绑定</li>
+          <li>Worker云端验证含限速</li>
+          <li>AES-256-GCM加密存储</li>
+        </ul>
+      </div>
+      <div class="cb">
+        <h4>⚙️ 系统要求</h4>
+        <ul>
+          <li>Windows 10/11 64位</li>
+          <li>4GB内存 / 500MB磁盘</li>
+          <li>需联网激活，激活后可离线</li>
+          <li>1920×1080最佳</li>
+        </ul>
+      </div>
+      <div class="cb">
+        <h4>📎 原始凭证系统</h4>
+        <ul>
+          <li>增值税发票（明细行/税率/大写）</li>
+          <li>银行回单（付/收款方/流水号）</li>
+          <li>收据/合同/领料单/入库单</li>
+          <li>工资表/联营结算单/成本表</li>
+          <li>制造业+商业已全面丰富</li>
+        </ul>
+      </div>
+      <div class="cb">
+        <h4>🎨 水墨国风主题</h4>
+        <ul>
+          <li>两档切换（ink/classic）</li>
+          <li>宣纸米白+墨色文字</li>
+          <li>纯CSS印章朱红点缀</li>
+          <li>零图片纯CSS渲染</li>
+        </ul>
+      </div>
+      <div class="cb">
+        <h4>ℹ️ 注意事项</h4>
+        <ul>
+          <li>虚拟商品，核销后不退</li>
+          <li>一账号一设备绑定</li>
+          <li>禁止二次销售</li>
+          <li>问题可咨询客服</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- FAQ 3列网格 -->
+    <div class="faq-row">
+      <div class="faq-t">❓ 常见问题</div>
+      <div class="grid">
+        <div class="fi">
+          <div class="q">适合零基础吗？</div>
+          <div class="a">适合。每步都有提示讲解，零基础跟做掌握借贷逻辑。</div>
+        </div>
+        <div class="fi">
+          <div class="q">是发实体光盘吗？</div>
+          <div class="a">虚拟商品，自动发送学习权限和下载链接，在线学习使用。</div>
+        </div>
+        <div class="fi">
+          <div class="q">可以换电脑用吗？</div>
+          <div class="a">一账号一设备绑定，换设备可联系客服迁移，不额外收费。</div>
+        </div>
+        <div class="fi">
+          <div class="q">后续更新收费吗？</div>
+          <div class="a">一次购买长期使用，所有版本更新免费。</div>
+        </div>
+        <div class="fi">
+          <div class="q">遇到问题怎么办？</div>
+          <div class="a">可直接咨询客服，安装使用全程指导响应及时。</div>
+        </div>
+        <div class="fi">
+          <div class="q">包含哪些行业？</div>
+          <div class="a">制造业、商业、服务业、建筑业，全部长期开放。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 未来扩展 -->
+    <div class="future-row">
+      <div class="fut-t">🔮 未来扩展规划</div>
+      <div class="fut-g">
+        <div class="fi">
+          <div class="fi-i">🔓</div>
+          <div class="fi-t">出纳角色解锁</div>
+          <div class="fi-d">恢复出纳路线</div>
+        </div>
+        <div class="fi">
+          <div class="fi-i">📱</div>
+          <div class="fi-t">移动端适配</div>
+          <div class="fi-d">手机/平板使用</div>
+        </div>
+        <div class="fi">
+          <div class="fi-i">🏭</div>
+          <div class="fi-t">更多行业案例</div>
+          <div class="fi-d">房地产/农业等</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stat-bot">
+      <div class="sb"><div class="sbv">60+</div><div class="sbl">会计科目</div></div>
+      <div class="sb"><div class="sbv">4</div><div class="sbl">大行业</div></div>
+      <div class="sb"><div class="sbv">1,431</div><div class="sbl">实操任务</div></div>
+      <div class="sb"><div class="sbv">9</div><div class="sbl">案例库</div></div>
+      <div class="sb"><div class="sbv">341</div><div class="sbl">商业事件</div></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

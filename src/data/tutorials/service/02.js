@@ -144,8 +144,8 @@ const feb = [
     tip: '新员工入职体检和培训费属于管理费用。',
     description: '1月新招聘的3名高级顾问正式入职，支付入职体检费2,400元及岗前培训费6,000元。合计8,400元。',
     entries: [
-      { subjectCode: '6602', summary: '体检费', debit: 2400, credit: 0, explanation: '管理费用增加。入职体检费。' },
-      { subjectCode: '6602', summary: '培训费', debit: 6000, credit: 0, explanation: '管理费用增加。岗前培训费。' },
+      { subjectCode: '660203', summary: '体检费', debit: 2400, credit: 0, explanation: '管理费用增加。入职体检费。' },
+      { subjectCode: '660203', summary: '培训费', debit: 6000, credit: 0, explanation: '管理费用增加。岗前培训费。' },
       { subjectCode: '100201', summary: '支付体检培训费', debit: 0, credit: 8400, explanation: '银行存款减少。' }],
     documents: [
       { type: 'receipt', label: '体检发票', docTitle: '医 疗 体 检 发 票', date: '2026-02-07', totalAmount: 2400, payer: '雲帆管理咨询有限公司', stampText: '慈铭体检\n发票专用章', items: [{ name: '入职体检（3人×800元）', qty: 3, price: 800, amount: 2400 }]},
@@ -192,8 +192,8 @@ const feb = [
     tip: '日常运营费用计入管理费用。',
     description: '支付2月水电费4,000元、企业网络费2,000元。合计6,000元。',
     entries: [
-      { subjectCode: '6602', summary: '2月水电费', debit: 4000, credit: 0, explanation: '管理费用增加。' },
-      { subjectCode: '6602', summary: '2月网络费', debit: 2000, credit: 0, explanation: '管理费用增加。' },
+      { subjectCode: '660203', summary: '2月水电费', debit: 4000, credit: 0, explanation: '管理费用增加。' },
+      { subjectCode: '660203', summary: '2月网络费', debit: 2000, credit: 0, explanation: '管理费用增加。' },
       { subjectCode: '100201', summary: '支付水电网络', debit: 0, credit: 6000, explanation: '银行存款减少。' }],
     documents: [
       { type: 'receipt', label: '电费单', docTitle: '电 费 缴 费 凭 证', date: '2026-02-11', totalAmount: 4000, payer: '雲帆管理咨询有限公司', stampText: '国家电网\n电费收讫章', items: [{ name: '写字楼用电 4,000kWh', qty: 4000, price: 1, amount: 4000 }]},
@@ -237,8 +237,8 @@ const feb = [
     tip: '摊销和折旧属于非付现费用，按月计提。',
     description: '摊销2月SaaS服务费3,000元；计提2月折旧2,343元（电脑1,583+办公桌椅760）。合计5,343元。',
     entries: [
-      { subjectCode: '6602', summary: '摊销SaaS费', debit: 3000, credit: 0, explanation: '管理费用——摊销费增加。' },
-      { subjectCode: '6602', summary: '折旧费', debit: 2343, credit: 0, explanation: '管理费用——折旧费增加。' },
+      { subjectCode: '660206', summary: '摊销SaaS费', debit: 3000, credit: 0, explanation: '管理费用——摊销费增加。' },
+      { subjectCode: '660205', summary: '折旧费', debit: 2343, credit: 0, explanation: '管理费用——折旧费增加。' },
       { subjectCode: '1208', summary: '摊销SaaS年费', debit: 0, credit: 3000, explanation: '长期待摊费用减少。' },
       { subjectCode: '1602', summary: '累计折旧', debit: 0, credit: 2343, explanation: '累计折旧增加。' }],
     documents: [
@@ -367,7 +367,7 @@ const feb = [
     tip: '市场推广费计入销售费用。',
     description: '参加"2026中国管理咨询行业峰会"展位费及宣传材料费用合计12,000元。',
     entries: [
-      { subjectCode: '6601', summary: '行业峰会参展', debit: 12000, credit: 0, explanation: '销售费用增加。市场推广支出。' },
+      { subjectCode: '660101', summary: '行业峰会参展', debit: 12000, credit: 0, explanation: '销售费用增加。市场推广支出。' },
       { subjectCode: '100201', summary: '支付参展费', debit: 0, credit: 12000, explanation: '银行存款减少。' }],
     documents: [
       { type: 'receipt', label: '服务发票', docTitle: '展 会 服 务 发 票', date: '2026-02-21', totalAmount: 12000, payer: '雲帆管理咨询有限公司', stampText: '中国管理咨询协会\n发票专用章', items: [{ name: '行业峰会标准展位', qty: 1, price: 8000, amount: 8000 }, { name: '宣传材料制作', qty: 1, price: 4000, amount: 4000 }]}]
@@ -391,7 +391,7 @@ const feb = [
     description: '计提2月员工工资。项目人员（含新入职3人）工资138,000元，管理人员工资42,000元。合计180,000元。',
     entries: [
       { subjectCode: '520101', summary: '计提项目人员工资', debit: 138000, credit: 0, explanation: '劳务成本——人工成本增加。' },
-      { subjectCode: '6602', summary: '计提管理工资', debit: 42000, credit: 0, explanation: '管理费用——工资薪金增加。' },
+      { subjectCode: '660203', summary: '计提管理工资', debit: 42000, credit: 0, explanation: '管理费用——工资薪金增加。' },
       { subjectCode: '221101', summary: '应付2月工资', debit: 0, credit: 180000, explanation: '应付职工薪酬——工资增加。' }],
     documents: [
       { type: 'text', label: '工资计算表', docTitle: '2 月 工 资 计 算 汇 总 表', date: '2026-02-23', stampText: '人力资源部\n工资专用章', content: '期间：2026年2月\n项目人员（48人）：138,000元\n管理人员（5人）：42,000元\n应发合计：180,000元\n\n制表：王出纳\n审核：李会计' ,
@@ -433,8 +433,8 @@ const feb = [
     entries: [
       { subjectCode: '520101', summary: '项目人员社保', debit: 27000, credit: 0, explanation: '劳务成本——人工成本增加。' },
       { subjectCode: '520101', summary: '项目人员公积金', debit: 14000, credit: 0, explanation: '劳务成本——人工成本增加。' },
-      { subjectCode: '6602', summary: '管理社保', debit: 8500, credit: 0, explanation: '管理费用增加。' },
-      { subjectCode: '6602', summary: '管理公积金', debit: 4500, credit: 0, explanation: '管理费用增加。' },
+      { subjectCode: '660203', summary: '管理社保', debit: 8500, credit: 0, explanation: '管理费用增加。' },
+      { subjectCode: '660203', summary: '管理公积金', debit: 4500, credit: 0, explanation: '管理费用增加。' },
       { subjectCode: '221102', summary: '应付企业社保', debit: 0, credit: 35500, explanation: '应付职工薪酬——社保增加。' },
       { subjectCode: '221102', summary: '应付企业公积金', debit: 0, credit: 18500, explanation: '应付职工薪酬——公积金增加。' }],
     documents: [
@@ -602,8 +602,8 @@ const feb = [
       { subjectCode: '4103', summary: '成本费用转入', debit: 286454, credit: 0, explanation: '本年利润减少。' },
       { subjectCode: '6401', summary: '结转成本', debit: 0, credit: 113500, explanation: '主营业务成本结转。' },
       { subjectCode: '6403', summary: '结转税金', debit: 0, credit: 1786, explanation: '税金及附加结转。' },
-      { subjectCode: '6602', summary: '结转管理费', debit: 0, credit: 158743, explanation: '管理费用结转。' },
-      { subjectCode: '6601', summary: '结转销售费', debit: 0, credit: 12000, explanation: '销售费用结转。' },
+      { subjectCode: '660203', summary: '结转管理费', debit: 0, credit: 158743, explanation: '管理费用结转。' },
+      { subjectCode: '660103', summary: '结转销售费', debit: 0, credit: 12000, explanation: '销售费用结转。' },
       { subjectCode: '6603', summary: '结转财务费', debit: 0, credit: 425, explanation: '财务费用结转。（600+725-900=425）' }],
     documents: [
       { type: 'text', label: '结转表', docTitle: '期 间 损 益 结 转 表', date: '2026-02-28', stampText: '已结转', content: '2026年2月损益结转\n收入：248,000\n成本：113,500\n税金：1,786\n管理费：158,743\n销售费：12,000\n财务费：425\n净利润：-38,454\n\n说明：2月仍属项目前期投入阶段。' ,

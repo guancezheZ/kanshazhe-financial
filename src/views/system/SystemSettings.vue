@@ -102,6 +102,26 @@
         </el-card>
       </el-tab-pane>
 
+      <!-- ═══ 更新日志 ═══ -->
+      <el-tab-pane label="📜 更新日志" name="changelog">
+        <el-card shadow="never" class="settings-card">
+          <h3 class="section-title">版本更新记录</h3>
+          <p class="section-desc">了解每次更新的新功能和修复内容</p>
+          <div class="changelog-list">
+            <div v-for="log in changelog" :key="log.version" class="changelog-entry">
+              <div class="cl-version">
+                <span class="cl-version-tag">v{{ log.version }}</span>
+                <span class="cl-date">{{ log.date }}</span>
+                <span class="cl-title">{{ log.title }}</span>
+              </div>
+              <ul class="cl-items">
+                <li v-for="(item, i) in log.items" :key="i">{{ item }}</li>
+              </ul>
+            </div>
+          </div>
+        </el-card>
+      </el-tab-pane>
+
       <!-- ═══ 系统工具 ═══ -->
       <el-tab-pane label="🔧 工具" name="tools">
         <el-card shadow="never" class="settings-card">
@@ -149,8 +169,10 @@ import { ref, computed, onMounted } from 'vue'
 import { ElMessage } from 'element-plus'
 import { getStorageStats, getStorageUsageMB, runCleanup, getLastCleanupInfo } from '@/utils/storage-cleanup.js'
 import { submitFeedback, FEEDBACK_TYPES } from '@/utils/feedback.js'
+import { CHANGELOG } from '@/data/changelog.js'
 
 const version = __APP_VERSION__ || '0.2.0'
+const changelog = CHANGELOG
 const activeTab = ref('appearance')
 
 // ─── 主题 ───
@@ -289,4 +311,22 @@ onMounted(() => { refreshStorage() })
 .fb-actions { display: flex; align-items: center; gap: 12px; margin-top: 12px; }
 .fb-result { font-size: 13px; }
 .fb-result.success { color: #67c23a; }
+
+/* 更新日志 */
+.changelog-list { display: flex; flex-direction: column; gap: 20px; }
+.changelog-entry {
+  background: var(--el-fill-color-lighter, #fafafa);
+  border-radius: 10px; padding: 16px 20px;
+  border: 1px solid var(--border-color, #e4e7ed);
+}
+.cl-version { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+.cl-version-tag {
+  display: inline-block; background: var(--el-color-primary, #409eff); color: #fff;
+  font-size: 13px; font-weight: 700; padding: 2px 10px; border-radius: 4px;
+  font-family: monospace;
+}
+.cl-date { font-size: 12px; color: var(--text-muted, #c0c4cc); }
+.cl-title { font-size: 14px; font-weight: 600; color: var(--text, #303133); }
+.cl-items { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; }
+.cl-items li { font-size: 13px; color: var(--text-secondary, #606266); line-height: 1.6; }
 </style>

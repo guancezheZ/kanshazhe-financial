@@ -342,7 +342,7 @@ X展架            50个  3,000元
     description: '支付双十一高峰期间物流配送费25,000元（含团购商品配送、门店间调拨、快递费等），以工商银行转账支付。',
     tip: '双十一期间物流配送量剧增，物流成本相应大幅上升。借：销售费用-运杂费，贷：银行存款。物流费暴涨是双十一促销的重要特征之一。',
     entries: [
-      { subjectCode: '6601', summary: '支付双十一物流配送费', debit: 25000, credit: 0, explanation: '销售费用增加记借方。双十一促销高峰期间物流配送费用25,000元，含团购商品配送、门店间调拨及快递费等。物流费约为平时的3-4倍。' },
+      { subjectCode: '660102', summary: '支付双十一物流配送费', debit: 25000, credit: 0, explanation: '销售费用增加记借方。双十一促销高峰期间物流配送费用25,000元，含团购商品配送、门店间调拨及快递费等。物流费约为平时的3-4倍。' },
       { subjectCode: '100201', summary: '支付物流费', debit: 0, credit: 25000, explanation: '银行存款减少记贷方。支付双十一物流配送费25,000元，资金划出。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6601），属于"支付其他与经营活动有关的现金"。'}],
     documents: [
       { type: 'receipt', label: '物流费发票', docTitle: '运输业增值税普通发票', date: '2026-11-11', totalAmount: 25000, stampText: 'XX物流有限公司 发票专用章',
@@ -555,7 +555,7 @@ YK20261104-002 鑫源商贸      20,000     10,000
     description: '双十一期间临时聘请促销人员10人×3天×200元/天=6,000元，以现金支付。',
     tip: '临时促销人员工资计入销售费用。借：销售费用，贷：库存现金。双十一期间超市需增派临时促销人员应对客流高峰。',
     entries: [
-      { subjectCode: '6601', summary: '双十一临时促销人员工资', debit: 6000, credit: 0, explanation: '销售费用增加记借方。双十一期间临时聘请促销人员10人×3天×200元/天=6,000元，属销售人工成本。' },
+      { subjectCode: '660103', summary: '双十一临时促销人员工资', debit: 6000, credit: 0, explanation: '销售费用增加记借方。双十一期间临时聘请促销人员10人×3天×200元/天=6,000元，属销售人工成本。' },
       { subjectCode: '1001', summary: '支付临时促销人员工资', debit: 0, credit: 6000, explanation: '库存现金减少记贷方。以现金支付临时工工资6,000元，出纳在现金日记账登记"付"方。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6601），属于"支付其他与经营活动有关的现金"。'}],
     documents: [
       { type: 'receipt', label: '临时工工资表', docTitle: '双十一临时促销人员工资表', date: '2026-11-18', totalAmount: 6000, stampText: '人事部章',
@@ -580,7 +580,7 @@ YK20261104-002 鑫源商贸      20,000     10,000
     tip: '月末计提当月工资体现权责发生制。借：管理费用/销售费用（按部门），贷：应付职工薪酬-工资。双十一期间销售人员加班较多，需额外发放加班补贴。',
     entries: [
       { subjectCode: '660203', summary: '计提管理人员工资', debit: 30000, credit: 0, explanation: '管理费用-工资薪金增加记借方。行政管理人员工资30,000元。' },
-      { subjectCode: '6601', summary: '计提销售人员工资（含加班补贴）', debit: 32000, credit: 0, explanation: '销售费用增加记借方。销售人员工资32,000元（含双十一加班补贴4,000元）。双十一期间销售和收银人员加班较多。' },
+      { subjectCode: '660103', summary: '计提销售人员工资（含加班补贴）', debit: 32000, credit: 0, explanation: '销售费用增加记借方。销售人员工资32,000元（含双十一加班补贴4,000元）。双十一期间销售和收银人员加班较多。' },
       { subjectCode: '221101', summary: '计提本月工资', debit: 0, credit: 62000, explanation: '应付职工薪酬-工资增加记贷方。计提形成对员工的负债62,000元，下月发放时冲减。' }],
     documents: [
       { type: 'text', label: '工资表', docTitle: '2026年11月工资汇总表', stampText: '行政人事部章',
@@ -620,7 +620,7 @@ YK20261104-002 鑫源商贸      20,000     10,000
     description: '计提本月固定资产折旧。房屋建筑物原值500,000元，月折旧率0.2%=1,000元；办公设备原值60,000元，月折旧率0.8%=480元；运输设备原值200,000元，月折旧率0.6%=1,200元；货架及冷链设备原值100,000元，月折旧率0.7%=700元。合计3,380元。',
     tip: '固定资产折旧按月计提计入费用。借：管理费用，贷：累计折旧。折旧方法采用直线法。',
     entries: [
-      { subjectCode: '6602', summary: '计提本月折旧', debit: 3380, credit: 0, explanation: '管理费用增加记借方。本月折旧合计：房屋1,000+办公设备480+运输设备1,200+货架冷链700=3,380元。' },
+      { subjectCode: '660205', summary: '计提本月折旧', debit: 3380, credit: 0, explanation: '管理费用增加记借方。本月折旧合计：房屋1,000+办公设备480+运输设备1,200+货架冷链700=3,380元。' },
       { subjectCode: '1602', summary: '计提本月折旧', debit: 0, credit: 3380, explanation: '累计折旧增加记贷方。累计折旧是固定资产的备抵科目，贷方表示增加。' }],
     documents: [
       { type: 'text', label: '折旧计算表', docTitle: '固定资产折旧计算表（2026年11月）', stampText: '财务专用章',
@@ -641,7 +641,7 @@ YK20261104-002 鑫源商贸      20,000     10,000
     tip: '短期借款利息按月计提计入财务费用。借：财务费用，贷：其他应付款。利息费用是企业融资成本，按月计提体现权责发生制。',
     entries: [
       { subjectCode: '6603', summary: '计提11月短期借款利息', debit: 2175, credit: 0, explanation: '财务费用增加记借方。短期借款600,000元，月利息=600,000×4.35%÷12=2,175元。' },
-      { subjectCode: '2241', summary: '计提11月短期借款利息', debit: 0, credit: 2175, explanation: '其他应付款增加记贷方。计提利息暂挂，待实际支付时冲减。' }],
+      { subjectCode: '224104', summary: '计提11月短期借款利息', debit: 0, credit: 2175, explanation: '其他应付款增加记贷方。计提利息暂挂，待实际支付时冲减。' }],
     documents: [
       { type: 'text', label: '利息计算表', docTitle: '短期借款利息计算表（2026年11月）', stampText: '财务专用章',
         content: `短期借款利息计算表
@@ -667,7 +667,7 @@ YK20261104-002 鑫源商贸      20,000     10,000
     description: '支付11月水电费4,500元（电费3,000元、水费1,500元），以工商银行转账支付。',
     tip: '水电费属于管理费用。借：管理费用，贷：银行存款。双十一期间营业时间延长，水电费较平时略高。',
     entries: [
-      { subjectCode: '6602', summary: '支付11月水电费', debit: 4500, credit: 0, explanation: '管理费用增加记借方。11月水电费4,500元（电费3,000+水费1,500），双十一期间延长营业增加电费支出。' },
+      { subjectCode: '660208', summary: '支付11月水电费', debit: 4500, credit: 0, explanation: '管理费用增加记借方。11月水电费4,500元（电费3,000+水费1,500），双十一期间延长营业增加电费支出。' },
       { subjectCode: '100201', summary: '支付水电费', debit: 0, credit: 4500, explanation: '银行存款减少记贷方。支付水电费用4,500元。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6602），属于"支付其他与经营活动有关的现金"。'}],
     documents: [
       { type: 'receipt', label: '电费账单', docTitle: '上海市电力公司缴费单（11月）', date: '2026-11-24', totalAmount: 3000,
@@ -722,9 +722,9 @@ YK20261104-002 鑫源商贸      20,000     10,000
       { subjectCode: '6001', debit: 936638.17, credit: 0, summary: '结转主营业务收入', explanation: '主营业务收入结转至本年利润。本月收入合计：满减540,000+买赠220,000+美肌堂联营53,097.35+周大福联营28,318.58+积分兑换26,548.67+预付卡消费48,672.57+日常零售80,000-退货10,000≈936,638.17元。收入类科目期末余额归零。' },
       { subjectCode: '6401', debit: 0, credit: 720000, summary: '结转主营业务成本', explanation: '主营业务成本结转至本年利润。成本合计：满减320,000+买赠170,000+预付卡30,000+日常48,000+退货冲减6,000+其他≈720,000元（含返利冲减18,000元，成本净额）。' },
       { subjectCode: '6403', debit: 0, credit: 6456.28, summary: '结转税金及附加', explanation: '税金及附加转出6,456.28元（城建税4,519.40+教育费附加1,936.88）。' },
-      { subjectCode: '6601', debit: 0, credit: 63000, summary: '结转销售费用', explanation: '销售费用转出63,000元：销售工资32,000+物流费25,000+临时促销6,000。' },
+      { subjectCode: '660102', debit: 0, credit: 63000, summary: '结转销售费用', explanation: '销售费用转出63,000元：销售工资32,000+物流费25,000+临时促销6,000。' },
       { subjectCode: '660101', debit: 0, credit: 33000, summary: '结转销售费用-广告费', explanation: '广告费33,000元转出（宣传物料13,000+线上推广20,000），余额归零。' },
-      { subjectCode: '6602', debit: 0, credit: 3380, summary: '结转管理费用', explanation: '管理费用转出3,380元（折旧）。' },
+      { subjectCode: '660205', debit: 0, credit: 3380, summary: '结转管理费用', explanation: '管理费用转出3,380元（折旧）。' },
       { subjectCode: '660201', debit: 0, credit: 1200, summary: '结转管理费用-办公费', explanation: '办公费1,200元转出。' },
       { subjectCode: '660203', debit: 0, credit: 30000, summary: '结转管理费用-工资', explanation: '管理人员工资30,000元转出，余额归零。' },
       { subjectCode: '6603', debit: 0, credit: 2175, summary: '结转财务费用', explanation: '财务费用转出2,175元（短期借款利息）。' },

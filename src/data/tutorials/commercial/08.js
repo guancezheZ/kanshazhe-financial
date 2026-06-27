@@ -158,7 +158,7 @@ const tasks = [
     description: '采购部王经理报销赴义乌小商品市场考察差旅费3,200元（含高铁票1,200元、住宿费1,400元、市内交通费600元），以现金支付。',
     tip: '采购人员出差考察差旅费计入"管理费用"，不属于采购成本。借：管理费用，贷：库存现金。依据《企业会计准则第1号——存货》规定，差旅费不计入存货采购成本。',
     entries: [
-      { subjectCode: '6602', summary: '报销考察差旅费', debit: 3200, credit: 0, explanation: '管理费用增加记借方。采购部赴义乌考察差旅费3,200元，计入当期管理费用。为采购发生的差旅费不纳入存货成本。' },
+      { subjectCode: '660202', summary: '报销考察差旅费', debit: 3200, credit: 0, explanation: '管理费用增加记借方。采购部赴义乌考察差旅费3,200元，计入当期管理费用。为采购发生的差旅费不纳入存货成本。' },
       { subjectCode: '1001', summary: '报销考察差旅费', debit: 0, credit: 3200, explanation: '库存现金减少记贷方。以现金支付考察差旅费3,200元。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6602），属于"支付其他与经营活动有关的现金"。'}],
     documents: [
       { type: 'receipt', label: '差旅费报销单', docTitle: '差旅费报销单（采购部王经理）', date: '2026-08-06', totalAmount: 3200, stampText: '财务审核专用章',
@@ -200,7 +200,7 @@ const tasks = [
     tip: '联营专柜按月结算，按净额法确认扣点收入。分录：借：银行存款（含税销售额全额），贷：其他应付款-美肌堂（代收货款净额），贷：主营业务收入（扣点收入），贷：应交税费-销项。注意扣点收入需要缴纳增值税。',
     entries: [
       { subjectCode: '100201', summary: '代收美肌堂7月全额货款', debit: 124300, credit: 0, explanation: '银行存款增加记借方。美肌堂7月含税销售额124,300元由超市统一收款。' , cashFlowItem: 'cf-op', cashFlowExplanation: '销售商品/提供劳务收到的现金（配对科目6001），属于经营活动现金流入。'},
-      { subjectCode: '2241', summary: '应付美肌堂代收货款净额', debit: 0, credit: 96954, explanation: '其他应付款-美肌堂增加记贷方。应付美肌堂净额=含税124,300-超市扣点24,200-销项3,146=96,954元。' },
+      { subjectCode: '224103', summary: '应付美肌堂代收货款净额', debit: 0, credit: 96954, explanation: '其他应付款-美肌堂增加记贷方。应付美肌堂净额=含税124,300-超市扣点24,200-销项3,146=96,954元。' },
       { subjectCode: '6001', summary: '美肌堂联营扣点收入', debit: 0, credit: 24200, explanation: '主营业务收入增加记贷方。联营扣点收入=不含税销售额110,000×22%=24,200元。超市按净额（扣点）确认收入。' },
       { subjectCode: '222101', summary: '联营扣点增值税销项税额', debit: 0, credit: 3146, explanation: '应交税费-应交增值税（销项税额）增加记贷方。联营扣点收入销项税额=24,200×13%=3,146元。' }],
     documents: [
@@ -433,7 +433,7 @@ const tasks = [
     description: '支付万悦超市8月营业场所租金15,000元，以工商银行转账支付。',
     tip: '房租按月支付计入管理费用。借：管理费用，贷：银行存款。注意如房租发票为增值税专用发票，进项税额可抵扣。',
     entries: [
-      { subjectCode: '6602', summary: '支付8月房租', debit: 15000, credit: 0, explanation: '管理费用增加记借方。8月营业场所租金15,000元，超市固定运营支出。' },
+      { subjectCode: '660207', summary: '支付8月房租', debit: 15000, credit: 0, explanation: '管理费用增加记借方。8月营业场所租金15,000元，超市固定运营支出。' },
       { subjectCode: '100201', summary: '支付8月房租', debit: 0, credit: 15000, explanation: '银行存款减少记贷方。支付8月租金15,000元。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6602），属于"支付其他与经营活动有关的现金"。'}],
     documents: [
       { type: 'receipt', label: '房租发票', docTitle: '增值税普通发票——房屋租赁（8月）', date: '2026-08-15', totalAmount: 15000, stampText: 'XX商业地产管理有限公司 发票专用章',
@@ -447,8 +447,8 @@ const tasks = [
     description: '支付8月上半月水电费：电费7,800元（夏季空调+冷柜用电）、水费1,200元，合计9,000元，以工商银行转账支付。',
     tip: '8月天气炎热，空调和冷柜电费仍然较高，进入下旬后将有所下降。借：管理费用，贷：银行存款。',
     entries: [
-      { subjectCode: '6602', summary: '支付8月电费', debit: 7800, credit: 0, explanation: '管理费用增加记借方。8月上半月电费7,800元，夏季空调冷柜用电量仍较大。' },
-      { subjectCode: '6602', summary: '支付8月水费', debit: 1200, credit: 0, explanation: '管理费用增加记借方。水费1,200元。' },
+      { subjectCode: '660208', summary: '支付8月电费', debit: 7800, credit: 0, explanation: '管理费用增加记借方。8月上半月电费7,800元，夏季空调冷柜用电量仍较大。' },
+      { subjectCode: '660208', summary: '支付8月水费', debit: 1200, credit: 0, explanation: '管理费用增加记借方。水费1,200元。' },
       { subjectCode: '100201', summary: '支付水电费', debit: 0, credit: 9000, explanation: '银行存款减少记贷方。支付水电费合计9,000元。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6602），属于"支付其他与经营活动有关的现金"。'}],
     documents: [
       { type: 'receipt', label: '电费账单', docTitle: '上海市电力公司缴费通知单（8月上半月）', date: '2026-08-16', totalAmount: 7800, items: [{ name: '8月上半月电费', qty: 1, price: 7800, amount: 7800 }] },
@@ -563,7 +563,7 @@ const tasks = [
     tip: '计提工资按部门分别计入管理费用、销售费用、主营业务成本。借：费用/成本科目，贷：应付职工薪酬。',
     entries: [
       { subjectCode: '660203', summary: '计提管理人员工资', debit: 30000, credit: 0, explanation: '管理费用-工资增加记借方。管理工资30,000元。' },
-      { subjectCode: '6601', summary: '计提销售人员工资', debit: 25000, credit: 0, explanation: '销售费用增加记借方。销售工资25,000元。' },
+      { subjectCode: '660103', summary: '计提销售人员工资', debit: 25000, credit: 0, explanation: '销售费用增加记借方。销售工资25,000元。' },
       { subjectCode: '6401', summary: '计提一线员工工资', debit: 23000, credit: 0, explanation: '主营业务成本增加记借方。收银员+生鲜技工工资23,000元计入营业成本。' },
       { subjectCode: '221101', summary: '计提8月工资', debit: 0, credit: 78000, explanation: '应付职工薪酬-工资增加记贷方。计提8月工资合计78,000元。' }],
     documents: [
@@ -619,7 +619,7 @@ const tasks = [
     description: '计提8月固定资产折旧：营业用房1,000元+冷藏设备640元+货架收银系统360元+运输车辆480元=2,480元。',
     tip: '固定资产按月计提折旧，计入管理费用。借：管理费用，贷：累计折旧。',
     entries: [
-      { subjectCode: '6602', summary: '计提8月折旧', debit: 2480, credit: 0, explanation: '管理费用增加记借方。8月折旧合计2,480元。' },
+      { subjectCode: '660205', summary: '计提8月折旧', debit: 2480, credit: 0, explanation: '管理费用增加记借方。8月折旧合计2,480元。' },
       { subjectCode: '1602', summary: '计提8月折旧', debit: 0, credit: 2480, explanation: '累计折旧增加记贷方。' }],
     documents: [
       { type: 'text', label: '折旧计算表', docTitle: '固定资产折旧计算表（2026年8月）', stampText: '财务专用章',
@@ -672,7 +672,7 @@ const tasks = [
     tip: '短期借款利息按月计提计入财务费用。借：财务费用，贷：其他应付款。',
     entries: [
       { subjectCode: '6603', summary: '计提8月借款利息', debit: 2175, credit: 0, explanation: '财务费用增加记借方。8月利息=600,000×4.35%÷12=2,175元。' },
-      { subjectCode: '2241', summary: '计提8月借款利息', debit: 0, credit: 2175, explanation: '其他应付款增加记贷方。' }],
+      { subjectCode: '224104', summary: '计提8月借款利息', debit: 0, credit: 2175, explanation: '其他应付款增加记贷方。' }],
     documents: [
       { type: 'text', label: '利息计算表', docTitle: '短期借款利息计算表（2026年8月）', stampText: '财务专用章',
         content: '借款本金：600,000元\n月利率：4.35%÷12=0.3625%\n月利息：2,175元' ,
@@ -706,9 +706,9 @@ const tasks = [
       { subjectCode: '6001', debit: 705380.53, credit: 0, summary: '结转主营业务收入', explanation: '主营业务收入结转至本年利润。本月收入合计：开学首周185,000+高峰220,000+第二周150,000+预卡消费380.53+积分兑换132.74+清仓50,000+收尾100,000=705,380.53元。' },
       { subjectCode: '6401', debit: 0, credit: 511880, summary: '结转主营业务成本', explanation: '主营业务成本转出。成本合计：首周133,200+高峰158,400+第二周108,000+清仓42,000+收尾72,000+预卡280+积分90+一线工资23,000+返利冲减-6,000+其他约-17,090≈511,880元。（含返利冲减和一线工资入成本）' },
       { subjectCode: '6403', debit: 0, credit: 7674.17, summary: '结转税金及附加', explanation: '税金及附加转出7,674.17元。' },
-      { subjectCode: '6601', debit: 0, credit: 25000, summary: '结转销售费用', explanation: '销售费用转出25,000元（销售工资）。' },
+      { subjectCode: '660103', debit: 0, credit: 25000, summary: '结转销售费用', explanation: '销售费用转出25,000元（销售工资）。' },
       { subjectCode: '660101', debit: 0, credit: 10000, summary: '结转销售费用-广告费', explanation: '广告费10,000元转出。' },
-      { subjectCode: '6602', debit: 0, credit: 28480, summary: '结转管理费用', explanation: '管理费用转出28,480元：房租15,000+水电9,000+折旧2,480+其他约2,000=28,480元。管理工资30,000元通过660203单独结转。' },
+      { subjectCode: '660205', debit: 0, credit: 28480, summary: '结转管理费用', explanation: '管理费用转出28,480元：房租15,000+水电9,000+折旧2,480+其他约2,000=28,480元。管理工资30,000元通过660203单独结转。' },
       { subjectCode: '660203', debit: 0, credit: 30000, summary: '结转管理费用-工资', explanation: '管理工资30,000元转出。' },
       { subjectCode: '6603', debit: 0, credit: 2425, summary: '结转财务费用', explanation: '财务费用转出2,425元：微信提现手续费250元+利息2,175元。' },
       { subjectCode: '4103', debit: 0, credit: 89921.36, summary: '结转净利润至本年利润', explanation: '本年利润增加记贷方。本月净利润=705,380.53-（511,880+7,674.17+25,000+10,000+28,480+30,000+2,425）=705,380.53-615,459.17≈89,921.36元。开学季促销拉动销售，净利润显著提升。' }],

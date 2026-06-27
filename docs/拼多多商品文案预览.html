@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>拼多多商品文案预览</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #d9d2c4; font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif;
+  display: flex; flex-direction: column; align-items: center; padding: 30px 20px; gap: 40px;
+}
+.page {
+  width: 800px; background: #f5f0e8; padding: 40px 50px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12); position: relative;
+}
+.page::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background-image: radial-gradient(ellipse at 15% 30%, rgba(160,140,110,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+.page .bar {
+  height: 5px; background: linear-gradient(90deg, #9a4a42, #c4766e, #9a4a42);
+  position: absolute; top: 0; left: 0; right: 0;
+}
+.page .inner { position: relative; z-index: 1; }
+.page .inner .label {
+  font-size: 12px; color: #9a4a42; letter-spacing: 2px; margin-bottom: 4px;
+}
+.page .inner h1 { font-size: 26px; font-weight: 900; color: #2a2a2a; margin-bottom: 16px; }
+
+/* 信息行 */
+.info-row { display: flex; gap: 12px; margin-bottom: 16px; }
+.info-row .tag {
+  background: rgba(154,74,66,0.1); color: #9a4a42; padding: 4px 12px;
+  border-radius: 4px; font-size: 13px;
+}
+
+/* 商品标题框 */
+.title-box {
+  background: rgba(255,255,255,0.7); border: 1px solid #e0d5c0;
+  border-radius: 8px; padding: 14px 18px; margin-bottom: 20px;
+}
+.title-box .main-title {
+  font-size: 18px; font-weight: 700; color: #2a2a2a; line-height: 1.5;
+}
+.title-box .sub-title {
+  font-size: 13px; color: #999; margin-top: 4px;
+}
+
+/* 描述区域 */
+.desc-box {
+  background: rgba(255,255,255,0.7); border: 1px solid #e0d5c0;
+  border-radius: 8px; padding: 16px 18px; margin-bottom: 16px;
+  white-space: pre-wrap; font-size: 13px; color: #555; line-height: 1.7;
+}
+
+/* 注意事项 */
+.note-box {
+  background: #fff8f0; border: 1px solid #f0dcc0; border-radius: 8px;
+  padding: 12px 16px; font-size: 12px; color: #866; margin-bottom: 16px;
+}
+
+.section-title {
+  font-size: 16px; font-weight: 700; color: #9a4a42; margin: 16px 0 8px;
+}
+</style>
+</head>
+<body>
+
+<!-- 第1页：标题+定价 -->
+<div class="page">
+  <div class="bar"></div>
+  <div class="inner">
+<h1>商品信息</h1>
+
+    <div class="section-title">📤 发货方式</div>
+    <div class="title-box">
+      <div style="font-size:14px;color:#555;line-height:1.6;">
+        订单核销模式：买家付款 → 自动发送学习权限+资料链接 → 买家核销确认收货<br>
+        <span style="font-size:12px;color:#999;">（无需物流，核销即完成交易）</span>
+      </div>
+    </div>
+
+    <div class="section-title">📦 包含内容</div>
+    <div class="title-box">
+      <ul style="font-size:14px;color:#555;line-height:1.8;list-style:none;padding-left:0;">
+        <li>◆ Windows练习工具（含配套资料）</li>
+        <li>◆ 学习权限（一账号一设备，长期使用）</li>
+        <li>◆ 使用说明书（76页，带截图）</li>
+        <li>◆ 配套知识点教材（会计12章+出纳8章，共65节）</li>
+        <li>◆ 9个企业案例库（从便利店到集团公司）</li>
+        <li>◆ 版本更新免费</li>
+      </ul>
+    </div>
+
+    <div class="section-title">🎯 适合人群</div>
+    <div class="title-box">
+      <ul style="font-size:14px;color:#555;line-height:1.8;list-style:none;padding-left:0;">
+        <li>◆ 会计专业学生 — 动手实操练习</li>
+        <li>◆ 转行做会计 — 零基础友好</li>
+        <li>◆ 备考初级/中级 — 实务核心全覆盖</li>
+        <li>◆ 在职会计扩展 — 体验不同行业账务差异</li>
+      </ul>
+    </div>
+
+    <div class="note-box">
+      ⚠️ 需要 Windows 10/11 64位系统 · 需联网激活（激活后可离线使用）· 虚拟商品核销后不退 · 一账号一设备绑定
+    </div>
+  </div>
+</div>
+
+<!-- 第2页：商品描述 -->
+<div class="page">
+  <div class="bar"></div>
+  <div class="inner">
+<h1>商品描述</h1>
+
+    <div class="desc-box s1">本商品为虚拟课程，购买后发学习权限+资料链接，订单核销即确认收货，无需物流。
+
+📚 会计实操训练，四大行业全年账务
+
+本课程提供1431个会计实操任务，覆盖四大行业一整年的账务处理，从第一张凭证到年度决算，亲手做完完整账套。</div>
+
+    <div class="desc-box s2">🏭🏪💼🏗️ 四大行业，真实企业场景
+
+🏭 制造业（356项）
+采购、领料、生产、成本核算、完工入库、销售、期末结转，完整工业企业账务循环。
+
+🏪 商业企业（358项）
+联营专柜净额法、会员积分（CAS 14）、预付卡、折扣券、买赠促销、供应商返利，综合零售超市场景全覆盖。
+
+💼 服务业（355项）
+项目制核算、自主研发支出、SaaS收入确认、联合履约、年框合同，现代服务业典型业务。
+
+🏗️ 建筑业（362项）
+完工百分比法、分包核算、进度款结算、甲方乙方对账，建筑施工企业全流程。</div>
+
+    <div class="desc-box s3">📝📖🔍 三种学习模式
+
+📝 练习模式：有提示，答错有详细讲解
+📖 考试模式：独立完成，检测真实水平
+🔍 纠错模式：训练内容故意设错，你来找茬改正
+
+📊 学习成果看得见
+
+分录做对，数据自动进入科目余额表、试算平衡表、资产负债表、利润表、现金流量表、财务指标分析。一键查看，实时反馈。
+
+🏆 成就激励机制
+
+完成任务得经验值，从见习生到财务传说（13级称号，16项成就），闯关式学习，越学越有动力。</div>
+
+    <div class="desc-box s4">👥 适合人群
+
+会计专业学生 — 课本学完没动过手？这里从头到尾练一遍
+转行做会计 — 零基础友好，从借贷开始，每步都有提示
+备考初级/中级 — 做完制造业全年，实务核心内容全覆盖
+在职会计扩展 — 体验不同行业的账务差异
+
+📦 包含内容
+
+Windows练习工具（含配套资料）
+学习权限（一账号一设备，长期使用）
+使用说明书（76页，带截图）
+配套知识点教材（会计12章+出纳8章，共65节）
+9个企业案例库（从小便利店到集团公司）
+版本更新免费</div>
+
+    <div class="desc-box s5">🛒 购买流程
+
+1. 拍下付款
+2. 自动发送学习权限+资料链接（请查收订单消息）
+3. 领取练习工具，激活权限，开始学习
+4. 后续所有更新免费
+
+⚠️ 注意事项：
+需要 Windows 10/11
+一账号一设备绑定，换设备可联系迁移
+虚拟商品，核销后不支持退款</div>
+  </div>
+</div>
+
+</body>
+</html>

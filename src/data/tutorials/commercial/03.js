@@ -482,7 +482,7 @@ const tasks = [
     tip: '月末计提当月工资，体现权责发生制原则。管理岗人员工资计入管理费用，一线员工工资计入销售费用。借：管理费用/销售费用，贷：应付职工薪酬-工资。',
     entries: [
       { subjectCode: '660203', summary: '计提店长3月工资', debit: 8000, credit: 0, explanation: '管理费用-工资薪金增加记借方。店长3月工资8,000元。' },
-      { subjectCode: '6601', summary: '计提一线员工3月工资', debit: 53000, credit: 0, explanation: '销售费用增加记借方。一线员工3月工资53,000元。本月无节假日加班，恢复正常工资水平。' },
+      { subjectCode: '660103', summary: '计提一线员工3月工资', debit: 53000, credit: 0, explanation: '销售费用增加记借方。一线员工3月工资53,000元。本月无节假日加班，恢复正常工资水平。' },
       { subjectCode: '221101', summary: '计提3月工资', debit: 0, credit: 61000, explanation: '应付职工薪酬-工资增加记贷方。3月应付工资61,000元。无加班费。' }],
     documents: [
       { type: 'text', label: '工资计算表', docTitle: '2026年3月工资计算表', stampText: '人力资源部 工资专用章',
@@ -549,7 +549,7 @@ const tasks = [
     description: '支付3月水电费。春节后恢复正常运营，电费8,800元、水费1,100元，合计9,900元，以银行存款支付。',
     tip: '水电费计入销售费用。借：销售费用-水电费，贷：银行存款。注意取得增值税专用发票。',
     entries: [
-      { subjectCode: '6602', summary: '支付3月水电费', debit: 9900, credit: 0, explanation: '管理费用增加记借方。3月水电费9,900元（电费8,800+水费1,100），恢复至正常水平。' },
+      { subjectCode: '660208', summary: '支付3月水电费', debit: 9900, credit: 0, explanation: '管理费用增加记借方。3月水电费9,900元（电费8,800+水费1,100），恢复至正常水平。' },
       { subjectCode: '100201', summary: '支付3月水电费', debit: 0, credit: 9900, explanation: '银行存款减少记贷方。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出。'}],
     documents: [
       { type: 'receipt', label: '电费发票', date: '2026-03-15', totalAmount: 8800, items: [{ name: '3月电费', qty: 1, price: 8800, amount: 8800 }] },
@@ -609,7 +609,7 @@ const tasks = [
     description: '本月生鲜正常损耗：蔬菜5%（750元）、水果4%（600元）、鲜肉3%（500元）、水产品5%（600元），合计2,450元。经店长批准计入管理费用。',
     tip: '生鲜商品因水分蒸发、变质等产生自然损耗，属于正常经营损失。小金额的正常损耗计入管理费用，无需进项转出。分录：借：管理费用，贷：库存商品。',
     entries: [
-      { subjectCode: '6602', summary: '生鲜正常损耗', debit: 2450, credit: 0, explanation: '管理费用增加记借方。3月生鲜正常损耗2,450元，损耗率已恢复至正常水平（春节后不再大量备货）。' },
+      { subjectCode: '660214', summary: '生鲜正常损耗', debit: 2450, credit: 0, explanation: '管理费用增加记借方。3月生鲜正常损耗2,450元，损耗率已恢复至正常水平（春节后不再大量备货）。' },
       { subjectCode: '1405', summary: '生鲜损耗出库', debit: 0, credit: 2450, explanation: '库存商品减少记贷方。正常损耗，无需进项转出。' }],
     documents: [
       { type: 'text', label: '生鲜损耗报告单', docTitle: '生鲜商品损耗报告（2026年3月）', stampText: '生鲜部专用章',
@@ -810,8 +810,8 @@ const tasks = [
       // 费用类（原借方余额→贷方转出）
       { subjectCode: '6401', debit: 0, credit: 233000, summary: '结转主营业务成本', explanation: '自营商品成本233,000元。' },
       { subjectCode: '6403', debit: 0, credit: 2437.5, summary: '结转税金及附加', explanation: '税金及附加结转至本年利润。借：本年利润，贷：税金及附加。' },
-      { subjectCode: '6601', debit: 0, credit: 53000, summary: '结转销售费用', explanation: '一线员工工资53,000元。' },
-      { subjectCode: '6602', debit: 0, credit: 12350, summary: '结转管理费用（水电+损耗）', explanation: '水电9,900+生鲜损耗2,450=12,350元。' },
+      { subjectCode: '660103', debit: 0, credit: 53000, summary: '结转销售费用', explanation: '一线员工工资53,000元。' },
+      { subjectCode: '660208', debit: 0, credit: 12350, summary: '结转管理费用（水电+损耗）', explanation: '水电9,900+生鲜损耗2,450=12,350元。' },
       { subjectCode: '660203', debit: 0, credit: 8000, summary: '结转管理费用-工资薪金', explanation: '店长工资8,000元。' },
       { subjectCode: '660205', debit: 0, credit: 1350, summary: '结转管理费用-折旧费', explanation: '折旧1,350元。' },
       // 净利润→本年利润贷方

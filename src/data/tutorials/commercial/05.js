@@ -295,7 +295,7 @@ const tasks = [
     tip: '联营专柜月结时，按含税销售额扣除佣金后的净额支付给供应商。借：应付账款-联营供应商，贷：银行存款。注意与净额法佣金收入相区分。',
     entries: [
       { subjectCode: '222101', summary: '佣金进项发票', debit: 946.42, credit: 0, explanation: '应交税费-应交增值税（进项税额）增加。16,720÷1.06×6%=946.42元。' },
-      { subjectCode: '6601', summary: '联营佣金费用', debit: 15773.58, credit: 0, explanation: '销售费用增加。' },
+      { subjectCode: '660103', summary: '联营佣金费用', debit: 15773.58, credit: 0, explanation: '销售费用增加。' },
       { subjectCode: '220203', summary: '支付美肌堂货款', debit: 59280, credit: 0, explanation: '应付账款减少。' },
       { subjectCode: '100201', summary: '结算联营货款', debit: 0, credit: 76000, explanation: '银行存款减少。' , cashFlowItem: 'cf-op2', cashFlowExplanation: '采购存货/商品支出。'}],
     documents: [
@@ -457,7 +457,7 @@ const tasks = [
     tip: '月末计提当月工资，体现权责发生制。劳动节加班工资按300%计算，需并入当月工资总额。借：管理费用/销售费用，贷：应付职工薪酬-工资。',
     entries: [
       { subjectCode: '660203', summary: '店长5月工资及加班', debit: 8600, credit: 0, explanation: '管理费用-工资薪金增加。' },
-      { subjectCode: '6601', summary: '一线员工5月工资及加班', debit: 56887.36, credit: 0, explanation: '销售费用增加。' },
+      { subjectCode: '660103', summary: '一线员工5月工资及加班', debit: 56887.36, credit: 0, explanation: '销售费用增加。' },
       { subjectCode: '221101', summary: '计提5月工资', debit: 0, credit: 65487.36, explanation: '应付职工薪酬-工资增加。含加班费4,487.36元。' }],
     documents: [{ type: 'text', label: '工资计算表', docTitle: '2026年5月工资计算表（含劳动节加班）', stampText: '人力资源部',
       content: '2026年5月工资计算表（含劳动节加班）\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n一、工资基数\n  基础工资：61,000.00元（14人×平均4,357元）\n\n二、劳动节加班（5月1日，法定节假日）\n  加班人数：8人（收银4人+理货4人）\n  日工资率：61,000÷21.75=2,804.60元/天\n  加班费：2,804.60÷15×8×300%=4,487.36元\n  法律依据：《劳动法》第四十四条第三款\n\n三、工资分配\n  管理费用（店长）：8,600.00元\n  销售费用（一线）：56,887.36元\n  合计：65,487.36元',
@@ -508,7 +508,7 @@ const tasks = [
     description: '支付5月水电费8,800元（电费7,600+水费1,200）。',
     tip: '水电费计入销售费用。借：销售费用-水电费，贷：银行存款。注意取得增值税专用发票。',
     entries: [
-      { subjectCode: '6602', summary: '5月水电费', debit: 8800, credit: 0, explanation: '管理费用增加。' },
+      { subjectCode: '660203', summary: '5月水电费', debit: 8800, credit: 0, explanation: '管理费用增加。' },
       { subjectCode: '100201', summary: '支付水电费', debit: 0, credit: 8800, explanation: '银行存款减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出。'}],
     documents: [{ type: 'receipt', label: '电费发票', date: '2026-05-18', totalAmount: 7600, items: [{ name: '5月电费', qty: 1, price: 7600, amount: 7600 }] }]},
   {
@@ -520,7 +520,7 @@ const tasks = [
     description: '本月生鲜正常损耗1,950元，计入管理费用。',
     tip: '生鲜自然损耗计入管理费用。正常损耗小金额无需进项转出。借：管理费用，贷：库存商品。',
     entries: [
-      { subjectCode: '6602', summary: '生鲜正常损耗', debit: 1950, credit: 0, explanation: '管理费用增加。正常损耗无需进项转出。' },
+      { subjectCode: '660203', summary: '生鲜正常损耗', debit: 1950, credit: 0, explanation: '管理费用增加。正常损耗无需进项转出。' },
       { subjectCode: '1405', summary: '损耗出库', debit: 0, credit: 1950, explanation: '库存商品减少。' }],
     documents: [{ type: 'text', label: '生鲜损耗报告单', docTitle: '生鲜商品损耗报告（2026年5月）', stampText: '生鲜部专用章',
       content: `生鲜商品损耗报告
@@ -703,8 +703,8 @@ const tasks = [
       { subjectCode: '6001', debit: 385000, credit: 0, summary: '结转主营业务收入', explanation: '含自营、联营佣金、折扣券≈385,000元。' },
       { subjectCode: '6401', debit: 0, credit: 201500, summary: '结转主营业务成本', explanation: '已扣返利。' },
       { subjectCode: '6403', debit: 0, credit: 2450, summary: '结转税金及附加', explanation: '税金及附加结转至本年利润。借：本年利润，贷：税金及附加。' },
-      { subjectCode: '6601', debit: 0, credit: 72661, summary: '结转销售费用', explanation: '一线工资56,887+联营佣金15,774。' },
-      { subjectCode: '6602', debit: 0, credit: 10750, summary: '结转管理费用', explanation: '水电8,800+损耗1,950=10,750。' },
+      { subjectCode: '660103', debit: 0, credit: 72661, summary: '结转销售费用', explanation: '一线工资56,887+联营佣金15,774。' },
+      { subjectCode: '660203', debit: 0, credit: 10750, summary: '结转管理费用', explanation: '水电8,800+损耗1,950=10,750。' },
       { subjectCode: '660203', debit: 0, credit: 8600, summary: '结转管理费用-工资薪金', explanation: '店长工资含加班。' },
       { subjectCode: '6603', debit: 170, credit: 0, summary: '结转财务费用（净利息收入）', explanation: '财务费用结转至本年利润。借：本年利润，贷：财务费用。' },
       { subjectCode: '4103', debit: 0, credit: 89209, summary: '结转净利润', explanation: '=385,170-296,961=88,209元。累计≈313,901元。' }

@@ -33,7 +33,7 @@ const tasks = [
     description: '查明原因：食品盘亏500元中350元正常损耗（搬运破损），150元管理不善（过期未处理）。生鲜盘亏200元正常损耗。正常损耗550元计入管理费用；非正常损耗150元+进项转出17.26元计入营业外支出。',
     tip: '盘点差异处理：正常损耗直接计入管理费用，无需进项转出。非正常损耗（管理不善）需做进项税额转出并计入营业外支出。依据《增值税暂行条例实施细则》第二十四条。',
     entries: [
-      { subjectCode: '6602', summary: '正常损耗（食品350+生鲜200）', debit: 550, credit: 0, explanation: '管理费用增加。正常损耗无需进项转出。' },
+      { subjectCode: '660214', summary: '正常损耗（食品350+生鲜200）', debit: 550, credit: 0, explanation: '管理费用增加。正常损耗无需进项转出。' },
       { subjectCode: '1901', summary: '结转正常损耗', debit: 0, credit: 550, explanation: '待处理财产损溢减少。' },
       { subjectCode: '6711', summary: '非正常损耗含进项转出', debit: 167.26, credit: 0, explanation: '营业外支出增加。非正常损失含进项转出=150+150÷1.13×13%≈167.26元。' },
       { subjectCode: '1901', summary: '结转非正常损耗', debit: 0, credit: 150, explanation: '待处理财产损溢减少150元。' },
@@ -228,7 +228,7 @@ const tasks = [
     tip: '月末计提当月工资。管理岗计入管理费用，一线员工计入销售费用。借：管理费用/销售费用，贷：应付职工薪酬-工资。',
     entries: [
       { subjectCode: '660203', summary: '店长6月工资', debit: 8000, credit: 0, explanation: '管理费用-工资薪金增加。' },
-      { subjectCode: '6601', summary: '一线员工6月工资', debit: 53000, credit: 0, explanation: '销售费用增加。' },
+      { subjectCode: '660103', summary: '一线员工6月工资', debit: 53000, credit: 0, explanation: '销售费用增加。' },
       { subjectCode: '221101', summary: '计提6月工资', debit: 0, credit: 61000, explanation: '应付职工薪酬-工资增加。' }],
     documents: [{ type: 'text', label: '工资计算表', docTitle: '2026年6月工资计算表', stampText: '人力资源部',
       content: '工资计算表\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n期间：2026年6月\n\n管理人员（2人）：\n  店长：8,000.00元\n  副店长：4,800.00元 → 计入管理费用\n\n销售人员（12人）：\n  收银员4人：18,000.00元\n  理货员6人：24,000.00元\n  促销员2人：6,000.00元\n  生鲜技工：5,000.00元 → 计入销售费用\n\n合计：61,000.00元\n  其中管理费用：8,000.00元\n  其中销售费用：53,000.00元',
@@ -288,7 +288,7 @@ const tasks = [
     tip: '联营专柜月结时支付供应商货款净额（含税销售额减去佣金）。借：应付账款-美肌堂，贷：银行存款。',
     entries: [
       { subjectCode: '222101', summary: '佣金进项', debit: 647.55, credit: 0, explanation: '应交税费-应交增值税（进项税额）增加。' },
-      { subjectCode: '6601', summary: '联营佣金费用', debit: 10792.45, credit: 0, explanation: '销售费用增加。' },
+      { subjectCode: '660104', summary: '联营佣金费用', debit: 10792.45, credit: 0, explanation: '销售费用增加。' },
       { subjectCode: '220203', summary: '支付美肌堂货款', debit: 40560, credit: 0, explanation: '应付账款减少。' },
       { subjectCode: '100201', summary: '结算联营货款', debit: 0, credit: 52000, explanation: '银行存款减少。' , cashFlowItem: 'cf-op2', cashFlowExplanation: '采购存货/商品支出。'}],
     documents: [{ type: 'text', label: '联营结算单', docTitle: '联营专柜结算单（2026年5月）', stampText: '联营结算专用章',
@@ -344,7 +344,7 @@ const tasks = [
     description: '支付6月水电费8,500元（电费7,300+水费1,200）。',
     tip: '水电费计入销售费用。借：销售费用-水电费，贷：银行存款。注意取得增值税专用发票。',
     entries: [
-      { subjectCode: '6602', summary: '6月水电费', debit: 8500, credit: 0, explanation: '管理费用增加。' },
+      { subjectCode: '660208', summary: '6月水电费', debit: 8500, credit: 0, explanation: '管理费用增加。' },
       { subjectCode: '100201', summary: '支付水电费', debit: 0, credit: 8500, explanation: '银行存款减少。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出。'}],
     documents: [{ type: 'receipt', label: '电费发票', date: '2026-06-15', totalAmount: 7300, items: [{ name: '6月电费', qty: 1, price: 7300, amount: 7300 }] }]},
   {
@@ -356,7 +356,7 @@ const tasks = [
     description: '本月生鲜正常损耗1,800元，计入管理费用。',
     tip: '生鲜自然损耗计入管理费用。正常损耗小金额无需进项转出。借：管理费用，贷：库存商品。',
     entries: [
-      { subjectCode: '6602', summary: '生鲜正常损耗', debit: 1800, credit: 0, explanation: '管理费用增加。正常损耗无需进项转出。' },
+      { subjectCode: '660214', summary: '生鲜正常损耗', debit: 1800, credit: 0, explanation: '管理费用增加。正常损耗无需进项转出。' },
       { subjectCode: '1405', summary: '损耗出库', debit: 0, credit: 1800, explanation: '库存商品减少。' }],
     documents: [{ type: 'text', label: '生鲜损耗报告单', docTitle: '生鲜商品损耗报告（2026年6月）', stampText: '生鲜部',
       content: '生鲜商品损耗报告\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n期间：2026年6月\n\n品类       金额     损耗率\n────────  ───────  ──────\n蔬菜       600元      4%\n水果       500元      3%\n鲜肉       400元      2.5%\n水产品     300元      5%\n────────  ───────  ──────\n合计     1,800.00元    —\n\n损耗性质：正常合理损耗 ✓\n无需进项转出 ✓\n\n店长审批：同意 ☑',
@@ -543,8 +543,8 @@ const tasks = [
       { subjectCode: '6001', debit: 356000, credit: 0, summary: '结转主营业务收入', explanation: '含自营、联营佣金、积分调整≈356,000元。' },
       { subjectCode: '6401', debit: 0, credit: 169800, summary: '结转主营业务成本', explanation: '已扣返利3,200元。' },
       { subjectCode: '6403', debit: 0, credit: 2450, summary: '结转税金及附加', explanation: '税金及附加结转至本年利润。借：本年利润，贷：税金及附加。' },
-      { subjectCode: '6601', debit: 0, credit: 63792, summary: '结转销售费用', explanation: '一线工资53,000+联营佣金10,792。' },
-      { subjectCode: '6602', debit: 0, credit: 10850, summary: '结转管理费用（水电+损耗+盘点）', explanation: '水电8,500+损耗1,800+盘点正常损耗550=10,850。' },
+      { subjectCode: '660103', debit: 0, credit: 63792, summary: '结转销售费用', explanation: '一线工资53,000+联营佣金10,792。' },
+      { subjectCode: '660208', debit: 0, credit: 10850, summary: '结转管理费用（水电+损耗+盘点）', explanation: '水电8,500+损耗1,800+盘点正常损耗550=10,850。' },
       { subjectCode: '660203', debit: 0, credit: 8000, summary: '结转管理费用-工资薪金', explanation: '店长工资8,000元。' },
       { subjectCode: '6711', debit: 0, credit: 167.26, summary: '结转营业外支出', explanation: '非正常损耗及进项转出。' },
       { subjectCode: '6603', debit: 220, credit: 0, summary: '结转财务费用（净利息收入）', explanation: '财务费用结转至本年利润。借：本年利润，贷：财务费用。' },
@@ -996,7 +996,7 @@ const tasks = [
     description: '月末生鲜正常损耗1,200元，计入管理费用。',
     tip: '生鲜自然损耗计入管理费用。正常损耗小金额无需进项转出。借：管理费用，贷：库存商品。',
     entries: [
-      { subjectCode: '6602', summary: '损耗', debit: 1200, credit: 0, explanation: '管理费用增加。' },
+      { subjectCode: '660214', summary: '损耗', debit: 1200, credit: 0, explanation: '管理费用增加。' },
       { subjectCode: '1405', summary: '出库', debit: 0, credit: 1200, explanation: '库存商品减少记贷方。存货出库。' }],
     documents: [{ type: 'text', label: '生鲜损耗报告单', docTitle: '生鲜商品损耗报告（2026年6月）', stampText: '生鲜部专用章',
       content: `生鲜商品损耗报告

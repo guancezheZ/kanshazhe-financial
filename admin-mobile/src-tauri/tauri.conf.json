@@ -10,6 +10,16 @@
     "beforeDevCommand": ""
   },
   "app": {
+    "windows": [
+      {
+        "title": "密钥管理",
+        "width": 800,
+        "height": 600,
+        "resizable": true,
+        "fullscreen": false,
+        "visible": true
+      }
+    ],
     "security": {
       "csp": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://jiaqinw.xyz; img-src 'self' data:; font-src 'self'"
     }

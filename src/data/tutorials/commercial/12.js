@@ -310,8 +310,8 @@ const tasks = [
     entries: [
       { subjectCode: '660203', summary: '计提管理人员12月工资', debit: 30000, credit: 0, explanation: '管理费用-工资薪金增加记借方。行政管理人员12月工资30,000元。' },
       { subjectCode: '660203', summary: '计提管理人员年终奖', debit: 20000, credit: 0, explanation: '管理费用-工资薪金增加记借方。管理人员年终奖20,000元，为年度绩效奖励。' },
-      { subjectCode: '6601', summary: '计提销售人员12月工资', debit: 28000, credit: 0, explanation: '销售费用增加记借方。销售人员12月工资28,000元。' },
-      { subjectCode: '6601', summary: '计提销售人员年终奖', debit: 15000, credit: 0, explanation: '销售费用增加记借方。销售人员年终奖15,000元。' },
+      { subjectCode: '660103', summary: '计提销售人员12月工资', debit: 28000, credit: 0, explanation: '销售费用增加记借方。销售人员12月工资28,000元。' },
+      { subjectCode: '660103', summary: '计提销售人员年终奖', debit: 15000, credit: 0, explanation: '销售费用增加记借方。销售人员年终奖15,000元。' },
       { subjectCode: '221101', summary: '计提本月工资及年终奖', debit: 0, credit: 93000, explanation: '应付职工薪酬-工资增加记贷方。计提形成对员工的负债93,000元（工资58,000+年终奖35,000）。' }],
     documents: [
       { type: 'text', label: '工资及年终奖表', docTitle: '2026年12月工资及年终奖汇总表', stampText: '行政人事部章',
@@ -358,7 +358,7 @@ const tasks = [
     description: '计提本月固定资产折旧。房屋建筑物原值500,000元，月折旧率0.2%=1,000元；办公设备原值60,000元，月折旧率0.8%=480元；运输设备原值200,000元，月折旧率0.6%=1,200元；货架及冷链设备原值100,000元，月折旧率0.7%=700元。合计3,380元。这是全年最后一次折旧计提。',
     tip: '固定资产折旧按月计提计入管理费用。借：管理费用，贷：累计折旧。这是2026年最后一次折旧计提，全年累计折旧反映了固定资产的使用消耗。',
     entries: [
-      { subjectCode: '6602', summary: '计提本年最后一次折旧', debit: 3380, credit: 0, explanation: '管理费用增加记借方。12月折旧合计：房屋1,000+办公设备480+运输设备1,200+货架冷链700=3,380元。全年最后一次折旧。' },
+      { subjectCode: '660205', summary: '计提本年最后一次折旧', debit: 3380, credit: 0, explanation: '管理费用增加记借方。12月折旧合计：房屋1,000+办公设备480+运输设备1,200+货架冷链700=3,380元。全年最后一次折旧。' },
       { subjectCode: '1602', summary: '计提本年最后一次折旧', debit: 0, credit: 3380, explanation: '累计折旧增加记贷方。2026年度累计折旧计提完毕，累计折旧总额反映固定资产已使用价值。' }],
     documents: [
       { type: 'text', label: '折旧计算表', docTitle: '固定资产折旧计算表（2026年12月·年度最后一次）', stampText: '财务专用章',
@@ -382,7 +382,7 @@ const tasks = [
     tip: '短期借款利息按月计提计入财务费用。借：财务费用，贷：其他应付款。这是2026年最后一次利息计提。',
     entries: [
       { subjectCode: '6603', summary: '计提12月短期借款利息', debit: 2175, credit: 0, explanation: '财务费用增加记借方。短期借款600,000元月利息=600,000×4.35%÷12=2,175元。全年最后一次利息计提。' },
-      { subjectCode: '2241', summary: '计提12月短期借款利息', debit: 0, credit: 2175, explanation: '其他应付款增加记贷方。计提利息暂挂，到期还本付息时冲减。' }],
+      { subjectCode: '224104', summary: '计提12月短期借款利息', debit: 0, credit: 2175, explanation: '其他应付款增加记贷方。计提利息暂挂，到期还本付息时冲减。' }],
     documents: [
       { type: 'text', label: '利息计算表', docTitle: '短期借款利息计算表（2026年12月）', stampText: '财务专用章',
         content: `借款银行：中国工商银行
@@ -441,8 +441,8 @@ const tasks = [
       { subjectCode: '6001', debit: 357646.01, credit: 0, summary: '结转12月主营业务收入', explanation: '主营业务收入结转至本年利润。12月收入合计：年终促销200,000+赊销78,000+美肌堂联营22,123.89+预付卡消费57,522.12=357,646.01元。' },
       { subjectCode: '6401', debit: 0, credit: 179000, summary: '结转12月主营业务成本', explanation: '主营业务成本转出179,000元。含：年终促销120,000+赊销年货24,000+预付卡消费35,000=179,000元。' },
       { subjectCode: '6403', debit: 0, credit: 3219.4, summary: '结转税金及附加', explanation: '税金及附加转出3,219.40元（城建税2,253.58+教育费附加965.82）。' },
-      { subjectCode: '6601', debit: 0, credit: 43000, summary: '结转销售费用', explanation: '销售费用转出43,000元（销售工资28,000+销售年终奖15,000）。' },
-      { subjectCode: '6602', debit: 0, credit: 3380, summary: '结转管理费用', explanation: '管理费用转出3,380元（折旧）。' },
+      { subjectCode: '660103', debit: 0, credit: 43000, summary: '结转销售费用', explanation: '销售费用转出43,000元（销售工资28,000+销售年终奖15,000）。' },
+      { subjectCode: '660205', debit: 0, credit: 3380, summary: '结转管理费用', explanation: '管理费用转出3,380元（折旧）。' },
       { subjectCode: '660203', debit: 0, credit: 50000, summary: '结转管理费用-工资及年终奖', explanation: '管理人员工资30,000+年终奖20,000=50,000元转出。' },
       { subjectCode: '6603', debit: 0, credit: 2175, summary: '结转财务费用', explanation: '财务费用转出2,175元（短期借款利息）。' },
       { subjectCode: '4103', debit: 0, credit: 76871.61, summary: '12月费用转入本年利润', explanation: '本年利润减少记借方。12月所有费用合计280,774.4元。12月净利润=357,646.01-280,774.40≈76,871.61元。结转后本年利润余额（含1-11月累计）=\n  1-11月累计约523,128.39+12月净利润76,871.61=600,000元。' }
@@ -556,7 +556,7 @@ const tasks = [
     tip: '法定盈余公积是强制提取的——公司制企业按净利润的10%提取，累计达到注册资本的50%时可以不再提取。分录：借：利润分配-提取盈余公积，贷：盈余公积。依据《公司法》第一百六十六条。',
     entries: [
       { subjectCode: '410402', summary: '提取法定盈余公积（450,000×10%）', debit: 45000, credit: 0, explanation: '利润分配-提取盈余公积增加45,000元。根据《公司法》第一百六十六条，公司分配当年税后利润时，应当提取利润的10%列入公司法定公积金。' },
-      { subjectCode: '4101', summary: '法定盈余公积增加', debit: 0, credit: 45000, explanation: '盈余公积增加45,000元。盈余公积属于所有者权益，可用于弥补亏损或转增资本。' }],
+      { subjectCode: '410101', summary: '法定盈余公积增加', debit: 0, credit: 45000, explanation: '盈余公积增加45,000元。盈余公积属于所有者权益，可用于弥补亏损或转增资本。' }],
     documents: [
       { type: 'text', label: '盈余公积计算表', docTitle: '法定盈余公积提取计算表', stampText: '财务专用章',
         content: `全年净利润：450,000.00元
@@ -577,7 +577,7 @@ const tasks = [
     tip: '任意盈余公积是自愿提取的，由股东会决定提取比例。借：利润分配-提取盈余公积，贷：盈余公积。本例提取5%，合计提取15%（法定10%+任意5%）。',
     entries: [
       { subjectCode: '410402', summary: '提取任意盈余公积（450,000×5%）', debit: 22500, credit: 0, explanation: '利润分配-提取盈余公积增加22,500元。任意盈余公积由股东会决议决定提取比例，用于未来扩大再生产或应对风险。' },
-      { subjectCode: '4101', summary: '任意盈余公积增加', debit: 0, credit: 22500, explanation: '盈余公积增加22,500元。提取后盈余公积合计=45,000+22,500=67,500元。' }],
+      { subjectCode: '410102', summary: '任意盈余公积增加', debit: 0, credit: 22500, explanation: '盈余公积增加22,500元。提取后盈余公积合计=45,000+22,500=67,500元。' }],
     documents: [
       { type: 'text', label: '股东会决议', docTitle: '2026年度利润分配方案（股东会决议摘要）', stampText: '本公司\n公章',
         content: `出席股东：全体股东（100%股权）
@@ -660,7 +660,7 @@ const tasks = [
     description: '年终对库存商品进行全面实地盘点。盘点发现年货礼盒类商品短缺20盒（单位成本80元），金额1,600元，经确认为正常损耗，经批准计入管理费用。其他品类账实相符。',
     tip: '年终盘点发现存货短缺时，确认属于正常损耗的，经批准后：借：管理费用，贷：库存商品。盘点差异需在年度结账前处理完毕，确保年报存货数据准确。依据《企业会计准则第1号——存货》第二十一条。',
     entries: [
-      { subjectCode: '6602', summary: '年终盘点短缺—正常损耗', debit: 1600, credit: 0, explanation: '管理费用增加记借方。年终盘点发现年货礼盒短缺20盒×80元=1,600元，确认为正常损耗，计入管理费用。' },
+      { subjectCode: '660214', summary: '年终盘点短缺—正常损耗', debit: 1600, credit: 0, explanation: '管理费用增加记借方。年终盘点发现年货礼盒短缺20盒×80元=1,600元，确认为正常损耗，计入管理费用。' },
       { subjectCode: '1405', summary: '盘点短缺商品出账', debit: 0, credit: 1600, explanation: '库存商品减少记贷方。年货礼盒盘点短缺20盒×80元=1,600元，账面库存减少。' }],
     documents: [
       { type: 'text', label: '盘点报告', docTitle: '2026年度库存商品盘点报告', stampText: '财务专用章',
@@ -689,7 +689,7 @@ const tasks = [
     description: '支付会计师事务所全年审计费25,000元，以工商银行转账支付。取得增值税普通发票。',
     tip: '审计费属于管理费用，是年终决算的必要支出。借：管理费用，贷：银行存款。企业年度财务报表需经会计师事务所审计。依据《公司法》第一百六十四条。',
     entries: [
-      { subjectCode: '6602', summary: '支付全年审计费', debit: 25000, credit: 0, explanation: '管理费用增加记借方。年度财务报表审计费25,000元计入管理费用。企业应当在每一会计年度终了时编制财务报告并依法审计。' },
+      { subjectCode: '660210', summary: '支付全年审计费', debit: 25000, credit: 0, explanation: '管理费用增加记借方。年度财务报表审计费25,000元计入管理费用。企业应当在每一会计年度终了时编制财务报告并依法审计。' },
       { subjectCode: '100201', summary: '支付年度审计费', debit: 0, credit: 25000, explanation: '银行存款减少记贷方。支付审计费用25,000元。' , cashFlowItem: 'cf-op6', cashFlowExplanation: '其他经营活动现金支出（配对科目6602），属于"支付其他与经营活动有关的现金"。'}],
     documents: [
       { type: 'receipt', label: '审计费发票', docTitle: '增值税普通发票', date: '2026-12-23', totalAmount: 25000, stampText: '天健会计师事务所 发票专用章',

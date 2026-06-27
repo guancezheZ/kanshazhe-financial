@@ -12,10 +12,10 @@ const WEB3FORMS_API = 'https://api.web3forms.com/submit'
 
 /**
  * 提交反馈
- * @param {{ type: string, content: string, page?: string }} feedback
+ * @param {{ type: string, content: string, page?: string, contact?: string }} feedback
  * @returns {Promise<boolean>}
  */
-export async function submitFeedback({ type, content, page = '' }) {
+export async function submitFeedback({ type, content, page = '', contact = '' }) {
   const res = await fetch(WEB3FORMS_API, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -23,7 +23,9 @@ export async function submitFeedback({ type, content, page = '' }) {
       access_key: WEB3FORMS_KEY,
       subject: `[观测者财务] 新反馈：${type}`,
       name: type,
-      message: content,
+      message: contact
+        ? `【联系方式】${contact}\n\n【反馈内容】${content}`
+        : content,
       from_name: '观测者财务模拟系统',
       botcheck: false
     })

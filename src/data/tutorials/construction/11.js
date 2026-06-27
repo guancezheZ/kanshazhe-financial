@@ -441,7 +441,7 @@ const tasks = [
         explanation: '办公。借2000元。'
       },
       {
-        subjectCode: '6602',
+        subjectCode: '660201',
         debit: 5500,
         credit: 0,
         summary: '公司办公',
@@ -1023,7 +1023,7 @@ const tasks = [
         explanation: '项目部工资。借40000元。'
       },
       {
-        subjectCode: '6602',
+        subjectCode: '660203',
         debit: 25000,
         credit: 0,
         summary: '管理工资',
@@ -1204,7 +1204,7 @@ const tasks = [
         explanation: '施工机械折旧。借6458元。'
       },
       {
-        subjectCode: '6602',
+        subjectCode: '660205',
         debit: 600,
         credit: 0,
         summary: '办公折旧',
@@ -1218,7 +1218,7 @@ const tasks = [
         explanation: '临设摊销。借5000元。'
       },
       {
-        subjectCode: '6602',
+        subjectCode: '660205',
         debit: 10000,
         credit: 0,
         summary: '房租摊销',

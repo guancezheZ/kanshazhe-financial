@@ -122,6 +122,11 @@ const DEFAULT_SUBJECTS = [
   { id: 's-2241', code: '2241', name: '其他应付款', type: SUBJECT_TYPE.LIABILITY, parentId: null, isLeaf: false, opened: true },
   { id: 's-224101', code: '01', name: '社保个人部分', type: SUBJECT_TYPE.LIABILITY, parentId: 's-2241', isLeaf: true, opened: true },
   { id: 's-224102', code: '02', name: '公积金个人部分', type: SUBJECT_TYPE.LIABILITY, parentId: 's-2241', isLeaf: true, opened: true },
+  { id: 's-224103', code: '03', name: '代收货款', type: SUBJECT_TYPE.LIABILITY, parentId: 's-2241', isLeaf: true, opened: true },
+  { id: 's-224104', code: '04', name: '应付利息', type: SUBJECT_TYPE.LIABILITY, parentId: 's-2241', isLeaf: true, opened: true },
+  { id: 's-224105', code: '05', name: '递延收益', type: SUBJECT_TYPE.LIABILITY, parentId: 's-2241', isLeaf: true, opened: true },
+  { id: 's-224106', code: '06', name: '保证金', type: SUBJECT_TYPE.LIABILITY, parentId: 's-2241', isLeaf: true, opened: true },
+  { id: 's-224199', code: '99', name: '其他', type: SUBJECT_TYPE.LIABILITY, parentId: 's-2241', isLeaf: true, opened: true },
   { id: 's-2401', code: '2401', name: '递延收益', type: SUBJECT_TYPE.LIABILITY, parentId: null, isLeaf: true, opened: true },
   { id: 's-2501', code: '2501', name: '长期借款', type: SUBJECT_TYPE.LIABILITY, parentId: null, isLeaf: true, opened: true },
   { id: 's-2502', code: '2502', name: '应付债券', type: SUBJECT_TYPE.LIABILITY, parentId: null, isLeaf: true, opened: true },
@@ -135,6 +140,7 @@ const DEFAULT_SUBJECTS = [
   { id: 's-4002', code: '4002', name: '资本公积', type: SUBJECT_TYPE.EQUITY, parentId: null, isLeaf: true, opened: true },
   { id: 's-4101', code: '4101', name: '盈余公积', type: SUBJECT_TYPE.EQUITY, parentId: null, isLeaf: false, opened: true },
   { id: 's-410101', code: '01', name: '法定盈余公积', type: SUBJECT_TYPE.EQUITY, parentId: 's-4101', isLeaf: true, opened: true },
+  { id: 's-410102', code: '02', name: '任意盈余公积', type: SUBJECT_TYPE.EQUITY, parentId: 's-4101', isLeaf: true, opened: true },
   { id: 's-4103', code: '4103', name: '本年利润', type: SUBJECT_TYPE.EQUITY, parentId: null, isLeaf: true, opened: true },
   { id: 's-4104', code: '4104', name: '利润分配', type: SUBJECT_TYPE.EQUITY, parentId: null, isLeaf: false, opened: true },
   { id: 's-410401', code: '01', name: '未分配利润', type: SUBJECT_TYPE.EQUITY, parentId: 's-4104', isLeaf: true, opened: true },
@@ -164,6 +170,10 @@ const DEFAULT_SUBJECTS = [
   { id: 's-6601', code: '6601', name: '销售费用', type: SUBJECT_TYPE.PROFIT_LOSS, parentId: null, isLeaf: false, opened: true },
   { id: 's-660101', code: '01', name: '广告费', type: SUBJECT_TYPE.PROFIT_LOSS, parentId: 's-6601', isLeaf: true, opened: true },
   { id: 's-660102', code: '02', name: '运输费', type: SUBJECT_TYPE.PROFIT_LOSS, parentId: 's-6601', isLeaf: true, opened: true },
+  { id: 's-660103', code: '03', name: '工资薪金', type: SUBJECT_TYPE.PROFIT_LOSS, parentId: 's-6601', isLeaf: true, opened: true },
+  { id: 's-660104', code: '04', name: '促销佣金', type: SUBJECT_TYPE.PROFIT_LOSS, parentId: 's-6601', isLeaf: true, opened: true },
+  { id: 's-660105', code: '05', name: '业务费', type: SUBJECT_TYPE.PROFIT_LOSS, parentId: 's-6601', isLeaf: true, opened: true },
+  { id: 's-660106', code: '06', name: '其他', type: SUBJECT_TYPE.PROFIT_LOSS, parentId: 's-6601', isLeaf: true, opened: true },
   { id: 's-6602', code: '6602', name: '管理费用', type: SUBJECT_TYPE.PROFIT_LOSS, parentId: null, isLeaf: false, opened: true },
   { id: 's-660201', code: '01', name: '办公费', type: SUBJECT_TYPE.PROFIT_LOSS, parentId: 's-6602', isLeaf: true, opened: true },
   { id: 's-660202', code: '02', name: '差旅费', type: SUBJECT_TYPE.PROFIT_LOSS, parentId: 's-6602', isLeaf: true, opened: true },
@@ -171,6 +181,17 @@ const DEFAULT_SUBJECTS = [
   { id: 's-660204', code: '04', name: '研发费用', type: SUBJECT_TYPE.PROFIT_LOSS, parentId: 's-6602', isLeaf: true, opened: true },
   { id: 's-660205', code: '05', name: '折旧费', type: SUBJECT_TYPE.PROFIT_LOSS, parentId: 's-6602', isLeaf: true, opened: true },
   { id: 's-660206', code: '06', name: '摊销费', type: SUBJECT_TYPE.PROFIT_LOSS, parentId: 's-6602', isLeaf: true, opened: true },
+  { id: 's-660207', code: '07', name: '租赁费', type: SUBJECT_TYPE.PROFIT_LOSS, parentId: 's-6602', isLeaf: true, opened: true },
+  { id: 's-660208', code: '08', name: '水电费', type: SUBJECT_TYPE.PROFIT_LOSS, parentId: 's-6602', isLeaf: true, opened: true },
+  { id: 's-660209', code: '09', name: '招聘培训费', type: SUBJECT_TYPE.PROFIT_LOSS, parentId: 's-6602', isLeaf: true, opened: true },
+  { id: 's-660210', code: '10', name: '中介服务费', type: SUBJECT_TYPE.PROFIT_LOSS, parentId: 's-6602', isLeaf: true, opened: true },
+  { id: 's-660211', code: '11', name: '通讯费', type: SUBJECT_TYPE.PROFIT_LOSS, parentId: 's-6602', isLeaf: true, opened: true },
+  { id: 's-660212', code: '12', name: '保险费', type: SUBJECT_TYPE.PROFIT_LOSS, parentId: 's-6602', isLeaf: true, opened: true },
+  { id: 's-660213', code: '13', name: '物业维修费', type: SUBJECT_TYPE.PROFIT_LOSS, parentId: 's-6602', isLeaf: true, opened: true },
+  { id: 's-660214', code: '14', name: '存货损耗', type: SUBJECT_TYPE.PROFIT_LOSS, parentId: 's-6602', isLeaf: true, opened: true },
+  { id: 's-660215', code: '15', name: '金融服务费', type: SUBJECT_TYPE.PROFIT_LOSS, parentId: 's-6602', isLeaf: true, opened: true },
+  { id: 's-660216', code: '16', name: '装修摊销', type: SUBJECT_TYPE.PROFIT_LOSS, parentId: 's-6602', isLeaf: true, opened: true },
+  { id: 's-660217', code: '17', name: '其他', type: SUBJECT_TYPE.PROFIT_LOSS, parentId: 's-6602', isLeaf: true, opened: true },
   { id: 's-6603', code: '6603', name: '财务费用', type: SUBJECT_TYPE.PROFIT_LOSS, parentId: null, isLeaf: true, opened: true },
   { id: 's-6701', code: '6701', name: '资产减值损失', type: SUBJECT_TYPE.PROFIT_LOSS, parentId: null, isLeaf: true, opened: true },
   { id: 's-6711', code: '6711', name: '营业外支出', type: SUBJECT_TYPE.PROFIT_LOSS, parentId: null, isLeaf: true, opened: true },
@@ -374,6 +395,34 @@ function createInitialState() {
 
 const saved = loadState()
 const initial = saved || createInitialState()
+
+// ═══════════════════════════════════════════════
+//  老用户科目表迁移（补全新增的子科目）
+//  每次启动检查，确保本地存储的科目表包含所有新子科目
+// ═══════════════════════════════════════════════
+if (initial.subjects) {
+  const NEW_SUBJECT_IDS = [
+    // 销售费用明细（6601）
+    's-660103', 's-660104', 's-660105', 's-660106',
+    // 管理费用明细（6602）
+    's-660207', 's-660208', 's-660209', 's-660210',
+    's-660211', 's-660212', 's-660213', 's-660214',
+    's-660215', 's-660216', 's-660217',
+    // 其他应付款明细（2241）
+    's-224103', 's-224104', 's-224105', 's-224106', 's-224199',
+    // 盈余公积明细（4101）
+    's-410102',
+  ]
+  for (const newSub of NEW_SUBJECT_IDS) {
+    const exists = initial.subjects.some(s => s.id === newSub)
+    if (!exists) {
+      const src = DEFAULT_SUBJECTS.find(s => s.id === newSub)
+      if (src) {
+        initial.subjects.push({ ...src })
+      }
+    }
+  }
+}
 
 const state = reactive({
   subjects: initial.subjects || [],
